@@ -136,9 +136,9 @@ const JsonTool: React.FC = () => {
     setValidationError(null);
     setIsValid(true);
   };
-  return <div className="h-screen flex flex-col px-4 pt-1">
-      {/* 工具栏 - 进一步减少间距 */}
-      <div className="flex flex-wrap gap-2 mb-3 p-3 bg-background border rounded-lg py-px">
+  return <div className="h-screen flex flex-col px-4">
+      {/* 工具栏 - 间距进一步精简 */}
+      <div className="flex flex-wrap gap-2 mb-1 p-2 bg-background border rounded-lg py-px">
         <Button onClick={formatJson} disabled={!isValid && input.trim() !== ''}>
           {t('common.format')}
         </Button>
