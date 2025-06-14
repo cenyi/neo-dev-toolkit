@@ -1,3 +1,5 @@
+
+```typescript
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from '@/hooks/use-toast';
@@ -9,7 +11,6 @@ const JsonTool: React.FC = () => {
   const [input, setInput] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
-  const [isMinified, setIsMinified] = useState<boolean>(false);
   const lastValidJsonRef = useRef<string | null>(null);
 
   // 实时校验并自动格式化 JSON
@@ -54,61 +55,49 @@ const JsonTool: React.FC = () => {
     // 防止死循环：只有当输入内容不同于格式化结果时才 setInput
     if (isValid && input.trim() && formatted !== input) {
       setInput(formatted ?? '');
-      setIsMinified(false); // 自动格式化后，状态为非压缩
     }
     // eslint-disable-next-line
   }, [input]);
 
   const handleInputChange = (value: string) => {
     setInput(value);
-    setIsMinified(false); // 用户手动输入时，重置压缩状态
   };
 
-  const toggleMinifyAndCopy = () => {
-    if (!isValid) {
+  const minifyAndCopy = () => {
+    if (!isValid || !input.trim()) {
       toast({
         title: "错误",
-        description: "请先修复JSON格式错误",
+        description: "请输入有效的JSON内容",
         variant: "destructive"
       });
       return;
     }
 
-    if (isMinified) {
-      // 当前是压缩状态，点击后格式化并复制
-      const formattedJson = lastValidJsonRef.current;
-      if (formattedJson) {
-        setInput(formattedJson);
-        navigator.clipboard.writeText(formattedJson);
-        toast({
-          title: "成功",
-          description: "已格式化并复制到剪贴板"
-        });
-        setIsMinified(false);
-      }
-    } else {
-      // 当前是格式化状态，点击后压缩并复制
-      try {
-        const parsed = JSON.parse(input);
-        const minified = JSON.stringify(parsed);
-        setInput(minified);
-        navigator.clipboard.writeText(minified);
-        toast({
-          title: "成功",
-          description: "已压缩并复制到剪贴板"
-        });
-        setIsMinified(true);
-      } catch (error) {
-        toast({
-          title: "错误",
-          description: "无效的JSON格式",
-          variant: "destructive"
-        });
-      }
+    try {
+      const parsed = JSON.parse(input);
+      const minified = JSON.stringify(parsed);
+      navigator.clipboard.writeText(minified);
+      toast({
+        title: "成功",
+        description: "已压缩并复制到剪贴板"
+      });
+    } catch (error) {
+      toast({
+        title: "错误",
+        description: "无效的JSON格式",
+        variant: "destructive"
+      });
     }
   };
 
   const copyToClipboard = () => {
+    if (!input.trim()) {
+      toast({
+        title: "提示",
+        description: "内容为空，无需复制"
+      });
+      return;
+    }
     navigator.clipboard.writeText(input);
     toast({
       title: "已复制",
@@ -120,16 +109,15 @@ const JsonTool: React.FC = () => {
     setInput('');
     setValidationError(null);
     setIsValid(true);
-    setIsMinified(false);
   };
 
   return (
     <div className="h-screen flex flex-col px-4">
       <JsonToolbar
-        onMinify={toggleMinifyAndCopy}
+        onMinify={minifyAndCopy}
         onCopy={copyToClipboard}
         onClear={clearAll}
-        isFormatMinifyDisabled={!isValid && input.trim() !== ''}
+        isFormatMinifyDisabled={!input.trim() || !isValid}
       />
 
       {/* 仅保留输入区域 */}
@@ -147,3 +135,4 @@ const JsonTool: React.FC = () => {
 };
 
 export default JsonTool;
+```
