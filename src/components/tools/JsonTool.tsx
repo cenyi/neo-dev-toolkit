@@ -1,14 +1,12 @@
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
-import * as beautify from 'js-beautify';
+import JsonEditor from './JsonEditor';
 
 const JsonTool: React.FC = () => {
-  const {
-    t
-  } = useTranslation();
+  const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
 
@@ -78,45 +76,48 @@ const JsonTool: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4">
-      <div className="flex gap-6 h-[calc(100vh-200px)]">
+    <div className="h-screen flex flex-col p-4">
+      {/* 工具栏 */}
+      <div className="flex flex-wrap gap-2 mb-4 p-4 neu-card">
+        <Button onClick={formatJson} className="neu-button border-0">
+          {t('common.format')}
+        </Button>
+        <Button onClick={minifyJson} className="neu-button border-0">
+          {t('common.minify')}
+        </Button>
+        <Button onClick={validateJson} className="neu-button border-0">
+          {t('common.validate')}
+        </Button>
+        <Button onClick={copyToClipboard} className="neu-button border-0">
+          {t('common.copy')}
+        </Button>
+        <Button onClick={clearAll} variant="destructive" className="neu-button border-0">
+          {t('common.clear')}
+        </Button>
+      </div>
+
+      {/* 编辑器区域 */}
+      <div className="flex-1 flex gap-4">
         {/* 左侧输入区域 */}
-        <div className="flex-1 neu-card flex flex-col">
-          <h3 className="text-xl font-semibold mb-4">Input</h3>
-          <Textarea 
-            placeholder={t('tools.json.placeholder')} 
-            value={input} 
-            onChange={e => setInput(e.target.value)} 
-            className="neu-input flex-1 resize-none border-0 mb-4" 
-          />
-          <div className="flex flex-wrap gap-2">
-            <Button onClick={formatJson} className="neu-button border-0">
-              {t('common.format')}
-            </Button>
-            <Button onClick={minifyJson} className="neu-button border-0">
-              {t('common.minify')}
-            </Button>
-            <Button onClick={validateJson} className="neu-button border-0">
-              {t('common.validate')}
-            </Button>
-            <Button onClick={clearAll} variant="destructive" className="neu-button border-0">
-              {t('common.clear')}
-            </Button>
+        <div className="flex-1 flex flex-col neu-card">
+          <h3 className="text-lg font-semibold mb-3 px-4 pt-4">Input</h3>
+          <div className="flex-1 px-4 pb-4">
+            <JsonEditor
+              value={input}
+              onChange={setInput}
+              placeholder={t('tools.json.placeholder')}
+            />
           </div>
         </div>
 
         {/* 右侧输出区域 */}
-        <div className="flex-1 neu-card flex flex-col">
-          <h3 className="text-xl font-semibold mb-4">Output</h3>
-          <Textarea 
-            value={output} 
-            readOnly 
-            className="neu-input flex-1 resize-none border-0 mb-4" 
-          />
-          <div className="flex gap-2">
-            <Button onClick={copyToClipboard} className="neu-button border-0">
-              {t('common.copy')}
-            </Button>
+        <div className="flex-1 flex flex-col neu-card">
+          <h3 className="text-lg font-semibold mb-3 px-4 pt-4">Output</h3>
+          <div className="flex-1 px-4 pb-4">
+            <JsonEditor
+              value={output}
+              readOnly
+            />
           </div>
         </div>
       </div>
