@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 
 interface JsonToolbarProps {
-  onFormat: () => void;
   onMinify: () => void;
   onCopy: () => void;
   onClear: () => void;
@@ -12,7 +11,6 @@ interface JsonToolbarProps {
 }
 
 const JsonToolbar: React.FC<JsonToolbarProps> = ({
-  onFormat,
   onMinify,
   onCopy,
   onClear,
@@ -22,9 +20,6 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
 
   return (
     <div className="flex flex-wrap gap-2 mb-1 p-2 bg-background border py-px rounded-sm">
-      <Button onClick={onFormat} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
-        {t('common.format')}
-      </Button>
       <Button onClick={onMinify} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
         {t('common.minify')}
       </Button>
