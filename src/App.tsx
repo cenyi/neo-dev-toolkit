@@ -1,26 +1,40 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import Navigation from "@/components/Navigation";
+import HomePage from "@/components/HomePage";
+import JsonTool from "@/components/tools/JsonTool";
 import NotFound from "./pages/NotFound";
+import "@/styles/neumorphism.css";
+import "@/i18n";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider>
+      <TooltipProvider>
+        <div className="neu-container">
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Navigation />
+            <main className="pb-8">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/json" element={<JsonTool />} />
+                {/* TODO: Add other tool routes */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </BrowserRouter>
+        </div>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

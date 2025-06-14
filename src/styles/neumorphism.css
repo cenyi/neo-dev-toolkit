@@ -1,0 +1,123 @@
+
+:root {
+  --neu-bg-light: #e0e5ec;
+  --neu-shadow-light: #a3b1c6, #ffffff;
+  --neu-bg-dark: #2d3748;
+  --neu-shadow-dark: #1a202c, #3e4c63;
+  --neu-border-radius: 20px;
+  --neu-padding: 20px;
+}
+
+.neu-card {
+  @apply rounded-3xl p-6 transition-all duration-300;
+  background: var(--neu-bg-light);
+  box-shadow: 
+    20px 20px 60px #a3b1c6,
+    -20px -20px 60px #ffffff;
+}
+
+.dark .neu-card {
+  background: var(--neu-bg-dark);
+  box-shadow: 
+    20px 20px 60px #1a202c,
+    -20px -20px 60px #3e4c63;
+}
+
+.neu-button {
+  @apply rounded-2xl px-6 py-3 font-medium transition-all duration-200 cursor-pointer select-none;
+  background: var(--neu-bg-light);
+  box-shadow: 
+    8px 8px 16px #a3b1c6,
+    -8px -8px 16px #ffffff;
+}
+
+.neu-button:hover {
+  box-shadow: 
+    4px 4px 8px #a3b1c6,
+    -4px -4px 8px #ffffff;
+  transform: translateY(-1px);
+}
+
+.neu-button:active {
+  box-shadow: 
+    inset 4px 4px 8px #a3b1c6,
+    inset -4px -4px 8px #ffffff;
+  transform: translateY(0);
+}
+
+.dark .neu-button {
+  background: var(--neu-bg-dark);
+  box-shadow: 
+    8px 8px 16px #1a202c,
+    -8px -8px 16px #3e4c63;
+}
+
+.dark .neu-button:hover {
+  box-shadow: 
+    4px 4px 8px #1a202c,
+    -4px -4px 8px #3e4c63;
+}
+
+.dark .neu-button:active {
+  box-shadow: 
+    inset 4px 4px 8px #1a202c,
+    inset -4px -4px 8px #3e4c63;
+}
+
+.neu-input {
+  @apply rounded-2xl px-4 py-3 border-0 outline-none transition-all duration-200;
+  background: var(--neu-bg-light);
+  box-shadow: 
+    inset 6px 6px 12px #a3b1c6,
+    inset -6px -6px 12px #ffffff;
+}
+
+.neu-input:focus {
+  box-shadow: 
+    inset 8px 8px 16px #a3b1c6,
+    inset -8px -8px 16px #ffffff,
+    0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dark .neu-input {
+  background: var(--neu-bg-dark);
+  box-shadow: 
+    inset 6px 6px 12px #1a202c,
+    inset -6px -6px 12px #3e4c63;
+  color: #e2e8f0;
+}
+
+.dark .neu-input:focus {
+  box-shadow: 
+    inset 8px 8px 16px #1a202c,
+    inset -8px -8px 16px #3e4c63,
+    0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.neu-container {
+  @apply min-h-screen transition-all duration-300;
+  background: linear-gradient(135deg, #e0e5ec 0%, #f7fafc 100%);
+}
+
+.dark .neu-container {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+}
+
+.floating-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  from { box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
+  to { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3); }
+}
