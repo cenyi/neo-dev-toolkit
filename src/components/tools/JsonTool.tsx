@@ -5,7 +5,6 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { toast } from '@/hooks/use-toast';
 import { AlertCircle, CheckCircle } from 'lucide-react';
 import JsonEditor from './JsonEditor';
-
 const JsonTool: React.FC = () => {
   const {
     t
@@ -137,10 +136,9 @@ const JsonTool: React.FC = () => {
     setValidationError(null);
     setIsValid(true);
   };
-  return (
-    <div className="h-screen flex flex-col p-4 px-[16px] my-0 py-0">
+  return <div className="h-screen flex flex-col p-4 px-[16px] my-0 py-0">
       {/* 工具栏 - 减少上边距 */}
-      <div className="flex flex-wrap gap-2 mb-4 p-4 bg-background border rounded-lg">
+      <div className="flex flex-wrap gap-2 mb-4 p-4 bg-background border rounded-lg py-px">
         <Button onClick={formatJson} disabled={!isValid && input.trim() !== ''}>
           {t('common.format')}
         </Button>
@@ -164,41 +162,29 @@ const JsonTool: React.FC = () => {
         <div className="flex-1 flex flex-col bg-background border rounded-lg">
           <div className="flex items-center justify-between px-4 pt-4 mb-3">
             <h3 className="text-lg font-semibold">Input</h3>
-            {input.trim() && (
-              <div className="flex items-center gap-2">
-                {isValid ? (
-                  <div className="flex items-center gap-1 text-green-600">
+            {input.trim() && <div className="flex items-center gap-2">
+                {isValid ? <div className="flex items-center gap-1 text-green-600">
                     <CheckCircle className="w-4 h-4" />
                     <span className="text-sm">Valid JSON</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-1 text-red-600">
+                  </div> : <div className="flex items-center gap-1 text-red-600">
                     <AlertCircle className="w-4 h-4" />
                     <span className="text-sm">Invalid JSON</span>
-                  </div>
-                )}
-              </div>
-            )}
+                  </div>}
+              </div>}
           </div>
           
           {/* 错误提示 */}
-          {validationError && (
-            <div className="mx-4 mb-3">
+          {validationError && <div className="mx-4 mb-3">
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription className="text-sm">
                   {validationError}
                 </AlertDescription>
               </Alert>
-            </div>
-          )}
+            </div>}
           
           <div className="flex-1 px-4 pb-4">
-            <JsonEditor 
-              value={input} 
-              onChange={handleInputChange} 
-              placeholder={t('tools.json.placeholder')} 
-            />
+            <JsonEditor value={input} onChange={handleInputChange} placeholder={t('tools.json.placeholder')} />
           </div>
         </div>
 
@@ -210,8 +196,6 @@ const JsonTool: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default JsonTool;
