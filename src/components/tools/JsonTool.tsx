@@ -5,6 +5,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { toast } from '@/hooks/use-toast';
 import { AlertCircle, CheckCircle } from 'lucide-react';
 import JsonEditor from './JsonEditor';
+
 const JsonTool: React.FC = () => {
   const {
     t
@@ -136,66 +137,81 @@ const JsonTool: React.FC = () => {
     setValidationError(null);
     setIsValid(true);
   };
-  return <div className="h-screen flex flex-col p-4 px-[16px] my-0 py-px">
-      {/* 工具栏 */}
-      <div className="flex flex-wrap gap-2 mb-4 p-4 neu-card py-px">
-        <Button onClick={formatJson} className="neu-button border-0" disabled={!isValid && input.trim() !== ''}>
+  return (
+    <div className="h-screen flex flex-col p-4 px-[16px] my-0 py-0">
+      {/* 工具栏 - 减少上边距 */}
+      <div className="flex flex-wrap gap-2 mb-4 p-4 bg-background border rounded-lg">
+        <Button onClick={formatJson} disabled={!isValid && input.trim() !== ''}>
           {t('common.format')}
         </Button>
-        <Button onClick={minifyJson} className="neu-button border-0" disabled={!isValid && input.trim() !== ''}>
+        <Button onClick={minifyJson} disabled={!isValid && input.trim() !== ''}>
           {t('common.minify')}
         </Button>
-        <Button onClick={validateJsonManually} className="neu-button border-0">
+        <Button onClick={validateJsonManually}>
           {t('common.validate')}
         </Button>
-        <Button onClick={copyToClipboard} className="neu-button border-0">
+        <Button onClick={copyToClipboard}>
           {t('common.copy')}
         </Button>
-        <Button onClick={clearAll} variant="destructive" className="neu-button border-0">
+        <Button onClick={clearAll} variant="destructive">
           {t('common.clear')}
         </Button>
       </div>
 
       {/* 编辑器区域 */}
       <div className="flex-1 flex gap-4">
-        {/* 左侧输入区域 */}
-        <div className="flex-1 flex flex-col neu-card">
+        {/* 左侧输入区域 - 移除新拟态效果 */}
+        <div className="flex-1 flex flex-col bg-background border rounded-lg">
           <div className="flex items-center justify-between px-4 pt-4 mb-3">
             <h3 className="text-lg font-semibold">Input</h3>
-            {input.trim() && <div className="flex items-center gap-2">
-                {isValid ? <div className="flex items-center gap-1 text-green-600">
+            {input.trim() && (
+              <div className="flex items-center gap-2">
+                {isValid ? (
+                  <div className="flex items-center gap-1 text-green-600">
                     <CheckCircle className="w-4 h-4" />
                     <span className="text-sm">Valid JSON</span>
-                  </div> : <div className="flex items-center gap-1 text-red-600">
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1 text-red-600">
                     <AlertCircle className="w-4 h-4" />
                     <span className="text-sm">Invalid JSON</span>
-                  </div>}
-              </div>}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           
           {/* 错误提示 */}
-          {validationError && <div className="mx-4 mb-3">
+          {validationError && (
+            <div className="mx-4 mb-3">
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription className="text-sm">
                   {validationError}
                 </AlertDescription>
               </Alert>
-            </div>}
+            </div>
+          )}
           
           <div className="flex-1 px-4 pb-4">
-            <JsonEditor value={input} onChange={handleInputChange} placeholder={t('tools.json.placeholder')} />
+            <JsonEditor 
+              value={input} 
+              onChange={handleInputChange} 
+              placeholder={t('tools.json.placeholder')} 
+            />
           </div>
         </div>
 
-        {/* 右侧输出区域 */}
-        <div className="flex-1 flex flex-col neu-card">
+        {/* 右侧输出区域 - 移除新拟态效果 */}
+        <div className="flex-1 flex flex-col bg-background border rounded-lg">
           <h3 className="text-lg font-semibold mb-3 px-4 pt-4">Output</h3>
           <div className="flex-1 px-4 pb-4">
             <JsonEditor value={output} readOnly />
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default JsonTool;
