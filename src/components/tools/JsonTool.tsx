@@ -83,16 +83,15 @@ const JsonTool: React.FC = () => {
 
     try {
       if (isMinified) {
-        const formattedJson = lastValidJsonRef.current;
-        if (formattedJson) {
-          setInput(formattedJson);
-          navigator.clipboard.writeText(formattedJson);
-          toast({
-            title: "成功",
-            description: "已格式化并复制到剪贴板"
-          });
-          setIsMinified(false);
-        }
+        const parsed = JSON.parse(input);
+        const formattedJson = JSON.stringify(parsed, null, 2);
+        setInput(formattedJson);
+        navigator.clipboard.writeText(formattedJson);
+        toast({
+          title: "成功",
+          description: "已格式化并复制到剪贴板"
+        });
+        setIsMinified(false);
       } else {
         const parsed = JSON.parse(input);
         const minified = JSON.stringify(parsed);
