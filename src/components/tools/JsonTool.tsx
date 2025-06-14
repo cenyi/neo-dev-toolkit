@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from '@/hooks/use-toast';
@@ -10,6 +9,7 @@ const JsonTool: React.FC = () => {
   const [input, setInput] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
+  const [isMinified, setIsMinified] = useState(false);
   const lastValidJsonRef = useRef<string | null>(null);
   const isMinifyingRef = useRef(false);
 
@@ -61,15 +61,17 @@ const JsonTool: React.FC = () => {
     // 防止死循环：只有当输入内容不同于格式化结果时才 setInput
     if (isValid && input.trim() && formatted !== input) {
       setInput(formatted ?? '');
+      setIsMinified(false);
     }
     // eslint-disable-next-line
   }, [input]);
 
   const handleInputChange = (value: string) => {
     setInput(value);
+    setIsMinified(false);
   };
 
-  const minifyAndCopy = () => {
+  const handleToggleMinifyFormat = () => {
     if (!isValid || !input.trim()) {
       toast({
         title: "错误",
@@ -80,15 +82,29 @@ const JsonTool: React.FC = () => {
     }
 
     try {
-      const parsed = JSON.parse(input);
-      const minified = JSON.stringify(parsed);
-      isMinifyingRef.current = true;
-      setInput(minified);
-      navigator.clipboard.writeText(minified);
-      toast({
-        title: "成功",
-        description: "已压缩并复制到剪贴板"
-      });
+      if (isMinified) {
+        const formattedJson = lastValidJsonRef.current;
+        if (formattedJson) {
+          setInput(formattedJson);
+          navigator.clipboard.writeText(formattedJson);
+          toast({
+            title: "成功",
+            description: "已格式化并复制到剪贴板"
+          });
+          setIsMinified(false);
+        }
+      } else {
+        const parsed = JSON.parse(input);
+        const minified = JSON.stringify(parsed);
+        isMinifyingRef.current = true;
+        setInput(minified);
+        navigator.clipboard.writeText(minified);
+        toast({
+          title: "成功",
+          description: "已压缩并复制到剪贴板"
+        });
+        setIsMinified(true);
+      }
     } catch (error) {
       toast({
         title: "错误",
@@ -117,12 +133,13 @@ const JsonTool: React.FC = () => {
     setInput('');
     setValidationError(null);
     setIsValid(true);
+    setIsMinified(false);
   };
 
   return (
     <div className="h-screen flex flex-col px-4">
       <JsonToolbar
-        onMinify={minifyAndCopy}
+        onMinify={handleToggleMinifyFormat}
         onCopy={copyToClipboard}
         onClear={clearAll}
         isFormatMinifyDisabled={!input.trim() || !isValid}
