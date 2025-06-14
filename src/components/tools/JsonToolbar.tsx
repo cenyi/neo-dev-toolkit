@@ -41,13 +41,13 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
       </div>
 
       <div className="flex items-center gap-2 flex-wrap">
-        <Label htmlFor="extract-path" className="font-bold">字段路径:</Label>
+        <Label htmlFor="extract-path" className="font-bold">{t('tools.json.fieldPath')}:</Label>
         <Input
           id="extract-path"
           type="text"
           value={extractPath}
           onChange={(e) => onExtractPathChange(e.target.value)}
-          placeholder="例如: data.users[0].name"
+          placeholder={t('tools.json.extractPlaceholder')}
           className="h-9 w-auto md:w-64 text-sm"
           disabled={isFormatMinifyDisabled}
           onKeyDown={(e) => {
@@ -57,7 +57,7 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
           }}
         />
         <Button onClick={onExtract} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
-          提取值
+          {t('tools.json.extractValue')}
         </Button>
       </div>
     </div>

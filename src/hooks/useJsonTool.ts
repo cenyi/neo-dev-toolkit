@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
+import i18n from '@/i18n';
 
 const getValueByPath = (obj: any, path: string): any => {
   try {
@@ -90,11 +91,12 @@ export const useJsonTool = () => {
   };
 
   const handleToggleMinifyFormat = () => {
+    setExtractedValue(null);
     if (!isValid || !input.trim()) {
       toast({
-        title: "错误",
-        description: "请输入有效的JSON内容",
-        variant: "destructive"
+        title: i18n.t('toasts.common.error'),
+        description: i18n.t('toasts.error.invalidJson'),
+        variant: 'destructive',
       });
       return;
     }
@@ -106,8 +108,8 @@ export const useJsonTool = () => {
         setInput(formattedJson);
         navigator.clipboard.writeText(formattedJson);
         toast({
-          title: "成功",
-          description: "已格式化并复制到剪贴板"
+          title: i18n.t('toasts.common.success'),
+          description: i18n.t('toasts.success.formattedAndCopied'),
         });
         setIsMinified(false);
       } else {
@@ -117,32 +119,33 @@ export const useJsonTool = () => {
         setInput(minified);
         navigator.clipboard.writeText(minified);
         toast({
-          title: "成功",
-          description: "已压缩并复制到剪贴板"
+          title: i18n.t('toasts.common.success'),
+          description: i18n.t('toasts.success.minifiedAndCopied'),
         });
         setIsMinified(true);
       }
     } catch (error) {
       toast({
-        title: "错误",
-        description: "无效的JSON格式",
-        variant: "destructive"
+        title: i18n.t('toasts.common.error'),
+        description: i18n.t('toasts.error.invalidJsonFormat'),
+        variant: 'destructive',
       });
     }
   };
 
   const copyToClipboard = () => {
+    setExtractedValue(null);
     if (!input.trim()) {
       toast({
-        title: "提示",
-        description: "内容为空，无需复制"
+        title: i18n.t('toasts.common.info'),
+        description: i18n.t('toasts.info.emptyContent'),
       });
       return;
     }
     navigator.clipboard.writeText(input);
     toast({
-      title: "已复制",
-      description: "内容已复制到剪贴板"
+      title: i18n.t('toasts.common.success'),
+      description: i18n.t('toasts.success.copied'),
     });
   };
 
@@ -157,11 +160,11 @@ export const useJsonTool = () => {
 
   const handleExtractValue = () => {
     if (!isValid || !input.trim()) {
-      toast({ title: "错误", description: "请输入有效的JSON内容", variant: "destructive" });
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.invalidJson'), variant: 'destructive' });
       return;
     }
     if (!extractPath.trim()) {
-      toast({ title: "错误", description: "请输入要提取的字段路径", variant: "destructive" });
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.missingPath'), variant: 'destructive' });
       return;
     }
 
@@ -171,16 +174,16 @@ export const useJsonTool = () => {
 
       if (value === undefined) {
         setExtractedValue(null);
-        toast({ title: "未找到", description: "在指定路径未找到值", variant: "destructive" });
+        toast({ title: i18n.t('toasts.common.notFound'), description: i18n.t('toasts.error.notFound'), variant: 'destructive' });
       } else {
         const resultString = JSON.stringify(value, null, 2);
         setExtractedValue(resultString);
         navigator.clipboard.writeText(resultString);
-        toast({ title: "成功", description: "已提取字段值并复制到剪贴板" });
+        toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.extractedAndCopied') });
       }
     } catch (error) {
       setExtractedValue(null);
-      toast({ title: "错误", description: "解析JSON或提取值时出错", variant: "destructive" });
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.extractError'), variant: 'destructive' });
     }
   };
 

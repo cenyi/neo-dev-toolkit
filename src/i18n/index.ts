@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -39,7 +38,11 @@ const resources = {
         json: {
           title: 'JSON Tools',
           description: 'Format, validate, and minify JSON data',
-          placeholder: 'Paste your JSON here...'
+          placeholder: 'Paste your JSON here...',
+          fieldPath: 'Field Path',
+          extractValue: 'Extract Value',
+          extractPlaceholder: 'e.g., data.users[0].name',
+          extractedValueTitle: 'Extracted Value',
         },
         network: {
           title: 'Network Tools',
@@ -60,8 +63,32 @@ const resources = {
         mermaid: {
           title: 'Mermaid Diagrams',
           description: 'Create diagrams and flowcharts with Mermaid'
-        }
-      }
+        },
+      },
+      toasts: {
+        common: {
+          error: 'Error',
+          success: 'Success',
+          info: 'Info',
+          notFound: 'Not Found',
+        },
+        error: {
+          invalidJson: 'Please enter valid JSON content',
+          invalidJsonFormat: 'Invalid JSON format',
+          missingPath: 'Please enter the path of the field to extract',
+          notFound: 'Value not found at the specified path',
+          extractError: 'Error parsing JSON or extracting value',
+        },
+        success: {
+          formattedAndCopied: 'Formatted and copied to clipboard',
+          minifiedAndCopied: 'Minified and copied to clipboard',
+          copied: 'Content copied to clipboard',
+          extractedAndCopied: 'Extracted field value and copied to clipboard',
+        },
+        info: {
+          emptyContent: 'Content is empty, nothing to copy',
+        },
+      },
     }
   },
   'zh-CN': {
@@ -100,7 +127,11 @@ const resources = {
         json: {
           title: 'JSON工具',
           description: '格式化、验证和压缩JSON数据',
-          placeholder: '在此粘贴您的JSON数据...'
+          placeholder: '在此粘贴您的JSON数据...',
+          fieldPath: '字段路径',
+          extractValue: '提取值',
+          extractPlaceholder: '例如: data.users[0].name',
+          extractedValueTitle: '提取的值',
         },
         network: {
           title: '网络工具',
@@ -121,8 +152,32 @@ const resources = {
         mermaid: {
           title: 'Mermaid图表',
           description: '使用Mermaid创建图表和流程图'
-        }
-      }
+        },
+      },
+      toasts: {
+        common: {
+          error: '错误',
+          success: '成功',
+          info: '提示',
+          notFound: '未找到',
+        },
+        error: {
+          invalidJson: '请输入有效的JSON内容',
+          invalidJsonFormat: '无效的JSON格式',
+          missingPath: '请输入要提取的字段路径',
+          notFound: '在指定路径未找到值',
+          extractError: '解析JSON或提取值时出错',
+        },
+        success: {
+          formattedAndCopied: '已格式化并复制到剪贴板',
+          minifiedAndCopied: '已压缩并复制到剪贴板',
+          copied: '内容已复制到剪贴板',
+          extractedAndCopied: '已提取字段值并复制到剪贴板',
+        },
+        info: {
+          emptyContent: '内容为空，无需复制',
+        },
+      },
     }
   },
   'zh-TW': {
@@ -161,7 +216,11 @@ const resources = {
         json: {
           title: 'JSON工具',
           description: '格式化、驗證和壓縮JSON資料',
-          placeholder: '在此貼上您的JSON資料...'
+          placeholder: '在此貼上您的JSON資料...',
+          fieldPath: '欄位路徑',
+          extractValue: '提取值',
+          extractPlaceholder: '例如: data.users[0].name',
+          extractedValueTitle: '提取的值',
         },
         network: {
           title: '網路工具',
@@ -182,8 +241,32 @@ const resources = {
         mermaid: {
           title: 'Mermaid圖表',
           description: '使用Mermaid創建圖表和流程圖'
-        }
-      }
+        },
+      },
+      toasts: {
+        common: {
+          error: '錯誤',
+          success: '成功',
+          info: '提示',
+          notFound: '未找到',
+        },
+        error: {
+          invalidJson: '請輸入有效的JSON內容',
+          invalidJsonFormat: '無效的JSON格式',
+          missingPath: '請輸入要提取的欄位路徑',
+          notFound: '在指定路徑未找到值',
+          extractError: '解析JSON或提取值時出錯',
+        },
+        success: {
+          formattedAndCopied: '已格式化並複製到剪貼簿',
+          minifiedAndCopied: '已壓縮並複製到剪貼簿',
+          copied: '內容已複製到剪貼簿',
+          extractedAndCopied: '已提取欄位值並複製到剪貼簿',
+        },
+        info: {
+          emptyContent: '內容為空，無需複製',
+        },
+      },
     }
   },
   ja: {
@@ -222,7 +305,11 @@ const resources = {
         json: {
           title: 'JSONツール',
           description: 'JSONデータの整形、検証、圧縮',
-          placeholder: 'JSONをここに貼り付けてください...'
+          placeholder: 'JSONをここに貼り付けてください...',
+          fieldPath: 'フィールドパス',
+          extractValue: '値を抽出',
+          extractPlaceholder: '例: data.users[0].name',
+          extractedValueTitle: '抽出された値',
         },
         network: {
           title: 'ネットワークツール',
@@ -243,8 +330,32 @@ const resources = {
         mermaid: {
           title: 'Mermaid図表',
           description: 'Mermaidで図表とフローチャートを作成'
-        }
-      }
+        },
+      },
+      toasts: {
+        common: {
+          error: 'エラー',
+          success: '成功',
+          info: '情報',
+          notFound: '見つかりません',
+        },
+        error: {
+          invalidJson: '有効なJSONコンテンツを入力してください',
+          invalidJsonFormat: '無効なJSON形式です',
+          missingPath: '抽出するフィールドのパスを入力してください',
+          notFound: '指定されたパスで値が見つかりませんでした',
+          extractError: 'JSONの解析または値の抽出中にエラーが発生しました',
+        },
+        success: {
+          formattedAndCopied: 'フォーマットしてクリップボードにコピーしました',
+          minifiedAndCopied: '圧縮してクリップボードにコピーしました',
+          copied: 'コンテンツをクリップボードにコピーしました',
+          extractedAndCopied: 'フィールド値を抽出してクリップボードにコピーしました',
+        },
+        info: {
+          emptyContent: 'コンテンツが空なので、コピーする必要はありません',
+        },
+      },
     }
   }
 };
@@ -256,8 +367,8 @@ i18n
     lng: 'en',
     fallbackLng: 'en',
     interpolation: {
-      escapeValue: false
-    }
+      escapeValue: false,
+    },
   });
 
 export default i18n;
