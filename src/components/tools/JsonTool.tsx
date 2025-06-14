@@ -1,33 +1,35 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from '@/hooks/use-toast';
 import JsonToolbar from './JsonToolbar';
 import JsonInputArea from './JsonInputArea';
-import JsonOutputArea from './JsonOutputArea';
+// 移除 import JsonOutputArea from './JsonOutputArea';
 
 const JsonTool: React.FC = () => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
+  const lastValidJsonRef = useRef<string | null>(null);
 
-  // 实时校验JSON格式
-  const validateJson = (jsonString: string) => {
+  // 实时校验并自动格式化 JSON
+  const validateAndFormatJson = (jsonString: string) => {
     if (!jsonString.trim()) {
       setValidationError(null);
       setIsValid(true);
-      return;
+      lastValidJsonRef.current = null;
+      return jsonString;
     }
     try {
-      JSON.parse(jsonString);
+      const parsed = JSON.parse(jsonString);
       setValidationError(null);
       setIsValid(true);
+      lastValidJsonRef.current = JSON.stringify(parsed, null, 2); // 美化格式
+      return lastValidJsonRef.current;
     } catch (error) {
       setIsValid(false);
       if (error instanceof SyntaxError) {
-        // 提取更详细的错误信息
         const errorMessage = error.message;
         const match = errorMessage.match(/at position (\d+)/);
         if (match) {
@@ -42,17 +44,26 @@ const JsonTool: React.FC = () => {
       } else {
         setValidationError('未知的JSON解析错误');
       }
+      return jsonString;
     }
   };
 
-  // 当输入内容变化时自动校验
+  // 仅在输入或校验状态变化时校验
   useEffect(() => {
-    validateJson(input);
+    const formatted = validateAndFormatJson(input);
+    // 自动格式化，仅在有效且未是格式化后的内容时触发
+    // 防止死循环：只有当输入内容不同于格式化结果时才 setInput
+    if (isValid && input.trim() && formatted !== input) {
+      setInput(formatted ?? '');
+    }
+    // eslint-disable-next-line
   }, [input]);
 
   const handleInputChange = (value: string) => {
     setInput(value);
   };
+
+  // 工具栏按钮功能（部分已失效，但为兼容保留，便于扩展）
   const formatJson = () => {
     if (!isValid) {
       toast({
@@ -65,7 +76,7 @@ const JsonTool: React.FC = () => {
     try {
       const parsed = JSON.parse(input);
       const formatted = JSON.stringify(parsed, null, 2);
-      setOutput(formatted);
+      setInput(formatted);
       toast({
         title: "Success",
         description: "JSON formatted successfully"
@@ -90,7 +101,7 @@ const JsonTool: React.FC = () => {
     try {
       const parsed = JSON.parse(input);
       const minified = JSON.stringify(parsed);
-      setOutput(minified);
+      setInput(minified);
       toast({
         title: "Success",
         description: "JSON minified successfully"
@@ -103,20 +114,20 @@ const JsonTool: React.FC = () => {
       });
     }
   };
-  
+
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(output);
+    navigator.clipboard.writeText(input);
     toast({
       title: "Copied",
-      description: "Output copied to clipboard"
+      description: "内容已复制到剪贴板"
     });
   };
   const clearAll = () => {
     setInput('');
-    setOutput('');
     setValidationError(null);
     setIsValid(true);
   };
+
   return (
     <div className="h-screen flex flex-col px-4">
       <JsonToolbar
@@ -127,7 +138,7 @@ const JsonTool: React.FC = () => {
         isFormatMinifyDisabled={!isValid && input.trim() !== ''}
       />
 
-      {/* 编辑器区域 */}
+      {/* 仅保留输入区域 */}
       <div className="flex-1 flex gap-4 min-h-0">
         <JsonInputArea
           value={input}
@@ -136,7 +147,6 @@ const JsonTool: React.FC = () => {
           isValid={isValid}
           validationError={validationError}
         />
-        <JsonOutputArea value={output} />
       </div>
     </div>
   );
