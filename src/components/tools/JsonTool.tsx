@@ -12,7 +12,6 @@ const JsonTool: React.FC = () => {
   const [output, setOutput] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
-  const [editorKey, setEditorKey] = useState(0); // 新增：用于强制 remount 编辑器
 
   // 实时校验JSON格式
   const validateJson = (jsonString: string) => {
@@ -136,11 +135,10 @@ const JsonTool: React.FC = () => {
     setOutput('');
     setValidationError(null);
     setIsValid(true);
-    setEditorKey(prev => prev + 1); // 重新挂载输入框，避免保留旧内容
   };
   return (
     <div className="h-screen flex flex-col px-4">
-      {/* 工具栏 - 间距进一步精简 */}
+      {/* 工具栏 */}
       <div className="flex flex-wrap gap-2 mb-1 p-2 bg-background border py-px rounded-sm">
         <Button onClick={formatJson} disabled={!isValid && input.trim() !== ''} className="text-sm font-extrabold">
           {t('common.format')}
@@ -157,8 +155,8 @@ const JsonTool: React.FC = () => {
       </div>
 
       {/* 编辑器区域 */}
-      <div className="flex-1 flex gap-4 min-h-0"> {/* 防止子元素溢出 */}
-        {/* 左侧输入区域 */}
+      <div className="flex-1 flex gap-4 min-h-0">
+        {/* 左侧输入 */}
         <div className="flex-1 flex flex-col bg-background border rounded-lg min-w-0 min-h-0 overflow-hidden">
           <div className="flex items-center justify-between px-4 pt-4 mb-3">
             <h3 className="text-lg font-semibold">Input</h3>
@@ -177,7 +175,6 @@ const JsonTool: React.FC = () => {
             </div>}
           </div>
 
-          {/* 错误提示 */}
           {validationError && (
             <div className="mx-4 mb-3">
               <Alert variant="destructive">
@@ -194,12 +191,11 @@ const JsonTool: React.FC = () => {
               value={input}
               onChange={handleInputChange}
               placeholder={t('tools.json.placeholder')}
-              editorKey={editorKey}
             />
           </div>
         </div>
 
-        {/* 右侧输出区域 */}
+        {/* 右侧输出 */}
         <div className="flex-1 flex flex-col bg-background border rounded-lg min-w-0 min-h-0 overflow-hidden">
           <h3 className="text-lg font-semibold mb-3 px-4 pt-4">Output</h3>
           <div className="flex-1 min-h-[150px] px-4 pb-4 overflow-hidden">

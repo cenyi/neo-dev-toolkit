@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from '@/contexts/ThemeContext';
 
@@ -8,22 +8,19 @@ interface JsonEditorProps {
   onChange?: (value: string) => void;
   readOnly?: boolean;
   placeholder?: string;
-  editorKey?: string | number; // 用于强制 remount
 }
 
 const JsonEditor: React.FC<JsonEditorProps> = ({
   value,
   onChange,
   readOnly = false,
-  placeholder = '',
-  editorKey
+  placeholder = ''
 }) => {
   const { theme } = useTheme();
   const editorRef = useRef<any>(null);
 
   const handleEditorDidMount = (editor: any, monaco: any) => {
     editorRef.current = editor;
-
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       allowComments: false,
@@ -59,10 +56,9 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
   return (
     <div className="h-full min-h-[120px] w-full border rounded-md overflow-hidden flex flex-col">
       <Editor
-        key={editorKey}
         height="100%"
-        defaultLanguage="json"
-        defaultValue={value}
+        language="json"
+        value={value}
         onChange={handleEditorChange}
         onMount={handleEditorDidMount}
         theme={theme === 'dark' ? 'vs-dark' : 'vs'}
@@ -76,7 +72,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
           minimap: { enabled: false },
           fontSize: 14,
           tabSize: 2,
-          insertSpaces: true
+          insertSpaces: true,
+          renderWhitespace: 'boundary'
         }}
       />
     </div>
