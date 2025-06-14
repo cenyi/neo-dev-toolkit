@@ -138,9 +138,9 @@ const JsonTool: React.FC = () => {
     setIsValid(true);
   };
   return (
-    <div className="h-screen flex flex-col p-4 px-[16px] my-0 pt-2">
-      {/* 工具栏 - 减少上部间距 */}
-      <div className="flex flex-wrap gap-2 mb-4 p-4 bg-background border rounded-lg py-3">
+    <div className="h-screen flex flex-col px-4 pt-1">
+      {/* 工具栏 - 进一步减少间距 */}
+      <div className="flex flex-wrap gap-2 mb-3 p-3 bg-background border rounded-lg">
         <Button onClick={formatJson} disabled={!isValid && input.trim() !== ''}>
           {t('common.format')}
         </Button>
@@ -160,7 +160,7 @@ const JsonTool: React.FC = () => {
 
       {/* 编辑器区域 */}
       <div className="flex-1 flex gap-4">
-        {/* 左侧输入区域 - 移除新拟态效果 */}
+        {/* 左侧输入区域 */}
         <div className="flex-1 flex flex-col bg-background border rounded-lg">
           <div className="flex items-center justify-between px-4 pt-4 mb-3">
             <h3 className="text-lg font-semibold">Input</h3>
@@ -202,7 +202,7 @@ const JsonTool: React.FC = () => {
           </div>
         </div>
 
-        {/* 右侧输出区域 - 移除新拟态效果 */}
+        {/* 右侧输出区域 */}
         <div className="flex-1 flex flex-col bg-background border rounded-lg">
           <h3 className="text-lg font-semibold mb-3 px-4 pt-4">Output</h3>
           <div className="flex-1 px-4 pb-4">
