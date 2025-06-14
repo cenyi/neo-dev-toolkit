@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -51,7 +52,7 @@ const Navigation: React.FC = () => {
     path: '/mermaid',
     key: 'mermaid'
   }];
-  return <nav className="mx-4 mb-4 bg-background/80 backdrop-blur-md border border-border rounded-2xl shadow-lg">
+  return <nav className="mx-4 mb-2 bg-background/80 backdrop-blur-md border border-border rounded-2xl shadow-lg">
       <div className="flex items-center justify-between p-4 py-px px-px">
         <div className="flex items-center space-x-1">
           {navItems.map(({
@@ -91,3 +92,4 @@ const Navigation: React.FC = () => {
     </nav>;
 };
 export default Navigation;
+
