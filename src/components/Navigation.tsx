@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
   ];
 
   return (
-    <nav className="sticky top-4 z-50 mx-4 mb-8 bg-background/80 backdrop-blur-md border border-border rounded-2xl shadow-lg">
+    <nav className="mx-4 mb-8 bg-background/80 backdrop-blur-md border border-border rounded-2xl shadow-lg">
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center space-x-1">
           {navItems.map(({ path, key, icon: Icon }) => (
