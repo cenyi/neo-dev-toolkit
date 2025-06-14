@@ -138,18 +138,18 @@ const JsonTool: React.FC = () => {
   };
   return <div className="h-screen flex flex-col px-4">
       {/* 工具栏 - 间距进一步精简 */}
-      <div className="flex flex-wrap gap-2 mb-1 p-2 bg-background border rounded-lg py-px">
-        <Button onClick={formatJson} disabled={!isValid && input.trim() !== ''}>
+      <div className="flex flex-wrap gap-2 mb-1 p-2 bg-background border py-px rounded-sm">
+        <Button onClick={formatJson} disabled={!isValid && input.trim() !== ''} className="text-sm font-extrabold">
           {t('common.format')}
         </Button>
-        <Button onClick={minifyJson} disabled={!isValid && input.trim() !== ''}>
+        <Button onClick={minifyJson} disabled={!isValid && input.trim() !== ''} className="text-sm font-extrabold">
           {t('common.minify')}
         </Button>
         
-        <Button onClick={copyToClipboard}>
+        <Button onClick={copyToClipboard} className="text-sm font-extrabold">
           {t('common.copy')}
         </Button>
-        <Button onClick={clearAll} variant="destructive">
+        <Button onClick={clearAll} variant="destructive" className="text-sm font-extrabold">
           {t('common.clear')}
         </Button>
       </div>
