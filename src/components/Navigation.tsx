@@ -35,14 +35,16 @@ const Navigation: React.FC = () => {
   ];
 
   return (
-    <nav className="neu-card sticky top-4 z-50 mx-4 mb-8">
-      <div className="flex items-center justify-between">
+    <nav className="sticky top-4 z-50 mx-4 mb-8 bg-background/80 backdrop-blur-md border border-border rounded-2xl shadow-lg">
+      <div className="flex items-center justify-between p-4">
         <div className="flex items-center space-x-1">
           {navItems.map(({ path, key, icon: Icon }) => (
             <Link key={path} to={path}>
               <button 
-                className={`neu-button text-sm flex items-center space-x-2 ${
-                  location.pathname === path ? 'pulse-glow' : ''
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${
+                  location.pathname === path 
+                    ? 'bg-primary text-primary-foreground shadow-md' 
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {Icon && <Icon size={16} />}
@@ -55,16 +57,16 @@ const Navigation: React.FC = () => {
         <div className="flex items-center space-x-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="neu-button p-3">
+              <button className="p-3 rounded-xl hover:bg-accent hover:text-accent-foreground transition-colors duration-200">
                 <Languages size={16} />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="neu-card border-0">
+            <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md">
               {languages.map(({ code, name }) => (
                 <DropdownMenuItem 
                   key={code}
                   onClick={() => i18n.changeLanguage(code)}
-                  className="cursor-pointer hover:bg-transparent"
+                  className="cursor-pointer hover:bg-accent hover:text-accent-foreground"
                 >
                   {name}
                 </DropdownMenuItem>
@@ -74,7 +76,7 @@ const Navigation: React.FC = () => {
           
           <button 
             onClick={toggleTheme}
-            className="neu-button p-3"
+            className="p-3 rounded-xl hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
             aria-label={t('common.theme')}
           >
             {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
