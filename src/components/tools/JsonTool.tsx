@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
@@ -13,6 +12,7 @@ const JsonTool: React.FC = () => {
   const [output, setOutput] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
+  const [editorKey, setEditorKey] = useState(0); // 新增：用于强制 remount 编辑器
 
   // 实时校验JSON格式
   const validateJson = (jsonString: string) => {
@@ -136,6 +136,7 @@ const JsonTool: React.FC = () => {
     setOutput('');
     setValidationError(null);
     setIsValid(true);
+    setEditorKey(prev => prev + 1); // 重新挂载输入框，避免保留旧内容
   };
   return (
     <div className="h-screen flex flex-col px-4">
@@ -193,6 +194,7 @@ const JsonTool: React.FC = () => {
               value={input}
               onChange={handleInputChange}
               placeholder={t('tools.json.placeholder')}
+              editorKey={editorKey}
             />
           </div>
         </div>

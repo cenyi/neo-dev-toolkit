@@ -8,21 +8,22 @@ interface JsonEditorProps {
   onChange?: (value: string) => void;
   readOnly?: boolean;
   placeholder?: string;
+  editorKey?: string | number; // 用于强制 remount
 }
 
 const JsonEditor: React.FC<JsonEditorProps> = ({
   value,
   onChange,
   readOnly = false,
-  placeholder = ''
+  placeholder = '',
+  editorKey
 }) => {
   const { theme } = useTheme();
   const editorRef = useRef<any>(null);
 
   const handleEditorDidMount = (editor: any, monaco: any) => {
     editorRef.current = editor;
-    
-    // 配置JSON语言选项
+
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       allowComments: false,
@@ -30,7 +31,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
       enableSchemaRequest: false
     });
 
-    // 设置编辑器选项
     editor.updateOptions({
       lineNumbers: 'on',
       lineNumbersMinChars: 3,
@@ -59,9 +59,10 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
   return (
     <div className="h-full min-h-[120px] w-full border rounded-md overflow-hidden flex flex-col">
       <Editor
+        key={editorKey}
         height="100%"
         defaultLanguage="json"
-        value={value}
+        defaultValue={value}
         onChange={handleEditorChange}
         onMount={handleEditorDidMount}
         theme={theme === 'dark' ? 'vs-dark' : 'vs'}
