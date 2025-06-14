@@ -11,6 +11,7 @@ const JsonTool: React.FC = () => {
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
   const lastValidJsonRef = useRef<string | null>(null);
+  const isMinifyingRef = useRef(false);
 
   // 实时校验并自动格式化 JSON
   const validateAndFormatJson = (jsonString: string) => {
@@ -49,6 +50,12 @@ const JsonTool: React.FC = () => {
 
   // 仅在输入或校验状态变化时校验
   useEffect(() => {
+    if (isMinifyingRef.current) {
+      isMinifyingRef.current = false;
+      validateAndFormatJson(input);
+      return;
+    }
+
     const formatted = validateAndFormatJson(input);
     // 自动格式化，仅在有效且未是格式化后的内容时触发
     // 防止死循环：只有当输入内容不同于格式化结果时才 setInput
@@ -75,6 +82,8 @@ const JsonTool: React.FC = () => {
     try {
       const parsed = JSON.parse(input);
       const minified = JSON.stringify(parsed);
+      isMinifyingRef.current = true;
+      setInput(minified);
       navigator.clipboard.writeText(minified);
       toast({
         title: "成功",
