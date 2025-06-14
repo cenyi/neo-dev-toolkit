@@ -22,49 +22,48 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
   const [loadError, setLoadError] = useState<boolean>(false);
 
   const handleEditorDidMount = (editor: any, monaco: any) => {
-    editorRef.current = editor;
-    if (monaco?.languages?.json?.jsonDefaults?.setDiagnosticsOptions) {
-      monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
-        validate: true,
-        allowComments: false,
-        schemas: [],
-        enableSchemaRequest: false
+    try {
+      editorRef.current = editor;
+      if (monaco?.languages?.json?.jsonDefaults?.setDiagnosticsOptions) {
+        monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+          validate: true,
+          allowComments: false,
+          schemas: [],
+          enableSchemaRequest: false
+        });
+      }
+      editor.updateOptions({
+        lineNumbers: 'on',
+        lineNumbersMinChars: 3,
+        glyphMargin: true,
+        folding: true,
+        foldingStrategy: 'indentation',
+        showFoldingControls: 'always',
+        wordWrap: 'on',
+        automaticLayout: true,
+        scrollBeyondLastLine: false,
+        minimap: { enabled: false },
+        fontSize: 14,
+        tabSize: 2,
+        insertSpaces: true,
+        renderWhitespace: 'boundary',
+        readOnly: readOnly
+      });
+    } catch (error) {
+      console.error("Monaco Editor mount error:", error);
+      setLoadError(true);
+      toast({
+        title: 'Monaco 加载失败',
+        description: '无法加载编辑器，已自动切换为普通文本框。',
+        variant: 'destructive',
       });
     }
-    editor.updateOptions({
-      lineNumbers: 'on',
-      lineNumbersMinChars: 3,
-      glyphMargin: true,
-      folding: true,
-      foldingStrategy: 'indentation',
-      showFoldingControls: 'always',
-      wordWrap: 'on',
-      automaticLayout: true,
-      scrollBeyondLastLine: false,
-      minimap: { enabled: false },
-      fontSize: 14,
-      tabSize: 2,
-      insertSpaces: true,
-      renderWhitespace: 'boundary',
-      readOnly: readOnly
-    });
   };
 
   const handleEditorChange = (val: string | undefined) => {
     if (onChange && val !== undefined) {
       onChange(val);
     }
-  };
-
-  const handleEditorError = (error: any) => {
-    setLoadError(true);
-    toast({
-      title: 'Monaco 加载失败',
-      description: '无法加载编辑器，已自动切换为普通文本框。',
-      variant: 'destructive',
-    });
-    // 可在此 console.log 详细错误
-    console.error("Monaco Editor load error:", error);
   };
 
   // 如果 Monaco 加载失败，显示一个 textarea 兜底
@@ -107,7 +106,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
           insertSpaces: true,
           renderWhitespace: 'boundary'
         }}
-        onError={handleEditorError}
       />
     </div>
   );
