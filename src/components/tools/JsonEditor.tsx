@@ -20,17 +20,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
   const { theme } = useTheme();
   const editorRef = useRef<any>(null);
   const [loadError, setLoadError] = useState<boolean>(false);
-  const [forceTextArea, setForceTextArea] = useState<boolean>(false);
-
-  // 强制切换为普通文本输入
-  const handleFallbackClick = () => {
-    setForceTextArea(true);
-    setLoadError(true);
-    toast({
-      title: '切换为普通文本输入',
-      description: '已切换为普通文本框，可以继续编辑 JSON。',
-    });
-  };
 
   const handleEditorDidMount = (editor: any, monaco: any) => {
     try {
@@ -62,7 +51,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
       });
     } catch (error) {
       setLoadError(true);
-      setForceTextArea(true);
       toast({
         title: 'Monaco 加载失败',
         description: '无法加载编辑器，已自动切换为普通文本框。',
@@ -78,8 +66,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
     }
   };
 
-  // Monaco 加载失败||自动降级 或 强制切换 textarea
-  if (loadError || forceTextArea) {
+  // Monaco 加载失败时自动降级为 textarea
+  if (loadError) {
     return (
       <div className="h-full min-h-[120px] w-full border rounded-md overflow-hidden flex flex-col bg-muted relative">
         <textarea
@@ -106,15 +94,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
 
   return (
     <div className="h-full min-h-[120px] w-full border rounded-md overflow-hidden flex flex-col relative">
-      {/* fallback button */}
-      <button
-        type="button"
-        onClick={handleFallbackClick}
-        className="absolute top-2 right-2 z-10 px-2 py-0.5 text-xs text-muted-foreground border bg-background rounded hover:border-destructive"
-        style={{background:'#fff9', border:'1px solid #eee'}}
-      >
-        切换为普通输入
-      </button>
       <Editor
         height="100%"
         language="json"
@@ -141,3 +120,4 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
 };
 
 export default JsonEditor;
+
