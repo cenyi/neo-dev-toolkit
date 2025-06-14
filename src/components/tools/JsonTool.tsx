@@ -36,7 +36,7 @@ const JsonTool: React.FC = () => {
       />
       
       <div className="flex-1 flex flex-row gap-4 min-h-0 pt-2">
-        <div className="flex-1 flex min-h-0">
+        <div className="flex-1 flex flex-col min-h-0">
           <JsonInputArea
             value={input}
             onChange={handleInputChange}
@@ -45,7 +45,9 @@ const JsonTool: React.FC = () => {
             validationError={validationError}
           />
         </div>
-        <JsonResultDisplay extractedValue={extractedValue} />
+        <div className={`flex-1 flex-col min-h-0 ${extractedValue === null ? 'hidden' : 'flex'}`}>
+          <JsonResultDisplay extractedValue={extractedValue} />
+        </div>
       </div>
     </div>
   );
