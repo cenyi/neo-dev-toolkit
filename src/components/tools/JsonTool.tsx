@@ -1,5 +1,4 @@
 
-```typescript
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from '@/hooks/use-toast';
@@ -135,4 +134,3 @@ const JsonTool: React.FC = () => {
 };
 
 export default JsonTool;
-```
