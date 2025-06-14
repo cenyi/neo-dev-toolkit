@@ -200,7 +200,7 @@ const JsonTool: React.FC = () => {
         onExtractPathChange={setExtractPath}
       />
       
-      <div className="flex-1 flex flex-col gap-4 min-h-0 pt-2">
+      <div className="flex-1 flex flex-row gap-4 min-h-0 pt-2">
         <div className="flex-1 flex min-h-0">
           <JsonInputArea
             value={input}
@@ -211,9 +211,11 @@ const JsonTool: React.FC = () => {
           />
         </div>
         {extractedValue !== null && (
-          <div className="flex-shrink-0">
-            <h3 className="text-lg font-semibold mb-2">提取的值</h3>
-            <div className="h-[250px]">
+          <div className="flex-1 flex flex-col bg-background border rounded-lg min-h-0 overflow-hidden">
+            <div className="px-4 pt-4 mb-3">
+              <h3 className="text-lg font-semibold">提取的值</h3>
+            </div>
+            <div className="flex-1 min-h-0 px-4 pb-4 overflow-hidden">
               <JsonEditor value={extractedValue} readOnly={true} />
             </div>
           </div>
