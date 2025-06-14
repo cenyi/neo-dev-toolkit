@@ -57,7 +57,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
   };
 
   return (
-    <div className="h-full border rounded-md overflow-hidden">
+    <div className="h-full min-h-[120px] w-full border rounded-md overflow-hidden flex flex-col">
       <Editor
         height="100%"
         defaultLanguage="json"
