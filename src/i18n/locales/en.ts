@@ -4,7 +4,22 @@ export const en = {
     nav: { home: 'Home', json: 'JSON', network: 'Network', text: 'Text', time: 'Time', encryption: 'Encryption', markdown: 'Markdown', mermaid: 'Mermaid' },
     common: { theme: 'Theme', language: 'Language', light: 'Light', dark: 'Dark', copy: 'Copy', clear: 'Clear', format: 'Format', minify: 'Minify', validate: 'Validate', convert: 'Convert', encrypt: 'Encrypt', decrypt: 'Decrypt', preview: 'Preview', download: 'Download', toYaml: 'To YAML', toXml: 'To XML', toCsv: 'To CSV', blue: 'Blue', system: 'System', comingSoon: 'Coming Soon' },
     home: { title: 'Developer Tools Hub', subtitle: 'Professional development tools with modern neumorphic design', description: 'A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more.' },
-    tools: { json: { title: 'JSON Tools', description: 'Format, validate, and minify JSON data' }, network: { title: 'Network Tools', description: 'URL encoding, IP lookup, and network utilities' }, text: { title: 'Text Tools', description: 'Text processing, case conversion, and formatting' }, crypto: { title: 'Crypto Tools', description: 'Hash generation, encryption and decryption utilities' }, markdown: { title: 'Markdown Tools', description: 'Markdown editor with live preview' }, mermaid: { title: 'Mermaid Diagrams', description: 'Create diagrams and flowcharts with Mermaid' } },
+    tools: { 
+      json: { 
+        title: 'JSON Tools', 
+        description: 'Format, validate, and minify JSON data',
+        fieldPath: 'Field Path',
+        extractPlaceholder: 'e.g., $.user.name or $[0].id',
+        extractValue: 'Extract Value',
+        placeholder: 'Enter or paste your JSON here...',
+        extractedValueTitle: 'Extracted Value'
+      }, 
+      network: { title: 'Network Tools', description: 'URL encoding, IP lookup, and network utilities' }, 
+      text: { title: 'Text Tools', description: 'Text processing, case conversion, and formatting' }, 
+      crypto: { title: 'Crypto Tools', description: 'Hash generation, encryption and decryption utilities' }, 
+      markdown: { title: 'Markdown Tools', description: 'Markdown editor with live preview' }, 
+      mermaid: { title: 'Mermaid Diagrams', description: 'Create diagrams and flowcharts with Mermaid' } 
+    },
     editor: {
       copy: 'Copy content',
       clear: 'Clear content',

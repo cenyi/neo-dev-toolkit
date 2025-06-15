@@ -4,7 +4,22 @@ export const zhCN = {
     nav: { home: '首页', json: 'JSON', network: '网络', text: '文本', time: '时间', encryption: '加密', markdown: 'Markdown', mermaid: 'Mermaid' },
     common: { theme: '主题', language: '语言', light: '浅色', dark: '深色', copy: '复制', clear: '清空', format: '格式化', minify: '压缩', validate: '验证', convert: '转换', encrypt: '加密', decrypt: '解密', preview: '预览', download: '下载', toYaml: '转换为 YAML', toXml: '转换为 XML', toCsv: '转换为 CSV', blue: '蓝色', system: '系统', comingSoon: '即将推出' },
     home: { title: '开发者工具中心', subtitle: '具有现代拟态化设计的专业开发工具', description: '全面的开发者必备工具集合，包括 JSON 格式化、文本处理、加密等功能。' },
-    tools: { json: { title: 'JSON 工具', description: '格式化、验证和压缩 JSON 数据' }, network: { title: '网络工具', description: 'URL 编码、IP 查询和网络实用程序' }, text: { title: '文本工具', description: '文本处理、大小写转换和格式化' }, crypto: { title: '加密工具', description: '哈希生成、加密和解密实用程序' }, markdown: { title: 'Markdown 工具', description: 'Markdown 编辑器与实时预览' }, mermaid: { title: 'Mermaid 图表', description: '使用 Mermaid 创建图表和流程图' } },
+    tools: { 
+      json: { 
+        title: 'JSON 工具', 
+        description: '格式化、验证和压缩 JSON 数据',
+        fieldPath: '字段路径',
+        extractPlaceholder: '例如：$.user.name 或 $[0].id',
+        extractValue: '提取值',
+        placeholder: '在此输入或粘贴您的 JSON...',
+        extractedValueTitle: '提取的值'
+      }, 
+      network: { title: '网络工具', description: 'URL 编码、IP 查询和网络实用程序' }, 
+      text: { title: '文本工具', description: '文本处理、大小写转换和格式化' }, 
+      crypto: { title: '加密工具', description: '哈希生成、加密和解密实用程序' }, 
+      markdown: { title: 'Markdown 工具', description: 'Markdown 编辑器与实时预览' }, 
+      mermaid: { title: 'Mermaid 图表', description: '使用 Mermaid 创建图表和流程图' } 
+    },
     editor: {
       copy: '复制内容',
       clear: '清空内容',
