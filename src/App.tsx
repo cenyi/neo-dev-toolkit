@@ -12,6 +12,10 @@ import JsonSchemaValidator from "@/components/tools/JsonSchemaValidator";
 import JsonCodeGen from "@/components/tools/JsonCodeGen";
 import JsonDiff from "@/components/tools/JsonDiff";
 import JsonMock from "@/components/tools/JsonMock";
+import UrlEncoderDecoder from "@/components/tools/UrlEncoderDecoder";
+import Base64EncoderDecoder from "@/components/tools/Base64EncoderDecoder";
+import IpLookup from "@/components/tools/IpLookup";
+import JwtDecoder from "@/components/tools/JwtDecoder";
 import NotFound from "./pages/NotFound";
 import "@/styles/neumorphism.css";
 import "@/i18n";
@@ -32,6 +36,11 @@ const App = () => <QueryClientProvider client={queryClient}>
                 <Route path="/json-codegen" element={<JsonCodeGen />} />
                 <Route path="/json-diff" element={<JsonDiff />} />
                 <Route path="/json-mock" element={<JsonMock />} />
+                {/* Network Tools */}
+                <Route path="/network" element={<UrlEncoderDecoder />} />
+                <Route path="/base64-encoder" element={<Base64EncoderDecoder />} />
+                <Route path="/ip-lookup" element={<IpLookup />} />
+                <Route path="/jwt-decoder" element={<JwtDecoder />} />
                 {/* TODO: Add other tool routes */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
