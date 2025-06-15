@@ -21,6 +21,8 @@ import WordCounter from "@/components/tools/WordCounter";
 import TextReverser from "@/components/tools/TextReverser";
 import WhitespaceRemover from "@/components/tools/WhitespaceRemover";
 import LoremIpsumGenerator from "@/components/tools/LoremIpsumGenerator";
+import Md5Generator from "@/components/tools/Md5Generator";
+import ToolUnderConstruction from "./pages/ToolUnderConstruction";
 import NotFound from "./pages/NotFound";
 import "@/styles/neumorphism.css";
 import "@/i18n";
@@ -52,6 +54,14 @@ const App = () => <QueryClientProvider client={queryClient}>
                 <Route path="/text-reverser" element={<TextReverser />} />
                 <Route path="/whitespace-remover" element={<WhitespaceRemover />} />
                 <Route path="/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
+
+                {/* Crypto Tools */}
+                <Route path="/md5-generator" element={<Md5Generator />} />
+                <Route path="/sha1-generator" element={<ToolUnderConstruction />} />
+                <Route path="/sha256-generator" element={<ToolUnderConstruction />} />
+                <Route path="/sha512-generator" element={<ToolUnderConstruction />} />
+                <Route path="/uuid-generator" element={<ToolUnderConstruction />} />
+
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
