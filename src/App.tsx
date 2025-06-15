@@ -11,6 +11,7 @@ import JsonTool from "@/components/tools/JsonTool";
 import JsonSchemaValidator from "@/components/tools/JsonSchemaValidator";
 import JsonCodeGen from "@/components/tools/JsonCodeGen";
 import JsonDiff from "@/components/tools/JsonDiff";
+import JsonMock from "@/components/tools/JsonMock";
 import NotFound from "./pages/NotFound";
 import "@/styles/neumorphism.css";
 import "@/i18n";
@@ -30,6 +31,7 @@ const App = () => <QueryClientProvider client={queryClient}>
                 <Route path="/json-schema-validator" element={<JsonSchemaValidator />} />
                 <Route path="/json-codegen" element={<JsonCodeGen />} />
                 <Route path="/json-diff" element={<JsonDiff />} />
+                <Route path="/json-mock" element={<JsonMock />} />
                 {/* TODO: Add other tool routes */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
