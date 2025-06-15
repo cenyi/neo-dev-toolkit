@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -31,49 +32,53 @@ import "@/i18n";
 
 const queryClient = new QueryClient();
 
-const App = () => <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <TooltipProvider>
-        <div className="neu-container py-0">
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Navigation />
-            <main className="pb-8">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/json" element={<JsonTool />} />
-                <Route path="/json-schema-validator" element={<JsonSchemaValidator />} />
-                <Route path="/json-codegen" element={<JsonCodeGen />} />
-                <Route path="/json-diff" element={<JsonDiff />} />
-                <Route path="/json-mock" element={<JsonMock />} />
-                {/* Network Tools */}
-                <Route path="/network" element={<UrlEncoderDecoder />} />
-                <Route path="/base64-encoder" element={<Base64EncoderDecoder />} />
-                <Route path="/ip-lookup" element={<IpLookup />} />
-                <Route path="/jwt-decoder" element={<JwtDecoder />} />
-                {/* Text Tools */}
-                <Route path="/case-converter" element={<CaseConverter />} />
-                <Route path="/word-counter" element={<WordCounter />} />
-                <Route path="/text-reverser" element={<TextReverser />} />
-                <Route path="/whitespace-remover" element={<WhitespaceRemover />} />
-                <Route path="/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
-                <Route path="/markdown" element={<MarkdownEditor />} />
-                <Route path="/mermaid" element={<MermaidEditor />} />
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <TooltipProvider>
+          <div className="neu-container py-0">
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Navigation />
+              <main className="pb-8">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/json" element={<JsonTool />} />
+                  <Route path="/json-schema-validator" element={<JsonSchemaValidator />} />
+                  <Route path="/json-codegen" element={<JsonCodeGen />} />
+                  <Route path="/json-diff" element={<JsonDiff />} />
+                  <Route path="/json-mock" element={<JsonMock />} />
+                  {/* Network Tools */}
+                  <Route path="/network" element={<UrlEncoderDecoder />} />
+                  <Route path="/base64-encoder" element={<Base64EncoderDecoder />} />
+                  <Route path="/ip-lookup" element={<IpLookup />} />
+                  <Route path="/jwt-decoder" element={<JwtDecoder />} />
+                  {/* Text Tools */}
+                  <Route path="/case-converter" element={<CaseConverter />} />
+                  <Route path="/word-counter" element={<WordCounter />} />
+                  <Route path="/text-reverser" element={<TextReverser />} />
+                  <Route path="/whitespace-remover" element={<WhitespaceRemover />} />
+                  <Route path="/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
+                  <Route path="/markdown" element={<MarkdownEditor />} />
+                  <Route path="/mermaid" element={<MermaidEditor />} />
 
-                {/* Crypto Tools */}
-                <Route path="/md5-generator" element={<Md5Generator />} />
-                <Route path="/sha1-generator" element={<ToolUnderConstruction />} />
-                <Route path="/sha256-generator" element={<ToolUnderConstruction />} />
-                <Route path="/sha512-generator" element={<ToolUnderConstruction />} />
-                <Route path="/uuid-generator" element={<ToolUnderConstruction />} />
+                  {/* Crypto Tools */}
+                  <Route path="/md5-generator" element={<Md5Generator />} />
+                  <Route path="/sha1-generator" element={<ToolUnderConstruction />} />
+                  <Route path="/sha256-generator" element={<ToolUnderConstruction />} />
+                  <Route path="/sha512-generator" element={<ToolUnderConstruction />} />
+                  <Route path="/uuid-generator" element={<ToolUnderConstruction />} />
 
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-          </BrowserRouter>
-        </div>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>;
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+            </BrowserRouter>
+          </div>
+        </TooltipProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
+}
 export default App;
