@@ -93,6 +93,22 @@ export const en = {
           resultDate: 'Result Date'
         }
       },
+      timestampConverter: {
+        title: 'Timestamp Converter',
+        description: 'Convert between Unix timestamps and human-readable dates',
+        timestamp: 'Unix Timestamp',
+        timestampPlaceholder: 'Enter Unix timestamp (seconds)',
+        dateTime: 'Date & Time (UTC)',
+        current: 'Current Time'
+      },
+      timezoneConverter: {
+        title: 'Timezone Converter',
+        description: 'Convert date and time between different timezones',
+        sourceDateTime: 'Source Date & Time',
+        sourceTimezone: 'From Timezone',
+        targetTimezone: 'To Timezone',
+        convertedDateTime: 'Converted Date & Time'
+      },
       crypto: { title: 'Crypto Tools', description: 'Hash generation, encryption and decryption utilities' }, 
       markdown: { title: 'Markdown Tools', description: 'Markdown editor with live preview' }, 
       mermaid: { title: 'Mermaid Diagrams', description: 'Create diagrams and flowcharts with Mermaid' } 

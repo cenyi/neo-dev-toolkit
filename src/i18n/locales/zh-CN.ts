@@ -93,6 +93,22 @@ export const zhCN = {
           resultDate: '结果日期'
         }
       },
+      timestampConverter: {
+        title: '时间戳转换器',
+        description: '在Unix时间戳和可读日期之间转换',
+        timestamp: 'Unix时间戳',
+        timestampPlaceholder: '输入Unix时间戳（秒）',
+        dateTime: '日期时间（UTC）',
+        current: '当前时间'
+      },
+      timezoneConverter: {
+        title: '时区转换器',
+        description: '在不同时区之间转换日期和时间',
+        sourceDateTime: '源日期时间',
+        sourceTimezone: '源时区',
+        targetTimezone: '目标时区',
+        convertedDateTime: '转换后的日期时间'
+      },
       crypto: { title: '加密工具', description: '哈希生成、加密和解密实用程序' }, 
       markdown: { title: 'Markdown 工具', description: 'Markdown 编辑器与实时预览' }, 
       mermaid: { title: 'Mermaid 图表', description: '使用 Mermaid 创建图表和流程图' } 
