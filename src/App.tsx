@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -63,6 +62,7 @@ function App() {
                   <Route path="/ip-lookup" element={<IpLookup />} />
                   <Route path="/jwt-decoder" element={<JwtDecoder />} />
                   {/* Text Tools */}
+                  <Route path="/text" element={<CaseConverter />} />
                   <Route path="/case-converter" element={<CaseConverter />} />
                   <Route path="/word-counter" element={<WordCounter />} />
                   <Route path="/text-reverser" element={<TextReverser />} />

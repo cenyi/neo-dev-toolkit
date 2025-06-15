@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark' | 'blue' | 'system';
+type Theme = 'light' | 'dark' | 'blue' | 'system' | 'matrix';
 
 interface ThemeContextType {
   theme: Theme;
@@ -25,7 +25,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove('light', 'dark', 'blue');
+    root.classList.remove('light', 'dark', 'blue', 'matrix');
 
     let effectiveTheme = theme;
     if (theme === 'system') {
@@ -40,7 +40,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     if (theme === 'system') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       const handleChange = () => {
-        root.classList.remove('light', 'dark', 'blue');
+        root.classList.remove('light', 'dark', 'blue', 'matrix');
         root.classList.add(mediaQuery.matches ? 'dark' : 'light');
       };
       mediaQuery.addEventListener('change', handleChange);
