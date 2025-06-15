@@ -1,14 +1,14 @@
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 export const useWhitespaceRemover = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
 
-  const removeAll = () => setOutput(input.replace(/\s/g, ''));
-  const removeLeadingTrailing = () => setOutput(input.trim());
-  const removeExtra = () => setOutput(input.replace(/\s+/g, ' ').trim());
-  const removeLines = () => setOutput(input.replace(/(\r\n|\n|\r)/gm, ''));
+  const removeAll = useCallback(() => setOutput(input.replace(/\s/g, '')), [input]);
+  const removeLeadingTrailing = useCallback(() => setOutput(input.trim()), [input]);
+  const removeExtra = useCallback(() => setOutput(input.replace(/\s+/g, ' ').trim()), [input]);
+  const removeLines = useCallback(() => setOutput(input.replace(/(\r\n|\n|\r)/gm, '')), [input]);
 
   return {
     input,
