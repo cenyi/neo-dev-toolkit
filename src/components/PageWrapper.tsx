@@ -3,21 +3,56 @@ import React, { useEffect } from 'react';
 
 const APP_NAME = "DevTools Hub";
 const SEPARATOR = "|";
-const HOME_TAGLINE = "Online Developer Tools";
+const HOME_TAGLINE = "Free Online Developer Tools";
 
 interface PageWrapperProps {
   title: string;
   children: React.ReactNode;
+  description?: string;
+  keywords?: string;
 }
 
-const PageWrapper: React.FC<PageWrapperProps> = ({ title, children }) => {
+const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description, keywords }) => {
   useEffect(() => {
+    // Update page title
     if (title === APP_NAME) {
-      document.title = `${APP_NAME} - ${HOME_TAGLINE}`;
+      document.title = `${APP_NAME} - ${HOME_TAGLINE} | JSON Formatter, Text Utils, Encryption`;
     } else {
-      document.title = `${title} ${SEPARATOR} ${APP_NAME}`;
+      document.title = `${title} ${SEPARATOR} ${APP_NAME} - Free Online Tool`;
     }
-  }, [title]);
+
+    // Update meta description if provided
+    if (description) {
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', description);
+      }
+    }
+
+    // Update meta keywords if provided
+    if (keywords) {
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('name', 'keywords');
+        document.head.appendChild(metaKeywords);
+      }
+      metaKeywords.setAttribute('content', keywords);
+    }
+
+    // Update Open Graph title
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle && title !== APP_NAME) {
+      ogTitle.setAttribute('content', `${title} - Free Online Developer Tool`);
+    }
+
+    // Update canonical URL for specific pages
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical && title !== APP_NAME) {
+      const currentPath = window.location.pathname;
+      canonical.setAttribute('href', `https://devtools-hub.lovable.app${currentPath}`);
+    }
+  }, [title, description, keywords]);
 
   return <>{children}</>;
 };

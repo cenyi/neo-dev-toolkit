@@ -19,11 +19,46 @@ const TimezoneConverter: React.FC = () => {
   const dateTimeFormat = "yyyy-MM-dd'T'HH:mm";
 
   useEffect(() => {
-    document.title = "Timezone Converter - DevTools Hub";
+    // Enhanced SEO for this specific tool
+    document.title = "Timezone Converter - Convert Time Between Timezones | DevTools Hub";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', "Easily convert date and time between different timezones. Supports all IANA timezones.");
+      metaDescription.setAttribute('content', "Free online timezone converter tool. Easily convert date and time between different timezones worldwide. Supports all IANA timezones with accurate DST handling.");
     }
+
+    // Add structured data for this tool
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Timezone Converter",
+      "description": "Convert date and time between different timezones",
+      "url": "https://devtools-hub.lovable.app/timezone-converter",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web Browser",
+      "isAccessibleForFree": true,
+      "featureList": [
+        "Convert between any IANA timezones",
+        "Real-time conversion",
+        "Daylight Saving Time support",
+        "Current time display"
+      ]
+    };
+
+    let script = document.getElementById('timezone-converter-schema');
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'timezone-converter-schema';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(structuredData);
+
+    return () => {
+      const existingScript = document.getElementById('timezone-converter-schema');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -51,6 +86,11 @@ const TimezoneConverter: React.FC = () => {
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
+      <header className="mb-6">
+        <h1 className="text-3xl font-bold mb-2">{t('tools.timezoneConverter.title')}</h1>
+        <p className="text-muted-foreground">{t('tools.timezoneConverter.description')}</p>
+      </header>
+      
       <Card>
         <CardHeader>
           <CardTitle>{t('tools.timezoneConverter.title')}</CardTitle>
@@ -64,13 +104,16 @@ const TimezoneConverter: React.FC = () => {
               type="datetime-local" 
               value={sourceDateTime} 
               onChange={e => setSourceDateTime(e.target.value)}
+              aria-label="Source date and time input"
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="source-timezone" className="text-sm font-medium">{t('tools.timezoneConverter.sourceTimezone')}</label>
               <Select value={sourceTimezone} onValueChange={setSourceTimezone}>
-                <SelectTrigger id="source-timezone"><SelectValue /></SelectTrigger>
+                <SelectTrigger id="source-timezone" aria-label="Select source timezone">
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent className="max-h-60">
                   {timezones.map(tz => <SelectItem key={tz} value={tz}>{tz}</SelectItem>)}
                 </SelectContent>
@@ -79,7 +122,9 @@ const TimezoneConverter: React.FC = () => {
             <div>
               <label htmlFor="target-timezone" className="text-sm font-medium">{t('tools.timezoneConverter.targetTimezone')}</label>
               <Select value={targetTimezone} onValueChange={setTargetTimezone}>
-                <SelectTrigger id="target-timezone"><SelectValue /></SelectTrigger>
+                <SelectTrigger id="target-timezone" aria-label="Select target timezone">
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent className="max-h-60">
                   {timezones.map(tz => <SelectItem key={tz} value={tz}>{tz}</SelectItem>)}
                 </SelectContent>
@@ -88,7 +133,12 @@ const TimezoneConverter: React.FC = () => {
           </div>
           <div>
             <label className="text-sm font-medium">{t('tools.timezoneConverter.convertedDateTime')}</label>
-            <Input value={convertedDateTime} readOnly className="font-mono"/>
+            <Input 
+              value={convertedDateTime} 
+              readOnly 
+              className="font-mono"
+              aria-label="Converted date and time result"
+            />
           </div>
         </CardContent>
       </Card>

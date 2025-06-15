@@ -7,86 +7,146 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
   <loc>https://devtools-hub.lovable.app/</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/json</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.90</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/json-schema-validator</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/json-codegen</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/json-diff</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/json-mock</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/network</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/base64-encoder</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/ip-lookup</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/jwt-decoder</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/case-converter</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/word-counter</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/text-reverser</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/whitespace-remover</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/lorem-ipsum-generator</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/markdown</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/mermaid</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/timestamp-converter</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/timezone-converter</loc>
-  <priority>0.80</priority>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/date-calculator</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://devtools-hub.lovable.app/encryption</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://devtools-hub.lovable.app/about</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://devtools-hub.lovable.app/privacy</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://devtools-hub.lovable.app/terms</loc>
+  <lastmod>2025-06-15</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.50</priority>
 </url>
 </urlset>
