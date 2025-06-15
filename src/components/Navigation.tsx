@@ -1,10 +1,12 @@
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Moon, Sun, Languages, Home } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Moon, Sun, Languages, Home, ChevronDown, FileJson } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 const Navigation: React.FC = () => {
   const {
     t,
@@ -15,6 +17,8 @@ const Navigation: React.FC = () => {
     toggleTheme
   } = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
+
   const languages = [{
     code: 'en',
     name: 'English'
@@ -28,13 +32,23 @@ const Navigation: React.FC = () => {
     code: 'ja',
     name: '日本語'
   }];
+
+  const jsonTools = [
+    { path: '/json', name: 'JSON Formatter & Validator' },
+    { path: '/json-schema-validator', name: 'JSON Schema Validator' },
+    { path: '/json-codegen', name: 'Generate Code Types' },
+    { path: '/json-diff', name: 'Diff Tool' },
+    { path: '/json-mock', name: 'Mock Data Generator' }
+  ];
+
   const navItems = [{
     path: '/',
     key: 'home',
     icon: Home
   }, {
     path: '/json',
-    key: 'json'
+    key: 'json',
+    icon: FileJson
   }, {
     path: '/network',
     key: 'network'
@@ -58,12 +72,37 @@ const Navigation: React.FC = () => {
           path,
           key,
           icon: Icon
-        }) => <Link key={path} to={path}>
-              <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${location.pathname === path ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
-                {Icon && <Icon size={16} />}
-                <span>{t(`nav.${key}`)}</span>
-              </button>
-            </Link>)}
+        }) => {
+            if (key === 'json') {
+              const isJsonPageActive = jsonTools.some(tool => location.pathname === tool.path);
+              return (
+                <DropdownMenu key={key}>
+                  <DropdownMenuTrigger asChild>
+                    <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${isJsonPageActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
+                      {Icon && <Icon size={16} />}
+                      <span>{t(`nav.${key}`)}</span>
+                      <ChevronDown size={16} />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md w-56">
+                    {jsonTools.map((tool) => (
+                        <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
+                          {tool.name}
+                        </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              );
+            }
+            return (
+              <Link key={path} to={path!}>
+                <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${location.pathname === path ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
+                  {Icon && <Icon size={16} />}
+                  <span>{t(`nav.${key}`)}</span>
+                </button>
+              </Link>
+            )
+        })}
         </div>
         
         <div className="flex items-center space-x-2">

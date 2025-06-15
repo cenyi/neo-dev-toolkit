@@ -1,6 +1,7 @@
 
 import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';
+import { JSONPath } from 'jsonpath-plus';
 
 interface UseJsonExtractionProps {
   input: string;
@@ -9,22 +10,6 @@ interface UseJsonExtractionProps {
   setOutputContent: (content: string | null) => void;
   setOutputTitle: (title: string | null) => void;
 }
-
-const getValueByPath = (obj: any, path: string): any => {
-  try {
-    const keys = path.replace(/\[(\d+)\]/g, '.$1').split('.').filter(p => p);
-    let current = obj;
-    for (const key of keys) {
-      if (current === null || typeof current !== 'object' || !(key in current)) {
-        return undefined;
-      }
-      current = current[key];
-    }
-    return current;
-  } catch (error) {
-    return undefined;
-  }
-};
 
 export const useJsonExtraction = ({ input, isValid, extractPath, setOutputContent, setOutputTitle }: UseJsonExtractionProps) => {
 
@@ -40,9 +25,9 @@ export const useJsonExtraction = ({ input, isValid, extractPath, setOutputConten
 
     try {
       const parsedJson = JSON.parse(input);
-      const value = getValueByPath(parsedJson, extractPath);
+      const value = JSONPath({ path: extractPath, json: parsedJson });
 
-      if (value === undefined) {
+      if (value === undefined || value.length === 0) {
         setOutputContent(null);
         setOutputTitle(null);
         toast({ title: i18n.t('toasts.common.notFound'), description: i18n.t('toasts.error.notFound'), variant: 'destructive' });
@@ -53,10 +38,11 @@ export const useJsonExtraction = ({ input, isValid, extractPath, setOutputConten
         navigator.clipboard.writeText(resultString);
         toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.extractedAndCopied') });
       }
-    } catch (error) {
+    } catch (error: any) {
       setOutputContent(null);
       setOutputTitle(null);
-      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.extractError'), variant: 'destructive' });
+      const description = error.message ? `${i18n.t('toasts.error.extractError')}: ${error.message}` : i18n.t('toasts.error.extractError');
+      toast({ title: i18n.t('toasts.common.error'), description, variant: 'destructive' });
     }
   };
 
