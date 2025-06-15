@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
           <div className="col-span-2 md:col-span-1">
              <h3 className="text-lg font-semibold text-foreground">{t('home.title')}</h3>
-             <p className="text-muted-foreground text-sm mt-2">{t('home.description')}</p>
+             <p className="text-muted-foreground text-sm mt-2">{t('footer.description')}</p>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{t('footer.legal')}</h3>
@@ -31,7 +31,9 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{t('footer.friendlyLinks')}</h3>
             <ul className="mt-4 space-y-2">
-              <li className="text-base text-foreground">{t('common.comingSoon')}</li>
+              <li><a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-base text-foreground hover:text-primary transition-colors">{t('footer.vercel')}</a></li>
+              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-base text-foreground hover:text-primary transition-colors">{t('footer.github')}</a></li>
+              <li><a href="https://www.deepseek.com" target="_blank" rel="noopener noreferrer" className="text-base text-foreground hover:text-primary transition-colors">{t('footer.deepseek')}</a></li>
             </ul>
           </div>
         </div>

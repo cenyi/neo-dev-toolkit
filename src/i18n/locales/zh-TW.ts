@@ -1,4 +1,3 @@
-
 export const zhTW = {
   translation: {
     nav: {
@@ -152,6 +151,49 @@ export const zhTW = {
       terms: '服務條款',
       about: '關於我們',
       copyright: '© {{year}} 開發者工具中心. 保留所有權利.',
+      description: '您的一站式開發「瑞士軍刀」。提供JSON、文本、加密等工具，以簡化您的工作流程。',
+      vercel: 'Vercel',
+      github: 'GitHub',
+      deepseek: 'DeepSeek',
+    },
+    about: {
+      title: '關於我們',
+      missionTitle: '我們的使命',
+      missionText: '我們的使命是為開發者提供一個全面、易用且功能強大的工具包，作為他們日常工作的「瑞士軍刀」。我們致力於打造一個開發實用程式的一站式商店，讓每個人的工作流程更有效率、更愉快。',
+      featuresTitle: '我們提供什麼',
+      feature1: '全面的工具集：從JSON格式化和文字處理到加密和圖表繪製。',
+      feature2: '現代化的設計：一個乾淨、直觀且響應迅速的新擬態介面。',
+      feature3: '注重隱私：您的任何資料都不會儲存在我們的伺服器上。所有處理都在您的瀏覽器中進行。',
+      feature4: '開源精神：我們信奉社群的力量和透明的開發模式。',
+    },
+    privacy: {
+      title: '隱私政策',
+      lastUpdated: '最後更新：2025年6月15日',
+      introduction: '歡迎來到開發者工具中心。我們致力於保護您的隱私。我們的隱私政策解釋了我們如何處理與我們網站和服務相關的資訊。',
+      informationWeCollectTitle: '我們收集的資訊',
+      informationWeCollectText: '我們不收集用戶的任何個人身份資訊。所有透過我們工具處理的資料（例如JSON、文本、文件）都保留在您的客戶端，絕不會發送到或儲存在我們的伺服器上。',
+      cookiesTitle: 'Cookies 和本地儲存',
+      cookiesText: '我們使用瀏覽器本地儲存來保存您的偏好設定，例如您選擇的主題（淺色/深色）和語言。這純粹是為了功能目的，以增強您的用戶體驗，並不會追踪您。',
+      thirdPartyServicesTitle: '第三方服務',
+      thirdPartyServicesText: '我們的網站未整合任何會收集您個人資料的第三方服務。我們提供指向GitHub等外部網站的連結，但我們對其隱私慣例概不負責。',
+      changesToPolicyTitle: '政策變更',
+      changesToPolicyText: '我們可能會不時更新我們的隱私政策。如有任何變更，我們會在此頁面上發布新的隱私政策來通知您。建議您定期查看本隱私政策以了解任何變更。',
+      contactUsTitle: '聯繫我們',
+      contactUsText: '如果您對本隱私政策有任何疑問，請隨時在我們的開源倉庫中與我們聯繫。',
+    },
+    terms: {
+      title: '服務條款',
+      lastUpdated: '最後更新：2025年6月15日',
+      acceptanceTitle: '接受條款',
+      acceptanceText: '通過訪問和使用開發者工具中心（“本服務”），您接受並同意遵守本協議的條款和規定。如果您不同意遵守這些條款，請不要使用本服務。',
+      useOfServiceTitle: '服務使用',
+      useOfServiceText: '本服務免費提供給個人和商業使用。您同意負責任地使用本服務，不將其用於任何惡意或非法活動。您對使用我們工具處理的任何資料負全部責任。',
+      disclaimerTitle: '免責聲明',
+      disclaimerText: '本服務按「原樣」和「現有」基礎提供，不附帶任何明示或暗示的保證。我們不保證通過本服務處理的任何工具或資料的準確性、可靠性或完整性。',
+      limitationTitle: '責任限制',
+      limitationText: '在任何情況下，開發者工具中心或其維護者均不對因使用或無法使用本服務而產生的任何直接、間接、附帶、特殊或後果性損害承擔責任。',
+      changesToTermsTitle: '條款變更',
+      changesToTermsText: '我們保留隨時修改這些條款的權利。我們將在本頁上發布這些條款的最新版本。您在任何變更後繼續使用本服務即表示您接受新條款。',
     },
   }
 };
