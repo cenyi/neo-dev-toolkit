@@ -1,14 +1,15 @@
+
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 const fetchIpInfo = async (ip: string) => {
   // If ip is empty, we fetch the user's own IP.
   // The API supports domain names directly.
-  const url = ip ? `https://ipapi.co/${ip}/json/` : `https://ipapi.co/json/`;
+  const url = ip ? `https://ip-api.com/json/${ip}` : `https://ip-api.com/json/`;
   const response = await fetch(url);
   const data = await response.json();
-  if (data.error) {
-    throw new Error(data.reason);
+  if (data.status === 'fail') {
+    throw new Error(data.message);
   }
   return data;
 };
