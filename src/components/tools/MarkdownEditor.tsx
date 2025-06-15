@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 import { useMarkdownEditor } from '@/hooks/useMarkdownEditor';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import CodeEditor from './CodeEditor';
+import SimpleCodeEditor from './SimpleCodeEditor';
 import '@/styles/markdown.css';
 
 const MarkdownEditor: React.FC = () => {
@@ -21,10 +21,9 @@ const MarkdownEditor: React.FC = () => {
         <CardContent>
           <ResizablePanelGroup direction="horizontal" className="min-h-[60vh] rounded-lg border">
             <ResizablePanel defaultSize={50}>
-              <CodeEditor
+              <SimpleCodeEditor
                 value={input}
                 onChange={setInput}
-                language="markdown"
                 placeholder="Type your Markdown here..."
               />
             </ResizablePanel>
