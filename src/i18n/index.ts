@@ -27,7 +27,10 @@ const resources = {
         encrypt: 'Encrypt',
         decrypt: 'Decrypt',
         preview: 'Preview',
-        download: 'Download'
+        download: 'Download',
+        toYaml: 'To YAML',
+        toXml: 'To XML',
+        toCsv: 'To CSV',
       },
       home: {
         title: 'Developer Tools Hub',
@@ -78,12 +81,17 @@ const resources = {
           missingPath: 'Please enter the path of the field to extract',
           notFound: 'Value not found at the specified path',
           extractError: 'Error parsing JSON or extracting value',
+          conversionFailed: 'Conversion failed',
+          csvConversionRequiresArray: 'CSV conversion requires a JSON array of objects.',
         },
         success: {
           formattedAndCopied: 'Formatted and copied to clipboard',
           minifiedAndCopied: 'Minified and copied to clipboard',
           copied: 'Content copied to clipboard',
           extractedAndCopied: 'Extracted field value and copied to clipboard',
+          convertedToYamlAndCopied: 'Converted to YAML and copied to clipboard',
+          convertedToXmlAndCopied: 'Converted to XML and copied to clipboard',
+          convertedToCsvAndCopied: 'Converted to CSV and copied to clipboard',
         },
         info: {
           emptyContent: 'Content is empty, nothing to copy',
@@ -116,7 +124,10 @@ const resources = {
         encrypt: '加密',
         decrypt: '解密',
         preview: '预览',
-        download: '下载'
+        download: '下载',
+        toYaml: '转为YAML',
+        toXml: '转为XML',
+        toCsv: '转为CSV',
       },
       home: {
         title: '开发者工具中心',
@@ -167,12 +178,17 @@ const resources = {
           missingPath: '请输入要提取的字段路径',
           notFound: '在指定路径未找到值',
           extractError: '解析JSON或提取值时出错',
+          conversionFailed: '转换失败',
+          csvConversionRequiresArray: 'CSV转换需要一个对象数组格式的JSON',
         },
         success: {
           formattedAndCopied: '已格式化并复制到剪贴板',
           minifiedAndCopied: '已压缩并复制到剪贴板',
           copied: '内容已复制到剪贴板',
           extractedAndCopied: '已提取字段值并复制到剪贴板',
+          convertedToYamlAndCopied: '已转换为YAML并复制到剪贴板',
+          convertedToXmlAndCopied: '已转换为XML并复制到剪贴板',
+          convertedToCsvAndCopied: '已转换为CSV并复制到剪贴板',
         },
         info: {
           emptyContent: '内容为空，无需复制',
@@ -205,7 +221,10 @@ const resources = {
         encrypt: '加密',
         decrypt: '解密',
         preview: '預覽',
-        download: '下載'
+        download: '下載',
+        toYaml: '轉為YAML',
+        toXml: '轉為XML',
+        toCsv: '轉為CSV',
       },
       home: {
         title: '開發者工具中心',
@@ -256,12 +275,17 @@ const resources = {
           missingPath: '請輸入要提取的欄位路徑',
           notFound: '在指定路徑未找到值',
           extractError: '解析JSON或提取值時出錯',
+          conversionFailed: '轉換失敗',
+          csvConversionRequiresArray: 'CSV轉換需要一個物件陣列格式的JSON',
         },
         success: {
           formattedAndCopied: '已格式化並複製到剪貼簿',
           minifiedAndCopied: '已壓縮並複製到剪貼簿',
           copied: '內容已複製到剪貼簿',
           extractedAndCopied: '已提取欄位值並複製到剪貼簿',
+          convertedToYamlAndCopied: '已轉換為YAML並複製到剪貼簿',
+          convertedToXmlAndCopied: '已轉換為XML並複製到剪貼簿',
+          convertedToCsvAndCopied: '已轉換為CSV並複製到剪貼簿',
         },
         info: {
           emptyContent: '內容為空，無需複製',
@@ -294,7 +318,10 @@ const resources = {
         encrypt: '暗号化',
         decrypt: '復号化',
         preview: 'プレビュー',
-        download: 'ダウンロード'
+        download: 'ダウンロード',
+        toYaml: 'YAMLへ変換',
+        toXml: 'XMLへ変換',
+        toCsv: 'CSVへ変換',
       },
       home: {
         title: '開発者ツールハブ',
@@ -345,12 +372,17 @@ const resources = {
           missingPath: '抽出するフィールドのパスを入力してください',
           notFound: '指定されたパスで値が見つかりませんでした',
           extractError: 'JSONの解析または値の抽出中にエラーが発生しました',
+          conversionFailed: '変換に失敗しました',
+          csvConversionRequiresArray: 'CSVへの変換には、オブジェクトのJSON配列が必要です',
         },
         success: {
           formattedAndCopied: 'フォーマットしてクリップボードにコピーしました',
           minifiedAndCopied: '圧縮してクリップボードにコピーしました',
           copied: 'コンテンツをクリップボードにコピーしました',
           extractedAndCopied: 'フィールド値を抽出してクリップボードにコピーしました',
+          convertedToYamlAndCopied: 'YAMLに変換してクリップボードにコピーしました',
+          convertedToXmlAndCopied: 'XMLに変換してクリップボードにコピーしました',
+          convertedToCsvAndCopied: 'CSVに変換してクリップボードにコピーしました',
         },
         info: {
           emptyContent: 'コンテンツが空なので、コピーする必要はありません',

@@ -21,6 +21,9 @@ const JsonTool: React.FC = () => {
     handleExtractValue,
     extractPath,
     onExtractPathChange,
+    handleConvertToYaml,
+    handleConvertToXml,
+    handleConvertToCsv,
   } = useJsonTool();
 
   return (
@@ -33,6 +36,9 @@ const JsonTool: React.FC = () => {
         onExtract={handleExtractValue}
         extractPath={extractPath}
         onExtractPathChange={onExtractPathChange}
+        onConvertToYaml={handleConvertToYaml}
+        onConvertToXml={handleConvertToXml}
+        onConvertToCsv={handleConvertToCsv}
       />
       
       <div className="flex-1 flex flex-row gap-4 min-h-0 pt-2">

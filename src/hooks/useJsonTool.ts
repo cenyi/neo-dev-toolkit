@@ -1,7 +1,9 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';
+import { dump as toYaml } from 'js-yaml';
+import { parse as toXml } from 'js2xmlparser';
+import { parse as json2csv } from 'json2csv';
 
 const getValueByPath = (obj: any, path: string): any => {
   try {
@@ -187,6 +189,55 @@ export const useJsonTool = () => {
     }
   };
 
+  const handleConvertToYaml = () => {
+    if (!isValid || !input.trim()) {
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.invalidJson'), variant: 'destructive' });
+      return;
+    }
+    try {
+      const parsed = JSON.parse(input);
+      const yamlString = toYaml(parsed);
+      navigator.clipboard.writeText(yamlString);
+      toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.convertedToYamlAndCopied') });
+    } catch (error) {
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.conversionFailed'), variant: 'destructive' });
+    }
+  };
+
+  const handleConvertToXml = () => {
+    if (!isValid || !input.trim()) {
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.invalidJson'), variant: 'destructive' });
+      return;
+    }
+    try {
+      const parsed = JSON.parse(input);
+      const xmlString = toXml('root', parsed, {});
+      navigator.clipboard.writeText(xmlString);
+      toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.convertedToXmlAndCopied') });
+    } catch (error) {
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.conversionFailed'), variant: 'destructive' });
+    }
+  };
+
+  const handleConvertToCsv = () => {
+    if (!isValid || !input.trim()) {
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.invalidJson'), variant: 'destructive' });
+      return;
+    }
+    try {
+      const parsed = JSON.parse(input);
+      if (!Array.isArray(parsed)) {
+        toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.csvConversionRequiresArray'), variant: 'destructive' });
+        return;
+      }
+      const csvString = json2csv(parsed);
+      navigator.clipboard.writeText(csvString);
+      toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.convertedToCsvAndCopied') });
+    } catch (error) {
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.conversionFailed'), variant: 'destructive' });
+    }
+  };
+
   return {
     input,
     handleInputChange,
@@ -200,5 +251,8 @@ export const useJsonTool = () => {
     handleExtractValue,
     extractPath,
     onExtractPathChange: setExtractPath,
+    handleConvertToYaml,
+    handleConvertToXml,
+    handleConvertToCsv,
   };
 };

@@ -13,6 +13,9 @@ interface JsonToolbarProps {
   onExtract: () => void;
   extractPath: string;
   onExtractPathChange: (path: string) => void;
+  onConvertToYaml: () => void;
+  onConvertToXml: () => void;
+  onConvertToCsv: () => void;
 }
 
 const JsonToolbar: React.FC<JsonToolbarProps> = ({
@@ -23,6 +26,9 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
   onExtract,
   extractPath,
   onExtractPathChange,
+  onConvertToYaml,
+  onConvertToXml,
+  onConvertToCsv,
 }) => {
   const { t } = useTranslation();
 
@@ -34,6 +40,15 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
         </Button>
         <Button onClick={onCopy} className="text-sm font-extrabold">
           {t('common.copy')}
+        </Button>
+        <Button onClick={onConvertToYaml} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
+          {t('common.toYaml')}
+        </Button>
+        <Button onClick={onConvertToXml} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
+          {t('common.toXml')}
+        </Button>
+        <Button onClick={onConvertToCsv} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
+          {t('common.toCsv')}
         </Button>
         <Button onClick={onClear} variant="destructive" className="text-sm font-extrabold">
           {t('common.clear')}
