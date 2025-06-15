@@ -4,6 +4,7 @@ import {
   quicktype,
   InputData,
   jsonInputForTargetLanguage,
+  type TargetLanguage,
 } from 'quicktype-core';
 import { toast } from '@/hooks/use-toast';
 
@@ -36,7 +37,7 @@ const exampleJson = JSON.stringify({
 export const useJsonCodeGen = () => {
   const [jsonInput, setJsonInput] = useState(exampleJson);
   const [generatedCode, setGeneratedCode] = useState('');
-  const [targetLang, setTargetLang] = useState('typescript');
+  const [targetLang, setTargetLang] = useState<TargetLanguage>('typescript');
   const [typeName, setTypeName] = useState('Root');
 
   const handleGenerate = async () => {

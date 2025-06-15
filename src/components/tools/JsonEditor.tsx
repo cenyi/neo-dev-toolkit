@@ -9,13 +9,15 @@ interface JsonEditorProps {
   onChange?: (value: string) => void;
   readOnly?: boolean;
   placeholder?: string;
+  language?: string;
 }
 
 const JsonEditor: React.FC<JsonEditorProps> = ({
   value,
   onChange,
   readOnly = false,
-  placeholder = ''
+  placeholder = '',
+  language = 'json',
 }) => {
   const { theme } = useTheme();
   const editorRef = useRef<any>(null);
@@ -96,7 +98,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
     <div className="h-full min-h-[120px] w-full border rounded-md overflow-hidden flex flex-col relative">
       <Editor
         height="100%"
-        language="json"
+        language={language}
         value={value}
         onChange={handleEditorChange}
         onMount={handleEditorDidMount}
@@ -120,4 +122,3 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
 };
 
 export default JsonEditor;
-
