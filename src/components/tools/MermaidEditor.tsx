@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
 import { useMermaidEditor } from '@/hooks/useMermaidEditor';
@@ -9,13 +8,19 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal, Download } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const MermaidEditor: React.FC = () => {
   const { input, setInput, error, setError } = useMermaidEditor();
   const { theme } = useTheme();
   const previewRef = useRef<HTMLDivElement>(null);
 
-  const handleDownload = () => {
+  const handleDownloadSVG = () => {
     if (previewRef.current?.innerHTML && !error) {
       const svgContent = previewRef.current.innerHTML;
       const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
@@ -28,6 +33,42 @@ const MermaidEditor: React.FC = () => {
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
+    }
+  };
+  
+  const handleDownloadPNG = () => {
+    if (previewRef.current?.querySelector('svg') && !error) {
+      const svgElement = previewRef.current.querySelector('svg') as SVGSVGElement;
+      
+      const svgData = new XMLSerializer().serializeToString(svgElement);
+
+      const canvas = document.createElement('canvas');
+      const svgSize = svgElement.getBoundingClientRect();
+      canvas.width = svgSize.width;
+      canvas.height = svgSize.height;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const img = new Image();
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(url);
+
+        const pngUrl = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = pngUrl;
+        const timestamp = new Date().toISOString().slice(0, 19).replace('T', '_').replace(/:/g, '-');
+        link.download = `mermaid-diagram-${timestamp}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+      
+      img.src = url;
     }
   };
 
@@ -83,15 +124,26 @@ const MermaidEditor: React.FC = () => {
               <ResizablePanel defaultSize={50}>
                 <div className="relative h-full w-full">
                   {input && !error && (
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={handleDownload}
-                      className="absolute top-4 right-4 z-10"
-                      title="下载SVG格式图表"
-                    >
-                      <Download className="h-4 w-4" />
-                    </Button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute top-4 right-4 z-10"
+                          title="下载图表"
+                        >
+                          <Download className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={handleDownloadSVG}>
+                          下载 SVG
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={handleDownloadPNG}>
+                          下载 PNG
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   )}
                   <div className="h-full w-full overflow-auto p-4 flex items-center justify-center bg-muted/20">
                     <div ref={previewRef} className="w-full h-full" />
