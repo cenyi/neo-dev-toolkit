@@ -6,13 +6,30 @@ import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/componen
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal } from 'lucide-react';
+import { Terminal, Download } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { Button } from '@/components/ui/button';
 
 const MermaidEditor: React.FC = () => {
   const { input, setInput, error, setError } = useMermaidEditor();
   const { theme } = useTheme();
   const previewRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = () => {
+    if (previewRef.current?.innerHTML && !error) {
+      const svgContent = previewRef.current.innerHTML;
+      const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      const timestamp = new Date().toISOString().slice(0, 19).replace('T', '_').replace(/:/g, '-');
+      link.download = `mermaid-diagram-${timestamp}.svg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  };
 
   useEffect(() => {
     const renderMermaid = async () => {
@@ -64,8 +81,21 @@ const MermaidEditor: React.FC = () => {
               </ResizablePanel>
               <ResizableHandle withHandle />
               <ResizablePanel defaultSize={50}>
-                <div className="h-full w-full overflow-auto p-4 flex items-center justify-center bg-muted/20">
-                  <div ref={previewRef} className="w-full h-full" />
+                <div className="relative h-full w-full">
+                  {input && !error && (
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={handleDownload}
+                      className="absolute top-4 right-4 z-10"
+                      title="下载SVG格式图表"
+                    >
+                      <Download className="h-4 w-4" />
+                    </Button>
+                  )}
+                  <div className="h-full w-full overflow-auto p-4 flex items-center justify-center bg-muted/20">
+                    <div ref={previewRef} className="w-full h-full" />
+                  </div>
                 </div>
               </ResizablePanel>
             </ResizablePanelGroup>
