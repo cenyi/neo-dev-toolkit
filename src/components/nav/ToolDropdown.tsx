@@ -38,7 +38,6 @@ const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, conten
           <DropdownMenuItem
             key={tool.path}
             onClick={() => navigate(tool.path)}
-            onPointerEnter={() => navigate(tool.path)}
             className="cursor-pointer hover:bg-accent hover:text-accent-foreground"
           >
             {tool.name}
