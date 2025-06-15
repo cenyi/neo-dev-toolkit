@@ -1,4 +1,5 @@
 
+```typescript
 import React from 'react';
 import { useJsonCodeGen } from '@/hooks/useJsonCodeGen';
 import JsonEditor from './JsonEditor';
@@ -91,7 +92,7 @@ const JsonCodeGen: React.FC = () => {
                 value={generatedCode}
                 onChange={() => {}} // read-only
                 language={getEditorLanguage(targetLang)}
-                options={{ readOnly: true }}
+                readOnly={true}
                 placeholder="Generated code will appear here"
               />
             </div>
@@ -103,3 +104,4 @@ const JsonCodeGen: React.FC = () => {
 };
 
 export default JsonCodeGen;
+```
