@@ -3,10 +3,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useUrlEncoderDecoder } from '@/hooks/useUrlEncoderDecoder';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Terminal } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import CodeEditor from './CodeEditor';
 
 const UrlEncoderDecoder: React.FC = () => {
   const { t } = useTranslation();
@@ -26,12 +26,13 @@ const UrlEncoderDecoder: React.FC = () => {
             <CardTitle>{t('tools.urlEncoder.input', 'Input')}</CardTitle>
           </CardHeader>
           <CardContent>
-            <Textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={t('tools.urlEncoder.inputPlaceholder', 'Enter text to encode or decode')}
-              className="h-64"
-            />
+            <div className="h-64 border rounded-md">
+              <CodeEditor
+                value={input}
+                onChange={setInput}
+                placeholder={t('tools.urlEncoder.inputPlaceholder', 'Enter text to encode or decode')}
+              />
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -39,12 +40,14 @@ const UrlEncoderDecoder: React.FC = () => {
             <CardTitle>{t('tools.urlEncoder.output', 'Output')}</CardTitle>
           </CardHeader>
           <CardContent>
-            <Textarea
-              value={output}
-              readOnly
-              placeholder={t('tools.urlEncoder.outputPlaceholder', 'Result will appear here')}
-              className="h-64 bg-muted"
-            />
+            <div className="h-64 border rounded-md">
+              <CodeEditor
+                value={output}
+                onChange={() => {}}
+                readOnly
+                placeholder={t('tools.urlEncoder.outputPlaceholder', 'Result will appear here')}
+              />
+            </div>
           </CardContent>
         </Card>
       </div>

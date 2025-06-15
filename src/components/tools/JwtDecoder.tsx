@@ -3,11 +3,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useJwtDecoder } from '@/hooks/useJwtDecoder';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Terminal } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import JsonEditor from './JsonEditor';
+import CodeEditor from './CodeEditor';
 
 const JwtDecoder: React.FC = () => {
   const { t } = useTranslation();
@@ -25,12 +25,13 @@ const JwtDecoder: React.FC = () => {
             <CardTitle>{t('tools.jwtDecoder.encodedToken', 'Encoded Token')}</CardTitle>
           </CardHeader>
           <CardContent>
-            <Textarea
-              value={token}
-              onChange={(e) => setToken(e.target.value)}
-              placeholder={t('tools.jwtDecoder.placeholder', 'Paste your JWT here')}
-              className="h-96 font-mono text-sm"
-            />
+            <div className="h-96 border rounded-md">
+              <CodeEditor
+                value={token}
+                onChange={setToken}
+                placeholder={t('tools.jwtDecoder.placeholder', 'Paste your JWT here')}
+              />
+            </div>
           </CardContent>
         </Card>
         

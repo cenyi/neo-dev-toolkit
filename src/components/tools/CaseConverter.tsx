@@ -1,10 +1,12 @@
+
 import React from 'react';
 import { useCaseConverter } from '@/hooks/useCaseConverter';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Copy, ArrowRight } from 'lucide-react';
 import { toast } from "sonner";
+import CodeEditor from './CodeEditor';
+
 const CaseConverter: React.FC = () => {
   const {
     input,
@@ -28,10 +30,23 @@ const CaseConverter: React.FC = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
-            <Textarea placeholder="Enter text here..." value={input} onChange={e => setInput(e.target.value)} className="min-h-[200px]" />
+            <div className="min-h-[200px] border rounded-md">
+              <CodeEditor
+                value={input}
+                onChange={setInput}
+                placeholder="Enter text here..."
+              />
+            </div>
             <ArrowRight className="hidden md:block" />
             <div className="relative">
-              <Textarea placeholder="Result" value={output} readOnly className="min-h-[200px] bg-muted/50" />
+              <div className="min-h-[200px] border rounded-md">
+                <CodeEditor
+                  value={output}
+                  onChange={() => {}}
+                  readOnly
+                  placeholder="Result"
+                />
+              </div>
               {output && <Button variant="ghost" size="icon" className="absolute top-2 right-2 h-7 w-7" onClick={handleCopy}>
                   <Copy size={16} />
                 </Button>}

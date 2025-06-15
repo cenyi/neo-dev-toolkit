@@ -1,13 +1,13 @@
 
 import React from 'react';
 import { useEncryptionTool, Algorithm } from '@/hooks/useEncryptionTool';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Copy, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
+import CodeEditor from './CodeEditor';
 
 const EncryptionTool: React.FC = () => {
   const { input, setInput, output, algorithm, setAlgorithm, regenerate, algorithms } = useEncryptionTool();
@@ -46,25 +46,26 @@ const EncryptionTool: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="input-text" className="mb-2 block">Input</Label>
-              <Textarea
-                id="input-text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder={algorithm === 'uuid' ? 'Not applicable for UUID generation' : 'Enter or paste text here...'}
-                className="h-64 resize-none"
-                disabled={algorithm === 'uuid'}
-              />
+              <div className="h-64 border rounded-md">
+                <CodeEditor
+                  value={input}
+                  onChange={setInput}
+                  placeholder={algorithm === 'uuid' ? 'Not applicable for UUID generation' : 'Enter or paste text here...'}
+                  readOnly={algorithm === 'uuid'}
+                />
+              </div>
             </div>
             <div>
               <Label htmlFor="output-hash" className="mb-2 block">Output</Label>
               <div className="relative">
-                <Textarea
-                  id="output-hash"
-                  value={output}
-                  readOnly
-                  placeholder="Output will be displayed here"
-                  className="h-64 resize-none bg-muted"
-                />
+                <div className="h-64 border rounded-md">
+                  <CodeEditor
+                    value={output}
+                    readOnly
+                    onChange={() => {}}
+                    placeholder="Output will be displayed here"
+                  />
+                </div>
                 <div className="absolute top-2 right-2 flex space-x-2">
                   {algorithm === 'uuid' && (
                      <Button
