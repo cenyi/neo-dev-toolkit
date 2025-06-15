@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Copy, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
-import CodeEditor from './CodeEditor';
+import SimpleCodeEditor from './SimpleCodeEditor';
 
 const WhitespaceRemover: React.FC = () => {
   const {
@@ -31,7 +31,7 @@ const WhitespaceRemover: React.FC = () => {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
             <div className="min-h-[200px] border rounded-md">
-              <CodeEditor
+              <SimpleCodeEditor
                 value={input}
                 onChange={setInput}
                 placeholder="Enter text here..."
@@ -40,7 +40,7 @@ const WhitespaceRemover: React.FC = () => {
             <ArrowRight className="hidden md:block" />
             <div className="relative">
               <div className="min-h-[200px] border rounded-md">
-                <CodeEditor
+                <SimpleCodeEditor
                   placeholder="Result"
                   value={output}
                   readOnly

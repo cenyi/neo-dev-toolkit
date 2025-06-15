@@ -2,7 +2,7 @@
 import React from 'react';
 import { useWordCounter } from '@/hooks/useWordCounter';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import CodeEditor from './CodeEditor';
+import SimpleCodeEditor from './SimpleCodeEditor';
 
 const StatCard: React.FC<{
   title: string;
@@ -29,7 +29,7 @@ const WordCounter: React.FC = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="min-h-[300px] border rounded-md">
-            <CodeEditor
+            <SimpleCodeEditor
               value={text}
               onChange={setText}
               placeholder="Type or paste your text here..."
