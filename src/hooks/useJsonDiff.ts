@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import * as jsondiffpatch from 'jsondiffpatch';
+import { create, formatters } from 'jsondiffpatch';
 import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';
 
@@ -26,7 +25,7 @@ const exampleJson2 = JSON.stringify({
     "new_field": "some value"
 }, null, 2);
 
-const jsonDiffPatcher = jsondiffpatch.create({
+const jsonDiffPatcher = create({
     objectHash: (obj: any, index: number) => obj.id || obj._id || '$$index:' + index,
 });
 
@@ -53,7 +52,7 @@ export const useJsonDiff = () => {
 
         const delta = jsonDiffPatcher.diff(left, right);
         if (delta) {
-            const html = jsondiffpatch.formatters.html.format(delta, left);
+            const html = formatters.html.format(delta, left);
             setDiffHtml(html);
         } else {
             setDiffHtml(`<div class="p-4 text-center text-green-600 font-semibold">${i18n.t('tools.jsonDiff.identical', 'JSON objects are identical.')}</div>`);

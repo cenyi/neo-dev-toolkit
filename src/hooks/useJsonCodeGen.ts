@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import {
   quicktype,
@@ -33,10 +32,12 @@ const exampleJson = JSON.stringify({
   }
 }, null, 2);
 
+export type SupportedLanguage = 'typescript' | 'python' | 'java' | 'go' | 'rust' | 'csharp';
+
 export const useJsonCodeGen = () => {
   const [jsonInput, setJsonInput] = useState(exampleJson);
   const [generatedCode, setGeneratedCode] = useState('');
-  const [targetLang, setTargetLang] = useState('typescript');
+  const [targetLang, setTargetLang] = useState<SupportedLanguage>('typescript');
   const [typeName, setTypeName] = useState('Root');
 
   const handleGenerate = async () => {

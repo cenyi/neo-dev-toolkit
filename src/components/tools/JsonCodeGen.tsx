@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useJsonCodeGen } from '@/hooks/useJsonCodeGen';
+import { useJsonCodeGen, SupportedLanguage } from '@/hooks/useJsonCodeGen';
 import JsonEditor from './JsonEditor';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -49,7 +49,7 @@ const JsonCodeGen: React.FC = () => {
         <Button onClick={clearAll} variant="destructive">Clear</Button>
         <div className="flex items-center gap-2">
             <Label htmlFor="target-lang">Language:</Label>
-            <Select value={targetLang} onValueChange={setTargetLang}>
+            <Select value={targetLang} onValueChange={(value) => setTargetLang(value as SupportedLanguage)}>
                 <SelectTrigger className="w-[180px]" id="target-lang">
                     <SelectValue placeholder="Select language" />
                 </SelectTrigger>
