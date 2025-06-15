@@ -22,7 +22,7 @@ import WordCounter from "@/components/tools/WordCounter";
 import TextReverser from "@/components/tools/TextReverser";
 import WhitespaceRemover from "@/components/tools/WhitespaceRemover";
 import LoremIpsumGenerator from "@/components/tools/LoremIpsumGenerator";
-import Md5Generator from "@/components/tools/Md5Generator";
+import EncryptionTool from "@/components/tools/EncryptionTool";
 import MarkdownEditor from "@/components/tools/MarkdownEditor";
 import MermaidEditor from "@/components/tools/MermaidEditor";
 import ToolUnderConstruction from "./pages/ToolUnderConstruction";
@@ -64,8 +64,8 @@ function App() {
                   <Route path="/markdown" element={<MarkdownEditor />} />
                   <Route path="/mermaid" element={<MermaidEditor />} />
 
-                  {/* Crypto Tools */}
-                  <Route path="/md5-generator" element={<Md5Generator />} />
+                  {/* Encryption Tools */}
+                  <Route path="/encryption" element={<EncryptionTool />} />
                   <Route path="/sha1-generator" element={<ToolUnderConstruction />} />
                   <Route path="/sha256-generator" element={<ToolUnderConstruction />} />
                   <Route path="/sha512-generator" element={<ToolUnderConstruction />} />

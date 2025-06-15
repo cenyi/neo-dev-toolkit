@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -56,12 +55,12 @@ const Navigation: React.FC = () => {
     { path: '/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' }
   ];
 
-  const cryptoTools = [
-    { path: '/md5-generator', name: 'MD5 Hash Generator' },
-    { path: '/sha1-generator', name: 'SHA1 Hash Generator' },
-    { path: '/sha256-generator', name: 'SHA256 Hash Generator' },
-    { path: '/sha512-generator', name: 'SHA512 Hash Generator' },
-    { path: '/uuid-generator', name: 'UUID Generator' },
+  const encryptionTools = [
+    { path: '/encryption?algorithm=md5', name: 'MD5 Hash Generator' },
+    { path: '/encryption?algorithm=sha1', name: 'SHA1 Hash Generator' },
+    { path: '/encryption?algorithm=sha256', name: 'SHA256 Hash Generator' },
+    { path: '/encryption?algorithm=sha512', name: 'SHA512 Hash Generator' },
+    { path: '/encryption?algorithm=uuid', name: 'UUID Generator' },
   ];
 
   const navItems = [{
@@ -81,8 +80,8 @@ const Navigation: React.FC = () => {
     key: 'text',
     icon: Text
   }, {
-    path: '/crypto',
-    key: 'crypto',
+    path: '/encryption',
+    key: 'encryption',
     icon: Key
   }, {
     path: '/markdown',
@@ -164,19 +163,19 @@ const Navigation: React.FC = () => {
                 </DropdownMenu>
               );
             }
-            if (key === 'crypto') {
-              const isCryptoPageActive = cryptoTools.some(tool => location.pathname === tool.path);
+            if (key === 'encryption') {
+              const isEncryptionPageActive = location.pathname === '/encryption';
               return (
                 <DropdownMenu key={key}>
                   <DropdownMenuTrigger asChild>
-                    <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${isCryptoPageActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
+                    <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${isEncryptionPageActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
                       {Icon && <Icon size={16} />}
-                      <span>{t(`nav.${key}`)}</span>
+                      <span>Encryption</span>
                       <ChevronDown size={16} />
                     </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md w-64">
-                    {cryptoTools.map((tool) => (
+                    {encryptionTools.map((tool) => (
                         <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
                           {tool.name}
                         </DropdownMenuItem>
