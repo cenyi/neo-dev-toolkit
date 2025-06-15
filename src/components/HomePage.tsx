@@ -6,7 +6,7 @@ import {
   FileJson, 
   Network, 
   FileText, 
-  Lock, 
+  Key,
   FileCode,
   Code
 } from 'lucide-react';
@@ -37,8 +37,8 @@ const HomePage: React.FC = () => {
       color: 'text-purple-500'
     },
     {
-      path: '/crypto',
-      icon: Lock,
+      path: '/encryption',
+      icon: Key,
       titleKey: 'tools.crypto.title',
       descKey: 'tools.crypto.description',
       color: 'text-red-500'
@@ -60,34 +60,33 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4">
-      <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold mb-4 floating-animation">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="text-center mb-16">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl mb-4 floating-animation">
           {t('home.title')}
         </h1>
-        <p className="text-xl mb-6 opacity-80">
+        <p className="max-w-3xl mx-auto text-xl text-muted-foreground">
           {t('home.subtitle')}
-        </p>
-        <p className="text-lg opacity-60 max-w-2xl mx-auto">
-          {t('home.description')}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {tools.map(({ path, icon: Icon, titleKey, descKey, color }) => (
-          <Link key={path} to={path} className="group">
-            <div className="neu-card hover:scale-105 transition-all duration-300 h-full">
-              <div className="flex flex-col items-center text-center p-4">
-                <div className={`p-4 rounded-2xl mb-4 ${color} bg-opacity-10`}>
-                  <Icon size={32} className={color} />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">
-                  {t(titleKey)}
-                </h3>
-                <p className="opacity-70">
-                  {t(descKey)}
-                </p>
+          <Link 
+            key={path} 
+            to={path} 
+            className="group block h-full rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+          >
+            <div className="p-6 h-full flex flex-col items-center text-center">
+              <div className="mb-4 rounded-lg p-3 inline-block bg-accent">
+                <Icon size={32} className={color} />
               </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">
+                {t(titleKey)}
+              </h3>
+              <p className="text-muted-foreground text-sm">
+                {t(descKey)}
+              </p>
             </div>
           </Link>
         ))}
