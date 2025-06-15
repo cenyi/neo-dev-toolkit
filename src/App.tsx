@@ -16,6 +16,11 @@ import UrlEncoderDecoder from "@/components/tools/UrlEncoderDecoder";
 import Base64EncoderDecoder from "@/components/tools/Base64EncoderDecoder";
 import IpLookup from "@/components/tools/IpLookup";
 import JwtDecoder from "@/components/tools/JwtDecoder";
+import CaseConverter from "@/components/tools/CaseConverter";
+import WordCounter from "@/components/tools/WordCounter";
+import TextReverser from "@/components/tools/TextReverser";
+import WhitespaceRemover from "@/components/tools/WhitespaceRemover";
+import LoremIpsumGenerator from "@/components/tools/LoremIpsumGenerator";
 import NotFound from "./pages/NotFound";
 import "@/styles/neumorphism.css";
 import "@/i18n";
@@ -41,7 +46,12 @@ const App = () => <QueryClientProvider client={queryClient}>
                 <Route path="/base64-encoder" element={<Base64EncoderDecoder />} />
                 <Route path="/ip-lookup" element={<IpLookup />} />
                 <Route path="/jwt-decoder" element={<JwtDecoder />} />
-                {/* TODO: Add other tool routes */}
+                {/* Text Tools */}
+                <Route path="/case-converter" element={<CaseConverter />} />
+                <Route path="/word-counter" element={<WordCounter />} />
+                <Route path="/text-reverser" element={<TextReverser />} />
+                <Route path="/whitespace-remover" element={<WhitespaceRemover />} />
+                <Route path="/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
