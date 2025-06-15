@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import HomePage from "@/components/HomePage";
 import JsonTool from "@/components/tools/JsonTool";
 import JsonSchemaValidator from "@/components/tools/JsonSchemaValidator";
@@ -30,6 +31,9 @@ import TimezoneConverter from "@/components/tools/TimezoneConverter";
 import DateCalculator from "@/components/tools/DateCalculator";
 import ToolUnderConstruction from "./pages/ToolUnderConstruction";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import AboutUs from "./pages/AboutUs";
 import "@/styles/neumorphism.css";
 import "@/i18n";
 
@@ -40,12 +44,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
-          <div className="neu-container py-0">
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
+          <BrowserRouter>
+            <div className="flex flex-col min-h-screen">
+              <Toaster />
+              <Sonner />
               <Navigation />
-              <main className="pb-8">
+              <main className="flex-grow">
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/json" element={<JsonTool />} />
@@ -75,11 +79,17 @@ function App() {
                   {/* Encryption Tools */}
                   <Route path="/encryption" element={<EncryptionTool />} />
 
+                  {/* Footer Pages */}
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/terms" element={<TermsOfService />} />
+                  <Route path="/about" element={<AboutUs />} />
+
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
-            </BrowserRouter>
-          </div>
+              <Footer />
+            </div>
+          </BrowserRouter>
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>

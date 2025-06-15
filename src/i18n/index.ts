@@ -32,6 +32,9 @@ const resources = {
         toYaml: 'To YAML',
         toXml: 'To XML',
         toCsv: 'To CSV',
+        blue: 'Blue',
+        system: 'System',
+        comingSoon: 'Coming Soon',
       },
       home: {
         title: 'Developer Tools Hub',
@@ -144,6 +147,15 @@ const resources = {
           emptyContent: 'Content is empty, nothing to copy',
         },
       },
+      footer: {
+        legal: 'Legal',
+        company: 'Company',
+        friendlyLinks: 'Friendly Links',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Service',
+        about: 'About Us',
+        copyright: '© {{year}} Developer Tools Hub. All Rights Reserved.',
+      },
     }
   },
   'zh-CN': {
@@ -176,6 +188,9 @@ const resources = {
         toYaml: '转为YAML',
         toXml: '转为XML',
         toCsv: '转为CSV',
+        blue: '蓝色',
+        system: '跟随系统',
+        comingSoon: '敬请期待',
       },
       home: {
         title: '开发者工具中心',
@@ -288,6 +303,15 @@ const resources = {
           emptyContent: '内容为空，无需复制',
         },
       },
+      footer: {
+        legal: '法律',
+        company: '公司',
+        friendlyLinks: '友情链接',
+        privacy: '隐私政策',
+        terms: '服务条款',
+        about: '关于我们',
+        copyright: '© {{year}} 开发者工具中心. 保留所有权利.',
+      },
     }
   },
   'zh-TW': {
@@ -320,6 +344,9 @@ const resources = {
         toYaml: '轉為YAML',
         toXml: '轉為XML',
         toCsv: '轉為CSV',
+        blue: '藍色',
+        system: '跟隨系統',
+        comingSoon: '敬請期待',
       },
       home: {
         title: '開發者工具中心',
@@ -432,6 +459,15 @@ const resources = {
           emptyContent: '內容為空，無需複製',
         },
       },
+      footer: {
+        legal: '法律',
+        company: '公司',
+        friendlyLinks: '友情鏈接',
+        privacy: '隱私政策',
+        terms: '服務條款',
+        about: '關於我們',
+        copyright: '© {{year}} 開發者工具中心. 保留所有權利.',
+      },
     }
   },
   ja: {
@@ -464,6 +500,9 @@ const resources = {
         toYaml: 'YAMLへ変換',
         toXml: 'XMLへ変換',
         toCsv: 'CSVへ変換',
+        blue: '青色',
+        system: 'システムに従う',
+        comingSoon: '近日公開',
       },
       home: {
         title: '開発者ツールハブ',
@@ -576,6 +615,69 @@ const resources = {
           emptyContent: 'コンテンツが空なので、コピーする必要はありません',
         },
       },
+      footer: {
+        legal: '法務',
+        company: '会社',
+        friendlyLinks: 'フレンドリーリンク',
+        privacy: 'プライバシーポリシー',
+        terms: '利用規約',
+        about: '会社概要',
+        copyright: '© {{year}} 開発者ツールハブ. 全著作権所有.',
+      },
+    }
+  },
+  es: {
+    translation: {
+      nav: { home: 'Inicio', json: 'JSON', network: 'Red', text: 'Texto', time: 'Tiempo', encryption: 'Cifrado', markdown: 'Markdown', mermaid: 'Mermaid' },
+      common: { theme: 'Tema', language: 'Idioma', light: 'Claro', dark: 'Oscuro', copy: 'Copiar', clear: 'Limpiar', format: 'Formatear', minify: 'Minimizar', validate: 'Validar', convert: 'Convertir', encrypt: 'Cifrar', decrypt: 'Descifrar', preview: 'Vista previa', download: 'Descargar', toYaml: 'A YAML', toXml: 'A XML', toCsv: 'A CSV', blue: 'Azul', system: 'Sistema', comingSoon: 'Próximamente' },
+      home: { title: 'Centro de Herramientas para Desarrolladores', subtitle: 'Herramientas de desarrollo profesionales con diseño neumórfico moderno', description: 'Una colección completa de herramientas esenciales para desarrolladores que incluye formato JSON, procesamiento de texto, cifrado y más.' },
+      tools: { json: { title: 'Herramientas JSON', description: 'Formatear, validar y minimizar datos JSON' }, network: { title: 'Herramientas de Red', description: 'Codificación de URL, búsqueda de IP y utilidades de red' }, text: { title: 'Herramientas de Texto', description: 'Procesamiento de texto, conversión de mayúsculas y minúsculas y formato' }, crypto: { title: 'Herramientas de Cifrado', description: 'Generación de hash, utilidades de cifrado y descifrado' }, markdown: { title: 'Herramientas Markdown', description: 'Editor de Markdown con vista previa en vivo' }, mermaid: { title: 'Diagramas Mermaid', description: 'Crear diagramas y organigramas con Mermaid' } },
+      footer: { legal: 'Legal', company: 'Empresa', friendlyLinks: 'Enlaces amigos', privacy: 'Política de Privacidad', terms: 'Términos de Servicio', about: 'Sobre nosotros', copyright: '© {{year}} Centro de Herramientas para Desarrolladores. Todos los derechos reservados.' }
+    }
+  },
+  fr: {
+    translation: {
+      nav: { home: 'Accueil', json: 'JSON', network: 'Réseau', text: 'Texte', time: 'Temps', encryption: 'Chiffrement', markdown: 'Markdown', mermaid: 'Mermaid' },
+      common: { theme: 'Thème', language: 'Langue', light: 'Clair', dark: 'Sombre', copy: 'Copier', clear: 'Effacer', format: 'Formater', minify: 'Minifier', validate: 'Valider', convert: 'Convertir', encrypt: 'Chiffrer', decrypt: 'Déchiffrer', preview: 'Aperçu', download: 'Télécharger', toYaml: 'Vers YAML', toXml: 'Vers XML', toCsv: 'Vers CSV', blue: 'Bleu', system: 'Système', comingSoon: 'Bientôt disponible' },
+      home: { title: 'Hub d\'outils pour développeurs', subtitle: 'Outils de développement professionnels avec un design neumorphique moderne', description: 'Une collection complète d\'outils essentiels pour les développeurs, y compris le formatage JSON, le traitement de texte, le chiffrement, et plus encore.' },
+      tools: { json: { title: 'Outils JSON', description: 'Formater, valider et minifier les données JSON' }, network: { title: 'Outils Réseau', description: 'Encodage d\'URL, recherche IP et utilitaires réseau' }, text: { title: 'Outils Texte', description: 'Traitement de texte, conversion de casse et formatage' }, crypto: { title: 'Outils de Chiffrement', description: 'Génération de hash, utilitaires de chiffrement et de déchiffrement' }, markdown: { title: 'Outils Markdown', description: 'Éditeur Markdown avec aperçu en direct' }, mermaid: { title: 'Diagrammes Mermaid', description: 'Créez des diagrammes et des organigrammes avec Mermaid' } },
+      footer: { legal: 'Légal', company: 'Entreprise', friendlyLinks: 'Liens amis', privacy: 'Politique de confidentialité', terms: 'Conditions d\'utilisation', about: 'À propos', copyright: '© {{year}} Hub d\'outils pour développeurs. Tous droits réservés.' }
+    }
+  },
+  de: {
+    translation: {
+      nav: { home: 'Startseite', json: 'JSON', network: 'Netzwerk', text: 'Text', time: 'Zeit', encryption: 'Verschlüsselung', markdown: 'Markdown', mermaid: 'Mermaid' },
+      common: { theme: 'Thema', language: 'Sprache', light: 'Hell', dark: 'Dunkel', copy: 'Kopieren', clear: 'Löschen', format: 'Formatieren', minify: 'Minimieren', validate: 'Validieren', convert: 'Konvertieren', encrypt: 'Verschlüsseln', decrypt: 'Entschlüsseln', preview: 'Vorschau', download: 'Herunterladen', toYaml: 'Zu YAML', toXml: 'Zu XML', toCsv: 'Zu CSV', blue: 'Blau', system: 'System', comingSoon: 'Demnächst verfügbar' },
+      home: { title: 'Entwickler-Tools-Hub', subtitle: 'Professionelle Entwicklungstools mit modernem neumorphischem Design', description: 'Eine umfassende Sammlung wichtiger Entwickler-Tools, einschließlich JSON-Formatierung, Textverarbeitung, Verschlüsselung und mehr.' },
+      tools: { json: { title: 'JSON-Tools', description: 'JSON-Daten formatieren, validieren und minimieren' }, network: { title: 'Netzwerk-Tools', description: 'URL-Kodierung, IP-Suche und Netzwerk-Dienstprogramme' }, text: { title: 'Text-Tools', description: 'Textverarbeitung, Groß-/Kleinschreibung und Formatierung' }, crypto: { title: 'Verschlüsselungs-Tools', description: 'Hash-Generierung, Ver- und Entschlüsselungs-Dienstprogramme' }, markdown: { title: 'Markdown-Tools', description: 'Redakteur Markdown mit Live-Vorschau' }, mermaid: { title: 'Diagramme Mermaid', description: 'Erstellen Sie Diagramme und Flussdiagramme mit Mermaid' } },
+      footer: { legal: 'Rechtliches', company: 'Unternehmen', friendlyLinks: 'Freundliche Links', privacy: 'Datenschutzerklärung', terms: 'Nutzungsbedingungen', about: 'Über uns', copyright: '© {{year}} Entwickler-Tools-Hub. Alle Rechte vorbehalten.' }
+    }
+  },
+  ru: {
+    translation: {
+      nav: { home: 'Главная', json: 'JSON', network: 'Сеть', text: 'Текст', time: 'Время', encryption: 'Шифрование', markdown: 'Markdown', mermaid: 'Mermaid' },
+      common: { theme: 'Тема', language: 'Язык', light: 'Светлая', dark: 'Темная', copy: 'Копировать', clear: 'Очистить', format: 'Форматировать', minify: 'Минифицировать', validate: 'Проверить', convert: 'Конвертировать', encrypt: 'Зашифровать', decrypt: 'Расшифровать', preview: 'Предпросмотр', download: 'Скачать', toYaml: 'В YAML', toXml: 'В XML', toCsv: 'В CSV', blue: 'Синий', system: 'Системная', comingSoon: 'Скоро будет' },
+      home: { title: 'Центр инструментов для разработчиков', subtitle: 'Профессиональные инструменты для разработки с современным неоморфным дизайном', description: 'Полная коллекция основных инструментов для разработчиков, включая форматирование JSON, обработку текста, шифрование и многое другое.' },
+      tools: { json: { title: 'Инструменты JSON', description: 'Форматирование, проверка и минимизация данных JSON' }, network: { title: 'Сетевые инструменты', description: 'Кодирование URL, поиск IP и сетевые утилиты' }, text: { title: 'Текстовые инструменты', description: 'Обработка текста, преобразование регистра и форматирование' }, crypto: { title: 'Инструменты шифрования', description: 'Генерация хешей, утилиты для шифрования и дешифрования' }, markdown: { title: 'Инструменты Markdown', description: 'Редактор Markdown с живым предпросмотром' }, mermaid: { title: 'Диаграммы Mermaid', description: 'Создавайте диаграммы и блок-схемы с помощью Mermaid' } },
+      footer: { legal: 'Правовая информация', company: 'Компания', friendlyLinks: 'Дружественные ссылки', privacy: 'Политика конфиденциальности', terms: 'Условия использования', about: 'О нас', copyright: '© {{year}} Центр инструментов для разработчиков. Все права защищены.' }
+    }
+  },
+  pt: {
+    translation: {
+      nav: { home: 'Início', json: 'JSON', network: 'Rede', text: 'Texto', time: 'Tempo', encryption: 'Criptografia', markdown: 'Markdown', mermaid: 'Mermaid' },
+      common: { theme: 'Tema', language: 'Idioma', light: 'Claro', dark: 'Escuro', copy: 'Copiar', clear: 'Limpar', format: 'Formatar', minify: 'Minimizar', validate: 'Validar', convert: 'Converter', encrypt: 'Criptografar', decrypt: 'Descriptografar', preview: 'Visualizar', download: 'Baixar', toYaml: 'Para YAML', toXml: 'Para XML', toCsv: 'Para CSV', blue: 'Azul', system: 'Sistema', comingSoon: 'Em breve' },
+      home: { title: 'Hub de Ferramentas para Desenvolvedores', subtitle: 'Ferramentas de desenvolvimento profissionais com design neomórfico moderno', description: 'Uma coleção abrangente de ferramentas essenciais para desenvolvedores, incluindo formatação JSON, processamento de texto, criptografia e muito mais.' },
+      tools: { json: { title: 'Ferramentas JSON', description: 'Formatar, validar e minimizar dados JSON' }, network: { title: 'Ferramentas de Rede', description: 'Codificação de URL, consulta de IP e utilitários de rede' }, text: { title: 'Ferramentas de Texto', description: 'Processamento de texto, conversão de maiúsculas/minúsculas e formatação' }, crypto: { title: 'Ferramentas de Criptografia', description: 'Geração de hash, utilitários de criptografia и descriptografia' }, markdown: { title: 'Ferramentas Markdown', description: 'Editor de Markdown com visualização ao vivo' }, mermaid: { title: 'Diagramas Mermaid', description: 'Crie diagramas e fluxogramas com o Mermaid' } },
+      footer: { legal: 'Legal', company: 'Empresa', friendlyLinks: 'Links amigáveis', privacy: 'Política de Privacidade', terms: 'Termos de Serviço', about: 'Sobre nós', copyright: '© {{year}} Hub de Ferramentas para Desenvolvedores. Todos os direitos reservados.' }
+    }
+  },
+  ko: {
+    translation: {
+      nav: { home: '홈', json: 'JSON', network: '네트워크', text: '텍스트', time: '시간', encryption: '암호화', markdown: 'Markdown', mermaid: 'Mermaid' },
+      common: { theme: '테마', language: '언어', light: '라이트', dark: '다크', copy: '복사', clear: '지우기', format: '형식 지정', minify: '최소화', validate: '유효성 검사', convert: '변환', encrypt: '암호화', decrypt: '복호화', preview: '미리보기', download: '다운로드', toYaml: 'YAML로', toXml: 'XML로', toCsv: 'CSV로', blue: '파란색', system: '시스템', comingSoon: '곧 출시 예정' },
+      home: { title: '개발자 도구 허브', subtitle: '현대적인 뉴모피즘 디자인의 전문 개발 도구', description: 'JSON 서식 지정, 텍스트 처리, 암호화 등을 포함한 필수 개발자 도구 모음입니다.' },
+      tools: { json: { title: 'JSON 도구', description: 'JSON 데이터 형식 지정, 유효성 검사 및 최소화' }, network: { title: '네트워크 도구', description: 'URL 인코딩, IP 조회 및 네트워크 유틸리티' }, text: { title: '텍스트 도구', description: '텍스트 처리, 대소문자 변환 및 서식 지정' }, crypto: { title: '암호화 도구', description: '해시 생성, 암호화 및 복호화 유틸리티' }, markdown: { title: 'Markdown 도구', description: '실시간 미리보기가 포함된 Markdown 편집기' }, mermaid: { title: 'Mermaid 다이어그램', description: 'Mermaid로 다이어그램 및 순서도 만들기' } },
+      footer: { legal: '법률', company: '회사', friendlyLinks: '관련 링크', privacy: '개인정보 처리방침', terms: '서비스 약관', about: '소개', copyright: '© {{year}} 개발자 도구 허브. 모든 권리 보유.' }
     }
   }
 };

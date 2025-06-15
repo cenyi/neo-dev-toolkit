@@ -9,9 +9,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useTranslation } from 'react-i18next';
 
 const ThemeToggle: React.FC = () => {
   const { setTheme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <DropdownMenu>
@@ -25,19 +27,19 @@ const ThemeToggle: React.FC = () => {
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme('light')}>
           <Sun className="mr-2 h-4 w-4" />
-          <span>浅色</span>
+          <span>{t('common.light')}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('dark')}>
           <Moon className="mr-2 h-4 w-4" />
-          <span>深色</span>
+          <span>{t('common.dark')}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('blue')}>
           <Palette className="mr-2 h-4 w-4" />
-          <span>蓝色</span>
+          <span>{t('common.blue')}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('system')}>
           <Monitor className="mr-2 h-4 w-4" />
-          <span>跟随系统</span>
+          <span>{t('common.system')}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
