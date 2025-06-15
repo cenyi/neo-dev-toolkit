@@ -1,8 +1,9 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';
 import { dump as toYaml } from 'js-yaml';
-import toXml from 'js2xmlparser';
+import { parse as toXml } from 'js2xmlparser';
 import { Parser as CsvParser } from '@json2csv/plainjs';
 
 const getValueByPath = (obj: any, path: string): any => {
