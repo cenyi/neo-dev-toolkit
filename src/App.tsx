@@ -22,11 +22,15 @@ import TextReverser from "@/components/tools/TextReverser";
 import WhitespaceRemover from "@/components/tools/WhitespaceRemover";
 import LoremIpsumGenerator from "@/components/tools/LoremIpsumGenerator";
 import Md5Generator from "@/components/tools/Md5Generator";
+import MarkdownEditor from "@/components/tools/MarkdownEditor";
+import MermaidEditor from "@/components/tools/MermaidEditor";
 import ToolUnderConstruction from "./pages/ToolUnderConstruction";
 import NotFound from "./pages/NotFound";
 import "@/styles/neumorphism.css";
 import "@/i18n";
+
 const queryClient = new QueryClient();
+
 const App = () => <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <TooltipProvider>
@@ -54,6 +58,8 @@ const App = () => <QueryClientProvider client={queryClient}>
                 <Route path="/text-reverser" element={<TextReverser />} />
                 <Route path="/whitespace-remover" element={<WhitespaceRemover />} />
                 <Route path="/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
+                <Route path="/markdown" element={<MarkdownEditor />} />
+                <Route path="/mermaid" element={<MermaidEditor />} />
 
                 {/* Crypto Tools */}
                 <Route path="/md5-generator" element={<Md5Generator />} />

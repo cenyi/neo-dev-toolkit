@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Moon, Sun, Languages, Home, ChevronDown, FileJson, Network, Text, Key } from 'lucide-react';
+import { Moon, Sun, Languages, Home, ChevronDown, FileJson, Network, Text, Key, Code, LayoutGrid } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navigation: React.FC = () => {
@@ -85,10 +86,12 @@ const Navigation: React.FC = () => {
     icon: Key
   }, {
     path: '/markdown',
-    key: 'markdown'
+    key: 'markdown',
+    icon: Code
   }, {
     path: '/mermaid',
-    key: 'mermaid'
+    key: 'mermaid',
+    icon: LayoutGrid
   }];
   return <nav className="mx-4 mb-2 bg-background/80 backdrop-blur-md border border-border rounded-2xl shadow-lg">
       <div className="flex items-center justify-between p-4 px-[4px] py-[4px]">
