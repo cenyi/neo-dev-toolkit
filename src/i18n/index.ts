@@ -50,6 +50,22 @@ const resources = {
           convertedToXmlTitle: 'Converted to XML',
           convertedToCsvTitle: 'Converted to CSV',
         },
+        jsonMock: {
+          title: 'JSON Mock Data Generator',
+          description: 'Generate mock data based on a JSON schema',
+          generate: 'Generate',
+          schemaTitle: 'JSON Schema',
+          resultTitle: 'Generated Mock Data',
+          resultPlaceholder: 'Generated mock data will appear here',
+          errors: {
+            emptySchema: 'Schema cannot be empty.',
+            invalidSchema: 'Invalid JSON Schema',
+            generationFailed: 'Failed to generate mock data',
+          },
+          toasts: {
+            success: 'Mock data generated successfully.',
+          }
+        },
         network: {
           title: 'Network Tools',
           description: 'URL encoding, IP lookup, and network utilities'
@@ -149,6 +165,22 @@ const resources = {
           convertedToYamlTitle: '已转换为 YAML',
           convertedToXmlTitle: '已转换为 XML',
           convertedToCsvTitle: '已转换为 CSV',
+        },
+        jsonMock: {
+          title: 'JSON模拟数据生成器',
+          description: '根据JSON Schema生成模拟数据',
+          generate: '生成',
+          schemaTitle: 'JSON Schema',
+          resultTitle: '生成的模拟数据',
+          resultPlaceholder: '生成的模拟数据将在此显示',
+          errors: {
+            emptySchema: 'Schema不能为空。',
+            invalidSchema: '无效的JSON Schema',
+            generationFailed: '生成模拟数据失败',
+          },
+          toasts: {
+            success: '模拟数据生成成功。',
+          }
         },
         network: {
           title: '网络工具',
@@ -250,6 +282,22 @@ const resources = {
           convertedToXmlTitle: '已轉換為 XML',
           convertedToCsvTitle: '已轉換為 CSV',
         },
+        jsonMock: {
+          title: 'JSON模擬資料產生器',
+          description: '根據JSON Schema產生模擬資料',
+          generate: '產生',
+          schemaTitle: 'JSON Schema',
+          resultTitle: '產生的模擬資料',
+          resultPlaceholder: '產生的模擬資料將在此顯示',
+          errors: {
+            emptySchema: 'Schema不能為空。',
+            invalidSchema: '無效的JSON Schema',
+            generationFailed: '產生模擬資料失敗',
+          },
+          toasts: {
+            success: '模擬資料產生成功。',
+          }
+        },
         network: {
           title: '網路工具',
           description: 'URL編碼、IP查詢和網路實用工具'
@@ -349,6 +397,22 @@ const resources = {
           convertedToYamlTitle: 'YAMLに変換済み',
           convertedToXmlTitle: 'XMLに変換済み',
           convertedToCsvTitle: 'CSVに変換済み',
+        },
+        jsonMock: {
+          title: 'JSONモックデータジェネレーター',
+          description: 'JSONスキーマに基づいてモックデータを生成します',
+          generate: '生成',
+          schemaTitle: 'JSONスキーマ',
+          resultTitle: '生成されたモックデータ',
+          resultPlaceholder: '生成されたモックデータはここに表示されます',
+          errors: {
+            emptySchema: 'スキーマは空にできません。',
+            invalidSchema: '無効なJSONスキーマです',
+            generationFailed: 'モックデータの生成に失敗しました',
+          },
+          toasts: {
+            success: 'モックデータが正常に生成されました。',
+          }
         },
         network: {
           title: 'ネットワークツール',

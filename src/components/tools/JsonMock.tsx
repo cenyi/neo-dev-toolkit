@@ -18,6 +18,26 @@ const JsonMock: React.FC = () => {
     clearAll,
   } = useJsonMock();
 
+  const schemaPlaceholder = `{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "name": {
+      "type": "string",
+      "faker": "person.fullName"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "faker": "internet.email"
+    }
+  },
+  "required": ["id", "name", "email"]
+}`;
+
   return (
     <div className="h-screen flex flex-col px-2">
       <div className="flex flex-wrap items-center gap-4 mb-1 p-2 bg-background border py-2 rounded-sm">
@@ -37,7 +57,7 @@ const JsonMock: React.FC = () => {
               <JsonEditor
                 value={schema}
                 onChange={setSchema}
-                placeholder={t('tools.jsonMock.schemaPlaceholder', 'Paste your JSON schema here')}
+                placeholder={schemaPlaceholder}
               />
             </div>
           </div>
