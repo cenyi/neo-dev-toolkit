@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -43,7 +44,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
-          <BrowserRouter>
+          <HashRouter>
             <div className="flex flex-col min-h-screen">
               <Toaster />
               <Sonner />
@@ -89,10 +90,11 @@ function App() {
               </main>
               <Footer />
             </div>
-          </BrowserRouter>
+          </HashRouter>
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );
 }
 export default App;
+
