@@ -5,13 +5,21 @@ import { useQuery } from '@tanstack/react-query';
 const fetchIpInfo = async (ip: string) => {
   // If ip is empty, we fetch the user's own IP.
   // The API supports domain names directly.
-  const url = ip ? `https://api.freeipapi.com/v1/json/${ip}` : `https://api.freeipapi.com/v1/json/`;
+  const url = ip ? `https://ipinfo.io/${ip}/json` : `https://ipinfo.io/json`;
   const response = await fetch(url);
-  const data = await response.json();
+  
   if (!response.ok) {
-    throw new Error(data.message || 'An error occurred while fetching IP information.');
+    try {
+      const errorData = await response.json();
+      // ipinfo.io uses `error.message` for some errors.
+      throw new Error(errorData.error?.message || errorData.message || `An error occurred. Status: ${response.status}`);
+    } catch (e) {
+      // If parsing JSON fails, it's not a JSON error response.
+      throw new Error(`Request failed with status: ${response.status} ${response.statusText}`);
+    }
   }
-  return data;
+
+  return response.json();
 };
 
 export const useIpLookup = () => {
