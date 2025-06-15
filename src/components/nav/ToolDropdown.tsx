@@ -35,7 +35,12 @@ const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, conten
       </DropdownMenuTrigger>
       <DropdownMenuContent className={`border-border bg-background/95 backdrop-blur-md ${contentWidth}`}>
         {tools.map((tool) => (
-          <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
+          <DropdownMenuItem
+            key={tool.path}
+            onClick={() => navigate(tool.path)}
+            onPointerEnter={() => navigate(tool.path)}
+            className="cursor-pointer hover:bg-accent hover:text-accent-foreground"
+          >
             {tool.name}
           </DropdownMenuItem>
         ))}
