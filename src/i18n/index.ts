@@ -46,6 +46,9 @@ const resources = {
           extractValue: 'Extract Value',
           extractPlaceholder: 'e.g., data.users[0].name',
           extractedValueTitle: 'Extracted Value',
+          convertedToYamlTitle: 'Converted to YAML',
+          convertedToXmlTitle: 'Converted to XML',
+          convertedToCsvTitle: 'Converted to CSV',
         },
         network: {
           title: 'Network Tools',
@@ -143,6 +146,9 @@ const resources = {
           extractValue: '提取值',
           extractPlaceholder: '例如: data.users[0].name',
           extractedValueTitle: '提取的值',
+          convertedToYamlTitle: '已转换为 YAML',
+          convertedToXmlTitle: '已转换为 XML',
+          convertedToCsvTitle: '已转换为 CSV',
         },
         network: {
           title: '网络工具',
@@ -240,6 +246,9 @@ const resources = {
           extractValue: '提取值',
           extractPlaceholder: '例如: data.users[0].name',
           extractedValueTitle: '提取的值',
+          convertedToYamlTitle: '已轉換為 YAML',
+          convertedToXmlTitle: '已轉換為 XML',
+          convertedToCsvTitle: '已轉換為 CSV',
         },
         network: {
           title: '網路工具',
@@ -337,6 +346,9 @@ const resources = {
           extractValue: '値を抽出',
           extractPlaceholder: '例: data.users[0].name',
           extractedValueTitle: '抽出された値',
+          convertedToYamlTitle: 'YAMLに変換済み',
+          convertedToXmlTitle: 'XMLに変換済み',
+          convertedToCsvTitle: 'CSVに変換済み',
         },
         network: {
           title: 'ネットワークツール',

@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';
@@ -30,7 +29,8 @@ export const useJsonTool = () => {
   const lastValidJsonRef = useRef<string | null>(null);
   const isMinifyingRef = useRef(false);
   const [extractPath, setExtractPath] = useState('');
-  const [extractedValue, setExtractedValue] = useState<string | null>(null);
+  const [outputContent, setOutputContent] = useState<string | null>(null);
+  const [outputTitle, setOutputTitle] = useState<string | null>(null);
 
   // 实时校验并自动格式化 JSON
   const validateAndFormatJson = (jsonString: string) => {
@@ -38,7 +38,8 @@ export const useJsonTool = () => {
       setValidationError(null);
       setIsValid(true);
       lastValidJsonRef.current = null;
-      setExtractedValue(null);
+      setOutputContent(null);
+      setOutputTitle(null);
       return jsonString;
     }
     try {
@@ -49,7 +50,8 @@ export const useJsonTool = () => {
       return lastValidJsonRef.current;
     } catch (error) {
       setIsValid(false);
-      setExtractedValue(null);
+      setOutputContent(null);
+      setOutputTitle(null);
       if (error instanceof SyntaxError) {
         const errorMessage = error.message;
         const match = errorMessage.match(/at position (\d+)/);
@@ -90,11 +92,13 @@ export const useJsonTool = () => {
   const handleInputChange = (value: string) => {
     setInput(value);
     setIsMinified(false);
-    setExtractedValue(null);
+    setOutputContent(null);
+    setOutputTitle(null);
   };
 
   const handleToggleMinifyFormat = () => {
-    setExtractedValue(null);
+    setOutputContent(null);
+    setOutputTitle(null);
     if (!isValid || !input.trim()) {
       toast({
         title: i18n.t('toasts.common.error'),
@@ -137,7 +141,8 @@ export const useJsonTool = () => {
   };
 
   const copyToClipboard = () => {
-    setExtractedValue(null);
+    setOutputContent(null);
+    setOutputTitle(null);
     if (!input.trim()) {
       toast({
         title: i18n.t('toasts.common.info'),
@@ -158,7 +163,8 @@ export const useJsonTool = () => {
     setIsValid(true);
     setIsMinified(false);
     setExtractPath('');
-    setExtractedValue(null);
+    setOutputContent(null);
+    setOutputTitle(null);
   };
 
   const handleExtractValue = () => {
@@ -176,16 +182,19 @@ export const useJsonTool = () => {
       const value = getValueByPath(parsedJson, extractPath);
 
       if (value === undefined) {
-        setExtractedValue(null);
+        setOutputContent(null);
+        setOutputTitle(null);
         toast({ title: i18n.t('toasts.common.notFound'), description: i18n.t('toasts.error.notFound'), variant: 'destructive' });
       } else {
         const resultString = JSON.stringify(value, null, 2);
-        setExtractedValue(resultString);
+        setOutputContent(resultString);
+        setOutputTitle(i18n.t('tools.json.extractedValueTitle'));
         navigator.clipboard.writeText(resultString);
         toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.extractedAndCopied') });
       }
     } catch (error) {
-      setExtractedValue(null);
+      setOutputContent(null);
+      setOutputTitle(null);
       toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.extractError'), variant: 'destructive' });
     }
   };
@@ -198,9 +207,13 @@ export const useJsonTool = () => {
     try {
       const parsed = JSON.parse(input);
       const yamlString = toYaml(parsed);
+      setOutputContent(yamlString);
+      setOutputTitle(i18n.t('tools.json.convertedToYamlTitle'));
       navigator.clipboard.writeText(yamlString);
       toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.convertedToYamlAndCopied') });
     } catch (error) {
+      setOutputContent(null);
+      setOutputTitle(null);
       toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.conversionFailed'), variant: 'destructive' });
     }
   };
@@ -213,9 +226,13 @@ export const useJsonTool = () => {
     try {
       const parsed = JSON.parse(input);
       const xmlString = toXml('root', parsed, {});
+      setOutputContent(xmlString);
+      setOutputTitle(i18n.t('tools.json.convertedToXmlTitle'));
       navigator.clipboard.writeText(xmlString);
       toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.convertedToXmlAndCopied') });
     } catch (error) {
+      setOutputContent(null);
+      setOutputTitle(null);
       toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.conversionFailed'), variant: 'destructive' });
     }
   };
@@ -233,9 +250,13 @@ export const useJsonTool = () => {
       }
       const csvParser = new CsvParser();
       const csvString = csvParser.parse(parsed);
+      setOutputContent(csvString);
+      setOutputTitle(i18n.t('tools.json.convertedToCsvTitle'));
       navigator.clipboard.writeText(csvString);
       toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.convertedToCsvAndCopied') });
     } catch (error) {
+      setOutputContent(null);
+      setOutputTitle(null);
       toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.conversionFailed'), variant: 'destructive' });
     }
   };
@@ -245,7 +266,8 @@ export const useJsonTool = () => {
     handleInputChange,
     isValid,
     validationError,
-    extractedValue,
+    outputContent,
+    outputTitle,
     handleToggleMinifyFormat,
     copyToClipboard,
     clearAll,

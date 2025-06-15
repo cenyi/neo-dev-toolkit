@@ -13,7 +13,8 @@ const JsonTool: React.FC = () => {
     handleInputChange,
     isValid,
     validationError,
-    extractedValue,
+    outputContent,
+    outputTitle,
     handleToggleMinifyFormat,
     copyToClipboard,
     clearAll,
@@ -51,8 +52,8 @@ const JsonTool: React.FC = () => {
             validationError={validationError}
           />
         </div>
-        <div className={`flex-1 flex-col min-h-0 min-w-0 ${extractedValue === null ? 'hidden' : 'flex'}`}>
-          <JsonResultDisplay extractedValue={extractedValue} />
+        <div className={`flex-1 flex-col min-h-0 min-w-0 ${outputContent === null ? 'hidden' : 'flex'}`}>
+          <JsonResultDisplay outputContent={outputContent} title={outputTitle} />
         </div>
       </div>
     </div>

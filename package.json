@@ -53,6 +53,7 @@
     "input-otp": "^1.2.4",
     "js-beautify": "^1.15.4",
     "js-yaml": "^4.1.0",
+    "js2xmlparser": "^5.0.0",
     "json2csv": "^6.0.0-alpha.2",
     "lucide-react": "^0.462.0",
     "mermaid": "^11.6.0",
