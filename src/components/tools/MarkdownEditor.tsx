@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useTranslation } from 'react-i18next';
 import { useMarkdownEditor } from '@/hooks/useMarkdownEditor';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -14,18 +15,19 @@ import '@/styles/markdown.css';
 const MarkdownEditor: React.FC = () => {
   const { input, setInput } = useMarkdownEditor();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(input);
       toast({
-        title: "已复制",
-        description: "Markdown内容已复制到剪贴板",
+        title: t('editor.copied'),
+        description: t('editor.copySuccess'),
       });
     } catch (err) {
       toast({
-        title: "复制失败",
-        description: "无法复制到剪贴板",
+        title: t('editor.copyError'),
+        description: t('editor.copyErrorDesc'),
         variant: "destructive",
       });
     }
@@ -34,8 +36,8 @@ const MarkdownEditor: React.FC = () => {
   const handleClear = () => {
     setInput('');
     toast({
-      title: "已清空",
-      description: "Markdown内容已清空",
+      title: t('editor.cleared'),
+      description: t('editor.clearSuccess'),
     });
   };
 
@@ -56,7 +58,7 @@ const MarkdownEditor: React.FC = () => {
                     size="icon"
                     className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
                     onClick={handleCopy}
-                    title="复制内容"
+                    title={t('editor.copy')}
                   >
                     <Copy className="h-4 w-4" />
                   </Button>
@@ -65,7 +67,7 @@ const MarkdownEditor: React.FC = () => {
                     size="icon"
                     className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
                     onClick={handleClear}
-                    title="清空内容"
+                    title={t('editor.clear')}
                   >
                     <X className="h-4 w-4" />
                   </Button>

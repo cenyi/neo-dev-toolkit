@@ -1,5 +1,7 @@
+
 import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
+import { useTranslation } from 'react-i18next';
 import { useMermaidEditor } from '@/hooks/useMermaidEditor';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 import SimpleCodeEditor from './SimpleCodeEditor';
@@ -20,19 +22,20 @@ const MermaidEditor: React.FC = () => {
   const { input, setInput, error, setError } = useMermaidEditor();
   const { theme } = useTheme();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const previewRef = useRef<HTMLDivElement>(null);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(input);
       toast({
-        title: "已复制",
-        description: "Mermaid内容已复制到剪贴板",
+        title: t('editor.copied'),
+        description: t('editor.copySuccess'),
       });
     } catch (err) {
       toast({
-        title: "复制失败",
-        description: "无法复制到剪贴板",
+        title: t('editor.copyError'),
+        description: t('editor.copyErrorDesc'),
         variant: "destructive",
       });
     }
@@ -41,8 +44,8 @@ const MermaidEditor: React.FC = () => {
   const handleClear = () => {
     setInput('');
     toast({
-      title: "已清空",
-      description: "Mermaid内容已清空",
+      title: t('editor.cleared'),
+      description: t('editor.clearSuccess'),
     });
   };
 
@@ -146,7 +149,7 @@ const MermaidEditor: React.FC = () => {
                       size="icon"
                       className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
                       onClick={handleCopy}
-                      title="复制内容"
+                      title={t('editor.copy')}
                     >
                       <Copy className="h-4 w-4" />
                     </Button>
@@ -155,7 +158,7 @@ const MermaidEditor: React.FC = () => {
                       size="icon"
                       className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
                       onClick={handleClear}
-                      title="清空内容"
+                      title={t('editor.clear')}
                     >
                       <X className="h-4 w-4" />
                     </Button>
@@ -177,17 +180,17 @@ const MermaidEditor: React.FC = () => {
                           variant="outline"
                           size="icon"
                           className="absolute top-4 right-4 z-10"
-                          title="下载图表"
+                          title={t('common.download')}
                         >
                           <Download className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem onClick={handleDownloadSVG}>
-                          下载 SVG
+                          {t('editor.downloadSvg')}
                         </DropdownMenuItem>
                         <DropdownMenuItem onClick={handleDownloadPNG}>
-                          下载 PNG
+                          {t('editor.downloadPng')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
