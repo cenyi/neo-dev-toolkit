@@ -1,9 +1,11 @@
 
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 const NotFound = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     console.error(
@@ -16,19 +18,19 @@ const NotFound = () => {
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center max-w-md mx-auto p-6">
         <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
-        <h2 className="text-2xl font-semibold text-foreground mb-4">页面未找到</h2>
+        <h2 className="text-2xl font-semibold text-foreground mb-4">{t('notFound.title')}</h2>
         <p className="text-muted-foreground mb-6">
-          抱歉，您访问的页面不存在或已被移动。
+          {t('notFound.description')}
         </p>
         <div className="space-y-4">
           <Link 
             to="/" 
             className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
           >
-            返回首页
+            {t('notFound.backToHome')}
           </Link>
           <p className="text-sm text-muted-foreground">
-            路径: {location.pathname}
+            {t('notFound.path')}: {location.pathname}
           </p>
         </div>
       </div>

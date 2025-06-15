@@ -17,6 +17,24 @@ export const en = {
       downloadSvg: 'Download SVG',
       downloadPng: 'Download PNG'
     },
+    underConstruction: {
+      description: 'This tool is under development, please stay tuned.'
+    },
+    notFound: {
+      title: 'Page Not Found',
+      description: 'Sorry, the page you are looking for does not exist or has been moved.',
+      backToHome: 'Back to Home',
+      path: 'Path'
+    },
+    encryption: {
+      algorithm: 'Algorithm',
+      selectAlgorithm: 'Select an algorithm',
+      inputText: 'Input Text',
+      inputPlaceholder: 'Enter text to process...',
+      output: 'Output',
+      outputPlaceholder: 'Processed output will appear here...',
+      regenerate: 'Regenerate'
+    },
     footer: {
       legal: 'Legal',
       company: 'Company',

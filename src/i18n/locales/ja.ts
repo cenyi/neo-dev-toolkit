@@ -144,6 +144,36 @@ export const ja = {
         emptyContent: 'コンテンツが空なので、コピーする必要はありません',
       },
     },
+    editor: {
+      copy: 'コンテンツをコピー',
+      clear: 'コンテンツをクリア',
+      copied: 'コピーしました',
+      copySuccess: 'コンテンツをクリップボードにコピーしました',
+      copyError: 'コピーに失敗しました',
+      copyErrorDesc: 'クリップボードにコピーできませんでした',
+      cleared: 'クリアしました',
+      clearSuccess: 'コンテンツをクリアしました',
+      downloadSvg: 'SVGをダウンロード',
+      downloadPng: 'PNGをダウンロード'
+    },
+    underConstruction: {
+      description: 'このツールは開発中です。お楽しみに。'
+    },
+    notFound: {
+      title: 'ページが見つかりません',
+      description: '申し訳ございませんが、お探しのページは存在しないか移動されました。',
+      backToHome: 'ホームに戻る',
+      path: 'パス'
+    },
+    encryption: {
+      algorithm: 'アルゴリズム',
+      selectAlgorithm: 'アルゴリズムを選択',
+      inputText: '入力テキスト',
+      inputPlaceholder: '処理するテキストを入力...',
+      output: '出力',
+      outputPlaceholder: '処理結果がここに表示されます...',
+      regenerate: '再生成'
+    },
     footer: {
       legal: '法務',
       company: '会社',

@@ -17,6 +17,24 @@ export const zhCN = {
       downloadSvg: '下载 SVG',
       downloadPng: '下载 PNG'
     },
+    underConstruction: {
+      description: '该工具正在开发中，敬请期待。'
+    },
+    notFound: {
+      title: '页面未找到',
+      description: '抱歉，您访问的页面不存在或已被移动。',
+      backToHome: '返回首页',
+      path: '路径'
+    },
+    encryption: {
+      algorithm: '算法',
+      selectAlgorithm: '选择算法',
+      inputText: '输入文本',
+      inputPlaceholder: '输入要处理的文本...',
+      output: '输出',
+      outputPlaceholder: '处理后的输出将在此显示...',
+      regenerate: '重新生成'
+    },
     footer: {
       legal: '法律',
       company: '公司',

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useEncryptionTool, Algorithm } from '@/hooks/useEncryptionTool';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
@@ -10,6 +11,7 @@ import { toast } from 'sonner';
 import CodeEditor from './CodeEditor';
 
 const EncryptionTool: React.FC = () => {
+  const { t } = useTranslation();
   const { input, setInput, output, algorithm, setAlgorithm, regenerate, algorithms } = useEncryptionTool();
 
   const currentAlgorithm = algorithms.find(a => a.value === algorithm);
@@ -17,7 +19,7 @@ const EncryptionTool: React.FC = () => {
   const handleCopy = () => {
     if (output) {
       navigator.clipboard.writeText(output);
-      toast.success("Copied to clipboard!");
+      toast.success(t('editor.copySuccess'));
     }
   };
 
@@ -25,71 +27,68 @@ const EncryptionTool: React.FC = () => {
     <div className="container mx-auto p-4">
       <Card>
         <CardHeader>
-          <CardTitle>{currentAlgorithm?.name || 'Encryption Tool'}</CardTitle>
-          <CardDescription>An all-in-one tool for hashing and generating UUIDs.</CardDescription>
+          <CardTitle>{t('tools.crypto.title')}</CardTitle>
+          <CardDescription>{t('tools.crypto.description')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="algorithm">Algorithm</Label>
-            <Select value={algorithm} onValueChange={(value) => setAlgorithm(value as Algorithm)}>
-              <SelectTrigger className="w-[280px]">
-                <SelectValue placeholder="Select an algorithm" />
+            <Label htmlFor="algorithm">{t('encryption.algorithm')}</Label>
+            <Select value={algorithm} onValueChange={(value: Algorithm) => setAlgorithm(value)}>
+              <SelectTrigger>
+                <SelectValue placeholder={t('encryption.selectAlgorithm')} />
               </SelectTrigger>
               <SelectContent>
-                {algorithms.map(algo => (
-                  <SelectItem key={algo.value} value={algo.value}>{algo.label}</SelectItem>
+                {algorithms.map((algo) => (
+                  <SelectItem key={algo.value} value={algo.value}>
+                    {algo.name}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="input-text" className="mb-2 block">Input</Label>
-              <div className="h-64 border rounded-md">
-                <CodeEditor
-                  value={input}
-                  onChange={setInput}
-                  placeholder={algorithm === 'uuid' ? 'Not applicable for UUID generation' : 'Enter or paste text here...'}
-                  readOnly={algorithm === 'uuid'}
-                />
+          <div className="space-y-2">
+            <Label htmlFor="input">{t('encryption.inputText')}</Label>
+            <CodeEditor
+              value={input}
+              onChange={setInput}
+              placeholder={t('encryption.inputPlaceholder')}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="output">{t('encryption.output')}</Label>
+              <div className="flex gap-2">
+                {algorithm === 'uuid' && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={regenerate}
+                    className="text-xs"
+                  >
+                    <RefreshCw size={14} className="mr-1" />
+                    {t('encryption.regenerate')}
+                  </Button>
+                )}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCopy}
+                  disabled={!output}
+                  className="text-xs"
+                >
+                  <Copy size={14} className="mr-1" />
+                  {t('common.copy')}
+                </Button>
               </div>
             </div>
-            <div>
-              <Label htmlFor="output-hash" className="mb-2 block">Output</Label>
-              <div className="relative">
-                <div className="h-64 border rounded-md">
-                  <CodeEditor
-                    value={output}
-                    readOnly
-                    onChange={() => {}}
-                    placeholder="Output will be displayed here"
-                  />
-                </div>
-                <div className="absolute top-2 right-2 flex space-x-2">
-                  {algorithm === 'uuid' && (
-                     <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={regenerate}
-                        aria-label="Regenerate UUID"
-                      >
-                        <RefreshCw className="h-4 w-4" />
-                      </Button>
-                  )}
-                  {output && (
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={handleCopy}
-                      aria-label="Copy output"
-                    >
-                      <Copy className="h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </div>
+            <CodeEditor
+              value={output}
+              onChange={() => {}}
+              readOnly
+              placeholder={t('encryption.outputPlaceholder')}
+            />
           </div>
         </CardContent>
       </Card>
