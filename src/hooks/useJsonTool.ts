@@ -245,12 +245,23 @@ export const useJsonTool = () => {
     }
     try {
       const parsed = JSON.parse(input);
-      if (!Array.isArray(parsed)) {
+      let dataToConvert = parsed;
+
+      // If it's a single object, wrap it in an array for the CSV converter
+      if (typeof dataToConvert === 'object' && dataToConvert !== null && !Array.isArray(dataToConvert)) {
+        dataToConvert = [dataToConvert];
+      }
+      
+      // The CSV converter needs an array of objects.
+      if (!Array.isArray(dataToConvert) || dataToConvert.some(item => typeof item !== 'object' || item === null)) {
+        setOutputContent(null);
+        setOutputTitle(null);
         toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.csvConversionRequiresArray'), variant: 'destructive' });
         return;
       }
+
       const csvParser = new CsvParser();
-      const csvString = csvParser.parse(parsed);
+      const csvString = csvParser.parse(dataToConvert);
       setOutputContent(csvString);
       setOutputTitle(i18n.t('tools.json.convertedToCsvTitle'));
       navigator.clipboard.writeText(csvString);
