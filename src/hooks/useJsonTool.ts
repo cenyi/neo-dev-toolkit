@@ -1,9 +1,10 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';
 import { dump as toYaml } from 'js-yaml';
-import { parse as toXml } from 'js2xmlparser';
-import { parse as json2csv } from 'json2csv';
+import toXml from 'js2xmlparser';
+import { Parser as CsvParser } from '@json2csv/plainjs';
 
 const getValueByPath = (obj: any, path: string): any => {
   try {
@@ -230,7 +231,8 @@ export const useJsonTool = () => {
         toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.csvConversionRequiresArray'), variant: 'destructive' });
         return;
       }
-      const csvString = json2csv(parsed);
+      const csvParser = new CsvParser();
+      const csvString = csvParser.parse(parsed);
       navigator.clipboard.writeText(csvString);
       toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.convertedToCsvAndCopied') });
     } catch (error) {
