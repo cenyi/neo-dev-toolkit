@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -53,14 +54,6 @@ const Navigation: React.FC = () => {
     { path: '/text-reverser', name: 'Text Reverser' },
     { path: '/whitespace-remover', name: 'Whitespace Remover' },
     { path: '/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' }
-  ];
-
-  const encryptionTools = [
-    { path: '/encryption?algorithm=md5', name: 'MD5 Hash Generator' },
-    { path: '/encryption?algorithm=sha1', name: 'SHA1 Hash Generator' },
-    { path: '/encryption?algorithm=sha256', name: 'SHA256 Hash Generator' },
-    { path: '/encryption?algorithm=sha512', name: 'SHA512 Hash Generator' },
-    { path: '/encryption?algorithm=uuid', name: 'UUID Generator' },
   ];
 
   const navItems = [{
@@ -155,27 +148,6 @@ const Navigation: React.FC = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md w-64">
                     {textTools.map((tool) => (
-                        <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
-                          {tool.name}
-                        </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              );
-            }
-            if (key === 'encryption') {
-              const isEncryptionPageActive = location.pathname === '/encryption';
-              return (
-                <DropdownMenu key={key}>
-                  <DropdownMenuTrigger asChild>
-                    <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${isEncryptionPageActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
-                      {Icon && <Icon size={16} />}
-                      <span>Encryption</span>
-                      <ChevronDown size={16} />
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md w-64">
-                    {encryptionTools.map((tool) => (
                         <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
                           {tool.name}
                         </DropdownMenuItem>
