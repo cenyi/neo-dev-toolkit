@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useLoremIpsumGenerator, GenerationType } from '@/hooks/useLoremIpsumGenerator';
 import { Textarea } from '@/components/ui/textarea';
@@ -9,43 +8,38 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { toast } from 'sonner';
 import { Copy } from 'lucide-react';
-
 const LoremIpsumGenerator: React.FC = () => {
-  const { count, setCount, type, setType, generatedText, generate } = useLoremIpsumGenerator();
-
+  const {
+    count,
+    setCount,
+    type,
+    setType,
+    generatedText,
+    generate
+  } = useLoremIpsumGenerator();
   useEffect(() => {
     generate();
   }, []);
-
   const handleCopy = () => {
     if (!generatedText) return;
     navigator.clipboard.writeText(generatedText);
     toast.success('Copied to clipboard!');
   };
-
-  return (
-    <div className="container mx-auto p-4">
+  return <div className="container mx-auto p-4">
       <Card>
         <CardHeader>
-          <CardTitle>乱数假文生成器 (Lorem Ipsum Generator)</CardTitle>
+          <CardTitle>Lorem Ipsum Generator</CardTitle>
           <CardDescription>Generate placeholder text for your designs.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-wrap items-end gap-4">
             <div className="space-y-2">
               <Label htmlFor="count">Count</Label>
-              <Input
-                id="count"
-                type="number"
-                value={count}
-                onChange={(e) => setCount(Math.max(1, Number(e.target.value)))}
-                min="1"
-                className="w-24"
-              />
+              <Input id="count" type="number" value={count} onChange={e => setCount(Math.max(1, Number(e.target.value)))} min="1" className="w-24" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="type">Type</Label>
-              <Select value={type} onValueChange={(value) => setType(value as GenerationType)}>
+              <Select value={type} onValueChange={value => setType(value as GenerationType)}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
@@ -58,23 +52,15 @@ const LoremIpsumGenerator: React.FC = () => {
             </div>
             <Button onClick={generate}>Generate</Button>
           </div>
-          {generatedText && (
-            <div className="relative">
-              <Textarea
-                value={generatedText}
-                readOnly
-                className="min-h-[300px] pr-20 bg-muted/50"
-              />
+          {generatedText && <div className="relative">
+              <Textarea value={generatedText} readOnly className="min-h-[300px] pr-20 bg-muted/50" />
               <Button onClick={handleCopy} variant="ghost" size="sm" className="absolute top-2 right-2">
-                <Copy size={16} className="mr-2"/>
+                <Copy size={16} className="mr-2" />
                 Copy
               </Button>
-            </div>
-          )}
+            </div>}
         </CardContent>
       </Card>
-    </div>
-  );
+    </div>;
 };
-
 export default LoremIpsumGenerator;
