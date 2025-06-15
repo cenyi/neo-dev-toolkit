@@ -4,7 +4,7 @@ import { useJsonDiff } from '@/hooks/useJsonDiff';
 import JsonEditor from './JsonEditor';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
-import 'jsondiffpatch/dist/formatters-styles/html.css';
+import '@/styles/jsondiffpatch.css';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 const JsonDiff: React.FC = () => {
