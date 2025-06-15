@@ -14,9 +14,11 @@ const JwtDecoder: React.FC = () => {
   const { token, setToken, decoded, clearAll } = useJwtDecoder();
 
   return (
-    <div className="p-4 space-y-4">
-       <div className="flex flex-wrap items-center gap-4">
-        <Button onClick={clearAll} variant="destructive">{t('common.clear', 'Clear')}</Button>
+    <div className="p-4 space-y-4 max-w-7xl mx-auto">
+      <div className="flex flex-wrap items-center gap-4">
+        <Button onClick={clearAll} variant="destructive">
+          {t('common.clear', 'Clear')}
+        </Button>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-4">
@@ -25,11 +27,12 @@ const JwtDecoder: React.FC = () => {
             <CardTitle>{t('tools.jwtDecoder.encodedToken', 'Encoded Token')}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-96 border rounded-md">
+            <div className="h-96">
               <CodeEditor
                 value={token}
                 onChange={setToken}
                 placeholder={t('tools.jwtDecoder.placeholder', 'Paste your JWT here')}
+                language="plaintext"
               />
             </div>
           </CardContent>
@@ -48,12 +51,14 @@ const JwtDecoder: React.FC = () => {
             <CardHeader>
               <CardTitle>{t('tools.jwtDecoder.header', 'Header')}</CardTitle>
             </CardHeader>
-            <CardContent className="h-[150px] overflow-y-auto">
-              <JsonEditor
-                value={decoded.header ? JSON.stringify(decoded.header, null, 2) : ''}
-                readOnly
-                placeholder={t('tools.jwtDecoder.headerPlaceholder', 'Decoded header will appear here')}
-              />
+            <CardContent>
+              <div className="h-[150px]">
+                <JsonEditor
+                  value={decoded.header ? JSON.stringify(decoded.header, null, 2) : ''}
+                  readOnly
+                  placeholder={t('tools.jwtDecoder.headerPlaceholder', 'Decoded header will appear here')}
+                />
+              </div>
             </CardContent>
           </Card>
 
@@ -61,12 +66,14 @@ const JwtDecoder: React.FC = () => {
             <CardHeader>
               <CardTitle>{t('tools.jwtDecoder.payload', 'Payload')}</CardTitle>
             </CardHeader>
-            <CardContent className="h-[250px] overflow-y-auto">
-              <JsonEditor
-                value={decoded.payload ? JSON.stringify(decoded.payload, null, 2) : ''}
-                readOnly
-                placeholder={t('tools.jwtDecoder.payloadPlaceholder', 'Decoded payload will appear here')}
-              />
+            <CardContent>
+              <div className="h-[250px]">
+                <JsonEditor
+                  value={decoded.payload ? JSON.stringify(decoded.payload, null, 2) : ''}
+                  readOnly
+                  placeholder={t('tools.jwtDecoder.payloadPlaceholder', 'Decoded payload will appear here')}
+                />
+              </div>
             </CardContent>
           </Card>
         </div>

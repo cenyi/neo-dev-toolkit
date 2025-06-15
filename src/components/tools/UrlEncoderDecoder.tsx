@@ -3,62 +3,94 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useUrlEncoderDecoder } from '@/hooks/useUrlEncoderDecoder';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Terminal } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import CodeEditor from './CodeEditor';
+import { AlertTriangle, Copy } from 'lucide-react';
+import { toast } from 'sonner';
 
 const UrlEncoderDecoder: React.FC = () => {
   const { t } = useTranslation();
   const { input, setInput, output, error, handleEncode, handleDecode, clearAll } = useUrlEncoderDecoder();
 
+  const handleCopy = () => {
+    if (output) {
+      navigator.clipboard.writeText(output);
+      toast.success(t('editor.copySuccess', 'Copied to clipboard'));
+    }
+  };
+
   return (
-    <div className="p-4 space-y-4">
-      <div className="flex flex-wrap items-center gap-4">
-        <Button onClick={handleEncode}>{t('tools.text.urlEncoder.encode')}</Button>
-        <Button onClick={handleDecode}>{t('tools.text.urlEncoder.decode')}</Button>
-        <Button onClick={clearAll} variant="destructive">{t('common.clear')}</Button>
-      </div>
+    <div className="container mx-auto p-4 max-w-4xl">
+      <div className="space-y-6">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold mb-2">{t('tools.url.title', 'URL Encoder / Decoder')}</h1>
+          <p className="text-muted-foreground">{t('tools.url.description', 'Encode or decode URLs for safe web transmission')}</p>
+        </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>{t('tools.text.urlEncoder.input')}</CardTitle>
+            <CardTitle>{t('tools.url.title', 'URL Encoder / Decoder')}</CardTitle>
+            <CardDescription>{t('tools.url.description', 'Encode or decode URLs for safe web transmission')}</CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="h-64 border rounded-md">
-              <CodeEditor
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="input">{t('url.input', 'Input Text')}</Label>
+              <Textarea
+                id="input"
                 value={input}
-                onChange={setInput}
-                placeholder={t('tools.text.urlEncoder.inputPlaceholder')}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={t('url.inputPlaceholder', 'Enter text or URL to encode/decode')}
+                className="min-h-[120px] font-mono"
               />
             </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>{t('tools.text.urlEncoder.output')}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="h-64 border rounded-md">
-              <CodeEditor
+
+            <div className="flex flex-wrap gap-2">
+              <Button onClick={handleEncode} disabled={!input.trim()}>
+                {t('url.encode', 'Encode')}
+              </Button>
+              <Button onClick={handleDecode} disabled={!input.trim()}>
+                {t('url.decode', 'Decode')}
+              </Button>
+              <Button onClick={clearAll} variant="outline">
+                {t('common.clear', 'Clear')}
+              </Button>
+            </div>
+
+            {error && (
+              <Alert variant="destructive">
+                <AlertTriangle className="h-4 w-4" />
+                <AlertTitle>{t('common.error', 'Error')}</AlertTitle>
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="output">{t('url.output', 'Output')}</Label>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCopy}
+                  disabled={!output}
+                  className="text-xs"
+                >
+                  <Copy size={14} className="mr-1" />
+                  {t('common.copy', 'Copy')}
+                </Button>
+              </div>
+              <Textarea
+                id="output"
                 value={output}
-                onChange={() => {}}
                 readOnly
-                placeholder={t('tools.text.urlEncoder.outputPlaceholder')}
+                placeholder={t('url.outputPlaceholder', 'Encoded/decoded result will appear here')}
+                className="min-h-[120px] font-mono bg-muted"
               />
             </div>
           </CardContent>
         </Card>
       </div>
-
-      {error && (
-        <Alert variant="destructive">
-          <Terminal className="h-4 w-4" />
-          <AlertTitle>{t('common.error')}</AlertTitle>
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
     </div>
   );
 };
