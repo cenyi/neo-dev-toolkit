@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -28,11 +29,11 @@ import MermaidEditor from "@/components/tools/MermaidEditor";
 import TimestampConverter from "@/components/tools/TimestampConverter";
 import TimezoneConverter from "@/components/tools/TimezoneConverter";
 import DateCalculator from "@/components/tools/DateCalculator";
-import ToolUnderConstruction from "./pages/ToolUnderConstruction";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import AboutUs from "./pages/AboutUs";
+import PageWrapper from "@/components/PageWrapper";
 import "@/styles/neumorphism.css";
 import "@/i18n";
 
@@ -50,41 +51,41 @@ function App() {
               <Navigation />
               <main className="flex-grow">
                 <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/json" element={<JsonTool />} />
-                  <Route path="/json-schema-validator" element={<JsonSchemaValidator />} />
-                  <Route path="/json-codegen" element={<JsonCodeGen />} />
-                  <Route path="/json-diff" element={<JsonDiff />} />
-                  <Route path="/json-mock" element={<JsonMock />} />
+                  <Route path="/" element={<PageWrapper title="DevTools Hub"><HomePage /></PageWrapper>} />
+                  <Route path="/json" element={<PageWrapper title="JSON Formatter & Validator"><JsonTool /></PageWrapper>} />
+                  <Route path="/json-schema-validator" element={<PageWrapper title="JSON Schema Validator"><JsonSchemaValidator /></PageWrapper>} />
+                  <Route path="/json-codegen" element={<PageWrapper title="Generate Code Types from JSON"><JsonCodeGen /></PageWrapper>} />
+                  <Route path="/json-diff" element={<PageWrapper title="JSON Diff Tool"><JsonDiff /></PageWrapper>} />
+                  <Route path="/json-mock" element={<PageWrapper title="JSON Mock Data Generator"><JsonMock /></PageWrapper>} />
                   {/* Network Tools */}
-                  <Route path="/network" element={<UrlEncoderDecoder />} />
-                  <Route path="/base64-encoder" element={<Base64EncoderDecoder />} />
-                  <Route path="/ip-lookup" element={<IpLookup />} />
-                  <Route path="/jwt-decoder" element={<JwtDecoder />} />
+                  <Route path="/network" element={<PageWrapper title="URL Encoder / Decoder"><UrlEncoderDecoder /></PageWrapper>} />
+                  <Route path="/base64-encoder" element={<PageWrapper title="Base64 Encoder / Decoder"><Base64EncoderDecoder /></PageWrapper>} />
+                  <Route path="/ip-lookup" element={<PageWrapper title="IP Lookup"><IpLookup /></PageWrapper>} />
+                  <Route path="/jwt-decoder" element={<PageWrapper title="JWT Decoder"><JwtDecoder /></PageWrapper>} />
                   {/* Text Tools */}
-                  <Route path="/text" element={<CaseConverter />} />
-                  <Route path="/case-converter" element={<CaseConverter />} />
-                  <Route path="/word-counter" element={<WordCounter />} />
-                  <Route path="/text-reverser" element={<TextReverser />} />
-                  <Route path="/whitespace-remover" element={<WhitespaceRemover />} />
-                  <Route path="/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
-                  <Route path="/markdown" element={<MarkdownEditor />} />
-                  <Route path="/mermaid" element={<MermaidEditor />} />
+                  <Route path="/text" element={<PageWrapper title="Case Converter"><CaseConverter /></PageWrapper>} />
+                  <Route path="/case-converter" element={<PageWrapper title="Case Converter"><CaseConverter /></PageWrapper>} />
+                  <Route path="/word-counter" element={<PageWrapper title="Word & Character Counter"><WordCounter /></PageWrapper>} />
+                  <Route path="/text-reverser" element={<PageWrapper title="Text Reverser"><TextReverser /></PageWrapper>} />
+                  <Route path="/whitespace-remover" element={<PageWrapper title="Whitespace Remover"><WhitespaceRemover /></PageWrapper>} />
+                  <Route path="/lorem-ipsum-generator" element={<PageWrapper title="Lorem Ipsum Generator"><LoremIpsumGenerator /></PageWrapper>} />
+                  <Route path="/markdown" element={<PageWrapper title="Markdown Editor"><MarkdownEditor /></PageWrapper>} />
+                  <Route path="/mermaid" element={<PageWrapper title="Mermaid Editor"><MermaidEditor /></PageWrapper>} />
 
                   {/* Time Tools */}
-                  <Route path="/timestamp-converter" element={<TimestampConverter />} />
-                  <Route path="/timezone-converter" element={<TimezoneConverter />} />
-                  <Route path="/date-calculator" element={<DateCalculator />} />
+                  <Route path="/timestamp-converter" element={<PageWrapper title="Timestamp Converter"><TimestampConverter /></PageWrapper>} />
+                  <Route path="/timezone-converter" element={<PageWrapper title="Timezone Converter"><TimezoneConverter /></PageWrapper>} />
+                  <Route path="/date-calculator" element={<PageWrapper title="Date Calculator"><DateCalculator /></PageWrapper>} />
 
                   {/* Encryption Tools */}
-                  <Route path="/encryption" element={<EncryptionTool />} />
+                  <Route path="/encryption" element={<PageWrapper title="Encryption Tool"><EncryptionTool /></PageWrapper>} />
 
                   {/* Footer Pages */}
-                  <Route path="/privacy" element={<PrivacyPolicy />} />
-                  <Route path="/terms" element={<TermsOfService />} />
-                  <Route path="/about" element={<AboutUs />} />
+                  <Route path="/privacy" element={<PageWrapper title="Privacy Policy"><PrivacyPolicy /></PageWrapper>} />
+                  <Route path="/terms" element={<PageWrapper title="Terms of Service"><TermsOfService /></PageWrapper>} />
+                  <Route path="/about" element={<PageWrapper title="About Us"><AboutUs /></PageWrapper>} />
 
-                  <Route path="*" element={<NotFound />} />
+                  <Route path="*" element={<PageWrapper title="404 Not Found"><NotFound /></PageWrapper>} />
                 </Routes>
               </main>
               <Footer />
