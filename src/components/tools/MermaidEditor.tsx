@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
 import { useMermaidEditor } from '@/hooks/useMermaidEditor';
@@ -6,9 +5,10 @@ import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/componen
 import SimpleCodeEditor from './SimpleCodeEditor';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal, Download } from 'lucide-react';
+import { Terminal, Download, Copy, X } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +19,32 @@ import {
 const MermaidEditor: React.FC = () => {
   const { input, setInput, error, setError } = useMermaidEditor();
   const { theme } = useTheme();
+  const { toast } = useToast();
   const previewRef = useRef<HTMLDivElement>(null);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(input);
+      toast({
+        title: "已复制",
+        description: "Mermaid内容已复制到剪贴板",
+      });
+    } catch (err) {
+      toast({
+        title: "复制失败",
+        description: "无法复制到剪贴板",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleClear = () => {
+    setInput('');
+    toast({
+      title: "已清空",
+      description: "Mermaid内容已清空",
+    });
+  };
 
   const handleDownloadSVG = () => {
     if (previewRef.current?.innerHTML && !error) {
@@ -114,11 +139,33 @@ const MermaidEditor: React.FC = () => {
           <div className="relative">
             <ResizablePanelGroup direction="horizontal" className="min-h-[60vh] rounded-lg border">
               <ResizablePanel defaultSize={50}>
-                <SimpleCodeEditor
-                  value={input}
-                  onChange={setInput}
-                  placeholder="Type your Mermaid syntax here..."
-                />
+                <div className="relative h-full">
+                  <div className="absolute top-2 right-2 z-10 flex gap-1">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
+                      onClick={handleCopy}
+                      title="复制内容"
+                    >
+                      <Copy className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
+                      onClick={handleClear}
+                      title="清空内容"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  <SimpleCodeEditor
+                    value={input}
+                    onChange={setInput}
+                    placeholder="Type your Mermaid syntax here..."
+                  />
+                </div>
               </ResizablePanel>
               <ResizableHandle withHandle />
               <ResizablePanel defaultSize={50}>

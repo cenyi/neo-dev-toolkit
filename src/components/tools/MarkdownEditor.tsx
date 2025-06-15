@@ -6,7 +6,7 @@ import { useMarkdownEditor } from '@/hooks/useMarkdownEditor';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Copy, Clear } from 'lucide-react';
+import { Copy, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import SimpleCodeEditor from './SimpleCodeEditor';
 import '@/styles/markdown.css';
@@ -67,7 +67,7 @@ const MarkdownEditor: React.FC = () => {
                     onClick={handleClear}
                     title="清空内容"
                   >
-                    <Clear className="h-4 w-4" />
+                    <X className="h-4 w-4" />
                   </Button>
                 </div>
                 <SimpleCodeEditor
