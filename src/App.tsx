@@ -25,6 +25,9 @@ import LoremIpsumGenerator from "@/components/tools/LoremIpsumGenerator";
 import EncryptionTool from "@/components/tools/EncryptionTool";
 import MarkdownEditor from "@/components/tools/MarkdownEditor";
 import MermaidEditor from "@/components/tools/MermaidEditor";
+import TimestampConverter from "@/components/tools/TimestampConverter";
+import TimezoneConverter from "@/components/tools/TimezoneConverter";
+import DateCalculator from "@/components/tools/DateCalculator";
 import ToolUnderConstruction from "./pages/ToolUnderConstruction";
 import NotFound from "./pages/NotFound";
 import "@/styles/neumorphism.css";
@@ -65,9 +68,9 @@ function App() {
                   <Route path="/mermaid" element={<MermaidEditor />} />
 
                   {/* Time Tools */}
-                  <Route path="/timestamp-converter" element={<ToolUnderConstruction />} />
-                  <Route path="/timezone-converter" element={<ToolUnderConstruction />} />
-                  <Route path="/date-calculator" element={<ToolUnderConstruction />} />
+                  <Route path="/timestamp-converter" element={<TimestampConverter />} />
+                  <Route path="/timezone-converter" element={<TimezoneConverter />} />
+                  <Route path="/date-calculator" element={<DateCalculator />} />
 
                   {/* Encryption Tools */}
                   <Route path="/encryption" element={<EncryptionTool />} />

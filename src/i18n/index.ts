@@ -9,7 +9,8 @@ const resources = {
         json: 'JSON Tools',
         network: 'Network Tools',
         text: 'Text Tools',
-        crypto: 'Encryption',
+        time: 'Time Tools',
+        encryption: 'Encryption',
         markdown: 'Markdown',
         mermaid: 'Mermaid'
       },
@@ -86,6 +87,33 @@ const resources = {
           title: 'Mermaid Diagrams',
           description: 'Create diagrams and flowcharts with Mermaid'
         },
+        timestampConverter: {
+          title: 'Timestamp Converter',
+          description: 'Convert between Unix timestamps and human-readable dates.',
+          timestamp: 'Timestamp',
+          timestampPlaceholder: 'e.g., 1672531200',
+          dateTime: 'Date & Time (UTC)',
+          current: 'Current'
+        },
+        timezoneConverter: {
+          title: 'Timezone Converter',
+          description: 'Convert dates and times between different timezones.',
+          sourceDateTime: 'Source Date & Time',
+          sourceTimezone: 'Source Timezone',
+          targetTimezone: 'Target Timezone',
+          convertedDateTime: 'Converted Date & Time'
+        },
+        dateCalculator: {
+          title: 'Date Calculator',
+          description: 'Add or subtract durations from a date.',
+          startDate: 'Start Date',
+          add: 'Add',
+          subtract: 'Subtract',
+          years: 'Years',
+          months: 'Months',
+          days: 'Days',
+          resultDate: 'Result Date'
+        },
       },
       toasts: {
         common: {
@@ -125,7 +153,8 @@ const resources = {
         json: 'JSON工具',
         network: '网络工具',
         text: '文本工具',
-        crypto: '加密工具',
+        time: '时间工具',
+        encryption: '加密工具',
         markdown: 'Markdown',
         mermaid: 'Mermaid图表'
       },
@@ -202,6 +231,33 @@ const resources = {
           title: 'Mermaid图表',
           description: '使用Mermaid创建图表和流程图'
         },
+        timestampConverter: {
+          title: '时间戳转换器',
+          description: '在Unix时间戳和人类可读日期之间进行转换。',
+          timestamp: '时间戳 (秒)',
+          timestampPlaceholder: '例如: 1672531200',
+          dateTime: '日期和时间 (UTC)',
+          current: '当前时间'
+        },
+        timezoneConverter: {
+          title: '时区转换器',
+          description: '在不同时区之间转换日期和时间。',
+          sourceDateTime: '源日期和时间',
+          sourceTimezone: '源时区',
+          targetTimezone: '目标时区',
+          convertedDateTime: '转换后的日期和时间'
+        },
+        dateCalculator: {
+          title: '日期计算器',
+          description: '对日期进行加减计算。',
+          startDate: '开始日期',
+          add: '增加',
+          subtract: '减少',
+          years: '年',
+          months: '月',
+          days: '日',
+          resultDate: '结果日期'
+        },
       },
       toasts: {
         common: {
@@ -241,7 +297,8 @@ const resources = {
         json: 'JSON工具',
         network: '網路工具',
         text: '文字工具',
-        crypto: '加密工具',
+        time: '時間工具',
+        encryption: '加密工具',
         markdown: 'Markdown',
         mermaid: 'Mermaid圖表'
       },
@@ -318,6 +375,33 @@ const resources = {
           title: 'Mermaid圖表',
           description: '使用Mermaid創建圖表和流程圖'
         },
+        timestampConverter: {
+          title: '時間戳轉換器',
+          description: '在Unix時間戳和人類可讀日期之間進行轉換。',
+          timestamp: '時間戳 (秒)',
+          timestampPlaceholder: '例如: 1672531200',
+          dateTime: '日期和時間 (UTC)',
+          current: '當前時間'
+        },
+        timezoneConverter: {
+          title: '時區轉換器',
+          description: '在不同時區之間轉換日期和時間。',
+          sourceDateTime: '源日期和時間',
+          sourceTimezone: '源時區',
+          targetTimezone: '目標時區',
+          convertedDateTime: '轉換後的日期和時間'
+        },
+        dateCalculator: {
+          title: '日期計算器',
+          description: '對日期進行加減計算。',
+          startDate: '開始日期',
+          add: '增加',
+          subtract: '減少',
+          years: '年',
+          months: '月',
+          days: '日',
+          resultDate: '結果日期'
+        },
       },
       toasts: {
         common: {
@@ -357,7 +441,8 @@ const resources = {
         json: 'JSONツール',
         network: 'ネットワークツール',
         text: 'テキストツール',
-        crypto: '暗号化ツール',
+        time: '時間ツール',
+        encryption: '暗号化ツール',
         markdown: 'Markdown',
         mermaid: 'Mermaid図'
       },
@@ -433,6 +518,33 @@ const resources = {
         mermaid: {
           title: 'Mermaid図表',
           description: 'Mermaidで図表とフローチャートを作成'
+        },
+        timestampConverter: {
+          title: 'タイムスタンプ変換',
+          description: 'Unixタイムスタンプと人間が読める日付を相互に変換します。',
+          timestamp: 'タイムスタンプ（秒）',
+          timestampPlaceholder: '例: 1672531200',
+          dateTime: '日時 (UTC)',
+          current: '現在時刻'
+        },
+        timezoneConverter: {
+          title: 'タイムゾーン変換',
+          description: '異なるタイムゾーン間で日時を変換します。',
+          sourceDateTime: '変換元の日時',
+          sourceTimezone: '変換元のタイムゾーン',
+          targetTimezone: '変換先のタイムゾーン',
+          convertedDateTime: '変換後の日時'
+        },
+        dateCalculator: {
+          title: '日付計算',
+          description: '日付に期間を足したり引いたりします。',
+          startDate: '開始日',
+          add: '加算',
+          subtract: '減算',
+          years: '年',
+          months: '月',
+          days: '日',
+          resultDate: '計算結果の日付'
         },
       },
       toasts: {
