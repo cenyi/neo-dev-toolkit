@@ -22,7 +22,7 @@ const IpLookup: React.FC = () => {
     <div className="p-4 space-y-4">
       <Card>
         <CardHeader>
-          <CardTitle>{t('tools.ipLookup.title', 'IP Address Lookup')}</CardTitle>
+          <CardTitle>{t('tools.text.ipLookup.title')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-2">
@@ -30,18 +30,18 @@ const IpLookup: React.FC = () => {
               value={ipAddress}
               onChange={(e) => setIpAddress(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder={t('tools.ipLookup.placeholder', 'Enter IP address or domain')}
+              placeholder={t('tools.text.ipLookup.placeholder')}
               className="flex-grow"
             />
             <Button onClick={handleLookup} disabled={isLoading || !ipAddress}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {t('tools.ipLookup.lookup', 'Lookup')}
+              {t('tools.text.ipLookup.lookup')}
             </Button>
             <Button onClick={handleMyIpLookup} disabled={isLoading}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {t('tools.ipLookup.myIp', 'Lookup My IP')}
+              {t('tools.text.ipLookup.myIp')}
             </Button>
-            <Button onClick={clear} variant="destructive" disabled={isLoading}>{t('common.clear', 'Clear')}</Button>
+            <Button onClick={clear} variant="destructive" disabled={isLoading}>{t('common.clear')}</Button>
           </div>
         </CardContent>
       </Card>
@@ -49,7 +49,7 @@ const IpLookup: React.FC = () => {
       {error && (
         <Alert variant="destructive">
           <Terminal className="h-4 w-4" />
-          <AlertTitle>{t('common.error', 'Error')}</AlertTitle>
+          <AlertTitle>{t('common.error')}</AlertTitle>
           <AlertDescription>{error.message}</AlertDescription>
         </Alert>
       )}
@@ -57,7 +57,7 @@ const IpLookup: React.FC = () => {
       {data && (
         <Card>
           <CardHeader>
-            <CardTitle>{t('tools.ipLookup.results', 'Lookup Results')}</CardTitle>
+            <CardTitle>{t('tools.text.ipLookup.results')}</CardTitle>
           </CardHeader>
           <CardContent>
             <pre className="p-4 bg-muted rounded-md overflow-x-auto text-sm">

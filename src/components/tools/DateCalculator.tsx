@@ -43,12 +43,12 @@ const DateCalculator: React.FC = () => {
     <div className="p-4 max-w-2xl mx-auto">
       <Card>
         <CardHeader>
-          <CardTitle>{t('tools.dateCalculator.title')}</CardTitle>
-          <CardDescription>{t('tools.dateCalculator.description')}</CardDescription>
+          <CardTitle>{t('tools.text.dateCalculator.title')}</CardTitle>
+          <CardDescription>{t('tools.text.dateCalculator.description')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <label htmlFor="start-date" className="text-sm font-medium">{t('tools.dateCalculator.startDate')}</label>
+            <label htmlFor="start-date" className="text-sm font-medium">{t('tools.text.dateCalculator.startDate')}</label>
             <Input
               id="start-date"
               type="datetime-local"
@@ -58,30 +58,30 @@ const DateCalculator: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <label className="text-sm font-medium">{t('tools.dateCalculator.add')}</label>
+                <label className="text-sm font-medium">{t('tools.text.dateCalculator.add')}</label>
                  <div className="grid grid-cols-3 gap-2 mt-1">
                     <div>
-                      <label htmlFor="years" className="text-xs text-muted-foreground">{t('tools.dateCalculator.years')}</label>
+                      <label htmlFor="years" className="text-xs text-muted-foreground">{t('tools.text.dateCalculator.years')}</label>
                       <Input id="years" type="number" value={years} onChange={e => setYears(e.target.value)} />
                     </div>
                     <div>
-                      <label htmlFor="months" className="text-xs text-muted-foreground">{t('tools.dateCalculator.months')}</label>
+                      <label htmlFor="months" className="text-xs text-muted-foreground">{t('tools.text.dateCalculator.months')}</label>
                       <Input id="months" type="number" value={months} onChange={e => setMonths(e.target.value)} />
                     </div>
                     <div>
-                      <label htmlFor="days" className="text-xs text-muted-foreground">{t('tools.dateCalculator.days')}</label>
+                      <label htmlFor="days" className="text-xs text-muted-foreground">{t('tools.text.dateCalculator.days')}</label>
                       <Input id="days" type="number" value={days} onChange={e => setDays(e.target.value)} />
                     </div>
                  </div>
             </div>
             <div>
-                 <label htmlFor="result-date" className="text-sm font-medium">{t('tools.dateCalculator.resultDate')}</label>
+                 <label htmlFor="result-date" className="text-sm font-medium">{t('tools.text.dateCalculator.resultDate')}</label>
                 <Input id="result-date" value={resultDate} readOnly className="font-mono mt-1"/>
             </div>
           </div>
           <div className="flex space-x-2">
-            <Button onClick={() => calculate('add')} className="flex-1">{t('tools.dateCalculator.add')}</Button>
-            <Button onClick={() => calculate('sub')} variant="outline" className="flex-1">{t('tools.dateCalculator.subtract')}</Button>
+            <Button onClick={() => calculate('add')} className="flex-1">{t('tools.text.dateCalculator.add')}</Button>
+            <Button onClick={() => calculate('sub')} variant="outline" className="flex-1">{t('tools.text.dateCalculator.subtract')}</Button>
           </div>
         </CardContent>
       </Card>

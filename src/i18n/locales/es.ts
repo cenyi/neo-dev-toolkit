@@ -1,9 +1,131 @@
 export const es = {
   translation: {
     nav: { home: 'Inicio', json: 'JSON', network: 'Red', text: 'Texto', time: 'Tiempo', encryption: 'Cifrado', markdown: 'Markdown', mermaid: 'Mermaid' },
-    common: { theme: 'Tema', language: 'Idioma', light: 'Claro', dark: 'Oscuro', copy: 'Copiar', clear: 'Limpiar', format: 'Formatear', minify: 'Minimizar', validate: 'Validar', convert: 'Convertir', encrypt: 'Cifrar', decrypt: 'Descifrar', preview: 'Vista previa', download: 'Descargar', toYaml: 'A YAML', toXml: 'A XML', toCsv: 'A CSV', blue: 'Azul', system: 'Sistema', comingSoon: 'Próximamente' },
+    common: { theme: 'Tema', language: 'Idioma', light: 'Claro', dark: 'Oscuro', copy: 'Copiar', clear: 'Limpiar', format: 'Formatear', minify: 'Minimizar', validate: 'Validar', convert: 'Convertir', encrypt: 'Cifrar', decrypt: 'Descifrar', preview: 'Vista previa', download: 'Descargar', toYaml: 'A YAML', toXml: 'A XML', toCsv: 'A CSV', blue: 'Azul', system: 'Sistema', comingSoon: 'Próximamente', error: 'Error' },
     home: { title: 'Centro de Herramientas para Desarrolladores', subtitle: 'Herramientas de desarrollo profesionales con diseño neumórfico moderno', description: 'Una colección completa de herramientas esenciales para desarrolladores que incluye formato JSON, procesamiento de texto, cifrado y más.' },
-    tools: { json: { title: 'Herramientas JSON', description: 'Formatear, validar y minimizar datos JSON' }, network: { title: 'Herramientas de Red', description: 'Codificación de URL, búsqueda de IP y utilidades de red' }, text: { title: 'Herramientas de Texto', description: 'Procesamiento de texto, conversión de mayúsculas y minúsculas y formato' }, crypto: { title: 'Herramientas de Cifrado', description: 'Generación de hash, utilidades de cifrado y descifrado' }, markdown: { title: 'Herramientas Markdown', description: 'Editor de Markdown con vista previa en vivo' }, mermaid: { title: 'Diagramas Mermaid', description: 'Crear diagramas y organigramas con Mermaid' } },
+    tools: { 
+      json: { 
+        title: 'Herramientas JSON', 
+        description: 'Formatear, validar y minimizar datos JSON',
+        fieldPath: 'Ruta del Campo',
+        extractPlaceholder: 'ej., $.user.name o $[0].id',
+        extractValue: 'Extraer Valor',
+        placeholder: 'Introduce o pega tu JSON aquí...',
+        extractedValueTitle: 'Valor Extraído'
+      },
+      network: { title: 'Herramientas de Red', description: 'Codificación de URL, búsqueda de IP y utilidades de red' }, 
+      text: { 
+        title: 'Herramientas de Texto', 
+        description: 'Procesamiento de texto, conversión de mayúsculas y minúsculas y formato',
+        caseConverter: {
+          title: 'Conversor de Mayúsculas/Minúsculas',
+          description: 'Convierte texto entre diferentes tipos de letras.',
+          placeholder: 'Introduce texto aquí...',
+          result: 'Resultado',
+          upperCase: 'MAYÚSCULAS',
+          lowerCase: 'minúsculas',
+          titleCase: 'Formato de Título',
+          sentenceCase: 'Formato de oración'
+        },
+        wordCounter: {
+          title: 'Contador de Palabras y Caracteres',
+          description: 'Cuenta palabras, caracteres, oraciones y párrafos en tu texto.',
+          placeholder: 'Escribe o pega tu texto aquí...',
+          words: 'Palabras',
+          characters: 'Caracteres',
+          charactersNoSpaces: 'Caracteres (sin espacios)',
+          sentences: 'Oraciones',
+          paragraphs: 'Párrafos'
+        },
+        textReverser: {
+          title: 'Inversor de Texto',
+          description: 'Invierte el orden de los caracteres del texto.',
+          placeholder: 'Introduce texto para invertir',
+          reversedText: 'Texto invertido'
+        },
+        whitespaceRemover: {
+          title: 'Eliminador de Espacios en Blanco',
+          description: 'Elimina espacios y saltos de línea innecesarios del texto.',
+          placeholder: 'Introduce texto aquí...',
+          result: 'Resultado',
+          removeAll: 'Eliminar Todos los Espacios',
+          removeTrim: 'Recortar Espacios Iniciales/Finales',
+          removeExtra: 'Eliminar Espacios Extra',
+          removeLines: 'Eliminar Saltos de Línea'
+        },
+        urlEncoder: {
+          title: 'Codificador/Decodificador URL',
+          description: 'Codifica y decodifica URLs',
+          input: 'Entrada',
+          output: 'Salida',
+          encode: 'Codificar',
+          decode: 'Decodificar',
+          inputPlaceholder: 'Introduce texto para codificar o decodificar',
+          outputPlaceholder: 'El resultado aparecerá aquí'
+        },
+        base64: {
+          title: 'Codificador/Decodificador Base64',
+          description: 'Codifica y decodifica texto Base64',
+          input: 'Entrada',
+          output: 'Salida',
+          encode: 'Codificar',
+          decode: 'Decodificar',
+          inputPlaceholder: 'Introduce texto para codificar o decodificar',
+          outputPlaceholder: 'El resultado aparecerá aquí'
+        },
+        ipLookup: {
+          title: 'Búsqueda de Dirección IP',
+          placeholder: 'Introduce dirección IP o dominio',
+          lookup: 'Buscar',
+          myIp: 'Buscar Mi IP',
+          results: 'Resultados de Búsqueda'
+        },
+        dateCalculator: {
+          title: 'Calculadora de Fechas',
+          description: 'Suma o resta años, meses y días de una fecha dada',
+          startDate: 'Fecha de Inicio',
+          add: 'Sumar',
+          subtract: 'Restar',
+          years: 'Años',
+          months: 'Meses',
+          days: 'Días',
+          resultDate: 'Fecha Resultado'
+        }
+      },
+      crypto: { title: 'Herramientas de Cifrado', description: 'Generación de hash, utilidades de cifrado y descifrado' }, 
+      markdown: { title: 'Herramientas Markdown', description: 'Editor de Markdown con vista previa en vivo' }, 
+      mermaid: { title: 'Diagramas Mermaid', description: 'Crear diagramas y organigramas con Mermaid' } 
+    },
+    editor: {
+      copy: 'Copiar contenido',
+      clear: 'Limpiar contenido',
+      copied: 'Copiado',
+      copySuccess: 'Contenido copiado al portapapeles',
+      copyError: 'Error al copiar',
+      copyErrorDesc: 'No se pudo copiar al portapapeles',
+      cleared: 'Limpiado',
+      clearSuccess: 'Contenido limpiado',
+      downloadSvg: 'Descargar SVG',
+      downloadPng: 'Descargar PNG'
+    },
+    underConstruction: {
+      description: 'Esta herramienta está en desarrollo, manténganse atentos.'
+    },
+    notFound: {
+      title: 'Página No Encontrada',
+      description: 'Lo sentimos, la página que busca no existe o ha sido movida.',
+      backToHome: 'Volver al Inicio',
+      path: 'Ruta'
+    },
+    encryption: {
+      algorithm: 'Algoritmo',
+      selectAlgorithm: 'Selecciona un algoritmo',
+      inputText: 'Texto de Entrada',
+      inputPlaceholder: 'Introduce texto para procesar...',
+      output: 'Salida',
+      outputPlaceholder: 'La salida procesada aparecerá aquí...',
+      regenerate: 'Regenerar'
+    },
     footer: {
       legal: 'Legal',
       company: 'Empresa',

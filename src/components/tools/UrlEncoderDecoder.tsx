@@ -15,29 +15,29 @@ const UrlEncoderDecoder: React.FC = () => {
   return (
     <div className="p-4 space-y-4">
       <div className="flex flex-wrap items-center gap-4">
-        <Button onClick={handleEncode}>{t('tools.urlEncoder.encode', 'Encode')}</Button>
-        <Button onClick={handleDecode}>{t('tools.urlEncoder.decode', 'Decode')}</Button>
-        <Button onClick={clearAll} variant="destructive">{t('common.clear', 'Clear')}</Button>
+        <Button onClick={handleEncode}>{t('tools.text.urlEncoder.encode')}</Button>
+        <Button onClick={handleDecode}>{t('tools.text.urlEncoder.decode')}</Button>
+        <Button onClick={clearAll} variant="destructive">{t('common.clear')}</Button>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>{t('tools.urlEncoder.input', 'Input')}</CardTitle>
+            <CardTitle>{t('tools.text.urlEncoder.input')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-64 border rounded-md">
               <CodeEditor
                 value={input}
                 onChange={setInput}
-                placeholder={t('tools.urlEncoder.inputPlaceholder', 'Enter text to encode or decode')}
+                placeholder={t('tools.text.urlEncoder.inputPlaceholder')}
               />
             </div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>{t('tools.urlEncoder.output', 'Output')}</CardTitle>
+            <CardTitle>{t('tools.text.urlEncoder.output')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-64 border rounded-md">
@@ -45,7 +45,7 @@ const UrlEncoderDecoder: React.FC = () => {
                 value={output}
                 onChange={() => {}}
                 readOnly
-                placeholder={t('tools.urlEncoder.outputPlaceholder', 'Result will appear here')}
+                placeholder={t('tools.text.urlEncoder.outputPlaceholder')}
               />
             </div>
           </CardContent>
@@ -55,7 +55,7 @@ const UrlEncoderDecoder: React.FC = () => {
       {error && (
         <Alert variant="destructive">
           <Terminal className="h-4 w-4" />
-          <AlertTitle>{t('common.error', 'Error')}</AlertTitle>
+          <AlertTitle>{t('common.error')}</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}

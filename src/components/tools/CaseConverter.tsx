@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useCaseConverter } from '@/hooks/useCaseConverter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -8,6 +9,7 @@ import { toast } from "sonner";
 import SimpleCodeEditor from './SimpleCodeEditor';
 
 const CaseConverter: React.FC = () => {
+  const { t } = useTranslation();
   const {
     input,
     setInput,
@@ -21,15 +23,15 @@ const CaseConverter: React.FC = () => {
   const handleCopy = () => {
     if (!output) return;
     navigator.clipboard.writeText(output);
-    toast.success("Copied to clipboard!");
+    toast.success(t('editor.copySuccess'));
   };
   
   return (
     <div className="container mx-auto p-4">
       <Card>
         <CardHeader>
-          <CardTitle>Case Converter</CardTitle>
-          <CardDescription>Convert text between different letter cases.</CardDescription>
+          <CardTitle>{t('tools.text.caseConverter.title')}</CardTitle>
+          <CardDescription>{t('tools.text.caseConverter.description')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
@@ -37,7 +39,7 @@ const CaseConverter: React.FC = () => {
               <SimpleCodeEditor
                 value={input}
                 onChange={setInput}
-                placeholder="Enter text here..."
+                placeholder={t('tools.text.caseConverter.placeholder')}
               />
             </div>
             <ArrowRight className="hidden md:block" />
@@ -47,7 +49,7 @@ const CaseConverter: React.FC = () => {
                   value={output}
                   onChange={() => {}}
                   readOnly
-                  placeholder="Result"
+                  placeholder={t('tools.text.caseConverter.result')}
                 />
               </div>
               {output && (
@@ -58,10 +60,10 @@ const CaseConverter: React.FC = () => {
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button onClick={toUpperCase}>UPPER CASE</Button>
-            <Button onClick={toLowerCase}>lower case</Button>
-            <Button onClick={toTitleCase}>Title Case</Button>
-            <Button onClick={toSentenceCase}>Sentence case</Button>
+            <Button onClick={toUpperCase}>{t('tools.text.caseConverter.upperCase')}</Button>
+            <Button onClick={toLowerCase}>{t('tools.text.caseConverter.lowerCase')}</Button>
+            <Button onClick={toTitleCase}>{t('tools.text.caseConverter.titleCase')}</Button>
+            <Button onClick={toSentenceCase}>{t('tools.text.caseConverter.sentenceCase')}</Button>
           </div>
         </CardContent>
       </Card>

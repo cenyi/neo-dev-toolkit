@@ -2,7 +2,7 @@
 export const en = {
   translation: {
     nav: { home: 'Home', json: 'JSON', network: 'Network', text: 'Text', time: 'Time', encryption: 'Encryption', markdown: 'Markdown', mermaid: 'Mermaid' },
-    common: { theme: 'Theme', language: 'Language', light: 'Light', dark: 'Dark', copy: 'Copy', clear: 'Clear', format: 'Format', minify: 'Minify', validate: 'Validate', convert: 'Convert', encrypt: 'Encrypt', decrypt: 'Decrypt', preview: 'Preview', download: 'Download', toYaml: 'To YAML', toXml: 'To XML', toCsv: 'To CSV', blue: 'Blue', system: 'System', comingSoon: 'Coming Soon' },
+    common: { theme: 'Theme', language: 'Language', light: 'Light', dark: 'Dark', copy: 'Copy', clear: 'Clear', format: 'Format', minify: 'Minify', validate: 'Validate', convert: 'Convert', encrypt: 'Encrypt', decrypt: 'Decrypt', preview: 'Preview', download: 'Download', toYaml: 'To YAML', toXml: 'To XML', toCsv: 'To CSV', blue: 'Blue', system: 'System', comingSoon: 'Coming Soon', error: 'Error' },
     home: { title: 'Developer Tools Hub', subtitle: 'Professional development tools with modern neumorphic design', description: 'A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more.' },
     tools: { 
       json: { 
@@ -15,7 +15,84 @@ export const en = {
         extractedValueTitle: 'Extracted Value'
       }, 
       network: { title: 'Network Tools', description: 'URL encoding, IP lookup, and network utilities' }, 
-      text: { title: 'Text Tools', description: 'Text processing, case conversion, and formatting' }, 
+      text: { 
+        title: 'Text Tools', 
+        description: 'Text processing, case conversion, and formatting',
+        caseConverter: {
+          title: 'Case Converter',
+          description: 'Convert text between different letter cases.',
+          placeholder: 'Enter text here...',
+          result: 'Result',
+          upperCase: 'UPPER CASE',
+          lowerCase: 'lower case',
+          titleCase: 'Title Case',
+          sentenceCase: 'Sentence case'
+        },
+        wordCounter: {
+          title: 'Word & Character Counter',
+          description: 'Count words, characters, sentences, and paragraphs in your text.',
+          placeholder: 'Type or paste your text here...',
+          words: 'Words',
+          characters: 'Characters',
+          charactersNoSpaces: 'Characters (no spaces)',
+          sentences: 'Sentences',
+          paragraphs: 'Paragraphs'
+        },
+        textReverser: {
+          title: 'Text Reverser',
+          description: 'Reverse the characters of your text.',
+          placeholder: 'Enter text to reverse',
+          reversedText: 'Reversed text'
+        },
+        whitespaceRemover: {
+          title: 'Whitespace Remover',
+          description: 'Remove unnecessary spaces and line breaks from your text.',
+          placeholder: 'Enter text here...',
+          result: 'Result',
+          removeAll: 'Remove All Spaces',
+          removeTrim: 'Trim Leading/Trailing',
+          removeExtra: 'Remove Extra Spaces',
+          removeLines: 'Remove Line Breaks'
+        },
+        urlEncoder: {
+          title: 'URL Encoder / Decoder',
+          description: 'Encode and decode URLs',
+          input: 'Input',
+          output: 'Output',
+          encode: 'Encode',
+          decode: 'Decode',
+          inputPlaceholder: 'Enter text to encode or decode',
+          outputPlaceholder: 'Result will appear here'
+        },
+        base64: {
+          title: 'Base64 Encoder / Decoder',
+          description: 'Encode and decode Base64 text',
+          input: 'Input',
+          output: 'Output',
+          encode: 'Encode',
+          decode: 'Decode',
+          inputPlaceholder: 'Enter text to encode or decode',
+          outputPlaceholder: 'Result will appear here'
+        },
+        ipLookup: {
+          title: 'IP Address Lookup',
+          placeholder: 'Enter IP address or domain',
+          lookup: 'Lookup',
+          myIp: 'Lookup My IP',
+          results: 'Lookup Results'
+        },
+        dateCalculator: {
+          title: 'Date Calculator',
+          description: 'Add or subtract years, months, and days from a given date',
+          startDate: 'Start Date',
+          add: 'Add',
+          subtract: 'Subtract',
+          years: 'Years',
+          months: 'Months',
+          days: 'Days',
+          resultDate: 'Result Date'
+        }
+      },
       crypto: { title: 'Crypto Tools', description: 'Hash generation, encryption and decryption utilities' }, 
       markdown: { title: 'Markdown Tools', description: 'Markdown editor with live preview' }, 
       mermaid: { title: 'Mermaid Diagrams', description: 'Create diagrams and flowcharts with Mermaid' } 

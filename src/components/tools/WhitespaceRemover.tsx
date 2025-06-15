@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useWhitespaceRemover } from '@/hooks/useWhitespaceRemover';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -8,6 +9,7 @@ import { toast } from 'sonner';
 import SimpleCodeEditor from './SimpleCodeEditor';
 
 const WhitespaceRemover: React.FC = () => {
+  const { t } = useTranslation();
   const {
     input,
     setInput,
@@ -20,13 +22,13 @@ const WhitespaceRemover: React.FC = () => {
   const handleCopy = () => {
     if (!output) return;
     navigator.clipboard.writeText(output);
-    toast.success("Copied to clipboard!");
+    toast.success(t('editor.copySuccess'));
   };
   return <div className="container mx-auto p-4">
       <Card>
         <CardHeader>
-          <CardTitle>Whitespace Remover</CardTitle>
-          <CardDescription>Remove unnecessary spaces and line breaks from your text.</CardDescription>
+          <CardTitle>{t('tools.text.whitespaceRemover.title')}</CardTitle>
+          <CardDescription>{t('tools.text.whitespaceRemover.description')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
@@ -34,14 +36,14 @@ const WhitespaceRemover: React.FC = () => {
               <SimpleCodeEditor
                 value={input}
                 onChange={setInput}
-                placeholder="Enter text here..."
+                placeholder={t('tools.text.whitespaceRemover.placeholder')}
               />
             </div>
             <ArrowRight className="hidden md:block" />
             <div className="relative">
               <div className="min-h-[200px] border rounded-md">
                 <SimpleCodeEditor
-                  placeholder="Result"
+                  placeholder={t('tools.text.whitespaceRemover.result')}
                   value={output}
                   readOnly
                   onChange={()=>{}}
@@ -53,10 +55,10 @@ const WhitespaceRemover: React.FC = () => {
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button onClick={removeAll}>Remove All Spaces</Button>
-            <Button onClick={removeLeadingTrailing}>Trim Leading/Trailing</Button>
-            <Button onClick={removeExtra}>Remove Extra Spaces</Button>
-            <Button onClick={removeLines}>Remove Line Breaks</Button>
+            <Button onClick={removeAll}>{t('tools.text.whitespaceRemover.removeAll')}</Button>
+            <Button onClick={removeLeadingTrailing}>{t('tools.text.whitespaceRemover.removeTrim')}</Button>
+            <Button onClick={removeExtra}>{t('tools.text.whitespaceRemover.removeExtra')}</Button>
+            <Button onClick={removeLines}>{t('tools.text.whitespaceRemover.removeLines')}</Button>
           </div>
         </CardContent>
       </Card>

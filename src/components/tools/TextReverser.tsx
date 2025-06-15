@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTextReverser } from '@/hooks/useTextReverser';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowLeftRight, Copy } from 'lucide-react';
@@ -8,6 +9,7 @@ import { toast } from 'sonner';
 import SimpleCodeEditor from './SimpleCodeEditor';
 
 const TextReverser: React.FC = () => {
+  const { t } = useTranslation();
   const {
     input,
     setInput,
@@ -17,15 +19,15 @@ const TextReverser: React.FC = () => {
   const handleCopy = () => {
     if (!output) return;
     navigator.clipboard.writeText(output);
-    toast.success("Copied to clipboard!");
+    toast.success(t('editor.copySuccess'));
   };
   
   return (
     <div className="container mx-auto p-4">
       <Card>
         <CardHeader>
-          <CardTitle>Text Reverser</CardTitle>
-          <CardDescription>Reverse the characters of your text.</CardDescription>
+          <CardTitle>{t('tools.text.textReverser.title')}</CardTitle>
+          <CardDescription>{t('tools.text.textReverser.description')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
@@ -33,7 +35,7 @@ const TextReverser: React.FC = () => {
               <SimpleCodeEditor
                 value={input}
                 onChange={setInput}
-                placeholder="Enter text to reverse"
+                placeholder={t('tools.text.textReverser.placeholder')}
               />
             </div>
             <ArrowLeftRight className="mx-4 hidden md:block" />
@@ -43,7 +45,7 @@ const TextReverser: React.FC = () => {
                   value={output}
                   onChange={() => {}}
                   readOnly
-                  placeholder="Reversed text"
+                  placeholder={t('tools.text.textReverser.reversedText')}
                 />
               </div>
               {output && (

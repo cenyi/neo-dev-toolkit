@@ -2,7 +2,7 @@
 export const zhCN = {
   translation: {
     nav: { home: '首页', json: 'JSON', network: '网络', text: '文本', time: '时间', encryption: '加密', markdown: 'Markdown', mermaid: 'Mermaid' },
-    common: { theme: '主题', language: '语言', light: '浅色', dark: '深色', copy: '复制', clear: '清空', format: '格式化', minify: '压缩', validate: '验证', convert: '转换', encrypt: '加密', decrypt: '解密', preview: '预览', download: '下载', toYaml: '转换为 YAML', toXml: '转换为 XML', toCsv: '转换为 CSV', blue: '蓝色', system: '系统', comingSoon: '即将推出' },
+    common: { theme: '主题', language: '语言', light: '浅色', dark: '深色', copy: '复制', clear: '清空', format: '格式化', minify: '压缩', validate: '验证', convert: '转换', encrypt: '加密', decrypt: '解密', preview: '预览', download: '下载', toYaml: '转换为 YAML', toXml: '转换为 XML', toCsv: '转换为 CSV', blue: '蓝色', system: '系统', comingSoon: '即将推出', error: '错误' },
     home: { title: '开发者工具中心', subtitle: '具有现代拟态化设计的专业开发工具', description: '全面的开发者必备工具集合，包括 JSON 格式化、文本处理、加密等功能。' },
     tools: { 
       json: { 
@@ -15,7 +15,84 @@ export const zhCN = {
         extractedValueTitle: '提取的值'
       }, 
       network: { title: '网络工具', description: 'URL 编码、IP 查询和网络实用程序' }, 
-      text: { title: '文本工具', description: '文本处理、大小写转换和格式化' }, 
+      text: { 
+        title: '文本工具', 
+        description: '文本处理、大小写转换和格式化',
+        caseConverter: {
+          title: '大小写转换器',
+          description: '在不同的字母大小写之间转换文本。',
+          placeholder: '在此输入文本...',
+          result: '结果',
+          upperCase: '大写',
+          lowerCase: '小写',
+          titleCase: '标题格式',
+          sentenceCase: '句子格式'
+        },
+        wordCounter: {
+          title: '字词与字符计数器',
+          description: '计算文本中的字词、字符、句子和段落数量。',
+          placeholder: '在此输入或粘贴您的文本...',
+          words: '字词',
+          characters: '字符',
+          charactersNoSpaces: '字符（无空格）',
+          sentences: '句子',
+          paragraphs: '段落'
+        },
+        textReverser: {
+          title: '文本反转器',
+          description: '反转文本的字符顺序。',
+          placeholder: '输入要反转的文本',
+          reversedText: '反转的文本'
+        },
+        whitespaceRemover: {
+          title: '空白符移除器',
+          description: '移除文本中不必要的空格和换行符。',
+          placeholder: '在此输入文本...',
+          result: '结果',
+          removeAll: '移除所有空格',
+          removeTrim: '修剪首尾空格',
+          removeExtra: '移除多余空格',
+          removeLines: '移除换行符'
+        },
+        urlEncoder: {
+          title: 'URL 编码/解码器',
+          description: '编码和解码URL',
+          input: '输入',
+          output: '输出',
+          encode: '编码',
+          decode: '解码',
+          inputPlaceholder: '输入要编码或解码的文本',
+          outputPlaceholder: '结果将在此显示'
+        },
+        base64: {
+          title: 'Base64 编码/解码器',
+          description: '编码和解码Base64文本',
+          input: '输入',
+          output: '输出',
+          encode: '编码',
+          decode: '解码',
+          inputPlaceholder: '输入要编码或解码的文本',
+          outputPlaceholder: '结果将在此显示'
+        },
+        ipLookup: {
+          title: 'IP地址查询',
+          placeholder: '输入IP地址或域名',
+          lookup: '查询',
+          myIp: '查询我的IP',
+          results: '查询结果'
+        },
+        dateCalculator: {
+          title: '日期计算器',
+          description: '从给定日期添加或减去年、月、日',
+          startDate: '开始日期',
+          add: '添加',
+          subtract: '减去',
+          years: '年',
+          months: '月',
+          days: '日',
+          resultDate: '结果日期'
+        }
+      },
       crypto: { title: '加密工具', description: '哈希生成、加密和解密实用程序' }, 
       markdown: { title: 'Markdown 工具', description: 'Markdown 编辑器与实时预览' }, 
       mermaid: { title: 'Mermaid 图表', description: '使用 Mermaid 创建图表和流程图' } 
