@@ -5,9 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { parse } from 'date-fns';
-import { formatInTimeZone, zonedTimeToUtc } from 'date-fns-tz';
+import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
-const timezones = Intl.supportedValuesOf('timeZone');
+const timezones = (Intl as any).supportedValuesOf('timeZone');
 
 const TimezoneConverter: React.FC = () => {
   const { t } = useTranslation();
@@ -17,6 +17,14 @@ const TimezoneConverter: React.FC = () => {
   const [convertedDateTime, setConvertedDateTime] = useState('');
 
   const dateTimeFormat = "yyyy-MM-dd'T'HH:mm";
+
+  useEffect(() => {
+    document.title = "Timezone Converter - DevTools Hub";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', "Easily convert date and time between different timezones. Supports all IANA timezones.");
+    }
+  }, []);
 
   useEffect(() => {
     const now = new Date();
@@ -31,7 +39,7 @@ const TimezoneConverter: React.FC = () => {
             setConvertedDateTime('Invalid Date');
             return;
         }
-        const utcDate = zonedTimeToUtc(localDate, sourceTimezone);
+        const utcDate = fromZonedTime(localDate, sourceTimezone);
         const formatted = formatInTimeZone(utcDate, targetTimezone, "yyyy-MM-dd'T'HH:mm:ssXXX");
 
         setConvertedDateTime(formatted);

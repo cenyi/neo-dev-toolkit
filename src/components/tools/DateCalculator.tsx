@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,7 +14,7 @@ const DateCalculator: React.FC = () => {
   const [days, setDays] = useState<string>('0');
   const [resultDate, setResultDate] = useState<string>('');
 
-  const calculate = (operation: 'add' | 'sub') => {
+  const calculate = useCallback((operation: 'add' | 'sub') => {
     try {
       const date = new Date(startDate);
       const duration = { 
@@ -27,17 +27,16 @@ const DateCalculator: React.FC = () => {
     } catch (e) {
       setResultDate('Invalid Date');
     }
-  };
-  
-  const handleCalculate = () => {
-    calculate('add');
-  };
-  
-  React.useEffect(() => {
-    if (startDate) {
-        handleCalculate();
-    }
   }, [startDate, years, months, days]);
+  
+  useEffect(() => {
+    document.title = "Date Calculator - DevTools Hub";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', "Add or subtract years, months, and days from a given date. Calculate future or past dates effortlessly.");
+    }
+    calculate('add');
+  }, [calculate]);
 
 
   return (

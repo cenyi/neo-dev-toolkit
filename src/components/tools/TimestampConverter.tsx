@@ -27,6 +27,11 @@ const TimestampConverter: React.FC = () => {
   };
   
   useEffect(() => {
+    document.title = "Timestamp Converter - DevTools Hub";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', "Convert Unix timestamps to human-readable UTC dates and vice-versa. Instantly get the current timestamp.");
+    }
     handleSetCurrentTime();
   }, []);
 
