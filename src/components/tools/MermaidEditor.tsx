@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
 import { useMermaidEditor } from '@/hooks/useMermaidEditor';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
-import { Textarea } from '@/components/ui/textarea';
+import CodeEditor from './CodeEditor';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal, Download } from 'lucide-react';
@@ -113,10 +113,10 @@ const MermaidEditor: React.FC = () => {
           <div className="relative">
             <ResizablePanelGroup direction="horizontal" className="min-h-[60vh] rounded-lg border">
               <ResizablePanel defaultSize={50}>
-                <Textarea
+                <CodeEditor
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  className="h-full w-full resize-none border-0 rounded-none p-4 font-mono focus-visible:ring-0 focus-visible:ring-offset-0"
+                  onChange={setInput}
+                  language="plaintext"
                   placeholder="Type your Mermaid syntax here..."
                 />
               </ResizablePanel>

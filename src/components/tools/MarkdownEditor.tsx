@@ -4,8 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useMarkdownEditor } from '@/hooks/useMarkdownEditor';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
-import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import CodeEditor from './CodeEditor';
 import '@/styles/markdown.css';
 
 const MarkdownEditor: React.FC = () => {
@@ -21,10 +21,10 @@ const MarkdownEditor: React.FC = () => {
         <CardContent>
           <ResizablePanelGroup direction="horizontal" className="min-h-[60vh] rounded-lg border">
             <ResizablePanel defaultSize={50}>
-              <Textarea
+              <CodeEditor
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
-                className="h-full w-full resize-none border-0 rounded-none p-4 focus-visible:ring-0 focus-visible:ring-offset-0"
+                onChange={setInput}
+                language="markdown"
                 placeholder="Type your Markdown here..."
               />
             </ResizablePanel>
