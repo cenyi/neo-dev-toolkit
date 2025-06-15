@@ -1,5 +1,4 @@
 
-```typescript
 import React from 'react';
 import { useJsonCodeGen } from '@/hooks/useJsonCodeGen';
 import JsonEditor from './JsonEditor';
@@ -104,4 +103,3 @@ const JsonCodeGen: React.FC = () => {
 };
 
 export default JsonCodeGen;
-```

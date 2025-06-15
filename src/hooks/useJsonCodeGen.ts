@@ -1,5 +1,4 @@
 
-```typescript
 import { useState } from 'react';
 import {
   quicktype,
@@ -122,4 +121,3 @@ export const useJsonCodeGen = () => {
     clearAll,
   };
 };
-```
