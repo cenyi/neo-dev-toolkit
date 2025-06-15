@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -66,10 +65,6 @@ function App() {
 
                   {/* Encryption Tools */}
                   <Route path="/encryption" element={<EncryptionTool />} />
-                  <Route path="/sha1-generator" element={<ToolUnderConstruction />} />
-                  <Route path="/sha256-generator" element={<ToolUnderConstruction />} />
-                  <Route path="/sha512-generator" element={<ToolUnderConstruction />} />
-                  <Route path="/uuid-generator" element={<ToolUnderConstruction />} />
 
                   <Route path="*" element={<NotFound />} />
                 </Routes>
