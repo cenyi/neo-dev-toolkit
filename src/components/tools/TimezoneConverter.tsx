@@ -44,9 +44,9 @@ const TimezoneConverter: React.FC = () => {
       ]
     };
 
-    let script = document.getElementById('timezone-converter-schema');
+    let script = document.getElementById('timezone-converter-schema') as HTMLScriptElement;
     if (!script) {
-      script = document.createElement('script');
+      script = document.createElement('script') as HTMLScriptElement;
       script.id = 'timezone-converter-schema';
       script.type = 'application/ld+json';
       document.head.appendChild(script);
