@@ -9,6 +9,7 @@ import Navigation from "@/components/Navigation";
 import HomePage from "@/components/HomePage";
 import JsonTool from "@/components/tools/JsonTool";
 import JsonSchemaValidator from "@/components/tools/JsonSchemaValidator";
+import JsonCodeGen from "@/components/tools/JsonCodeGen";
 import NotFound from "./pages/NotFound";
 import "@/styles/neumorphism.css";
 import "@/i18n";
@@ -26,6 +27,7 @@ const App = () => <QueryClientProvider client={queryClient}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/json" element={<JsonTool />} />
                 <Route path="/json-schema-validator" element={<JsonSchemaValidator />} />
+                <Route path="/json-codegen" element={<JsonCodeGen />} />
                 {/* TODO: Add other tool routes */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
