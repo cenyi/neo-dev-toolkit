@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const IpLookup: React.FC = () => {
   const { t } = useTranslation();
-  const { ipAddress, setIpAddress, handleLookup, data, error, isLoading, clear } = useIpLookup();
+  const { ipAddress, setIpAddress, handleLookup, data, error, isLoading, clear, handleMyIpLookup } = useIpLookup();
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
@@ -33,9 +33,13 @@ const IpLookup: React.FC = () => {
               placeholder={t('tools.ipLookup.placeholder', 'Enter IP address or domain')}
               className="flex-grow"
             />
-            <Button onClick={handleLookup} disabled={isLoading}>
+            <Button onClick={handleLookup} disabled={isLoading || !ipAddress}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               {t('tools.ipLookup.lookup', 'Lookup')}
+            </Button>
+            <Button onClick={handleMyIpLookup} disabled={isLoading}>
+              {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {t('tools.ipLookup.myIp', 'Lookup My IP')}
             </Button>
             <Button onClick={clear} variant="destructive" disabled={isLoading}>{t('common.clear', 'Clear')}</Button>
           </div>

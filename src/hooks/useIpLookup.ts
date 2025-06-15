@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 const fetchIpInfo = async (ip: string) => {
-  if (!ip) return null;
-  // Using a free IP lookup API, no key required.
-  const response = await fetch(`https://ipapi.co/${ip}/json/`);
+  // If ip is empty, we fetch the user's own IP.
+  // The API supports domain names directly.
+  const url = ip ? `https://ipapi.co/${ip}/json/` : `https://ipapi.co/json/`;
+  const response = await fetch(url);
   const data = await response.json();
   if (data.error) {
     throw new Error(data.reason);
@@ -15,28 +16,36 @@ const fetchIpInfo = async (ip: string) => {
 
 export const useIpLookup = () => {
   const [ipAddress, setIpAddress] = useState('');
-  const [lookupAddress, setLookupAddress] = useState('');
+  const [lookupAddress, setLookupAddress] = useState<string | null>(null);
 
   const { data, error, isLoading, isFetching } = useQuery({
     queryKey: ['ipLookup', lookupAddress],
-    queryFn: () => fetchIpInfo(lookupAddress),
-    enabled: !!lookupAddress,
+    queryFn: () => fetchIpInfo(lookupAddress!),
+    enabled: lookupAddress !== null,
     retry: 1,
   });
 
   const handleLookup = () => {
-    setLookupAddress(ipAddress);
+    if (ipAddress) {
+        setLookupAddress(ipAddress);
+    }
+  };
+
+  const handleMyIpLookup = () => {
+    setIpAddress('');
+    setLookupAddress('');
   };
   
   const clear = () => {
     setIpAddress('');
-    setLookupAddress('');
+    setLookupAddress(null);
   };
 
   return {
     ipAddress,
     setIpAddress,
     handleLookup,
+    handleMyIpLookup,
     data,
     error: error as Error | null,
     isLoading: isLoading || isFetching,
