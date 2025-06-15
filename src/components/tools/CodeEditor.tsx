@@ -40,13 +40,8 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
         readOnly: readOnly,
       });
     } catch (error) {
-      setLoadError(true);
-      toast({
-        title: 'Monaco 编辑器加载失败',
-        description: '无法加载代码编辑器, 已切换为普通文本域。',
-        variant: 'destructive',
-      });
       console.error("Monaco Editor mount error:", error);
+      setLoadError(true);
     }
   };
 
@@ -56,13 +51,19 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
     }
   };
 
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (onChange) {
+      onChange(e.target.value);
+    }
+  };
+
   if (loadError) {
     return (
       <div className="h-full w-full bg-muted relative">
         <Textarea
           className="h-full w-full resize-none border-0 rounded-none p-4 font-mono bg-muted outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
           value={value}
-          onChange={e => onChange?.(e.target.value)}
+          onChange={handleTextareaChange}
           placeholder={placeholder}
           readOnly={readOnly}
           aria-label={`${language} textarea`}
@@ -108,6 +109,10 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
             正在加载编辑器...
           </div>
         }
+        onError={(error) => {
+          console.error("Monaco Editor error:", error);
+          setLoadError(true);
+        }}
       />
     </div>
   );
