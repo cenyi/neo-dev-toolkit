@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Terminal } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import CodeEditor from './CodeEditor';
+import SimpleCodeEditor from './SimpleCodeEditor';
 
 const Base64EncoderDecoder: React.FC = () => {
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ const Base64EncoderDecoder: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="h-64 border rounded-md">
-              <CodeEditor
+              <SimpleCodeEditor
                 value={input}
                 onChange={setInput}
                 placeholder={t('tools.base64.inputPlaceholder', 'Enter text to encode or decode')}
@@ -41,7 +41,7 @@ const Base64EncoderDecoder: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="h-64 border rounded-md">
-              <CodeEditor
+              <SimpleCodeEditor
                 value={output}
                 onChange={() => {}}
                 readOnly
