@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Moon, Sun, Languages, Home, ChevronDown, FileJson, Network, Text, Key, Code, LayoutGrid } from 'lucide-react';
+import { Moon, Sun, Languages, Home, ChevronDown, FileJson, Network, Text, Key, Code, LayoutGrid, Clock } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navigation: React.FC = () => {
@@ -56,6 +55,12 @@ const Navigation: React.FC = () => {
     { path: '/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' }
   ];
 
+  const timeTools = [
+    { path: '/timestamp-converter', name: 'Timestamp Converter' },
+    { path: '/timezone-converter', name: 'Timezone Converter' },
+    { path: '/date-calculator', name: 'Date Calculator' }
+  ];
+
   const navItems = [{
     path: '/',
     key: 'home',
@@ -72,6 +77,10 @@ const Navigation: React.FC = () => {
     path: '/text',
     key: 'text',
     icon: Text
+  }, {
+    path: '/time',
+    key: 'time',
+    icon: Clock
   }, {
     path: '/encryption',
     key: 'encryption',
@@ -148,6 +157,27 @@ const Navigation: React.FC = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md w-64">
                     {textTools.map((tool) => (
+                        <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
+                          {tool.name}
+                        </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              );
+            }
+            if (key === 'time') {
+              const isTimePageActive = timeTools.some(tool => location.pathname === tool.path);
+              return (
+                <DropdownMenu key={key}>
+                  <DropdownMenuTrigger asChild>
+                    <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${isTimePageActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
+                      {Icon && <Icon size={16} />}
+                      <span>Time Tools</span>
+                      <ChevronDown size={16} />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md w-64">
+                    {timeTools.map((tool) => (
                         <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
                           {tool.name}
                         </DropdownMenuItem>

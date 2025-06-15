@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -62,6 +63,11 @@ function App() {
                   <Route path="/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
                   <Route path="/markdown" element={<MarkdownEditor />} />
                   <Route path="/mermaid" element={<MermaidEditor />} />
+
+                  {/* Time Tools */}
+                  <Route path="/timestamp-converter" element={<ToolUnderConstruction />} />
+                  <Route path="/timezone-converter" element={<ToolUnderConstruction />} />
+                  <Route path="/date-calculator" element={<ToolUnderConstruction />} />
 
                   {/* Encryption Tools */}
                   <Route path="/encryption" element={<EncryptionTool />} />
