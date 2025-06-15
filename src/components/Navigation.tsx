@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Moon, Sun, Languages, Home, ChevronDown, FileJson, Network } from 'lucide-react';
+import { Moon, Sun, Languages, Home, ChevronDown, FileJson, Network, Text } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navigation: React.FC = () => {
@@ -48,6 +47,14 @@ const Navigation: React.FC = () => {
     { path: '/jwt-decoder', name: 'JWT Decoder' },
   ];
 
+  const textTools = [
+    { path: '/case-converter', name: 'Case Converter' },
+    { path: '/word-counter', name: 'Word & Character Counter' },
+    { path: '/text-reverser', name: 'Text Reverser' },
+    { path: '/whitespace-remover', name: 'Whitespace Remover' },
+    { path: '/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' }
+  ];
+
   const navItems = [{
     path: '/',
     key: 'home',
@@ -62,7 +69,8 @@ const Navigation: React.FC = () => {
     icon: Network
   }, {
     path: '/text',
-    key: 'text'
+    key: 'text',
+    icon: Text
   }, {
     path: '/crypto',
     key: 'crypto'
@@ -115,6 +123,27 @@ const Navigation: React.FC = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md w-64">
                     {networkTools.map((tool) => (
+                        <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
+                          {tool.name}
+                        </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              );
+            }
+            if (key === 'text') {
+              const isTextPageActive = textTools.some(tool => location.pathname === tool.path);
+              return (
+                <DropdownMenu key={key}>
+                  <DropdownMenuTrigger asChild>
+                    <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${isTextPageActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
+                      {Icon && <Icon size={16} />}
+                      <span>{t(`nav.${key}`)}</span>
+                      <ChevronDown size={16} />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md w-64">
+                    {textTools.map((tool) => (
                         <DropdownMenuItem key={tool.path} onClick={() => navigate(tool.path)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
                           {tool.name}
                         </DropdownMenuItem>
