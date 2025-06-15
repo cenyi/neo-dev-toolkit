@@ -109,10 +109,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
             正在加载编辑器...
           </div>
         }
-        onError={(error) => {
-          console.error("Monaco Editor error:", error);
-          setLoadError(true);
-        }}
       />
     </div>
   );
