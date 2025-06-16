@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -54,12 +53,12 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
         });
       }
       editor.updateOptions({
-        lineNumbers: 'on',
+        lineNumbers: readOnly ? 'on' : 'off', // 只有在只读模式才显示行号
         lineNumbersMinChars: 3,
         glyphMargin: true,
-        folding: true,
+        folding: readOnly ? true : false, // 只有在只读模式才启用折叠
         foldingStrategy: 'indentation',
-        showFoldingControls: 'always',
+        showFoldingControls: readOnly ? 'always' : 'never', // 只有在只读模式才显示折叠控件
         wordWrap: 'on',
         automaticLayout: true,
         scrollBeyondLastLine: false,
@@ -125,8 +124,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
         }}
         options={{
           wordWrap: 'on',
-          lineNumbers: 'on',
-          folding: true,
+          lineNumbers: readOnly ? 'on' : 'off', // 只有在只读模式才显示行号
+          folding: readOnly ? true : false, // 只有在只读模式才启用折叠
           readOnly: readOnly,
           automaticLayout: true,
           scrollBeyondLastLine: false,
