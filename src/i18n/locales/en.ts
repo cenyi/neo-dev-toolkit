@@ -1,4 +1,3 @@
-
 export const en = {
   translation: {
     nav: { home: 'Home', json: 'JSON', network: 'Network', text: 'Text', time: 'Time', encryption: 'Encryption', markdown: 'Markdown', mermaid: 'Mermaid' },
@@ -12,7 +11,19 @@ export const en = {
         extractPlaceholder: 'e.g., $.user.name or $[0].id',
         extractValue: 'Extract Value',
         placeholder: 'Enter or paste your JSON here...',
-        extractedValueTitle: 'Extracted Value'
+        extractedValueTitle: 'Extracted Value',
+        history: {
+          title: 'History',
+          emptyMessage: 'No history yet, start by entering some JSON data!',
+          clearAll: 'Clear All',
+          removeItem: 'Remove Item',
+          itemRemoved: 'History item removed',
+          historyCleared: 'History cleared',
+          loadedFromHistory: 'Loaded from history',
+          justNow: 'Just now',
+          minutesAgo: '{{count}} minutes ago',
+          hoursAgo: '{{count}} hours ago'
+        }
       },
       jwtDecoder: {
         title: 'JWT Decoder',

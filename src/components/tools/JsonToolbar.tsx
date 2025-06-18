@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import JsonHistoryModal from './JsonHistoryModal';
+import { JsonHistoryItem } from '@/hooks/useJsonHistory';
 
 interface JsonToolbarProps {
   onMinify: () => void;
@@ -16,6 +18,11 @@ interface JsonToolbarProps {
   onConvertToYaml: () => void;
   onConvertToXml: () => void;
   onConvertToCsv: () => void;
+  // 历史记录相关props
+  history: JsonHistoryItem[];
+  onSelectHistory: (content: string) => void;
+  onRemoveHistoryItem: (id: string) => void;
+  onClearHistory: () => void;
 }
 
 const JsonToolbar: React.FC<JsonToolbarProps> = ({
@@ -29,6 +36,10 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
   onConvertToYaml,
   onConvertToXml,
   onConvertToCsv,
+  history,
+  onSelectHistory,
+  onRemoveHistoryItem,
+  onClearHistory,
 }) => {
   const { t } = useTranslation();
 
@@ -53,6 +64,12 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
         <Button onClick={onClear} variant="destructive" className="text-sm font-extrabold">
           {t('common.clear')}
         </Button>
+        <JsonHistoryModal
+          history={history}
+          onSelectHistory={onSelectHistory}
+          onRemoveItem={onRemoveHistoryItem}
+          onClearHistory={onClearHistory}
+        />
       </div>
 
       <div className="flex items-center gap-2 flex-wrap">

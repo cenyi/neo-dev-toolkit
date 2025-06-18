@@ -1,4 +1,3 @@
-
 export const zhCN = {
   translation: {
     nav: { home: '首页', json: 'JSON', network: '网络', text: '文本', time: '时间', encryption: '加密', markdown: 'Markdown', mermaid: 'Mermaid' },
@@ -12,7 +11,19 @@ export const zhCN = {
         extractPlaceholder: '例如：$.user.name 或 $[0].id',
         extractValue: '提取值',
         placeholder: '在此输入或粘贴您的 JSON...',
-        extractedValueTitle: '提取的值'
+        extractedValueTitle: '提取的值',
+        history: {
+          title: '历史记录',
+          emptyMessage: '暂无历史记录，开始输入JSON数据吧！',
+          clearAll: '清空所有',
+          removeItem: '删除项目',
+          itemRemoved: '历史项目已删除',
+          historyCleared: '历史记录已清空',
+          loadedFromHistory: '已从历史记录加载',
+          justNow: '刚刚',
+          minutesAgo: '{{count}}分钟前',
+          hoursAgo: '{{count}}小时前'
+        }
       },
       jwtDecoder: {
         title: 'JWT 解码器',

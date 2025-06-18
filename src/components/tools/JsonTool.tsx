@@ -25,6 +25,10 @@ const JsonTool: React.FC = () => {
     handleConvertToYaml,
     handleConvertToXml,
     handleConvertToCsv,
+    history,
+    handleSelectFromHistory,
+    removeFromHistory,
+    clearHistory,
   } = useJsonTool();
 
   return (
@@ -40,6 +44,10 @@ const JsonTool: React.FC = () => {
         onConvertToYaml={handleConvertToYaml}
         onConvertToXml={handleConvertToXml}
         onConvertToCsv={handleConvertToCsv}
+        history={history}
+        onSelectHistory={handleSelectFromHistory}
+        onRemoveHistoryItem={removeFromHistory}
+        onClearHistory={clearHistory}
       />
       
       <div className="flex-1 flex flex-row gap-4 min-h-0 pt-2">

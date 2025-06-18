@@ -4,6 +4,7 @@ import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';
 import { useJsonConversion } from './useJsonConversion';
 import { useJsonExtraction } from './useJsonExtraction';
+import { useJsonHistory } from './useJsonHistory';
 
 export const useJsonTool = () => {
   const [input, setInput] = useState('');
@@ -15,6 +16,9 @@ export const useJsonTool = () => {
   const [extractPath, setExtractPath] = useState('');
   const [outputContent, setOutputContent] = useState<string | null>(null);
   const [outputTitle, setOutputTitle] = useState<string | null>(null);
+
+  // 集成历史记录功能
+  const { history, addToHistory, removeFromHistory, clearHistory } = useJsonHistory();
 
   // 实时校验并自动格式化 JSON
   const validateAndFormatJson = (jsonString: string) => {
@@ -31,6 +35,10 @@ export const useJsonTool = () => {
       setValidationError(null);
       setIsValid(true);
       lastValidJsonRef.current = JSON.stringify(parsed, null, 2); // 美化格式
+      
+      // 添加到历史记录（只在有效JSON时）
+      addToHistory(jsonString);
+      
       return lastValidJsonRef.current;
     } catch (error) {
       setIsValid(false);
@@ -151,6 +159,14 @@ export const useJsonTool = () => {
     setOutputTitle(null);
   };
 
+  // 从历史记录中选择项目
+  const handleSelectFromHistory = (content: string) => {
+    setInput(content);
+    setIsMinified(false);
+    setOutputContent(null);
+    setOutputTitle(null);
+  };
+
   const { handleExtractValue } = useJsonExtraction({
     input,
     isValid,
@@ -183,5 +199,10 @@ export const useJsonTool = () => {
     handleConvertToYaml,
     handleConvertToXml,
     handleConvertToCsv,
+    // 历史记录相关
+    history,
+    handleSelectFromHistory,
+    removeFromHistory,
+    clearHistory,
   };
 };
