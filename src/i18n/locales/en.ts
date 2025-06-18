@@ -2,7 +2,7 @@
 export const en = {
   translation: {
     nav: { home: 'Home', json: 'JSON', network: 'Network', text: 'Text', time: 'Time', encryption: 'Encryption', markdown: 'Markdown', mermaid: 'Mermaid' },
-    common: { theme: 'Theme', language: 'Language', light: 'Light', dark: 'Dark', copy: 'Copy', clear: 'Clear', format: 'Format', minify: 'Minify', validate: 'Validate', convert: 'Convert', encrypt: 'Encrypt', decrypt: 'Decrypt', preview: 'Preview', download: 'Download', toYaml: 'To YAML', toXml: 'To XML', toCsv: 'To CSV', blue: 'Blue', system: 'System', comingSoon: 'Coming Soon', error: 'Error' },
+    common: { theme: 'Theme', language: 'Language', light: 'Light', dark: 'Dark', copy: 'Copy', clear: 'Clear', format: 'Format', minify: 'Minify', validate: 'Validate', convert: 'Convert', encrypt: 'Encrypt', decrypt: 'Decrypt', preview: 'Preview', download: 'Download', toYaml: 'To YAML', toXml: 'To XML', toCsv: 'To CSV', blue: 'Blue', system: 'System', comingSoon: 'Coming Soon', error: 'Error', success: 'Success', info: 'Info', notFound: 'Not Found', compare: 'Compare' },
     home: { title: 'Developer Tools Hub', subtitle: 'Professional development tools with modern neumorphic design', description: 'A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more.' },
     tools: { 
       json: { 
@@ -13,7 +13,26 @@ export const en = {
         extractValue: 'Extract Value',
         placeholder: 'Enter or paste your JSON here...',
         extractedValueTitle: 'Extracted Value'
-      }, 
+      },
+      jwtDecoder: {
+        title: 'JWT Decoder',
+        description: 'Decode and verify JWT tokens',
+        encodedToken: 'Encoded Token',
+        header: 'Header',
+        payload: 'Payload',
+        placeholder: 'Paste your JWT here',
+        headerPlaceholder: 'Decoded header will appear here',
+        payloadPlaceholder: 'Decoded payload will appear here'
+      },
+      jsonDiff: {
+        title: 'JSON Diff',
+        description: 'Compare differences between two JSON objects',
+        originalJson: 'Original JSON',
+        newJson: 'New JSON',
+        originalPlaceholder: 'Paste original JSON here',
+        newPlaceholder: 'Paste new JSON here',
+        diffResult: 'Diff Result'
+      },
       network: { title: 'Network Tools', description: 'URL encoding, IP lookup, and network utilities' }, 
       text: { 
         title: 'Text Tools', 
@@ -112,6 +131,30 @@ export const en = {
       crypto: { title: 'Crypto Tools', description: 'Hash generation, encryption and decryption utilities' }, 
       markdown: { title: 'Markdown Tools', description: 'Markdown editor with live preview' }, 
       mermaid: { title: 'Mermaid Diagrams', description: 'Create diagrams and flowcharts with Mermaid' } 
+    },
+    toasts: {
+      common: {
+        success: 'Success',
+        error: 'Error',
+        info: 'Info',
+        notFound: 'Not Found'
+      },
+      success: {
+        copied: 'Copied to clipboard',
+        formattedAndCopied: 'JSON formatted and copied to clipboard',
+        minifiedAndCopied: 'JSON minified and copied to clipboard',
+        extractedAndCopied: 'Value extracted and copied to clipboard'
+      },
+      error: {
+        invalidJson: 'Please enter valid JSON',
+        invalidJsonFormat: 'Invalid JSON format',
+        missingPath: 'Please enter extraction path',
+        notFound: 'No value found at the specified path',
+        extractError: 'Error extracting value'
+      },
+      info: {
+        emptyContent: 'No content to copy'
+      }
     },
     editor: {
       copy: 'Copy content',

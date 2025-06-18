@@ -2,7 +2,7 @@
 export const zhCN = {
   translation: {
     nav: { home: '首页', json: 'JSON', network: '网络', text: '文本', time: '时间', encryption: '加密', markdown: 'Markdown', mermaid: 'Mermaid' },
-    common: { theme: '主题', language: '语言', light: '浅色', dark: '深色', copy: '复制', clear: '清空', format: '格式化', minify: '压缩', validate: '验证', convert: '转换', encrypt: '加密', decrypt: '解密', preview: '预览', download: '下载', toYaml: '转换为 YAML', toXml: '转换为 XML', toCsv: '转换为 CSV', blue: '蓝色', system: '系统', comingSoon: '即将推出', error: '错误' },
+    common: { theme: '主题', language: '语言', light: '浅色', dark: '深色', copy: '复制', clear: '清空', format: '格式化', minify: '压缩', validate: '验证', convert: '转换', encrypt: '加密', decrypt: '解密', preview: '预览', download: '下载', toYaml: '转换为 YAML', toXml: '转换为 XML', toCsv: '转换为 CSV', blue: '蓝色', system: '系统', comingSoon: '即将推出', error: '错误', success: '成功', info: '信息', notFound: '未找到', compare: '比较' },
     home: { title: '开发者工具中心', subtitle: '具有现代拟态化设计的专业开发工具', description: '全面的开发者必备工具集合，包括 JSON 格式化、文本处理、加密等功能。' },
     tools: { 
       json: { 
@@ -13,7 +13,26 @@ export const zhCN = {
         extractValue: '提取值',
         placeholder: '在此输入或粘贴您的 JSON...',
         extractedValueTitle: '提取的值'
-      }, 
+      },
+      jwtDecoder: {
+        title: 'JWT 解码器',
+        description: '解码和验证JWT令牌',
+        encodedToken: '编码的令牌',
+        header: '头部',
+        payload: '载荷',
+        placeholder: '在此粘贴您的JWT令牌',
+        headerPlaceholder: '解码的头部将在此显示',
+        payloadPlaceholder: '解码的载荷将在此显示'
+      },
+      jsonDiff: {
+        title: 'JSON 差异比较',
+        description: '比较两个JSON对象的差异',
+        originalJson: '原始 JSON',
+        newJson: '新 JSON',
+        originalPlaceholder: '在此粘贴原始 JSON',
+        newPlaceholder: '在此粘贴新 JSON',
+        diffResult: '差异结果'
+      },
       network: { title: '网络工具', description: 'URL 编码、IP 查询和网络实用程序' }, 
       text: { 
         title: '文本工具', 
@@ -112,6 +131,30 @@ export const zhCN = {
       crypto: { title: '加密工具', description: '哈希生成、加密和解密实用程序' }, 
       markdown: { title: 'Markdown 工具', description: 'Markdown 编辑器与实时预览' }, 
       mermaid: { title: 'Mermaid 图表', description: '使用 Mermaid 创建图表和流程图' } 
+    },
+    toasts: {
+      common: {
+        success: '成功',
+        error: '错误',
+        info: '信息',
+        notFound: '未找到'
+      },
+      success: {
+        copied: '已复制到剪贴板',
+        formattedAndCopied: 'JSON已格式化并复制到剪贴板',
+        minifiedAndCopied: 'JSON已压缩并复制到剪贴板',
+        extractedAndCopied: '值已提取并复制到剪贴板'
+      },
+      error: {
+        invalidJson: '请输入有效的JSON',
+        invalidJsonFormat: 'JSON格式无效',
+        missingPath: '请输入提取路径',
+        notFound: '在指定路径未找到值',
+        extractError: '提取值时出错'
+      },
+      info: {
+        emptyContent: '没有内容可复制'
+      }
     },
     editor: {
       copy: '复制内容',
