@@ -9,7 +9,8 @@ export const zhCN = {
       encryption: '加密', 
       markdown: 'Markdown', 
       mermaid: 'Mermaid',
-      regex: '正则表达式'
+      regex: '正则表达式',
+      editor: '编辑器'
     },
     common: { 
       theme: '主题', 

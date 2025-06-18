@@ -9,7 +9,8 @@ export const en = {
       encryption: 'Encryption', 
       markdown: 'Markdown', 
       mermaid: 'Mermaid',
-      regex: 'RegEx'
+      regex: 'RegEx',
+      editor: 'Editor'
     },
     common: { 
       theme: 'Theme', 

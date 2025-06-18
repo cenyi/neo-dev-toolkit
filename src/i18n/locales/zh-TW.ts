@@ -8,7 +8,9 @@ export const zhTW = {
       time: '時間工具',
       encryption: '加密工具',
       markdown: 'Markdown',
-      mermaid: 'Mermaid圖表'
+      mermaid: 'Mermaid圖表',
+      regex: '正則表達式',
+      editor: '編輯器'
     },
     common: {
       theme: '主題',

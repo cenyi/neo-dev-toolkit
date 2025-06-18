@@ -1,60 +1,143 @@
+
 export const fr = {
   translation: {
-    nav: { home: 'Accueil', json: 'JSON', network: 'Réseau', text: 'Texte', time: 'Temps', encryption: 'Chiffrement', markdown: 'Markdown', mermaid: 'Mermaid' },
-    common: { theme: 'Thème', language: 'Langue', light: 'Clair', dark: 'Sombre', copy: 'Copier', clear: 'Effacer', format: 'Formater', minify: 'Minifier', validate: 'Valider', convert: 'Convertir', encrypt: 'Chiffrer', decrypt: 'Déchiffrer', preview: 'Aperçu', download: 'Télécharger', toYaml: 'Vers YAML', toXml: 'Vers XML', toCsv: 'Vers CSV', blue: 'Bleu', system: 'Système', comingSoon: 'Bientôt disponible' },
-    home: { title: 'Hub d\'outils pour développeurs', subtitle: 'Outils de développement professionnels avec un design neumorphique moderne', description: 'Une collection complète d\'outils essentiels pour les développeurs, y compris le formatage JSON, le traitement de texte, le chiffrement, et plus encore.' },
-    tools: { json: { title: 'Outils JSON', description: 'Formater, valider et minifier les données JSON' }, network: { title: 'Outils Réseau', description: 'Encodage d\'URL, recherche IP et utilitaires réseau' }, text: { title: 'Outils Texte', description: 'Traitement de texte, conversion de casse et formatage' }, crypto: { title: 'Outils de Chiffrement', description: 'Génération de hash, utilitaires de chiffrement et de déchiffrement' }, markdown: { title: 'Outils Markdown', description: 'Éditeur Markdown avec aperçu en direct' }, mermaid: { title: 'Diagrammes Mermaid', description: 'Créez des diagrammes et des organigrammes avec Mermaid' } },
+    nav: {
+      home: 'Accueil',
+      json: 'JSON',
+      network: 'Réseau',
+      text: 'Texte',
+      time: 'Temps',
+      encryption: 'Chiffrement',
+      markdown: 'Markdown',
+      mermaid: 'Mermaid',
+      regex: 'RegEx',
+      editor: 'Éditeur'
+    },
+    common: {
+      theme: 'Thème',
+      language: 'Langue',
+      light: 'Clair',
+      dark: 'Sombre',
+      copy: 'Copier',
+      clear: 'Effacer',
+      format: 'Formatter',
+      minify: 'Minifier',
+      validate: 'Valider',
+      convert: 'Convertir',
+      encrypt: 'Chiffrer',
+      decrypt: 'Déchiffrer',
+      preview: 'Aperçu',
+      download: 'Télécharger',
+      toYaml: 'En YAML',
+      toXml: 'En XML',
+      toCsv: 'En CSV',
+      blue: 'Bleu',
+      system: 'Système',
+      comingSoon: 'Bientôt disponible'
+    },
+    home: {
+      title: 'Hub d\'Outils pour Développeurs',
+      subtitle: 'Outils de développement professionnels avec un design néomorphique moderne',
+      description: 'Une collection complète d\'outils essentiels pour développeurs incluant le formatage JSON, le traitement de texte, le chiffrement et plus encore.'
+    },
+    tools: {
+      json: {
+        title: 'Outils JSON',
+        description: 'Formater, valider et minifier les données JSON',
+        placeholder: 'Entrez ou collez votre JSON ici...',
+        fieldPath: 'Chemin du champ',
+        extractValue: 'Extraire la valeur',
+        extractPlaceholder: 'ex., data.users[0].name',
+        extractedValueTitle: 'Valeur extraite'
+      },
+      network: {
+        title: 'Outils Réseau',
+        description: 'Encodage d\'URL, recherche d\'IP et utilitaires réseau'
+      },
+      text: {
+        title: 'Outils Texte',
+        description: 'Traitement de texte, conversion de casse et formatage'
+      },
+      crypto: {
+        title: 'Outils Crypto',
+        description: 'Génération de hash, utilitaires de chiffrement et déchiffrement'
+      }
+    },
+    toasts: {
+      common: {
+        error: 'Erreur',
+        success: 'Succès',
+        info: 'Information',
+        notFound: 'Non trouvé'
+      },
+      error: {
+        invalidJson: 'Veuillez entrer un JSON valide',
+        invalidJsonFormat: 'Format JSON invalide',
+        missingPath: 'Veuillez entrer le chemin d\'extraction',
+        notFound: 'Aucune valeur trouvée au chemin spécifié',
+        extractError: 'Erreur lors de l\'extraction de la valeur'
+      },
+      success: {
+        formattedAndCopied: 'JSON formaté et copié dans le presse-papiers',
+        minifiedAndCopied: 'JSON minifié et copié dans le presse-papiers',
+        copied: 'Copié dans le presse-papiers',
+        extractedAndCopied: 'Valeur extraite et copiée dans le presse-papiers'
+      },
+      info: {
+        emptyContent: 'Aucun contenu à copier'
+      }
+    },
     footer: {
       legal: 'Légal',
       company: 'Entreprise',
       friendlyLinks: 'Liens amis',
-      privacy: 'Politique de confidentialité',
-      terms: 'Conditions d\'utilisation',
-      about: 'À propos',
-      copyright: '© {{year}} Hub d\'outils pour développeurs. Tous droits réservés.',
-      description: 'Votre "couteau suisse" tout-en-un pour le développement. Avec des outils pour JSON, texte, chiffrement, et plus encore pour simplifier votre flux de travail.',
+      privacy: 'Politique de Confidentialité',
+      terms: 'Conditions de Service',
+      about: 'À propos de nous',
+      copyright: '© {{year}} Hub d\'Outils pour Développeurs. Tous droits réservés.',
+      description: 'Votre "couteau suisse" tout-en-un pour le développement. Avec des outils pour JSON, texte, chiffrement et plus pour rationaliser votre flux de travail.',
       vercel: 'Vercel',
       github: 'GitHub',
-      deepseek: 'DeepSeek',
+      deepseek: 'DeepSeek'
     },
     about: {
       title: 'À Propos de Nous',
       missionTitle: 'Notre Mission',
-      missionText: 'Notre mission est de fournir aux développeurs une boîte à outils complète, facile à utiliser et puissante qui agit comme un "couteau suisse" pour leurs tâches quotidiennes. Nous visons à créer un guichet unique pour les utilitaires de développement, rendant les flux de travail plus efficaces et agréables pour tous.',
+      missionText: 'Notre mission est de fournir aux développeurs un ensemble d\'outils complet, facile à utiliser et puissant qui agit comme un "couteau suisse" pour leurs tâches quotidiennes. Nous visons à créer un guichet unique pour les utilitaires de développement, rendant les flux de travail plus efficaces et agréables pour tous.',
       featuresTitle: 'Ce que Nous Offrons',
-      feature1: 'Ensemble d\'outils complet : Du formatage JSON à la manipulation de texte, en passant par le chiffrement et la création de diagrammes.',
-      feature2: 'Design Moderne : Une interface neumorphique propre, intuitive et réactive.',
-      feature3: 'Axé sur la Confidentialité : Aucune donnée n\'est stockée sur nos serveurs. Tout le traitement se fait dans votre navigateur.',
-      feature4: 'Open Source : Nous croyons en la puissance de la communauté et du développement transparent.',
+      feature1: 'Ensemble d\'outils complet : Du formatage JSON et de la manipulation de texte au chiffrement et aux diagrammes.',
+      feature2: 'Design moderne : Une interface néomorphique propre, intuitive et responsive.',
+      feature3: 'Axé sur la confidentialité : Aucune donnée n\'est stockée sur nos serveurs. Tout le traitement se fait dans votre navigateur.',
+      feature4: 'Open Source : Nous croyons au pouvoir de la communauté et au développement transparent.'
     },
     privacy: {
       title: 'Politique de Confidentialité',
       lastUpdated: 'Dernière mise à jour : 15 juin 2025',
-      introduction: 'Bienvenue sur Developer Tools Hub. Nous nous engageons à protéger votre vie privée. Notre Politique de Confidentialité explique comment nous traitons les informations en lien avec notre site web et nos services.',
+      introduction: 'Bienvenue au Hub d\'Outils pour Développeurs. Nous nous engageons à protéger votre confidentialité. Notre Politique de Confidentialité explique comment nous gérons les informations en relation avec notre site web et nos services.',
       informationWeCollectTitle: 'Informations que Nous Collectons',
-      informationWeCollectText: 'Nous ne collectons aucune information personnelle identifiable de nos utilisateurs. Toutes les données traitées par nos outils (par exemple, JSON, texte, fichiers) restent sur votre appareil et ne sont jamais envoyées ou stockées sur nos serveurs.',
+      informationWeCollectText: 'Nous ne collectons aucune information personnellement identifiable de nos utilisateurs. Toutes les données traitées par nos outils (par exemple, JSON, texte, fichiers) restent de votre côté client et ne sont jamais envoyées ou stockées sur nos serveurs.',
       cookiesTitle: 'Cookies et Stockage Local',
-      cookiesText: 'Nous utilisons le stockage local du navigateur pour enregistrer vos préférences, telles que le thème sélectionné (clair/sombre) et la langue. Ceci est purement à des fins fonctionnelles pour améliorer votre expérience utilisateur et ne vous suit pas.',
+      cookiesText: 'Nous utilisons le stockage local du navigateur pour sauvegarder vos préférences, telles que votre thème sélectionné (clair/sombre) et votre langue. Ceci est purement à des fins fonctionnelles pour améliorer votre expérience utilisateur et ne vous suit pas.',
       thirdPartyServicesTitle: 'Services Tiers',
       thirdPartyServicesText: 'Notre site web ne s\'intègre à aucun service tiers qui collecterait vos données personnelles. Nous fournissons des liens vers des sites externes comme GitHub, mais nous ne sommes pas responsables de leurs pratiques de confidentialité.',
       changesToPolicyTitle: 'Modifications de cette Politique',
-      changesToPolicyText: 'Nous pouvons mettre à jour notre Politique de Confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle Politique de Confidentialité sur cette page. Il vous est conseillé de consulter périodiquement cette Politique de Confidentialité pour tout changement.',
-      contactUsTitle: 'Contactez-Nous',
-      contactUsText: 'Si vous avez des questions sur cette Politique de Confidentialité, n\'hésitez pas à nous contacter sur notre dépôt open source.',
+      changesToPolicyText: 'Nous pouvons mettre à jour notre Politique de Confidentialité de temps en temps. Nous vous informerons de tout changement en publiant la nouvelle Politique de Confidentialité sur cette page. Il vous est conseillé de consulter cette Politique de Confidentialité périodiquement pour tout changement.',
+      contactUsTitle: 'Nous Contacter',
+      contactUsText: 'Si vous avez des questions concernant cette Politique de Confidentialité, n\'hésitez pas à nous contacter sur notre dépôt open source.'
     },
     terms: {
-      title: 'Conditions d\'Utilisation',
+      title: 'Conditions de Service',
       lastUpdated: 'Dernière mise à jour : 15 juin 2025',
       acceptanceTitle: 'Acceptation des Conditions',
-      acceptanceText: 'En accédant et en utilisant Developer Tools Hub ("le Service"), vous acceptez d\'être lié par les termes et dispositions de cet accord. Si vous n\'acceptez pas de respecter ces termes, veuillez ne pas utiliser ce Service.',
+      acceptanceText: 'En accédant et en utilisant le Hub d\'Outils pour Développeurs ("le Service"), vous acceptez et convenez d\'être lié par les termes et dispositions de cet accord. Si vous n\'acceptez pas de respecter ces conditions, veuillez ne pas utiliser ce Service.',
       useOfServiceTitle: 'Utilisation du Service',
-      useOfServiceText: 'Le Service est fourni gratuitement pour un usage personnel et commercial. Vous vous engagez à utiliser le Service de manière responsable et non à des fins malveillantes ou illégales. Vous êtes seul responsable de toutes les données que vous traitez à l\'aide de nos outils.',
-      disclaimerTitle: 'Exclusion de Garanties',
-      disclaimerText: 'Le Service est fourni "tel quel" et "selon disponibilité" sans aucune garantie d\'aucune sorte, expresse ou implicite. Nous ne garantissons pas l\'exactitude, la fiabilité ou l\'exhaustivité de tout outil ou donnée traité via le service.',
+      useOfServiceText: 'Le Service est fourni gratuitement pour un usage personnel et commercial. Vous acceptez d\'utiliser le Service de manière responsable et non pour des activités malveillantes ou illégales. Vous êtes seul responsable de toutes les données que vous traitez en utilisant nos outils.',
+      disclaimerTitle: 'Avis de Non-Responsabilité',
+      disclaimerText: 'Le Service est fourni "tel quel" et "selon disponibilité" sans garanties d\'aucune sorte, qu\'elles soient expresses ou implicites. Nous ne garantissons pas la précision, la fiabilité ou l\'exhaustivité de tout outil ou donnée traité via le service.',
       limitationTitle: 'Limitation de Responsabilité',
-      limitationText: 'En aucun cas, Developer Tools Hub ou ses mainteneurs ne pourront être tenus responsables de tout dommage direct, indirect, accidentel, spécial ou consécutif découlant de l\'utilisation ou de l\'impossibilité d\'utiliser le Service.',
+      limitationText: 'En aucun cas le Hub d\'Outils pour Développeurs ou ses mainteneurs ne seront responsables de tout dommage direct, indirect, accessoire, spécial ou consécutif découlant de l\'utilisation ou de l\'impossibilité d\'utiliser le Service.',
       changesToTermsTitle: 'Modifications des Conditions',
-      changesToTermsText: 'Nous nous réservons le droit de modifier ces conditions à tout moment. Nous publierons la version la plus récente de ces conditions sur cette page. Votre utilisation continue du Service après toute modification constitue votre acceptation des nouvelles Conditions.',
-    },
+      changesToTermsText: 'Nous nous réservons le droit de modifier ces conditions à tout moment. Nous publierons la version la plus récente de ces conditions sur cette page. Votre utilisation continue du Service après tout changement constitue votre acceptation des nouvelles Conditions.'
+    }
   }
 };
