@@ -24,6 +24,7 @@ import TextReverser from "@/components/tools/TextReverser";
 import WhitespaceRemover from "@/components/tools/WhitespaceRemover";
 import LoremIpsumGenerator from "@/components/tools/LoremIpsumGenerator";
 import EncryptionTool from "@/components/tools/EncryptionTool";
+import RegexTool from "@/components/tools/RegexTool";
 import MarkdownEditor from "@/components/tools/MarkdownEditor";
 import MermaidEditor from "@/components/tools/MermaidEditor";
 import TimestampConverter from "@/components/tools/TimestampConverter";
@@ -197,6 +198,19 @@ function App() {
                       <LoremIpsumGenerator />
                     </PageWrapper>
                   } />
+
+                  {/* Regex Tool */}
+                  <Route path="/regex" element={
+                    <PageWrapper 
+                      title="Regular Expression Tool"
+                      description="Free online regex tester and generator. Test regular expressions, find matches, and replace text with powerful regex engine."
+                      keywords="regex tester, regular expression, regex generator, pattern matching, regex validator, regex online"
+                    >
+                      <RegexTool />
+                    </PageWrapper>
+                  } />
+
+                  {/* Editor Tools */}
                   <Route path="/markdown" element={
                     <PageWrapper 
                       title="Markdown Editor"

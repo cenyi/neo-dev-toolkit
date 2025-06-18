@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, FileJson, Network, Text, Key, Code, LayoutGrid, Clock, Hash } from 'lucide-react';
+import { Home, FileJson, Network, Text, Key, Code, LayoutGrid, Clock, Hash, Edit } from 'lucide-react';
 import ThemeToggle from './nav/ThemeToggle';
 import LanguageSwitcher from './nav/LanguageSwitcher';
 import ToolDropdown from './nav/ToolDropdown';
@@ -34,6 +34,11 @@ const Navigation: React.FC = () => {
     { path: '/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' }
   ];
 
+  const editorTools = [
+    { path: '/markdown', name: 'Markdown Editor' },
+    { path: '/mermaid', name: 'Mermaid Editor' }
+  ];
+
   const timeTools = [
     { path: '/timestamp-converter', name: 'Timestamp Converter' },
     { path: '/timezone-converter', name: 'Timezone Converter' },
@@ -45,11 +50,10 @@ const Navigation: React.FC = () => {
     { path: '/json', key: 'json', icon: FileJson, tools: jsonTools, dropdownWidth: 'w-56' },
     { path: '/network', key: 'network', icon: Network, tools: networkTools, dropdownWidth: 'w-64' },
     { path: '/text', key: 'text', icon: Text, tools: textTools, dropdownWidth: 'w-64' },
-    { path: '/time', key: 'time', icon: Clock, tools: timeTools, dropdownWidth: 'w-64' },
     { path: '/regex', key: 'regex', icon: Hash },
-    { path: '/encryption', key: 'encryption', icon: Key },
-    { path: '/markdown', key: 'markdown', icon: Code },
-    { path: '/mermaid', key: 'mermaid', icon: LayoutGrid }
+    { path: '/editor', key: 'editor', icon: Edit, tools: editorTools, dropdownWidth: 'w-52' },
+    { path: '/time', key: 'time', icon: Clock, tools: timeTools, dropdownWidth: 'w-64' },
+    { path: '/encryption', key: 'encryption', icon: Key }
   ];
 
   return (
