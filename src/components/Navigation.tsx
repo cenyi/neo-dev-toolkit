@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, FileJson, Network, Text, Key, Code, LayoutGrid, Clock } from 'lucide-react';
+import { Home, FileJson, Network, Text, Key, Code, LayoutGrid, Clock, Hash } from 'lucide-react';
 import ThemeToggle from './nav/ThemeToggle';
 import LanguageSwitcher from './nav/LanguageSwitcher';
 import ToolDropdown from './nav/ToolDropdown';
@@ -46,6 +46,7 @@ const Navigation: React.FC = () => {
     { path: '/network', key: 'network', icon: Network, tools: networkTools, dropdownWidth: 'w-64' },
     { path: '/text', key: 'text', icon: Text, tools: textTools, dropdownWidth: 'w-64' },
     { path: '/time', key: 'time', icon: Clock, tools: timeTools, dropdownWidth: 'w-64' },
+    { path: '/regex', key: 'regex', icon: Hash },
     { path: '/encryption', key: 'encryption', icon: Key },
     { path: '/markdown', key: 'markdown', icon: Code },
     { path: '/mermaid', key: 'mermaid', icon: LayoutGrid }

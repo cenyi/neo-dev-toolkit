@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Dialog,
@@ -9,9 +9,10 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Card, CardContent } from '@/components/ui/card';
-import { History, Trash2, Clock, Copy } from 'lucide-react';
+import { History, Trash2, Clock, Copy, Search } from 'lucide-react';
 import { JsonHistoryItem } from '@/hooks/useJsonHistory';
 import { toast } from '@/hooks/use-toast';
 
@@ -30,21 +31,22 @@ const JsonHistoryModal: React.FC<JsonHistoryModalProps> = ({
 }) => {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const formatDate = (timestamp: number) => {
     const date = new Date(timestamp);
-    const now = new Date();
-    const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
-    
-    if (diffInHours < 1) {
-      const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
-      return diffInMinutes < 1 ? t('tools.json.history.justNow') : t('tools.json.history.minutesAgo', { count: diffInMinutes });
-    } else if (diffInHours < 24) {
-      return t('tools.json.history.hoursAgo', { count: diffInHours });
-    } else {
-      return date.toLocaleDateString();
-    }
+    return date.toLocaleString();
   };
+
+  // 筛选历史记录
+  const filteredHistory = useMemo(() => {
+    if (!searchQuery.trim()) return history;
+    
+    return history.filter(item => 
+      item.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.preview.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [history, searchQuery]);
 
   const handleSelectItem = (content: string) => {
     onSelectHistory(content);
@@ -75,6 +77,7 @@ const JsonHistoryModal: React.FC<JsonHistoryModalProps> = ({
 
   const handleClearAll = () => {
     onClearHistory();
+    setSearchQuery('');
     toast({
       title: t('toasts.common.success'),
       description: t('tools.json.history.historyCleared'),
@@ -97,7 +100,7 @@ const JsonHistoryModal: React.FC<JsonHistoryModalProps> = ({
               {t('tools.json.history.title')}
               {history.length > 0 && (
                 <span className="text-sm text-muted-foreground">
-                  ({history.length})
+                  ({history.length}/50)
                 </span>
               )}
             </span>
@@ -114,15 +117,32 @@ const JsonHistoryModal: React.FC<JsonHistoryModalProps> = ({
           </DialogTitle>
         </DialogHeader>
         
+        {history.length > 0 && (
+          <div className="flex items-center space-x-2 mt-4">
+            <Search className="w-4 h-4" />
+            <Input
+              placeholder={t('tools.json.history.searchPlaceholder')}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="flex-1"
+            />
+          </div>
+        )}
+        
         <ScrollArea className="flex-1 mt-4">
           {history.length === 0 ? (
             <div className="text-center text-muted-foreground py-8">
               <History className="w-12 h-12 mx-auto mb-4 opacity-50" />
               <p>{t('tools.json.history.emptyMessage')}</p>
             </div>
+          ) : filteredHistory.length === 0 ? (
+            <div className="text-center text-muted-foreground py-8">
+              <Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
+              <p>{t('tools.json.history.noResults')}</p>
+            </div>
           ) : (
             <div className="space-y-3">
-              {history.map((item) => (
+              {filteredHistory.map((item) => (
                 <Card
                   key={item.id}
                   className="cursor-pointer hover:bg-accent/50 transition-colors"
