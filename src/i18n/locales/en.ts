@@ -57,6 +57,12 @@ export const en = {
         extractValue: 'Extract Value',
         placeholder: 'Enter or paste your JSON here...',
         extractedValueTitle: 'Extracted Value',
+        generateGraph: 'Generate Graph',
+        graphTitle: 'JSON Structure',
+        syntaxError: 'JSON syntax error',
+        unknownParseError: 'Unknown JSON parsing error',
+        syntaxErrorAtPosition: 'JSON syntax error: {{message}} (line {{line}}, column {{column}})',
+        syntaxErrorGeneric: 'JSON syntax error: {{message}}',
         history: {
           title: 'History',
           emptyMessage: 'No history yet, start by entering some JSON data!',
@@ -222,7 +228,8 @@ export const en = {
         copied: 'Copied to clipboard',
         formattedAndCopied: 'JSON formatted and copied to clipboard',
         minifiedAndCopied: 'JSON minified and copied to clipboard',
-        extractedAndCopied: 'Value extracted and copied to clipboard'
+        extractedAndCopied: 'Value extracted and copied to clipboard',
+        graphGenerated: 'Graph generated successfully'
       },
       error: {
         invalidJson: 'Please enter valid JSON',
