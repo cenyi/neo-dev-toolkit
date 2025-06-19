@@ -1,4 +1,3 @@
-
 export const fr = {
   translation: {
     nav: {
@@ -48,7 +47,9 @@ export const fr = {
         fieldPath: 'Chemin du champ',
         extractValue: 'Extraire la valeur',
         extractPlaceholder: 'ex., data.users[0].name',
-        extractedValueTitle: 'Valeur extraite'
+        extractedValueTitle: 'Valeur extraite',
+        generateGraph: 'Générer un Graphique',
+        graphTitle: 'Structure JSON'
       },
       network: {
         title: 'Outils Réseau',
@@ -81,7 +82,8 @@ export const fr = {
         formattedAndCopied: 'JSON formaté et copié dans le presse-papiers',
         minifiedAndCopied: 'JSON minifié et copié dans le presse-papiers',
         copied: 'Copié dans le presse-papiers',
-        extractedAndCopied: 'Valeur extraite et copiée dans le presse-papiers'
+        extractedAndCopied: 'Valeur extraite et copiée dans le presse-papiers',
+        graphGenerated: 'Graphique généré avec succès'
       },
       info: {
         emptyContent: 'Aucun contenu à copier'

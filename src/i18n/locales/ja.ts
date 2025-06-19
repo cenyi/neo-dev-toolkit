@@ -1,4 +1,3 @@
-
 export const ja = {
   translation: {
     nav: {
@@ -48,7 +47,9 @@ export const ja = {
         fieldPath: 'フィールドパス',
         extractValue: '値を抽出',
         extractPlaceholder: '例: data.users[0].name',
-        extractedValueTitle: '抽出された値'
+        extractedValueTitle: '抽出された値',
+        generateGraph: 'グラフを生成',
+        graphTitle: 'JSON構造'
       },
       network: {
         title: 'ネットワークツール',
@@ -81,7 +82,8 @@ export const ja = {
         formattedAndCopied: 'JSON がフォーマットされクリップボードにコピーされました',
         minifiedAndCopied: 'JSON が圧縮されクリップボードにコピーされました',
         copied: 'クリップボードにコピーされました',
-        extractedAndCopied: '値が抽出されクリップボードにコピーされました'
+        extractedAndCopied: '値が抽出されクリップボードにコピーされました',
+        graphGenerated: 'グラフが正常に生成されました'
       },
       info: {
         emptyContent: 'コピーするコンテンツがありません'

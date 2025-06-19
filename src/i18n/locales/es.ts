@@ -1,4 +1,3 @@
-
 export const es = {
   translation: {
     nav: {
@@ -48,7 +47,9 @@ export const es = {
         fieldPath: 'Ruta del campo',
         extractValue: 'Extraer valor',
         extractPlaceholder: 'ej., data.users[0].name',
-        extractedValueTitle: 'Valor extraído'
+        extractedValueTitle: 'Valor extraído',
+        generateGraph: 'Generar Gráfico',
+        graphTitle: 'Estructura JSON'
       },
       network: {
         title: 'Herramientas de Red',
@@ -81,7 +82,8 @@ export const es = {
         formattedAndCopied: 'JSON formateado y copiado al portapapeles',
         minifiedAndCopied: 'JSON minificado y copiado al portapapeles',
         copied: 'Copiado al portapapeles',
-        extractedAndCopied: 'Valor extraído y copiado al portapapeles'
+        extractedAndCopied: 'Valor extraído y copiado al portapapeles',
+        graphGenerated: 'Gráfico generado exitosamente'
       },
       info: {
         emptyContent: 'No hay contenido para copiar'

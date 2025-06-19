@@ -1,4 +1,3 @@
-
 export const de = {
   translation: {
     nav: {
@@ -48,7 +47,9 @@ export const de = {
         fieldPath: 'Feldpfad',
         extractValue: 'Wert extrahieren',
         extractPlaceholder: 'z.B. data.users[0].name',
-        extractedValueTitle: 'Extrahierter Wert'
+        extractedValueTitle: 'Extrahierter Wert',
+        generateGraph: 'Diagramm erstellen',
+        graphTitle: 'JSON-Struktur'
       },
       network: {
         title: 'Netzwerk-Tools',
@@ -81,7 +82,8 @@ export const de = {
         formattedAndCopied: 'JSON formatiert und in die Zwischenablage kopiert',
         minifiedAndCopied: 'JSON minimiert und in die Zwischenablage kopiert',
         copied: 'In die Zwischenablage kopiert',
-        extractedAndCopied: 'Wert extrahiert und in die Zwischenablage kopiert'
+        extractedAndCopied: 'Wert extrahiert und in die Zwischenablage kopiert',
+        graphGenerated: 'Diagramm erfolgreich erstellt'
       },
       info: {
         emptyContent: 'Kein Inhalt zum Kopieren'
