@@ -118,7 +118,7 @@ const MermaidEditor: React.FC = () => {
             previewRef.current.innerHTML = svg;
             if (error) setError(null);
           } catch (e: any) {
-            setError(e.message?.replace(/mermaid.parseError: /s, '') || 'Invalid Mermaid syntax');
+            setError(e.message?.replace(/mermaid.parseError: /s, '') || t('tools.mermaid.invalidSyntax'));
           }
         } else {
           previewRef.current.innerHTML = '';
@@ -129,14 +129,14 @@ const MermaidEditor: React.FC = () => {
 
     const timer = setTimeout(renderMermaid, 300);
     return () => clearTimeout(timer);
-  }, [input, theme, error, setError]);
+  }, [input, theme, error, setError, t]);
 
   return (
     <div className="container mx-auto p-4">
       <Card>
         <CardHeader>
-          <CardTitle>Mermaid Editor</CardTitle>
-          <CardDescription>Create diagrams with Mermaid syntax. Live preview on the right.</CardDescription>
+          <CardTitle>{t('tools.mermaid.title')}</CardTitle>
+          <CardDescription>{t('tools.mermaid.description')}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="relative">
@@ -166,7 +166,7 @@ const MermaidEditor: React.FC = () => {
                   <SimpleCodeEditor
                     value={input}
                     onChange={setInput}
-                    placeholder="Type your Mermaid syntax here..."
+                    placeholder={t('tools.mermaid.placeholder')}
                   />
                 </div>
               </ResizablePanel>
@@ -205,7 +205,7 @@ const MermaidEditor: React.FC = () => {
               <div className="absolute bottom-4 right-4 w-auto max-w-md z-10">
                 <Alert variant="destructive">
                   <Terminal className="h-4 w-4" />
-                  <AlertTitle>Syntax Error</AlertTitle>
+                  <AlertTitle>{t('tools.mermaid.syntaxError')}</AlertTitle>
                   <AlertDescription>
                     <pre className="text-xs whitespace-pre-wrap font-mono">{error}</pre>
                   </AlertDescription>

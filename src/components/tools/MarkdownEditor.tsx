@@ -45,8 +45,8 @@ const MarkdownEditor: React.FC = () => {
     <div className="container mx-auto p-4">
       <Card>
         <CardHeader>
-          <CardTitle>Markdown Editor</CardTitle>
-          <CardDescription>Edit Markdown on the left and see the result on the right.</CardDescription>
+          <CardTitle>{t('tools.markdown.title')}</CardTitle>
+          <CardDescription>{t('tools.markdown.description')}</CardDescription>
         </CardHeader>
         <CardContent>
           <ResizablePanelGroup direction="horizontal" className="min-h-[60vh] rounded-lg border">
@@ -75,7 +75,7 @@ const MarkdownEditor: React.FC = () => {
                 <SimpleCodeEditor
                   value={input}
                   onChange={setInput}
-                  placeholder="Type your Markdown here..."
+                  placeholder={t('tools.markdown.placeholder')}
                 />
               </div>
             </ResizablePanel>

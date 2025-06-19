@@ -1,3 +1,4 @@
+
 export const zhCN = {
   translation: {
     nav: { 
@@ -208,8 +209,18 @@ export const zhCN = {
         convertedDateTime: '转换后的日期时间'
       },
       crypto: { title: '加密工具', description: '哈希生成、加密和解密实用程序' }, 
-      markdown: { title: 'Markdown 工具', description: 'Markdown 编辑器与实时预览' }, 
-      mermaid: { title: 'Mermaid 图表', description: '使用 Mermaid 创建图表和流程图' } 
+      markdown: { 
+        title: 'Markdown 工具', 
+        description: '支持实时预览的 Markdown 编辑器',
+        placeholder: '在此输入您的 Markdown 内容...'
+      }, 
+      mermaid: { 
+        title: 'Mermaid 图表', 
+        description: '使用 Mermaid 语法创建图表和流程图',
+        placeholder: '在此输入您的 Mermaid 语法...',
+        syntaxError: '语法错误',
+        invalidSyntax: '无效的 Mermaid 语法'
+      } 
     },
     toasts: {
       common: {

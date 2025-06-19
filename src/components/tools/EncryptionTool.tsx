@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Copy, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
-import CodeEditor from './CodeEditor';
+import { Textarea } from '@/components/ui/textarea';
 
 const EncryptionTool: React.FC = () => {
   const { t } = useTranslation();
@@ -30,11 +30,11 @@ const EncryptionTool: React.FC = () => {
           <CardTitle>{t('tools.crypto.title')}</CardTitle>
           <CardDescription>{t('tools.crypto.description')}</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="algorithm">{t('encryption.algorithm')}</Label>
             <Select value={algorithm} onValueChange={(value: Algorithm) => setAlgorithm(value)}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue placeholder={t('encryption.selectAlgorithm')} />
               </SelectTrigger>
               <SelectContent>
@@ -49,10 +49,13 @@ const EncryptionTool: React.FC = () => {
 
           <div className="space-y-2">
             <Label htmlFor="input">{t('encryption.inputText')}</Label>
-            <CodeEditor
+            <Textarea
+              id="input"
+              className="min-h-[150px] resize-y font-mono"
               value={input}
-              onChange={setInput}
+              onChange={(e) => setInput(e.target.value)}
               placeholder={t('encryption.inputPlaceholder')}
+              disabled={algorithm === 'uuid'}
             />
           </div>
 
@@ -83,9 +86,10 @@ const EncryptionTool: React.FC = () => {
                 </Button>
               </div>
             </div>
-            <CodeEditor
+            <Textarea
+              id="output"
+              className="min-h-[150px] resize-y font-mono bg-muted"
               value={output}
-              onChange={() => {}}
               readOnly
               placeholder={t('encryption.outputPlaceholder')}
             />
