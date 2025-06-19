@@ -2,11 +2,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';
+import { useTranslation } from 'react-i18next';
 import { useJsonConversion } from './useJsonConversion';
 import { useJsonExtraction } from './useJsonExtraction';
 import { useJsonHistory } from './useJsonHistory';
+import { useJsonGraph } from './useJsonGraph';
 
 export const useJsonTool = () => {
+  const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
@@ -19,6 +22,9 @@ export const useJsonTool = () => {
 
   // 集成历史记录功能
   const { history, addToHistory, removeFromHistory, clearHistory } = useJsonHistory();
+
+  // 集成图形功能
+  const { graphData, generateJsonGraph, clearGraph } = useJsonGraph();
 
   // 实时校验并自动格式化 JSON
   const validateAndFormatJson = (jsonString: string) => {
@@ -52,12 +58,16 @@ export const useJsonTool = () => {
           const lines = jsonString.substring(0, position).split('\n');
           const line = lines.length;
           const column = lines[lines.length - 1].length + 1;
-          setValidationError(`JSON语法错误: ${errorMessage} (第${line}行，第${column}列)`);
+          setValidationError(t('tools.json.syntaxErrorAtPosition', { 
+            message: errorMessage, 
+            line, 
+            column 
+          }));
         } else {
-          setValidationError(`JSON语法错误: ${errorMessage}`);
+          setValidationError(t('tools.json.syntaxErrorGeneric', { message: errorMessage }));
         }
       } else {
-        setValidationError('未知的JSON解析错误');
+        setValidationError(t('tools.json.unknownParseError'));
       }
       return jsonString;
     }
@@ -79,18 +89,20 @@ export const useJsonTool = () => {
       setIsMinified(false);
     }
     // eslint-disable-next-line
-  }, [input]);
+  }, [input, t]);
 
   const handleInputChange = (value: string) => {
     setInput(value);
     setIsMinified(false);
     setOutputContent(null);
     setOutputTitle(null);
+    clearGraph();
   };
 
   const handleToggleMinifyFormat = () => {
     setOutputContent(null);
     setOutputTitle(null);
+    clearGraph();
     if (!isValid || !input.trim()) {
       toast({
         title: i18n.t('toasts.common.error'),
@@ -135,6 +147,7 @@ export const useJsonTool = () => {
   const copyToClipboard = () => {
     setOutputContent(null);
     setOutputTitle(null);
+    clearGraph();
     if (!input.trim()) {
       toast({
         title: i18n.t('toasts.common.info'),
@@ -157,6 +170,7 @@ export const useJsonTool = () => {
     setExtractPath('');
     setOutputContent(null);
     setOutputTitle(null);
+    clearGraph();
   };
 
   // 从历史记录中选择项目
@@ -165,6 +179,23 @@ export const useJsonTool = () => {
     setIsMinified(false);
     setOutputContent(null);
     setOutputTitle(null);
+    clearGraph();
+  };
+
+  // 生成JSON结构图
+  const handleGenerateGraph = () => {
+    if (!isValid || !input.trim()) {
+      toast({
+        title: i18n.t('toasts.common.error'),
+        description: i18n.t('toasts.error.invalidJson'),
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    generateJsonGraph(input);
+    setOutputContent(graphData);
+    setOutputTitle(t('tools.json.graphTitle'));
   };
 
   const { handleExtractValue } = useJsonExtraction({
@@ -181,6 +212,13 @@ export const useJsonTool = () => {
     setOutputContent,
     setOutputTitle,
   });
+
+  // 当图形数据更新时，更新输出内容
+  useEffect(() => {
+    if (graphData && outputTitle === t('tools.json.graphTitle')) {
+      setOutputContent(graphData);
+    }
+  }, [graphData, outputTitle, t]);
 
   return {
     input,
@@ -199,6 +237,7 @@ export const useJsonTool = () => {
     handleConvertToYaml,
     handleConvertToXml,
     handleConvertToCsv,
+    handleGenerateGraph,
     // 历史记录相关
     history,
     handleSelectFromHistory,

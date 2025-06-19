@@ -1,4 +1,3 @@
-
 export const zhCN = {
   translation: {
     nav: { 
@@ -46,7 +45,8 @@ export const zhCN = {
       pattern: '模式',
       input: '输入',
       output: '输出',
-      result: '结果'
+      result: '结果',
+      graph: '结构图'
     },
     home: { title: '开发者工具中心', subtitle: '具有现代拟态化设计的专业开发工具', description: '全面的开发者必备工具集合，包括 JSON 格式化、文本处理、加密等功能。' },
     tools: { 
@@ -58,6 +58,11 @@ export const zhCN = {
         extractValue: '提取值',
         placeholder: '在此输入或粘贴您的 JSON...',
         extractedValueTitle: '提取的值',
+        syntaxError: 'JSON语法错误',
+        unknownParseError: '未知的JSON解析错误',
+        syntaxErrorAtPosition: 'JSON语法错误: {{message}} (第{{line}}行，第{{column}}列)',
+        syntaxErrorGeneric: 'JSON语法错误: {{message}}',
+        graphTitle: 'JSON结构图',
         history: {
           title: '历史记录',
           emptyMessage: '暂无历史记录，开始输入JSON数据吧！',
@@ -233,7 +238,8 @@ export const zhCN = {
         copied: '已复制到剪贴板',
         formattedAndCopied: 'JSON已格式化并复制到剪贴板',
         minifiedAndCopied: 'JSON已压缩并复制到剪贴板',
-        extractedAndCopied: '值已提取并复制到剪贴板'
+        extractedAndCopied: '值已提取并复制到剪贴板',
+        graphGenerated: 'JSON结构图已生成'
       },
       error: {
         invalidJson: '请输入有效的JSON',

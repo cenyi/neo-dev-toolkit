@@ -25,6 +25,7 @@ const JsonTool: React.FC = () => {
     handleConvertToYaml,
     handleConvertToXml,
     handleConvertToCsv,
+    handleGenerateGraph,
     history,
     handleSelectFromHistory,
     removeFromHistory,
@@ -44,6 +45,7 @@ const JsonTool: React.FC = () => {
         onConvertToYaml={handleConvertToYaml}
         onConvertToXml={handleConvertToXml}
         onConvertToCsv={handleConvertToCsv}
+        onGenerateGraph={handleGenerateGraph}
         history={history}
         onSelectHistory={handleSelectFromHistory}
         onRemoveHistoryItem={removeFromHistory}
