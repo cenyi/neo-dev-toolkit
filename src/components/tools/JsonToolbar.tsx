@@ -18,6 +18,7 @@ interface JsonToolbarProps {
   onConvertToYaml: () => void;
   onConvertToXml: () => void;
   onConvertToCsv: () => void;
+  onGenerateGraph: () => void;
   // 历史记录相关props
   history: JsonHistoryItem[];
   onSelectHistory: (content: string) => void;
@@ -36,6 +37,7 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
   onConvertToYaml,
   onConvertToXml,
   onConvertToCsv,
+  onGenerateGraph,
   history,
   onSelectHistory,
   onRemoveHistoryItem,
@@ -60,6 +62,9 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
         </Button>
         <Button onClick={onConvertToCsv} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
           {t('common.toCsv')}
+        </Button>
+        <Button onClick={onGenerateGraph} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
+          {t('tools.json.generateGraph')}
         </Button>
         <Button onClick={onClear} variant="destructive" className="text-sm font-extrabold">
           {t('common.clear')}
