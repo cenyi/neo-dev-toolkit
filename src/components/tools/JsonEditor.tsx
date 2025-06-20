@@ -1,8 +1,7 @@
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { toast } from '@/hooks/use-toast';
 import { Textarea } from '@/components/ui/textarea';
 
 interface JsonEditorProps {
@@ -25,7 +24,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
   const [loadError, setLoadError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // 在Vercel等生产环境中，设置超时来检测Monaco是否加载失败
+  // Reduce timeout for faster fallback
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (isLoading) {
@@ -33,18 +32,19 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
         setLoadError(true);
         setIsLoading(false);
       }
-    }, 3000); // 3秒超时
+    }, 2000); // Reduced from 3 seconds to 2 seconds
 
     return () => clearTimeout(timeout);
   }, [isLoading]);
 
-  const handleEditorDidMount = (editor: any, monaco: any) => {
+  const handleEditorDidMount = useCallback((editor: any, monaco: any) => {
     try {
       console.log('Monaco Editor mounted successfully');
       editorRef.current = editor;
       setIsLoading(false);
       setLoadError(false);
       
+      // Simplified configuration for faster loading
       if (monaco?.languages?.json?.jsonDefaults?.setDiagnosticsOptions) {
         monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
           validate: true,
@@ -53,13 +53,14 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
           enableSchemaRequest: false
         });
       }
+      
       editor.updateOptions({
-        lineNumbers: 'on', // 总是显示行号
+        lineNumbers: 'on',
         lineNumbersMinChars: 3,
-        glyphMargin: true,
-        folding: true, // 总是启用折叠
+        glyphMargin: false, // Disable glyph margin for better performance
+        folding: true,
         foldingStrategy: 'indentation',
-        showFoldingControls: 'always', // 总是显示折叠控件
+        showFoldingControls: 'mouseover', // Show controls only on mouseover
         wordWrap: 'on',
         automaticLayout: true,
         scrollBeyondLastLine: false,
@@ -67,29 +68,33 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
         fontSize: 14,
         tabSize: 2,
         insertSpaces: true,
-        renderWhitespace: 'boundary',
-        readOnly: readOnly
+        renderWhitespace: 'none', // Simplified rendering
+        readOnly: readOnly,
+        suggest: { 
+          showKeywords: false, // Disable suggestions for performance
+          showSnippets: false 
+        }
       });
     } catch (error) {
       console.error("Monaco Editor mount error:", error);
       setLoadError(true);
       setIsLoading(false);
     }
-  };
+  }, [readOnly]);
 
-  const handleEditorChange = (val: string | undefined) => {
+  const handleEditorChange = useCallback((val: string | undefined) => {
     if (onChange && val !== undefined) {
       onChange(val);
     }
-  };
+  }, [onChange]);
 
-  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTextareaChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {
       onChange(e.target.value);
     }
-  };
+  }, [onChange]);
 
-  // 如果加载失败或超时，使用textarea fallback
+  // Fast fallback for production environments
   if (loadError) {
     return (
       <div className="h-full min-h-[120px] w-full border rounded-md overflow-hidden flex flex-col bg-background relative">
@@ -125,8 +130,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
         }}
         options={{
           wordWrap: 'on',
-          lineNumbers: 'on', // 总是显示行号
-          folding: true, // 总是启用折叠
+          lineNumbers: 'on',
+          folding: true,
           readOnly: readOnly,
           automaticLayout: true,
           scrollBeyondLastLine: false,
@@ -134,12 +139,16 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
           fontSize: 14,
           tabSize: 2,
           insertSpaces: true,
-          renderWhitespace: 'boundary'
+          renderWhitespace: 'none', // Simplified for performance
+          suggest: { 
+            showKeywords: false,
+            showSnippets: false 
+          }
         }}
         loading={
           <div className="flex flex-col justify-center items-center h-full bg-background text-muted-foreground p-4">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mb-2"></div>
-            <span className="text-sm">加载编辑器...</span>
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mb-2"></div>
+            <span className="text-xs">加载中...</span>
           </div>
         }
         onValidate={(markers) => {

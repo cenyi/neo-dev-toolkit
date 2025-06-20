@@ -20,7 +20,10 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
       </div>
       <div className="flex-1 min-h-0 px-4 pb-4 overflow-hidden">
         {isGraphView ? (
-          <MermaidGraph content={outputContent ?? ''} />
+          <MermaidGraph 
+            content={outputContent ?? ''} 
+            orientation="vertical"
+          />
         ) : (
           <JsonEditor value={outputContent ?? ''} readOnly={true} />
         )}
