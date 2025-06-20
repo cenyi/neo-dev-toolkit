@@ -6,14 +6,14 @@ import i18n from '@/i18n';
 export const useJsonGraph = () => {
   const [graphData, setGraphData] = useState<string | null>(null);
 
-  const generateJsonGraph = (jsonString: string) => {
+  const generateJsonGraph = (jsonString: string): string | null => {
     if (!jsonString.trim()) {
       toast({
         title: i18n.t('toasts.common.error'),
         description: i18n.t('toasts.error.invalidJson'),
         variant: 'destructive',
       });
-      return;
+      return null;
     }
 
     try {
@@ -24,12 +24,14 @@ export const useJsonGraph = () => {
         title: i18n.t('toasts.common.success'),
         description: i18n.t('toasts.success.graphGenerated'),
       });
+      return graph;
     } catch (error) {
       toast({
         title: i18n.t('toasts.common.error'),
         description: i18n.t('toasts.error.invalidJsonFormat'),
         variant: 'destructive',
       });
+      return null;
     }
   };
 
@@ -43,7 +45,7 @@ export const useJsonGraph = () => {
     const getNodeLabel = (value: any): string => {
       if (value === null) return 'null';
       if (value === undefined) return 'undefined';
-      if (typeof value === 'string') return `"${value}"`;
+      if (typeof value === 'string') return `"${value.replace(/"/g, '\\"').substring(0, 20)}${value.length > 20 ? '...' : ''}"`;
       if (typeof value === 'boolean') return value.toString();
       if (typeof value === 'number') return value.toString();
       if (Array.isArray(value)) return `Array[${value.length}]`;
@@ -59,13 +61,13 @@ export const useJsonGraph = () => {
         data.forEach((item, index) => {
           const childId = getNodeId();
           processNode(item, childId, `[${index}]`);
-          lines.push(`    ${nodeId}[${label}] --> ${childId}`);
+          lines.push(`    ${nodeId} --> ${childId}`);
         });
       } else if (data && typeof data === 'object') {
         Object.entries(data).forEach(([key, value]) => {
           const childId = getNodeId();
           processNode(value, childId, key);
-          lines.push(`    ${nodeId}[${label}] --> ${childId}`);
+          lines.push(`    ${nodeId} --> ${childId}`);
         });
       }
     };
@@ -73,11 +75,11 @@ export const useJsonGraph = () => {
     const rootId = getNodeId();
     processNode(obj, rootId);
 
-    // 添加节点样式定义
+    // Add node definitions with labels
     lines.push('');
     nodeMap.forEach((label, nodeId) => {
       const escapedLabel = label.replace(/"/g, '#quot;').replace(/\[/g, '#91;').replace(/\]/g, '#93;');
-      lines.push(`    ${nodeId}[${escapedLabel}]`);
+      lines.push(`    ${nodeId}["${escapedLabel}"]`);
     });
 
     return lines.join('\n');

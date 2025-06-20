@@ -193,9 +193,11 @@ export const useJsonTool = () => {
       return;
     }
 
-    generateJsonGraph(input);
-    setOutputContent(graphData);
-    setOutputTitle(t('tools.json.graphTitle'));
+    const generatedGraph = generateJsonGraph(input);
+    if (generatedGraph) {
+      setOutputContent(generatedGraph);
+      setOutputTitle(t('tools.json.graphTitle'));
+    }
   };
 
   const { handleExtractValue } = useJsonExtraction({

@@ -1,12 +1,14 @@
 
 import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
+import { useTranslation } from 'react-i18next';
 
 interface MermaidGraphProps {
   content: string;
 }
 
 const MermaidGraph: React.FC<MermaidGraphProps> = ({ content }) => {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,8 +48,8 @@ const MermaidGraph: React.FC<MermaidGraphProps> = ({ content }) => {
             containerRef.current.innerHTML = `
               <div class="flex items-center justify-center h-full text-muted-foreground">
                 <div class="text-center">
-                  <p class="text-lg mb-2">图表渲染失败</p>
-                  <p class="text-sm">请检查JSON数据格式</p>
+                  <p class="text-lg mb-2">${t('toasts.common.error')}</p>
+                  <p class="text-sm">${t('toasts.error.invalidJsonFormat')}</p>
                 </div>
               </div>
             `;
@@ -57,12 +59,12 @@ const MermaidGraph: React.FC<MermaidGraphProps> = ({ content }) => {
 
       renderGraph();
     }
-  }, [content]);
+  }, [content, t]);
 
   if (!content) {
     return (
       <div className="flex items-center justify-center h-full text-muted-foreground">
-        <p>暂无图表数据</p>
+        <p>{t('toasts.info.emptyContent')}</p>
       </div>
     );
   }

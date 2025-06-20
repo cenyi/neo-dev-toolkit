@@ -32,7 +32,20 @@ export const es = {
       toCsv: 'A CSV',
       blue: 'Azul',
       system: 'Sistema',
-      comingSoon: 'Próximamente'
+      comingSoon: 'Próximamente',
+      error: 'Error',
+      success: 'Éxito',
+      info: 'Información',
+      notFound: 'No encontrado',
+      compare: 'Comparar',
+      test: 'Probar',
+      match: 'Coincidir',
+      replace: 'Reemplazar',
+      flags: 'Banderas',
+      pattern: 'Patrón',
+      input: 'Entrada',
+      output: 'Salida',
+      result: 'Resultado'
     },
     home: {
       title: 'Hub de Herramientas para Desarrolladores',
@@ -49,7 +62,25 @@ export const es = {
         extractPlaceholder: 'ej., data.users[0].name',
         extractedValueTitle: 'Valor extraído',
         generateGraph: 'Generar Gráfico',
-        graphTitle: 'Estructura JSON'
+        graphTitle: 'Estructura JSON',
+        syntaxError: 'Error de sintaxis JSON',
+        unknownParseError: 'Error de análisis JSON desconocido',
+        syntaxErrorAtPosition: 'Error de sintaxis JSON: {{message}} (línea {{line}}, columna {{column}})',
+        syntaxErrorGeneric: 'Error de sintaxis JSON: {{message}}',
+        history: {
+          title: 'Historial',
+          emptyMessage: '¡Aún no hay historial, comienza ingresando algunos datos JSON!',
+          clearAll: 'Limpiar Todo',
+          removeItem: 'Eliminar Elemento',
+          itemRemoved: 'Elemento del historial eliminado',
+          historyCleared: 'Historial limpiado',
+          loadedFromHistory: 'Cargado desde el historial',
+          justNow: 'Ahora mismo',
+          minutesAgo: 'hace {{count}} minutos',
+          hoursAgo: 'hace {{count}} horas',
+          searchPlaceholder: 'Buscar en el historial...',
+          noResults: 'No se encontraron registros coincidentes'
+        }
       },
       network: {
         title: 'Herramientas de Red',
