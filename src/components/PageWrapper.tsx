@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 const APP_NAME = "DevTools Hub";
 const SEPARATOR = "|";
-const HOME_TAGLINE = "Free Online Developer Tools";
+const HOME_TAGLINE = "Free Developer Tools";
 
 interface PageWrapperProps {
   title: string;
@@ -14,11 +14,11 @@ interface PageWrapperProps {
 
 const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description, keywords }) => {
   useEffect(() => {
-    // Update page title
+    // Update page title with optimized length (40-60 characters)
     if (title === APP_NAME) {
-      document.title = `${APP_NAME} - ${HOME_TAGLINE} | JSON Formatter, Text Utils, Encryption`;
+      document.title = `${APP_NAME} - ${HOME_TAGLINE}`;
     } else {
-      document.title = `${title} ${SEPARATOR} ${APP_NAME} - Free Online Tool`;
+      document.title = `${title} ${SEPARATOR} ${APP_NAME}`;
     }
 
     // Update meta description if provided
@@ -43,7 +43,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
     // Update Open Graph title
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle && title !== APP_NAME) {
-      ogTitle.setAttribute('content', `${title} - Free Online Developer Tool`);
+      ogTitle.setAttribute('content', `${title} - Free Developer Tool`);
     }
 
     // Update canonical URL for specific pages

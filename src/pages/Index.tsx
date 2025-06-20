@@ -1,13 +1,16 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import HomePage from '@/components/HomePage';
+import PageWrapper from '@/components/PageWrapper';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <PageWrapper 
+      title="DevTools Hub" 
+      description="Free online developer tools collection: JSON formatter, text processing, encryption utilities. No signup required, privacy-focused."
+      keywords="developer tools, JSON formatter, text converter, free dev tools"
+    >
+      <HomePage />
+    </PageWrapper>
   );
 };
 
