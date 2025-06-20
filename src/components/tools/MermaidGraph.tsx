@@ -33,13 +33,13 @@ const MermaidGraph: React.FC<MermaidGraphProps> = ({ content }) => {
           const element = containerRef.current;
           if (!element) return;
           
-          // 清空之前的内容
+          // Clear previous content
           element.innerHTML = '';
           
-          // 创建唯一ID
+          // Create unique ID
           const id = `mermaid-${Date.now()}`;
           
-          // 渲染图表
+          // Render graph
           const { svg } = await mermaid.render(id, content);
           element.innerHTML = svg;
         } catch (error) {
