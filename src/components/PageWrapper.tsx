@@ -50,7 +50,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical && title !== APP_NAME) {
       const currentPath = window.location.pathname;
-      canonical.setAttribute('href', `https://devtools-hub.lovable.app${currentPath}`);
+      canonical.setAttribute('href', `https://afunning.com${currentPath}`);
     }
   }, [title, description, keywords]);
 

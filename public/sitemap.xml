@@ -6,145 +6,145 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://devtools-hub.lovable.app/</loc>
+  <loc>https://afunning.com/</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/json</loc>
+  <loc>https://afunning.com/json</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.90</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/json-schema-validator</loc>
+  <loc>https://afunning.com/json-schema-validator</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/json-codegen</loc>
+  <loc>https://afunning.com/json-codegen</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/json-diff</loc>
+  <loc>https://afunning.com/json-diff</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/json-mock</loc>
+  <loc>https://afunning.com/json-mock</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/network</loc>
+  <loc>https://afunning.com/network</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/base64-encoder</loc>
+  <loc>https://afunning.com/base64-encoder</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/ip-lookup</loc>
+  <loc>https://afunning.com/ip-lookup</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/jwt-decoder</loc>
+  <loc>https://afunning.com/jwt-decoder</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/case-converter</loc>
+  <loc>https://afunning.com/case-converter</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/word-counter</loc>
+  <loc>https://afunning.com/word-counter</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/text-reverser</loc>
+  <loc>https://afunning.com/text-reverser</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.75</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/whitespace-remover</loc>
+  <loc>https://afunning.com/whitespace-remover</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.75</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/lorem-ipsum-generator</loc>
+  <loc>https://afunning.com/lorem-ipsum-generator</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.75</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/markdown</loc>
+  <loc>https://afunning.com/markdown</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/mermaid</loc>
+  <loc>https://afunning.com/mermaid</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/timestamp-converter</loc>
+  <loc>https://afunning.com/timestamp-converter</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/timezone-converter</loc>
+  <loc>https://afunning.com/timezone-converter</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/date-calculator</loc>
+  <loc>https://afunning.com/date-calculator</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/encryption</loc>
+  <loc>https://afunning.com/encryption</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/about</loc>
+  <loc>https://afunning.com/about</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/privacy</loc>
+  <loc>https://afunning.com/privacy</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://devtools-hub.lovable.app/terms</loc>
+  <loc>https://afunning.com/terms</loc>
   <lastmod>2025-06-15</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.50</priority>
