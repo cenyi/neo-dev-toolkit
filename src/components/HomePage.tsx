@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <header className="text-center mb-16">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl mb-4 floating-animation">
-          Free Online Developer Tools Hub
+          {t('home.headerTitle')}
         </h1>
         <p className="max-w-3xl mx-auto text-xl text-muted-foreground">
           {t('home.subtitle')}
@@ -73,7 +73,7 @@ const HomePage: React.FC = () => {
       <main>
         <section>
           <h2 className="text-3xl font-bold text-center mb-8 text-foreground">
-            Professional Developer Tools Collection
+            {t('home.toolsCollectionTitle')}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -101,25 +101,25 @@ const HomePage: React.FC = () => {
 
         <section className="mt-16 text-center">
           <h2 className="text-2xl font-bold mb-4 text-foreground">
-            Why Choose DevTools Hub for Your Development Needs?
+            {t('home.whyChooseTitle')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">100% Free & No Registration</h3>
+              <h3 className="text-lg font-semibold mb-2">{t('home.feature1Title')}</h3>
               <p className="text-muted-foreground text-sm">
-                All tools are completely free to use with no account required
+                {t('home.feature1Description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">Privacy Focused Development</h3>
+              <h3 className="text-lg font-semibold mb-2">{t('home.feature2Title')}</h3>
               <p className="text-muted-foreground text-sm">
-                Your data stays in your browser - nothing is sent to our servers
+                {t('home.feature2Description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">Modern Responsive Interface</h3>
+              <h3 className="text-lg font-semibold mb-2">{t('home.feature3Title')}</h3>
               <p className="text-muted-foreground text-sm">
-                Clean, responsive design that works perfectly on all devices
+                {t('home.feature3Description')}
               </p>
             </div>
           </div>

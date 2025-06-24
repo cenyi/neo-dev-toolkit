@@ -1,40 +1,46 @@
 
 // 自定义 JSON 解析器，保持大整数精度
 export const parseJsonWithBigInt = (jsonString: string): any => {
-  // 先检查是否包含大于 Number.MAX_SAFE_INTEGER 的整数
-  const bigIntPattern = /:\s*(-?\d{16,})\s*[,\}\]]/g;
-  const hasLargeBigInt = bigIntPattern.test(jsonString);
+  // 更精确的大整数检测，匹配超过 JavaScript 安全整数范围的数字
+  const bigIntPattern = /:\s*(-?\d{16,})\b/g;
+  const arrayBigIntPattern = /(?:\[|,)\s*(-?\d{16,})\b/g;
   
-  if (!hasLargeBigInt) {
-    // 如果没有大整数，使用标准解析
-    return JSON.parse(jsonString);
+  let processedString = jsonString;
+  
+  // 检查是否包含大整数
+  if (bigIntPattern.test(jsonString) || arrayBigIntPattern.test(jsonString)) {
+    // 重置正则表达式索引
+    bigIntPattern.lastIndex = 0;
+    arrayBigIntPattern.lastIndex = 0;
+    
+    // 处理对象属性中的大整数
+    processedString = processedString.replace(
+      /:\s*(-?\d{16,})\b/g, 
+      ': "$1"'
+    );
+    
+    // 处理数组开头的大整数
+    processedString = processedString.replace(
+      /\[\s*(-?\d{16,})\b/g,
+      '["$1"'
+    );
+    
+    // 处理数组中间的大整数
+    processedString = processedString.replace(
+      /,\s*(-?\d{16,})\b/g,
+      ', "$1"'
+    );
+    
+    console.log('处理大整数前:', jsonString);
+    console.log('处理大整数后:', processedString);
   }
-  
-  // 对于包含大整数的情况，我们需要特殊处理
-  // 将大整数用引号包围来保持精度
-  let processedString = jsonString.replace(
-    /:\s*(-?\d{16,})\s*([,\}\]])/g, 
-    ': "$1"$2'
-  );
-  
-  // 处理数组中的大整数
-  processedString = processedString.replace(
-    /\[\s*(-?\d{16,})\s*([,\]])/g,
-    '["$1"$2'
-  );
-  
-  // 处理数组中间的大整数
-  processedString = processedString.replace(
-    /,\s*(-?\d{16,})\s*([,\]])/g,
-    ', "$1"$2'
-  );
   
   return JSON.parse(processedString);
 };
 
 export const stringifyJsonWithBigInt = (obj: any, space?: number): string => {
   return JSON.stringify(obj, (key, value) => {
-    // 保持字符串形式的大整数
+    // 保持字符串形式的大整数不变
     if (typeof value === 'string' && /^-?\d{16,}$/.test(value)) {
       return value;
     }
@@ -47,6 +53,7 @@ export const formatJsonSafely = (jsonString: string): string => {
     const parsed = parseJsonWithBigInt(jsonString);
     return stringifyJsonWithBigInt(parsed, 2);
   } catch (error) {
+    console.error('JSON格式化错误:', error);
     throw error;
   }
 };

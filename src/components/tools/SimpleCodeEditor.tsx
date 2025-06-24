@@ -15,7 +15,7 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
   onChange,
   placeholder = '',
   readOnly = false,
-  minHeight = '300px', // 增加默认最小高度
+  minHeight = '500px', // 增加默认最小高度
 }) => {
   const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {
@@ -31,7 +31,7 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
   return (
     <div className="h-full w-full flex">
       {/* Line numbers */}
-      <div className="bg-muted border-r border-border px-2 py-4 text-xs text-muted-foreground font-mono select-none min-w-[3rem] text-right">
+      <div className="bg-muted border-r border-border px-3 py-4 text-sm text-muted-foreground font-mono select-none min-w-[4rem] text-right">
         {lineNumbers.map((lineNum) => (
           <div key={lineNum} className="leading-6 h-6">
             {lineNum}
@@ -41,7 +41,7 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
       
       {/* Text area */}
       <Textarea
-        className="flex-1 resize-none border-0 rounded-none rounded-r-md p-4 font-mono bg-background text-foreground outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-0"
+        className="flex-1 resize-none border-0 rounded-none rounded-r-md p-4 font-mono bg-background text-foreground outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-0 text-sm"
         value={value}
         onChange={handleChange}
         placeholder={placeholder}

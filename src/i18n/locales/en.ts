@@ -47,7 +47,20 @@ export const en = {
       output: 'Output',
       result: 'Result'
     },
-    home: { title: 'Developer Tools Hub', subtitle: 'Professional development tools with modern neumorphic design', description: 'A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more.' },
+    home: { 
+      title: 'Developer Tools Hub', 
+      subtitle: 'Professional development tools with modern neumorphic design', 
+      description: 'A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more.',
+      headerTitle: 'Free Online Developer Tools Hub',
+      toolsCollectionTitle: 'Professional Developer Tools Collection',
+      whyChooseTitle: 'Why Choose DevTools Hub for Your Development Needs?',
+      feature1Title: '100% Free & No Registration',
+      feature1Description: 'All tools are completely free to use with no account required',
+      feature2Title: 'Privacy Focused Development',
+      feature2Description: 'Your data stays in your browser - nothing is sent to our servers',
+      feature3Title: 'Modern Responsive Interface',
+      feature3Description: 'Clean, responsive design that works perfectly on all devices'
+    },
     tools: { 
       json: { 
         title: 'JSON Tools', 
@@ -122,6 +135,10 @@ export const en = {
       text: { 
         title: 'Text Tools', 
         description: 'Text processing, case conversion, and formatting',
+        textDiff: {
+          title: 'Text Comparison Tool',
+          description: 'Compare two text documents and highlight differences'
+        },
         caseConverter: {
           title: 'Case Converter',
           description: 'Convert text between different letter cases.',

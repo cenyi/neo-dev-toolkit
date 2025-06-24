@@ -48,7 +48,20 @@ export const zhCN = {
       result: '结果',
       graph: '结构图'
     },
-    home: { title: '开发者工具中心', subtitle: '具有现代拟态化设计的专业开发工具', description: '全面的开发者必备工具集合，包括 JSON 格式化、文本处理、加密等功能。' },
+    home: { 
+      title: '开发者工具中心', 
+      subtitle: '具有现代拟态化设计的专业开发工具', 
+      description: '全面的开发者必备工具集合，包括 JSON 格式化、文本处理、加密等功能。',
+      headerTitle: '免费在线开发者工具中心',
+      toolsCollectionTitle: '专业开发者工具集合',
+      whyChooseTitle: '为什么选择 DevTools Hub 满足您的开发需求？',
+      feature1Title: '100% 免费且无需注册',
+      feature1Description: '所有工具完全免费使用，无需创建账户',
+      feature2Title: '注重隐私的开发',
+      feature2Description: '您的数据保留在浏览器中 - 不会发送到我们的服务器',
+      feature3Title: '现代响应式界面',
+      feature3Description: '简洁、响应式设计，在所有设备上完美运行'
+    },
     tools: { 
       json: { 
         title: 'JSON 工具', 
@@ -122,6 +135,10 @@ export const zhCN = {
       text: { 
         title: '文本工具', 
         description: '文本处理、大小写转换和格式化',
+        textDiff: {
+          title: '文本比较工具',
+          description: '比较两个文本文档并突出显示差异'
+        },
         caseConverter: {
           title: '大小写转换器',
           description: '在不同的字母大小写之间转换文本。',
