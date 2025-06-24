@@ -33,12 +33,12 @@ const TextDiff: React.FC = () => {
               <CardTitle className="text-lg">原始文本</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 min-h-0">
-              <div className="h-full min-h-[300px] border rounded-md">
+              <div className="h-full min-h-[400px] border rounded-md">
                 <SimpleCodeEditor
                   value={textLeft}
                   onChange={setTextLeft}
                   placeholder="请输入原始文本..."
-                  minHeight="300px"
+                  minHeight="400px"
                 />
               </div>
             </CardContent>
@@ -51,12 +51,12 @@ const TextDiff: React.FC = () => {
               <CardTitle className="text-lg">新文本</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 min-h-0">
-              <div className="h-full min-h-[300px] border rounded-md">
+              <div className="h-full min-h-[400px] border rounded-md">
                 <SimpleCodeEditor
                   value={textRight}
                   onChange={setTextRight}
                   placeholder="请输入新文本..."
-                  minHeight="300px"
+                  minHeight="400px"
                 />
               </div>
             </CardContent>

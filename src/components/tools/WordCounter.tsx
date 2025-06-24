@@ -30,12 +30,12 @@ const WordCounter: React.FC = () => {
           <CardDescription>{t('tools.text.wordCounter.description')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="min-h-[500px] border rounded-md">
+          <div className="min-h-[600px] border rounded-md">
             <SimpleCodeEditor
               value={text}
               onChange={setText}
               placeholder={t('tools.text.wordCounter.placeholder')}
-              minHeight="500px"
+              minHeight="600px"
             />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">

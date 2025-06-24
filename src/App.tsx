@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -23,6 +22,7 @@ import WordCounter from "@/components/tools/WordCounter";
 import TextReverser from "@/components/tools/TextReverser";
 import WhitespaceRemover from "@/components/tools/WhitespaceRemover";
 import LoremIpsumGenerator from "@/components/tools/LoremIpsumGenerator";
+import TextDiff from "@/components/tools/TextDiff";
 import EncryptionTool from "@/components/tools/EncryptionTool";
 import RegexTool from "@/components/tools/RegexTool";
 import MarkdownEditor from "@/components/tools/MarkdownEditor";
@@ -196,6 +196,15 @@ function App() {
                       keywords="Lorem Ipsum generator, placeholder text, dummy text, filler text, design text, mock content"
                     >
                       <LoremIpsumGenerator />
+                    </PageWrapper>
+                  } />
+                  <Route path="/text-diff" element={
+                    <PageWrapper 
+                      title="Text Comparison Tool"
+                      description="Free text comparison tool to compare and find differences between two text documents. Visual diff highlighting shows additions, deletions, and modifications line by line."
+                      keywords="text diff, text compare, text comparison, text difference, compare text, text merger, document comparison"
+                    >
+                      <TextDiff />
                     </PageWrapper>
                   } />
 

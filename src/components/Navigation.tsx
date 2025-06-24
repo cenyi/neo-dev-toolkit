@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
@@ -31,7 +30,8 @@ const Navigation: React.FC = () => {
     { path: '/word-counter', name: 'Word & Character Counter' },
     { path: '/text-reverser', name: 'Text Reverser' },
     { path: '/whitespace-remover', name: 'Whitespace Remover' },
-    { path: '/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' }
+    { path: '/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' },
+    { path: '/text-diff', name: 'Text Comparison Tool' }
   ];
 
   const editorTools = [
