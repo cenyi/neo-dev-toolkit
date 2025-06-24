@@ -137,7 +137,17 @@ export const en = {
         description: 'Text processing, case conversion, and formatting',
         textDiff: {
           title: 'Text Comparison Tool',
-          description: 'Compare two text documents and highlight differences'
+          description: 'Compare two text documents and highlight differences',
+          originalText: 'Original Text',
+          newText: 'New Text',
+          originalPlaceholder: 'Enter original text...',
+          newPlaceholder: 'Enter new text...',
+          diffResult: 'Comparison Result',
+          compareText: 'Compare Text',
+          clearAll: 'Clear All',
+          emptyLine: '(empty line)',
+          compareComplete: 'Text comparison completed',
+          enterTextToCompare: 'Please enter text to compare'
         },
         caseConverter: {
           title: 'Case Converter',

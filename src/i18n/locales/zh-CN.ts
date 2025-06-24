@@ -137,7 +137,17 @@ export const zhCN = {
         description: '文本处理、大小写转换和格式化',
         textDiff: {
           title: '文本比较工具',
-          description: '比较两个文本文档并突出显示差异'
+          description: '比较两个文本文档并突出显示差异',
+          originalText: '原始文本',
+          newText: '新文本',
+          originalPlaceholder: '请输入原始文本...',
+          newPlaceholder: '请输入新文本...',
+          diffResult: '比较结果',
+          compareText: '比较文本',
+          clearAll: '清空',
+          emptyLine: '(空行)',
+          compareComplete: '文本比较完成',
+          enterTextToCompare: '请输入需要比较的文本'
         },
         caseConverter: {
           title: '大小写转换器',

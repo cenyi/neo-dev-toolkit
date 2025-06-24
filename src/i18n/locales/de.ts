@@ -73,13 +73,27 @@ export const de = {
         generateGraph: 'Diagramm erstellen',
         graphTitle: 'JSON-Struktur'
       },
+      text: {
+        title: 'Text-Tools',
+        description: 'Textverarbeitung, Groß-/Kleinschreibung und Formatierung',
+        textDiff: {
+          title: 'Text-Vergleichstool',
+          description: 'Vergleichen Sie zwei Textdokumente und heben Sie Unterschiede hervor',
+          originalText: 'Ursprünglicher Text',
+          newText: 'Neuer Text',
+          originalPlaceholder: 'Ursprünglichen Text eingeben...',
+          newPlaceholder: 'Neuen Text eingeben...',
+          diffResult: 'Vergleichsergebnis',
+          compareText: 'Text vergleichen',
+          clearAll: 'Alle löschen',
+          emptyLine: '(leere Zeile)',
+          compareComplete: 'Textvergleich abgeschlossen',
+          enterTextToCompare: 'Bitte geben Sie zu vergleichenden Text ein'
+        }
+      },
       network: {
         title: 'Netzwerk-Tools',
         description: 'URL-Kodierung, IP-Suche und Netzwerk-Utilities'
-      },
-      text: {
-        title: 'Text-Tools',
-        description: 'Textverarbeitung, Groß-/Kleinschreibung und Formatierung'
       },
       crypto: {
         title: 'Krypto-Tools',

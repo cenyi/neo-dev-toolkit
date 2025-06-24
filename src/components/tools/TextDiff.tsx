@@ -22,22 +22,22 @@ const TextDiff: React.FC = () => {
   return (
     <div className="h-screen flex flex-col px-2">
       <div className="flex flex-wrap items-center gap-4 mb-1 p-2 bg-background border py-2 rounded-sm">
-        <Button onClick={generateDiff}>比较文本</Button>
-        <Button onClick={clearAll} variant="destructive">清空</Button>
+        <Button onClick={generateDiff}>{t('tools.text.textDiff.compareText')}</Button>
+        <Button onClick={clearAll} variant="destructive">{t('tools.text.textDiff.clearAll')}</Button>
       </div>
 
       <div className="flex-1 flex flex-col md:flex-row gap-4 min-h-0 pt-2">
         <div className="flex-1 flex flex-col min-h-0 min-w-0">
           <Card className="flex-1 flex flex-col">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg">原始文本</CardTitle>
+              <CardTitle className="text-lg">{t('tools.text.textDiff.originalText')}</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 min-h-0">
               <div className="h-full min-h-[400px] border rounded-md">
                 <SimpleCodeEditor
                   value={textLeft}
                   onChange={setTextLeft}
-                  placeholder="请输入原始文本..."
+                  placeholder={t('tools.text.textDiff.originalPlaceholder')}
                   minHeight="400px"
                 />
               </div>
@@ -48,14 +48,14 @@ const TextDiff: React.FC = () => {
         <div className="flex-1 flex flex-col min-h-0 min-w-0">
           <Card className="flex-1 flex flex-col">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg">新文本</CardTitle>
+              <CardTitle className="text-lg">{t('tools.text.textDiff.newText')}</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 min-h-0">
               <div className="h-full min-h-[400px] border rounded-md">
                 <SimpleCodeEditor
                   value={textRight}
                   onChange={setTextRight}
-                  placeholder="请输入新文本..."
+                  placeholder={t('tools.text.textDiff.newPlaceholder')}
                   minHeight="400px"
                 />
               </div>
@@ -68,7 +68,7 @@ const TextDiff: React.FC = () => {
         <div className="flex-1 flex flex-col min-h-0 mt-4 max-h-[calc(100vh-500px)]">
           <Card className="flex-1 flex flex-col">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg">比较结果</CardTitle>
+              <CardTitle className="text-lg">{t('tools.text.textDiff.diffResult')}</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 min-h-0">
               <ScrollArea className="h-full border rounded-md">
@@ -92,7 +92,7 @@ const TextDiff: React.FC = () => {
                         item.type === 'removed' ? 'line-through' : ''
                       }`}>
                         {item.type === 'added' ? '+ ' : item.type === 'removed' ? '- ' : '  '}
-                        {item.value || '(空行)'}
+                        {item.value || t('tools.text.textDiff.emptyLine')}
                       </span>
                     </div>
                   ))}

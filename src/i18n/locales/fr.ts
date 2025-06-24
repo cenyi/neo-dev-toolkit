@@ -73,13 +73,27 @@ export const fr = {
         generateGraph: 'Générer un Graphique',
         graphTitle: 'Structure JSON'
       },
+      text: {
+        title: 'Outils Texte',
+        description: 'Traitement de texte, conversion de casse et formatage',
+        textDiff: {
+          title: 'Outil de Comparaison de Texte',
+          description: 'Comparez deux documents texte et mettez en évidence les différences',
+          originalText: 'Texte Original',
+          newText: 'Nouveau Texte',
+          originalPlaceholder: 'Entrez le texte original...',
+          newPlaceholder: 'Entrez le nouveau texte...',
+          diffResult: 'Résultat de la Comparaison',
+          compareText: 'Comparer le Texte',
+          clearAll: 'Tout Effacer',
+          emptyLine: '(ligne vide)',
+          compareComplete: 'Comparaison de texte terminée',
+          enterTextToCompare: 'Veuillez entrer le texte à comparer'
+        }
+      },
       network: {
         title: 'Outils Réseau',
         description: 'Encodage d\'URL, recherche d\'IP et utilitaires réseau'
-      },
-      text: {
-        title: 'Outils Texte',
-        description: 'Traitement de texte, conversion de casse et formatage'
       },
       crypto: {
         title: 'Outils Crypto',

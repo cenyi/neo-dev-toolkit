@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { toast } from '@/hooks/use-toast';
-import i18n from '@/i18n';
+import { useTranslation } from 'react-i18next';
 
 const exampleText1 = `这是原始文本。
 第二行内容。
@@ -13,6 +13,7 @@ const exampleText2 = `这是修改后的文本。
 新增的第四行内容。`;
 
 export const useTextDiff = () => {
+  const { t } = useTranslation();
   const [textLeft, setTextLeft] = useState(exampleText1);
   const [textRight, setTextRight] = useState(exampleText2);
   const [diffResult, setDiffResult] = useState<{ type: string; value: string; lineNumber?: number }[] | null>(null);
@@ -20,8 +21,8 @@ export const useTextDiff = () => {
   const generateDiff = () => {
     if (!textLeft.trim() && !textRight.trim()) {
       toast({
-        title: i18n.t('toasts.common.info'),
-        description: '请输入需要比较的文本',
+        title: t('toasts.common.info'),
+        description: t('tools.text.textDiff.enterTextToCompare'),
         variant: 'default',
       });
       return;
@@ -78,8 +79,8 @@ export const useTextDiff = () => {
 
     setDiffResult(result);
     toast({
-      title: i18n.t('toasts.common.success'),
-      description: '文本比较完成',
+      title: t('toasts.common.success'),
+      description: t('tools.text.textDiff.compareComplete'),
     });
   };
 
