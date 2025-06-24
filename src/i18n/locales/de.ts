@@ -32,12 +32,34 @@ export const de = {
       toCsv: 'Zu CSV',
       blue: 'Blau',
       system: 'System',
-      comingSoon: 'Demnächst verfügbar'
+      comingSoon: 'Demnächst verfügbar',
+      error: 'Fehler',
+      success: 'Erfolg',
+      info: 'Information',
+      notFound: 'Nicht gefunden',
+      compare: 'Vergleichen',
+      test: 'Testen',
+      match: 'Übereinstimmen',
+      replace: 'Ersetzen',
+      flags: 'Flags',
+      pattern: 'Muster',
+      input: 'Eingabe',
+      output: 'Ausgabe',
+      result: 'Ergebnis'
     },
     home: {
       title: 'Entwickler-Tools Hub',
       subtitle: 'Professionelle Entwicklungstools mit modernem neomorphischem Design',
-      description: 'Eine umfassende Sammlung wichtiger Entwicklertools einschließlich JSON-Formatierung, Textverarbeitung, Verschlüsselung und mehr.'
+      description: 'Eine umfassende Sammlung wichtiger Entwicklertools einschließlich JSON-Formatierung, Textverarbeitung, Verschlüsselung und mehr.',
+      headerTitle: 'Kostenlose Online-Entwicklertools Hub',
+      toolsCollectionTitle: 'Professionelle Entwicklertools-Sammlung',
+      whyChooseTitle: 'Warum DevTools Hub für Ihre Entwicklungsbedürfnisse wählen?',
+      feature1Title: '100% Kostenlos & Keine Registrierung',
+      feature1Description: 'Alle Tools sind völlig kostenlos nutzbar ohne Konto-Erstellung',
+      feature2Title: 'Datenschutz-fokussierte Entwicklung',
+      feature2Description: 'Ihre Daten bleiben in Ihrem Browser - nichts wird an unsere Server gesendet',
+      feature3Title: 'Moderne Responsive Benutzeroberfläche',
+      feature3Description: 'Sauberes, responsives Design, das perfekt auf allen Geräten funktioniert'
     },
     tools: {
       json: {
