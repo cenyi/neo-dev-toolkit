@@ -26,11 +26,12 @@ const Base64EncoderDecoder: React.FC = () => {
             <CardTitle>{t('tools.text.base64.input')}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-64 border rounded-md">
+            <div className="h-80 border rounded-md">
               <SimpleCodeEditor
                 value={input}
                 onChange={setInput}
                 placeholder={t('tools.text.base64.inputPlaceholder')}
+                minHeight="300px"
               />
             </div>
           </CardContent>
@@ -40,12 +41,13 @@ const Base64EncoderDecoder: React.FC = () => {
             <CardTitle>{t('tools.text.base64.output')}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-64 border rounded-md">
+            <div className="h-80 border rounded-md">
               <SimpleCodeEditor
                 value={output}
                 onChange={() => {}}
                 readOnly
                 placeholder={t('tools.text.base64.outputPlaceholder')}
+                minHeight="300px"
               />
             </div>
           </CardContent>

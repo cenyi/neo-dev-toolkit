@@ -7,6 +7,7 @@ import { useJsonConversion } from './useJsonConversion';
 import { useJsonExtraction } from './useJsonExtraction';
 import { useJsonHistory } from './useJsonHistory';
 import { useJsonGraph } from './useJsonGraph';
+import { parseJsonWithBigInt, stringifyJsonWithBigInt, formatJsonSafely } from '@/utils/jsonParser';
 
 export const useJsonTool = () => {
   const { t } = useTranslation();
@@ -37,10 +38,10 @@ export const useJsonTool = () => {
       return jsonString;
     }
     try {
-      const parsed = JSON.parse(jsonString);
+      const parsed = parseJsonWithBigInt(jsonString);
       setValidationError(null);
       setIsValid(true);
-      lastValidJsonRef.current = JSON.stringify(parsed, null, 2); // 美化格式
+      lastValidJsonRef.current = stringifyJsonWithBigInt(parsed, 2); // 美化格式，保持精度
       
       // 添加到历史记录（只在有效JSON时）
       addToHistory(jsonString);
@@ -114,8 +115,7 @@ export const useJsonTool = () => {
 
     try {
       if (isMinified) {
-        const parsed = JSON.parse(input);
-        const formattedJson = JSON.stringify(parsed, null, 2);
+        const formattedJson = formatJsonSafely(input);
         setInput(formattedJson);
         navigator.clipboard.writeText(formattedJson);
         toast({
@@ -124,8 +124,8 @@ export const useJsonTool = () => {
         });
         setIsMinified(false);
       } else {
-        const parsed = JSON.parse(input);
-        const minified = JSON.stringify(parsed);
+        const parsed = parseJsonWithBigInt(input);
+        const minified = stringifyJsonWithBigInt(parsed);
         isMinifyingRef.current = true;
         setInput(minified);
         navigator.clipboard.writeText(minified);

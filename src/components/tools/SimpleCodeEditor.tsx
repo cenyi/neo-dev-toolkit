@@ -7,6 +7,7 @@ interface SimpleCodeEditorProps {
   onChange: (value: string) => void;
   placeholder?: string;
   readOnly?: boolean;
+  minHeight?: string;
 }
 
 const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
@@ -14,6 +15,7 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
   onChange,
   placeholder = '',
   readOnly = false,
+  minHeight = '300px', // 增加默认最小高度
 }) => {
   const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {
@@ -44,7 +46,7 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
         onChange={handleChange}
         placeholder={placeholder}
         readOnly={readOnly}
-        style={{ minHeight: '200px', lineHeight: '1.5rem' }}
+        style={{ minHeight: minHeight, lineHeight: '1.5rem' }}
       />
     </div>
   );
