@@ -3,19 +3,36 @@ import { useState } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { useTranslation } from 'react-i18next';
 
-const exampleText1 = `这是原始文本。
+export const useTextDiff = () => {
+  const { t, i18n } = useTranslation();
+  
+  // Create localized example text based on current language
+  const getExampleText1 = () => {
+    if (i18n.language === 'zh-CN') {
+      return `这是原始文本。
 第二行内容。
 第三行内容保持不变。`;
+    }
+    return `This is the original text.
+Second line content.
+Third line content remains unchanged.`;
+  };
 
-const exampleText2 = `这是修改后的文本。
+  const getExampleText2 = () => {
+    if (i18n.language === 'zh-CN') {
+      return `这是修改后的文本。
 第二行内容已经修改。
 第三行内容保持不变。
 新增的第四行内容。`;
+    }
+    return `This is the modified text.
+Second line content has been changed.
+Third line content remains unchanged.
+New fourth line content added.`;
+  };
 
-export const useTextDiff = () => {
-  const { t } = useTranslation();
-  const [textLeft, setTextLeft] = useState(exampleText1);
-  const [textRight, setTextRight] = useState(exampleText2);
+  const [textLeft, setTextLeft] = useState(getExampleText1());
+  const [textRight, setTextRight] = useState(getExampleText2());
   const [diffResult, setDiffResult] = useState<{ type: string; value: string; lineNumber?: number }[] | null>(null);
 
   const generateDiff = () => {

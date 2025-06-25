@@ -35,23 +35,23 @@ const CaseConverter: React.FC = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
-            <div className="min-h-[350px] border rounded-md">
+            <div className="min-h-[500px] border rounded-md">
               <SimpleCodeEditor
                 value={input}
                 onChange={setInput}
                 placeholder={t('tools.text.caseConverter.placeholder')}
-                minHeight="350px"
+                minHeight="500px"
               />
             </div>
             <ArrowRight className="hidden md:block" />
             <div className="relative">
-              <div className="min-h-[350px] border rounded-md">
+              <div className="min-h-[500px] border rounded-md">
                 <SimpleCodeEditor
                   value={output}
                   onChange={() => {}}
                   readOnly
                   placeholder={t('tools.text.caseConverter.result')}
-                  minHeight="350px"
+                  minHeight="500px"
                 />
               </div>
               {output && (
