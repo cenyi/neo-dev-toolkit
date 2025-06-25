@@ -29,8 +29,7 @@ const MermaidGraphInternational: React.FC<MermaidGraphInternationalProps> = ({
           flowchart: {
             useMaxWidth: true,
             htmlLabels: true,
-            curve: 'basis',
-            rankdir: orientation === 'vertical' ? 'TB' : 'LR'
+            curve: 'basis'
           }
         });
 

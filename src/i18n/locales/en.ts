@@ -67,7 +67,6 @@ export const en = {
         title: 'JSON Tools', 
         description: 'Format, validate, and minify JSON data',
         formatter: 'JSON Formatter',
-        viewer: 'JSON Viewer',
         fieldPath: 'Field Path',
         extractPlaceholder: 'e.g., $.user.name or $[0].id',
         extractValue: 'Extract Value',

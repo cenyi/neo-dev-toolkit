@@ -1,4 +1,3 @@
-
 export const de = {
   translation: {
     nav: {
@@ -68,7 +67,6 @@ export const de = {
         title: 'JSON-Tools',
         description: 'JSON-Daten formatieren, validieren und minimieren',
         formatter: 'JSON-Formatierer',
-        viewer: 'JSON-Betrachter',        
         placeholder: 'Geben Sie Ihr JSON hier ein oder fügen Sie es ein...',
         fieldPath: 'Feldpfad',
         extractValue: 'Wert extrahieren',
@@ -115,6 +113,12 @@ export const de = {
           emptyLine: '(leere Zeile)',
           compareComplete: 'Textvergleich abgeschlossen',
           enterTextToCompare: 'Bitte geben Sie zu vergleichenden Text ein'
+        },
+        textReverser: {
+          title: 'Text-Umkehrer',
+          description: 'Kehren Sie die Zeichen Ihres Textes um.',
+          placeholder: 'Text zum Umkehren eingeben',
+          reversedText: 'Umgekehrter Text'
         }
       },
       network: {
@@ -124,6 +128,11 @@ export const de = {
       crypto: {
         title: 'Krypto-Tools',
         description: 'Hash-Generierung, Verschlüsselungs- und Entschlüsselungs-Utilities'
+      },
+      mermaid: {
+        title: 'Mermaid-Diagramme',
+        description: 'Erstellen Sie Diagramme und Flussdiagramme mit Mermaid',
+        syntaxError: 'Syntaxfehler'
       }
     },
     toasts: {
@@ -202,6 +211,18 @@ export const de = {
       limitationText: 'In keinem Fall sind der Entwickler-Tools Hub oder seine Betreuer haftbar für direkte, indirekte, zufällige, besondere oder Folgeschäden, die aus der Nutzung oder Unfähigkeit zur Nutzung des Dienstes entstehen.',
       changesToTermsTitle: 'Änderungen der Bedingungen',
       changesToTermsText: 'Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Wir werden die aktuellste Version dieser Bedingungen auf dieser Seite veröffentlichen. Ihre fortgesetzte Nutzung des Dienstes nach Änderungen stellt Ihre Annahme der neuen Bedingungen dar.'
+    },
+    editor: {
+      copy: 'Inhalt kopieren',
+      clear: 'Inhalt löschen',
+      copied: 'Kopiert',
+      copySuccess: 'Inhalt in die Zwischenablage kopiert',
+      copyError: 'Kopieren fehlgeschlagen',
+      copyErrorDesc: 'Kann nicht in die Zwischenablage kopieren',
+      cleared: 'Gelöscht',
+      clearSuccess: 'Inhalt gelöscht',
+      downloadSvg: 'SVG herunterladen',
+      downloadPng: 'PNG herunterladen'
     }
   }
 };
