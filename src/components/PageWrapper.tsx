@@ -48,7 +48,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
 
     // Update canonical URL for specific pages with correct domain
     const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical && title !== APP_NAME) {
+    if (canonical) {
       const currentPath = window.location.pathname;
       canonical.setAttribute('href', `https://tojsons.com${currentPath}`);
     }
