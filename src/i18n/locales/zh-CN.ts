@@ -12,6 +12,16 @@ export const zhCN = {
       regex: '正则表达式',
       editor: '编辑器'
     },
+    navTitles: {
+      home: '转到首页 - 免费开发者工具中心',
+      json: 'JSON工具 - 格式化、验证和处理JSON数据',
+      network: '网络工具 - URL编码、IP查询和网络实用程序',
+      text: '文本工具 - 处理和转换文本格式',
+      time: '时间工具 - 时间戳和时区转换器',
+      encryption: '加密工具 - 哈希生成和加密实用程序',
+      regex: '正则表达式工具 - 测试和验证正则表达式模式',
+      editor: '代码编辑器 - Markdown和Mermaid图表编辑器'
+    },
     common: { 
       theme: '主题', 
       language: '语言', 

@@ -12,6 +12,16 @@ export const en = {
       regex: 'RegEx',
       editor: 'Editor'
     },
+    navTitles: {
+      home: 'Go to Home - Free Developer Tools Hub',
+      json: 'JSON Tools - Format, validate and process JSON data',
+      network: 'Network Tools - URL encoding, IP lookup and utilities',
+      text: 'Text Tools - Process and convert text formats',
+      time: 'Time Tools - Timestamp and timezone converters',
+      encryption: 'Encryption Tools - Hash generation and crypto utilities',
+      regex: 'Regular Expression Tool - Test and validate regex patterns',
+      editor: 'Code Editors - Markdown and Mermaid diagram editors'
+    },
     common: { 
       theme: 'Theme', 
       language: 'Language', 

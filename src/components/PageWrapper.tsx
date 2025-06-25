@@ -46,11 +46,11 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
       ogTitle.setAttribute('content', `${title} - Free Developer Tool`);
     }
 
-    // Update canonical URL for specific pages
+    // Update canonical URL for specific pages with correct domain
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical && title !== APP_NAME) {
       const currentPath = window.location.pathname;
-      canonical.setAttribute('href', `https://afunning.com${currentPath}`);
+      canonical.setAttribute('href', `https://tojsons.com${currentPath}`);
     }
   }, [title, description, keywords]);
 

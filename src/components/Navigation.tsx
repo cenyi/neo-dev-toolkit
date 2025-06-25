@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
@@ -73,7 +74,7 @@ const Navigation: React.FC = () => {
               );
             }
             return (
-              <Link key={path} to={path!}>
+              <Link key={path} to={path!} title={t(`navTitles.${key}`)}>
                 <button
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${
                     location.pathname === path ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
