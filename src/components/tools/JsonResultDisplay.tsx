@@ -1,7 +1,7 @@
 
 import React from 'react';
 import JsonEditor from './JsonEditor';
-import MermaidGraph from './MermaidGraph';
+import MermaidGraphInternational from './MermaidGraphInternational';
 import { useTranslation } from 'react-i18next';
 
 interface JsonResultDisplayProps {
@@ -20,7 +20,7 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
       </div>
       <div className="flex-1 min-h-0 px-4 pb-4 overflow-hidden">
         {isGraphView ? (
-          <MermaidGraph 
+          <MermaidGraphInternational 
             content={outputContent ?? ''} 
             orientation="vertical"
           />

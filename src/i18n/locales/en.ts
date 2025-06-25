@@ -45,7 +45,8 @@ export const en = {
       pattern: 'Pattern',
       input: 'Input',
       output: 'Output',
-      result: 'Result'
+      result: 'Result',
+      zoomLevel: 'Zoom Level'
     },
     home: { 
       title: 'Developer Tools Hub', 
@@ -65,6 +66,8 @@ export const en = {
       json: { 
         title: 'JSON Tools', 
         description: 'Format, validate, and minify JSON data',
+        formatter: 'JSON Formatter',
+        viewer: 'JSON Viewer',
         fieldPath: 'Field Path',
         extractPlaceholder: 'e.g., $.user.name or $[0].id',
         extractValue: 'Extract Value',
@@ -76,6 +79,14 @@ export const en = {
         unknownParseError: 'Unknown JSON parsing error',
         syntaxErrorAtPosition: 'JSON syntax error: {{message}} (line {{line}}, column {{column}})',
         syntaxErrorGeneric: 'JSON syntax error: {{message}}',
+        viewer: {
+          title: 'JSON Structure View',
+          invalidJson: 'Please enter valid JSON to view structure',
+          expandAll: 'Expand All',
+          collapseAll: 'Collapse All',
+          items: 'items',
+          elements: 'elements'
+        },
         history: {
           title: 'History',
           emptyMessage: 'No history yet, start by entering some JSON data!',

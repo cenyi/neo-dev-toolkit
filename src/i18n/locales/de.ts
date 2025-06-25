@@ -1,3 +1,4 @@
+
 export const de = {
   translation: {
     nav: {
@@ -45,7 +46,8 @@ export const de = {
       pattern: 'Muster',
       input: 'Eingabe',
       output: 'Ausgabe',
-      result: 'Ergebnis'
+      result: 'Ergebnis',
+      zoomLevel: 'Zoom-Stufe'
     },
     home: {
       title: 'Entwickler-Tools Hub',
@@ -65,13 +67,37 @@ export const de = {
       json: {
         title: 'JSON-Tools',
         description: 'JSON-Daten formatieren, validieren und minimieren',
+        formatter: 'JSON-Formatierer',
+        viewer: 'JSON-Betrachter',        
         placeholder: 'Geben Sie Ihr JSON hier ein oder fügen Sie es ein...',
         fieldPath: 'Feldpfad',
         extractValue: 'Wert extrahieren',
         extractPlaceholder: 'z.B. data.users[0].name',
         extractedValueTitle: 'Extrahierter Wert',
         generateGraph: 'Diagramm erstellen',
-        graphTitle: 'JSON-Struktur'
+        graphTitle: 'JSON-Struktur',
+        viewer: {
+          title: 'JSON-Strukturansicht',
+          invalidJson: 'Bitte geben Sie gültiges JSON ein, um die Struktur zu sehen',
+          expandAll: 'Alle erweitern',
+          collapseAll: 'Alle zusammenklappen',
+          items: 'Elemente',
+          elements: 'Elemente'
+        },
+        history: {
+          title: 'Verlauf',
+          emptyMessage: 'Noch kein Verlauf, beginnen Sie mit der Eingabe von JSON-Daten!',
+          clearAll: 'Alle löschen',
+          removeItem: 'Element entfernen',
+          itemRemoved: 'Verlaufselement entfernt',
+          historyCleared: 'Verlauf gelöscht',
+          loadedFromHistory: 'Aus Verlauf geladen',
+          justNow: 'Gerade eben',
+          minutesAgo: 'vor {{count}} Minuten',
+          hoursAgo: 'vor {{count}} Stunden',
+          searchPlaceholder: 'Verlauf durchsuchen...',
+          noResults: 'Keine übereinstimmenden Datensätze gefunden'
+        }
       },
       text: {
         title: 'Text-Tools',
