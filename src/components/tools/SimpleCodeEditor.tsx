@@ -15,7 +15,7 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
   onChange,
   placeholder = '',
   readOnly = false,
-  minHeight = '800px', // 增加默认最小高度从600px到800px
+  minHeight = '400px', // 调整默认最小高度以匹配JsonDiff页面
 }) => {
   const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {

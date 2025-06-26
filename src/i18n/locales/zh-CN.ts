@@ -89,6 +89,9 @@ export const zhCN = {
         syntaxErrorAtPosition: 'JSON语法错误: {{message}} (第{{line}}行，第{{column}}列)',
         syntaxErrorGeneric: 'JSON语法错误: {{message}}',
         graphTitle: 'JSON结构图',
+        convertedToYamlTitle: '已转换为 YAML',
+        convertedToXmlTitle: '已转换为 XML',
+        convertedToCsvTitle: '已转换为 CSV',
         viewer: {
           title: 'JSON 结构视图',
           invalidJson: '请输入有效的JSON来查看结构',
@@ -287,14 +290,19 @@ export const zhCN = {
         formattedAndCopied: 'JSON已格式化并复制到剪贴板',
         minifiedAndCopied: 'JSON已压缩并复制到剪贴板',
         extractedAndCopied: '值已提取并复制到剪贴板',
-        graphGenerated: 'JSON结构图已生成'
+        graphGenerated: 'JSON结构图已生成',
+        convertedToYamlAndCopied: '已转换为YAML并复制到剪贴板',
+        convertedToXmlAndCopied: '已转换为XML并复制到剪贴板',
+        convertedToCsvAndCopied: '已转换为CSV并复制到剪贴板'
       },
       error: {
         invalidJson: '请输入有效的JSON',
         invalidJsonFormat: 'JSON格式无效',
         missingPath: '请输入提取路径',
         notFound: '在指定路径未找到值',
-        extractError: '提取值时出错'
+        extractError: '提取值时出错',
+        conversionFailed: '转换失败',
+        csvConversionRequiresArray: 'CSV转换需要对象数组'
       },
       info: {
         emptyContent: '没有内容可复制'

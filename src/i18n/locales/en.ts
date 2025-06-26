@@ -56,6 +56,7 @@ export const en = {
       input: 'Input',
       output: 'Output',
       result: 'Result',
+      graph: 'Structure Graph',
       zoomLevel: 'Zoom Level'
     },
     home: { 
@@ -89,6 +90,9 @@ export const en = {
         unknownParseError: 'Unknown JSON parsing error',
         syntaxErrorAtPosition: 'JSON syntax error: {{message}} (line {{line}}, column {{column}})',
         syntaxErrorGeneric: 'JSON syntax error: {{message}}',
+        convertedToYamlTitle: 'Converted to YAML',
+        convertedToXmlTitle: 'Converted to XML',
+        convertedToCsvTitle: 'Converted to CSV',
         viewer: {
           title: 'JSON Structure View',
           invalidJson: 'Please enter valid JSON to view structure',
@@ -277,14 +281,19 @@ export const en = {
         formattedAndCopied: 'JSON formatted and copied to clipboard',
         minifiedAndCopied: 'JSON minified and copied to clipboard',
         extractedAndCopied: 'Value extracted and copied to clipboard',
-        graphGenerated: 'Graph generated successfully'
+        graphGenerated: 'Graph generated successfully',
+        convertedToYamlAndCopied: 'Converted to YAML and copied to clipboard',
+        convertedToXmlAndCopied: 'Converted to XML and copied to clipboard',
+        convertedToCsvAndCopied: 'Converted to CSV and copied to clipboard'
       },
       error: {
         invalidJson: 'Please enter valid JSON',
         invalidJsonFormat: 'Invalid JSON format',
         missingPath: 'Please enter extraction path',
         notFound: 'No value found at the specified path',
-        extractError: 'Error extracting value'
+        extractError: 'Error extracting value',
+        conversionFailed: 'Conversion failed',
+        csvConversionRequiresArray: 'CSV conversion requires an array of objects'
       },
       info: {
         emptyContent: 'No content to copy'
