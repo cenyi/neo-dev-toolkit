@@ -15,7 +15,7 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
   onChange,
   placeholder = '',
   readOnly = false,
-  minHeight = '600px', // 进一步增加默认最小高度
+  minHeight = '800px', // 增加默认最小高度从600px到800px
 }) => {
   const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {

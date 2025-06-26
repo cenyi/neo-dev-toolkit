@@ -78,6 +78,7 @@ export const zhCN = {
         title: 'JSON 工具', 
         description: '格式化、验证和压缩 JSON 数据',
         formatter: 'JSON 格式化工具',
+        viewer: 'JSON 查看器',
         fieldPath: '字段路径',
         extractPlaceholder: '例如：$.user.name 或 $[0].id',
         extractValue: '提取值',
