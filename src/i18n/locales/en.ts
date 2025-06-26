@@ -1,4 +1,5 @@
 
+
 export const en = {
   translation: {
     nav: { 
@@ -94,14 +95,6 @@ export const en = {
         convertedToYamlTitle: 'Converted to YAML',
         convertedToXmlTitle: 'Converted to XML',
         convertedToCsvTitle: 'Converted to CSV',
-        viewer: {
-          title: 'JSON Structure View',
-          invalidJson: 'Please enter valid JSON to view structure',
-          expandAll: 'Expand All',
-          collapseAll: 'Collapse All',
-          items: 'items',
-          elements: 'elements'
-        },
         history: {
           title: 'History',
           emptyMessage: 'No history yet, start by entering some JSON data!',
@@ -384,3 +377,4 @@ export const en = {
     },
   }
 };
+

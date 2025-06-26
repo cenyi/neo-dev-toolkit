@@ -15,7 +15,7 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
   onChange,
   placeholder = '',
   readOnly = false,
-  minHeight = '400px', // 调整默认最小高度以匹配JsonDiff页面
+  minHeight = '800px', // 调整为800px以匹配用户要求
 }) => {
   const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {
@@ -53,3 +53,4 @@ const SimpleCodeEditor: React.FC<SimpleCodeEditorProps> = ({
 };
 
 export default SimpleCodeEditor;
+

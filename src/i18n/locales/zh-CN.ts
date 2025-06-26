@@ -1,4 +1,5 @@
 
+
 export const zhCN = {
   translation: {
     nav: { 
@@ -93,14 +94,6 @@ export const zhCN = {
         convertedToYamlTitle: '已转换为 YAML',
         convertedToXmlTitle: '已转换为 XML',
         convertedToCsvTitle: '已转换为 CSV',
-        viewer: {
-          title: 'JSON 结构视图',
-          invalidJson: '请输入有效的JSON来查看结构',
-          expandAll: '展开全部',
-          collapseAll: '折叠全部',
-          items: '项',
-          elements: '元素'
-        },
         history: {
           title: '历史记录',
           emptyMessage: '暂无历史记录，开始输入JSON数据吧！',
@@ -393,3 +386,4 @@ export const zhCN = {
     },
   }
 };
+
