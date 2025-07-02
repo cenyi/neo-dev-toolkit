@@ -23,7 +23,7 @@ const LanguageSwitcher: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="p-3 rounded-xl hover:bg-accent hover:text-accent-foreground transition-colors duration-200">
+        <button className="p-3 rounded-xl hover:bg-accent hover:text-accent-foreground">
           <Languages size={16} />
         </button>
       </DropdownMenuTrigger>

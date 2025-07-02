@@ -27,7 +27,7 @@ const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, conten
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${isActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
+        <button className={`px-4 py-2 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${isActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}>
           <Icon size={16} />
           <span>{t(`nav.${navKey}`)}</span>
           <ChevronDown size={16} />

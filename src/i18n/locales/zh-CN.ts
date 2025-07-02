@@ -80,7 +80,7 @@ export const zhCN = {
         title: 'JSON 工具', 
         description: '格式化、验证和压缩 JSON 数据',
         formatter: 'JSON 格式化工具',
-        viewer: 'JSON 查看器',
+        viewerTitle: 'JSON 查看器',
         fieldPath: '字段路径',
         extractPlaceholder: '例如：$.user.name 或 $[0].id',
         extractValue: '提取值',
@@ -94,6 +94,14 @@ export const zhCN = {
         convertedToYamlTitle: '已转换为 YAML',
         convertedToXmlTitle: '已转换为 XML',
         convertedToCsvTitle: '已转换为 CSV',
+        viewer: {
+          title: 'JSON结构视图',
+          invalidJson: '请输入有效的JSON来查看结构',
+          expandAll: '展开全部',
+          collapseAll: '折叠全部',
+          items: '项',
+          elements: '元素'
+        },
         history: {
           title: '历史记录',
           emptyMessage: '暂无历史记录，开始输入JSON数据吧！',

@@ -76,7 +76,7 @@ const Navigation: React.FC = () => {
             return (
               <Link key={path} to={path!} title={t(`navTitles.${key}`)}>
                 <button
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${
+                  className={`px-4 py-2 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${
                     location.pathname === path ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >

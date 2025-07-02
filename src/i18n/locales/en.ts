@@ -80,7 +80,7 @@ export const en = {
         title: 'JSON Tools', 
         description: 'Format, validate, and minify JSON data',
         formatter: 'JSON Formatter',
-        viewer: 'JSON Viewer',
+        viewerTitle: 'JSON Viewer',
         fieldPath: 'Field Path',
         extractPlaceholder: 'e.g., $.user.name or $[0].id',
         extractValue: 'Extract Value',
@@ -95,6 +95,14 @@ export const en = {
         convertedToYamlTitle: 'Converted to YAML',
         convertedToXmlTitle: 'Converted to XML',
         convertedToCsvTitle: 'Converted to CSV',
+        viewer: {
+          title: 'JSON Structure View',
+          invalidJson: 'Please enter valid JSON to view structure',
+          expandAll: 'Expand All',
+          collapseAll: 'Collapse All',
+          items: 'items',
+          elements: 'elements'
+        },
         history: {
           title: 'History',
           emptyMessage: 'No history yet, start by entering some JSON data!',

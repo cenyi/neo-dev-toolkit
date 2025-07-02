@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <header className="text-center mb-16">
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl mb-4 floating-animation">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl mb-4">
           {t('home.headerTitle')}
         </h1>
         <p className="max-w-3xl mx-auto text-xl text-muted-foreground">
@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
               <Link 
                 key={path} 
                 to={path} 
-                className="group block h-full rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className="group block h-full rounded-2xl border bg-card text-card-foreground shadow-sm hover:shadow-md"
               >
                 <div className="p-6 h-full flex flex-col items-center text-center">
                   <div className="mb-4 rounded-lg p-3 inline-block bg-accent">

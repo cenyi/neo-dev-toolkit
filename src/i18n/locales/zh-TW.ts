@@ -51,6 +51,14 @@ export const zhTW = {
         convertedToYamlTitle: '已轉換為 YAML',
         convertedToXmlTitle: '已轉換為 XML',
         convertedToCsvTitle: '已轉換為 CSV',
+        viewer: {
+          title: 'JSON結構視圖',
+          invalidJson: '請輸入有效的JSON來查看結構',
+          expandAll: '展開全部',
+          collapseAll: '折疊全部',
+          items: '項',
+          elements: '元素'
+        },
       },
       jsonMock: {
         title: 'JSON模擬資料產生器',

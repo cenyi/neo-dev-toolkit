@@ -21,6 +21,11 @@ const JsonDiff: React.FC = () => {
 
   return (
     <div className="h-screen flex flex-col px-2">
+      <header className="mb-4">
+        <h1 className="text-3xl font-bold mb-2">{t('tools.jsonDiff.title')}</h1>
+        <p className="text-muted-foreground">{t('tools.jsonDiff.description')}</p>
+      </header>
+      
       <div className="flex flex-wrap items-center gap-4 mb-1 p-2 bg-background border py-2 rounded-sm">
         <Button onClick={handleCompare}>{t('common.compare', 'Compare')}</Button>
         <Button onClick={clearAll} variant="destructive">{t('common.clear', 'Clear')}</Button>
@@ -30,7 +35,7 @@ const JsonDiff: React.FC = () => {
         <div className="flex-1 flex flex-col min-h-0 min-w-0">
           <div className="flex-1 flex flex-col bg-background border rounded-lg min-w-0 min-h-0 overflow-hidden">
             <div className="px-4 pt-4 mb-3">
-              <h3 className="text-lg font-semibold">{t('tools.jsonDiff.originalJson', 'Original JSON')}</h3>
+              <h2 className="text-lg font-semibold">{t('tools.jsonDiff.originalJson', 'Original JSON')}</h2>
             </div>
             <div className="flex-1 min-h-[150px] px-4 pb-4 overflow-hidden">
               <JsonEditor
@@ -44,7 +49,7 @@ const JsonDiff: React.FC = () => {
         <div className="flex-1 flex flex-col min-h-0 min-w-0">
           <div className="flex-1 flex flex-col bg-background border rounded-lg min-w-0 min-h-0 overflow-hidden">
             <div className="px-4 pt-4 mb-3">
-              <h3 className="text-lg font-semibold">{t('tools.jsonDiff.newJson', 'New JSON')}</h3>
+              <h2 className="text-lg font-semibold">{t('tools.jsonDiff.newJson', 'New JSON')}</h2>
             </div>
             <div className="flex-1 min-h-[150px] px-4 pb-4 overflow-hidden">
               <JsonEditor
@@ -61,7 +66,7 @@ const JsonDiff: React.FC = () => {
         <div className="flex-1 flex flex-col min-h-0 mt-4 max-h-[calc(100vh-500px)]">
             <div className="bg-background border rounded-lg flex-1 flex flex-col overflow-hidden">
                 <div className="px-4 pt-4 mb-3">
-                    <h3 className="text-lg font-semibold">{t('tools.jsonDiff.diffResult', 'Diff Result')}</h3>
+                    <h2 className="text-lg font-semibold">{t('tools.jsonDiff.diffResult', 'Diff Result')}</h2>
                 </div>
                 <ScrollArea className="flex-1">
                     <div className="p-4 jsondiffpatch-html" dangerouslySetInnerHTML={{ __html: diffHtml }} />

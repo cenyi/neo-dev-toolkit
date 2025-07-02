@@ -92,11 +92,7 @@ const TimezoneConverter: React.FC = () => {
       </header>
       
       <Card>
-        <CardHeader>
-          <CardTitle>{t('tools.timezoneConverter.title')}</CardTitle>
-          <p className="text-sm text-muted-foreground">{t('tools.timezoneConverter.description')}</p>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-6">
           <div>
             <label htmlFor="source-datetime" className="text-sm font-medium">{t('tools.timezoneConverter.sourceDateTime')}</label>
             <Input 
