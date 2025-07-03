@@ -14,6 +14,10 @@ const Base64EncoderDecoder: React.FC = () => {
 
   return (
     <div className="p-4 space-y-4">
+      <header className="mb-6">
+        <h1 className="text-3xl font-bold text-foreground mb-2">{t('tools.text.base64.title')}</h1>
+        <p className="text-muted-foreground">{t('tools.text.base64.description')}</p>
+      </header>
       <div className="flex flex-wrap items-center gap-4">
         <Button onClick={handleEncode}>{t('tools.text.base64.encode')}</Button>
         <Button onClick={handleDecode}>{t('tools.text.base64.decode')}</Button>

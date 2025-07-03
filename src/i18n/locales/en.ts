@@ -63,9 +63,9 @@ export const en = {
     },
     home: { 
       title: 'Developer Tools Hub', 
-      subtitle: 'Professional development tools with modern neumorphic design', 
-      description: 'A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more.',
-      headerTitle: 'Free Online Developer Tools Hub',
+      subtitle: 'Professional development tools built with Lovable AI technology', 
+      description: 'A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more. Built with Lovable AI for optimal performance.',
+      headerTitle: 'Free Online Developer Tools Hub - Built with Lovable',
       toolsCollectionTitle: 'Professional Developer Tools Collection',
       whyChooseTitle: 'Why Choose DevTools Hub for Your Development Needs?',
       feature1Title: '100% Free & No Registration',
@@ -73,7 +73,7 @@ export const en = {
       feature2Title: 'Privacy Focused Development',
       feature2Description: 'Your data stays in your browser - nothing is sent to our servers',
       feature3Title: 'Modern Responsive Interface',
-      feature3Description: 'Clean, responsive design that works perfectly on all devices'
+      feature3Description: 'Clean, responsive design powered by Lovable AI that works perfectly on all devices'
     },
     tools: { 
       json: { 
@@ -339,7 +339,8 @@ export const en = {
       terms: 'Terms of Service',
       about: 'About us',
       copyright: '© {{year}} Developer Tools Hub. All rights reserved.',
-      description: 'Your all-in-one "Swiss Army knife" for development. With tools for JSON, text, encryption and more to streamline your workflow.',
+      description: 'Your all-in-one "Swiss Army knife" for development built with Lovable AI. Professional tools for JSON, text, encryption and more to streamline your workflow.',
+      lovable: 'Lovable',
       vercel: 'Vercel',
       github: 'GitHub',
       deepseek: 'DeepSeek',
@@ -347,12 +348,12 @@ export const en = {
     about: {
       title: 'About Us',
       missionTitle: 'Our Mission',
-      missionText: 'Our mission is to provide developers with a comprehensive, easy-to-use, and powerful toolkit that acts as a "Swiss Army knife" for their daily tasks. We aim to create a one-stop shop for development utilities, making workflows more efficient and enjoyable for everyone.',
+      missionText: 'Our mission is to provide developers with a comprehensive, easy-to-use, and powerful toolkit built with Lovable AI that acts as a "Swiss Army knife" for their daily tasks. We aim to create a one-stop shop for development utilities, making workflows more efficient and enjoyable for everyone.',
       featuresTitle: 'What We Offer',
       feature1: 'Comprehensive Toolset: From JSON formatting and text manipulation to encryption and diagramming.',
-      feature2: 'Modern Design: A clean, intuitive, and responsive neumorphic interface.',
+      feature2: 'Modern Design: A clean, intuitive, and responsive interface powered by Lovable AI.',
       feature3: 'Privacy-Focused: No data is stored on our servers. All processing happens in your browser.',
-      feature4: 'Open Source: We believe in the power of community and transparent development.',
+      feature4: 'Built with Lovable: We leverage Lovable AI technology for optimal development experience.',
     },
     privacy: {
       title: 'Privacy Policy',

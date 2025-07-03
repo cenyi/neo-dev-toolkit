@@ -37,6 +37,10 @@ const JsonTool: React.FC = () => {
 
   return (
     <div className="h-screen flex flex-col px-2">
+      <header className="mb-4">
+        <h1 className="text-3xl font-bold text-foreground mb-2">{t('tools.json.title')}</h1>
+        <p className="text-muted-foreground">{t('tools.json.description')}</p>
+      </header>
       <div className="mb-4">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2">

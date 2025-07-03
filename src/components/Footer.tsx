@@ -28,9 +28,10 @@ const Footer: React.FC = () => {
               <li><Link to="/about" className="text-base text-foreground hover:text-primary">{t('footer.about')}</Link></li>
             </ul>
           </div>
-          <div>
+            <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{t('footer.friendlyLinks')}</h3>
             <ul className="mt-4 space-y-2">
+              <li><a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="text-base text-foreground hover:text-primary">{t('footer.lovable')}</a></li>
               <li><a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-base text-foreground hover:text-primary">{t('footer.vercel')}</a></li>
               <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-base text-foreground hover:text-primary">{t('footer.github')}</a></li>
               <li><a href="https://www.deepseek.com" target="_blank" rel="noopener noreferrer" className="text-base text-foreground hover:text-primary">{t('footer.deepseek')}</a></li>

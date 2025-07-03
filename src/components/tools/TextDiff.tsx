@@ -21,6 +21,10 @@ const TextDiff: React.FC = () => {
 
   return (
     <div className="h-screen flex flex-col px-2">
+      <header className="mb-4">
+        <h1 className="text-3xl font-bold text-foreground mb-2">{t('tools.text.textDiff.title')}</h1>
+        <p className="text-muted-foreground">{t('tools.text.textDiff.description')}</p>
+      </header>
       <div className="flex flex-wrap items-center gap-4 mb-1 p-2 bg-background border py-2 rounded-sm">
         <Button onClick={generateDiff}>{t('tools.text.textDiff.compareText')}</Button>
         <Button onClick={clearAll} variant="destructive">{t('tools.text.textDiff.clearAll')}</Button>
