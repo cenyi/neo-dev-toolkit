@@ -35,7 +35,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import AboutUs from "./pages/AboutUs";
 import PageWrapper from "@/components/PageWrapper";
-import "@/styles/neumorphism.css";
+
 import "@/i18n";
 
 const queryClient = new QueryClient();
