@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -66,7 +66,7 @@ function App() {
                       <HomePage />
                     </PageWrapper>
                   } />
-                  <Route path="/json-tool" element={
+                  <Route path="/json/formatter" element={
                     <PageWrapper 
                       title="JSON Formatter & Validator" 
                       description="Free online JSON formatter, validator and beautifier. Format, validate, minify JSON data with syntax highlighting. Extract values with JSONPath."
@@ -75,6 +75,8 @@ function App() {
                       <JsonTool />
                     </PageWrapper>
                   } />
+                  {/* JSON Tool Redirects */}
+                  <Route path="/json-tool" element={<Navigate to="/json/formatter" replace />} />
                   <Route path="/json" element={
                     <PageWrapper 
                       title="JSON Tools - Professional JSON Utilities Collection" 
@@ -84,7 +86,7 @@ function App() {
                       <JsonToolsPage />
                     </PageWrapper>
                   } />
-                  <Route path="/json-schema-validator" element={
+                  <Route path="/json/schema-validator" element={
                     <PageWrapper 
                       title="JSON Schema Validator"
                       description="Validate JSON data against JSON Schema. Free online JSON Schema validation tool with detailed error reporting."
@@ -93,7 +95,7 @@ function App() {
                       <JsonSchemaValidator />
                     </PageWrapper>
                   } />
-                  <Route path="/json-codegen" element={
+                  <Route path="/json/codegen" element={
                     <PageWrapper 
                       title="Generate Code Types from JSON"
                       description="Generate TypeScript, Python, Java, C# code types from JSON data. Free online code generator for developers."
@@ -102,7 +104,7 @@ function App() {
                       <JsonCodeGen />
                     </PageWrapper>
                   } />
-                  <Route path="/json-diff" element={
+                  <Route path="/json/diff" element={
                     <PageWrapper 
                       title="JSON Diff Tool"
                       description="Compare and find differences between two JSON objects. Visual JSON diff tool with syntax highlighting."
@@ -111,7 +113,7 @@ function App() {
                       <JsonDiff />
                     </PageWrapper>
                   } />
-                  <Route path="/json-mock" element={
+                  <Route path="/json/mock" element={
                     <PageWrapper 
                       title="JSON Mock Data Generator"
                       description="Generate realistic mock JSON data for testing. Create fake data with customizable schemas and realistic values."
@@ -120,8 +122,13 @@ function App() {
                       <JsonMock />
                     </PageWrapper>
                   } />
+                  {/* JSON Redirects */}
+                  <Route path="/json-schema-validator" element={<Navigate to="/json/schema-validator" replace />} />
+                  <Route path="/json-codegen" element={<Navigate to="/json/codegen" replace />} />
+                  <Route path="/json-diff" element={<Navigate to="/json/diff" replace />} />
+                  <Route path="/json-mock" element={<Navigate to="/json/mock" replace />} />
                   {/* Network Tools */}
-                  <Route path="/url-encoder" element={
+                  <Route path="/network/url-encoder" element={
                     <PageWrapper 
                       title="URL Encoder / Decoder"
                       description="Free online URL encoder and decoder tool. Encode URLs for safe transmission or decode percent-encoded URLs."
@@ -139,7 +146,7 @@ function App() {
                       <NetworkToolsPage />
                     </PageWrapper>
                   } />
-                  <Route path="/base64-encoder" element={
+                  <Route path="/network/base64-encoder" element={
                     <PageWrapper 
                       title="Base64 Encoder / Decoder"
                       description="Free online Base64 encoder and decoder. Encode text to Base64 or decode Base64 strings back to text."
@@ -148,7 +155,7 @@ function App() {
                       <Base64EncoderDecoder />
                     </PageWrapper>
                   } />
-                  <Route path="/ip-lookup" element={
+                  <Route path="/network/ip-lookup" element={
                     <PageWrapper 
                       title="IP Lookup"
                       description="Free IP address lookup tool. Get geolocation, ISP information, and network details for any IP address."
@@ -157,7 +164,7 @@ function App() {
                       <IpLookup />
                     </PageWrapper>
                   } />
-                  <Route path="/jwt-decoder" element={
+                  <Route path="/network/jwt-decoder" element={
                     <PageWrapper 
                       title="JWT Decoder"
                       description="Free JWT token decoder and validator. Decode JSON Web Tokens and view header, payload, and signature information."
@@ -166,7 +173,66 @@ function App() {
                       <JwtDecoder />
                     </PageWrapper>
                   } />
+                  {/* Network Redirects */}
+                  <Route path="/url-encoder" element={<Navigate to="/network/url-encoder" replace />} />
+                  <Route path="/base64-encoder" element={<Navigate to="/network/base64-encoder" replace />} />
+                  <Route path="/ip-lookup" element={<Navigate to="/network/ip-lookup" replace />} />
+                  <Route path="/jwt-decoder" element={<Navigate to="/network/jwt-decoder" replace />} />
                   {/* Text Tools */}
+                  <Route path="/text/case-converter" element={
+                    <PageWrapper 
+                      title="Case Converter"
+                      description="Free online text case converter. Convert text to uppercase, lowercase, title case, sentence case instantly."
+                      keywords="case converter, text converter, uppercase, lowercase, title case, sentence case, text transformation"
+                    >
+                      <CaseConverter />
+                    </PageWrapper>
+                  } />
+                  <Route path="/text/word-counter" element={
+                    <PageWrapper 
+                      title="Word & Character Counter"
+                      description="Free online word and character counter. Count words, characters, sentences, and paragraphs in your text."
+                      keywords="word counter, character counter, text statistics, count words online, paragraph counter, sentence counter"
+                    >
+                      <WordCounter />
+                    </PageWrapper>
+                  } />
+                  <Route path="/text/text-reverser" element={
+                    <PageWrapper 
+                      title="Text Reverser"
+                      description="Free online text reverser tool. Reverse the order of characters in your text instantly."
+                      keywords="text reverser, reverse text, backwards text, flip text, reverse string online"
+                    >
+                      <TextReverser />
+                    </PageWrapper>
+                  } />
+                  <Route path="/text/whitespace-remover" element={
+                    <PageWrapper 
+                      title="Whitespace Remover"
+                      description="Free online whitespace remover tool. Remove extra spaces, trim whitespace, and clean up text formatting."
+                      keywords="whitespace remover, remove spaces, trim text, clean text, remove extra spaces, text cleaner"
+                    >
+                      <WhitespaceRemover />
+                    </PageWrapper>
+                  } />
+                  <Route path="/text/lorem-ipsum-generator" element={
+                    <PageWrapper 
+                      title="Lorem Ipsum Generator"
+                      description="Free Lorem Ipsum placeholder text generator. Generate dummy text for design and development projects."
+                      keywords="Lorem Ipsum generator, placeholder text, dummy text, filler text, design text, mock content"
+                    >
+                      <LoremIpsumGenerator />
+                    </PageWrapper>
+                  } />
+                  <Route path="/text/text-diff" element={
+                    <PageWrapper 
+                      title="Text Comparison Tool"
+                      description="Free text comparison tool to compare and find differences between two text documents. Visual diff highlighting shows additions, deletions, and modifications line by line."
+                      keywords="text diff, text compare, text comparison, text difference, compare text, text merger, document comparison"
+                    >
+                      <TextDiff />
+                    </PageWrapper>
+                  } />
                   <Route path="/text" element={
                     <PageWrapper 
                       title="Text Tools - Comprehensive Text Processing Suite"
@@ -176,60 +242,13 @@ function App() {
                       <TextToolsPage />
                     </PageWrapper>
                   } />
-                  <Route path="/case-converter" element={
-                    <PageWrapper 
-                      title="Case Converter"
-                      description="Free online text case converter. Convert text to uppercase, lowercase, title case, sentence case instantly."
-                      keywords="case converter, text converter, uppercase, lowercase, title case, sentence case, text transformation"
-                    >
-                      <CaseConverter />
-                    </PageWrapper>
-                  } />
-                  <Route path="/word-counter" element={
-                    <PageWrapper 
-                      title="Word & Character Counter"
-                      description="Free online word and character counter. Count words, characters, sentences, and paragraphs in your text."
-                      keywords="word counter, character counter, text statistics, count words online, paragraph counter, sentence counter"
-                    >
-                      <WordCounter />
-                    </PageWrapper>
-                  } />
-                  <Route path="/text-reverser" element={
-                    <PageWrapper 
-                      title="Text Reverser"
-                      description="Free online text reverser tool. Reverse the order of characters in your text instantly."
-                      keywords="text reverser, reverse text, backwards text, flip text, reverse string online"
-                    >
-                      <TextReverser />
-                    </PageWrapper>
-                  } />
-                  <Route path="/whitespace-remover" element={
-                    <PageWrapper 
-                      title="Whitespace Remover"
-                      description="Free online whitespace remover tool. Remove extra spaces, trim whitespace, and clean up text formatting."
-                      keywords="whitespace remover, remove spaces, trim text, clean text, remove extra spaces, text cleaner"
-                    >
-                      <WhitespaceRemover />
-                    </PageWrapper>
-                  } />
-                  <Route path="/lorem-ipsum-generator" element={
-                    <PageWrapper 
-                      title="Lorem Ipsum Generator"
-                      description="Free Lorem Ipsum placeholder text generator. Generate dummy text for design and development projects."
-                      keywords="Lorem Ipsum generator, placeholder text, dummy text, filler text, design text, mock content"
-                    >
-                      <LoremIpsumGenerator />
-                    </PageWrapper>
-                  } />
-                  <Route path="/text-diff" element={
-                    <PageWrapper 
-                      title="Text Comparison Tool"
-                      description="Free text comparison tool to compare and find differences between two text documents. Visual diff highlighting shows additions, deletions, and modifications line by line."
-                      keywords="text diff, text compare, text comparison, text difference, compare text, text merger, document comparison"
-                    >
-                      <TextDiff />
-                    </PageWrapper>
-                  } />
+                  {/* Text Redirects */}
+                  <Route path="/case-converter" element={<Navigate to="/text/case-converter" replace />} />
+                  <Route path="/word-counter" element={<Navigate to="/text/word-counter" replace />} />
+                  <Route path="/text-reverser" element={<Navigate to="/text/text-reverser" replace />} />
+                  <Route path="/whitespace-remover" element={<Navigate to="/text/whitespace-remover" replace />} />
+                  <Route path="/lorem-ipsum-generator" element={<Navigate to="/text/lorem-ipsum-generator" replace />} />
+                  <Route path="/text-diff" element={<Navigate to="/text/text-diff" replace />} />
 
                   {/* Regex Tool */}
                   <Route path="/regex" element={
@@ -243,6 +262,24 @@ function App() {
                   } />
 
                   {/* Editor Tools */}
+                  <Route path="/editor/markdown" element={
+                    <PageWrapper 
+                      title="Markdown Editor"
+                      description="Free online Markdown editor with live preview. Write and preview Markdown with syntax highlighting and export options."
+                      keywords="Markdown editor, Markdown preview, online Markdown, Markdown converter, write Markdown online"
+                    >
+                      <MarkdownEditor />
+                    </PageWrapper>
+                  } />
+                  <Route path="/editor/mermaid" element={
+                    <PageWrapper 
+                      title="Mermaid Editor"
+                      description="Free online Mermaid diagram editor. Create flowcharts, sequence diagrams, and other diagrams with Mermaid syntax."
+                      keywords="Mermaid editor, flowchart creator, diagram maker, sequence diagram, Mermaid online, chart generator"
+                    >
+                      <MermaidEditor />
+                    </PageWrapper>
+                  } />
                   <Route path="/editor" element={
                     <PageWrapper 
                       title="Code Editors - Markdown & Diagram Tools Collection"
@@ -252,26 +289,38 @@ function App() {
                       <EditorToolsPage />
                     </PageWrapper>
                   } />
-                  <Route path="/markdown" element={
-                    <PageWrapper 
-                      title="Markdown Editor"
-                      description="Free online Markdown editor with live preview. Write and preview Markdown with syntax highlighting and export options."
-                      keywords="Markdown editor, Markdown preview, online Markdown, Markdown converter, write Markdown online"
-                    >
-                      <MarkdownEditor />
-                    </PageWrapper>
-                  } />
-                  <Route path="/mermaid" element={
-                    <PageWrapper 
-                      title="Mermaid Editor"
-                      description="Free online Mermaid diagram editor. Create flowcharts, sequence diagrams, and other diagrams with Mermaid syntax."
-                      keywords="Mermaid editor, flowchart creator, diagram maker, sequence diagram, Mermaid online, chart generator"
-                    >
-                      <MermaidEditor />
-                    </PageWrapper>
-                  } />
+                  {/* Editor Redirects */}
+                  <Route path="/markdown" element={<Navigate to="/editor/markdown" replace />} />
+                  <Route path="/mermaid" element={<Navigate to="/editor/mermaid" replace />} />
 
                   {/* Time Tools */}
+                  <Route path="/time/timestamp-converter" element={
+                    <PageWrapper 
+                      title="Timestamp Converter"
+                      description="Free Unix timestamp converter. Convert between Unix timestamps and human-readable dates and times."
+                      keywords="timestamp converter, Unix timestamp, epoch converter, timestamp to date, date to timestamp"
+                    >
+                      <TimestampConverter />
+                    </PageWrapper>
+                  } />
+                  <Route path="/time/timezone-converter" element={
+                    <PageWrapper 
+                      title="Timezone Converter"
+                      description="Free timezone converter tool. Convert date and time between different timezones worldwide with DST support."
+                      keywords="timezone converter, time zone converter, convert time zones, world clock, timezone calculator"
+                    >
+                      <TimezoneConverter />
+                    </PageWrapper>
+                  } />
+                  <Route path="/time/date-calculator" element={
+                    <PageWrapper 
+                      title="Date Calculator"
+                      description="Free online date calculator. Add or subtract days, months, and years from any date. Calculate date differences."
+                      keywords="date calculator, date math, add days to date, subtract days from date, date difference calculator"
+                    >
+                      <DateCalculator />
+                    </PageWrapper>
+                  } />
                   <Route path="/time" element={
                     <PageWrapper 
                       title="Date & Time Tools - Timestamp & Timezone Utilities"
@@ -281,33 +330,10 @@ function App() {
                       <TimeToolsPage />
                     </PageWrapper>
                   } />
-                  <Route path="/timestamp-converter" element={
-                    <PageWrapper 
-                      title="Timestamp Converter"
-                      description="Free Unix timestamp converter. Convert between Unix timestamps and human-readable dates and times."
-                      keywords="timestamp converter, Unix timestamp, epoch converter, timestamp to date, date to timestamp"
-                    >
-                      <TimestampConverter />
-                    </PageWrapper>
-                  } />
-                  <Route path="/timezone-converter" element={
-                    <PageWrapper 
-                      title="Timezone Converter"
-                      description="Free timezone converter tool. Convert date and time between different timezones worldwide with DST support."
-                      keywords="timezone converter, time zone converter, convert time zones, world clock, timezone calculator"
-                    >
-                      <TimezoneConverter />
-                    </PageWrapper>
-                  } />
-                  <Route path="/date-calculator" element={
-                    <PageWrapper 
-                      title="Date Calculator"
-                      description="Free online date calculator. Add or subtract days, months, and years from any date. Calculate date differences."
-                      keywords="date calculator, date math, add days to date, subtract days from date, date difference calculator"
-                    >
-                      <DateCalculator />
-                    </PageWrapper>
-                  } />
+                  {/* Time Redirects */}
+                  <Route path="/timestamp-converter" element={<Navigate to="/time/timestamp-converter" replace />} />
+                  <Route path="/timezone-converter" element={<Navigate to="/time/timezone-converter" replace />} />
+                  <Route path="/date-calculator" element={<Navigate to="/time/date-calculator" replace />} />
 
                   {/* Encryption Tools */}
                   <Route path="/encryption" element={

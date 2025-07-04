@@ -12,38 +12,38 @@ const Navigation: React.FC = () => {
   const location = useLocation();
 
   const jsonTools = [
-    { path: '/json', name: 'JSON Formatter & Validator' },
-    { path: '/json-schema-validator', name: 'JSON Schema Validator' },
-    { path: '/json-codegen', name: 'Generate Code Types' },
-    { path: '/json-diff', name: 'Diff Tool' },
-    { path: '/json-mock', name: 'Mock Data Generator' }
+    { path: '/json/formatter', name: 'JSON Formatter & Validator' },
+    { path: '/json/schema-validator', name: 'JSON Schema Validator' },
+    { path: '/json/codegen', name: 'Generate Code Types' },
+    { path: '/json/diff', name: 'Diff Tool' },
+    { path: '/json/mock', name: 'Mock Data Generator' }
   ];
 
   const networkTools = [
-    { path: '/network', name: 'URL Encoder / Decoder' },
-    { path: '/base64-encoder', name: 'Base64 Encoder / Decoder' },
-    { path: '/ip-lookup', name: 'IP Lookup' },
-    { path: '/jwt-decoder', name: 'JWT Decoder' },
+    { path: '/network/url-encoder', name: 'URL Encoder / Decoder' },
+    { path: '/network/base64-encoder', name: 'Base64 Encoder / Decoder' },
+    { path: '/network/ip-lookup', name: 'IP Lookup' },
+    { path: '/network/jwt-decoder', name: 'JWT Decoder' },
   ];
 
   const textTools = [
-    { path: '/case-converter', name: 'Case Converter' },
-    { path: '/word-counter', name: 'Word & Character Counter' },
-    { path: '/text-reverser', name: 'Text Reverser' },
-    { path: '/whitespace-remover', name: 'Whitespace Remover' },
-    { path: '/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' },
-    { path: '/text-diff', name: 'Text Comparison Tool' }
+    { path: '/text/case-converter', name: 'Case Converter' },
+    { path: '/text/word-counter', name: 'Word & Character Counter' },
+    { path: '/text/text-reverser', name: 'Text Reverser' },
+    { path: '/text/whitespace-remover', name: 'Whitespace Remover' },
+    { path: '/text/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' },
+    { path: '/text/text-diff', name: 'Text Comparison Tool' }
   ];
 
   const editorTools = [
-    { path: '/markdown', name: 'Markdown Editor' },
-    { path: '/mermaid', name: 'Mermaid Editor' }
+    { path: '/editor/markdown', name: 'Markdown Editor' },
+    { path: '/editor/mermaid', name: 'Mermaid Editor' }
   ];
 
   const timeTools = [
-    { path: '/timestamp-converter', name: 'Timestamp Converter' },
-    { path: '/timezone-converter', name: 'Timezone Converter' },
-    { path: '/date-calculator', name: 'Date Calculator' }
+    { path: '/time/timestamp-converter', name: 'Timestamp Converter' },
+    { path: '/time/timezone-converter', name: 'Timezone Converter' },
+    { path: '/time/date-calculator', name: 'Date Calculator' }
   ];
 
   const navItems = [
