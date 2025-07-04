@@ -8,6 +8,7 @@ import JsonHistoryModal from './JsonHistoryModal';
 import { JsonHistoryItem } from '@/hooks/useJsonHistory';
 
 interface JsonToolbarProps {
+  onFormat: () => void;
   onMinify: () => void;
   onCopy: () => void;
   onClear: () => void;
@@ -27,6 +28,7 @@ interface JsonToolbarProps {
 }
 
 const JsonToolbar: React.FC<JsonToolbarProps> = ({
+  onFormat,
   onMinify,
   onCopy,
   onClear,
@@ -48,6 +50,9 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
   return (
     <div className="flex flex-wrap items-center gap-4 mb-1 p-2 bg-background border py-2 rounded-sm">
       <div className="flex flex-wrap gap-2">
+        <Button onClick={onFormat} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
+          {t('common.format')}
+        </Button>
         <Button onClick={onMinify} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
           {t('common.minify')}
         </Button>

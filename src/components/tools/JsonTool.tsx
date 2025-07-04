@@ -50,6 +50,7 @@ const JsonTool: React.FC = () => {
           
           <TabsContent value="formatter" className="flex flex-col h-full">
             <JsonToolbar
+              onFormat={handleToggleMinifyFormat}
               onMinify={handleToggleMinifyFormat}
               onCopy={copyToClipboard}
               onClear={clearAll}
