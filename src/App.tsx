@@ -34,6 +34,11 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import AboutUs from "./pages/AboutUs";
+import JsonToolsPage from "./pages/JsonToolsPage";
+import NetworkToolsPage from "./pages/NetworkToolsPage";
+import TextToolsPage from "./pages/TextToolsPage";
+import EditorToolsPage from "./pages/EditorToolsPage";
+import TimeToolsPage from "./pages/TimeToolsPage";
 import PageWrapper from "@/components/PageWrapper";
 
 import "@/i18n";
@@ -61,13 +66,22 @@ function App() {
                       <HomePage />
                     </PageWrapper>
                   } />
-                  <Route path="/json" element={
+                  <Route path="/json-tool" element={
                     <PageWrapper 
                       title="JSON Formatter & Validator" 
                       description="Free online JSON formatter, validator and beautifier. Format, validate, minify JSON data with syntax highlighting. Extract values with JSONPath."
                       keywords="JSON formatter, JSON validator, JSON beautifier, JSON minifier, JSONPath extractor, validate JSON online"
                     >
                       <JsonTool />
+                    </PageWrapper>
+                  } />
+                  <Route path="/json" element={
+                    <PageWrapper 
+                      title="JSON Tools - Professional JSON Utilities Collection" 
+                      description="Complete collection of JSON tools: formatter, validator, schema validator, code generator, diff tool, and mock data generator. Built with Lovable AI."
+                      keywords="JSON tools, JSON formatter, JSON validator, JSON schema, JSON diff, JSON mock data, lovable"
+                    >
+                      <JsonToolsPage />
                     </PageWrapper>
                   } />
                   <Route path="/json-schema-validator" element={
@@ -107,13 +121,22 @@ function App() {
                     </PageWrapper>
                   } />
                   {/* Network Tools */}
-                  <Route path="/network" element={
+                  <Route path="/url-encoder" element={
                     <PageWrapper 
                       title="URL Encoder / Decoder"
                       description="Free online URL encoder and decoder tool. Encode URLs for safe transmission or decode percent-encoded URLs."
                       keywords="URL encoder, URL decoder, percent encoding, URL escape, URI encoding, web safe encoding"
                     >
                       <UrlEncoderDecoder />
+                    </PageWrapper>
+                  } />
+                  <Route path="/network" element={
+                    <PageWrapper 
+                      title="Network Tools - Encoding & Security Utilities Collection" 
+                      description="Essential network and encoding tools: URL encoder, Base64 converter, IP lookup, JWT decoder. Secure, privacy-focused utilities built with Lovable AI."
+                      keywords="network tools, URL encoder, Base64 encoder, IP lookup, JWT decoder, lovable"
+                    >
+                      <NetworkToolsPage />
                     </PageWrapper>
                   } />
                   <Route path="/base64-encoder" element={
@@ -146,11 +169,11 @@ function App() {
                   {/* Text Tools */}
                   <Route path="/text" element={
                     <PageWrapper 
-                      title="Case Converter"
-                      description="Free online text case converter. Convert text to uppercase, lowercase, title case, sentence case instantly."
-                      keywords="case converter, text converter, uppercase, lowercase, title case, sentence case, text transformation"
+                      title="Text Tools - Comprehensive Text Processing Suite"
+                      description="Complete collection of text processing tools: case converter, word counter, text reverser, whitespace remover, Lorem Ipsum generator, and text diff. Built with Lovable AI."
+                      keywords="text tools, case converter, word counter, text reverser, Lorem Ipsum generator, text diff, lovable"
                     >
-                      <CaseConverter />
+                      <TextToolsPage />
                     </PageWrapper>
                   } />
                   <Route path="/case-converter" element={
@@ -220,6 +243,15 @@ function App() {
                   } />
 
                   {/* Editor Tools */}
+                  <Route path="/editor" element={
+                    <PageWrapper 
+                      title="Code Editors - Markdown & Diagram Tools Collection"
+                      description="Professional online editors for Markdown and Mermaid diagrams. Create documentation and diagrams with live preview. Built with Lovable AI."
+                      keywords="code editor, Markdown editor, Mermaid editor, diagram creator, documentation tools, lovable"
+                    >
+                      <EditorToolsPage />
+                    </PageWrapper>
+                  } />
                   <Route path="/markdown" element={
                     <PageWrapper 
                       title="Markdown Editor"
@@ -240,6 +272,15 @@ function App() {
                   } />
 
                   {/* Time Tools */}
+                  <Route path="/time" element={
+                    <PageWrapper 
+                      title="Date & Time Tools - Timestamp & Timezone Utilities"
+                      description="Essential date and time tools: timestamp converter, timezone converter, date calculator. Handle time calculations with precision. Built with Lovable AI."
+                      keywords="time tools, timestamp converter, timezone converter, date calculator, lovable"
+                    >
+                      <TimeToolsPage />
+                    </PageWrapper>
+                  } />
                   <Route path="/timestamp-converter" element={
                     <PageWrapper 
                       title="Timestamp Converter"

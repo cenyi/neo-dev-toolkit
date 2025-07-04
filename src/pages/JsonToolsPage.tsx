@@ -1,0 +1,108 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { FileJson, FileCode, GitCompare, Shuffle, Code } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
+const JsonToolsPage: React.FC = () => {
+  const { t } = useTranslation();
+
+  const jsonTools = [
+    {
+      path: '/json',
+      icon: FileJson,
+      title: 'JSON Formatter & Validator',
+      description: 'Format, validate, and beautify JSON data with syntax highlighting and error detection.',
+      color: 'text-blue-500'
+    },
+    {
+      path: '/json-schema-validator',
+      icon: FileCode,
+      title: 'JSON Schema Validator',
+      description: 'Validate JSON data against JSON Schema with detailed error reporting.',
+      color: 'text-green-500'
+    },
+    {
+      path: '/json-codegen',
+      icon: Code,
+      title: 'Generate Code Types',
+      description: 'Generate TypeScript, Python, Java, C# code types from JSON data.',
+      color: 'text-purple-500'
+    },
+    {
+      path: '/json-diff',
+      icon: GitCompare,
+      title: 'JSON Diff Tool',
+      description: 'Compare and visualize differences between two JSON objects.',
+      color: 'text-orange-500'
+    },
+    {
+      path: '/json-mock',
+      icon: Shuffle,
+      title: 'Mock Data Generator',
+      description: 'Generate realistic mock JSON data for testing and development.',
+      color: 'text-indigo-500'
+    }
+  ];
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <header className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4 text-foreground">JSON Developer Tools</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Comprehensive collection of JSON tools for developers. Format, validate, compare, and generate JSON data with our professional-grade utilities built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link>.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {jsonTools.map(({ path, icon: Icon, title, description, color }) => (
+          <Link key={path} to={path} className="group">
+            <Card className="h-full hover:shadow-lg transition-shadow duration-200 border-border">
+              <CardHeader>
+                <div className="flex items-center space-x-3 mb-2">
+                  <div className="p-2 rounded-lg bg-accent">
+                    <Icon size={24} className={color} />
+                  </div>
+                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                    {title}
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm leading-relaxed">
+                  {description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
+      </div>
+
+      <section className="mt-16 text-center">
+        <h2 className="text-2xl font-semibold mb-4">Why Choose Our JSON Tools?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-4">
+            <h3 className="text-lg font-medium mb-2">Privacy Focused</h3>
+            <p className="text-muted-foreground text-sm">
+              All JSON processing happens locally in your browser. Your data never leaves your device.
+            </p>
+          </div>
+          <div className="p-4">
+            <h3 className="text-lg font-medium mb-2">Professional Grade</h3>
+            <p className="text-muted-foreground text-sm">
+              Built with modern web technologies and designed for professional developers.
+            </p>
+          </div>
+          <div className="p-4">
+            <h3 className="text-lg font-medium mb-2">Free & Open</h3>
+            <p className="text-muted-foreground text-sm">
+              No registration required. Use all features for free with no limitations.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default JsonToolsPage;

@@ -31,4 +31,4 @@ Allow: /images/
 Allow: /css/
 Allow: /js/
 
-Sitemap: https://devtools-hub.lovable.app/sitemap.xml
+Sitemap: https://tojsons.com/sitemap.xml
