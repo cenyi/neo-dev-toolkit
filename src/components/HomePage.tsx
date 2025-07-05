@@ -8,7 +8,9 @@ import {
   FileText, 
   Key,
   FileCode,
-  Code
+  Code,
+  Clock,
+  Hash
 } from 'lucide-react';
 
 const HomePage: React.FC = () => {
@@ -37,25 +39,32 @@ const HomePage: React.FC = () => {
       color: 'text-purple-500'
     },
     {
+      path: '/time',
+      icon: Clock,
+      titleKey: 'tools.time.title',
+      descKey: 'tools.time.description',
+      color: 'text-cyan-500'
+    },
+    {
+      path: '/regex',
+      icon: Hash,
+      titleKey: 'tools.regex.title',
+      descKey: 'tools.regex.description',
+      color: 'text-orange-500'
+    },
+    {
+      path: '/editor',
+      icon: FileCode,
+      titleKey: 'tools.editor.title',
+      descKey: 'tools.editor.description',
+      color: 'text-yellow-500'
+    },
+    {
       path: '/encryption',
       icon: Key,
       titleKey: 'tools.crypto.title',
       descKey: 'tools.crypto.description',
       color: 'text-red-500'
-    },
-    {
-      path: '/markdown',
-      icon: FileCode,
-      titleKey: 'tools.markdown.title',
-      descKey: 'tools.markdown.description',
-      color: 'text-yellow-500'
-    },
-    {
-      path: '/mermaid',
-      icon: Code,
-      titleKey: 'tools.mermaid.title',
-      descKey: 'tools.mermaid.description',
-      color: 'text-indigo-500'
     }
   ];
 

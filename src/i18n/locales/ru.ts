@@ -48,7 +48,24 @@ export const ru = {
         fieldPath: 'Путь к полю',
         extractValue: 'Извлечь значение',
         extractPlaceholder: 'например, data.users[0].name',
-        extractedValueTitle: 'Извлеченное значение'
+        extractedValueTitle: 'Извлеченное значение',
+        generateGraph: 'Создать диаграмму',
+        graphTitle: 'Структура JSON',
+        syntaxError: 'Синтаксическая ошибка JSON',
+        unknownParseError: 'Неизвестная ошибка разбора JSON',
+        syntaxErrorAtPosition: 'Синтаксическая ошибка JSON: {{message}} (строка {{line}}, столбец {{column}})',
+        syntaxErrorGeneric: 'Синтаксическая ошибка JSON: {{message}}',
+        convertedToYamlTitle: 'Преобразовано в YAML',
+        convertedToXmlTitle: 'Преобразовано в XML',
+        convertedToCsvTitle: 'Преобразовано в CSV',
+        viewer: {
+          title: 'Просмотр структуры JSON',
+          invalidJson: 'Пожалуйста, введите корректный JSON для просмотра структуры',
+          expandAll: 'Развернуть все',
+          collapseAll: 'Свернуть все',
+          items: 'элементов',
+          elements: 'элементов'
+        },
       },
       network: {
         title: 'Сетевые Инструменты',
@@ -61,6 +78,18 @@ export const ru = {
       crypto: {
         title: 'Криптографические Инструменты',
         description: 'Генерация хэша, утилиты шифрования и расшифровки'
+      },
+      time: {
+        title: 'Временные Инструменты', 
+        description: 'Конвертеры временных меток, инструменты часовых поясов и калькуляторы дат'
+      },
+      regex: {
+        title: 'Инструмент RegEx',
+        description: 'Тестирование и проверка регулярных выражений'
+      },
+      editor: {
+        title: 'Редакторы Кода',
+        description: 'Редакторы Markdown и диаграмм Mermaid с живым предпросмотром'
       }
     },
     toasts: {

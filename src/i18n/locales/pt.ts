@@ -11,7 +11,24 @@ export const pt = {
         extractPlaceholder: 'ex., $.user.name ou $[0].id',
         extractValue: 'Extrair Valor',
         placeholder: 'Digite ou cole seu JSON aqui...',
-        extractedValueTitle: 'Valor Extraído'
+        extractedValueTitle: 'Valor Extraído',
+        generateGraph: 'Gerar Gráfico',
+        graphTitle: 'Estrutura JSON',
+        syntaxError: 'Erro de sintaxe JSON',
+        unknownParseError: 'Erro de análise JSON desconhecido',
+        syntaxErrorAtPosition: 'Erro de sintaxe JSON: {{message}} (linha {{line}}, coluna {{column}})',
+        syntaxErrorGeneric: 'Erro de sintaxe JSON: {{message}}',
+        convertedToYamlTitle: 'Convertido para YAML',
+        convertedToXmlTitle: 'Convertido para XML',
+        convertedToCsvTitle: 'Convertido para CSV',
+        viewer: {
+          title: 'Visualização da Estrutura JSON',
+          invalidJson: 'Por favor insira JSON válido para ver a estrutura',
+          expandAll: 'Expandir Tudo',
+          collapseAll: 'Recolher Tudo',
+          items: 'itens',
+          elements: 'elementos'
+        },
       },
       network: { title: 'Ferramentas de Rede', description: 'Codificação de URL, consulta de IP e utilitários de rede' }, 
       text: { 
@@ -92,7 +109,10 @@ export const pt = {
           resultDate: 'Data Resultado'
         }
       },
-      crypto: { title: 'Ferramentas de Criptografia', description: 'Geração de hash, utilitários de criptografia и descriptografia' }, 
+      crypto: { title: 'Ferramentas de Criptografia', description: 'Geração de hash, utilitários de criptografia и descriptografia' },
+      time: { title: 'Ferramentas de Tempo', description: 'Conversores de timestamp, ferramentas de fuso horário e calculadoras de data' },
+      regex: { title: 'Ferramenta RegEx', description: 'Testar e validar expressões regulares' },
+      editor: { title: 'Editores de Código', description: 'Editores Markdown e de diagramas Mermaid com visualização ao vivo' },
       markdown: { title: 'Ferramentas Markdown', description: 'Editor de Markdown com visualização ao vivo' }, 
       mermaid: { title: 'Diagramas Mermaid', description: 'Crie diagramas e fluxogramas com o Mermaid' } 
     },

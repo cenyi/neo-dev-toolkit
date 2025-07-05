@@ -63,6 +63,17 @@ export const es = {
         extractedValueTitle: 'Valor extraído',
         generateGraph: 'Generar Gráfico',
         graphTitle: 'Estructura JSON',
+        convertedToYamlTitle: 'Convertido a YAML',
+        convertedToXmlTitle: 'Convertido a XML',
+        convertedToCsvTitle: 'Convertido a CSV',
+        viewer: {
+          title: 'Vista de Estructura JSON',
+          invalidJson: 'Por favor ingrese JSON válido para ver la estructura',
+          expandAll: 'Expandir Todo',
+          collapseAll: 'Contraer Todo',
+          items: 'elementos',
+          elements: 'elementos'
+        },
         syntaxError: 'Error de sintaxis JSON',
         unknownParseError: 'Error de análisis JSON desconocido',
         syntaxErrorAtPosition: 'Error de sintaxis JSON: {{message}} (línea {{line}}, columna {{column}})',

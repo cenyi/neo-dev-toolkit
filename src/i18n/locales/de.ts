@@ -84,6 +84,13 @@ export const de = {
         extractedValueTitle: 'Extrahierter Wert',
         generateGraph: 'Diagramm erstellen',
         graphTitle: 'JSON-Struktur',
+        syntaxError: 'JSON-Syntaxfehler',
+        unknownParseError: 'Unbekannter JSON-Parsing-Fehler',
+        syntaxErrorAtPosition: 'JSON-Syntaxfehler: {{message}} (Zeile {{line}}, Spalte {{column}})',
+        syntaxErrorGeneric: 'JSON-Syntaxfehler: {{message}}',
+        convertedToYamlTitle: 'Zu YAML konvertiert',
+        convertedToXmlTitle: 'Zu XML konvertiert',
+        convertedToCsvTitle: 'Zu CSV konvertiert',
         viewer: {
           title: 'JSON-Strukturansicht',
           invalidJson: 'Bitte geben Sie gültiges JSON ein, um die Struktur zu sehen',
@@ -139,10 +146,26 @@ export const de = {
         title: 'Krypto-Tools',
         description: 'Hash-Generierung, Verschlüsselungs- und Entschlüsselungs-Utilities'
       },
+      time: {
+        title: 'Zeit-Tools',
+        description: 'Zeitstempel-Konverter, Zeitzonen-Tools und Datumsrechner'
+      },
+      regex: {
+        title: 'RegEx-Tool',
+        description: 'Reguläre Ausdrücke testen und validieren'
+      },
+      editor: {
+        title: 'Code-Editoren',
+        description: 'Markdown- und Mermaid-Diagramm-Editoren mit Live-Vorschau'
+      },
       mermaid: {
         title: 'Mermaid-Diagramme',
         description: 'Erstellen Sie Diagramme und Flussdiagramme mit Mermaid',
         syntaxError: 'Syntaxfehler'
+      },
+      markdown: {
+        title: 'Markdown-Tools',
+        description: 'Markdown-Editor mit Live-Vorschau'
       }
     },
     toasts: {

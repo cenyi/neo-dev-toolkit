@@ -71,7 +71,22 @@ export const fr = {
         extractPlaceholder: 'ex., data.users[0].name',
         extractedValueTitle: 'Valeur extraite',
         generateGraph: 'Générer un Graphique',
-        graphTitle: 'Structure JSON'
+        graphTitle: 'Structure JSON',
+        syntaxError: 'Erreur de syntaxe JSON',
+        unknownParseError: 'Erreur d\'analyse JSON inconnue',
+        syntaxErrorAtPosition: 'Erreur de syntaxe JSON : {{message}} (ligne {{line}}, colonne {{column}})',
+        syntaxErrorGeneric: 'Erreur de syntaxe JSON : {{message}}',
+        convertedToYamlTitle: 'Converti en YAML',
+        convertedToXmlTitle: 'Converti en XML',
+        convertedToCsvTitle: 'Converti en CSV',
+        viewer: {
+          title: 'Vue de Structure JSON',
+          invalidJson: 'Veuillez entrer du JSON valide pour voir la structure',
+          expandAll: 'Tout Développer',
+          collapseAll: 'Tout Réduire',
+          items: 'éléments',
+          elements: 'éléments'
+        },
       },
       text: {
         title: 'Outils Texte',
@@ -98,6 +113,18 @@ export const fr = {
       crypto: {
         title: 'Outils Crypto',
         description: 'Génération de hash, utilitaires de chiffrement et déchiffrement'
+      },
+      time: {
+        title: 'Outils Temps',
+        description: 'Convertisseurs de timestamp, outils de fuseau horaire et calculatrices de date'
+      },
+      regex: {
+        title: 'Outil RegEx',
+        description: 'Tester et valider les expressions régulières'
+      },
+      editor: {
+        title: 'Éditeurs de Code',
+        description: 'Éditeurs Markdown et de diagrammes Mermaid avec aperçu en direct'
       }
     },
     toasts: {

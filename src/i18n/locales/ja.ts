@@ -49,7 +49,22 @@ export const ja = {
         extractPlaceholder: '例: data.users[0].name',
         extractedValueTitle: '抽出された値',
         generateGraph: 'グラフを生成',
-        graphTitle: 'JSON構造'
+        graphTitle: 'JSON構造',
+        syntaxError: 'JSON構文エラー',
+        unknownParseError: '不明なJSON解析エラー',
+        syntaxErrorAtPosition: 'JSON構文エラー: {{message}} (行 {{line}}, 列 {{column}})',
+        syntaxErrorGeneric: 'JSON構文エラー: {{message}}',
+        convertedToYamlTitle: 'YAMLに変換',
+        convertedToXmlTitle: 'XMLに変換',
+        convertedToCsvTitle: 'CSVに変換',
+        viewer: {
+          title: 'JSON構造ビュー',
+          invalidJson: '構造を表示するには有効なJSONを入力してください',
+          expandAll: 'すべて展開',
+          collapseAll: 'すべて折りたたみ',
+          items: '項目',
+          elements: '要素'
+        },
       },
       network: {
         title: 'ネットワークツール',
@@ -62,6 +77,18 @@ export const ja = {
       crypto: {
         title: '暗号化ツール',
         description: 'ハッシュ生成、暗号化および復号化ユーティリティ'
+      },
+      time: {
+        title: '時間ツール',
+        description: 'タイムスタンプコンバーター、タイムゾーンツール、日付計算機'
+      },
+      regex: {
+        title: '正規表現ツール',
+        description: '正規表現のテストと検証'
+      },
+      editor: {
+        title: 'コードエディター',
+        description: 'ライブプレビュー付きMarkdownとMermaidダイアグラムエディター'
       }
     },
     toasts: {

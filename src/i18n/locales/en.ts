@@ -267,9 +267,17 @@ export const en = {
         targetTimezone: 'To Timezone',
         convertedDateTime: 'Converted Date & Time'
       },
+      time: { 
+        title: 'Time Tools', 
+        description: 'Timestamp converters, timezone tools, and date calculators'
+      },
+      editor: { 
+        title: 'Code Editors', 
+        description: 'Markdown and Mermaid diagram editors with live preview'
+      },
       crypto: { title: 'Crypto Tools', description: 'Hash generation, encryption and decryption utilities' }, 
       markdown: { title: 'Markdown Tools', description: 'Markdown editor with live preview' }, 
-      mermaid: { title: 'Mermaid Diagrams', description: 'Create diagrams and flowcharts with Mermaid' } 
+      mermaid: { title: 'Mermaid Diagrams', description: 'Create diagrams and flowcharts with Mermaid' }
     },
     toasts: {
       common: {
