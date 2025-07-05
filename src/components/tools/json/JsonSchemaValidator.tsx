@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useJsonSchemaValidator } from '@/hooks/json/useJsonSchemaValidator';
-import JsonEditor from './json/JsonEditor';
+import JsonEditor from './JsonEditor';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CheckCircle, AlertCircle } from 'lucide-react';
