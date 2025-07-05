@@ -1,6 +1,6 @@
 
 import React from 'react';
-import JsonDiff from '@/components/tools/json/JsonDiff';
+import JsonDiff from '@/components/tools/JsonDiff';
 import PageWrapper from '@/components/PageWrapper';
 
 const JsonDiffPage = () => {

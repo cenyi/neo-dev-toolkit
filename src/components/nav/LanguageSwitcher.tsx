@@ -4,19 +4,21 @@ import { useTranslation } from 'react-i18next';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Languages } from 'lucide-react';
 
-const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'es', name: 'Español' },
-  { code: 'fr', name: 'Français' },
-  { code: 'de', name: 'Deutsch' },
-  { code: 'pt', name: 'Português' },
-  { code: 'ru', name: 'Русский' },
-  { code: 'ja', name: '日本語' },
-  { code: 'ko', name: '한국어' },
-];
+const languageNames: { [key: string]: string } = {
+  en: 'English',
+  es: 'Español',
+  fr: 'Français',
+  de: 'Deutsch',
+  pt: 'Português',
+  ru: 'Русский',
+  ja: '日本語',
+  ko: '한국어',
+  zh: '简体中文',
+};
 
 const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
+  const availableLanguages = Object.keys(i18n.options.resources || {});
 
   return (
     <DropdownMenu>
@@ -26,9 +28,9 @@ const LanguageSwitcher: React.FC = () => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md">
-        {languages.map(({ code, name }) => (
+        {availableLanguages.map((code) => (
           <DropdownMenuItem key={code} onClick={() => i18n.changeLanguage(code)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
-            {name}
+            {languageNames[code] || code}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

@@ -108,6 +108,15 @@ const TextToolsPage: React.FC = () => {
             </div>
           </div>
         </section>
+
+        <section className="mt-16">
+          <h2 className="text-2xl font-semibold text-center mb-6">Related Tools</h2>
+          <div className="flex justify-center gap-4">
+            <Link to="/json" className="text-primary hover:underline">JSON Tools</Link>
+            <Link to="/time" className="text-primary hover:underline">Time Tools</Link>
+            <Link to="/encryption" className="text-primary hover:underline">Encryption Tools</Link>
+          </div>
+        </section>
     </div>
   );
 };

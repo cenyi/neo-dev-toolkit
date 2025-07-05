@@ -6,7 +6,7 @@ import { useJsonConversion } from './useJsonConversion';
 import { useJsonExtraction } from './useJsonExtraction';
 import { useJsonHistory } from './useJsonHistory';
 import { useJsonGraph } from './useJsonGraph';
-import { parseJsonWithBigInt, stringifyJsonWithBigInt, formatJsonSafely } from '@/components/tools/json/utils/jsonParser';
+import { parseJsonWithBigInt, stringifyJsonWithBigInt, formatJsonSafely } from '@/utils/jsonParser';
 
 export const useJsonTool = () => {
   const { t } = useTranslation();

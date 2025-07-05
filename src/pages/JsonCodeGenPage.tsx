@@ -1,6 +1,6 @@
 
 import React from 'react';
-import JsonCodeGen from '@/components/tools/json/JsonCodeGen';
+import JsonCodeGen from '@/components/tools/JsonCodeGen';
 import PageWrapper from '@/components/PageWrapper';
 
 const JsonCodeGenPage = () => {

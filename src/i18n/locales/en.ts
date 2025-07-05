@@ -2,6 +2,47 @@
 
 export const en = {
   translation: {
+    jsonToolsPage: {
+      mainTitle: 'JSON Developer Tools',
+      mainDescription: 'Comprehensive collection of JSON tools for developers. Format, validate, compare, and generate JSON data with our professional-grade utilities built with Lovable AI.',
+      tools: {
+        formatter: {
+          title: 'JSON Formatter & Validator',
+          description: 'Format, validate, and beautify JSON data with syntax highlighting and error detection.'
+        },
+        schemaValidator: {
+          title: 'JSON Schema Validator',
+          description: 'Validate JSON data against JSON Schema with detailed error reporting.'
+        },
+        codeGen: {
+          title: 'Generate Code Types',
+          description: 'Generate TypeScript, Python, Java, C# code types from JSON data.'
+        },
+        diffTool: {
+          title: 'JSON Diff Tool',
+          description: 'Compare and visualize differences between two JSON objects.'
+        },
+        mockDataGenerator: {
+          title: 'Mock Data Generator',
+          description: 'Generate realistic mock JSON data for testing and development.'
+        }
+      },
+      whyChoose: {
+        title: 'Why Choose Our JSON Tools?',
+        privacy: {
+          title: 'Privacy Focused',
+          description: 'All JSON processing happens locally in your browser. Your data never leaves your device.'
+        },
+        professional: {
+          title: 'Professional Grade',
+          description: 'Built with modern web technologies and designed for professional developers.'
+        },
+        free: {
+          title: 'Free & Open',
+          description: 'No registration required. Use all features for free with no limitations.'
+        }
+      }
+    },
     nav: { 
       home: 'Home', 
       json: 'JSON', 
