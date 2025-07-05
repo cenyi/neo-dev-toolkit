@@ -1,6 +1,6 @@
 
 import React from 'react';
-import TimestampConverter from '@/components/tools/TimestampConverter';
+import TimestampConverter from '@/components/tools/time/TimestampConverter';
 import PageWrapper from '@/components/PageWrapper';
 
 const TimestampConverterPage = () => {

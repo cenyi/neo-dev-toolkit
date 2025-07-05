@@ -1,6 +1,6 @@
 
 import React from 'react';
-import DateCalculator from '@/components/tools/DateCalculator';
+import DateCalculator from '@/components/tools/time/DateCalculator';
 import PageWrapper from '@/components/PageWrapper';
 
 const DateCalculatorPage = () => {

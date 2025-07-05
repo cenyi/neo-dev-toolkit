@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { useJsonDiff } from '@/hooks/useJsonDiff';
-import JsonEditor from './JsonEditor';
+import { useJsonDiff } from '@/hooks/json/useJsonDiff';
+import JsonEditor from './json/JsonEditor';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 import '@/styles/jsondiffpatch.css';

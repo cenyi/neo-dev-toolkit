@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { useJsonCodeGen, SupportedLanguage } from '@/hooks/useJsonCodeGen';
-import JsonEditor from './JsonEditor';
+import { useJsonCodeGen, SupportedLanguage } from '@/hooks/json/useJsonCodeGen';
+import JsonEditor from './json/JsonEditor';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';

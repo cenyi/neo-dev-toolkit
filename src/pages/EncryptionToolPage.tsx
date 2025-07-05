@@ -1,6 +1,6 @@
 
 import React from 'react';
-import EncryptionTool from '@/components/tools/EncryptionTool';
+import EncryptionTool from '@/components/tools/crypto/EncryptionTool';
 import PageWrapper from '@/components/PageWrapper';
 
 const EncryptionToolPage = () => {

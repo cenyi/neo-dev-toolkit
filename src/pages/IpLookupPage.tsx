@@ -1,6 +1,6 @@
 
 import React from 'react';
-import IpLookup from '@/components/tools/IpLookup';
+import IpLookup from '@/components/tools/network/IpLookup';
 import PageWrapper from '@/components/PageWrapper';
 
 const IpLookupPage = () => {

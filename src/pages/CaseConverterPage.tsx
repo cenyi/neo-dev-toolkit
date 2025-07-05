@@ -1,6 +1,6 @@
 
 import React from 'react';
-import CaseConverter from '@/components/tools/CaseConverter';
+import CaseConverter from '@/components/tools/text/CaseConverter';
 import PageWrapper from '@/components/PageWrapper';
 
 const CaseConverterPage = () => {

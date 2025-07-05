@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useWhitespaceRemover } from '@/hooks/useWhitespaceRemover';
+import { useWhitespaceRemover } from '@/hooks/text/useWhitespaceRemover';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Copy, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
-import SimpleCodeEditor from './SimpleCodeEditor';
+import SimpleCodeEditor from '../editor/SimpleCodeEditor';
 
 const WhitespaceRemover: React.FC = () => {
   const { t } = useTranslation();

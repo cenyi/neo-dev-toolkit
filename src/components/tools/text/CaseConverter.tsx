@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useCaseConverter } from '@/hooks/useCaseConverter';
+import { useCaseConverter } from '@/hooks/text/useCaseConverter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Copy, ArrowRight } from 'lucide-react';
 import { toast } from "sonner";
-import SimpleCodeEditor from './SimpleCodeEditor';
+import SimpleCodeEditor from '../editor/SimpleCodeEditor';
 import ToolPageLayout from '@/components/layout/ToolPageLayout';
 
 const CaseConverter: React.FC = () => {

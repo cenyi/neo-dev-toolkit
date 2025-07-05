@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Terminal } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import JsonEditor from './JsonEditor';
-import CodeEditor from './CodeEditor';
+import JsonEditor from '../json/JsonEditor';
+import CodeEditor from '../editor/CodeEditor';
 
 const JwtDecoder: React.FC = () => {
   const { t } = useTranslation();

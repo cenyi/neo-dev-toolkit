@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useWordCounter } from '@/hooks/useWordCounter';
+import { useWordCounter } from '@/hooks/text/useWordCounter';
 import { Card, CardContent } from '@/components/ui/card';
-import SimpleCodeEditor from './SimpleCodeEditor';
+import SimpleCodeEditor from '../editor/SimpleCodeEditor';
 import ToolPageLayout from '@/components/layout/ToolPageLayout';
 
 const StatCard: React.FC<{

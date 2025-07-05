@@ -1,6 +1,6 @@
 
 import React from 'react';
-import TextDiff from '@/components/tools/TextDiff';
+import TextDiff from '@/components/tools/text/TextDiff';
 import PageWrapper from '@/components/PageWrapper';
 
 const TextDiffPage = () => {

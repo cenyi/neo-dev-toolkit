@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useJsonSchemaValidator } from '@/hooks/useJsonSchemaValidator';
-import JsonEditor from './JsonEditor';
+import { useJsonSchemaValidator } from '@/hooks/json/useJsonSchemaValidator';
+import JsonEditor from './json/JsonEditor';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CheckCircle, AlertCircle } from 'lucide-react';

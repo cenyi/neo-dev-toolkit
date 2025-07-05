@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useTextReverser } from '@/hooks/useTextReverser';
+import { useTextReverser } from '@/hooks/text/useTextReverser';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowLeftRight, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import SimpleCodeEditor from './SimpleCodeEditor';
+import SimpleCodeEditor from '../editor/SimpleCodeEditor';
 
 const TextReverser: React.FC = () => {
   const { t } = useTranslation();

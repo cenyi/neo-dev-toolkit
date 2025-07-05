@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useBase64EncoderDecoder } from '@/hooks/useBase64EncoderDecoder';
+import { useBase64EncoderDecoder } from '@/hooks/network/useBase64EncoderDecoder';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Terminal } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import SimpleCodeEditor from './SimpleCodeEditor';
+import SimpleCodeEditor from '../editor/SimpleCodeEditor';
 import ToolPageLayout from '@/components/layout/ToolPageLayout';
 
 const Base64EncoderDecoder: React.FC = () => {

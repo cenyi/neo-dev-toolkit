@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useUrlEncoderDecoder } from '@/hooks/useUrlEncoderDecoder';
+import { useUrlEncoderDecoder } from '@/hooks/network/useUrlEncoderDecoder';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';

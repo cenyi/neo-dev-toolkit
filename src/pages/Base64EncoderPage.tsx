@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Base64EncoderDecoder from '@/components/tools/Base64EncoderDecoder';
+import Base64EncoderDecoder from '@/components/tools/network/Base64EncoderDecoder';
 import PageWrapper from '@/components/PageWrapper';
 
 const Base64EncoderPage = () => {
