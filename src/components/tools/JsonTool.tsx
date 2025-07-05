@@ -40,6 +40,7 @@ const JsonTool: React.FC = () => {
     <ToolPageLayout 
       title={t('tools.json.title')} 
       description={t('tools.json.description')}
+      showAdSpaces={false}
     >
       <div className="space-y-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

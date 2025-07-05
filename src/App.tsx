@@ -54,7 +54,6 @@ function App() {
             <div className="flex flex-col min-h-screen">
               <Toaster />
               <Sonner />
-              <Navigation />
               <main className="flex-grow">
                 <Routes>
                   <Route path="/" element={
@@ -386,7 +385,6 @@ function App() {
                   } />
                 </Routes>
               </main>
-              <Footer />
             </div>
           </BrowserRouter>
         </TooltipProvider>
