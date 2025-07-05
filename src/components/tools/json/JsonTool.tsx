@@ -4,7 +4,7 @@ import { useJsonTool } from '@/hooks/json/useJsonTool';
 import JsonToolbar from './JsonToolbar';
 import JsonInputArea from './JsonInputArea';
 import JsonResultDisplay from './JsonResultDisplay';
-import JsonTreeView from './JsonTreeView';
+import JsonViewer from './JsonViewer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const JsonTool: React.FC = () => {
@@ -94,7 +94,7 @@ const JsonTool: React.FC = () => {
               />
             </div>
             <div className="flex-1 flex flex-col min-h-0 min-w-0">
-              <JsonTreeView 
+              <JsonViewer 
                 jsonData={input}
                 isValid={isValid}
               />
