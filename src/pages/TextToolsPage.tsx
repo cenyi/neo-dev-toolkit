@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Type, Hash, RotateCcw, Eraser, FileText, GitCompare } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import PageWrapper from '@/components/PageWrapper';
 
 const TextToolsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -54,18 +53,13 @@ const TextToolsPage: React.FC = () => {
   ];
 
   return (
-    <PageWrapper
-      title="Text Processing Tools - Professional Text Manipulation & Analysis"
-      description="Powerful text manipulation and analysis tools for writers, developers, and content creators. Transform, analyze, and compare text with our comprehensive suite of utilities."
-      keywords="text tools, case converter, word counter, text reverser, whitespace remover, lorem ipsum generator, text diff, text processing"
-    >
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">Text Processing Tools</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Powerful text manipulation and analysis tools for writers, developers, and content creators. Transform, analyze, and compare text with our comprehensive suite built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link>.
-          </p>
-        </header>
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <header className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4 text-foreground">Text Processing Tools</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Powerful text manipulation and analysis tools for writers, developers, and content creators. Transform, analyze, and compare text with our comprehensive suite built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link>.
+        </p>
+      </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {textTools.map(({ path, icon: Icon, title, description, color }) => (
@@ -114,8 +108,7 @@ const TextToolsPage: React.FC = () => {
             </div>
           </div>
         </section>
-      </div>
-    </PageWrapper>
+    </div>
   );
 };
 

@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Network, Link as LinkIcon, Eye, Key } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import PageWrapper from '@/components/PageWrapper';
 
 const NetworkToolsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -40,18 +39,13 @@ const NetworkToolsPage: React.FC = () => {
   ];
 
   return (
-    <PageWrapper
-      title="Network & Encoding Tools - Professional Developer Utilities"
-      description="Essential network and encoding utilities for web developers. Handle URL encoding, Base64 conversion, IP lookups, and JWT decoding with secure, privacy-focused tools."
-      keywords="network tools, URL encoder, Base64 encoder, IP lookup, JWT decoder, web developer tools, encoding utilities"
-    >
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">Network & Encoding Tools</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Essential network and encoding utilities for web developers. Handle URL encoding, Base64 conversion, IP lookups, and JWT decoding with our secure, privacy-focused tools built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link>.
-          </p>
-        </header>
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <header className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4 text-foreground">Network & Encoding Tools</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Essential network and encoding utilities for web developers. Handle URL encoding, Base64 conversion, IP lookups, and JWT decoding with our secure, privacy-focused tools built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link>.
+        </p>
+      </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {networkTools.map(({ path, icon: Icon, title, description, color }) => (
@@ -100,8 +94,7 @@ const NetworkToolsPage: React.FC = () => {
             </div>
           </div>
         </section>
-      </div>
-    </PageWrapper>
+    </div>
   );
 };
 

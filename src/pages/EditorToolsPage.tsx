@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FileCode, Code } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import PageWrapper from '@/components/PageWrapper';
 
 const EditorToolsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -26,18 +25,13 @@ const EditorToolsPage: React.FC = () => {
   ];
 
   return (
-    <PageWrapper
-      title="Code & Document Editors - Online Markdown & Mermaid Editor Tools"
-      description="Professional online editors for Markdown documentation and Mermaid diagrams. Create, edit, and preview your content with real-time rendering and syntax highlighting."
-      keywords="markdown editor, mermaid editor, online code editor, diagram editor, documentation tools, syntax highlighting, live preview"
-    >
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">Code & Document Editors</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Professional online editors for Markdown documentation and Mermaid diagrams. Create, edit, and preview your content with real-time rendering, built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link> technology.
-          </p>
-        </header>
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <header className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4 text-foreground">Code & Document Editors</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Professional online editors for Markdown documentation and Mermaid diagrams. Create, edit, and preview your content with real-time rendering, built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link> technology.
+        </p>
+      </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {editorTools.map(({ path, icon: Icon, title, description, color }) => (
@@ -86,8 +80,7 @@ const EditorToolsPage: React.FC = () => {
             </div>
           </div>
         </section>
-      </div>
-    </PageWrapper>
+    </div>
   );
 };
 

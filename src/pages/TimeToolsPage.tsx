@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Clock, Globe, Calendar } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import PageWrapper from '@/components/PageWrapper';
 
 const TimeToolsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -33,18 +32,13 @@ const TimeToolsPage: React.FC = () => {
   ];
 
   return (
-    <PageWrapper
-      title="Date & Time Tools - Professional Time Utilities for Developers"
-      description="Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision and accuracy."
-      keywords="time tools, timestamp converter, timezone converter, date calculator, Unix timestamp, time conversion, developer tools"
-    >
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">Date & Time Tools</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision, built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link> technology.
-          </p>
-        </header>
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <header className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4 text-foreground">Date & Time Tools</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision, built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link> technology.
+        </p>
+      </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {timeTools.map(({ path, icon: Icon, title, description, color }) => (
@@ -93,8 +87,7 @@ const TimeToolsPage: React.FC = () => {
             </div>
           </div>
         </section>
-      </div>
-    </PageWrapper>
+    </div>
   );
 };
 
