@@ -15,7 +15,7 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
   return (
     <div className="h-[580px] flex flex-col bg-background border rounded-lg overflow-hidden">
       <div className="px-4 pt-4 mb-3">
-        <h3 className="text-lg font-semibold">{title}</h3>
+        <h3 className="text-lg font-semibold">{title || t('tools.json.output')}</h3>
       </div>
       <div className="flex-1 px-4 pb-4 overflow-hidden">
         {isGraphView ? (
@@ -24,7 +24,11 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
             orientation="vertical"
           />
         ) : (
-          <JsonEditor value={outputContent ?? ''} readOnly={true} />
+          <JsonEditor 
+            value={outputContent ?? ''} 
+            readOnly={true} 
+            placeholder={outputContent === null ? t('tools.json.outputPlaceholder') : ''} 
+          />
         )}
       </div>
     </div>

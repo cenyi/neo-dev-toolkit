@@ -85,6 +85,8 @@ export const en = {
         extractPlaceholder: 'e.g., $.user.name or $[0].id',
         extractValue: 'Extract Value',
         placeholder: 'Enter or paste your JSON here...',
+        output: 'Output',
+        outputPlaceholder: 'Formatted, converted, or extracted results will appear here...',
         extractedValueTitle: 'Extracted Value',
         generateGraph: 'Generate Graph',
         graphTitle: 'JSON Structure',

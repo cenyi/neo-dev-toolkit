@@ -76,7 +76,7 @@ const JsonTool: React.FC = () => {
                 validationError={validationError}
               />
             </div>
-            <div className={`flex-1 flex flex-col min-h-0 min-w-0 ${outputContent === null ? 'hidden md:block opacity-50' : 'block'}`}>
+            <div className="flex-1 flex flex-col min-h-0 min-w-0">
               <JsonResultDisplay outputContent={outputContent} title={outputTitle} />
             </div>
           </div>
