@@ -3,10 +3,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCaseConverter } from '@/hooks/useCaseConverter';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Copy, ArrowRight } from 'lucide-react';
 import { toast } from "sonner";
 import SimpleCodeEditor from './SimpleCodeEditor';
+import ToolPageLayout from '@/components/layout/ToolPageLayout';
 
 const CaseConverter: React.FC = () => {
   const { t } = useTranslation();
@@ -27,13 +28,12 @@ const CaseConverter: React.FC = () => {
   };
   
   return (
-    <div className="container mx-auto p-4">
+    <ToolPageLayout
+      title={t('tools.text.caseConverter.title')}
+      description={t('tools.text.caseConverter.description')}
+    >
       <Card>
-        <CardHeader>
-          <CardTitle>{t('tools.text.caseConverter.title')}</CardTitle>
-          <CardDescription>{t('tools.text.caseConverter.description')}</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-6">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
             <div className="min-h-[500px] border rounded-md">
               <SimpleCodeEditor
@@ -69,7 +69,7 @@ const CaseConverter: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+    </ToolPageLayout>
   );
 };
 

@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { parse } from 'date-fns';
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
+import ToolPageLayout from '@/components/layout/ToolPageLayout';
 
 const timezones = (Intl as any).supportedValuesOf('timeZone');
 
@@ -85,12 +86,10 @@ const TimezoneConverter: React.FC = () => {
   }, [sourceDateTime, sourceTimezone, targetTimezone]);
 
   return (
-    <div className="p-4 max-w-4xl mx-auto">
-      <header className="mb-6">
-        <h1 className="text-3xl font-bold mb-2">{t('tools.timezoneConverter.title')}</h1>
-        <p className="text-muted-foreground">{t('tools.timezoneConverter.description')}</p>
-      </header>
-      
+    <ToolPageLayout
+      title={t('tools.timezoneConverter.title')}
+      description={t('tools.timezoneConverter.description')}
+    >
       <Card>
         <CardContent className="space-y-4 pt-6">
           <div>
@@ -138,7 +137,7 @@ const TimezoneConverter: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+    </ToolPageLayout>
   );
 };
 

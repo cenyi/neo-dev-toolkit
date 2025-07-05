@@ -5,11 +5,12 @@ import remarkGfm from 'remark-gfm';
 import { useTranslation } from 'react-i18next';
 import { useMarkdownEditor } from '@/hooks/useMarkdownEditor';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Copy, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import SimpleCodeEditor from './SimpleCodeEditor';
+import ToolPageLayout from '@/components/layout/ToolPageLayout';
 import '@/styles/markdown.css';
 
 const MarkdownEditor: React.FC = () => {
@@ -42,13 +43,12 @@ const MarkdownEditor: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <ToolPageLayout
+      title={t('tools.markdown.title')}
+      description={t('tools.markdown.description')}
+    >
       <Card>
-        <CardHeader>
-          <CardTitle>{t('tools.markdown.title')}</CardTitle>
-          <CardDescription>{t('tools.markdown.description')}</CardDescription>
-        </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <ResizablePanelGroup direction="horizontal" className="min-h-[60vh] rounded-lg border">
             <ResizablePanel defaultSize={50}>
               <div className="relative h-full">
@@ -90,7 +90,7 @@ const MarkdownEditor: React.FC = () => {
           </ResizablePanelGroup>
         </CardContent>
       </Card>
-    </div>
+    </ToolPageLayout>
   );
 };
 

@@ -2,8 +2,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useWordCounter } from '@/hooks/useWordCounter';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import SimpleCodeEditor from './SimpleCodeEditor';
+import ToolPageLayout from '@/components/layout/ToolPageLayout';
 
 const StatCard: React.FC<{
   title: string;
@@ -23,13 +24,13 @@ const WordCounter: React.FC = () => {
     setText,
     stats
   } = useWordCounter();
-  return <div className="container mx-auto p-4">
+  return (
+    <ToolPageLayout
+      title={t('tools.text.wordCounter.title')}
+      description={t('tools.text.wordCounter.description')}
+    >
       <Card>
-        <CardHeader>
-          <CardTitle>{t('tools.text.wordCounter.title')}</CardTitle>
-          <CardDescription>{t('tools.text.wordCounter.description')}</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-6">
           <div className="min-h-[600px] border rounded-md">
             <SimpleCodeEditor
               value={text}
@@ -47,6 +48,7 @@ const WordCounter: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-    </div>;
+    </ToolPageLayout>
+  );
 };
 export default WordCounter;

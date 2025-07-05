@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import ToolPageLayout from '@/components/layout/ToolPageLayout';
 
 const TimestampConverter: React.FC = () => {
   const { t } = useTranslation();
@@ -62,13 +63,12 @@ const TimestampConverter: React.FC = () => {
   };
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <ToolPageLayout
+      title={t('tools.timestampConverter.title')}
+      description={t('tools.timestampConverter.description')}
+    >
       <Card>
-        <CardHeader>
-          <CardTitle>{t('tools.timestampConverter.title')}</CardTitle>
-          <p className="text-sm text-muted-foreground">{t('tools.timestampConverter.description')}</p>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-6">
           <div className="flex items-end space-x-2">
             <div className="flex-grow">
               <label htmlFor="timestamp" className="text-sm font-medium">{t('tools.timestampConverter.timestamp')}</label>
@@ -94,7 +94,7 @@ const TimestampConverter: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+    </ToolPageLayout>
   );
 };
 

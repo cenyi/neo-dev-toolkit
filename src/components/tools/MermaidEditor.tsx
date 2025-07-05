@@ -5,12 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { useMermaidEditor } from '@/hooks/useMermaidEditor';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 import SimpleCodeEditor from './SimpleCodeEditor';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal, Download, Copy, X } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import ToolPageLayout from '@/components/layout/ToolPageLayout';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -132,13 +133,12 @@ const MermaidEditor: React.FC = () => {
   }, [input, theme, error, setError, t]);
 
   return (
-    <div className="container mx-auto p-4">
+    <ToolPageLayout
+      title={t('tools.mermaid.title')}
+      description={t('tools.mermaid.description')}
+    >
       <Card>
-        <CardHeader>
-          <CardTitle>{t('tools.mermaid.title')}</CardTitle>
-          <CardDescription>{t('tools.mermaid.description')}</CardDescription>
-        </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <div className="relative">
             <ResizablePanelGroup direction="horizontal" className="min-h-[60vh] rounded-lg border">
               <ResizablePanel defaultSize={50}>
@@ -215,7 +215,7 @@ const MermaidEditor: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+    </ToolPageLayout>
   );
 };
 
