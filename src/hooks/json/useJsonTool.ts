@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
 import i18n from '@/i18n';

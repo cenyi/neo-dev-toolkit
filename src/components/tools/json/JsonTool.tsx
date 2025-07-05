@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useJsonTool } from '@/hooks/useJsonTool';
+import { useJsonTool } from '@/hooks/json/useJsonTool';
 import JsonToolbar from './JsonToolbar';
 import JsonInputArea from './JsonInputArea';
 import JsonResultDisplay from './JsonResultDisplay';

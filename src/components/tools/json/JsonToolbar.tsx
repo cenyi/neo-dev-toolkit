@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import JsonHistoryModal from './JsonHistoryModal';
-import { JsonHistoryItem } from '@/hooks/useJsonHistory';
+import { JsonHistoryItem } from '@/hooks/json/useJsonHistory';
 
 interface JsonToolbarProps {
   onFormat: () => void;

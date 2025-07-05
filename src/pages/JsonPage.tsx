@@ -1,6 +1,6 @@
 
 import React from 'react';
-import JsonTool from '@/components/tools/JsonTool';
+import JsonTool from '@/components/tools/json/JsonTool';
 import PageWrapper from '@/components/PageWrapper';
 
 const JsonPage = () => {

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useJsonMock } from '@/hooks/useJsonMock';
+import { useJsonMock } from '@/hooks/json/useJsonMock';
 import JsonEditor from './JsonEditor';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';

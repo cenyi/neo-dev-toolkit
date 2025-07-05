@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -162,4 +161,3 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
 };
 
 export default JsonEditor;
-

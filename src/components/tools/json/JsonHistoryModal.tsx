@@ -13,7 +13,7 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Card, CardContent } from '@/components/ui/card';
 import { History, Trash2, Clock, Copy, Search } from 'lucide-react';
-import { JsonHistoryItem } from '@/hooks/useJsonHistory';
+import { JsonHistoryItem } from '@/hooks/json/useJsonHistory';
 import { toast } from '@/hooks/use-toast';
 
 interface JsonHistoryModalProps {

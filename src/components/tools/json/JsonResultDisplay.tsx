@@ -1,7 +1,6 @@
-
 import React from 'react';
 import JsonEditor from './JsonEditor';
-import MermaidGraphInternational from './MermaidGraphInternational';
+import MermaidGraphInternational from '../editor/MermaidGraphInternational';
 import { useTranslation } from 'react-i18next';
 
 interface JsonResultDisplayProps {
