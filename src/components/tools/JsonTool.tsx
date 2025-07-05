@@ -6,6 +6,7 @@ import JsonToolbar from './JsonToolbar';
 import JsonInputArea from './JsonInputArea';
 import JsonResultDisplay from './JsonResultDisplay';
 import JsonTreeView from './JsonTreeView';
+import ToolPageLayout from '@/components/layout/ToolPageLayout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const JsonTool: React.FC = () => {
@@ -36,19 +37,22 @@ const JsonTool: React.FC = () => {
   } = useJsonTool();
 
   return (
-    <div className="h-screen flex flex-col px-2">
-      <header className="mb-4">
-        <h1 className="text-3xl font-bold text-foreground mb-2">{t('tools.json.title')}</h1>
-        <p className="text-muted-foreground">{t('tools.json.description')}</p>
-      </header>
-      <div className="mb-4">
+    <ToolPageLayout 
+      title={t('tools.json.title')} 
+      description={t('tools.json.description')}
+    >
+      <div className="space-y-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="formatter">{t('tools.json.formatter')}</TabsTrigger>
-            <TabsTrigger value="viewer">{t('tools.json.viewer')}</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 mb-6">
+            <TabsTrigger value="formatter" className="text-sm sm:text-base">
+              {t('tools.json.formatter')}
+            </TabsTrigger>
+            <TabsTrigger value="viewer" className="text-sm sm:text-base">
+              {t('tools.json.viewerTitle')}
+            </TabsTrigger>
           </TabsList>
           
-          <TabsContent value="formatter" className="flex flex-col h-full">
+          <TabsContent value="formatter" className="space-y-6">
             <JsonToolbar
               onFormat={handleToggleMinifyFormat}
               onMinify={handleToggleMinifyFormat}
@@ -68,8 +72,8 @@ const JsonTool: React.FC = () => {
               onClearHistory={clearHistory}
             />
             
-            <div className="flex-1 flex flex-row gap-4 min-h-0 pt-2">
-              <div className="flex-1 flex flex-col min-h-0 min-w-0">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              <div className="space-y-2">
                 <JsonInputArea
                   value={input}
                   onChange={handleInputChange}
@@ -78,15 +82,15 @@ const JsonTool: React.FC = () => {
                   validationError={validationError}
                 />
               </div>
-              <div className={`flex-1 flex-col min-h-0 min-w-0 ${outputContent === null ? 'hidden' : 'flex'}`}>
+              <div className={`space-y-2 ${outputContent === null ? 'hidden xl:block opacity-50' : 'block'}`}>
                 <JsonResultDisplay outputContent={outputContent} title={outputTitle} />
               </div>
             </div>
           </TabsContent>
           
-          <TabsContent value="viewer" className="flex flex-col h-full">
-            <div className="flex-1 flex flex-row gap-4 min-h-0 pt-2">
-              <div className="flex-1 flex flex-col min-h-0 min-w-0">
+          <TabsContent value="viewer" className="space-y-6">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              <div className="space-y-2">
                 <JsonInputArea
                   value={input}
                   onChange={handleInputChange}
@@ -95,7 +99,7 @@ const JsonTool: React.FC = () => {
                   validationError={validationError}
                 />
               </div>
-              <div className="flex-1 flex flex-col min-h-0 min-w-0">
+              <div className="space-y-2">
                 <JsonTreeView 
                   jsonData={input}
                   isValid={isValid}
@@ -105,7 +109,7 @@ const JsonTool: React.FC = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
+    </ToolPageLayout>
   );
 };
 
