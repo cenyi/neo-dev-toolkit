@@ -97,7 +97,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
   // Fast fallback for production environments
   if (loadError) {
     return (
-      <div className="h-full min-h-[450px] max-h-[450px] w-full border rounded-md overflow-hidden flex flex-col bg-background relative">
+      <div className="h-full min-h-[500px] max-h-[500px] w-full border rounded-md overflow-hidden flex flex-col bg-background relative">
         <Textarea
           className="w-full h-full resize-none p-3 text-sm font-mono bg-background text-foreground outline-none border-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-0"
           value={value}
@@ -105,16 +105,16 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
           placeholder={placeholder}
           readOnly={readOnly}
           aria-label="JSON textarea"
-          style={{ minHeight: '450px', maxHeight: '450px' }}
+          style={{ minHeight: '500px', maxHeight: '500px' }}
         />
       </div>
     );
   }
 
   return (
-    <div className="h-full min-h-[450px] max-h-[450px] w-full border rounded-md overflow-hidden flex flex-col relative">
+    <div className="h-full min-h-[500px] max-h-[500px] w-full border rounded-md overflow-hidden flex flex-col relative">
       <Editor
-        height="450px"
+        height="500px"
         language={language}
         value={value}
         onChange={handleEditorChange}

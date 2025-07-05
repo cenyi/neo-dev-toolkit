@@ -36,9 +36,9 @@ const JsonTool: React.FC = () => {
   } = useJsonTool();
 
   return (
-    <div className="h-screen flex flex-col px-2">
+    <div className="h-screen flex flex-col">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-        <TabsList className="grid w-full grid-cols-2 mb-2">
+        <TabsList className="grid w-full grid-cols-2 mb-1">
           <TabsTrigger value="formatter" className="text-sm sm:text-base">
             {t('tools.json.formatter')}
           </TabsTrigger>

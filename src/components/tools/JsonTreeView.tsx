@@ -178,7 +178,7 @@ const JsonTreeView: React.FC<JsonTreeViewProps> = ({ jsonData, isValid }) => {
 
   if (!isValid || !parsedData) {
     return (
-    <div className="flex-1 flex flex-col bg-background border rounded-lg min-h-[450px] max-h-[450px] overflow-hidden">
+    <div className="flex-1 flex flex-col bg-background border rounded-lg min-h-[500px] max-h-[500px] overflow-hidden">
         <div className="px-4 pt-4 mb-3">
           <h3 className="text-lg font-semibold">{t('tools.json.viewer.title')}</h3>
         </div>
@@ -190,7 +190,7 @@ const JsonTreeView: React.FC<JsonTreeViewProps> = ({ jsonData, isValid }) => {
   }
 
   return (
-    <div className="flex-1 flex flex-col bg-background border rounded-lg min-h-[450px] max-h-[450px] overflow-hidden">
+    <div className="flex-1 flex flex-col bg-background border rounded-lg min-h-[500px] max-h-[500px] overflow-hidden">
       <div className="px-4 pt-4 mb-3 flex items-center justify-between">
         <h3 className="text-lg font-semibold">{t('tools.json.viewer.title')}</h3>
         <div className="flex gap-2">
