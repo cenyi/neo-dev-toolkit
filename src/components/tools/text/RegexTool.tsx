@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useRegexTool, RegexMatch } from '@/hooks/useRegexTool';
+import { useRegexTool, RegexMatch } from '@/hooks/text/useRegexTool';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';

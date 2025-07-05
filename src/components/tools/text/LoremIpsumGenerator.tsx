@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLoremIpsumGenerator, GenerationType } from '@/hooks/useLoremIpsumGenerator';
+import { useLoremIpsumGenerator, GenerationType } from '@/hooks/text/useLoremIpsumGenerator';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
