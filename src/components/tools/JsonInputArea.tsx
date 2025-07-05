@@ -51,7 +51,7 @@ const JsonInputArea: React.FC<JsonInputAreaProps> = ({
         </div>
       )}
 
-      <div className="flex-1 min-h-[400px] max-h-[600px] px-4 pb-4 overflow-hidden">
+      <div className="flex-1 min-h-[450px] max-h-[450px] px-4 pb-4 overflow-hidden">
         <JsonEditor
           value={value}
           onChange={onChange}
