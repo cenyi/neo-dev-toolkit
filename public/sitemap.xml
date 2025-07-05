@@ -6,187 +6,187 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
   <loc>https://tojsons.com/</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://tojsons.com/json</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.95</priority>
 </url>
 <url>
   <loc>https://tojsons.com/network</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.90</priority>
 </url>
 <url>
   <loc>https://tojsons.com/text</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.90</priority>
 </url>
 <url>
   <loc>https://tojsons.com/time</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.90</priority>
 </url>
 <url>
   <loc>https://tojsons.com/editor</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
   <loc>https://tojsons.com/regex</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/encryption</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/json/formatter</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.90</priority>
 </url>
 <url>
   <loc>https://tojsons.com/json/schema-validator</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
   <loc>https://tojsons.com/json/codegen</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/json/diff</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/json/mock</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/network/url-encoder</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/network/base64-encoder</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
   <loc>https://tojsons.com/network/ip-lookup</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/network/jwt-decoder</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/text/case-converter</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/text/word-counter</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/text/text-reverser</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.75</priority>
 </url>
 <url>
   <loc>https://tojsons.com/text/whitespace-remover</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.75</priority>
 </url>
 <url>
   <loc>https://tojsons.com/text/lorem-ipsum-generator</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.75</priority>
 </url>
 <url>
   <loc>https://tojsons.com/text/text-diff</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/editor/markdown</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/editor/mermaid</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/time/timestamp-converter</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
   <loc>https://tojsons.com/time/timezone-converter</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
   <loc>https://tojsons.com/time/date-calculator</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tojsons.com/about</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.60</priority>
 </url>
 <url>
   <loc>https://tojsons.com/privacy</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.50</priority>
 </url>
 <url>
   <loc>https://tojsons.com/terms</loc>
-  <lastmod>2025-01-05</lastmod>
+  <lastmod>2025-01-07</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.50</priority>
 </url>

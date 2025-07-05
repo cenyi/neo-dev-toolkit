@@ -42,9 +42,9 @@ const JsonTool: React.FC = () => {
       description={t('tools.json.description')}
       showAdSpaces={false}
     >
-      <div className="space-y-6">
+      <div className="space-y-4">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-6">
+          <TabsList className="grid w-full grid-cols-2 mb-4">
             <TabsTrigger value="formatter" className="text-sm sm:text-base">
               {t('tools.json.formatter')}
             </TabsTrigger>
@@ -53,7 +53,7 @@ const JsonTool: React.FC = () => {
             </TabsTrigger>
           </TabsList>
           
-          <TabsContent value="formatter" className="space-y-6">
+          <TabsContent value="formatter" className="space-y-4">
             <JsonToolbar
               onFormat={handleToggleMinifyFormat}
               onMinify={handleToggleMinifyFormat}
@@ -73,7 +73,7 @@ const JsonTool: React.FC = () => {
               onClearHistory={clearHistory}
             />
             
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <JsonInputArea
                   value={input}
@@ -89,8 +89,8 @@ const JsonTool: React.FC = () => {
             </div>
           </TabsContent>
           
-          <TabsContent value="viewer" className="space-y-6">
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <TabsContent value="viewer" className="space-y-4">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <JsonInputArea
                   value={input}

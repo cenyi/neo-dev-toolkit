@@ -12,14 +12,14 @@ const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   title, 
   description, 
   children, 
-  showAdSpaces = true 
+  showAdSpaces = false 
 }) => {
   const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
       {/* Mobile-first responsive container */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className={`${showAdSpaces ? 'lg:grid lg:grid-cols-12 lg:gap-6' : 'max-w-4xl mx-auto'}`}>
           
           {/* Left Ad Space - Hidden on mobile/tablet */}
@@ -42,19 +42,19 @@ const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
           <div className={`${showAdSpaces ? 'lg:col-span-8 xl:col-span-8' : 'w-full'}`}>
             <div className="bg-background/80 backdrop-blur-sm rounded-2xl border border-border/40 shadow-lg overflow-hidden">
               {/* Tool Header */}
-              <div className="p-6 sm:p-8 border-b border-border/40">
+              <div className="p-4 sm:p-5 border-b border-border/40">
                 <div className="max-w-3xl">
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3 leading-tight">
+                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2 leading-tight">
                     {title}
                   </h1>
-                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {description}
                   </p>
                 </div>
               </div>
               
               {/* Tool Content */}
-              <div className="p-4 sm:p-6 lg:p-8">
+              <div className="p-4 sm:p-5">
                 {children}
               </div>
             </div>
