@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useJsonTool } from '@/hooks/json/useJsonTool';
 import JsonToolbar from './JsonToolbar';
 import JsonInputArea from './JsonInputArea';
 import JsonResultDisplay from './JsonResultDisplay';
-import JsonViewer from './JsonViewer';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const JsonTool: React.FC = () => {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('formatter');
   const {
     input,
     handleInputChange,
@@ -36,72 +33,39 @@ const JsonTool: React.FC = () => {
 
   return (
     <div className="h-screen flex flex-col">
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-        <TabsList className="grid w-full grid-cols-2 mb-1">
-          <TabsTrigger value="formatter" className="text-sm sm:text-base">
-            {t('tools.json.formatter')}
-          </TabsTrigger>
-          <TabsTrigger value="viewer" className="text-sm sm:text-base">
-            {t('tools.json.viewerTitle')}
-          </TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="formatter" className="flex-1 flex flex-col min-h-0 mt-1">
-          <JsonToolbar
-            onFormat={handleToggleMinifyFormat}
-            onMinify={handleToggleMinifyFormat}
-            onCopy={copyToClipboard}
-            onClear={clearAll}
-            isFormatMinifyDisabled={isFormatMinifyDisabled}
-            onExtract={handleExtractValue}
-            extractPath={extractPath}
-            onExtractPathChange={onExtractPathChange}
-            onConvertToYaml={handleConvertToYaml}
-            onConvertToXml={handleConvertToXml}
-            onConvertToCsv={handleConvertToCsv}
-            onGenerateGraph={handleGenerateGraph}
-            history={history}
-            onSelectHistory={handleSelectFromHistory}
-            onRemoveHistoryItem={removeFromHistory}
-            onClearHistory={clearHistory}
+      <JsonToolbar
+        onFormat={handleToggleMinifyFormat}
+        onMinify={handleToggleMinifyFormat}
+        onCopy={copyToClipboard}
+        onClear={clearAll}
+        isFormatMinifyDisabled={isFormatMinifyDisabled}
+        onExtract={handleExtractValue}
+        extractPath={extractPath}
+        onExtractPathChange={onExtractPathChange}
+        onConvertToYaml={handleConvertToYaml}
+        onConvertToXml={handleConvertToXml}
+        onConvertToCsv={handleConvertToCsv}
+        onGenerateGraph={handleGenerateGraph}
+        history={history}
+        onSelectHistory={handleSelectFromHistory}
+        onRemoveHistoryItem={removeFromHistory}
+        onClearHistory={clearHistory}
+      />
+      
+      <div className="flex-1 flex flex-col md:flex-row gap-4 min-h-0">
+        <div className="flex-1 flex flex-col min-h-0 min-w-0">
+          <JsonInputArea
+            value={input}
+            onChange={handleInputChange}
+            placeholder={t('tools.json.placeholder')}
+            isValid={isValid}
+            validationError={validationError}
           />
-          
-          <div className="flex-1 flex flex-col md:flex-row gap-4 min-h-0">
-            <div className="flex-1 flex flex-col min-h-0 min-w-0">
-              <JsonInputArea
-                value={input}
-                onChange={handleInputChange}
-                placeholder={t('tools.json.placeholder')}
-                isValid={isValid}
-                validationError={validationError}
-              />
-            </div>
-            <div className="flex-1 flex flex-col min-h-0 min-w-0">
-              <JsonResultDisplay outputContent={outputContent} title={outputTitle} />
-            </div>
-          </div>
-        </TabsContent>
-        
-        <TabsContent value="viewer" className="flex-1 flex flex-col min-h-0 mt-1">
-          <div className="flex-1 flex flex-col md:flex-row gap-2 min-h-0">
-            <div className="flex-1 flex flex-col min-h-0 min-w-0">
-              <JsonInputArea
-                value={input}
-                onChange={handleInputChange}
-                placeholder={t('tools.json.placeholder')}
-                isValid={isValid}
-                validationError={validationError}
-              />
-            </div>
-            <div className="flex-1 flex flex-col min-h-0 min-w-0">
-              <JsonViewer 
-                jsonData={input}
-                isValid={isValid}
-              />
-            </div>
-          </div>
-        </TabsContent>
-      </Tabs>
+        </div>
+        <div className="flex-1 flex flex-col min-h-0 min-w-0">
+          <JsonResultDisplay outputContent={outputContent} title={outputTitle} />
+        </div>
+      </div>
     </div>
   );
 };
