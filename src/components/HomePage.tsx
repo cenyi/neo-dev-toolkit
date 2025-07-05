@@ -133,52 +133,6 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </section>
-
-        <section className="mt-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">
-            {t('home.featuredTools')}
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <Link to="/text/case-converter" className="p-4 rounded-lg hover:bg-accent">
-              <h3 className="font-semibold">{t('tools.caseConverter.title')}</h3>
-            </Link>
-            <Link to="/json/formatter" className="p-4 rounded-lg hover:bg-accent">
-              <h3 className="font-semibold">{t('tools.jsonFormatter.title')}</h3>
-            </Link>
-            <Link to="/time/timestamp-converter" className="p-4 rounded-lg hover:bg-accent">
-              <h3 className="font-semibold">{t('tools.timestampConverter.title')}</h3>
-            </Link>
-            <Link to="/text/word-counter" className="p-4 rounded-lg hover:bg-accent">
-              <h3 className="font-semibold">{t('tools.wordCounter.title')}</h3>
-            </Link>
-          </div>
-        </section>
-
-        <section className="mt-16 text-center">
-          <h2 className="text-2xl font-bold mb-4 text-foreground">
-            {t('home.whyChooseTitle')}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">{t('home.feature1Title')}</h3>
-              <p className="text-muted-foreground text-sm">
-                {t('home.feature1Description')}
-              </p>
-            </div>
-            <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">{t('home.feature2Title')}</h3>
-              <p className="text-muted-foreground text-sm">
-                {t('home.feature2Description')}
-              </p>
-            </div>
-            <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">{t('home.feature3Title')}</h3>
-              <p className="text-muted-foreground text-sm">
-                {t('home.feature3Description')}
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );

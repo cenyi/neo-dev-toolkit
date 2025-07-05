@@ -11,36 +11,36 @@ const JsonToolsPage: React.FC = () => {
     {
       path: '/json/formatter',
       icon: FileJson,
-      title: t('jsonToolsPage.tools.formatter.title'),
-      description: t('jsonToolsPage.tools.formatter.description'),
+      title: 'JSON Formatter & Validator',
+      description: 'Format, validate, and beautify JSON data with syntax highlighting and error detection.',
       color: 'text-blue-500'
     },
     {
       path: '/json/schema-validator',
       icon: FileCode,
-      title: t('jsonToolsPage.tools.schemaValidator.title'),
-      description: t('jsonToolsPage.tools.schemaValidator.description'),
+      title: 'JSON Schema Validator',
+      description: 'Validate JSON data against JSON Schema with detailed error reporting.',
       color: 'text-green-500'
     },
     {
       path: '/json/codegen',
       icon: Code,
-      title: t('jsonToolsPage.tools.codeGen.title'),
-      description: t('jsonToolsPage.tools.codeGen.description'),
+      title: 'Generate Code Types',
+      description: 'Generate TypeScript, Python, Java, C# code types from JSON data.',
       color: 'text-purple-500'
     },
     {
       path: '/json/diff',
       icon: GitCompare,
-      title: t('jsonToolsPage.tools.diffTool.title'),
-      description: t('jsonToolsPage.tools.diffTool.description'),
+      title: 'JSON Diff Tool',
+      description: 'Compare and visualize differences between two JSON objects.',
       color: 'text-orange-500'
     },
     {
       path: '/json/mock',
       icon: Shuffle,
-      title: t('jsonToolsPage.tools.mockDataGenerator.title'),
-      description: t('jsonToolsPage.tools.mockDataGenerator.description'),
+      title: 'Mock Data Generator',
+      description: 'Generate realistic mock JSON data for testing and development.',
       color: 'text-indigo-500'
     }
   ];
@@ -48,9 +48,9 @@ const JsonToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">{t('jsonToolsPage.mainTitle')}</h1>
+        <h1 className="text-4xl font-bold mb-4 text-foreground">JSON Developer Tools</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          {t('jsonToolsPage.mainDescription')}
+          Comprehensive collection of JSON tools for developers. Format, validate, compare, and generate JSON data with our professional-grade utilities built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link>.
         </p>
       </header>
 
@@ -79,24 +79,24 @@ const JsonToolsPage: React.FC = () => {
       </div>
 
       <section className="mt-16 text-center">
-        <h2 className="text-2xl font-semibold mb-4">{t('jsonToolsPage.whyChoose.title')}</h2>
+        <h2 className="text-2xl font-semibold mb-4">Why Choose Our JSON Tools?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-4">
-            <h3 className="text-lg font-medium mb-2">{t('jsonToolsPage.whyChoose.privacy.title')}</h3>
+            <h3 className="text-lg font-medium mb-2">Privacy Focused</h3>
             <p className="text-muted-foreground text-sm">
-              {t('jsonToolsPage.whyChoose.privacy.description')}
+              All JSON processing happens locally in your browser. Your data never leaves your device.
             </p>
           </div>
           <div className="p-4">
-            <h3 className="text-lg font-medium mb-2">{t('jsonToolsPage.whyChoose.professional.title')}</h3>
+            <h3 className="text-lg font-medium mb-2">Professional Grade</h3>
             <p className="text-muted-foreground text-sm">
-              {t('jsonToolsPage.whyChoose.professional.description')}
+              Built with modern web technologies and designed for professional developers.
             </p>
           </div>
           <div className="p-4">
-            <h3 className="text-lg font-medium mb-2">{t('jsonToolsPage.whyChoose.free.title')}</h3>
+            <h3 className="text-lg font-medium mb-2">Free & Open</h3>
             <p className="text-muted-foreground text-sm">
-              {t('jsonToolsPage.whyChoose.free.description')}
+              No registration required. Use all features for free with no limitations.
             </p>
           </div>
         </div>

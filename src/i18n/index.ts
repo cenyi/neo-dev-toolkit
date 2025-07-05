@@ -9,7 +9,6 @@ import { de } from './locales/de';
 import { ru } from './locales/ru';
 import { pt } from './locales/pt';
 import { ko } from './locales/ko';
-import { zh } from './locales/zh';
 
 const resources = {
   en,
@@ -20,7 +19,6 @@ const resources = {
   ru,
   pt,
   ko,
-  zh,
 };
 
 i18n
