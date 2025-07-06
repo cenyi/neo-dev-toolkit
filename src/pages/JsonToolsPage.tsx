@@ -54,7 +54,7 @@ const JsonToolsPage: React.FC = () => {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {jsonTools.map(({ path, icon: Icon, title, description, color }) => (
           <Link key={path} to={path} className="group">
             <Card className="h-full hover:shadow-lg transition-shadow duration-200 border-border">

@@ -47,7 +47,7 @@ const NetworkToolsPage: React.FC = () => {
         </p>
       </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {networkTools.map(({ path, icon: Icon, title, description, color }) => (
             <Link key={path} to={path} className="group">
               <Card className="h-full hover:shadow-lg transition-shadow duration-200 border-border">
