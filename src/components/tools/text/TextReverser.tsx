@@ -61,13 +61,12 @@ const TextReverser: React.FC = () => {
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t('tools.text.textReverser.description')}
             </p>
-          </header>
-          
-          <section>
             <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">
               Reverse Your Text Online
             </h2>
-            
+          </header>
+          
+          <section>
             {/* 工具栏 */}
             <div className="flex flex-wrap items-center gap-4 mb-6 p-4 bg-background border rounded-lg">
               <Button onClick={handleCopy} className="text-sm font-medium">
