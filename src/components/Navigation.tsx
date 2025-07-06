@@ -6,7 +6,7 @@ import { Home, FileJson, Network, Text, Key, Code, LayoutGrid, Clock, Hash, Edit
 import ThemeToggle from './nav/ThemeToggle';
 import LanguageSwitcher from './nav/LanguageSwitcher';
 import ToolDropdown from './nav/ToolDropdown';
-
+// 优化导航菜单栏结束
 const Navigation: React.FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
