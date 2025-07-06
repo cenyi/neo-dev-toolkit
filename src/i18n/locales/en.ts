@@ -107,7 +107,7 @@ export const en = {
         },
         history: {
           title: 'History',
-          emptyMessage: 'No history yet, start by entering some JSON data!',
+          emptyMessage: 'No history yet, start by entering some data!',
           clearAll: 'Clear All',
           removeItem: 'Remove Item',
           itemRemoved: 'History item removed',
