@@ -20,6 +20,7 @@ const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
       {/* Mobile-first responsive container */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      {/* 调整了宽度 */}
         <div className={`${'max-w-7xl mx-auto'}`}>
           
           {/* Main Tool Content */}
