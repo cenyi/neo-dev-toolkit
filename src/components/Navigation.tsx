@@ -58,9 +58,9 @@ const Navigation: React.FC = () => {
   ];
 
   return (
-    <nav className="mx-4 mb-2 bg-background/80 backdrop-blur-md border border-border rounded-2xl shadow-lg">
-      <div className="flex items-center justify-between p-4 px-[4px] py-[4px]">
-        <div className="flex items-center space-x-1">
+    <nav className="max-w-full px-2 sm:px-4 mb-4 bg-gradient-to-r from-background/90 to-background/70 backdrop-blur-md border border-border/60 rounded-2xl shadow-xl transition-all duration-300">
+      <div className="flex items-center justify-between p-4 px-4 py-3">
+        <div className="flex flex-wrap items-center gap-0.5 sm:gap-1 px-2 md:flex-nowrap md:space-x-2 md:overflow-x-auto md:hide-scrollbar md:gap-2 md:[scrollbar-width:none] md:[-ms-overflow-style:none] md:[&::-webkit-scrollbar]:hidden">
           {navItems.map(({ path, key, icon: Icon, tools, dropdownWidth }) => {
             if (tools) {
               return (
@@ -76,7 +76,7 @@ const Navigation: React.FC = () => {
             return (
               <Link key={path} to={path!} title={t(`navTitles.${key}`)}>
                 <button
-                  className={`px-4 py-2 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-accent hover:text-accent-foreground ${
+                  className={`px-4 py-2 rounded-xl text-sm font-medium flex items-center space-x-2 transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:shadow-md ${
                     location.pathname === path ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
@@ -88,7 +88,7 @@ const Navigation: React.FC = () => {
           })}
         </div>
         
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-3 ml-2">
           <LanguageSwitcher />
           <ThemeToggle />
         </div>
