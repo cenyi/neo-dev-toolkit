@@ -1,7 +1,7 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { Home, FileJson, Network, Text, Key, Code, LayoutGrid, Clock, Hash, Edit } from 'lucide-react';
 import ThemeToggle from './nav/ThemeToggle';
 import LanguageSwitcher from './nav/LanguageSwitcher';
@@ -10,52 +10,53 @@ import ToolDropdown from './nav/ToolDropdown';
 const Navigation: React.FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const { lang = 'en' } = useParams<{ lang?: string }>();
 
-  const jsonTools = [
-    { path: '/json/formatter', name: 'JSON Formatter & Validator' },
-    { path: '/json/schema-validator', name: 'JSON Schema Validator' },
-    { path: '/json/codegen', name: 'Generate Code Types' },
-    { path: '/json/diff', name: 'Diff Tool' },
-    { path: '/json/mock', name: 'Mock Data Generator' }
-  ];
+  const jsonTools = useMemo(() => [
+      { path: `/${lang}/json/formatter`, name: 'JSON Formatter & Validator' },
+      { path: `/${lang}/json/schema-validator`, name: 'JSON Schema Validator' },
+      { path: `/${lang}/json/codegen`, name: 'Generate Code Types' },
+      { path: `/${lang}/json/diff`, name: 'Diff Tool' },
+      { path: `/${lang}/json/mock`, name: 'Mock Data Generator' }
+    ], [lang]);
 
-  const networkTools = [
-    { path: '/network/url-encoder', name: 'URL Encoder / Decoder' },
-    { path: '/network/base64-encoder', name: 'Base64 Encoder / Decoder' },
-    { path: '/network/ip-lookup', name: 'IP Lookup' },
-    { path: '/network/jwt-decoder', name: 'JWT Decoder' },
-  ];
+  const networkTools = useMemo(() => [
+    { path: `/${lang}/network/url-encoder`, name: 'URL Encoder / Decoder' },
+    { path: `/${lang}/network/base64-encoder`, name: 'Base64 Encoder / Decoder' },
+    { path: `/${lang}/network/ip-lookup`, name: 'IP Lookup' },
+    { path: `/${lang}/network/jwt-decoder`, name: 'JWT Decoder' },
+  ], [lang]);
 
-  const textTools = [
-    { path: '/text/case-converter', name: 'Case Converter' },
-    { path: '/text/word-counter', name: 'Word & Character Counter' },
-    { path: '/text/text-reverser', name: 'Text Reverser' },
-    { path: '/text/whitespace-remover', name: 'Whitespace Remover' },
-    { path: '/text/lorem-ipsum-generator', name: 'Lorem Ipsum Generator' },
-    { path: '/text/text-diff', name: 'Text Comparison Tool' }
-  ];
+  const textTools = useMemo(() => [
+    { path: `/${lang}/text/case-converter`, name: 'Case Converter' },
+    { path: `/${lang}/text/word-counter`, name: 'Word & Character Counter' },
+    { path: `/${lang}/text/text-reverser`, name: 'Text Reverser' },
+    { path: `/${lang}/text/whitespace-remover`, name: 'Whitespace Remover' },
+    { path: `/${lang}/text/lorem-ipsum-generator`, name: 'Lorem Ipsum Generator' },
+    { path: `/${lang}/text/text-diff`, name: 'Text Comparison Tool' }
+  ], [lang]);
 
-  const editorTools = [
-    { path: '/editor/markdown', name: 'Markdown Editor' },
-    { path: '/editor/mermaid', name: 'Mermaid Editor' }
-  ];
+  const editorTools = useMemo(() => [
+    { path: `/${lang}/editor/markdown`, name: 'Markdown Editor' },
+    { path: `/${lang}/editor/mermaid`, name: 'Mermaid Editor' }
+  ], [lang]);
 
-  const timeTools = [
-    { path: '/time/timestamp-converter', name: 'Timestamp Converter' },
-    { path: '/time/timezone-converter', name: 'Timezone Converter' },
-    { path: '/time/date-calculator', name: 'Date Calculator' }
-  ];
+  const timeTools = useMemo(() => [
+    { path: `/${lang}/time/timestamp-converter`, name: 'Timestamp Converter' },
+    { path: `/${lang}/time/timezone-converter`, name: 'Timezone Converter' },
+    { path: `/${lang}/time/date-calculator`, name: 'Date Calculator' }
+  ], [lang]);
 
-  const navItems = [
-    { path: '/', key: 'home', icon: Home },
-    { path: '/json', key: 'json', icon: FileJson, tools: jsonTools, dropdownWidth: 'w-56' },
-    { path: '/network', key: 'network', icon: Network, tools: networkTools, dropdownWidth: 'w-64' },
-    { path: '/text', key: 'text', icon: Text, tools: textTools, dropdownWidth: 'w-64' },
-    { path: '/regex', key: 'regex', icon: Hash },
-    { path: '/editor', key: 'editor', icon: Edit, tools: editorTools, dropdownWidth: 'w-52' },
-    { path: '/time', key: 'time', icon: Clock, tools: timeTools, dropdownWidth: 'w-64' },
-    { path: '/encryption', key: 'encryption', icon: Key }
-  ];
+  const navItems = useMemo(() => [
+    { path: `/${lang}`, key: 'home', icon: Home },
+    { path: `/${lang}/json`, key: 'json', icon: FileJson, tools: jsonTools, dropdownWidth: 'w-56' },
+    { path: `/${lang}/network`, key: 'network', icon: Network, tools: networkTools, dropdownWidth: 'w-64' },
+    { path: `/${lang}/text`, key: 'text', icon: Text, tools: textTools, dropdownWidth: 'w-64' },
+    { path: `/${lang}/regex`, key: 'regex', icon: Hash },
+    { path: `/${lang}/editor`, key: 'editor', icon: Edit, tools: editorTools, dropdownWidth: 'w-52' },
+    { path: `/${lang}/time`, key: 'time', icon: Clock, tools: timeTools, dropdownWidth: 'w-64' },
+    { path: `/${lang}/encryption`, key: 'encryption', icon: Key }
+  ], [lang]);
 
   return (
     <nav className="max-w-full px-2 sm:px-4 mb-4 bg-gradient-to-r from-background/90 to-background/70 backdrop-blur-md border border-border/60 rounded-2xl shadow-xl transition-all duration-300">

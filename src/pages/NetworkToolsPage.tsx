@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Network, Link as LinkIcon, Eye, Key } from 'lucide-react';
@@ -6,17 +7,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 const NetworkToolsPage: React.FC = () => {
   const { t } = useTranslation();
+  const { lang } = useParams<{ lang: string }>();
 
   const networkTools = [
     {
-      path: '/network/url-encoder',
+      path: `/${lang}/network/url-encoder`,
       icon: LinkIcon,
       title: 'URL Encoder / Decoder',
       description: 'Encode URLs for safe transmission or decode percent-encoded URLs.',
       color: 'text-green-500'
     },
     {
-      path: '/network/base64-encoder',
+      path: `/${lang}/network/base64-encoder`,
       icon: Network,
       title: 'Base64 Encoder / Decoder',
       description: 'Encode text to Base64 or decode Base64 strings back to text.',

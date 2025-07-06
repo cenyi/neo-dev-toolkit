@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Clock, Globe, Calendar } from 'lucide-react';
@@ -6,24 +7,25 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 const TimeToolsPage: React.FC = () => {
   const { t } = useTranslation();
+  const { lang } = useParams<{ lang: string }>();
 
   const timeTools = [
     {
-      path: '/time/timestamp-converter',
+      path: `/${lang}/time/timestamp-converter`,
       icon: Clock,
       title: 'Timestamp Converter',
       description: 'Convert between Unix timestamps and human-readable dates and times.',
       color: 'text-blue-500'
     },
     {
-      path: '/time/timezone-converter',
+      path: `/${lang}/time/timezone-converter`,
       icon: Globe,
       title: 'Timezone Converter',
       description: 'Convert date and time between different timezones worldwide with DST support.',
       color: 'text-green-500'
     },
     {
-      path: '/time/date-calculator',
+      path: `/${lang}/time/date-calculator`,
       icon: Calendar,
       title: 'Date Calculator',
       description: 'Add or subtract days, months, and years from dates. Calculate date differences.',

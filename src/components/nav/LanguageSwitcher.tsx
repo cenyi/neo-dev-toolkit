@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Languages } from 'lucide-react';
@@ -17,6 +18,14 @@ const languages = [
 
 const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const changeLanguage = (code: string) => {
+    i18n.changeLanguage(code);
+    const newPath = location.pathname.replace(/^\/[^\/]+/, `/${code}`);
+    navigate(newPath);
+  };
 
   return (
     <DropdownMenu>
@@ -27,7 +36,7 @@ const LanguageSwitcher: React.FC = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="border-border bg-background/95 backdrop-blur-md">
         {languages.map(({ code, name }) => (
-          <DropdownMenuItem key={code} onClick={() => i18n.changeLanguage(code)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
+          <DropdownMenuItem key={code} onClick={() => changeLanguage(code)} className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
             {name}
           </DropdownMenuItem>
         ))}

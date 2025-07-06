@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
+  const { lang } = useParams<{ lang: string }>();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -18,14 +19,14 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{t('footer.legal')}</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/privacy" className="text-base text-foreground hover:text-primary">{t('footer.privacy')}</Link></li>
-              <li><Link to="/terms" className="text-base text-foreground hover:text-primary">{t('footer.terms')}</Link></li>
+              <li><Link to={`/${lang}/privacy`} className="text-base text-foreground hover:text-primary">{t('footer.privacy')}</Link></li>
+              <li><Link to={`/${lang}/terms`} className="text-base text-foreground hover:text-primary">{t('footer.terms')}</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{t('footer.company')}</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/about" className="text-base text-foreground hover:text-primary">{t('footer.about')}</Link></li>
+              <li><Link to={`/${lang}/about`} className="text-base text-foreground hover:text-primary">{t('footer.about')}</Link></li>
             </ul>
           </div>
             <div>

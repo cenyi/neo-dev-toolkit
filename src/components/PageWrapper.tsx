@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Navigation from './Navigation';
 import Footer from './Footer';
@@ -14,6 +15,20 @@ interface PageWrapperProps {
 }
 
 const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description, keywords }) => {
+  const location = useLocation();
+  const { lang } = useParams<{ lang?: string }>();
+  const isHomePage = location.pathname === `/${lang}` || location.pathname === '/';
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'es', name: 'Español' },
+    { code: 'fr', name: 'Français' },
+    { code: 'de', name: 'Deutsch' },
+    { code: 'pt', name: 'Português' },
+    { code: 'ru', name: 'Русский' },
+    { code: 'ja', name: '日本語' },
+    { code: 'ko', name: '한국어' },
+  ];
+
   return (
     <AccessibilityEnhancements>
       <Helmet>
@@ -29,14 +44,23 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <link rel="canonical" href={`https://tojsons.com${window.location.pathname}`} />
-      </Helmet>
+      {languages.map(lang => (
+        <link
+          key={lang.code}
+          rel="alternate"
+          hreflang={lang.code}
+          href={`https://tojsons.com/${lang.code}${window.location.pathname.replace(/^\/[^\/]+/, '')}`}
+        />
+      ))}
+      <link rel="alternate" hreflang="x-default" href={`https://tojsons.com/en${window.location.pathname.replace(/^\/[^\/]+/, '')}`} />
+</Helmet>
       
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
         <div className="container mx-auto px-4 py-8">
           <div id="navigation">
             <Navigation />
           </div>
-          <BreadcrumbNav />
+          {!isHomePage && <BreadcrumbNav />}
           <main id="main-content" className="mt-8 focus:outline-none" tabIndex={-1}>
             {children}
             <InternalLinks />

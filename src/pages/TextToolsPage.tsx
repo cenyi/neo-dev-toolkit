@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Type, Hash, RotateCcw, Eraser, FileText, GitCompare } from 'lucide-react';
@@ -6,24 +7,25 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 const TextToolsPage: React.FC = () => {
   const { t } = useTranslation();
+  const { lang } = useParams<{ lang: string }>();
 
   const textTools = [
     {
-      path: '/text/case-converter',
+      path: `/${lang}/text/case-converter`,
       icon: Type,
       title: 'Case Converter',
       description: 'Convert text between uppercase, lowercase, title case, and sentence case.',
       color: 'text-purple-500'
     },
     {
-      path: '/text/word-counter',
+      path: `/${lang}/text/word-counter`,
       icon: Hash,
       title: 'Word & Character Counter',
       description: 'Count words, characters, sentences, and paragraphs in your text.',
       color: 'text-blue-500'
     },
     {
-      path: '/text/text-reverser',
+      path: `/${lang}/text/text-reverser`,
       icon: RotateCcw,
       title: 'Text Reverser',
       description: 'Reverse the order of characters in your text instantly.',

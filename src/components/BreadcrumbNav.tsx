@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { ROUTES, buildPath } from '../config/routes';
 import { Home } from 'lucide-react';
 import {
   Breadcrumb,
@@ -14,16 +15,18 @@ import {
 const BreadcrumbNav: React.FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const { lang = 'en' } = useParams<{ lang: string }>();
+const basePath = `/${lang}`;
   
   // Don't show breadcrumb on home page
   if (location.pathname === '/') {
     return null;
   }
 
-  const pathSegments = location.pathname.split('/').filter(Boolean);
+  const pathSegments = location.pathname.split('/').filter(Boolean).slice(1);
   
   const getBreadcrumbName = (segment: string, index: number) => {
-    const fullPath = '/' + pathSegments.slice(0, index + 1).join('/');
+    const fullPath = '/' + pathSegments.slice(1, index + 1).join('/');
     
     // Define route mappings
     const routeNames: Record<string, string> = {
@@ -68,7 +71,7 @@ const BreadcrumbNav: React.FC = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/" className="flex items-center gap-1" aria-label={t('navTitles.home')}>
+              <Link to={`/${lang}`} className="flex items-center gap-1" aria-label={t('navTitles.home')}>
                 <Home className="h-4 w-4" />
                 <span className="sr-only">{t('nav.home')}</span>
               </Link>
@@ -77,13 +80,13 @@ const BreadcrumbNav: React.FC = () => {
           
           {pathSegments.map((segment, index) => {
             const isLast = index === pathSegments.length - 1;
-            const path = '/' + pathSegments.slice(0, index + 1).join('/');
+            const path = `${basePath}/${pathSegments.slice(0, index + 1).join('/')}`;
             const name = getBreadcrumbName(segment, index);
             
             return (
-              <React.Fragment key={path}>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
+              <>
+                <BreadcrumbSeparator key={`sep-${path}`} />
+                <BreadcrumbItem key={path}>
                   {isLast ? (
                     <BreadcrumbPage>{name}</BreadcrumbPage>
                   ) : (
@@ -92,7 +95,7 @@ const BreadcrumbNav: React.FC = () => {
                     </BreadcrumbLink>
                   )}
                 </BreadcrumbItem>
-              </React.Fragment>
+              </>
             );
           })}
         </BreadcrumbList>

@@ -1,7 +1,8 @@
 
 import React from 'react';
+import { buildPath } from '../config/routes';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { 
   FileJson, 
   Network, 
@@ -14,53 +15,54 @@ import {
 } from 'lucide-react';
 
 const HomePage: React.FC = () => {
+  const { lang = 'en' } = useParams<{ lang: string }>();
   const { t } = useTranslation();
 
   const tools = [
     {
-      path: '/json',
+      path: buildPath('JSON_TOOLS', { lang }),
       icon: FileJson,
       titleKey: 'tools.json.title',
       descKey: 'tools.json.description',
       color: 'text-blue-500'
     },
     {
-      path: '/network',
+      path: buildPath('NETWORK_TOOLS', { lang }),
       icon: Network,
       titleKey: 'tools.network.title',
       descKey: 'tools.network.description',
       color: 'text-green-500'
     },
     {
-      path: '/text',
+      path: buildPath('TEXT_TOOLS', { lang }),
       icon: FileText,
       titleKey: 'tools.text.title',
       descKey: 'tools.text.description',
       color: 'text-purple-500'
     },
     {
-      path: '/time',
+      path: `/${lang}/time`,
       icon: Clock,
       titleKey: 'tools.time.title',
       descKey: 'tools.time.description',
       color: 'text-cyan-500'
     },
     {
-      path: '/regex',
+      path: `/${lang}/regex`,
       icon: Hash,
       titleKey: 'tools.regex.title',
       descKey: 'tools.regex.description',
       color: 'text-orange-500'
     },
     {
-      path: '/editor',
+      path: buildPath('EDITOR', { lang }),
       icon: FileCode,
       titleKey: 'tools.editor.title',
       descKey: 'tools.editor.description',
       color: 'text-yellow-500'
     },
     {
-      path: '/encryption',
+      path: `/${lang}/encryption`,
       icon: Key,
       titleKey: 'tools.crypto.title',
       descKey: 'tools.crypto.description',

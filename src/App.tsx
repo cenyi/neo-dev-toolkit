@@ -56,16 +56,9 @@ function App() {
               <Sonner />
               <main className="flex-grow">
                 <Routes>
-                  <Route path="/" element={
-                    <PageWrapper 
-                      title="DevTools Hub" 
-                      description="Free online developer tools collection: JSON formatter, text processing, encryption utilities. No signup required, privacy-focused with modern design."
-                      keywords="developer tools, JSON formatter, text converter, encryption, hash generator, URL encoder, Base64, timestamp converter, free dev tools"
-                    >
-                      <HomePage />
-                    </PageWrapper>
-                  } />
-                  <Route path="/json/formatter" element={
+          {/* 语言前缀路由重定向 */}
+          <Route path="/" element={<Navigate to="/en" replace />} />
+                  <Route path=":lang/json/formatter" element={
                     <PageWrapper 
                       title="JSON Formatter & Validator" 
                       description="Free online JSON formatter, validator and beautifier. Format, validate, minify JSON data with syntax highlighting. Extract values with JSONPath."
@@ -75,8 +68,8 @@ function App() {
                     </PageWrapper>
                   } />
                   {/* JSON Tool Redirects */}
-                  <Route path="/json-tool" element={<Navigate to="/json/formatter" replace />} />
-                  <Route path="/json" element={
+                  <Route path="/json-tool" element={<Navigate to="/:lang/json/formatter" replace />} />
+                  <Route path=":lang/json" element={
                     <PageWrapper 
                       title="JSON Tools - Professional JSON Utilities Collection" 
                       description="Complete collection of JSON tools: formatter, validator, schema validator, code generator, diff tool, and mock data generator. Built with Lovable AI."
@@ -85,7 +78,7 @@ function App() {
                       <JsonToolsPage />
                     </PageWrapper>
                   } />
-                  <Route path="/json/schema-validator" element={
+                  <Route path=":lang/json/schema-validator" element={
                     <PageWrapper 
                       title="JSON Schema Validator"
                       description="Validate JSON data against JSON Schema. Free online JSON Schema validation tool with detailed error reporting."
@@ -94,7 +87,7 @@ function App() {
                       <JsonSchemaValidator />
                     </PageWrapper>
                   } />
-                  <Route path="/json/codegen" element={
+                  <Route path=":lang/json/codegen" element={
                     <PageWrapper 
                       title="Generate Code Types from JSON"
                       description="Generate TypeScript, Python, Java, C# code types from JSON data. Free online code generator for developers."
@@ -103,7 +96,7 @@ function App() {
                       <JsonCodeGen />
                     </PageWrapper>
                   } />
-                  <Route path="/json/diff" element={
+                  <Route path=":lang/json/diff" element={
                     <PageWrapper 
                       title="JSON Diff Tool"
                       description="Compare and find differences between two JSON objects. Visual JSON diff tool with syntax highlighting."
@@ -112,7 +105,7 @@ function App() {
                       <JsonDiff />
                     </PageWrapper>
                   } />
-                  <Route path="/json/mock" element={
+                  <Route path=":lang/json/mock" element={
                     <PageWrapper 
                       title="JSON Mock Data Generator"
                       description="Generate realistic mock JSON data for testing. Create fake data with customizable schemas and realistic values."
@@ -122,12 +115,12 @@ function App() {
                     </PageWrapper>
                   } />
                   {/* JSON Redirects */}
-                  <Route path="/json-schema-validator" element={<Navigate to="/json/schema-validator" replace />} />
-                  <Route path="/json-codegen" element={<Navigate to="/json/codegen" replace />} />
-                  <Route path="/json-diff" element={<Navigate to="/json/diff" replace />} />
-                  <Route path="/json-mock" element={<Navigate to="/json/mock" replace />} />
+                  <Route path="/json-schema-validator" element={<Navigate to="/:lang/json/schema-validator" replace />} />
+                  <Route path="/json-codegen" element={<Navigate to="/:lang/json/codegen" replace />} />
+                  <Route path="/json-diff" element={<Navigate to="/:lang/json/diff" replace />} />
+                  <Route path="/json-mock" element={<Navigate to="/:lang/json/mock" replace />} />
                   {/* Network Tools */}
-                  <Route path="/network/url-encoder" element={
+                  <Route path=":lang/network/url-encoder" element={
                     <PageWrapper 
                       title="URL Encoder / Decoder"
                       description="Free online URL encoder and decoder tool. Encode URLs for safe transmission or decode percent-encoded URLs."
@@ -136,7 +129,7 @@ function App() {
                       <UrlEncoderDecoder />
                     </PageWrapper>
                   } />
-                  <Route path="/network" element={
+                  <Route path=":lang/network" element={
                     <PageWrapper 
                       title="Network Tools - Encoding & Security Utilities Collection" 
                       description="Essential network and encoding tools: URL encoder, Base64 converter, IP lookup, JWT decoder. Secure, privacy-focused utilities built with Lovable AI."
@@ -145,7 +138,7 @@ function App() {
                       <NetworkToolsPage />
                     </PageWrapper>
                   } />
-                  <Route path="/network/base64-encoder" element={
+                  <Route path=":lang/network/base64-encoder" element={
                     <PageWrapper 
                       title="Base64 Encoder / Decoder"
                       description="Free online Base64 encoder and decoder. Encode text to Base64 or decode Base64 strings back to text."
@@ -154,7 +147,7 @@ function App() {
                       <Base64EncoderDecoder />
                     </PageWrapper>
                   } />
-                  <Route path="/network/ip-lookup" element={
+                  <Route path=":lang/network/ip-lookup" element={
                     <PageWrapper 
                       title="IP Lookup"
                       description="Free IP address lookup tool. Get geolocation, ISP information, and network details for any IP address."
@@ -163,7 +156,7 @@ function App() {
                       <IpLookup />
                     </PageWrapper>
                   } />
-                  <Route path="/network/jwt-decoder" element={
+                  <Route path=":lang/network/jwt-decoder" element={
                     <PageWrapper 
                       title="JWT Decoder"
                       description="Free JWT token decoder and validator. Decode JSON Web Tokens and view header, payload, and signature information."
@@ -173,12 +166,12 @@ function App() {
                     </PageWrapper>
                   } />
                   {/* Network Redirects */}
-                  <Route path="/url-encoder" element={<Navigate to="/network/url-encoder" replace />} />
-                  <Route path="/base64-encoder" element={<Navigate to="/network/base64-encoder" replace />} />
-                  <Route path="/ip-lookup" element={<Navigate to="/network/ip-lookup" replace />} />
-                  <Route path="/jwt-decoder" element={<Navigate to="/network/jwt-decoder" replace />} />
+                  <Route path="/url-encoder" element={<Navigate to="/:lang/network/url-encoder" replace />} />
+                  <Route path="/base64-encoder" element={<Navigate to="/:lang/network/base64-encoder" replace />} />
+                  <Route path="/ip-lookup" element={<Navigate to="/:lang/network/ip-lookup" replace />} />
+                  <Route path="/jwt-decoder" element={<Navigate to="/:lang/network/jwt-decoder" replace />} />
                   {/* Text Tools */}
-                  <Route path="/text/case-converter" element={
+                  <Route path=":lang/text/case-converter" element={
                     <PageWrapper 
                       title="Case Converter"
                       description="Free online text case converter. Convert text to uppercase, lowercase, title case, sentence case instantly."
@@ -187,7 +180,7 @@ function App() {
                       <CaseConverter />
                     </PageWrapper>
                   } />
-                  <Route path="/text/word-counter" element={
+                  <Route path=":lang/text/word-counter" element={
                     <PageWrapper 
                       title="Word & Character Counter"
                       description="Free online word and character counter. Count words, characters, sentences, and paragraphs in your text."
@@ -196,7 +189,7 @@ function App() {
                       <WordCounter />
                     </PageWrapper>
                   } />
-                  <Route path="/text/text-reverser" element={
+                  <Route path=":lang/text/text-reverser" element={
                     <PageWrapper 
                       title="Text Reverser"
                       description="Free online text reverser tool. Reverse the order of characters in your text instantly."
@@ -205,7 +198,7 @@ function App() {
                       <TextReverser />
                     </PageWrapper>
                   } />
-                  <Route path="/text/whitespace-remover" element={
+                  <Route path=":lang/text/whitespace-remover" element={
                     <PageWrapper 
                       title="Whitespace Remover"
                       description="Free online whitespace remover tool. Remove extra spaces, trim whitespace, and clean up text formatting."
@@ -214,7 +207,7 @@ function App() {
                       <WhitespaceRemover />
                     </PageWrapper>
                   } />
-                  <Route path="/text/lorem-ipsum-generator" element={
+                  <Route path=":lang/text/lorem-ipsum-generator" element={
                     <PageWrapper 
                       title="Lorem Ipsum Generator"
                       description="Free Lorem Ipsum placeholder text generator. Generate dummy text for design and development projects."
@@ -223,7 +216,7 @@ function App() {
                       <LoremIpsumGenerator />
                     </PageWrapper>
                   } />
-                  <Route path="/text/text-diff" element={
+                  <Route path=":lang/text/text-diff" element={
                     <PageWrapper 
                       title="Text Comparison Tool"
                       description="Free text comparison tool to compare and find differences between two text documents. Visual diff highlighting shows additions, deletions, and modifications line by line."
@@ -232,7 +225,7 @@ function App() {
                       <TextDiff />
                     </PageWrapper>
                   } />
-                  <Route path="/text" element={
+                  <Route path=":lang/text" element={
                     <PageWrapper 
                       title="Text Tools - Comprehensive Text Processing Suite"
                       description="Complete collection of text processing tools: case converter, word counter, text reverser, whitespace remover, Lorem Ipsum generator, and text diff. Built with Lovable AI."
@@ -242,15 +235,15 @@ function App() {
                     </PageWrapper>
                   } />
                   {/* Text Redirects */}
-                  <Route path="/case-converter" element={<Navigate to="/text/case-converter" replace />} />
-                  <Route path="/word-counter" element={<Navigate to="/text/word-counter" replace />} />
-                  <Route path="/text-reverser" element={<Navigate to="/text/text-reverser" replace />} />
-                  <Route path="/whitespace-remover" element={<Navigate to="/text/whitespace-remover" replace />} />
-                  <Route path="/lorem-ipsum-generator" element={<Navigate to="/text/lorem-ipsum-generator" replace />} />
-                  <Route path="/text-diff" element={<Navigate to="/text/text-diff" replace />} />
+                  <Route path="/case-converter" element={<Navigate to=":lang/text/case-converter" replace />} />
+                  <Route path="/word-counter" element={<Navigate to=":lang/text/word-counter" replace />} />
+                  <Route path="/text-reverser" element={<Navigate to=":lang/text/text-reverser" replace />} />
+                  <Route path="/whitespace-remover" element={<Navigate to=":lang/text/whitespace-remover" replace />} />
+                  <Route path="/lorem-ipsum-generator" element={<Navigate to=":lang/text/lorem-ipsum-generator" replace />} />
+                  <Route path="/text-diff" element={<Navigate to=":lang/text/text-diff" replace />} />
 
                   {/* Regex Tool */}
-                  <Route path="/regex" element={
+                  <Route path=":lang/regex" element={
                     <PageWrapper 
                       title="Regular Expression Tool"
                       description="Free online regex tester and generator. Test regular expressions, find matches, and replace text with powerful regex engine."
@@ -261,7 +254,7 @@ function App() {
                   } />
 
                   {/* Editor Tools */}
-                  <Route path="/editor/markdown" element={
+                  <Route path=":lang/editor/markdown" element={
                     <PageWrapper 
                       title="Markdown Editor"
                       description="Free online Markdown editor with live preview. Write and preview Markdown with syntax highlighting and export options."
@@ -270,7 +263,7 @@ function App() {
                       <MarkdownEditor />
                     </PageWrapper>
                   } />
-                  <Route path="/editor/mermaid" element={
+                  <Route path=":lang/editor/mermaid" element={
                     <PageWrapper 
                       title="Mermaid Editor"
                       description="Free online Mermaid diagram editor. Create flowcharts, sequence diagrams, and other diagrams with Mermaid syntax."
@@ -289,11 +282,11 @@ function App() {
                     </PageWrapper>
                   } />
                   {/* Editor Redirects */}
-                  <Route path="/markdown" element={<Navigate to="/editor/markdown" replace />} />
-                  <Route path="/mermaid" element={<Navigate to="/editor/mermaid" replace />} />
+                  <Route path="/markdown" element={<Navigate to=":lang/editor/markdown" replace />} />
+                  <Route path="/mermaid" element={<Navigate to=":lang/editor/mermaid" replace />} />
 
                   {/* Time Tools */}
-                  <Route path="/time/timestamp-converter" element={
+                  <Route path=":lang/time/timestamp-converter" element={
                     <PageWrapper 
                       title="Timestamp Converter"
                       description="Free Unix timestamp converter. Convert between Unix timestamps and human-readable dates and times."
@@ -302,7 +295,7 @@ function App() {
                       <TimestampConverter />
                     </PageWrapper>
                   } />
-                  <Route path="/time/timezone-converter" element={
+                  <Route path=":lang/time/timezone-converter" element={
                     <PageWrapper 
                       title="Timezone Converter"
                       description="Free timezone converter tool. Convert date and time between different timezones worldwide with DST support."
@@ -311,7 +304,7 @@ function App() {
                       <TimezoneConverter />
                     </PageWrapper>
                   } />
-                  <Route path="/time/date-calculator" element={
+                  <Route path=":lang/time/date-calculator" element={
                     <PageWrapper 
                       title="Date Calculator"
                       description="Free online date calculator. Add or subtract days, months, and years from any date. Calculate date differences."
@@ -320,7 +313,7 @@ function App() {
                       <DateCalculator />
                     </PageWrapper>
                   } />
-                  <Route path="/time" element={
+                  <Route path=":lang/time" element={
                     <PageWrapper 
                       title="Date & Time Tools - Timestamp & Timezone Utilities"
                       description="Essential date and time tools: timestamp converter, timezone converter, date calculator. Handle time calculations with precision. Built with Lovable AI."
@@ -330,12 +323,12 @@ function App() {
                     </PageWrapper>
                   } />
                   {/* Time Redirects */}
-                  <Route path="/timestamp-converter" element={<Navigate to="/time/timestamp-converter" replace />} />
-                  <Route path="/timezone-converter" element={<Navigate to="/time/timezone-converter" replace />} />
-                  <Route path="/date-calculator" element={<Navigate to="/time/date-calculator" replace />} />
+                  <Route path="/timestamp-converter" element={<Navigate to="/:lang/time/timestamp-converter" replace />} />
+                  <Route path="/timezone-converter" element={<Navigate to="/:lang/time/timezone-converter" replace />} />
+                  <Route path="/date-calculator" element={<Navigate to="/:lang/time/date-calculator" replace />} />
 
                   {/* Encryption Tools */}
-                  <Route path="/encryption" element={
+                  <Route path=":lang/encryption" element={
                     <PageWrapper 
                       title="Encryption Tool"
                       description="Free online encryption and hash generator tool. Generate MD5, SHA1, SHA256 hashes and encrypt/decrypt text."
@@ -346,7 +339,7 @@ function App() {
                   } />
 
                   {/* Footer Pages */}
-                  <Route path="/privacy" element={
+                  <Route path=":lang/privacy" element={
                     <PageWrapper 
                       title="Privacy Policy"
                       description="DevTools Hub privacy policy. Learn how we protect your data and privacy while using our free developer tools."
@@ -355,7 +348,7 @@ function App() {
                       <PrivacyPolicy />
                     </PageWrapper>
                   } />
-                  <Route path="/terms" element={
+                  <Route path=":lang/terms" element={
                     <PageWrapper 
                       title="Terms of Service"
                       description="DevTools Hub terms of service. Terms and conditions for using our free online developer tools."
@@ -364,13 +357,23 @@ function App() {
                       <TermsOfService />
                     </PageWrapper>
                   } />
-                  <Route path="/about" element={
+                  <Route path=":lang/about" element={
                     <PageWrapper 
                       title="About Us"
                       description="Learn about DevTools Hub - your free online developer tools collection. Our mission to provide privacy-focused, professional development utilities."
                       keywords="about DevTools Hub, developer tools, about us, free dev tools, privacy-focused tools"
                     >
                       <AboutUs />
+                    </PageWrapper>
+                  } />
+
+                  <Route path=":lang" element={
+                    <PageWrapper 
+                      title="DevTools Hub" 
+                      description="Free online developer tools collection: JSON formatter, text processing, encryption utilities. No signup required, privacy-focused with modern design."
+                      keywords="developer tools, JSON formatter, text converter, encryption, hash generator, URL encoder, Base64, timestamp converter, free dev tools"
+                    >
+                      <HomePage />
                     </PageWrapper>
                   } />
 

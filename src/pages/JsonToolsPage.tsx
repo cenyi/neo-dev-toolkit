@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FileJson, FileCode, GitCompare, Shuffle, Code } from 'lucide-react';
@@ -6,38 +7,39 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 const JsonToolsPage: React.FC = () => {
   const { t } = useTranslation();
+  const { lang } = useParams<{ lang: string }>();
 
   const jsonTools = [
     {
-      path: '/json/formatter',
+      path: `/${lang}/json/formatter`,
       icon: FileJson,
       title: 'JSON Formatter & Validator',
       description: 'Format, validate, and beautify JSON data with syntax highlighting and error detection.',
       color: 'text-blue-500'
     },
     {
-      path: '/json/schema-validator',
+      path: `/${lang}/json/schema-validator`,
       icon: FileCode,
       title: 'JSON Schema Validator',
       description: 'Validate JSON data against JSON Schema with detailed error reporting.',
       color: 'text-green-500'
     },
     {
-      path: '/json/codegen',
+      path: `/${lang}/json/codegen`,
       icon: Code,
       title: 'Generate Code Types',
       description: 'Generate TypeScript, Python, Java, C# code types from JSON data.',
       color: 'text-purple-500'
     },
     {
-      path: '/json/diff',
+      path: `/${lang}/json/diff`,
       icon: GitCompare,
       title: 'JSON Diff Tool',
       description: 'Compare and visualize differences between two JSON objects.',
       color: 'text-orange-500'
     },
     {
-      path: '/json/mock',
+      path: `/${lang}/json/mock`,
       icon: Shuffle,
       title: 'Mock Data Generator',
       description: 'Generate realistic mock JSON data for testing and development.',
