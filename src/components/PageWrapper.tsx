@@ -53,6 +53,20 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
         />
       ))}
       <link rel="alternate" hreflang="x-default" href={`https://tojsons.com/en${window.location.pathname.replace(/^\/[^\/]+/, '')}`} />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": title,
+          "url": `https://tojsons.com${window.location.pathname}`,
+          "description": description,
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": `https://tojsons.com/${lang}/search?q={search_term_string}`,
+            "query-input": "required name=search_term_string"
+          }
+        })}
+      </script>
 </Helmet>
       
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
