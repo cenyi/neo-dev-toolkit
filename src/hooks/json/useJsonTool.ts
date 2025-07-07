@@ -231,7 +231,7 @@ export const useJsonTool = () => {
     handleToggleMinifyFormat,
     copyToClipboard,
     clearAll,
-    isFormatMinifyDisabled: !input.trim() || !isValid,
+    isFormatMinifyDisabled: !(input?.trim() || '') || !isValid,
     handleExtractValue,
     extractPath,
     onExtractPathChange: setExtractPath,

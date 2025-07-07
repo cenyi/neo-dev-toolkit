@@ -84,9 +84,9 @@ const basePath = `/${lang}`;
             const name = getBreadcrumbName(segment, index);
             
             return (
-              <>
-                <BreadcrumbSeparator key={`sep-${path}`} />
-                <BreadcrumbItem key={path}>
+              <React.Fragment key={path}>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
                   {isLast ? (
                     <BreadcrumbPage>{name}</BreadcrumbPage>
                   ) : (
@@ -95,7 +95,7 @@ const basePath = `/${lang}`;
                     </BreadcrumbLink>
                   )}
                 </BreadcrumbItem>
-              </>
+              </React.Fragment>
             );
           })}
         </BreadcrumbList>

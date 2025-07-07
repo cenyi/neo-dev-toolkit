@@ -86,22 +86,22 @@ const JsonToolsPage: React.FC = () => {
       </div>
 
       <section className="mt-16 text-center">
-        <h2 className="text-2xl font-semibold mb-4">Why Choose Our JSON Tools?</h2>
+        <h3 className="text-2xl font-semibold mb-4">Why Choose Our JSON Tools?</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-4">
-            <h3 className="text-lg font-medium mb-2">Privacy Focused</h3>
+            <h4 className="text-lg font-medium mb-2">Privacy Focused</h4>
             <p className="text-muted-foreground text-sm">
               All JSON processing happens locally in your browser. Your data never leaves your device.
             </p>
           </div>
           <div className="p-4">
-            <h3 className="text-lg font-medium mb-2">Professional Grade</h3>
+            <h4 className="text-lg font-medium mb-2">Professional Grade</h4>
             <p className="text-muted-foreground text-sm">
               Built with modern web technologies and designed for professional developers.
             </p>
           </div>
           <div className="p-4">
-            <h3 className="text-lg font-medium mb-2">Free & Open</h3>
+            <h4 className="text-lg font-medium mb-2">Free & Open</h4>
             <p className="text-muted-foreground text-sm">
               No registration required. Use all features for free with no limitations.
             </p>

@@ -1,0 +1,9 @@
+{
+  "tools": {
+    "json": {
+      "actionsTitle": "Actions",
+      "inputTitle": "Input JSON",
+      "outputTitle": "Output Result"
+    }
+  }
+}

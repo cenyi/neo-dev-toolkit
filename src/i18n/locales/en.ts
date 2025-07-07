@@ -79,6 +79,9 @@ export const en = {
       json: { 
         title: 'JSON Tools', 
         description: 'Format, validate, and minify JSON data',
+        actionsTitle: 'Actions',
+        inputTitle: 'Input JSON',
+        outputTitle: 'Output Result',
         formatter: 'JSON Formatter',
         viewerTitle: 'JSON Viewer',
         fieldPath: 'Field Path',
