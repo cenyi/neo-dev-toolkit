@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -49,6 +50,9 @@ const JsonToolsPage: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+<Helmet>
+  <meta name="description" content="Professional JSON tools: formatter, validator, schema checker, diff tool & mock generator. Free, privacy-focused, no signup required." />
+</Helmet>
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 text-foreground">JSON Developer Tools</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -56,7 +60,8 @@ const JsonToolsPage: React.FC = () => {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <h2 className="text-2xl font-semibold mb-6 text-center">Available JSON Tools</h2>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {jsonTools.map(({ path, icon: Icon, title, description, color }) => (
           <Link key={path} to={path} className="group">
             <Card className="h-full hover:shadow-lg transition-shadow duration-200 border-border">
