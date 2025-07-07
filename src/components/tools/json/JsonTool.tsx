@@ -63,7 +63,7 @@ const JsonTool: React.FC = () => {
             <div className="space-y-2 max-h-32 overflow-y-auto">
               {history.map((item, index) => (
                 <div key={index} className="flex items-center gap-2 p-2 bg-muted rounded">
-                  <button onClick={() => handleSelectFromHistory(index)} className="text-sm truncate flex-1">{item}</button>
+                  <button onClick={() => handleSelectFromHistory(index)} className="text-sm truncate flex-1">{item.content}</button>
                   <button onClick={() => removeFromHistory(index)} className="text-muted-foreground hover:text-destructive">
                     ×
                   </button>
