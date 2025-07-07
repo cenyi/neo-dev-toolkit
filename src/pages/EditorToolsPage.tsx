@@ -7,17 +7,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 const EditorToolsPage: React.FC = () => {
   const { t } = useTranslation();
+  const { lang } = useParams<{ lang: string }>();
 
   const editorTools = [
     {
-      path: '/editor/markdown',
+      path: `/${lang}/editor/markdown`,
       icon: FileCode,
       title: 'Markdown Editor',
       description: 'Write and preview Markdown with syntax highlighting and live preview.',
       color: 'text-yellow-500'
     },
     {
-      path: '/editor/mermaid',
+      path: `/${lang}/editor/mermaid`,
+      icon: Code,
       icon: Code,
       title: 'Mermaid Diagram Editor',
       description: 'Create flowcharts, sequence diagrams, and other diagrams with Mermaid syntax.',

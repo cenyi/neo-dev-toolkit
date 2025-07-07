@@ -170,6 +170,34 @@ function App() {
                   <Route path="/base64-encoder" element={<Navigate to="/:lang/network/base64-encoder" replace />} />
                   <Route path="/ip-lookup" element={<Navigate to="/:lang/network/ip-lookup" replace />} />
                   <Route path="/jwt-decoder" element={<Navigate to="/:lang/network/jwt-decoder" replace />} />
+                  {/* Editor Tools */}
+                  <Route path=":lang/editor" element={
+                    <PageWrapper 
+                      title="Editor Tools - Markdown & Mermaid Utilities" 
+                      description="Powerful editors for Markdown and Mermaid diagrams. Create, edit and preview your documents with real-time rendering." 
+                      keywords="editor tools, markdown editor, mermaid editor, diagram tool, markdown preview" 
+                    >
+                      <EditorToolsPage />
+                    </PageWrapper>
+                  } />
+                  <Route path=":lang/editor/markdown" element={
+                    <PageWrapper 
+                      title="Markdown Editor" 
+                      description="Live preview Markdown editor with syntax highlighting. Create formatted documents easily with real-time rendering." 
+                      keywords="markdown editor, live preview, markdown preview, syntax highlighting, markdown formatter" 
+                    >
+                      <MarkdownEditor />
+                    </PageWrapper>
+                  } />
+                  <Route path=":lang/editor/mermaid" element={
+                    <PageWrapper 
+                      title="Mermaid Diagram Editor" 
+                      description="Create and edit Mermaid diagrams with live preview. Generate flowcharts, sequence diagrams, and more." 
+                      keywords="mermaid editor, diagram tool, flowchart maker, sequence diagram, mermaid preview" 
+                    >
+                      <MermaidEditor />
+                    </PageWrapper>
+                  } />
                   {/* Text Tools */}
                   <Route path=":lang/text/case-converter" element={
                     <PageWrapper 
