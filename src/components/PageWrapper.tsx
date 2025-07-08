@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import Navigation from './Navigation';
 import Footer from './Footer';
@@ -17,6 +18,13 @@ interface PageWrapperProps {
 const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description, keywords }) => {
   const location = useLocation();
   const { lang } = useParams<{ lang?: string }>();
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    if (lang && i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
+  }, [lang, i18n]);
   const isHomePage = location.pathname === `/${lang}` || location.pathname === '/';
   const languages = [
     { code: 'en', name: 'English' },

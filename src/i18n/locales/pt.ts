@@ -4,45 +4,90 @@ export const pt = {
     common: { theme: 'Tema', language: 'Idioma', light: 'Claro', dark: 'Escuro', copy: 'Copiar', clear: 'Limpar', format: 'Formatar', minify: 'Minimizar', validate: 'Validar', convert: 'Converter', encrypt: 'Criptografar', decrypt: 'Descriptografar', preview: 'Visualizar', download: 'Baixar', toYaml: 'Para YAML', toXml: 'Para XML', toCsv: 'Para CSV', blue: 'Azul', system: 'Sistema', comingSoon: 'Em breve', error: 'Erro' },
     home: { title: 'Hub de Ferramentas para Desenvolvedores', subtitle: 'Ferramentas de desenvolvimento profissionais com design neomórfico moderno', description: 'Uma coleção abrangente de ferramentas essenciais para desenvolvedores, incluindo formatação JSON, processamento de texto, criptografia e muito mais.' },
     tools: { 
-      json: { 
-        title: 'Ferramentas JSON', 
-        description: 'Formatar, validar e minimizar dados JSON',
-        fieldPath: 'Caminho do Campo',
-        extractPlaceholder: 'ex., $.user.name ou $[0].id',
-        extractValue: 'Extrair Valor',
-        placeholder: 'Digite ou cole seu JSON aqui...',
-        extractedValueTitle: 'Valor Extraído',
-        generateGraph: 'Gerar Gráfico',
-        graphTitle: 'Estrutura JSON',
-        syntaxError: 'Erro de sintaxe JSON',
-        unknownParseError: 'Erro de análise JSON desconhecido',
-        syntaxErrorAtPosition: 'Erro de sintaxe JSON: {{message}} (linha {{line}}, coluna {{column}})',
-        syntaxErrorGeneric: 'Erro de sintaxe JSON: {{message}}',
-        convertedToYamlTitle: 'Convertido para YAML',
-        convertedToXmlTitle: 'Convertido para XML',
-        convertedToCsvTitle: 'Convertido para CSV',
-        viewer: {
-          title: 'Visualização da Estrutura JSON',
-          invalidJson: 'Por favor insira JSON válido para ver a estrutura',
-          expandAll: 'Expandir Tudo',
-          collapseAll: 'Recolher Tudo',
-          items: 'itens',
-          elements: 'elementos'
+      json: {
+        title: 'Ferramentas JSON',
+        description: 'Ferramentas JSON abrangentes para formatação, validação, verificação de esquema e manipulação de dados.',
+        formatter: {
+          title: 'Formatador e Validador de JSON',
+          description: 'Formate, embeleze e valide seus dados JSON.'
         },
+        schemaValidator: {
+          title: 'Validador de Esquema JSON',
+          description: 'Valide seus objetos JSON em relação a um esquema JSON.'
+        },
+        codegen: {
+          title: 'Gerar Tipos de Código',
+          description: 'Gere tipos de código em várias linguagens a partir de um objeto JSON.'
+        },
+        history: {
+          title: 'Histórico'
+        },
+        generateGraph: 'Gerar Gráfico',
+        extractValue: 'Extrair Valor',
+        fieldPath: 'Caminho do Campo',
+        extractPlaceholder: 'Digite JSONPath (ex: $.users[0].name)',
+        graphTitle: 'Gráfico de Estrutura JSON',
+        input: 'Entrada',
+        output: 'Saída',
+        outputPlaceholder: 'JSON formatado aparecerá aqui',
+        validJson: 'JSON válido',
+        invalidJson: 'JSON inválido',
+        diff: {
+          title: 'Ferramenta de Diferença JSON',
+          description: 'Compare dois objetos JSON e destaque as diferenças.'
+        },
+        mock: {
+          title: 'Gerador de Dados Mock',
+          description: 'Gere dados JSON mock para testes e desenvolvimento.'
+        }
       },
-      network: { title: 'Ferramentas de Rede', description: 'Codificação de URL, consulta de IP e utilitários de rede' }, 
-      text: { 
-        title: 'Ferramentas de Texto', 
-        description: 'Processamento de texto, conversão de maiúsculas/minúsculas e formatação',
+      network: {
+        title: 'Ferramentas de Rede e Codificação',
+        description: 'Ferramentas de rede gratuitas: codificador/decodificador de URL, conversor Base64, pesquisa de IP e decodificador JWT. Processamento seguro do lado do cliente, sem necessidade de armazenamento de dados.',
+        subtitle: 'Utilitários essenciais de rede e codificação para desenvolvedores da web. Lide com a codificação de URL, conversão de Base64, pesquisas de IP e decodificação de JWT com nossas ferramentas seguras e focadas na privacidade.',
+        utilityTools: 'Ferramentas Utilitárias de Rede',
+        secureTitle: 'Utilitários de Rede Seguros',
+        clientSideProcessing: {
+          title: 'Processamento do Lado do Cliente',
+          description: 'Toda a codificação e decodificação acontecem no seu navegador para máxima segurança.'
+        },
+        noDataStorage: {
+          title: 'Sem Armazenamento de Dados',
+          description: 'Não armazenamos ou registramos nenhum dos seus dados de entrada ou resultados.'
+        },
+        instantResults: {
+          title: 'Resultados Instantâneos',
+          description: 'Processamento rápido com resultados em tempo real enquanto você digita.'
+        },
+        urlEncoder: {
+          title: 'Codificador / Decodificador de URL',
+          description: 'Codifique URLs para transmissão segura ou decodifique URLs codificadas em porcentagem.'
+        },
+        base64Encoder: {
+          title: 'Codificador / Decodificador de Base64',
+          description: 'Codifique texto para Base64 ou decodifique strings Base64 de volta para texto.'
+        },
+        ipLookup: {
+          title: 'Pesquisa de Endereço IP',
+          description: 'Obtenha geolocalização, informações do ISP e detalhes da rede para qualquer endereço IP.'
+        },
+        jwtDecoder: {
+          title: 'Decodificador de Token JWT',
+          description: 'Decodifique Tokens da Web JSON e visualize informações de cabeçalho, carga útil e assinatura.'
+        }
+      }, 
+      text: {
+        title: 'Ferramentas de Texto',
+        description: 'Processamento de texto, conversão de maiúsculas e minúsculas, formatação',
         caseConverter: {
-          title: 'Conversor de Maiúsculas/Minúsculas',
-          description: 'Converte texto entre diferentes tipos de letras.',
-          placeholder: 'Digite texto aqui...',
-          result: 'Resultado',
-          upperCase: 'MAIÚSCULAS',
-          lowerCase: 'minúsculas',
-          titleCase: 'Formato de Título',
-          sentenceCase: 'Formato de frase'
+          title: 'Conversor de Maiúsculas e Minúsculas',
+          description: 'Converta texto para maiúsculas, minúsculas, título e caso de sentença.',
+          placeholder: 'Digite o texto para converter...',
+          upperCase: 'Maiúsculas',
+          lowerCase: 'Minúsculas',
+          titleCase: 'Título',
+          sentenceCase: 'Caso de Sentença',
+          result: 'Resultado'
         },
         wordCounter: {
           title: 'Contador de Palavras e Caracteres',
@@ -107,14 +152,109 @@ export const pt = {
           months: 'Meses',
           days: 'Dias',
           resultDate: 'Data Resultado'
+        },
+        textDiff: {
+          title: 'Ferramenta de Comparação de Texto',
+          description: 'Compare dois textos e destaque as diferenças com exibição visual de diferenças.',
+          compareText: 'Comparar Texto',
+          clearAll: 'Limpar Tudo',
+          originalText: 'Texto Original',
+          newText: 'Novo Texto'
         }
       },
-      crypto: { title: 'Ferramentas de Criptografia', description: 'Geração de hash, utilitários de criptografia и descriptografia' },
-      time: { title: 'Ferramentas de Tempo', description: 'Conversores de timestamp, ferramentas de fuso horário e calculadoras de data' },
-      regex: { title: 'Ferramenta RegEx', description: 'Testar e validar expressões regulares' },
-      editor: { title: 'Editores de Código', description: 'Editores Markdown e de diagramas Mermaid com visualização ao vivo' },
-      markdown: { title: 'Ferramentas Markdown', description: 'Editor de Markdown com visualização ao vivo' }, 
-      mermaid: { title: 'Diagramas Mermaid', description: 'Crie diagramas e fluxogramas com o Mermaid' } 
+      crypto: {
+        title: 'Ferramentas de Criptografia',
+        description: 'Proteja seus dados com nossas ferramentas de criptografia: geradores de hash (MD5, SHA-1, SHA-256, SHA-512), HMAC e criptografia AES.',
+        jwtDecoder: {
+          title: 'Decodificador JWT',
+          description: 'Decodifique e inspecione JSON Web Tokens para visualizar sua carga útil e dados de cabeçalho.',
+          placeholder: 'Cole seu JWT aqui',
+          invalidToken: 'Token JWT inválido'
+        },
+        encryption: {
+          title: 'Ferramenta de Criptografia',
+          description: 'Criptografe e descriptografe texto usando vários algoritmos como AES, DES e Rabbit.'
+        }
+      },
+   time: {
+        description: 'Utilitários essenciais de data e hora para conversão de timestamp, manipulação de fuso horário e cálculos de data.',
+      meta: {
+        title: 'Ferramentas de Data e Hora - Calculadoras de Timestamp, Fuso Horário e Data',
+        description: 'Ferramentas de tempo gratuitas: conversor de timestamp, calculadora de fuso horário e aritmética de data. Utilitários precisos, com suporte a DST e amigáveis para desenvolvedores.'
+      },
+      title: 'Ferramentas de Data e Hora',
+      subtitle: 'Utilitários essenciais de data e hora para desenvolvedores e profissionais. Lide com conversões de timestamp, cálculos de fuso horário e aritmética de data com precisão.',
+      toolsTitle: 'Ferramentas de Gerenciamento de Tempo',
+      timestamp: {
+        title: 'Conversor de Timestamp',
+        description: 'Converta entre timestamps Unix e datas e horas legíveis por humanos.'
+      },
+      timezone: {
+        title: 'Conversor de Fuso Horário',
+        description: 'Converta data e hora entre diferentes fusos horários em todo o mundo com suporte a DST.'
+      },
+      dateCalculator: {
+        title: 'Calculadora de Data',
+        description: 'Adicione ou subtraia dias, meses e anos de datas. Calcule as diferenças de data.'
+      },
+      calculations: {
+        title: 'Cálculos de Tempo Precisos',
+        precise: {
+          title: 'Cálculos Precisos',
+          description: 'Lide com conversões complexas de fuso horário e cálculos de data com precisão.'
+        },
+        global: {
+          title: 'Suporte Global',
+          description: 'Suporte para todos os fusos horários do mundo com ajustes automáticos de horário de verão.'
+        },
+        developerFriendly: {
+          title: 'Amigável para Desenvolvedores',
+          description: 'Perfeito para desenvolvimento de API, análise de logs e depuração de timestamps.'
+        }
+      }
+    },regex: { title: 'Ferramenta RegEx', description: 'Testar e validar expressões regulares' },
+      editor: {
+        meta: {
+          title: 'Editores de Código e Documentos',
+          description: 'Editores online gratuitos: Markdown com pré-visualização ao vivo e ferramenta de diagrama Mermaid. Escreva, pré-visualize e exporte conteúdo profissional facilmente.'
+        },
+        title: 'Editores de Código e Documentos',
+        subtitle: 'Editores online profissionais para documentação Markdown e diagramas Mermaid. Crie, edite e pré-visualize seu conteúdo com renderização em tempo real.',
+        toolsTitle: 'Ferramentas de Edição',
+        experience: {
+          title: 'Experiência de Edição Profissional',
+          livePreview: {
+            title: 'Pré-visualização ao Vivo',
+            description: 'Veja seus diagramas Markdown e Mermaid renderizados em tempo real enquanto você digita.'
+          },
+          syntaxHighlighting: {
+            title: 'Destaque de Sintaxe',
+            description: 'Editor de código profissional com destaque de sintaxe e preenchimento automático.'
+          },
+          exportReady: {
+            title: 'Pronto para Exportar',
+            description: 'Copie ou baixe seu conteúdo renderizado para uso em documentação e apresentações.'
+          }
+        },
+        markdown: {
+          title: 'Editor de Markdown',
+          description: 'Escreva e pré-visualize Markdown com destaque de sintaxe e pré-visualização ao vivo.'
+        },
+        mermaid: {
+          title: 'Editor de Diagramas Mermaid',
+          description: 'Crie fluxogramas, diagramas de sequência e outros diagramas com a sintaxe Mermaid.'
+        }
+      },
+      markdown: {
+        title: 'Editor Markdown',
+        description: 'Editor Markdown com destaque de sintaxe e visualização ao vivo.',
+        placeholder: 'Digite seu conteúdo Markdown aqui...'
+      }, 
+      mermaid: { 
+        title: 'Diagramas Mermaid', 
+        description: 'Crie diagramas e fluxogramas com o Mermaid',
+        invalidSyntax: 'Sintaxe Mermaid inválida'
+      } 
     },
     editor: {
       copy: 'Copiar conteúdo',
@@ -127,6 +267,22 @@ export const pt = {
       clearSuccess: 'Conteúdo limpo',
       downloadSvg: 'Baixar SVG',
       downloadPng: 'Baixar PNG'
+    },
+    availableTools: 'Ferramentas Disponíveis',
+    whyChooseUs: {
+      title: 'Por Que Escolher Nossas Ferramentas?',
+      privacyFocused: {
+        title: 'Foco na Privacidade',
+        description: 'Todo o processamento é feito localmente no seu navegador. Seus dados nunca saem do seu dispositivo.'
+      },
+      professionalGrade: {
+        title: 'Nível Profissional',
+        description: 'Construído com tecnologias web modernas e projetado para desenvolvedores profissionais.'
+      },
+      freeAndOpen: {
+        title: 'Gratuito e Aberto',
+        description: 'Não é necessário se inscrever. Use todos os recursos gratuitamente, sem limitações.'
+      }
     },
     underConstruction: {
       description: 'Esta ferramenta está em desenvolvimento, fique atento.'

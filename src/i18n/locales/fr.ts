@@ -64,67 +64,186 @@ export const fr = {
     tools: {
       json: {
         title: 'Outils JSON',
-        description: 'Formater, valider et minifier les données JSON',
-        placeholder: 'Entrez ou collez votre JSON ici...',
-        fieldPath: 'Chemin du champ',
-        extractValue: 'Extraire la valeur',
-        extractPlaceholder: 'ex., data.users[0].name',
-        extractedValueTitle: 'Valeur extraite',
-        generateGraph: 'Générer un Graphique',
-        graphTitle: 'Structure JSON',
-        syntaxError: 'Erreur de syntaxe JSON',
-        unknownParseError: 'Erreur d\'analyse JSON inconnue',
-        syntaxErrorAtPosition: 'Erreur de syntaxe JSON : {{message}} (ligne {{line}}, colonne {{column}})',
-        syntaxErrorGeneric: 'Erreur de syntaxe JSON : {{message}}',
-        convertedToYamlTitle: 'Converti en YAML',
-        convertedToXmlTitle: 'Converti en XML',
-        convertedToCsvTitle: 'Converti en CSV',
-        viewer: {
-          title: 'Vue de Structure JSON',
-          invalidJson: 'Veuillez entrer du JSON valide pour voir la structure',
-          expandAll: 'Tout Développer',
-          collapseAll: 'Tout Réduire',
-          items: 'éléments',
-          elements: 'éléments'
+        description: 'Outils JSON complets pour le formatage, la validation, la vérification de schéma et la manipulation de données.',
+        formatter: {
+          title: 'Formateur et Validateur JSON',
+          description: 'Formatez, embellissez et validez vos données JSON.'
         },
+        schemaValidator: {
+          title: 'Validateur de Schéma JSON',
+          description: 'Validez vos objets JSON par rapport à un schéma JSON.'
+        },
+        codegen: {
+          title: 'Générer des Types de Code',
+          description: 'Générez des types de code dans différentes langues à partir d\'un objet JSON.'
+        },
+        history: {
+          title: 'Historique'
+        },
+        generateGraph: 'Générer le Graphique',
+        extractValue: 'Extraire la Valeur',
+        fieldPath: 'Chemin du Champ',
+        extractPlaceholder: 'Entrez JSONPath (ex: $.users[0].name)',
+        graphTitle: 'Graphique de Structure JSON',
+        input: 'Entrée',
+        output: 'Sortie',
+        outputPlaceholder: 'Le JSON formaté apparaîtra ici',
+        validJson: 'JSON valide',
+        invalidJson: 'JSON invalide',
+        diff: {
+          title: 'Outil de Différence JSON',
+          description: 'Comparez deux objets JSON et mettez en évidence les différences.'
+        },
+        mock: {
+          title: 'Générateur de Données Mock',
+          description: 'Générez des données JSON fictives pour les tests et le développement.'
+        }
       },
       text: {
-        title: 'Outils Texte',
-        description: 'Traitement de texte, conversion de casse et formatage',
+        title: 'Outils de Traitement de Texte',
+        description: 'Outils de texte essentiels : convertisseur de casse, compteur de mots, inverseur de texte, suppresseur d\'espaces et vérificateur de différences. Traitement gratuit, rapide et côté client.',
+        subtitle: 'Outils puissants de manipulation et d\'analyse de texte pour les écrivains, les développeurs et les créateurs de contenu. Transformez, analysez et comparez du texte avec notre suite complète.',
+        utilityTools: 'Utilitaires de Traitement de Texte',
+        whyUse: {
+          title: 'Pourquoi Utiliser Nos Outils de Texte ?',
+          realTime: {
+            title: 'Traitement en Temps Réel',
+            description: 'Visualisez les résultats instantanément pendant que vous tapez avec le traitement de texte en temps réel.'
+          },
+          privacy: {
+            title: 'Confidentialité Protégée',
+            description: 'Tout le traitement de texte est effectué localement — votre contenu ne quitte jamais votre navigateur.'
+          },
+          multiPurpose: {
+            title: 'Polyvalent',
+            description: 'De la simple conversion de casse à l\'analyse et à la comparaison de texte complexes.'
+          }
+        },
+        caseConverter: {
+          title: 'Convertisseur de Casse',
+          description: 'Convertissez le texte entre majuscules, minuscules, casse de titre et casse de phrase.',
+          placeholder: 'Entrez le texte pour convertir la casse...',
+          upperCase: 'MAJUSCULES',
+          lowerCase: 'minuscules',
+          titleCase: 'Casse de Titre',
+          sentenceCase: 'Casse de phrase',
+          result: 'Texte Converti'
+        },
+        wordCounter: {
+          title: 'Compteur de Mots et de Caractères',
+          description: 'Comptez les mots, les caractères, les phrases et les paragraphes dans votre texte.'
+        },
+        textReverser: {
+          title: 'Inverseur de Texte',
+          description: 'Inversez l\'ordre des caractères dans votre texte instantanément.'
+        },
+        whitespaceRemover: {
+          title: 'Suppresseur d\'Espaces',
+          description: 'Supprimez les espaces superflus, coupez les espaces et nettoyez le formatage du texte.'
+        },
+        loremIpsumGenerator: {
+          title: 'Générateur de Lorem Ipsum',
+          description: 'Générez du texte de remplissage pour les projets de conception et de développement.'
+        },
         textDiff: {
           title: 'Outil de Comparaison de Texte',
-          description: 'Comparez deux documents texte et mettez en évidence les différences',
-          originalText: 'Texte Original',
-          newText: 'Nouveau Texte',
-          originalPlaceholder: 'Entrez le texte original...',
-          newPlaceholder: 'Entrez le nouveau texte...',
-          diffResult: 'Résultat de la Comparaison',
+          description: 'Comparez deux textes et mettez en évidence les différences avec un affichage visuel des différences.',
           compareText: 'Comparer le Texte',
           clearAll: 'Tout Effacer',
-          emptyLine: '(ligne vide)',
-          compareComplete: 'Comparaison de texte terminée',
-          enterTextToCompare: 'Veuillez entrer le texte à comparer'
+          originalText: 'Texte Original',
+          newText: 'Nouveau Texte'
         }
       },
       network: {
-        title: 'Outils Réseau',
-        description: 'Encodage d\'URL, recherche d\'IP et utilitaires réseau'
+        title: 'Outils Réseau et Encodage',
+        description: 'Outils réseau gratuits : encodeur/décodeur d\'URL, convertisseur Base64, recherche IP et décodeur JWT. Traitement sécurisé côté client, aucune donnée stockée.',
+        subtitle: 'Utilitaires réseau et d\'encodage essentiels pour les développeurs web. Gérez l\'encodage d\'URL, la conversion Base64, les recherches IP et le décodage JWT avec nos outils sécurisés et axés sur la confidentialité.',
+        utilityTools: 'Outils Utilitaires Réseau',
+        secureTitle: 'Utilitaires Réseau Sécurisés',
+        clientSideProcessing: {
+          title: 'Traitement Côté Client',
+          description: 'Tout l\'encodage et le décodage se font dans votre navigateur pour une sécurité maximale.'
+        },
+        noDataStorage: {
+          title: 'Aucun Stockage de Données',
+          description: 'Nous ne stockons ni n\'enregistrons aucune de vos données d\'entrée ou de vos résultats.'
+        },
+        instantResults: {
+          title: 'Résultats Instantanés',
+          description: 'Traitement rapide avec des résultats en temps réel pendant que vous tapez.'
+        },
+        urlEncoder: {
+          title: 'Encodeur / Décodeur d\'URL',
+          description: 'Encodez les URL pour une transmission sécurisée ou décodez les URL encodées en pourcentage.'
+        },
+        base64Encoder: {
+          title: 'Encodeur / Décodeur Base64',
+          description: 'Encodez du texte en Base64 ou décodez des chaînes Base64 en texte.'
+        },
+        ipLookup: {
+          title: 'Recherche d\'Adresse IP',
+          description: 'Obtenez la géolocalisation, les informations du FAI et les détails du réseau pour n\'importe quelle adresse IP.'
+        },
+        jwtDecoder: {
+          title: 'Décodeur de Jeton JWT',
+          description: 'Décodez les jetons Web JSON et affichez les informations d\'en-tête, de charge utile et de signature.'
+        }
+      },
+      markdown: {
+        title: 'Éditeur Markdown',
+        description: 'Éditeur Markdown avec coloration syntaxique et aperçu en temps réel.',
+        placeholder: 'Entrez votre contenu Markdown ici...'
       },
       crypto: {
-        title: 'Outils Crypto',
-        description: 'Génération de hash, utilitaires de chiffrement et déchiffrement'
-      },
-      time: {
-        title: 'Outils Temps',
-        description: 'Convertisseurs de timestamp, outils de fuseau horaire et calculatrices de date'
+        title: 'Outils de Cryptographie',
+        description: 'Sécurisez vos données avec nos outils de cryptographie : générateurs de hachage (MD5, SHA-1, SHA-256, SHA-512), HMAC et chiffrement AES.',
+        jwtDecoder: {
+          title: 'Décodeur JWT',
+          description: 'Décodez et inspectez les JSON Web Tokens pour afficher leur charge utile et leurs données d\'en-tête.',
+          placeholder: 'Collez votre JWT ici',
+          invalidToken: 'Jeton JWT invalide'
+        },
+        encryption: {
+          title: 'Outil de Chiffrement',
+          description: 'Chiffrez et déchiffrez du texte à l\'aide de divers algorithmes comme AES, DES et Rabbit.'
+        }
       },
       regex: {
         title: 'Outil RegEx',
         description: 'Tester et valider les expressions régulières'
       },
       editor: {
-        title: 'Éditeurs de Code',
-        description: 'Éditeurs Markdown et de diagrammes Mermaid avec aperçu en direct'
+        meta: {
+          title: 'Éditeurs de Code et de Documents',
+          description: 'Éditeurs en ligne gratuits : Markdown avec aperçu en direct et outil de diagramme Mermaid. Rédigez, prévisualisez et exportez facilement du contenu professionnel.'
+        },
+        title: 'Éditeurs de Code et de Documents',
+        subtitle: 'Éditeurs en ligne professionnels pour la documentation Markdown et les diagrammes Mermaid. Créez, modifiez et prévisualisez votre contenu avec un rendu en temps réel.',
+        toolsTitle: 'Outils d\'Édition',
+        experience: {
+          title: 'Expérience d\'Édition Professionnelle',
+          livePreview: {
+            title: 'Aperçu en Direct',
+            description: 'Visualisez vos diagrammes Markdown et Mermaid rendus en temps réel pendant que vous tapez.'
+          },
+          syntaxHighlighting: {
+            title: 'Coloration Syntaxique',
+            description: 'Éditeur de code professionnel avec coloration syntaxique et auto-complétion.'
+          },
+          exportReady: {
+            title: 'Prêt à l\'Exportation',
+            description: 'Copiez ou téléchargez votre contenu rendu pour l\'utiliser dans la documentation et les présentations.'
+          }
+        },
+        markdown: {
+          title: 'Éditeur Markdown',
+          description: 'Rédigez et prévisualisez du Markdown avec coloration syntaxique et aperçu en direct.'
+        },
+        mermaid: {
+          title: 'Diagrammes Mermaid',
+          description: 'Créer des diagrammes et des organigrammes avec Mermaid',
+          invalidSyntax: 'Syntaxe Mermaid invalide'
+        }
       }
     },
     toasts: {
@@ -189,6 +308,22 @@ export const fr = {
       changesToPolicyText: 'Nous pouvons mettre à jour notre Politique de Confidentialité de temps en temps. Nous vous informerons de tout changement en publiant la nouvelle Politique de Confidentialité sur cette page. Il vous est conseillé de consulter cette Politique de Confidentialité périodiquement pour tout changement.',
       contactUsTitle: 'Nous Contacter',
       contactUsText: 'Si vous avez des questions concernant cette Politique de Confidentialité, n\'hésitez pas à nous contacter sur notre dépôt open source.'
+    },
+    availableTools: 'Outils Disponibles',
+    whyChooseUs: {
+      title: 'Pourquoi Choisir Nos Outils ?',
+      privacyFocused: {
+        title: 'Axé sur la Confidentialité',
+        description: 'Tout le traitement se fait localement dans votre navigateur. Vos données ne quittent jamais votre appareil.'
+      },
+      professionalGrade: {
+        title: 'Qualité Professionnelle',
+        description: 'Construit avec des technologies web modernes et conçu pour les développeurs professionnels.'
+      },
+      freeAndOpen: {
+        title: 'Gratuit et Ouvert',
+        description: 'Aucune inscription requise. Utilisez toutes les fonctionnalités gratuitement sans aucune limitation.'
+      }
     },
     terms: {
       title: 'Conditions de Service',

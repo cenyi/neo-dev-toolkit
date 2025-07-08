@@ -76,44 +76,39 @@ export const es = {
     tools: {
       json: {
         title: 'Herramientas JSON',
-        description: 'Formatear, validar y minificar datos JSON',
-        formatter: 'Formateador JSON',
-        viewerTitle: 'Visor JSON',
-        fieldPath: 'Ruta del campo',
-        extractPlaceholder: 'ej., $.user.name o $[0].id',
-        extractValue: 'Extraer valor',
-        placeholder: 'Ingresa o pega tu JSON aquí...',
-        extractedValueTitle: 'Valor extraído',
-        generateGraph: 'Generar Gráfico',
-        graphTitle: 'Estructura JSON',
-        syntaxError: 'Error de sintaxis JSON',
-        unknownParseError: 'Error de análisis JSON desconocido',
-        syntaxErrorAtPosition: 'Error de sintaxis JSON: {{message}} (línea {{line}}, columna {{column}})',
-        syntaxErrorGeneric: 'Error de sintaxis JSON: {{message}}',
-        convertedToYamlTitle: 'Convertido a YAML',
-        convertedToXmlTitle: 'Convertido a XML',
-        convertedToCsvTitle: 'Convertido a CSV',
-        viewer: {
-          title: 'Vista de Estructura JSON',
-          invalidJson: 'Por favor ingrese JSON válido para ver la estructura',
-          expandAll: 'Expandir Todo',
-          collapseAll: 'Contraer Todo',
-          items: 'elementos',
-          elements: 'elementos'
+        description: 'Herramientas JSON integrales para formateo, validación, verificación de esquemas y manipulación de datos.',
+        formatter: {
+          title: 'Formateador y Validador JSON',
+          description: 'Formatea, embellece y valida tus datos JSON.'
+        },
+        schemaValidator: {
+          title: 'Validador de Esquemas JSON',
+          description: 'Valida tus objetos JSON contra un Esquema JSON.'
+        },
+        codegen: {
+          title: 'Generar Tipos de Código',
+          description: 'Genera tipos de código en varios lenguajes desde un objeto JSON.'
         },
         history: {
-          title: 'Historial',
-          emptyMessage: '¡Aún no hay historial, comienza ingresando algunos datos JSON!',
-          clearAll: 'Limpiar Todo',
-          removeItem: 'Eliminar Elemento',
-          itemRemoved: 'Elemento del historial eliminado',
-          historyCleared: 'Historial limpiado',
-          loadedFromHistory: 'Cargado desde el historial',
-          justNow: 'Ahora mismo',
-          minutesAgo: 'hace {{count}} minutos',
-          hoursAgo: 'hace {{count}} horas',
-          searchPlaceholder: 'Buscar en el historial...',
-          noResults: 'No se encontraron registros coincidentes'
+          title: 'Historial'
+        },
+        generateGraph: 'Generar Gráfico',
+        extractValue: 'Extraer Valor',
+        fieldPath: 'Ruta del Campo',
+        extractPlaceholder: 'Ingrese JSONPath (ej: $.users[0].name)',
+        graphTitle: 'Gráfico de Estructura JSON',
+        input: 'Entrada',
+        output: 'Salida',
+        outputPlaceholder: 'El JSON formateado aparecerá aquí',
+        validJson: 'JSON válido',
+        invalidJson: 'JSON inválido',
+        diff: {
+          title: 'Herramienta de Diferencias JSON',
+          description: 'Compara dos objetos JSON y resalta las diferencias.'
+        },
+        mock: {
+          title: 'Generador de Datos Mock',
+          description: 'Genera datos JSON simulados para pruebas y desarrollo.'
         }
       },
       regex: {
@@ -156,41 +151,75 @@ export const es = {
         newPlaceholder: 'Pegar JSON nuevo aquí',
         diffResult: 'Resultado de Diferencias'
       },
-      network: { 
-        title: 'Herramientas de Red', 
-        description: 'Codificación de URL, búsqueda de IP y utilidades de red' 
+      network: {
+        title: 'Herramientas de Red y Codificación',
+        description: 'Herramientas de red gratuitas: codificador/decodificador de URL, convertidor de Base64, búsqueda de IP y decodificador de JWT. Procesamiento seguro del lado del cliente, no se requieren datos de almacenamiento.',
+        subtitle: 'Utilidades esenciales de red y codificación para desarrolladores web. Maneje la codificación de URL, la conversión de Base64, las búsquedas de IP y la decodificación de JWT con nuestras herramientas seguras y centradas en la privacidad.',
+        utilityTools: 'Herramientas de Utilidad de Red',
+        secureTitle: 'Utilidades de Red Seguras',
+        clientSideProcessing: {
+          title: 'Procesamiento del Lado del Cliente',
+          description: 'Toda la codificación y decodificación se realiza en su navegador para una máxima seguridad.'
+        },
+        noDataStorage: {
+          title: 'Sin Almacenamiento de Datos',
+          description: 'No almacenamos ni registramos ninguno de sus datos de entrada o resultados.'
+        },
+        instantResults: {
+          title: 'Resultados Instantáneos',
+          description: 'Procesamiento rápido con resultados en tiempo real a medida que escribe.'
+        },
+        urlEncoder: {
+          title: 'Codificador / Decodificador de URL',
+          description: 'Codifique las URL para una transmisión segura o decodifique las URL codificadas en porcentaje.'
+        },
+        base64Encoder: {
+          title: 'Codificador / Decodificador de Base64',
+          description: 'Codifique texto a Base64 o decodifique cadenas de Base64 de nuevo a texto.'
+        },
+        ipLookup: {
+          title: 'Búsqueda de Dirección IP',
+          description: 'Obtenga geolocalización, información del ISP y detalles de la red para cualquier dirección IP.'
+        },
+        jwtDecoder: {
+          title: 'Decodificador de Token JWT',
+          description: 'Decodifique los Tokens Web JSON y vea la información del encabezado, la carga útil y la firma.'
+        }
       },
-      text: { 
-        title: 'Herramientas de Texto', 
-        description: 'Procesamiento de texto, conversión de mayúsculas y formato',
-        textDiff: {
-          title: 'Herramienta de Comparación de Texto',
-          description: 'Comparar dos documentos de texto y resaltar diferencias',
-          originalText: 'Texto Original',
-          newText: 'Texto Nuevo',
-          originalPlaceholder: 'Ingresar texto original...',
-          newPlaceholder: 'Ingresar texto nuevo...',
-          diffResult: 'Resultado de Comparación',
-          compareText: 'Comparar Texto',
-          clearAll: 'Limpiar Todo',
-          emptyLine: '(línea vacía)',
-          compareComplete: 'Comparación de texto completada',
-          enterTextToCompare: 'Por favor ingrese texto para comparar'
+      text: {
+        title: 'Herramientas de Procesamiento de Texto',
+        description: 'Herramientas de texto esenciales: convertidor de mayúsculas y minúsculas, contador de palabras, inversor de texto, eliminador de espacios en blanco y verificador de diferencias. Procesamiento gratuito, rápido y del lado del cliente.',
+        subtitle: 'Potentes herramientas de manipulación y análisis de texto para escritores, desarrolladores y creadores de contenido. Transforme, analice y compare texto con nuestra completa suite.',
+        utilityTools: 'Utilidades de Procesamiento de Texto',
+        whyUse: {
+          title: '¿Por Qué Usar Nuestras Herramientas de Texto?',
+          realTime: {
+            title: 'Procesamiento en Tiempo Real',
+            description: 'Vea los resultados al instante mientras escribe con el procesamiento de texto en tiempo real.'
+          },
+          privacy: {
+            title: 'Privacidad Protegida',
+            description: 'Todo el procesamiento de texto se realiza localmente: su contenido nunca abandona su navegador.'
+          },
+          multiPurpose: {
+            title: 'Multiuso',
+            description: 'Desde la simple conversión de mayúsculas y minúsculas hasta el complejo análisis y comparación de texto.'
+          }
         },
         caseConverter: {
-          title: 'Convertidor de Mayúsculas',
-          description: 'Convertir texto entre diferentes tipos de mayúsculas.',
-          placeholder: 'Ingresar texto aquí...',
-          result: 'Resultado',
+          title: 'Convertidor de Mayúsculas y Minúsculas',
+          description: 'Convierte texto entre mayúsculas, minúsculas, mayúsculas de título y mayúsculas de oración.',
+          placeholder: 'Ingrese texto para convertir mayúsculas y minúsculas...',
           upperCase: 'MAYÚSCULAS',
           lowerCase: 'minúsculas',
-          titleCase: 'Título',
-          sentenceCase: 'Oración'
+          titleCase: 'Mayúsculas de Título',
+          sentenceCase: 'Mayúsculas de oración',
+          result: 'Texto Convertido'
         },
         wordCounter: {
           title: 'Contador de Palabras y Caracteres',
-          description: 'Contar palabras, caracteres, oraciones y párrafos en tu texto.',
-          placeholder: 'Escribir o pegar tu texto aquí...',
+          description: 'Cuente palabras, caracteres, oraciones y párrafos en su texto.',
+          placeholder: 'Ingrese su texto aquí para contar palabras y caracteres...',
           words: 'Palabras',
           characters: 'Caracteres',
           charactersNoSpaces: 'Caracteres (sin espacios)',
@@ -199,57 +228,39 @@ export const es = {
         },
         textReverser: {
           title: 'Inversor de Texto',
-          description: 'Invertir los caracteres de tu texto.',
-          placeholder: 'Ingresar texto para invertir',
-          reversedText: 'Texto invertido'
+          description: 'Invierta el orden de los caracteres en su texto al instante.',
+          placeholder: 'Ingrese texto para invertir...',
+          reversedText: 'Texto Invertido'
         },
         whitespaceRemover: {
-          title: 'Removedor de Espacios en Blanco',
-          description: 'Remover espacios y saltos de línea innecesarios de tu texto.',
-          placeholder: 'Ingresar texto aquí...',
-          result: 'Resultado', 
-          removeAll: 'Remover Todos los Espacios',
-          removeTrim: 'Recortar Inicio/Final',
-          removeExtra: 'Remover Espacios Extra',
-          removeLines: 'Remover Saltos de Línea'
+          title: 'Eliminador de Espacios en Blanco',
+          description: 'Elimine espacios adicionales, recorte espacios en blanco y limpie el formato del texto.',
+          placeholder: 'Ingrese texto para limpiar espacios en blanco...',
+          result: 'Texto Limpio',
+          removeAll: 'Eliminar Todos los Espacios',
+          removeTrim: 'Recortar Espacios en Blanco',
+          removeExtra: 'Eliminar Espacios Adicionales',
+          removeLines: 'Eliminar Líneas Vacías'
         },
-        urlEncoder: {
-          title: 'Codificador / Decodificador de URL',
-          description: 'Codificar y decodificar URLs',
-          input: 'Entrada',
-          output: 'Salida',
-          encode: 'Codificar',
-          decode: 'Decodificar',
-          inputPlaceholder: 'Ingresar texto para codificar o decodificar',
-          outputPlaceholder: 'El resultado aparecerá aquí'
+        loremIpsumGenerator: {
+          title: 'Generador de Lorem Ipsum',
+          description: 'Genere texto de marcador de posición para proyectos de diseño y desarrollo.',
+          count: 'Cantidad',
+          type: 'Tipo',
+          paragraphs: 'Párrafos',
+          sentences: 'Oraciones',
+          words: 'Palabras',
+          generate: 'Generar',
+          copy: 'Copiar',
+          copied: 'Copiado al portapapeles'
         },
-        base64: {
-          title: 'Codificador / Decodificador Base64',
-          description: 'Codificar y decodificar texto Base64',
-          input: 'Entrada',
-          output: 'Salida',
-          encode: 'Codificar',
-          decode: 'Decodificar',
-          inputPlaceholder: 'Ingresar texto para codificar o decodificar',
-          outputPlaceholder: 'El resultado aparecerá aquí'
-        },
-        ipLookup: {
-          title: 'Búsqueda de Dirección IP',
-          placeholder: 'Ingresar dirección IP o dominio',
-          lookup: 'Buscar',
-          myIp: 'Buscar Mi IP',
-          results: 'Resultados de Búsqueda'
-        },
-        dateCalculator: {
-          title: 'Calculadora de Fechas',
-          description: 'Sumar o restar años, meses y días de una fecha dada',
-          startDate: 'Fecha de Inicio',
-          add: 'Sumar',
-          subtract: 'Restar',
-          years: 'Años',
-          months: 'Meses',
-          days: 'Días',
-          resultDate: 'Fecha Resultado'
+        textDiff: {
+          title: 'Herramienta de Comparación de Texto',
+          description: 'Compare dos textos y resalte las diferencias con visualización de diferencias.',
+          compareText: 'Comparar Texto',
+          clearAll: 'Limpiar Todo',
+          originalText: 'Texto Original',
+          newText: 'Texto Nuevo'
         }
       },
       timestampConverter: {
@@ -268,25 +279,98 @@ export const es = {
         targetTimezone: 'A Zona Horaria',
         convertedDateTime: 'Fecha y Hora Convertida'
       },
-      time: { 
-        title: 'Herramientas de Tiempo', 
-        description: 'Convertidores de timestamp, herramientas de zona horaria y calculadoras de fecha'
+      time: {
+        description: 'Utilidades esenciales de fecha y hora para conversión de marcas de tiempo, manejo de zonas horarias y cálculos de fechas.',
+      meta: {
+        title: 'Herramientas de Fecha y Hora - Calculadoras de Marca de Tiempo, Zona Horaria y Fecha',
+        description: 'Herramientas de tiempo gratuitas: convertidor de marca de tiempo, calculadora de zona horaria y aritmética de fechas. Utilidades precisas, compatibles con DST y amigables para desarrolladores.'
       },
-      editor: { 
-        title: 'Editores de Código', 
-        description: 'Editores Markdown y diagramas Mermaid con vista previa en vivo'
+      title: 'Herramientas de Fecha y Hora',
+      subtitle: 'Utilidades esenciales de fecha y hora para desarrolladores y profesionales. Maneje conversiones de marca de tiempo, cálculos de zona horaria y aritmética de fechas con precisión.',
+      toolsTitle: 'Herramientas de Gestión del Tiempo',
+      timestamp: {
+        title: 'Convertidor de Marca de Tiempo',
+        description: 'Convierta entre marcas de tiempo de Unix y fechas y horas legibles por humanos.'
       },
-      crypto: { 
-        title: 'Herramientas Cripto', 
-        description: 'Generación de hash, utilidades de encriptación y desencriptación' 
-      }, 
-      markdown: { 
-        title: 'Herramientas Markdown', 
-        description: 'Editor Markdown con vista previa en vivo' 
-      }, 
-      mermaid: { 
-        title: 'Diagramas Mermaid', 
-        description: 'Crear diagramas y diagramas de flujo con Mermaid' 
+      timezone: {
+        title: 'Convertidor de Zona Horaria',
+        description: 'Convierta fechas y horas entre diferentes zonas horarias de todo el mundo con soporte para DST.'
+      },
+      dateCalculator: {
+        title: 'Calculadora de Fecha',
+        description: 'Sume o reste días, meses y años de las fechas. Calcule las diferencias de fecha.'
+      },
+      calculations: {
+        title: 'Cálculos de Tiempo Precisos',
+        precise: {
+          title: 'Cálculos Precisos',
+          description: 'Maneje conversiones complejas de zonas horarias y cálculos de fechas con precisión.'
+        },
+        global: {
+          title: 'Soporte Global',
+          description: 'Soporte para todas las zonas horarias del mundo con ajustes automáticos de horario de verano.'
+        },
+        developerFriendly: {
+          title: 'Amigable para Desarrolladores',
+          description: 'Perfecto para el desarrollo de API, análisis de registros y depuración de marcas de tiempo.'
+        }
+      }
+    },
+      editor: {
+        meta: {
+          title: 'Editores de Código y Documentos',
+          description: 'Editores en línea gratuitos: Markdown con vista previa en vivo y herramienta de diagramas Mermaid. Escriba, previsualice y exporte contenido profesional fácilmente.'
+        },
+        title: 'Editores de Código y Documentos',
+        subtitle: 'Editores profesionales en línea para documentación Markdown y diagramas Mermaid. Cree, edite y previsualice su contenido con renderizado en tiempo real.',
+        toolsTitle: 'Herramientas de Edición',
+        experience: {
+          title: 'Experiencia de Edición Profesional',
+          livePreview: {
+            title: 'Vista Previa en Vivo',
+            description: 'Vea sus diagramas de Markdown y Mermaid renderizados en tiempo real mientras escribe.'
+          },
+          syntaxHighlighting: {
+            title: 'Resaltado de Sintaxis',
+            description: 'Editor de código profesional con resaltado de sintaxis y autocompletado.'
+          },
+          exportReady: {
+            title: 'Listo para Exportar',
+            description: 'Copie o descargue su contenido renderizado para usarlo en documentación y presentaciones.'
+          }
+        },
+        markdown: {
+          title: 'Editor de Markdown',
+          description: 'Escriba y previsualice Markdown con resaltado de sintaxis y vista previa en vivo.'
+        },
+        mermaid: {
+          title: 'Editor de Diagramas Mermaid',
+          description: 'Cree diagramas de flujo, diagramas de secuencia y otros diagramas con la sintaxis de Mermaid.'
+        }
+      },
+        markdown: {
+          title: 'Editor de Markdown',
+          description: 'Editor de Markdown con resaltado de sintaxis y vista previa en vivo.',
+          placeholder: 'Ingrese su contenido de Markdown aquí...'
+        },
+        crypto: {
+        title: 'Herramientas de Criptografía',
+        description: 'Asegure sus datos con nuestras herramientas de criptografía: generadores de hash (MD5, SHA-1, SHA-256, SHA-512), HMAC y cifrado AES.',
+        jwtDecoder: {
+          title: 'Decodificador JWT',
+          description: 'Decodifica e inspecciona JSON Web Tokens para ver su carga útil y datos de encabezado.',
+          placeholder: 'Pega tu JWT aquí',
+          invalidToken: 'Token JWT inválido'
+        },
+        encryption: {
+          title: 'Herramienta de Cifrado',
+          description: 'Cifre y descifre texto utilizando diversos algoritmos como AES, DES y Rabbit.'
+        },
+        mermaid: {
+          title: 'Diagramas Mermaid',
+          description: 'Crear diagramas y diagramas de flujo con Mermaid',
+          invalidSyntax: 'Sintaxis de Mermaid inválida'
+        }
       }
     },
     toasts: {
@@ -330,6 +414,22 @@ export const es = {
       clearSuccess: 'Contenido limpiado',
       downloadSvg: 'Descargar SVG',
       downloadPng: 'Descargar PNG'
+    },
+    availableTools: 'Herramientas Disponibles',
+    whyChooseUs: {
+      title: '¿Por Qué Elegir Nuestras Herramientas?',
+      privacyFocused: {
+        title: 'Enfoque en la Privacidad',
+        description: 'Todo el procesamiento ocurre localmente en su navegador. Sus datos nunca abandonan su dispositivo.'
+      },
+      professionalGrade: {
+        title: 'Grado Profesional',
+        description: 'Construido con tecnologías web modernas y diseñado para desarrolladores profesionales.'
+      },
+      freeAndOpen: {
+        title: 'Gratis y Abierto',
+        description: 'No se requiere registro. Use todas las funciones de forma gratuita sin limitaciones.'
+      }
     },
     underConstruction: {
       description: 'Esta herramienta está en desarrollo, por favor mantente al tanto.'

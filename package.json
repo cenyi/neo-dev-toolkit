@@ -64,6 +64,7 @@
     "json2csv": "^6.0.0-alpha.2",
     "jsondiffpatch": "^0.7.3",
     "jsonpath-plus": "^8.1.0",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.462.0",
     "mermaid": "^11.6.0",
     "quicktype-core": "^23.2.6",

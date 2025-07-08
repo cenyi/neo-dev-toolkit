@@ -37,6 +37,8 @@ import AboutUs from "./pages/AboutUs";
 import JsonToolsPage from "./pages/JsonToolsPage";
 import NetworkToolsPage from "./pages/NetworkToolsPage";
 import TextToolsPage from "./pages/TextToolsPage";
+import CryptoToolsPage from "./pages/CryptoToolsPage";
+import JwtDecoderPage from "./pages/tools/crypto/JwtDecoderPage";
 import EditorToolsPage from "./pages/EditorToolsPage";
 import TimeToolsPage from "./pages/TimeToolsPage";
 import SiteMap from "@/components/SiteMap";
@@ -271,6 +273,23 @@ function App() {
                       keywords="text tools, text processing, case converter, word counter, text manipulation, text utilities"
                     >
                       <TextToolsPage />
+                    </PageWrapper>
+                  } />
+                  <Route path=":lang/crypto" element={
+                    <PageWrapper 
+                      title="Crypto Tools - Hashing & Encryption Utilities" 
+                      description="Secure your data with our crypto tools: hash generators (MD5, SHA-1, SHA-256, SHA-512), HMAC, and AES encryption."
+                      keywords="crypto tools, hash generator, encryption, MD5, SHA-1, SHA-256, SHA-512, HMAC, AES encryption"
+                    >
+                      <CryptoToolsPage />
+                    </PageWrapper>
+                  } />
+                  <Route path=":lang/crypto/jwt-decoder" element={
+                    <PageWrapper 
+                      title={t('tools.crypto.jwtDecoder.title')}
+                      description={t('tools.crypto.jwtDecoder.description')}
+                    >
+                      <JwtDecoderPage />
                     </PageWrapper>
                   } />
                   {/* Text Redirects */}

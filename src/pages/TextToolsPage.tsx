@@ -14,43 +14,43 @@ const TextToolsPage: React.FC = () => {
     {
       path: `/${lang}/text/case-converter`,
       icon: Type,
-      title: 'Case Converter',
-      description: 'Convert text between uppercase, lowercase, title case, and sentence case.',
+      title: t('tools.text.caseConverter.title'),
+      description: t('tools.text.caseConverter.description'),
       color: 'text-purple-500'
     },
     {
       path: `/${lang}/text/word-counter`,
       icon: Hash,
-      title: 'Word & Character Counter',
-      description: 'Count words, characters, sentences, and paragraphs in your text.',
+      title: t('tools.text.wordCounter.title'),
+      description: t('tools.text.wordCounter.description'),
       color: 'text-blue-500'
     },
     {
       path: `/${lang}/text/text-reverser`,
       icon: RotateCcw,
-      title: 'Text Reverser',
-      description: 'Reverse the order of characters in your text instantly.',
+      title: t('tools.text.textReverser.title'),
+      description: t('tools.text.textReverser.description'),
       color: 'text-green-500'
     },
     {
       path: '/text/whitespace-remover',
       icon: Eraser,
-      title: 'Whitespace Remover',
-      description: 'Remove extra spaces, trim whitespace, and clean up text formatting.',
+      title: t('tools.text.whitespaceRemover.title'),
+      description: t('tools.text.whitespaceRemover.description'),
       color: 'text-orange-500'
     },
     {
       path: '/text/lorem-ipsum-generator',
       icon: FileText,
-      title: 'Lorem Ipsum Generator',
-      description: 'Generate placeholder text for design and development projects.',
+      title: t('tools.text.loremIpsumGenerator.title'),
+      description: t('tools.text.loremIpsumGenerator.description'),
       color: 'text-indigo-500'
     },
     {
       path: '/text/text-diff',
       icon: GitCompare,
-      title: 'Text Comparison Tool',
-      description: 'Compare two texts and highlight differences with visual diff display.',
+      title: t('tools.text.textDiff.title'),
+      description: t('tools.text.textDiff.description'),
       color: 'text-red-500'
     }
   ];
@@ -58,16 +58,16 @@ const TextToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <meta name="description" content="Essential text tools: case converter, word counter, text reverser, whitespace remover & diff checker. Free, fast, client-side processing." />
+  <meta name="description" content={t('tools.text.description')} />
 </Helmet>
       <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">Text Processing Tools</h1>
+        <h1 className="text-4xl font-bold mb-4 text-foreground">{t('tools.text.title')}</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Powerful text manipulation and analysis tools for writers, developers, and content creators. Transform, analyze, and compare text with our comprehensive suite built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link>.
+          {t('tools.text.subtitle')}
         </p>
       </header>
 
-        <h2 className="text-2xl font-semibold mb-6 text-center">Text Processing Utilities</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">{t('tools.text.utilityTools')}</h2>
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {textTools.map(({ path, icon: Icon, title, description, color }) => (
             <Link key={path} to={path} className="group">
@@ -93,24 +93,24 @@ const TextToolsPage: React.FC = () => {
         </div>
 
         <section className="mt-16 text-center">
-          <h2 className="text-2xl font-semibold mb-4">Why Use Our Text Tools?</h2>
+          <h2 className="text-2xl font-semibold mb-4">{t('tools.text.whyUse.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">Real-Time Processing</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.text.whyUse.realTime.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                See results instantly as you type with real-time text processing.
+                {t('tools.text.whyUse.realTime.description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">Privacy Protected</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.text.whyUse.privacy.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                All text processing happens locally - your content never leaves your browser.
+                {t('tools.text.whyUse.privacy.description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">Multi-Purpose</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.text.whyUse.multiPurpose.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                From simple case conversion to complex text analysis and comparison.
+                {t('tools.text.whyUse.multiPurpose.description')}
               </p>
             </div>
           </div>

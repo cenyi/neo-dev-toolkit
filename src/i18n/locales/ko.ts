@@ -4,40 +4,230 @@ export const ko = {
     common: { theme: '테마', language: '언어', light: '라이트', dark: '다크', copy: '복사', clear: '지우기', format: '형식 지정', minify: '최소화', validate: '유효성 검사', convert: '변환', encrypt: '암호화', decrypt: '복호화', preview: '미리보기', download: '다운로드', toYaml: 'YAML로', toXml: 'XML로', toCsv: 'CSV로', blue: '파란색', system: '시스템', comingSoon: '곧 출시 예정' },
     home: { title: '개발자 도구 허브', subtitle: '현대적인 뉴모피즘 디자인의 전문 개발 도구', description: 'JSON 서식 지정, 텍스트 처리, 암호화 등을 포함한 필수 개발자 도구 모음입니다.' },
     tools: { 
-      json: { 
-        title: 'JSON 도구', 
-        description: 'JSON 데이터 형식 지정, 유효성 검사 및 최소화',
-        placeholder: '여기에 JSON을 입력하거나 붙여넣기...',
-        fieldPath: '필드 경로',
-        extractValue: '값 추출',
-        extractPlaceholder: '예: data.users[0].name',
-        extractedValueTitle: '추출된 값',
-        generateGraph: '그래프 생성',
-        graphTitle: 'JSON 구조',
-        syntaxError: 'JSON 구문 오류',
-        unknownParseError: '알 수 없는 JSON 파싱 오류',
-        syntaxErrorAtPosition: 'JSON 구문 오류: {{message}} (줄 {{line}}, 열 {{column}})',
-        syntaxErrorGeneric: 'JSON 구문 오류: {{message}}',
-        convertedToYamlTitle: 'YAML로 변환됨',
-        convertedToXmlTitle: 'XML로 변환됨',
-        convertedToCsvTitle: 'CSV로 변환됨',
-        viewer: {
-          title: 'JSON 구조 보기',
-          invalidJson: '구조를 보려면 유효한 JSON을 입력해주세요',
-          expandAll: '모두 펼치기',
-          collapseAll: '모두 접기',
-          items: '항목',
-          elements: '요소'
+      json: {
+        title: 'JSON 도구',
+        description: '포맷팅, 검증, 스키마 확인 및 데이터 조작을 위한 포괄적인 JSON 도구.',
+        formatter: {
+          title: 'JSON 포맷터 & 유효성 검사기',
+          description: 'JSON 데이터의 형식을 지정하고, 예쁘게 만들고, 유효성을 검사합니다.'
         },
+        schemaValidator: {
+          title: 'JSON 스키마 유효성 검사기',
+          description: 'JSON 스키마에 대해 JSON 객체의 유효성을 검사합니다.'
+        },
+        codegen: {
+          title: '코드 타입 생성',
+          description: 'JSON 객체에서 다양한 언어로 코드 타입을 생성합니다.'
+        },
+        history: {
+          title: '기록'
+        },
+        generateGraph: '그래프 생성',
+        extractValue: '값 추출',
+        fieldPath: '필드 경로',
+        extractPlaceholder: 'JSONPath 입력 (예: $.users[0].name)',
+        graphTitle: 'JSON 구조 그래프',
+        input: '입력',
+        output: '출력',
+        outputPlaceholder: '포맷된 JSON이 여기에 표시됩니다',
+        validJson: '유효한 JSON',
+        invalidJson: '유효하지 않은 JSON',
+        diff: {
+          title: 'JSON 비교 도구',
+          description: '두 개의 JSON 객체를 비교하고 차이점을 강조 표시합니다.'
+        },
+        mock: {
+          title: '모의 데이터 생성기',
+          description: '테스트 및 개발을 위한 모의 JSON 데이터를 생성합니다.'
+        }
+      },
+      network: {
+        title: '네트워크 및 인코딩 도구',
+        description: '무료 네트워크 도구: URL 인코더/디코더, Base64 변환기, IP 조회 및 JWT 디코더. 안전한 클라이언트 측 처리, 데이터 저장 필요 없음.',
+        subtitle: '웹 개발자를 위한 필수 네트워크 및 인코딩 유틸리티. 안전하고 개인 정보 보호에 중점을 둔 도구를 사용하여 URL 인코딩, Base64 변환, IP 조회 및 JWT 디코딩을 처리합니다.',
+        utilityTools: '네트워크 유틸리티 도구',
+        secureTitle: '안전한 네트워크 유틸리티',
+        clientSideProcessing: {
+          title: '클라이언트 측 처리',
+          description: '최대 보안을 위해 모든 인코딩 및 디코딩이 브라우저에서 수행됩니다.'
+        },
+        noDataStorage: {
+          title: '데이터 저장 없음',
+          description: '입력 데이터나 결과를 저장하거나 기록하지 않습니다.'
+        },
+        instantResults: {
+          title: '즉시 결과',
+          description: '입력하는 동안 실시간 결과로 빠른 처리.'
+        },
+        urlEncoder: {
+          title: 'URL 인코더/디코더',
+          description: '안전한 전송을 위해 URL을 인코딩하거나 백분율로 인코딩된 URL을 디코딩합니다.'
+        },
+        base64Encoder: {
+          title: 'Base64 인코더/디코더',
+          description: '텍스트를 Base64로 인코딩하거나 Base64 문자열을 다시 텍스트로 디코딩합니다.'
+        },
+        ipLookup: {
+          title: 'IP 주소 조회',
+          description: '모든 IP 주소에 대한 지리적 위치, ISP 정보 및 네트워크 세부 정보를 가져옵니다.'
+        },
+        jwtDecoder: {
+          title: 'JWT 토큰 디코더',
+          description: 'JSON 웹 토큰을 디코딩하고 헤더, 페이로드 및 서명 정보를 봅니다.'
+        }
       }, 
-      network: { title: '네트워크 도구', description: 'URL 인코딩, IP 조회 및 네트워크 유틸리티' }, 
-      text: { title: '텍스트 도구', description: '텍스트 처리, 대소문자 변환 및 서식 지정' }, 
-      crypto: { title: '암호화 도구', description: '해시 생성, 암호화 및 복호화 유틸리티' },
-      time: { title: '시간 도구', description: '타임스탬프 변환기, 시간대 도구 및 날짜 계산기' },
+      text: {
+        title: '텍스트 도구',
+        description: '텍스트 처리, 대소문자 변환, 포맷팅',
+        caseConverter: {
+          title: '대소문자 변환기',
+          description: '텍스트를 대문자, 소문자, 제목 케이스, 문장 케이스로 변환합니다.',
+          placeholder: '변환할 텍스트를 입력하세요...',
+          upperCase: '대문자',
+          lowerCase: '소문자',
+          titleCase: '제목 케이스',
+          sentenceCase: '문장 케이스',
+          result: '결과'
+        },
+        wordCounter: {
+          title: '단어 및 문자 카운터',
+          description: '텍스트의 단어, 문자, 문장, 단락을 세어보세요.',
+          placeholder: '단어와 문자를 세기 위해 여기에 텍스트를 입력하세요...',
+          words: '단어',
+          characters: '문자',
+          charactersNoSpaces: '문자 (공백 제외)',
+          sentences: '문장',
+          paragraphs: '단락'
+        },
+        textReverser: {
+          title: '텍스트 리버서',
+          description: '텍스트의 문자 순서를 즉시 뒤집습니다.',
+          placeholder: '뒤집을 텍스트를 입력하세요...',
+          reversedText: '뒤집힌 텍스트'
+        },
+        whitespaceRemover: {
+          title: '공백 제거 도구',
+          description: '여분의 공백을 제거하고, 공백을 다듬고, 텍스트 서식을 정리합니다.',
+          placeholder: '공백을 정리할 텍스트를 입력하세요...',
+          result: '정리된 텍스트',
+          removeAll: '모든 공백 제거',
+          removeTrim: '공백 다듬기',
+          removeExtra: '여분의 공백 제거',
+          removeLines: '빈 줄 제거'
+        },
+        loremIpsumGenerator: {
+          title: 'Lorem Ipsum 생성기',
+          description: '디자인 및 개발 프로젝트를 위한 플레이스홀더 텍스트를 생성합니다.',
+          count: '개수',
+          type: '유형',
+          paragraphs: '단락',
+          sentences: '문장',
+          words: '단어',
+          generate: '생성',
+          copy: '복사',
+          copied: '클립보드에 복사됨'
+        },
+        textDiff: {
+          title: '텍스트 비교 도구',
+          description: '두 텍스트를 비교하고 시각적 차이 표시로 차이점을 강조 표시합니다.',
+          compareText: '텍스트 비교',
+          clearAll: '모두 지우기',
+          originalText: '원본 텍스트',
+          newText: '새 텍스트'
+        }
+      },
+        crypto: {
+        title: '암호화 도구',
+        description: '암호화 도구로 데이터를 보호하세요: 해시 생성기(MD5, SHA-1, SHA-256, SHA-512), HMAC 및 AES 암호화.',
+        jwtDecoder: {
+          title: 'JWT 디코더',
+          description: 'JSON 웹 토큰을 디코딩하고 검사하여 페이로드 및 헤더 데이터를 봅니다.'
+        },
+        encryption: {
+          title: '암호화 도구',
+          description: 'AES, DES 및 Rabbit과 같은 다양한 알고리즘을 사용하여 텍스트를 암호화하고 복호화합니다.'
+        }
+      },
+      time: {
+        description: '타임스탬프 변환, 시간대 처리 및 날짜 계산을 위한 필수 날짜 및 시간 유틸리티.',
+        meta: {
+        title: '날짜 및 시간 도구 - 타임스탬프, 시간대 및 날짜 계산기',
+        description: '무료 시간 도구: 타임스탬프 변환기, 시간대 계산기 및 날짜 산술. 정확하고 DST를 지원하며 개발자에게 친숙한 유틸리티.'
+      },
+      title: '날짜 및 시간 도구',
+      subtitle: '개발자와 전문가를 위한 필수 날짜 및 시간 유틸리티. 타임스탬프 변환, 시간대 계산 및 날짜 산술을 정밀하게 처리합니다.',
+      toolsTitle: '시간 관리 도구',
+      timestamp: {
+        title: '타임스탬프 변환기',
+        description: 'Unix 타임스탬프와 사람이 읽을 수 있는 날짜 및 시간 간에 변환합니다.'
+      },
+      timezone: {
+        title: '시간대 변환기',
+        description: 'DST를 지원하여 전 세계 여러 시간대 간에 날짜와 시간을 변환합니다.'
+      },
+      dateCalculator: {
+        title: '날짜 계산기',
+        description: '날짜에서 일, 월, 년을 더하거나 뺍니다. 날짜 차이를 계산합니다.'
+      },
+      calculations: {
+        title: '정확한 시간 계산',
+        precise: {
+          title: '정확한 계산',
+          description: '복잡한 시간대 변환 및 날짜 계산을 정확하게 처리합니다.'
+        },
+        global: {
+          title: '글로벌 지원',
+          description: '자동 일광 절약 시간 조정 기능으로 모든 세계 시간대를 지원합니다.'
+        },
+        developerFriendly: {
+          title: '개발자 친화적',
+          description: 'API 개발, 로그 분석 및 타임스탬프 디버깅에 적합합니다.'
+        }
+      }
+    },
       regex: { title: '정규표현식 도구', description: '정규표현식 테스트 및 검증' },
-      editor: { title: '코드 에디터', description: '라이브 미리보기가 있는 Markdown 및 Mermaid 다이어그램 에디터' },
-      markdown: { title: 'Markdown 도구', description: '실시간 미리보기가 포함된 Markdown 편집기' }, 
-      mermaid: { title: 'Mermaid 다이어그램', description: 'Mermaid로 다이어그램 및 순서도 만들기' } 
+      editor: {
+        meta: {
+          title: '코드 및 문서 편집기',
+          description: '무료 온라인 편집기: 실시간 미리보기가 포함된 Markdown 편집기 및 Mermaid 다이어그램 도구. 전문적인 콘텐츠를 쉽게 작성, 미리보기 및 내보내기할 수 있습니다.'
+        },
+        title: '코드 및 문서 편집기',
+        subtitle: 'Markdown 문서 및 Mermaid 다이어그램을 위한 전문 온라인 편집기. 실시간 렌더링으로 콘텐츠를 만들고, 편집하고, 미리볼 수 있습니다.',
+        toolsTitle: '에디터 도구',
+        experience: {
+          title: '전문적인 편집 경험',
+          livePreview: {
+            title: '실시간 미리보기',
+            description: '입력하는 동안 Markdown 및 Mermaid 다이어그램이 실시간으로 렌더링되는 것을 확인하세요.'
+          },
+          syntaxHighlighting: {
+            title: '구문 강조',
+            description: '구문 강조 및 자동 완성 기능이 있는 전문 코드 편집기.'
+          },
+          exportReady: {
+            title: '내보내기 준비 완료',
+            description: '렌더링된 콘텐츠를 복사하거나 다운로드하여 문서 및 프레젠테이션에 사용할 수 있습니다.'
+          }
+        },
+        markdown: {
+          title: 'Markdown 편집기',
+          description: '구문 강조 및 실시간 미리보기로 Markdown을 작성하고 미리봅니다.'
+        },
+        mermaid: {
+          title: 'Mermaid 다이어그램 편집기',
+          description: 'Mermaid 구문을 사용하여 순서도, 시퀀스 다이어그램 및 기타 다이어그램을 만듭니다.'
+        }
+      },
+      markdown: {
+        title: 'Markdown 편집기',
+        description: '구문 강조 및 실시간 미리보기가 있는 Markdown 편집기.',
+        placeholder: '여기에 Markdown 내용을 입력하세요...'
+      }, 
+      mermaid: { 
+        title: 'Mermaid 다이어그램', 
+        description: 'Mermaid로 다이어그램과 플로우차트 생성',
+        invalidSyntax: '잘못된 Mermaid 구문'
+      } 
     },
     toasts: {
       common: {

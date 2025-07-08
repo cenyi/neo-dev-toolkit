@@ -76,51 +76,41 @@ export const en = {
       feature3Description: 'Clean, responsive design powered by Lovable AI that works perfectly on all devices'
     },
     tools: { 
-      json: { 
-        title: 'JSON Tools', 
-        description: 'Format, validate, and minify JSON data',
-        actionsTitle: 'Actions',
-        inputTitle: 'Input JSON',
-        outputTitle: 'Output Result',
-        formatter: 'JSON Formatter',
-        viewerTitle: 'JSON Viewer',
-        fieldPath: 'Field Path',
-        extractPlaceholder: 'e.g., $.user.name or $[0].id',
-        extractValue: 'Extract Value',
-        placeholder: 'Enter or paste your JSON here...',
-        output: 'Output',
-        outputPlaceholder: 'Formatted, converted, or extracted results will appear here...',
-        extractedValueTitle: 'Extracted Value',
-        generateGraph: 'Generate Graph',
-        graphTitle: 'JSON Structure',
-        syntaxError: 'JSON syntax error',
-        unknownParseError: 'Unknown JSON parsing error',
-        syntaxErrorAtPosition: 'JSON syntax error: {{message}} (line {{line}}, column {{column}})',
-        syntaxErrorGeneric: 'JSON syntax error: {{message}}',
-        convertedToYamlTitle: 'Converted to YAML',
-        convertedToXmlTitle: 'Converted to XML',
-        convertedToCsvTitle: 'Converted to CSV',
-        viewer: {
-          title: 'JSON Structure View',
-          invalidJson: 'Please enter valid JSON to view structure',
-          expandAll: 'Expand All',
-          collapseAll: 'Collapse All',
-          items: 'items',
-          elements: 'elements'
+      json: {
+        title: 'JSON Tools',
+        description: 'Comprehensive JSON tools for formatting, validation, schema checking, and data manipulation.',
+        formatter: {
+          title: 'JSON Formatter & Validator',
+          description: 'Format, beautify, and validate your JSON data.'
+        },
+        schemaValidator: {
+          title: 'JSON Schema Validator',
+          description: 'Validate your JSON objects against a JSON Schema.'
+        },
+        codegen: {
+          title: 'Generate Code Types',
+          description: 'Generate code types in various languages from a JSON object.'
         },
         history: {
-          title: 'History',
-          emptyMessage: 'No history yet, start by entering some data!',
-          clearAll: 'Clear All',
-          removeItem: 'Remove Item',
-          itemRemoved: 'History item removed',
-          historyCleared: 'History cleared',
-          loadedFromHistory: 'Loaded from history',
-          justNow: 'Just now',
-          minutesAgo: '{{count}} minutes ago',
-          hoursAgo: '{{count}} hours ago',
-          searchPlaceholder: 'Search history...',
-          noResults: 'No matching records found'
+          title: 'History'
+        },
+        generateGraph: 'Generate Graph',
+        extractValue: 'Extract Value',
+        fieldPath: 'Field Path',
+        extractPlaceholder: 'Enter JSONPath (e.g., $.users[0].name)',
+        graphTitle: 'JSON Structure Graph',
+        input: 'Input',
+        output: 'Output',
+        outputPlaceholder: 'Formatted JSON will appear here',
+        validJson: 'Valid JSON',
+        invalidJson: 'Invalid JSON',
+        diff: {
+          title: 'JSON Diff Tool',
+          description: 'Compare two JSON objects and highlight the differences.'
+        },
+        mock: {
+          title: 'Mock Data Generator',
+          description: 'Generate mock JSON data for testing and development.'
         }
       },
       regex: {
@@ -163,38 +153,75 @@ export const en = {
         newPlaceholder: 'Paste new JSON here',
         diffResult: 'Diff Result'
       },
-      network: { title: 'Network Tools', description: 'URL encoding, IP lookup, and network utilities' }, 
-      text: { 
-        title: 'Text Tools', 
-        description: 'Text processing, case conversion, and formatting',
-        textDiff: {
-          title: 'Text Comparison Tool',
-          description: 'Compare two text documents and highlight differences',
-          originalText: 'Original Text',
-          newText: 'New Text',
-          originalPlaceholder: 'Enter original text...',
-          newPlaceholder: 'Enter new text...',
-          diffResult: 'Comparison Result',
-          compareText: 'Compare Text',
-          clearAll: 'Clear All',
-          emptyLine: '(empty line)',
-          compareComplete: 'Text comparison completed',
-          enterTextToCompare: 'Please enter text to compare'
+      network: {
+        title: 'Network & Encoding Tools',
+        description: 'Free network tools: URL encoder/decoder, Base64 converter, IP lookup & JWT decoder. Secure, client-side processing, no data storage required.',
+        subtitle: 'Essential network and encoding utilities for web developers. Handle URL encoding, Base64 conversion, IP lookups, and JWT decoding with our secure, privacy-focused tools.',
+        utilityTools: 'Network Utility Tools',
+        secureTitle: 'Secure Network Utilities',
+        clientSideProcessing: {
+          title: 'Client-Side Processing',
+          description: 'All encoding and decoding happens in your browser for maximum security.'
+        },
+        noDataStorage: {
+          title: 'No Data Storage',
+          description: 'We don\'t store or log any of your input data or results.'
+        },
+        instantResults: {
+          title: 'Instant Results',
+          description: 'Fast processing with real-time results as you type.'
+        },
+        urlEncoder: {
+          title: 'URL Encoder / Decoder',
+          description: 'Encode URLs for safe transmission or decode percent-encoded URLs.'
+        },
+        base64Encoder: {
+          title: 'Base64 Encoder / Decoder',
+          description: 'Encode text to Base64 or decode Base64 strings back to text.'
+        },
+        ipLookup: {
+          title: 'IP Address Lookup',
+          description: 'Get geolocation, ISP information, and network details for any IP address.'
+        },
+        jwtDecoder: {
+          title: 'JWT Token Decoder',
+          description: 'Decode JSON Web Tokens and view header, payload, and signature information.'
+        }
+      }, 
+      text: {
+        title: 'Text Processing Tools',
+        description: 'Essential text tools: case converter, word counter, text reverser, whitespace remover & diff checker. Free, fast, client-side processing.',
+        subtitle: 'Powerful text manipulation and analysis tools for writers, developers, and content creators. Transform, analyze, and compare text with our comprehensive suite.',
+        utilityTools: 'Text Processing Utilities',
+        whyUse: {
+          title: 'Why Use Our Text Tools?',
+          realTime: {
+            title: 'Real-Time Processing',
+            description: 'See results instantly as you type with real-time text processing.'
+          },
+          privacy: {
+            title: 'Privacy Protected',
+            description: 'All text processing happens locally - your content never leaves your browser.'
+          },
+          multiPurpose: {
+            title: 'Multi-Purpose',
+            description: 'From simple case conversion to complex text analysis and comparison.'
+          }
         },
         caseConverter: {
           title: 'Case Converter',
-          description: 'Convert text between different letter cases.',
-          placeholder: 'Enter text here...',
-          result: 'Result',
-          upperCase: 'UPPER CASE',
-          lowerCase: 'lower case',
+          description: 'Convert text between uppercase, lowercase, title case, and sentence case.',
+          placeholder: 'Enter text to convert case...',
+          upperCase: 'UPPERCASE',
+          lowerCase: 'lowercase',
           titleCase: 'Title Case',
-          sentenceCase: 'Sentence case'
+          sentenceCase: 'Sentence case',
+          result: 'Converted Text'
         },
         wordCounter: {
           title: 'Word & Character Counter',
           description: 'Count words, characters, sentences, and paragraphs in your text.',
-          placeholder: 'Type or paste your text here...',
+          placeholder: 'Enter your text here to count words and characters...',
           words: 'Words',
           characters: 'Characters',
           charactersNoSpaces: 'Characters (no spaces)',
@@ -203,57 +230,39 @@ export const en = {
         },
         textReverser: {
           title: 'Text Reverser',
-          description: 'Reverse the characters of your text.',
-          placeholder: 'Enter text to reverse',
-          reversedText: 'Reversed text'
+          description: 'Reverse the order of characters in your text instantly.',
+          placeholder: 'Enter text to reverse...',
+          reversedText: 'Reversed Text'
         },
         whitespaceRemover: {
           title: 'Whitespace Remover',
-          description: 'Remove unnecessary spaces and line breaks from your text.',
-          placeholder: 'Enter text here...',
-          result: 'Result',
+          description: 'Remove extra spaces, trim whitespace, and clean up text formatting.',
+          placeholder: 'Enter text to clean up whitespace...',
+          result: 'Cleaned Text',
           removeAll: 'Remove All Spaces',
-          removeTrim: 'Trim Leading/Trailing',
+          removeTrim: 'Trim Whitespace',
           removeExtra: 'Remove Extra Spaces',
-          removeLines: 'Remove Line Breaks'
+          removeLines: 'Remove Empty Lines'
         },
-        urlEncoder: {
-          title: 'URL Encoder / Decoder',
-          description: 'Encode and decode URLs',
-          input: 'Input',
-          output: 'Output',
-          encode: 'Encode',
-          decode: 'Decode',
-          inputPlaceholder: 'Enter text to encode or decode',
-          outputPlaceholder: 'Result will appear here'
+        loremIpsumGenerator: {
+          title: 'Lorem Ipsum Generator',
+          description: 'Generate placeholder text for design and development projects.',
+          count: 'Count',
+          type: 'Type',
+          paragraphs: 'Paragraphs',
+          sentences: 'Sentences',
+          words: 'Words',
+          generate: 'Generate',
+          copy: 'Copy',
+          copied: 'Copied to clipboard'
         },
-        base64: {
-          title: 'Base64 Encoder / Decoder',
-          description: 'Encode and decode Base64 text',
-          input: 'Input',
-          output: 'Output',
-          encode: 'Encode',
-          decode: 'Decode',
-          inputPlaceholder: 'Enter text to encode or decode',
-          outputPlaceholder: 'Result will appear here'
-        },
-        ipLookup: {
-          title: 'IP Address Lookup',
-          placeholder: 'Enter IP address or domain',
-          lookup: 'Lookup',
-          myIp: 'Lookup My IP',
-          results: 'Lookup Results'
-        },
-        dateCalculator: {
-          title: 'Date Calculator',
-          description: 'Add or subtract years, months, and days from a given date',
-          startDate: 'Start Date',
-          add: 'Add',
-          subtract: 'Subtract',
-          years: 'Years',
-          months: 'Months',
-          days: 'Days',
-          resultDate: 'Result Date'
+        textDiff: {
+          title: 'Text Comparison Tool',
+          description: 'Compare two texts and highlight differences with visual diff display.',
+          compareText: 'Compare Text',
+          clearAll: 'Clear All',
+          originalText: 'Original Text',
+          newText: 'New Text'
         }
       },
       timestampConverter: {
@@ -272,17 +281,106 @@ export const en = {
         targetTimezone: 'To Timezone',
         convertedDateTime: 'Converted Date & Time'
       },
-      time: { 
-        title: 'Time Tools', 
-        description: 'Timestamp converters, timezone tools, and date calculators'
+      time: {
+        description: 'Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.',
+        meta: {
+          title: 'Date & Time Tools - Timestamp, Timezone, and Date Calculators',
+          description: 'Free time tools: timestamp converter, timezone calculator & date arithmetic. Accurate, DST-aware, developer-friendly utilities.'
+        },
+        title: 'Date & Time Tools',
+        subtitle: 'Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision.',
+        toolsTitle: 'Time Management Tools',
+        timestamp: {
+          title: 'Timestamp Converter',
+          description: 'Convert between Unix timestamps and human-readable dates and times.'
+        },
+        timezone: {
+          title: 'Timezone Converter',
+          description: 'Convert date and time between different timezones worldwide with DST support.'
+        },
+        dateCalculator: {
+          title: 'Date Calculator',
+          description: 'Add or subtract days, months, and years from dates. Calculate date differences.',
+          startDate: 'Start Date',
+          add: 'Add',
+          subtract: 'Subtract',
+          years: 'Years',
+          months: 'Months',
+          days: 'Days',
+          resultDate: 'Result Date'
+        },
+        calculations: {
+          title: 'Accurate Time Calculations',
+          precise: {
+            title: 'Precise Calculations',
+            description: 'Handle complex timezone conversions and date calculations with accuracy.'
+          },
+          global: {
+            title: 'Global Support',
+            description: 'Support for all world timezones with automatic daylight saving time adjustments.'
+          },
+          developerFriendly: {
+            title: 'Developer Friendly',
+            description: 'Perfect for API development, log analysis, and timestamp debugging.'
+          }
+        }
       },
-      editor: { 
-        title: 'Code Editors', 
-        description: 'Markdown and Mermaid diagram editors with live preview'
+      editor: {
+        meta: {
+          title: 'Code & Document Editors',
+          description: 'Free online editors: Markdown with live preview & Mermaid diagram tool. Write, preview, and export professional content easily.'
+        },
+        title: 'Code & Document Editors',
+        subtitle: 'Professional online editors for Markdown documentation and Mermaid diagrams. Create, edit, and preview your content with real-time rendering.',
+        toolsTitle: 'Editor Tools',
+        experience: {
+          title: 'Professional Editing Experience',
+          livePreview: {
+            title: 'Live Preview',
+            description: 'See your Markdown and Mermaid diagrams rendered in real-time as you type.'
+          },
+          syntaxHighlighting: {
+            title: 'Syntax Highlighting',
+            description: 'Professional code editor with syntax highlighting and auto-completion.'
+          },
+          exportReady: {
+            title: 'Export Ready',
+            description: 'Copy or download your rendered content for use in documentation and presentations.'
+          }
+        },
+        markdown: {
+          title: 'Markdown Editor',
+          description: 'Write and preview Markdown with syntax highlighting and live preview.'
+        },
+        mermaid: {
+          title: 'Mermaid Diagram Editor',
+          description: 'Create flowcharts, sequence diagrams, and other diagrams with Mermaid syntax.'
+        }
       },
-      crypto: { title: 'Crypto Tools', description: 'Hash generation, encryption and decryption utilities' }, 
-      markdown: { title: 'Markdown Tools', description: 'Markdown editor with live preview' }, 
-      mermaid: { title: 'Mermaid Diagrams', description: 'Create diagrams and flowcharts with Mermaid' }
+        markdown: {
+          title: 'Markdown Editor',
+          description: 'Markdown editor with syntax highlighting and live preview.',
+          placeholder: 'Enter your Markdown content here...'
+        },
+        crypto: { 
+        title: 'Crypto Tools',
+        description: 'Secure your data with our crypto tools: hash generators (MD5, SHA-1, SHA-256, SHA-512), HMAC, and AES encryption.',
+        jwtDecoder: {
+          title: 'JWT Decoder',
+          description: 'Decode and inspect JSON Web Tokens to view their payload and header data.',
+          placeholder: 'Paste your JWT here',
+          invalidToken: 'Invalid JWT token'
+        },
+        encryption: {
+          title: 'Encryption Tool',
+          description: 'Encrypt and decrypt text using various algorithms like AES, DES, and Rabbit.'
+        }
+       },
+      mermaid: {
+        title: 'Mermaid Diagrams',
+        description: 'Create diagrams and flowcharts with Mermaid',
+        invalidSyntax: 'Invalid Mermaid syntax'
+      }
     },
     toasts: {
       common: {
@@ -325,6 +423,22 @@ export const en = {
       clearSuccess: 'Content cleared',
       downloadSvg: 'Download SVG',
       downloadPng: 'Download PNG'
+    },
+    availableTools: 'Available Tools',
+    whyChooseUs: {
+      title: 'Why Choose Our Tools?',
+      privacyFocused: {
+        title: 'Privacy Focused',
+        description: 'All processing happens locally in your browser. Your data never leaves your device.'
+      },
+      professionalGrade: {
+        title: 'Professional Grade',
+        description: 'Built with modern web technologies and designed for professional developers.'
+      },
+      freeAndOpen: {
+        title: 'Free & Open',
+        description: 'No registration required. Use all features for free with no limitations.'
+      }
     },
     underConstruction: {
       description: 'This tool is under development, please stay tuned.'

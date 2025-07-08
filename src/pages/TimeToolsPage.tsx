@@ -14,22 +14,22 @@ const TimeToolsPage: React.FC = () => {
     {
       path: `/${lang}/time/timestamp-converter`,
       icon: Clock,
-      title: 'Timestamp Converter',
-      description: 'Convert between Unix timestamps and human-readable dates and times.',
+      title: t('time.timestamp.title'),
+      description: t('time.timestamp.description'),
       color: 'text-blue-500'
     },
     {
       path: `/${lang}/time/timezone-converter`,
       icon: Globe,
-      title: 'Timezone Converter',
-      description: 'Convert date and time between different timezones worldwide with DST support.',
+      title: t('time.timezone.title'),
+      description: t('time.timezone.description'),
       color: 'text-green-500'
     },
     {
       path: `/${lang}/time/date-calculator`,
       icon: Calendar,
-      title: 'Date Calculator',
-      description: 'Add or subtract days, months, and years from dates. Calculate date differences.',
+      title: t('time.dateCalculator.title'),
+      description: t('time.dateCalculator.description'),
       color: 'text-purple-500'
     }
   ];
@@ -37,16 +37,17 @@ const TimeToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <meta name="description" content="Free time tools: timestamp converter, timezone calculator & date arithmetic. Accurate, DST-aware, developer-friendly utilities." />
+  <title>{t('time.meta.title')}</title>
+  <meta name="description" content={t('time.meta.description')} />
 </Helmet>
       <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">Date & Time Tools</h1>
+        <h1 className="text-4xl font-bold mb-4 text-foreground">{t('time.title')}</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision, built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link> technology.
+          {t('time.subtitle')}
         </p>
       </header>
 
-        <h2 className="text-2xl font-semibold mb-6 text-center">Time Management Tools</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">{t('time.toolsTitle')}</h2>
 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {timeTools.map(({ path, icon: Icon, title, description, color }) => (
             <Link key={path} to={path} className="group">
@@ -72,24 +73,24 @@ const TimeToolsPage: React.FC = () => {
         </div>
 
         <section className="mt-16 text-center">
-          <h2 className="text-2xl font-semibold mb-4">Accurate Time Calculations</h2>
+          <h2 className="text-2xl font-semibold mb-4">{t('time.calculations.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">Precise Calculations</h3>
+              <h3 className="text-lg font-medium mb-2">{t('time.calculations.precise.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                Handle complex timezone conversions and date calculations with accuracy.
+                {t('time.calculations.precise.description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">Global Support</h3>
+              <h3 className="text-lg font-medium mb-2">{t('time.calculations.global.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                Support for all world timezones with automatic daylight saving time adjustments.
+                {t('time.calculations.global.description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">Developer Friendly</h3>
+              <h3 className="text-lg font-medium mb-2">{t('time.calculations.developerFriendly.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                Perfect for API development, log analysis, and timestamp debugging.
+                {t('time.calculations.developerFriendly.description')}
               </p>
             </div>
           </div>

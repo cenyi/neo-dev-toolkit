@@ -14,29 +14,29 @@ const NetworkToolsPage: React.FC = () => {
     {
       path: `/${lang}/network/url-encoder`,
       icon: LinkIcon,
-      title: 'URL Encoder / Decoder',
-      description: 'Encode URLs for safe transmission or decode percent-encoded URLs.',
+      title: t('tools.network.urlEncoder.title'),
+      description: t('tools.network.urlEncoder.description'),
       color: 'text-green-500'
     },
     {
       path: `/${lang}/network/base64-encoder`,
       icon: Network,
-      title: 'Base64 Encoder / Decoder',
-      description: 'Encode text to Base64 or decode Base64 strings back to text.',
+      title: t('tools.network.base64Encoder.title'),
+      description: t('tools.network.base64Encoder.description'),
       color: 'text-blue-500'
     },
     {
       path: '/network/ip-lookup',
       icon: Eye,
-      title: 'IP Address Lookup',
-      description: 'Get geolocation, ISP information, and network details for any IP address.',
+      title: t('tools.network.ipLookup.title'),
+      description: t('tools.network.ipLookup.description'),
       color: 'text-purple-500'
     },
     {
       path: '/network/jwt-decoder',
       icon: Key,
-      title: 'JWT Token Decoder',
-      description: 'Decode JSON Web Tokens and view header, payload, and signature information.',
+      title: t('tools.network.jwtDecoder.title'),
+      description: t('tools.network.jwtDecoder.description'),
       color: 'text-orange-500'
     }
   ];
@@ -44,16 +44,16 @@ const NetworkToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <meta name="description" content="Free network tools: URL encoder/decoder, Base64 converter, IP lookup & JWT decoder. Secure, client-side processing, no data storage required." />
+  <meta name="description" content={t('tools.network.description')} />
 </Helmet>
       <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">Network & Encoding Tools</h1>
+        <h1 className="text-4xl font-bold mb-4 text-foreground">{t('tools.network.title')}</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Essential network and encoding utilities for web developers. Handle URL encoding, Base64 conversion, IP lookups, and JWT decoding with our secure, privacy-focused tools built with <Link to="https://lovable.dev" className="text-primary hover:underline">Lovable AI</Link>.
+          {t('tools.network.subtitle')}
         </p>
       </header>
 
-        <h2 className="text-2xl font-semibold mb-6 text-center">Network Utility Tools</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">{t('tools.network.utilityTools')}</h2>
 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {networkTools.map(({ path, icon: Icon, title, description, color }) => (
             <Link key={path} to={path} className="group">
@@ -79,24 +79,24 @@ const NetworkToolsPage: React.FC = () => {
         </div>
 
         <section className="mt-16 text-center">
-          <h2 className="text-2xl font-semibold mb-4">Secure Network Utilities</h2>
+          <h2 className="text-2xl font-semibold mb-4">{t('tools.network.secureTitle')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">Client-Side Processing</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.network.clientSideProcessing.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                All encoding and decoding happens in your browser for maximum security.
+                {t('tools.network.clientSideProcessing.description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">No Data Storage</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.network.noDataStorage.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                We don't store or log any of your input data or results.
+                {t('tools.network.noDataStorage.description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">Instant Results</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.network.instantResults.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                Fast processing with real-time results as you type.
+                {t('tools.network.instantResults.description')}
               </p>
             </div>
           </div>

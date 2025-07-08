@@ -47,6 +47,11 @@ const Navigation: React.FC = () => {
     { path: `/${lang}/time/date-calculator`, name: 'Date Calculator' }
   ], [lang]);
 
+  const cryptoTools = useMemo(() => [
+    { path: `/${lang}/crypto/jwt-decoder`, name: 'JWT Decoder' },
+    { path: `/${lang}/crypto/encryption`, name: 'Encryption Tool' },
+  ], [lang]);
+
   const navItems = useMemo(() => [
     { path: `/${lang}`, key: 'home', icon: Home },
     { path: `/${lang}/json`, key: 'json', icon: FileJson, tools: jsonTools, dropdownWidth: 'w-56' },
@@ -55,7 +60,7 @@ const Navigation: React.FC = () => {
     { path: `/${lang}/regex`, key: 'regex', icon: Hash },
     { path: `/${lang}/editor`, key: 'editor', icon: Edit, tools: editorTools, dropdownWidth: 'w-52' },
     { path: `/${lang}/time`, key: 'time', icon: Clock, tools: timeTools, dropdownWidth: 'w-64' },
-    { path: `/${lang}/encryption`, key: 'encryption', icon: Key }
+    { path: `/${lang}/crypto`, key: 'encryption', icon: Key, tools: cryptoTools, dropdownWidth: 'w-56' }
   ], [lang]);
 
   return (

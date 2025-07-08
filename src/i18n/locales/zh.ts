@@ -74,51 +74,41 @@ export const zh = {
       feature3Description: '由 Lovable AI 提供支持的简洁、响应式设计，可在所有设备上完美运行'
     },
     tools: { 
-      json: { 
-        title: 'JSON 工具', 
-        description: '格式化、验证和压缩 JSON 数据',
-        actionsTitle: '操作',
-        inputTitle: '输入 JSON',
-        outputTitle: '输出结果',
-        formatter: 'JSON 格式化工具',
-        viewerTitle: 'JSON 查看器',
-        fieldPath: '字段路径',
-        extractPlaceholder: '例如，$.user.name 或 $[0].id',
-        extractValue: '提取值',
-        placeholder: '在此处输入或粘贴您的 JSON...',
-        output: '输出',
-        outputPlaceholder: '格式化、转换或提取的结果将显示在此处...',
-        extractedValueTitle: '提取的值',
-        generateGraph: '生成图表',
-        graphTitle: 'JSON 结构',
-        syntaxError: 'JSON 语法错误',
-        unknownParseError: '未知的 JSON 解析错误',
-        syntaxErrorAtPosition: 'JSON 语法错误：{{message}} (行 {{line}}，列 {{column}})',
-        syntaxErrorGeneric: 'JSON 语法错误：{{message}}',
-        convertedToYamlTitle: '已转换为 YAML',
-        convertedToXmlTitle: '已转换为 XML',
-        convertedToCsvTitle: '已转换为 CSV',
-        viewer: {
-          title: 'JSON 结构视图',
-          invalidJson: '请输入有效的 JSON 以查看结构',
-          expandAll: '全部展开',
-          collapseAll: '全部折叠',
-          items: '项',
-          elements: '元素'
+      json: {
+        title: 'JSON 工具',
+        description: '全面的 JSON 工具，用于格式化、验证、模式检查和数据操作。',
+        formatter: {
+          title: 'JSON 格式化和校验',
+          description: '格式化、美化和校验您的 JSON 数据。'
+        },
+        schemaValidator: {
+          title: 'JSON Schema 校验',
+          description: '根据 JSON Schema 验证您的 JSON 对象。'
+        },
+        codegen: {
+          title: '生成代码类型',
+          description: '从 JSON 对象生成各种语言的代码类型。'
         },
         history: {
-          title: '历史记录',
-          emptyMessage: '暂无历史记录，开始输入一些数据吧！',
-          clearAll: '全部清除',
-          removeItem: '移除项目',
-          itemRemoved: '历史记录项目已移除',
-          historyCleared: '历史记录已清除',
-          loadedFromHistory: '从历史记录加载',
-          justNow: '刚才',
-          minutesAgo: '{{count}} 分钟前',
-          hoursAgo: '{{count}} 小时前',
-          searchPlaceholder: '搜索历史记录...',
-          noResults: '未找到匹配的记录'
+          title: '历史记录'
+        },
+        generateGraph: '生成图表',
+        extractValue: '提取值',
+        fieldPath: '字段路径',
+        extractPlaceholder: '输入 JSONPath (例如: $.users[0].name)',
+        graphTitle: 'JSON 结构图',
+        input: '输入',
+        output: '输出',
+        outputPlaceholder: '格式化后的 JSON 将显示在此处',
+        validJson: '有效的 JSON',
+        invalidJson: '无效的 JSON',
+        diff: {
+          title: 'JSON 比对工具',
+          description: '比较两个 JSON 对象并高亮显示差异。'
+        },
+        mock: {
+          title: 'Mock 数据生成器',
+          description: '生成用于测试和开发的 Mock JSON 数据。'
         }
       },
       regex: {
@@ -161,67 +151,126 @@ export const zh = {
         newPlaceholder: '在此处粘贴新 JSON',
         diffResult: '差异结果'
       },
-      network: { title: '网络工具', description: 'URL 编码、IP 查询和网络实用工具' }, 
-      text: { 
-        title: '文本工具', 
-        description: '文本处理、大小写转换和格式化',
-        textDiff: '文本比较',
-        textDiffDescription: '免费的文本比较工具。通过可视化高亮显示查找文档之间的差异。',
+      network: {
+        title: '网络和编码工具',
+        description: '免费网络工具：URL 编码/解码、Base64 转换器、IP 查询和 JWT 解码器。安全的客户端处理，无需存储数据。',
+        subtitle: '为 Web 开发人员提供的基本网络和编码实用程序。使用我们安全的、注重隐私的工具处理 URL 编码、Base64 转换、IP 查询和 JWT 解码。',
+        utilityTools: '网络实用工具',
+        secureTitle: '安全网络实用程序',
+        clientSideProcessing: {
+          title: '客户端处理',
+          description: '所有编码和解码都在您的浏览器中进行，以实现最大程度的安全性。'
+        },
+        noDataStorage: {
+          title: '无数据存储',
+          description: '我们不存储或记录您的任何输入数据或结果。'
+        },
+        instantResults: {
+          title: '即时结果',
+          description: '快速处理，输入时即可获得实时结果。'
+        },
+        urlEncoder: {
+          title: 'URL 编码器/解码器',
+          description: '对 URL 进行编码以进行安全传输，或对百分比编码的 URL 进行解码。'
+        },
+        base64Encoder: {
+          title: 'Base64 编码器/解码器',
+          description: '将文本编码为 Base64，或将 Base64 字符串解码回文本。'
+        },
+        ipLookup: {
+          title: 'IP 地址查询',
+          description: '获取任何 IP 地址的地理位置、ISP 信息和网络详细信息。'
+        },
+        jwtDecoder: {
+          title: 'JWT 令牌解码器',
+          description: '解码 JSON Web 令牌并查看标头、有效负载和签名信息。'
+        }
+      }, 
+      text: {
+        title: '文本处理工具',
+        description: '基本文本工具：大小写转换器、字数计数器、文本反向器、空白移除器和差异检查器。免费、快速、客户端处理。',
+        subtitle: '为作家、开发人员和内容创作者提供的强大的文本操作和分析工具。使用我们全面的套件转换、分析和比较文本。',
+        utilityTools: '文本处理实用程序',
+        whyUse: {
+          title: '为什么使用我们的文本工具？',
+          realTime: {
+            title: '实时处理',
+            description: '通过实时文本处理，在您键入时立即查看结果。'
+          },
+          privacy: {
+            title: '隐私保护',
+            description: '所有文本处理都在本地进行 - 您的内容永远不会离开您的浏览器。'
+          },
+          multiPurpose: {
+            title: '多用途',
+            description: '从简单的大小写转换到复杂的文本分析和比较。'
+          }
+        },
         caseConverter: {
           title: '大小写转换器',
-          description: '在不同字母大小写之间转换文本。',
-          placeholder: '在此处输入文本...',
-          result: '结果',
-          upperCase: '大写',
-          lowerCase: '小写',
+          description: '在大写、小写、标题大小写和句子大小写之间转换文本。',
+          placeholder: '输入要转换大小写的文本...',
+          upperCase: '全部大写',
+          lowerCase: '全部小写',
           titleCase: '标题大小写',
-          sentenceCase: '句子大小写'
+          sentenceCase: '句子大小写',
+          result: '转换后的文本'
         },
         wordCounter: {
           title: '单词和字符计数器',
           description: '计算文本中的单词、字符、句子和段落。',
-          placeholder: '在此处键入或粘贴您的文本...',
-          words: '单词',
-          characters: '字符',
-          charactersNoSpaces: '字符（无空格）',
-          sentences: '句子',
-          paragraphs: '段落'
+          placeholder: '在此输入要统计的文本...',
+          words: '单词数',
+          characters: '字符数',
+          charactersNoSpaces: '字符数（不含空格）',
+          sentences: '句子数',
+          paragraphs: '段落数'
         },
         textReverser: {
-          title: '文本反转器',
-          description: '反转文本的字符。',
-          placeholder: '输入要反转的文本',
+          title: '文本反向器',
+          description: '立即反转文本中字符的顺序。',
+          placeholder: '在此输入要反转的文本...',
           reversedText: '反转后的文本'
         },
         whitespaceRemover: {
           title: '空白移除器',
-          description: '从文本中移除不必要的空格和换行符。',
-          placeholder: '在此处输入文本...',
-          result: '结果',
-          removeAll: '移除所有空格',
-          removeTrim: '修剪首尾空格',
-          removeExtra: '移除多余空格',
-          removeLines: '移除换行符'
+          description: '删除多余的空格、修剪空白并清理文本格式。',
+          placeholder: '在此输入要处理的文本...',
+          result: '处理结果',
+          removeAll: '删除所有空白',
+          removeTrim: '删除首尾空白',
+          removeExtra: '删除多余空白',
+          removeLines: '删除换行符'
         },
-        urlEncoder: {
-          title: 'URL 编码器 / 解码器',
-          description: '编码和解码 URL',
-          input: '输入',
-          output: '输出',
-          encode: '编码',
-          decode: '解码',
-          inputPlaceholder: '输入要编码或解码的文本',
-          outputPlaceholder: '结果将显示在此处'
+        loremIpsumGenerator: {
+          title: 'Lorem Ipsum 生成器',
+          description: '为设计和开发项目生成占位符文本。',
+          count: '数量',
+          type: '类型',
+          paragraphs: '段落',
+          sentences: '句子',
+          words: '单词',
+          generate: '生成',
+          copy: '复制',
+          copied: '已复制到剪贴板！'
+        },
+        textDiff: {
+          title: '文本比较工具',
+          description: '比较两个文本并使用可视化差异显示突出显示差异。',
+          compareText: '比较文本',
+          clearAll: '清空全部',
+          originalText: '原始文本',
+          newText: '新文本'
         },
         base64: {
-          title: 'Base64 编码器 / 解码器',
-          description: '编码和解码 Base64 文本',
-          input: '输入',
-          output: '输出',
+          title: 'Base64 编码器/解码器',
+          description: '将文本编码为 Base64，或将 Base64 字符串解码回文本。',
           encode: '编码',
           decode: '解码',
-          inputPlaceholder: '输入要编码或解码的文本',
-          outputPlaceholder: '结果将显示在此处'
+          input: '输入',
+          output: '输出',
+          inputPlaceholder: '在此输入要编码或解码的文本...',
+          outputPlaceholder: '编码或解码的结果将显示在此处'
         },
         ipLookup: {
           title: 'IP 地址查询',
@@ -229,18 +278,11 @@ export const zh = {
           lookup: '查询',
           myIp: '查询我的 IP',
           results: '查询结果'
-        },
-        dateCalculator: {
-          title: '日期计算器',
-          description: '从给定日期加或减年、月、日',
-          startDate: '开始日期',
-          add: '加',
-          subtract: '减',
-          years: '年',
-          months: '月',
-          days: '日',
-          resultDate: '结果日期'
         }
+      },
+      url: {
+        title: 'URL 编码器/解码器',
+        description: '对 URL 进行编码以进行安全传输，或对百分比编码的 URL 进行解码。'
       },
       timestampConverter: {
         title: '时间戳转换器',
@@ -258,17 +300,150 @@ export const zh = {
         targetTimezone: '目标时区',
         convertedDateTime: '转换后的日期和时间'
       },
-      time: { 
-        title: '时间工具', 
-        description: '时间戳转换器、时区工具和日期计算器'
+      time: {
+        description: '用于时间戳转换、时区处理和日期计算的基本日期和时间实用程序。',
+        meta: {
+          title: '日期和时间工具 - 时间戳、时区和日期计算器',
+          description: '免费的时间工具：时间戳转换器、时区计算器和日期计算。精确、支持夏令时、开发人员友好的实用程序。'
+        },
+        title: '日期和时间工具',
+        subtitle: '为开发人员和专业人士提供的基本日期和时间实用程序。精确处理时间戳转换、时区计算和日期算术。',
+        toolsTitle: '时间管理工具',
+        timestamp: {
+          title: '时间戳转换器',
+          description: '在Unix时间戳和人类可读的日期和时间之间进行转换。'
+        },
+        timezone: {
+          title: '时区转换器',
+          description: '在全球不同时区之间转换日期和时间，支持夏令时。'
+        },
+        dateCalculator: {
+          title: '日期计算器',
+          description: '从日期中增加或减少天数、月数和年数。计算日期差异。',
+          startDate: '开始日期',
+          add: '增加',
+          subtract: '减少',
+          years: '年',
+          months: '月',
+          days: '天',
+          resultDate: '结果日期'
+        },
+        calculations: {
+          title: '精确的时间计算',
+          precise: {
+            title: '精确计算',
+            description: '精确处理复杂的时区转换和日期计算。'
+          },
+          global: {
+            title: '全球支持',
+            description: '支持全球所有时区，并自动调整夏令时。'
+          },
+          developerFriendly: {
+            title: '开发人员友好',
+            description: '非常适合API开发、日志分析和时间戳调试。'
+          }
+        }
       },
-      editor: { 
-        title: '代码编辑器', 
-        description: '带有实时预览的 Markdown 和 Mermaid 图表编辑器'
+      editor: {
+        meta: {
+          title: '代码和文档编辑器',
+          description: '免费在线编辑器：支持实时预览的 Markdown 编辑器和 Mermaid 图表工具。轻松编写、预览和导出专业内容。'
+        },
+        title: '代码和文档编辑器',
+        subtitle: '专业的 Markdown 文档和 Mermaid 图表在线编辑器。通过实时渲染创建、编辑和预览您的内容。',
+        toolsTitle: '编辑器工具',
+        experience: {
+          title: '专业编辑体验',
+          livePreview: {
+            title: '实时预览',
+            description: '在您输入时实时查看 Markdown 和 Mermaid 图表的渲染效果。'
+          },
+          syntaxHighlighting: {
+            title: '语法高亮',
+            description: '专业的代码编辑器，支持语法高亮和自动补全。'
+          },
+          exportReady: {
+            title: '导出就绪',
+            description: '复制或下载渲染后的内容，用于文档和演示。'
+          }
+        },
+        markdown: {
+          title: 'Markdown 编辑器',
+          description: '支持语法高亮和实时预览的 Markdown 编辑器。'
+        },
+        mermaid: {
+          title: 'Mermaid 图表编辑器',
+          description: '使用 Mermaid 语法创建流程图、序列图和其他图表。'
+        }
       },
-      crypto: { title: '加密工具', description: '哈希生成、加密和解密实用工具' }, 
-      markdown: { title: 'Markdown 工具', description: '带有实时预览的 Markdown 编辑器' }, 
-      mermaid: { title: 'Mermaid 图表', description: '使用 Mermaid 创建图表和流程图' }
+        markdown: {
+          title: 'Markdown 编辑器',
+          description: '支持语法高亮和实时预览的 Markdown 编辑器。',
+          placeholder: '在此输入 Markdown 内容...'
+        },
+        crypto: {
+        title: '加密工具',
+        description: '使用我们的加密工具保护您的数据：哈希生成器（MD5、SHA-1、SHA-256、SHA-512）、HMAC 和 AES 加密。',
+        jwtDecoder: {
+          title: 'JWT 解码器',
+          description: '解码并检查 JSON Web Token 以查看其有效负载和标头数据。',
+          placeholder: '在此处粘贴您的 JWT',
+          invalidToken: '无效的 JWT 令牌'
+        },
+        encryption: {
+          title: '加密工具',
+          description: '使用 AES、DES 和 Rabbit 等各种算法加密和解密文本。'
+        },
+        mermaid: {
+          title: 'Mermaid 图表',
+          description: '使用 Mermaid 创建图表和流程图',
+          invalidSyntax: '无效的 Mermaid 语法'
+        }
+      }
+    },
+    time: {
+      meta: {
+        title: '日期和时间工具 - 时间戳、时区和日期计算器',
+        description: '免费的时间工具：时间戳转换器、时区计算器和日期计算。精确、支持夏令时、开发人员友好的实用程序。'
+      },
+      title: '日期和时间工具',
+      subtitle: '为开发人员和专业人士提供的基本日期和时间实用程序。精确处理时间戳转换、时区计算和日期算术。',
+      toolsTitle: '时间管理工具',
+      timestamp: {
+        title: '时间戳转换器',
+        description: '在Unix时间戳和人类可读的日期和时间之间进行转换。'
+      },
+      timezone: {
+        title: '时区转换器',
+        description: '在全球不同时区之间转换日期和时间，支持夏令时。'
+      },
+      dateCalculator: {
+        title: '日期计算器',
+        description: '从日期中增加或减少天数、月数和年数。计算日期差异。'
+      },
+      calculations: {
+        title: '精确的时间计算',
+        precise: {
+          title: '精确计算',
+          description: '精确处理复杂的时区转换和日期计算。'
+        },
+        global: {
+          title: '全球支持',
+          description: '支持全球所有时区，并自动调整夏令时。'
+        },
+        developerFriendly: {
+          title: '开发人员友好',
+          description: '非常适合API开发、日志分析和时间戳调试。'
+        }
+      }
+    },
+    url: {
+      input: '输入文本',
+      output: '输出',
+      inputPlaceholder: '输入要编码/解码的文本或 URL',
+      outputPlaceholder: '编码/解码结果将显示在此处',
+      encode: '编码',
+      decode: '解码'
     },
     toasts: {
       common: {
@@ -311,6 +486,22 @@ export const zh = {
       clearSuccess: '内容已清除',
       downloadSvg: '下载 SVG',
       downloadPng: '下载 PNG'
+    },
+    availableTools: '可用工具',
+    whyChooseUs: {
+      title: '为什么选择我们的工具？',
+      privacyFocused: {
+        title: '注重隐私',
+        description: '所有处理都在您的浏览器本地进行。您的数据永远不会离开您的设备。'
+      },
+      professionalGrade: {
+        title: '专业级别',
+        description: '采用现代网络技术构建，专为专业开发人员设计。'
+      },
+      freeAndOpen: {
+        title: '免费开放',
+        description: '无需注册。免费使用所有功能，没有任何限制。'
+      }
     },
     underConstruction: {
       description: '此工具正在开发中，敬请期待。'

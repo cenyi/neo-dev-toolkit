@@ -75,43 +75,39 @@ export const de = {
     tools: {
       json: {
         title: 'JSON-Tools',
-        description: 'JSON-Daten formatieren, validieren und minimieren',
-        formatter: 'JSON-Formatierer',
-        placeholder: 'Geben Sie Ihr JSON hier ein oder fügen Sie es ein...',
-        fieldPath: 'Feldpfad',
-        extractValue: 'Wert extrahieren',
-        extractPlaceholder: 'z.B. data.users[0].name',
-        extractedValueTitle: 'Extrahierter Wert',
-        generateGraph: 'Diagramm erstellen',
-        graphTitle: 'JSON-Struktur',
-        syntaxError: 'JSON-Syntaxfehler',
-        unknownParseError: 'Unbekannter JSON-Parsing-Fehler',
-        syntaxErrorAtPosition: 'JSON-Syntaxfehler: {{message}} (Zeile {{line}}, Spalte {{column}})',
-        syntaxErrorGeneric: 'JSON-Syntaxfehler: {{message}}',
-        convertedToYamlTitle: 'Zu YAML konvertiert',
-        convertedToXmlTitle: 'Zu XML konvertiert',
-        convertedToCsvTitle: 'Zu CSV konvertiert',
-        viewer: {
-          title: 'JSON-Strukturansicht',
-          invalidJson: 'Bitte geben Sie gültiges JSON ein, um die Struktur zu sehen',
-          expandAll: 'Alle erweitern',
-          collapseAll: 'Alle zusammenklappen',
-          items: 'Elemente',
-          elements: 'Elemente'
+        description: 'Umfassende JSON-Tools für Formatierung, Validierung, Schema-Überprüfung und Datenmanipulation.',
+        formatter: {
+          title: 'JSON-Formatierer & -Validator',
+          description: 'Formatieren, verschönern und validieren Sie Ihre JSON-Daten.'
+        },
+        schemaValidator: {
+          title: 'JSON-Schema-Validator',
+          description: 'Validieren Sie Ihre JSON-Objekte gegen ein JSON-Schema.'
+        },
+        codegen: {
+          title: 'Code-Typen generieren',
+          description: 'Generieren Sie Code-Typen in verschiedenen Sprachen aus einem JSON-Objekt.'
         },
         history: {
-          title: 'Verlauf',
-          emptyMessage: 'Noch kein Verlauf, beginnen Sie mit der Eingabe von JSON-Daten!',
-          clearAll: 'Alle löschen',
-          removeItem: 'Element entfernen',
-          itemRemoved: 'Verlaufselement entfernt',
-          historyCleared: 'Verlauf gelöscht',
-          loadedFromHistory: 'Aus Verlauf geladen',
-          justNow: 'Gerade eben',
-          minutesAgo: 'vor {{count}} Minuten',
-          hoursAgo: 'vor {{count}} Stunden',
-          searchPlaceholder: 'Verlauf durchsuchen...',
-          noResults: 'Keine übereinstimmenden Datensätze gefunden'
+          title: 'Verlauf'
+        },
+        generateGraph: 'Graph generieren',
+        extractValue: 'Wert extrahieren',
+        fieldPath: 'Feldpfad',
+        extractPlaceholder: 'JSONPath eingeben (z.B. $.users[0].name)',
+        graphTitle: 'JSON-Strukturgraph',
+        input: 'Eingabe',
+        output: 'Ausgabe',
+        outputPlaceholder: 'Formatiertes JSON wird hier angezeigt',
+        validJson: 'Gültiges JSON',
+        invalidJson: 'Ungültiges JSON',
+        diff: {
+          title: 'JSON-Diff-Tool',
+          description: 'Vergleichen Sie zwei JSON-Objekte und heben Sie die Unterschiede hervor.'
+        },
+        mock: {
+          title: 'Mock-Daten-Generator',
+          description: 'Generieren Sie Mock-JSON-Daten für Tests und Entwicklung.'
         }
       },
       text: {
@@ -139,34 +135,210 @@ export const de = {
         }
       },
       network: {
-        title: 'Netzwerk-Tools',
-        description: 'URL-Kodierung, IP-Suche und Netzwerk-Utilities'
+        title: 'Netzwerk- & Kodierungstools',
+        description: 'Kostenlose Netzwerk-Tools: URL-Encoder/Decoder, Base64-Konverter, IP-Lookup & JWT-Decoder. Sichere, clientseitige Verarbeitung, keine Datenspeicherung erforderlich.',
+        subtitle: 'Wesentliche Netzwerk- und Kodierungsdienstprogramme für Webentwickler. Behandeln Sie URL-Kodierung, Base64-Konvertierung, IP-Lookups und JWT-Dekodierung mit unseren sicheren, datenschutzorientierten Tools.',
+        utilityTools: 'Netzwerk-Dienstprogramm-Tools',
+        secureTitle: 'Sichere Netzwerk-Dienstprogramme',
+        clientSideProcessing: {
+          title: 'Clientseitige Verarbeitung',
+          description: 'Alle Kodierungs- und Dekodierungsvorgänge finden für maximale Sicherheit in Ihrem Browser statt.'
+        },
+        noDataStorage: {
+          title: 'Keine Datenspeicherung',
+          description: 'Wir speichern oder protokollieren keine Ihrer Eingabedaten oder Ergebnisse.'
+        },
+        instantResults: {
+          title: 'Sofortige Ergebnisse',
+          description: 'Schnelle Verarbeitung mit Echtzeitergebnissen während der Eingabe.'
+        },
+        urlEncoder: {
+          title: 'URL-Encoder / -Decoder',
+          description: 'Kodieren Sie URLs für eine sichere Übertragung oder dekodieren Sie prozentkodierte URLs.'
+        },
+        base64Encoder: {
+          title: 'Base64-Encoder / -Decoder',
+          description: 'Kodieren Sie Text in Base64 oder dekodieren Sie Base64-Zeichenfolgen zurück in Text.'
+        },
+        ipLookup: {
+          title: 'IP-Adress-Lookup',
+          description: 'Rufen Sie Geolokalisierungs-, ISP-Informationen und Netzwerkdetails für jede IP-Adresse ab.'
+        },
+        jwtDecoder: {
+          title: 'JWT-Token-Decoder',
+          description: 'Dekodieren Sie JSON Web Tokens und zeigen Sie Header-, Payload- und Signaturinformationen an.'
+        }
       },
-      crypto: {
-        title: 'Krypto-Tools',
-        description: 'Hash-Generierung, Verschlüsselungs- und Entschlüsselungs-Utilities'
+        crypto: {
+        title: 'Krypto-Werkzeuge',
+        description: 'Sichern Sie Ihre Daten mit unseren Krypto-Werkzeugen: Hash-Generatoren (MD5, SHA-1, SHA-256, SHA-512), HMAC und AES-Verschlüsselung.',
+        jwtDecoder: {
+          title: 'JWT-Decoder',
+          description: 'Dekodieren und inspizieren Sie JSON Web Tokens, um deren Payload- und Header-Daten anzuzeigen.',
+          placeholder: 'Fügen Sie Ihr JWT hier ein',
+          invalidToken: 'Ungültiges JWT-Token'
+        },
+        encryption: {
+          title: 'Verschlüsselungswerkzeug',
+          description: 'Verschlüsseln und entschlüsseln Sie Text mit verschiedenen Algorithmen wie AES, DES und Rabbit.'
+        }
       },
       time: {
-        title: 'Zeit-Tools',
-        description: 'Zeitstempel-Konverter, Zeitzonen-Tools und Datumsrechner'
+        description: 'Wesentliche Datum- und Zeit-Utilities für Zeitstempel-Konvertierung, Zeitzonenbehandlung und Datumsberechnungen.',
+      meta: {
+        title: 'Datums- & Zeit-Tools - Zeitstempel-, Zeitzonen- und Datumsrechner',
+        description: 'Kostenlose Zeit-Tools: Zeitstempel-Konverter, Zeitzonenrechner & Datumsarithmetik. Genaue, DST-fähige, entwicklerfreundliche Dienstprogramme.'
       },
+      title: 'Datums- & Zeit-Tools',
+      subtitle: 'Wesentliche Datums- und Zeit-Dienstprogramme für Entwickler und Fachleute. Behandeln Sie Zeitstempel-Konvertierungen, Zeitzonenberechnungen und Datumsarithmetik mit Präzision.',
+      toolsTitle: 'Zeitmanagement-Tools',
+      timestamp: {
+        title: 'Zeitstempel-Konverter',
+        description: 'Konvertieren Sie zwischen Unix-Zeitstempeln und für Menschen lesbaren Daten und Zeiten.'
+      },
+      timezone: {
+        title: 'Zeitzonen-Konverter',
+        description: 'Konvertieren Sie Datum und Uhrzeit zwischen verschiedenen Zeitzonen weltweit mit DST-Unterstützung.'
+      },
+      dateCalculator: {
+        title: 'Datumsrechner',
+        description: 'Addieren oder subtrahieren Sie Tage, Monate und Jahre von Daten. Berechnen Sie Datumsunterschiede.'
+      },
+      calculations: {
+        title: 'Genaue Zeitberechnungen',
+        precise: {
+          title: 'Präzise Berechnungen',
+          description: 'Behandeln Sie komplexe Zeitzonen-Konvertierungen und Datumsberechnungen mit Genauigkeit.'
+        },
+        global: {
+          title: 'Globale Unterstützung',
+          description: 'Unterstützung für alle Weltzeitzonen mit automatischer Sommerzeitumstellung.'
+        },
+        developerFriendly: {
+          title: 'Entwicklerfreundlich',
+          description: 'Perfekt für die API-Entwicklung, Protokollanalyse und Zeitstempel-Debugging.'
+        }
+      }
+    },
       regex: {
         title: 'RegEx-Tool',
         description: 'Reguläre Ausdrücke testen und validieren'
       },
       editor: {
-        title: 'Code-Editoren',
-        description: 'Markdown- und Mermaid-Diagramm-Editoren mit Live-Vorschau'
+        meta: {
+          title: 'Code- & Dokumenten-Editoren',
+          description: 'Kostenlose Online-Editoren: Markdown mit Live-Vorschau & Mermaid-Diagramm-Tool. Schreiben, vorschauen und exportieren Sie professionelle Inhalte einfach.'
+        },
+        title: 'Code- & Dokumenten-Editoren',
+        subtitle: 'Professionelle Online-Editoren für Markdown-Dokumentationen und Mermaid-Diagramme. Erstellen, bearbeiten und vorschauen Sie Ihre Inhalte mit Echtzeit-Rendering.',
+        toolsTitle: 'Editor-Tools',
+        experience: {
+          title: 'Professionelle Bearbeitungserfahrung',
+          livePreview: {
+            title: 'Live-Vorschau',
+            description: 'Sehen Sie Ihre Markdown- und Mermaid-Diagramme in Echtzeit gerendert, während Sie tippen.'
+          },
+          syntaxHighlighting: {
+            title: 'Syntaxhervorhebung',
+            description: 'Professioneller Code-Editor mit Syntaxhervorhebung und automatischer Vervollständigung.'
+          },
+          exportReady: {
+            title: 'Exportbereit',
+            description: 'Kopieren oder laden Sie Ihre gerenderten Inhalte zur Verwendung in Dokumentationen und Präsentationen herunter.'
+          }
+      },
+      text: {
+        title: 'Text-Tools',
+        description: 'Wesentliche Textverarbeitungstools für Entwickler und Autoren. Konvertieren Sie Groß-/Kleinschreibung, zählen Sie Wörter, kehren Sie Text um und mehr.',
+        meta: {
+          title: 'Text-Tools - Groß-/Kleinschreibungskonverter, Wortzähler und Text-Utilities',
+          description: 'Kostenlose Text-Tools: Groß-/Kleinschreibungskonverter, Wortzähler, Textumkehrer und Leerzeichenentferner. Sofortige und private Verarbeitung.'
+        },
+        subtitle: 'Leistungsstarke Textverarbeitungstools für alle Ihre Bedürfnisse. Von einfacher Groß-/Kleinschreibungskonvertierung bis hin zu komplexer Textanalyse und -vergleich.',
+        toolsTitle: 'Text-Utilities',
+        features: {
+          title: 'Leistungsstarke Text-Features',
+          realTime: {
+            title: 'Echtzeitverarbeitung',
+            description: 'Sehen Sie Ergebnisse sofort beim Tippen mit Echtzeit-Textverarbeitung.'
+          },
+          privacy: {
+            title: 'Datenschutz geschützt',
+            description: 'Alle Textverarbeitung erfolgt lokal - Ihr Inhalt verlässt niemals Ihren Browser.'
+          },
+          multiPurpose: {
+            title: 'Mehrzweck',
+            description: 'Von einfacher Groß-/Kleinschreibungskonvertierung bis hin zu komplexer Textanalyse und -vergleich.'
+          }
+        },
+        caseConverter: {
+          title: 'Groß-/Kleinschreibungskonverter',
+          description: 'Konvertieren Sie Text zwischen Groß-, Klein-, Titel- und Satzschreibung.',
+          placeholder: 'Text zur Groß-/Kleinschreibungskonvertierung eingeben...',
+          upperCase: 'GROßBUCHSTABEN',
+          lowerCase: 'kleinbuchstaben',
+          titleCase: 'Titelschreibung',
+          sentenceCase: 'Satzschreibung',
+          result: 'Konvertierter Text'
+        },
+        wordCounter: {
+          title: 'Wort- und Zeichenzähler',
+          description: 'Zählen Sie Wörter, Zeichen, Sätze und Absätze in Ihrem Text.',
+          placeholder: 'Geben Sie hier Ihren Text ein, um Wörter und Zeichen zu zählen...',
+          words: 'Wörter',
+          characters: 'Zeichen',
+          charactersNoSpaces: 'Zeichen (ohne Leerzeichen)',
+          sentences: 'Sätze',
+          paragraphs: 'Absätze'
+        },
+        textReverser: {
+          title: 'Textumkehrer',
+          description: 'Kehren Sie die Reihenfolge der Zeichen in Ihrem Text sofort um.',
+          placeholder: 'Text zum Umkehren eingeben...',
+          reversedText: 'Umgekehrter Text'
+        },
+        whitespaceRemover: {
+          title: 'Leerzeichenentferner',
+          description: 'Entfernen Sie zusätzliche Leerzeichen, trimmen Sie Leerzeichen und bereinigen Sie die Textformatierung.',
+          placeholder: 'Text eingeben, um Leerzeichen zu bereinigen...',
+          result: 'Bereinigter Text',
+          removeAll: 'Alle Leerzeichen entfernen',
+          removeTrim: 'Leerzeichen trimmen',
+          removeExtra: 'Zusätzliche Leerzeichen entfernen',
+          removeLines: 'Leere Zeilen entfernen'
+        },
+        loremIpsumGenerator: {
+          title: 'Lorem Ipsum Generator',
+          description: 'Generieren Sie Platzhaltertext für Design- und Entwicklungsprojekte.',
+          count: 'Anzahl',
+          type: 'Typ',
+          paragraphs: 'Absätze',
+          sentences: 'Sätze',
+          words: 'Wörter',
+          generate: 'Generieren',
+          copy: 'Kopieren',
+          copied: 'In die Zwischenablage kopiert'
+        },
+        textDiff: {
+          title: 'Textvergleichstool',
+          description: 'Vergleichen Sie zwei Texte und heben Sie Unterschiede mit visueller Diff-Anzeige hervor.',
+          compareText: 'Text Vergleichen',
+          clearAll: 'Alles Löschen',
+          originalText: 'Ursprünglicher Text',
+          newText: 'Neuer Text'
+        }
+      },
+      markdown: {
+        title: 'Markdown-Editor',
+        description: 'Markdown-Editor mit Syntaxhervorhebung und Live-Vorschau.',
+        placeholder: 'Geben Sie hier Ihren Markdown-Inhalt ein...'
       },
       mermaid: {
         title: 'Mermaid-Diagramme',
         description: 'Erstellen Sie Diagramme und Flussdiagramme mit Mermaid',
-        syntaxError: 'Syntaxfehler'
-      },
-      markdown: {
-        title: 'Markdown-Tools',
-        description: 'Markdown-Editor mit Live-Vorschau'
+        invalidSyntax: 'Ungültige Mermaid-Syntax'
       }
+    }
     },
     toasts: {
       common: {
@@ -256,6 +428,25 @@ export const de = {
       clearSuccess: 'Inhalt gelöscht',
       downloadSvg: 'SVG herunterladen',
       downloadPng: 'PNG herunterladen'
+    },
+    availableTools: 'Verfügbare Werkzeuge',
+    whyChooseUs: {
+      title: 'Warum Unsere Werkzeuge Wählen?',
+      privacyFocused: {
+        title: 'Datenschutzorientiert',
+        description: 'Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser. Ihre Daten verlassen Ihr Gerät niemals.'
+      },
+      professionalGrade: {
+        title: 'Professionelle Qualität',
+        description: 'Mit modernen Web-Technologien erstellt und für professionelle Entwickler konzipiert.'
+      },
+      freeAndOpen: {
+        title: 'Kostenlos & Offen',
+        description: 'Keine Registrierung erforderlich. Nutzen Sie alle Funktionen kostenlos und ohne Einschränkungen.'
+      }
+    },
+    underConstruction: {
+      description: 'Dieses Werkzeug befindet sich in der Entwicklung, bitte bleiben Sie dran.'
     }
   }
 };

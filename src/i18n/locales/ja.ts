@@ -41,54 +41,229 @@ export const ja = {
     },
     tools: {
       json: {
-        title: 'JSON ツール',
-        description: 'JSON データのフォーマット、検証、圧縮',
-        placeholder: 'ここに JSON を入力または貼り付け...',
-        fieldPath: 'フィールドパス',
-        extractValue: '値を抽出',
-        extractPlaceholder: '例: data.users[0].name',
-        extractedValueTitle: '抽出された値',
-        generateGraph: 'グラフを生成',
-        graphTitle: 'JSON構造',
-        syntaxError: 'JSON構文エラー',
-        unknownParseError: '不明なJSON解析エラー',
-        syntaxErrorAtPosition: 'JSON構文エラー: {{message}} (行 {{line}}, 列 {{column}})',
-        syntaxErrorGeneric: 'JSON構文エラー: {{message}}',
-        convertedToYamlTitle: 'YAMLに変換',
-        convertedToXmlTitle: 'XMLに変換',
-        convertedToCsvTitle: 'CSVに変換',
-        viewer: {
-          title: 'JSON構造ビュー',
-          invalidJson: '構造を表示するには有効なJSONを入力してください',
-          expandAll: 'すべて展開',
-          collapseAll: 'すべて折りたたみ',
-          items: '項目',
-          elements: '要素'
+        title: 'JSONツール',
+        description: 'フォーマット、検証、スキーマチェック、データ操作のための包括的なJSONツール。',
+        formatter: {
+          title: 'JSON フォーマッタ＆バリデータ',
+          description: 'JSONデータをフォーマット、整形、検証します。'
         },
+        schemaValidator: {
+          title: 'JSON スキーマバリデータ',
+          description: 'JSONオブジェクトをJSONスキーマに対して検証します。'
+        },
+        codegen: {
+          title: 'コードタイプの生成',
+          description: 'JSONオブジェクトからさまざまな言語のコードタイプを生成します。'
+        },
+        history: {
+          title: '履歴'
+        },
+        generateGraph: 'グラフの生成',
+        extractValue: '値の抽出',
+        fieldPath: 'フィールドパス',
+        extractPlaceholder: 'JSONPathを入力 (例: $.users[0].name)',
+        graphTitle: 'JSON構造グラフ',
+        input: '入力',
+        output: '出力',
+        outputPlaceholder: 'フォーマットされたJSONがここに表示されます',
+        validJson: '有効なJSON',
+        invalidJson: '無効なJSON',
+        diff: {
+          title: 'JSON 差分ツール',
+          description: '2つのJSONオブジェクトを比較し、違いを強調表示します。'
+        },
+        mock: {
+          title: 'モックデータジェネレータ',
+          description: 'テストと開発用のモックJSONデータを生成します。'
+        }
       },
       network: {
-        title: 'ネットワークツール',
-        description: 'URL エンコード、IP 検索、ネットワークユーティリティ'
+        title: 'ネットワークとエンコーディングツール',
+        description: '無料のネットワークツール：URLエンコーダー/デコーダー、Base64コンバーター、IPルックアップ、JWTデコーダー。安全なクライアントサイド処理、データストレージは不要です。',
+        subtitle: 'ウェブ開発者向けに不可欠なネットワークおよびエンコーディングユーティリティ。安全でプライバシーを重視したツールを使用して、URLエンコーディング、Base64変換、IPルックアップ、JWTデコーディングを処理します。',
+        utilityTools: 'ネットワークユーティリティツール',
+        secureTitle: '安全なネットワークユーティリティ',
+        clientSideProcessing: {
+          title: 'クライアントサイド処理',
+          description: 'すべてのエンコーディングとデコーディングは、最大限のセキュリティのためにブラウザで行われます。'
+        },
+        noDataStorage: {
+          title: 'データストレージなし',
+          description: '入力データや結果を保存またはログに記録することはありません。'
+        },
+        instantResults: {
+          title: '即時結果',
+          description: '入力中にリアルタイムで結果が得られる高速処理。'
+        },
+        urlEncoder: {
+          title: 'URLエンコーダー/デコーダー',
+          description: '安全な送信のためにURLをエンコードするか、パーセントエンコードされたURLをデコードします。'
+        },
+        base64Encoder: {
+          title: 'Base64エンコーダー/デコーダー',
+          description: 'テキストをBase64にエンコードするか、Base64文字列をテキストに戻します。'
+        },
+        ipLookup: {
+          title: 'IPアドレスルックアップ',
+          description: '任意のIPアドレスの地理情報、ISP情報、およびネットワーク詳細を取得します。'
+        },
+        jwtDecoder: {
+          title: 'JWTトークンデコーダー',
+          description: 'JSON Webトークンをデコードし、ヘッダー、ペイロード、および署名情報を表示します。'
+        }
       },
       text: {
         title: 'テキストツール',
-        description: 'テキスト処理、大文字小文字変換、フォーマット'
+        description: 'テキスト処理、大文字小文字変換、フォーマット',
+        caseConverter: {
+          title: '大文字小文字変換',
+          description: 'テキストを大文字、小文字、タイトルケース、文ケースに変換します。',
+          placeholder: '変換するテキストを入力してください...',
+          upperCase: '大文字',
+          lowerCase: '小文字',
+          titleCase: 'タイトルケース',
+          sentenceCase: '文ケース',
+          result: '結果'
+        },
+        wordCounter: {
+          title: 'ワード・文字カウンター',
+          description: 'テキスト内の単語、文字、文、段落を数えます。',
+          placeholder: 'ここにテキストを入力して単語と文字を数えてください...',
+          words: '単語',
+          characters: '文字',
+          charactersNoSpaces: '文字（スペースなし）',
+          sentences: '文',
+          paragraphs: '段落'
+        },
+        textReverser: {
+          title: 'テキストリバーサー',
+          description: 'テキスト内の文字の順序を瞬時に逆転させます。',
+          placeholder: '逆転させるテキストを入力してください...',
+          reversedText: '逆転されたテキスト'
+        },
+        whitespaceRemover: {
+          title: '空白除去ツール',
+          description: '余分な空白を削除し、空白をトリムし、テキストの書式をクリーンアップします。',
+          placeholder: '空白をクリーンアップするテキストを入力してください...',
+          result: 'クリーンアップされたテキスト',
+          removeAll: 'すべての空白を削除',
+          removeTrim: '空白をトリム',
+          removeExtra: '余分な空白を削除',
+          removeLines: '空行を削除'
+        },
+        loremIpsumGenerator: {
+          title: 'Lorem Ipsum ジェネレーター',
+          description: 'デザインと開発プロジェクト用のプレースホルダーテキストを生成します。',
+          count: '数',
+          type: 'タイプ',
+          paragraphs: '段落',
+          sentences: '文',
+          words: '単語',
+          generate: '生成',
+          copy: 'コピー',
+          copied: 'クリップボードにコピーされました'
+        },
+        textDiff: {
+          title: 'テキスト比較ツール',
+          description: '2つのテキストを比較し、視覚的な差分表示で違いをハイライトします。',
+          compareText: 'テキストを比較',
+          clearAll: 'すべてクリア',
+          originalText: '元のテキスト',
+          newText: '新しいテキスト'
+        }
       },
-      crypto: {
+        markdown: {
+          title: 'Markdownエディタ',
+          description: 'シンタックスハイライトとライブプレビュー機能付きのMarkdownエディタ。',
+          placeholder: 'ここにMarkdownコンテンツを入力してください...'
+        },
+        crypto: {
         title: '暗号化ツール',
-        description: 'ハッシュ生成、暗号化および復号化ユーティリティ'
+        description: '当社の暗号化ツールでデータを保護します：ハッシュジェネレーター（MD5、SHA-1、SHA-256、SHA-512）、HMAC、およびAES暗号化。',
+        jwtDecoder: {
+          title: 'JWTデコーダー',
+          description: 'JSON Web Tokenをデコードして、ペイロードとヘッダーデータを表示します。',
+          placeholder: 'ここにJWTを貼り付けてください',
+          invalidToken: '無効なJWTトークン'
+        },
+        encryption: {
+          title: '暗号化ツール',
+          description: 'AES、DES、Rabbitなどのさまざまなアルゴリズムを使用してテキストを暗号化および復号化します。'
+        }
       },
       time: {
-        title: '時間ツール',
-        description: 'タイムスタンプコンバーター、タイムゾーンツール、日付計算機'
+        description: 'タイムスタンプ変換、タイムゾーン処理、日付計算のための基本的な日付と時刻ユーティリティ。',
+        meta: {
+        title: '日付と時刻のツール - タイムスタンプ、タイムゾーン、日付計算機',
+        description: '無料の時間ツール：タイムスタンプコンバーター、タイムゾーン計算機、日付計算。正確で、DSTに対応し、開発者に優しいユーティリティ。'
       },
+      title: '日付と時刻のツール',
+      subtitle: '開発者や専門家向けの必須の日付と時刻のユーティリティ。タイムスタンプ変換、タイムゾーン計算、日付計算を正確に処理します。',
+      toolsTitle: '時間管理ツール',
+      timestamp: {
+        title: 'タイムスタンプコンバーター',
+        description: 'Unixタイムスタンプと人間が読める日付と時刻を変換します。'
+      },
+      timezone: {
+        title: 'タイムゾーンコンバーター',
+        description: '世界中の異なるタイムゾーン間で日付と時刻を変換し、DSTをサポートします。'
+      },
+      dateCalculator: {
+        title: '日付計算機',
+        description: '日付に日、月、年を加算または減算します。日付の差を計算します。'
+      },
+      calculations: {
+        title: '正確な時間計算',
+        precise: {
+          title: '正確な計算',
+          description: '複雑なタイムゾーン変換と日付計算を正確に処理します。'
+        },
+        global: {
+          title: 'グローバルサポート',
+          description: '自動夏時間調整機能付きで、すべての世界のタイムゾーンをサポートします。'
+        },
+        developerFriendly: {
+          title: '開発者に優しい',
+          description: 'API開発、ログ分析、タイムスタンプのデバッグに最適です。'
+        }
+      }
+    },
       regex: {
         title: '正規表現ツール',
         description: '正規表現のテストと検証'
       },
       editor: {
-        title: 'コードエディター',
-        description: 'ライブプレビュー付きMarkdownとMermaidダイアグラムエディター'
+        meta: {
+          title: 'コード＆ドキュメントエディタ',
+          description: '無料のオンラインエディタ：ライブプレビュー付きのMarkdownエディタとMermaidダイアグラムツール。プロフェッショナルなコンテンツを簡単に作成、プレビュー、エクスポートできます。'
+        },
+        title: 'コード＆ドキュメントエディタ',
+        subtitle: 'MarkdownドキュメントとMermaidダイアグラムのためのプロフェッショナルなオンラインエディタ。リアルタイムレンダリングでコンテンツを作成、編集、プレビューできます。',
+        toolsTitle: 'エディタツール',
+        experience: {
+          title: 'プロフェッショナルな編集体験',
+          livePreview: {
+            title: 'ライブプレビュー',
+            description: '入力中にMarkdownとMermaidダイアグラムがリアルタイムでレンダリングされるのを確認できます。'
+          },
+          syntaxHighlighting: {
+            title: 'シンタックスハイライト',
+            description: 'シンタックスハイライトと自動補完機能を備えたプロフェッショナルなコードエディタ。'
+          },
+          exportReady: {
+            title: 'エクスポート対応',
+            description: 'レンダリングされたコンテンツをコピーまたはダウンロードして、ドキュメントやプレゼンテーションで使用できます。'
+          }
+        },
+        markdown: {
+          title: 'Markdown エディタ',
+          description: 'シンタックスハイライトとライブプレビューを備えたMarkdownの作成とプレビュー。'
+        },
+        mermaid: {
+          title: 'Mermaid ダイアグラム',
+          description: 'Mermaid でダイアグラムとフローチャートを作成',
+          invalidSyntax: '無効な Mermaid 構文'
+        }
       }
     },
     toasts: {
@@ -167,6 +342,25 @@ export const ja = {
       limitationText: 'いかなる場合においても、開発者ツールハブまたはその維持者は、本サービスの使用または使用不能から生じる直接的、間接的、偶発的、特別または結果的損害について責任を負いません。',
       changesToTermsTitle: '規約の変更',
       changesToTermsText: 'これらの規約をいつでも変更する権利を留保します。これらの規約の最新版をこのページに掲載します。変更後に本サービスを継続して使用することは、新しい規約への同意を構成します。'
+    },
+    availableTools: '利用可能なツール',
+    whyChooseUs: {
+      title: 'なぜ私たちのツールを選ぶのか？',
+      privacyFocused: {
+        title: 'プライバシー重視',
+        description: 'すべての処理はブラウザ内でローカルに行われます。あなたのデータはデバイスから離れることはありません。'
+      },
+      professionalGrade: {
+        title: 'プロフェッショナルグレード',
+        description: '現代のウェブ技術で構築され、プロの開発者向けに設計されています。'
+      },
+      freeAndOpen: {
+        title: '無料でオープン',
+        description: '登録は不要です。すべての機能を無料で無制限にご利用いただけます。'
+      }
+    },
+    underConstruction: {
+      description: 'このツールは開発中です。ご期待ください。'
     }
   }
 };

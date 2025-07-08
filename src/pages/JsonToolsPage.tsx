@@ -14,36 +14,36 @@ const JsonToolsPage: React.FC = () => {
     {
       path: `/${lang}/json/formatter`,
       icon: FileJson,
-      title: 'JSON Formatter & Validator',
-      description: '',
+      title: t('tools.json.formatter.title'),
+      description: t('tools.json.formatter.description'),
       color: 'text-blue-500'
     },
     {
       path: `/${lang}/json/schema-validator`,
       icon: FileCode,
-      title: 'JSON Schema Validator',
-      description: '',
+      title: t('tools.json.schemaValidator.title'),
+      description: t('tools.json.schemaValidator.description'),
       color: 'text-green-500'
     },
     {
       path: `/${lang}/json/codegen`,
       icon: Code,
-      title: 'Generate Code Types',
-      description: '',
+      title: t('tools.json.codegen.title'),
+      description: t('tools.json.codegen.description'),
       color: 'text-purple-500'
     },
     {
       path: `/${lang}/json/diff`,
       icon: GitCompare,
-      title: 'JSON Diff Tool',
-      description: '',
+      title: t('tools.json.diff.title'),
+      description: t('tools.json.diff.description'),
       color: 'text-orange-500'
     },
     {
       path: `/${lang}/json/mock`,
       icon: Shuffle,
-      title: 'Mock Data Generator',
-      description: '',
+      title: t('tools.json.mock.title'),
+      description: t('tools.json.mock.description'),
       color: 'text-indigo-500'
     }
   ];
