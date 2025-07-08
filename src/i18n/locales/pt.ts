@@ -30,6 +30,7 @@ export const pt = {
         input: 'Entrada',
         output: 'Saída',
         outputPlaceholder: 'JSON formatado aparecerá aqui',
+        placeholder: 'Por favor, insira ou cole dados JSON',
         validJson: 'JSON válido',
         invalidJson: 'JSON inválido',
         diff: {

@@ -88,6 +88,7 @@ export const fr = {
         input: 'Entrée',
         output: 'Sortie',
         outputPlaceholder: 'Le JSON formaté apparaîtra ici',
+        placeholder: 'Veuillez entrer ou coller des données JSON',
         validJson: 'JSON valide',
         invalidJson: 'JSON invalide',
         diff: {

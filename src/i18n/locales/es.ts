@@ -100,6 +100,7 @@ export const es = {
         input: 'Entrada',
         output: 'Salida',
         outputPlaceholder: 'El JSON formateado aparecerá aquí',
+        placeholder: 'Por favor, ingrese o pegue datos JSON',
         validJson: 'JSON válido',
         invalidJson: 'JSON inválido',
         diff: {

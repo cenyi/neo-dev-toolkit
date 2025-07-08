@@ -100,6 +100,7 @@ export const en = {
         extractPlaceholder: 'Enter JSONPath (e.g., $.users[0].name)',
         graphTitle: 'JSON Structure Graph',
         input: 'Input',
+        placeholder: 'Please input or paste JSON data',
         output: 'Output',
         outputPlaceholder: 'Formatted JSON will appear here',
         validJson: 'Valid JSON',

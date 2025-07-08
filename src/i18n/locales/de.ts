@@ -99,6 +99,7 @@ export const de = {
         input: 'Eingabe',
         output: 'Ausgabe',
         outputPlaceholder: 'Formatiertes JSON wird hier angezeigt',
+        placeholder: 'Bitte geben Sie JSON-Daten ein oder fügen Sie sie ein',
         validJson: 'Gültiges JSON',
         invalidJson: 'Ungültiges JSON',
         diff: {

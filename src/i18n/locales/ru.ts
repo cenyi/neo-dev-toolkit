@@ -67,6 +67,7 @@ export const ru = {
         input: 'Ввод',
         output: 'Вывод',
         outputPlaceholder: 'Отформатированный JSON будет отображен здесь',
+        placeholder: 'Пожалуйста, введите или вставьте JSON данные',
         validJson: 'Действительный JSON',
         invalidJson: 'Недействительный JSON',
         diff: {

@@ -30,6 +30,7 @@ export const ko = {
         input: '입력',
         output: '출력',
         outputPlaceholder: '포맷된 JSON이 여기에 표시됩니다',
+        placeholder: 'JSON 데이터를 입력하거나 붙여넣어주세요',
         validJson: '유효한 JSON',
         invalidJson: '유효하지 않은 JSON',
         diff: {

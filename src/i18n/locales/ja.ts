@@ -66,6 +66,7 @@ export const ja = {
         input: '入力',
         output: '出力',
         outputPlaceholder: 'フォーマットされたJSONがここに表示されます',
+        placeholder: 'JSONデータを入力または貼り付けてください',
         validJson: '有効なJSON',
         invalidJson: '無効なJSON',
         diff: {

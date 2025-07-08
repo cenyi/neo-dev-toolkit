@@ -79,7 +79,7 @@ export const zh = {
         description: '全面的 JSON 工具，用于格式化、验证、模式检查和数据操作。',
         formatter: {
           title: 'JSON 格式化和校验',
-          description: '格式化、美化和校验您的 JSON 数据。'
+          description: '格式化、美化和校验您的 JSON 数据。',
         },
         schemaValidator: {
           title: 'JSON Schema 校验',
@@ -98,6 +98,7 @@ export const zh = {
         extractPlaceholder: '输入 JSONPath (例如: $.users[0].name)',
         graphTitle: 'JSON 结构图',
         input: '输入',
+        placeholder: '请输入或粘贴 JSON 数据',
         output: '输出',
         outputPlaceholder: '格式化后的 JSON 将显示在此处',
         validJson: '有效的 JSON',
