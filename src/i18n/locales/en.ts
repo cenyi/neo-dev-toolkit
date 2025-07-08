@@ -181,11 +181,25 @@ export const en = {
         },
         ipLookup: {
           title: 'IP Address Lookup',
-          description: 'Get geolocation, ISP information, and network details for any IP address.'
+          description: 'Get geolocation, ISP information, and network details for any IP address.',
+          placeholder: 'Enter IP address or domain name',
+          lookup: 'Lookup',
+          myIp: 'Check My IP',
+          results: 'Lookup Results'
         },
         jwtDecoder: {
           title: 'JWT Token Decoder',
           description: 'Decode JSON Web Tokens and view header, payload, and signature information.'
+        },
+        base64: {
+          title: 'Base64 Encoder/Decoder',
+          description: 'Encode text to Base64 or decode Base64 strings back to text.',
+          encode: 'Encode',
+          decode: 'Decode',
+          input: 'Input',
+          output: 'Output',
+          inputPlaceholder: 'Enter text to encode or decode...',
+          outputPlaceholder: 'Encoded or decoded result will appear here'
         }
       }, 
       text: {
@@ -281,50 +295,6 @@ export const en = {
         targetTimezone: 'To Timezone',
         convertedDateTime: 'Converted Date & Time'
       },
-      time: {
-        description: 'Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.',
-        meta: {
-          title: 'Date & Time Tools - Timestamp, Timezone, and Date Calculators',
-          description: 'Free time tools: timestamp converter, timezone calculator & date arithmetic. Accurate, DST-aware, developer-friendly utilities.'
-        },
-        title: 'Date & Time Tools',
-        subtitle: 'Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision.',
-        toolsTitle: 'Time Management Tools',
-        timestamp: {
-          title: 'Timestamp Converter',
-          description: 'Convert between Unix timestamps and human-readable dates and times.'
-        },
-        timezone: {
-          title: 'Timezone Converter',
-          description: 'Convert date and time between different timezones worldwide with DST support.'
-        },
-        dateCalculator: {
-          title: 'Date Calculator',
-          description: 'Add or subtract days, months, and years from dates. Calculate date differences.',
-          startDate: 'Start Date',
-          add: 'Add',
-          subtract: 'Subtract',
-          years: 'Years',
-          months: 'Months',
-          days: 'Days',
-          resultDate: 'Result Date'
-        },
-        calculations: {
-          title: 'Accurate Time Calculations',
-          precise: {
-            title: 'Precise Calculations',
-            description: 'Handle complex timezone conversions and date calculations with accuracy.'
-          },
-          global: {
-            title: 'Global Support',
-            description: 'Support for all world timezones with automatic daylight saving time adjustments.'
-          },
-          developerFriendly: {
-            title: 'Developer Friendly',
-            description: 'Perfect for API development, log analysis, and timestamp debugging.'
-          }
-        }
-      },
       editor: {
         meta: {
           title: 'Code & Document Editors',
@@ -350,18 +320,15 @@ export const en = {
         },
         markdown: {
           title: 'Markdown Editor',
-          description: 'Write and preview Markdown with syntax highlighting and live preview.'
+          description: 'Write and preview Markdown with syntax highlighting and live preview.',
+          placeholder: 'Enter your Markdown content here...'
         },
         mermaid: {
           title: 'Mermaid Diagram Editor',
-          description: 'Create flowcharts, sequence diagrams, and other diagrams with Mermaid syntax.'
+          description: 'Create flowcharts, sequence diagrams, and other diagrams with Mermaid syntax.',
+          invalidSyntax: 'Invalid Mermaid syntax'
         }
       },
-        markdown: {
-          title: 'Markdown Editor',
-          description: 'Markdown editor with syntax highlighting and live preview.',
-          placeholder: 'Enter your Markdown content here...'
-        },
         crypto: { 
         title: 'Crypto Tools',
         description: 'Secure your data with our crypto tools: hash generators (MD5, SHA-1, SHA-256, SHA-512), HMAC, and AES encryption.',
@@ -374,12 +341,60 @@ export const en = {
         encryption: {
           title: 'Encryption Tool',
           description: 'Encrypt and decrypt text using various algorithms like AES, DES, and Rabbit.'
+        },
+        mermaid: {
+          title: 'Mermaid Diagrams',
+          description: 'Create diagrams and flowcharts with Mermaid',
+          invalidSyntax: 'Invalid Mermaid syntax'
         }
        },
-      mermaid: {
-        title: 'Mermaid Diagrams',
-        description: 'Create diagrams and flowcharts with Mermaid',
-        invalidSyntax: 'Invalid Mermaid syntax'
+       time: {
+         title: 'Date & Time Tools',
+         description: 'Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.'
+       }
+    },
+    time: {
+      description: 'Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.',
+      meta: {
+        title: 'Date & Time Tools - Timestamp, Timezone, and Date Calculators',
+        description: 'Free time tools: timestamp converter, timezone calculator & date arithmetic. Accurate, DST-aware, developer-friendly utilities.'
+      },
+      title: 'Date & Time Tools',
+      subtitle: 'Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision.',
+      toolsTitle: 'Time Management Tools',
+      timestamp: {
+        title: 'Timestamp Converter',
+        description: 'Convert between Unix timestamps and human-readable dates and times.'
+      },
+      timezone: {
+        title: 'Timezone Converter',
+        description: 'Convert date and time between different timezones worldwide with DST support.'
+      },
+      dateCalculator: {
+        title: 'Date Calculator',
+        description: 'Add or subtract days, months, and years from dates. Calculate date differences.',
+        startDate: 'Start Date',
+        add: 'Add',
+        subtract: 'Subtract',
+        years: 'Years',
+        months: 'Months',
+        days: 'Days',
+        resultDate: 'Result Date'
+      },
+      calculations: {
+        title: 'Accurate Time Calculations',
+        precise: {
+          title: 'Precise Calculations',
+          description: 'Handle complex timezone conversions and date calculations with accuracy.'
+        },
+        global: {
+          title: 'Global Support',
+          description: 'Support for all world timezones with automatic daylight saving time adjustments.'
+        },
+        developerFriendly: {
+          title: 'Developer Friendly',
+          description: 'Perfect for API development, log analysis, and timestamp debugging.'
+        }
       }
     },
     toasts: {

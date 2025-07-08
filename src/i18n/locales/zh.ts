@@ -179,7 +179,11 @@ export const zh = {
         },
         ipLookup: {
           title: 'IP 地址查询',
-          description: '获取任何 IP 地址的地理位置、ISP 信息和网络详细信息。'
+          description: '获取任何 IP 地址的地理位置、ISP 信息和网络详细信息。',
+          placeholder: '输入 IP 地址或域名',
+          lookup: '查询',
+          myIp: '查询我的 IP',
+          results: '查询结果'
         },
         jwtDecoder: {
           title: 'JWT 令牌解码器',
@@ -271,13 +275,6 @@ export const zh = {
           output: '输出',
           inputPlaceholder: '在此输入要编码或解码的文本...',
           outputPlaceholder: '编码或解码的结果将显示在此处'
-        },
-        ipLookup: {
-          title: 'IP 地址查询',
-          placeholder: '输入 IP 地址或域名',
-          lookup: '查询',
-          myIp: '查询我的 IP',
-          results: '查询结果'
         }
       },
       url: {
@@ -369,73 +366,34 @@ export const zh = {
         },
         markdown: {
           title: 'Markdown 编辑器',
-          description: '支持语法高亮和实时预览的 Markdown 编辑器。'
-        },
-        mermaid: {
-          title: 'Mermaid 图表编辑器',
-          description: '使用 Mermaid 语法创建流程图、序列图和其他图表。'
-        }
-      },
-        markdown: {
-          title: 'Markdown 编辑器',
           description: '支持语法高亮和实时预览的 Markdown 编辑器。',
           placeholder: '在此输入 Markdown 内容...'
         },
-        crypto: {
-        title: '加密工具',
-        description: '使用我们的加密工具保护您的数据：哈希生成器（MD5、SHA-1、SHA-256、SHA-512）、HMAC 和 AES 加密。',
-        jwtDecoder: {
-          title: 'JWT 解码器',
-          description: '解码并检查 JSON Web Token 以查看其有效负载和标头数据。',
-          placeholder: '在此处粘贴您的 JWT',
-          invalidToken: '无效的 JWT 令牌'
-        },
-        encryption: {
-          title: '加密工具',
-          description: '使用 AES、DES 和 Rabbit 等各种算法加密和解密文本。'
-        },
         mermaid: {
-          title: 'Mermaid 图表',
-          description: '使用 Mermaid 创建图表和流程图',
+          title: 'Mermaid 图表编辑器',
+          description: '使用 Mermaid 语法创建流程图、序列图和其他图表。',
           invalidSyntax: '无效的 Mermaid 语法'
         }
-      }
-    },
-    time: {
-      meta: {
-        title: '日期和时间工具 - 时间戳、时区和日期计算器',
-        description: '免费的时间工具：时间戳转换器、时区计算器和日期计算。精确、支持夏令时、开发人员友好的实用程序。'
       },
-      title: '日期和时间工具',
-      subtitle: '为开发人员和专业人士提供的基本日期和时间实用程序。精确处理时间戳转换、时区计算和日期算术。',
-      toolsTitle: '时间管理工具',
-      timestamp: {
-        title: '时间戳转换器',
-        description: '在Unix时间戳和人类可读的日期和时间之间进行转换。'
-      },
-      timezone: {
-        title: '时区转换器',
-        description: '在全球不同时区之间转换日期和时间，支持夏令时。'
-      },
-      dateCalculator: {
-        title: '日期计算器',
-        description: '从日期中增加或减少天数、月数和年数。计算日期差异。'
-      },
-      calculations: {
-        title: '精确的时间计算',
-        precise: {
-          title: '精确计算',
-          description: '精确处理复杂的时区转换和日期计算。'
-        },
-        global: {
-          title: '全球支持',
-          description: '支持全球所有时区，并自动调整夏令时。'
-        },
-        developerFriendly: {
-          title: '开发人员友好',
-          description: '非常适合API开发、日志分析和时间戳调试。'
+        crypto: {
+          title: '加密工具',
+          description: '使用我们的加密工具保护您的数据：哈希生成器（MD5、SHA-1、SHA-256、SHA-512）、HMAC 和 AES 加密。',
+          jwtDecoder: {
+            title: 'JWT 解码器',
+            description: '解码并检查 JSON Web Token 以查看其有效负载和标头数据。',
+            placeholder: '在此处粘贴您的 JWT',
+            invalidToken: '无效的 JWT 令牌'
+          },
+          encryption: {
+            title: '加密工具',
+            description: '使用 AES、DES 和 Rabbit 等各种算法加密和解密文本。'
+          },
+          mermaid: {
+            title: 'Mermaid 图表',
+            description: '使用 Mermaid 创建图表和流程图',
+            invalidSyntax: '无效的 Mermaid 语法'
+          }
         }
-      }
     },
     url: {
       input: '输入文本',

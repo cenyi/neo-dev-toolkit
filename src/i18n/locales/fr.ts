@@ -182,11 +182,25 @@ export const fr = {
         },
         ipLookup: {
           title: 'Recherche d\'Adresse IP',
-          description: 'Obtenez la géolocalisation, les informations du FAI et les détails du réseau pour n\'importe quelle adresse IP.'
+          description: 'Obtenez la géolocalisation, les informations du FAI et les détails du réseau pour n\'importe quelle adresse IP.',
+          placeholder: 'Entrez l\'adresse IP ou le nom de domaine',
+          lookup: 'Rechercher',
+          myIp: 'Vérifier Mon IP',
+          results: 'Résultats de la Recherche'
         },
         jwtDecoder: {
           title: 'Décodeur de Jeton JWT',
           description: 'Décodez les jetons Web JSON et affichez les informations d\'en-tête, de charge utile et de signature.'
+        },
+        base64: {
+          title: 'Encodeur/Décodeur Base64',
+          description: 'Encodez du texte en Base64 ou décodez des chaînes Base64 en texte.',
+          encode: 'Encoder',
+          decode: 'Décoder',
+          input: 'Entrée',
+          output: 'Sortie',
+          inputPlaceholder: 'Entrez le texte à encoder ou décoder...',
+          outputPlaceholder: 'Le résultat encodé ou décodé apparaîtra ici'
         }
       },
       markdown: {
@@ -243,6 +257,53 @@ export const fr = {
           title: 'Diagrammes Mermaid',
           description: 'Créer des diagrammes et des organigrammes avec Mermaid',
           invalidSyntax: 'Syntaxe Mermaid invalide'
+        }
+      },
+      time: {
+        title: 'Outils de Date et Heure',
+        description: 'Utilitaires de date et heure essentiels pour la conversion de timestamp, la gestion des fuseaux horaires et les calculs de date.'
+      }
+    },
+    time: {
+      meta: {
+        title: 'Outils de Date et Heure - Convertisseur de Timestamp, Fuseau Horaire et Calculateur de Date',
+        description: 'Outils de temps gratuits : convertisseur de timestamp, calculateur de fuseau horaire et arithmétique de date. Utilitaires précis, compatibles DST, conviviaux pour les développeurs.'
+      },
+      title: 'Outils de Date et Heure',
+      subtitle: 'Utilitaires de date et heure essentiels pour les développeurs et professionnels. Gérez les conversions de timestamp, les calculs de fuseau horaire et l\'arithmétique de date avec précision.',
+      toolsTitle: 'Outils de Gestion du Temps',
+      timestamp: {
+        title: 'Convertisseur de Timestamp',
+        description: 'Convertir entre les timestamps Unix et les dates et heures lisibles par l\'homme.'
+      },
+      timezone: {
+        title: 'Convertisseur de Fuseau Horaire',
+        description: 'Convertir la date et l\'heure entre différents fuseaux horaires mondiaux avec support DST.'
+      },
+      dateCalculator: {
+        title: 'Calculateur de Date',
+        description: 'Ajouter ou soustraire des jours, mois et années aux dates. Calculer les différences de date.',
+        startDate: 'Date de Début',
+        add: 'Ajouter',
+        subtract: 'Soustraire',
+        years: 'Années',
+        months: 'Mois',
+        days: 'Jours',
+        resultDate: 'Date Résultat'
+      },
+      calculations: {
+        title: 'Calculs de Temps Précis',
+        precise: {
+          title: 'Calculs Précis',
+          description: 'Gérer les conversions de fuseau horaire complexes et les calculs de date avec précision.'
+        },
+        global: {
+          title: 'Support Global',
+          description: 'Support pour tous les fuseaux horaires mondiaux avec ajustements automatiques de l\'heure d\'été.'
+        },
+        developerFriendly: {
+          title: 'Convivial pour les Développeurs',
+          description: 'Parfait pour le développement d\'API, l\'analyse de logs et le débogage de timestamp.'
         }
       }
     },

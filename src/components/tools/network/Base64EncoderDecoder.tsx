@@ -15,25 +15,25 @@ const Base64EncoderDecoder: React.FC = () => {
 
   return (
     <ToolPageLayout
-      title={t('tools.text.base64.title')}
-      description={t('tools.text.base64.description')}
+      title={t('tools.network.base64.title')}
+      description={t('tools.network.base64.description')}
     >
       <div className="space-y-4">
         <div className="flex flex-wrap items-center gap-4">
-          <Button onClick={handleEncode}>{t('tools.text.base64.encode')}</Button>
-          <Button onClick={handleDecode}>{t('tools.text.base64.decode')}</Button>
+          <Button onClick={handleEncode}>{t('tools.network.base64.encode')}</Button>
+          <Button onClick={handleDecode}>{t('tools.network.base64.decode')}</Button>
           <Button onClick={clearAll} variant="destructive">{t('common.clear')}</Button>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <Card>
             <CardContent className="pt-6">
-              <h3 className="text-lg font-semibold mb-3">{t('tools.text.base64.input')}</h3>
+              <h3 className="text-lg font-semibold mb-3">{t('tools.network.base64.input')}</h3>
               <div className="h-80 border rounded-md">
                 <SimpleCodeEditor
                   value={input}
                   onChange={setInput}
-                  placeholder={t('tools.text.base64.inputPlaceholder')}
+                  placeholder={t('tools.network.base64.inputPlaceholder')}
                   minHeight="300px"
                 />
               </div>
@@ -41,13 +41,13 @@ const Base64EncoderDecoder: React.FC = () => {
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <h3 className="text-lg font-semibold mb-3">{t('tools.text.base64.output')}</h3>
+              <h3 className="text-lg font-semibold mb-3">{t('tools.network.base64.output')}</h3>
               <div className="h-80 border rounded-md">
                 <SimpleCodeEditor
                   value={output}
                   onChange={() => {}}
                   readOnly
-                  placeholder={t('tools.text.base64.outputPlaceholder')}
+                  placeholder={t('tools.network.base64.outputPlaceholder')}
                   minHeight="300px"
                 />
               </div>

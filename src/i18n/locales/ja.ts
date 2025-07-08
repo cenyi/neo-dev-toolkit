@@ -103,9 +103,23 @@ export const ja = {
           title: 'Base64エンコーダー/デコーダー',
           description: 'テキストをBase64にエンコードするか、Base64文字列をテキストに戻します。'
         },
+        base64: {
+          title: 'Base64エンコーダー/デコーダー',
+          description: 'テキストをBase64にエンコードするか、Base64文字列をテキストに戻します。',
+          encode: 'エンコード',
+          decode: 'デコード',
+          input: '入力',
+          output: '出力',
+          inputPlaceholder: 'エンコード/デコードするテキストを入力してください...',
+          outputPlaceholder: '結果がここに表示されます...'
+        },
         ipLookup: {
           title: 'IPアドレスルックアップ',
-          description: '任意のIPアドレスの地理情報、ISP情報、およびネットワーク詳細を取得します。'
+          description: '任意のIPアドレスの地理情報、ISP情報、およびネットワーク詳細を取得します。',
+          placeholder: 'ルックアップするIPアドレスを入力してください...',
+          lookup: 'ルックアップ',
+          myIp: '私のIP',
+          results: '結果'
         },
         jwtDecoder: {
           title: 'JWTトークンデコーダー',

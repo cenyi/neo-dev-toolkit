@@ -69,11 +69,25 @@ export const ko = {
         },
         ipLookup: {
           title: 'IP 주소 조회',
-          description: '모든 IP 주소에 대한 지리적 위치, ISP 정보 및 네트워크 세부 정보를 가져옵니다.'
+          description: '모든 IP 주소에 대한 지리적 위치, ISP 정보 및 네트워크 세부 정보를 가져옵니다.',
+          placeholder: 'IP 주소 또는 도메인 이름 입력',
+          lookup: '조회',
+          myIp: '내 IP 확인',
+          results: '조회 결과'
         },
         jwtDecoder: {
           title: 'JWT 토큰 디코더',
           description: 'JSON 웹 토큰을 디코딩하고 헤더, 페이로드 및 서명 정보를 봅니다.'
+        },
+        base64: {
+          title: 'Base64 인코더/디코더',
+          description: '텍스트를 Base64로 인코딩하거나 Base64 문자열을 다시 텍스트로 디코딩합니다.',
+          encode: '인코딩',
+          decode: '디코딩',
+          input: '입력',
+          output: '출력',
+          inputPlaceholder: '인코딩 또는 디코딩할 텍스트를 입력하세요...',
+          outputPlaceholder: '인코딩 또는 디코딩된 결과가 여기에 표시됩니다'
         }
       }, 
       text: {
@@ -148,6 +162,11 @@ export const ko = {
           description: 'AES, DES 및 Rabbit과 같은 다양한 알고리즘을 사용하여 텍스트를 암호화하고 복호화합니다.'
         }
       },
+        time: {
+          title: '날짜 및 시간 도구',
+          description: '타임스탬프 변환, 시간대 처리 및 날짜 계산을 위한 필수 날짜 및 시간 유틸리티.'
+        }
+      },
       time: {
         description: '타임스탬프 변환, 시간대 처리 및 날짜 계산을 위한 필수 날짜 및 시간 유틸리티.',
         meta: {
@@ -211,22 +230,14 @@ export const ko = {
         },
         markdown: {
           title: 'Markdown 편집기',
-          description: '구문 강조 및 실시간 미리보기로 Markdown을 작성하고 미리봅니다.'
+          description: '구문 강조 및 실시간 미리보기로 Markdown을 작성하고 미리봅니다.',
+          placeholder: '여기에 Markdown 내용을 입력하세요...'
         },
         mermaid: {
           title: 'Mermaid 다이어그램 편집기',
-          description: 'Mermaid 구문을 사용하여 순서도, 시퀀스 다이어그램 및 기타 다이어그램을 만듭니다.'
+          description: 'Mermaid 구문을 사용하여 순서도, 시퀀스 다이어그램 및 기타 다이어그램을 만듭니다.',
+          invalidSyntax: '잘못된 Mermaid 구문'
         }
-      },
-      markdown: {
-        title: 'Markdown 편집기',
-        description: '구문 강조 및 실시간 미리보기가 있는 Markdown 편집기.',
-        placeholder: '여기에 Markdown 내용을 입력하세요...'
-      }, 
-      mermaid: { 
-        title: 'Mermaid 다이어그램', 
-        description: 'Mermaid로 다이어그램과 플로우차트 생성',
-        invalidSyntax: '잘못된 Mermaid 구문'
       } 
     },
     toasts: {
@@ -307,4 +318,4 @@ export const ko = {
       changesToTermsText: '당사는 언제든지 본 약관을 수정할 권리를 보유합니다. 당사는 본 약관의 최신 버전을 이 페이지에 게시할 것입니다. 변경 후에도 서비스를 계속 사용하는 것은 새로운 약관에 동의하는 것으로 간주됩니다.',
     },
   }
-};
+;

@@ -259,8 +259,8 @@ function App() {
                   } />
                   <Route path=":lang/text/text-diff" element={
                     <PageWrapper 
-                      title={t('tools.text.textDiff')}
-                      description={t('tools.text.textDiffDescription')}
+                      title={t('tools.text.textDiff.title')}
+                      description={t('tools.text.textDiff.description')}
                       keywords="text diff, text comparison, document compare, text difference, file compare"
                     >
                       <TextDiff />

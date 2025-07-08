@@ -47,7 +47,7 @@ const basePath = `/${lang}`;
       '/text/text-reverser': 'Text Reverser',
       '/text/whitespace-remover': 'Whitespace Remover',
       '/text/lorem-ipsum-generator': 'Lorem Ipsum Generator',
-      '/text/text-diff': t('tools.text.textDiff'),
+      '/text/text-diff': t('tools.text.textDiff.title'),
       '/time': t('tools.time.title'),
       '/time/timestamp-converter': 'Timestamp Converter',
       '/time/timezone-converter': 'Timezone Converter',

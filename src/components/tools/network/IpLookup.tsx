@@ -22,7 +22,7 @@ const IpLookup: React.FC = () => {
     <div className="p-4 space-y-4">
       <Card>
         <CardHeader>
-          <CardTitle>{t('tools.text.ipLookup.title')}</CardTitle>
+          <CardTitle>{t('tools.network.ipLookup.title')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-2">
@@ -30,16 +30,16 @@ const IpLookup: React.FC = () => {
               value={ipAddress}
               onChange={(e) => setIpAddress(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder={t('tools.text.ipLookup.placeholder')}
+              placeholder={t('tools.network.ipLookup.placeholder')}
               className="flex-grow"
             />
             <Button onClick={handleLookup} disabled={isLoading || !ipAddress}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {t('tools.text.ipLookup.lookup')}
+              {t('tools.network.ipLookup.lookup')}
             </Button>
             <Button onClick={handleMyIpLookup} disabled={isLoading}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {t('tools.text.ipLookup.myIp')}
+              {t('tools.network.ipLookup.myIp')}
             </Button>
             <Button onClick={clear} variant="destructive" disabled={isLoading}>{t('common.clear')}</Button>
           </div>
@@ -57,7 +57,7 @@ const IpLookup: React.FC = () => {
       {data && (
         <Card>
           <CardHeader>
-            <CardTitle>{t('tools.text.ipLookup.results')}</CardTitle>
+            <CardTitle>{t('tools.network.ipLookup.results')}</CardTitle>
           </CardHeader>
           <CardContent>
             <pre className="p-4 bg-muted rounded-md overflow-x-auto text-sm">

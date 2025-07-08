@@ -179,11 +179,25 @@ export const es = {
         },
         ipLookup: {
           title: 'Búsqueda de Dirección IP',
-          description: 'Obtenga geolocalización, información del ISP y detalles de la red para cualquier dirección IP.'
+          description: 'Obtenga geolocalización, información del ISP y detalles de la red para cualquier dirección IP.',
+          placeholder: 'Ingrese dirección IP o nombre de dominio',
+          lookup: 'Buscar',
+          myIp: 'Verificar Mi IP',
+          results: 'Resultados de Búsqueda'
         },
         jwtDecoder: {
           title: 'Decodificador de Token JWT',
           description: 'Decodifique los Tokens Web JSON y vea la información del encabezado, la carga útil y la firma.'
+        },
+        base64: {
+          title: 'Codificador / Decodificador de Base64',
+          description: 'Codifique texto a Base64 o decodifique cadenas de Base64 de nuevo a texto.',
+          encode: 'Codificar',
+          decode: 'Decodificar',
+          input: 'Entrada',
+          output: 'Salida',
+          inputPlaceholder: 'Ingrese texto para codificar o decodificar...',
+          outputPlaceholder: 'El resultado codificado o decodificado aparecerá aquí'
         }
       },
       text: {
@@ -341,18 +355,15 @@ export const es = {
         },
         markdown: {
           title: 'Editor de Markdown',
-          description: 'Escriba y previsualice Markdown con resaltado de sintaxis y vista previa en vivo.'
+          description: 'Escriba y previsualice Markdown con resaltado de sintaxis y vista previa en vivo.',
+          placeholder: 'Ingrese su contenido de Markdown aquí...'
         },
         mermaid: {
           title: 'Editor de Diagramas Mermaid',
-          description: 'Cree diagramas de flujo, diagramas de secuencia y otros diagramas con la sintaxis de Mermaid.'
+          description: 'Cree diagramas de flujo, diagramas de secuencia y otros diagramas con la sintaxis de Mermaid.',
+          invalidSyntax: 'Sintaxis de Mermaid inválida'
         }
       },
-        markdown: {
-          title: 'Editor de Markdown',
-          description: 'Editor de Markdown con resaltado de sintaxis y vista previa en vivo.',
-          placeholder: 'Ingrese su contenido de Markdown aquí...'
-        },
         crypto: {
         title: 'Herramientas de Criptografía',
         description: 'Asegure sus datos con nuestras herramientas de criptografía: generadores de hash (MD5, SHA-1, SHA-256, SHA-512), HMAC y cifrado AES.',

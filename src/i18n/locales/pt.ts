@@ -137,6 +137,7 @@ export const pt = {
         },
         ipLookup: {
           title: 'Consulta de Endereço IP',
+          description: 'Obtenha informações de geolocalização, ISP e detalhes de rede para qualquer endereço IP.',
           placeholder: 'Digite endereço IP ou domínio',
           lookup: 'Consultar',
           myIp: 'Consultar Meu IP',
@@ -176,7 +177,12 @@ export const pt = {
           description: 'Criptografe e descriptografe texto usando vários algoritmos como AES, DES e Rabbit.'
         }
       },
-   time: {
+        time: {
+          title: 'Ferramentas de Data e Hora',
+          description: 'Utilitários essenciais de data e hora para conversão de timestamp, manipulação de fuso horário e cálculos de data.'
+        }
+      },
+      time: {
         description: 'Utilitários essenciais de data e hora para conversão de timestamp, manipulação de fuso horário e cálculos de data.',
       meta: {
         title: 'Ferramentas de Data e Hora - Calculadoras de Timestamp, Fuso Horário e Data',
@@ -238,23 +244,15 @@ export const pt = {
         },
         markdown: {
           title: 'Editor de Markdown',
-          description: 'Escreva e pré-visualize Markdown com destaque de sintaxe e pré-visualização ao vivo.'
+          description: 'Escreva e pré-visualize Markdown com destaque de sintaxe e pré-visualização ao vivo.',
+          placeholder: 'Digite seu conteúdo Markdown aqui...'
         },
         mermaid: {
           title: 'Editor de Diagramas Mermaid',
-          description: 'Crie fluxogramas, diagramas de sequência e outros diagramas com a sintaxe Mermaid.'
+          description: 'Crie fluxogramas, diagramas de sequência e outros diagramas com a sintaxe Mermaid.',
+          invalidSyntax: 'Sintaxe Mermaid inválida'
         }
-      },
-      markdown: {
-        title: 'Editor Markdown',
-        description: 'Editor Markdown com destaque de sintaxe e visualização ao vivo.',
-        placeholder: 'Digite seu conteúdo Markdown aqui...'
-      }, 
-      mermaid: { 
-        title: 'Diagramas Mermaid', 
-        description: 'Crie diagramas e fluxogramas com o Mermaid',
-        invalidSyntax: 'Sintaxe Mermaid inválida'
-      } 
+      }
     },
     editor: {
       copy: 'Copiar conteúdo',
@@ -355,4 +353,4 @@ export const pt = {
       changesToTermsText: 'Reservamo-nos o direito de modificar estes termos a qualquer momento. Publicaremos a versão mais atual destes termos nesta página. O uso contínuo do Serviço após quaisquer alterações constitui sua aceitação dos novos Termos.',
     },
   }
-};
+;

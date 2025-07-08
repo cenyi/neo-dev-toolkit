@@ -162,14 +162,28 @@ export const de = {
         },
         ipLookup: {
           title: 'IP-Adress-Lookup',
-          description: 'Rufen Sie Geolokalisierungs-, ISP-Informationen und Netzwerkdetails für jede IP-Adresse ab.'
+          description: 'Rufen Sie Geolokalisierungs-, ISP-Informationen und Netzwerkdetails für jede IP-Adresse ab.',
+          placeholder: 'IP-Adresse oder Domain-Name eingeben',
+          lookup: 'Nachschlagen',
+          myIp: 'Meine IP prüfen',
+          results: 'Lookup-Ergebnisse'
         },
         jwtDecoder: {
           title: 'JWT-Token-Decoder',
           description: 'Dekodieren Sie JSON Web Tokens und zeigen Sie Header-, Payload- und Signaturinformationen an.'
+        },
+        base64: {
+          title: 'Base64-Encoder / -Decoder',
+          description: 'Kodieren Sie Text in Base64 oder dekodieren Sie Base64-Zeichenfolgen zurück in Text.',
+          encode: 'Kodieren',
+          decode: 'Dekodieren',
+          input: 'Eingabe',
+          output: 'Ausgabe',
+          inputPlaceholder: 'Text zum Kodieren oder Dekodieren eingeben...',
+          outputPlaceholder: 'Das kodierte oder dekodierte Ergebnis wird hier angezeigt'
         }
       },
-        crypto: {
+      crypto: {
         title: 'Krypto-Werkzeuge',
         description: 'Sichern Sie Ihre Daten mit unseren Krypto-Werkzeugen: Hash-Generatoren (MD5, SHA-1, SHA-256, SHA-512), HMAC und AES-Verschlüsselung.',
         jwtDecoder: {
@@ -219,7 +233,7 @@ export const de = {
           description: 'Perfekt für die API-Entwicklung, Protokollanalyse und Zeitstempel-Debugging.'
         }
       }
-    },
+      },
       regex: {
         title: 'RegEx-Tool',
         description: 'Reguläre Ausdrücke testen und validieren'
@@ -328,6 +342,81 @@ export const de = {
           newText: 'Neuer Text'
         }
       },
+      time: {
+        meta: {
+          title: 'Datum- und Zeit-Tools - Timestamp, Zeitzone und Datumsrechner',
+          description: 'Kostenlose Zeit-Tools: Timestamp-Konverter, Zeitzonenrechner und Datumsarithmetik. Präzise, DST-bewusste, entwicklerfreundliche Utilities.'
+        },
+        title: 'Datum- und Zeit-Tools',
+        subtitle: 'Wesentliche Datum- und Zeit-Utilities für Entwickler und Profis. Handhaben Sie Timestamp-Konvertierungen, Zeitzonenberechnungen und Datumsarithmetik mit Präzision.',
+        toolsTitle: 'Zeitmanagement-Tools',
+        timestamp: {
+          title: 'Timestamp-Konverter',
+          description: 'Konvertieren zwischen Unix-Timestamps und menschenlesbaren Daten und Zeiten.'
+        },
+        timezone: {
+          title: 'Zeitzonenkonverter',
+          description: 'Konvertieren Sie Datum und Uhrzeit zwischen verschiedenen Zeitzonen weltweit mit DST-Unterstützung.'
+        },
+        dateCalculator: {
+          title: 'Datumsrechner',
+          description: 'Addieren oder subtrahieren Sie Tage, Monate und Jahre von Daten. Berechnen Sie Datumsunterschiede.',
+          startDate: 'Startdatum',
+          add: 'Hinzufügen',
+          subtract: 'Subtrahieren',
+          years: 'Jahre',
+          months: 'Monate',
+          days: 'Tage',
+          resultDate: 'Ergebnisdatum'
+        },
+        calculations: {
+          title: 'Präzise Zeitberechnungen',
+          precise: {
+            title: 'Präzise Berechnungen',
+            description: 'Handhaben Sie komplexe Zeitzonenkonvertierungen und Datumsberechnungen mit Genauigkeit.'
+          },
+          global: {
+            title: 'Globale Unterstützung',
+            description: 'Unterstützung für alle Weltzeitzeitzonen mit automatischen Sommerzeitanpassungen.'
+          },
+          developerFriendly: {
+            title: 'Entwicklerfreundlich',
+            description: 'Perfekt für API-Entwicklung, Log-Analyse und Timestamp-Debugging.'
+          }
+        }
+      },
+      editor: {
+        meta: {
+          title: 'Code- und Dokument-Editoren',
+          description: 'Kostenlose Online-Editoren: Markdown mit Live-Vorschau und Mermaid-Diagramm-Tool. Schreiben, Vorschau und Export professioneller Inhalte einfach gemacht.'
+        },
+        title: 'Code- und Dokument-Editoren',
+        subtitle: 'Professionelle Online-Editoren für Markdown-Dokumentation und Mermaid-Diagramme. Erstellen, bearbeiten und Vorschau Ihrer Inhalte mit Echtzeit-Rendering.',
+        toolsTitle: 'Editor-Tools',
+        experience: {
+          title: 'Professionelle Bearbeitungserfahrung',
+          livePreview: {
+            title: 'Live-Vorschau',
+            description: 'Sehen Sie Ihre Markdown- und Mermaid-Diagramme in Echtzeit gerendert, während Sie tippen.'
+          },
+          syntaxHighlighting: {
+            title: 'Syntaxhervorhebung',
+            description: 'Professioneller Code-Editor mit Syntaxhervorhebung und Auto-Vervollständigung.'
+          },
+          exportReady: {
+            title: 'Export-bereit',
+            description: 'Kopieren oder laden Sie Ihre gerenderten Inhalte für die Verwendung in Dokumentation und Präsentationen herunter.'
+          }
+        },
+        markdown: {
+          title: 'Markdown-Editor',
+          description: 'Schreiben und Vorschau von Markdown mit Syntaxhervorhebung und Live-Vorschau.'
+        },
+        mermaid: {
+          title: 'Mermaid-Diagramm-Editor',
+          description: 'Erstellen Sie Flussdiagramme, Sequenzdiagramme und andere Diagramme mit Mermaid-Syntax.'
+        }
+      },
       markdown: {
         title: 'Markdown-Editor',
         description: 'Markdown-Editor mit Syntaxhervorhebung und Live-Vorschau.',
@@ -338,7 +427,7 @@ export const de = {
         description: 'Erstellen Sie Diagramme und Flussdiagramme mit Mermaid',
         invalidSyntax: 'Ungültige Mermaid-Syntax'
       }
-    }
+      }
     },
     toasts: {
       common: {
