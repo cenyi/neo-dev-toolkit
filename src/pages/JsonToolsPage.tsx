@@ -15,35 +15,35 @@ const JsonToolsPage: React.FC = () => {
       path: `/${lang}/json/formatter`,
       icon: FileJson,
       title: 'JSON Formatter & Validator',
-      description: 'Format, validate, and beautify JSON data with syntax highlighting and error detection.',
+      description: '',
       color: 'text-blue-500'
     },
     {
       path: `/${lang}/json/schema-validator`,
       icon: FileCode,
       title: 'JSON Schema Validator',
-      description: 'Validate JSON data against JSON Schema with detailed error reporting.',
+      description: '',
       color: 'text-green-500'
     },
     {
       path: `/${lang}/json/codegen`,
       icon: Code,
       title: 'Generate Code Types',
-      description: 'Generate TypeScript, Python, Java, C# code types from JSON data.',
+      description: '',
       color: 'text-purple-500'
     },
     {
       path: `/${lang}/json/diff`,
       icon: GitCompare,
       title: 'JSON Diff Tool',
-      description: 'Compare and visualize differences between two JSON objects.',
+      description: '',
       color: 'text-orange-500'
     },
     {
       path: `/${lang}/json/mock`,
       icon: Shuffle,
       title: 'Mock Data Generator',
-      description: 'Generate realistic mock JSON data for testing and development.',
+      description: '',
       color: 'text-indigo-500'
     }
   ];

@@ -48,11 +48,11 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
         <link
           key={lang.code}
           rel="alternate"
-          hreflang={lang.code}
+          hrefLang={lang.code}
           href={`https://tojsons.com/${lang.code}${window.location.pathname.replace(/^\/[^\/]+/, '')}`}
         />
       ))}
-      <link rel="alternate" hreflang="x-default" href={`https://tojsons.com/en${window.location.pathname.replace(/^\/[^\/]+/, '')}`} />
+      <link rel="alternate" hrefLang="x-default" href={`https://tojsons.com/en${window.location.pathname.replace(/^\/[^\/]+/, '')}`} />
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",

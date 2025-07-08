@@ -13,6 +13,7 @@ import {
   Clock,
   Hash
 } from 'lucide-react';
+import { HomePageToolsShowcase } from './AllPagesLinks';
 
 const HomePage: React.FC = () => {
   const { lang = 'en' } = useParams<{ lang: string }>();
@@ -136,6 +137,9 @@ const HomePage: React.FC = () => {
           </div>
         </section>
       </main>
+      
+      {/* SEO优化：全站工具链接汇总 */}
+      <HomePageToolsShowcase />
     </div>
   );
 };
