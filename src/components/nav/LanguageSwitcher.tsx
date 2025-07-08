@@ -14,6 +14,7 @@ const languages = [
   { code: 'ru', name: 'Русский' },
   { code: 'ja', name: '日本語' },
   { code: 'ko', name: '한국어' },
+  { code: 'zh', name: '简体中文' },
 ];
 
 const LanguageSwitcher: React.FC = () => {

@@ -41,12 +41,22 @@ import EditorToolsPage from "./pages/EditorToolsPage";
 import TimeToolsPage from "./pages/TimeToolsPage";
 import SiteMap from "@/components/SiteMap";
 import PageWrapper from "@/components/PageWrapper";
+import { useTranslation } from "react-i18next";
 
 import "@/i18n";
+
+const supportedLangs = ['en', 'es', 'fr', 'de', 'pt', 'ru', 'ja', 'ko', 'zh'];
+
+const LanguageRedirect = () => {
+  const lang = navigator.language.split('-')[0];
+  const targetLang = supportedLangs.includes(lang) ? lang : 'en';
+  return <Navigate to={`/${targetLang}`} replace />;
+};
 
 const queryClient = new QueryClient();
 
 function App() {
+  const { t } = useTranslation();
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
@@ -58,7 +68,7 @@ function App() {
               <main className="flex-grow">
                 <Routes>
           {/* 语言前缀路由重定向 */}
-          <Route path="/" element={<Navigate to="/en" replace />} />
+          <Route path="/" element={<LanguageRedirect />} />
                   <Route path=":lang/json/formatter" element={
                     <PageWrapper 
                       title="JSON Formatter & Validator" 
@@ -247,8 +257,8 @@ function App() {
                   } />
                   <Route path=":lang/text/text-diff" element={
                     <PageWrapper 
-                      title="Text Comparison Tool"
-                      description="Free text comparison tool. Find differences between documents with visual highlighting."
+                      title={t('tools.text.textDiff')}
+                      description={t('tools.text.textDiffDescription')}
                       keywords="text diff, text comparison, document compare, text difference, file compare"
                     >
                       <TextDiff />

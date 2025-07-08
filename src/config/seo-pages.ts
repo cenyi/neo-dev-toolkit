@@ -3,7 +3,7 @@
 // 支持多语言SEO优化
 
 // 支持的语言列表
-export const SUPPORTED_LANGUAGES = ['en', 'es', 'fr', 'de', 'pt', 'ru', 'ja', 'ko'] as const;
+export const SUPPORTED_LANGUAGES = ['en', 'es', 'fr', 'de', 'pt', 'ru', 'ja', 'ko', 'zh'] as const;
 export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number];
 
 // 多语言TDK信息
@@ -16,6 +16,7 @@ export interface MultiLanguageTDK {
   ru: { title: string; description: string; keywords: string };
   ja: { title: string; description: string; keywords: string };
   ko: { title: string; description: string; keywords: string };
+  zh: { title: string; description: string; keywords: string };
 }
 
 export interface SEOPageConfig {
@@ -80,6 +81,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'DevTools Hub - 무료 개발자 도구',
         description: '',
         keywords: '개발자 도구, JSON 포맷터, 텍스트 변환기, 암호화, 해시 생성기, URL 인코더, Base64, 타임스탬프 변환기'
+      },
+      zh: {
+        title: 'DevTools Hub - 免费在线开发者工具',
+        description: '',
+        keywords: '开发者工具, JSON格式化, 文本转换, 加密, 哈希生成, URL编码, Base64, 时间戳转换, 免费开发工具'
       }
     },
     priority: 'high',
@@ -129,6 +135,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'JSON 도구 - 전문 JSON 유틸리티',
         description: '',
         keywords: 'JSON 도구, JSON 포맷터, JSON 검증기, JSON 스키마, JSON 코드 생성기, JSON 차이점'
+      },
+      zh: {
+        title: 'JSON 工具 - 专业 JSON 实用程序',
+        description: '',
+        keywords: 'JSON工具, JSON格式化, JSON验证器, JSON模式, JSON代码生成器, JSON差异, 模拟数据生成器'
       }
     },
     priority: 'high',
@@ -178,6 +189,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'JSON 포맷터 & 검증기 - 무료 온라인 도구',
         description: '',
         keywords: 'JSON 포맷터, JSON 검증기, JSON 정리기, JSON 최소화기, 온라인 JSON 도구, 무료 JSON 포맷터'
+      },
+      zh: {
+        title: 'JSON 格式化和验证器 - 免费在线工具',
+        description: '',
+        keywords: 'JSON格式化, JSON验证器, JSON美化, JSON压缩, 在线JSON工具, 免费JSON格式化程序'
       }
     },
     priority: 'high',
@@ -197,6 +213,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'Validador de Esquema JSON - Herramienta Gratuita',
         description: '',
         keywords: 'validador esquema JSON, validación JSON, validación esquema, verificador esquema JSON, validación datos'
+      },
+      zh: {
+        title: 'JSON 模式验证器 - 免费在线工具',
+        description: '',
+        keywords: 'JSON模式验证器, JSON验证, 模式验证, JSON模式检查器, 数据验证'
       },
       fr: {
         title: 'Validateur de Schéma JSON - Outil Gratuit',
@@ -276,6 +297,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'JSON에서 코드 타입 생성 - 무료 도구',
         description: '',
         keywords: 'JSON 코드 생성기, TypeScript 생성기, Python 타입, Java 클래스, C# 모델, 코드 생성'
+      },
+      zh: {
+        title: '从 JSON 生成代码类型 - 免费工具',
+        description: '',
+        keywords: 'JSON代码生成器, TypeScript生成器, Python类型, Java类, C#模型, 代码生成'
       }
     },
     priority: 'medium',
@@ -325,6 +351,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'JSON 차이점 도구 - JSON 객체 비교',
         description: '',
         keywords: 'JSON 차이점, JSON 비교, JSON 비교 도구, 데이터 비교, JSON 차이점 검사기'
+      },
+      zh: {
+        title: 'JSON 差异工具 - 比较 JSON 对象',
+        description: '',
+        keywords: 'JSON差异, JSON比较, JSON对比, 数据比较, JSON差异检查器'
       }
     },
     priority: 'medium',
@@ -374,6 +405,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'JSON 모의 데이터 생성기 - 무료 테스트 도구',
         description: '',
         keywords: '모의 데이터 생성기, JSON 모의 데이터, 테스트 데이터 생성기, 가짜 데이터, API 테스트 데이터'
+      },
+      zh: {
+        title: 'JSON 模拟数据生成器 - 免费测试工具',
+        description: '',
+        keywords: '模拟数据生成器, JSON模拟数据, 测试数据生成器, 假数据, API测试数据'
       }
     },
     priority: 'medium',
@@ -423,6 +459,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '텍스트 도구 - 포괄적 텍스트 처리',
         description: '',
         keywords: '텍스트 도구, 텍스트 처리, 대소문자 변환기, 단어 카운터, 텍스트 조작'
+      },
+      zh: {
+        title: '文本工具 - 全面的文本处理',
+        description: '',
+        keywords: '文本工具, 文本处理, 大小写转换器, 字数统计, 文本操作, 文本实用程序'
       }
     },
     priority: 'high',
@@ -472,6 +513,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '텍스트 대소문자 변환기 - 무료 도구',
         description: '',
         keywords: '대소문자 변환기, 텍스트 변환기, 대문자, 소문자, 제목 케이스, camelCase, snake_case'
+      },
+      zh: {
+        title: '文本大小写转换器 - 大写、小写、标题大小写',
+        description: '',
+        keywords: '大小写转换器, 文本转换器, 大写, 小写, 标题大小写, 驼峰命名, 蛇形命名'
       }
     },
     priority: 'high',
@@ -521,6 +567,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '네트워크 도구 - 인코딩 및 보안 유틸리티',
         description: '',
         keywords: '네트워크 도구, URL 인코더, Base64 변환기, IP 조회, JWT 디코더, 인코딩 도구'
+      },
+      zh: {
+        title: '网络工具 - 编码和安全实用程序',
+        description: '',
+        keywords: '网络工具, URL编码器, Base64转换器, IP查询, JWT解码器, 编码工具'
       }
     },
     priority: 'high',
@@ -560,6 +611,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'Тестер и Генератор Регулярных Выражений',
         description: '',
         keywords: 'тестер regex, регулярное выражение, генератор regex, поиск шаблонов, поиск текста'
+      },
+      zh: {
+        title: '正则表达式测试器和生成器',
+        description: '',
+        keywords: 'regex测试器, 正则表达式, regex生成器, 模式匹配, 文本搜索, regex验证器'
       },
       ja: {
         title: '正規表現テスター＆ジェネレーター',
@@ -619,6 +675,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '암호화 도구 - AES, 해시 및 비밀번호 생성기',
         description: '',
         keywords: '암호화 도구, AES 암호화, 비밀번호 생성기, 해시 계산기, 데이터 보안, 암호학'
+      },
+      zh: {
+        title: '加密工具 - AES、哈希和密码生成器',
+        description: '',
+        keywords: '加密工具, AES加密, 密码生成器, 哈希计算器, 数据安全, 密码学'
       }
     },
     priority: 'medium',
@@ -668,6 +729,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '날짜 및 시간 도구 - 타임스탬프 및 시간대 변환기',
         description: '',
         keywords: '시간 도구, 타임스탬프 변환기, 시간대 변환기, 날짜 계산기'
+      },
+      zh: {
+        title: '日期和时间工具 - 时间戳和时区转换器',
+        description: '',
+        keywords: '时间工具, 时间戳转换器, 时区转换器, 日期计算器'
       }
     },
     priority: 'medium',
@@ -717,6 +783,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '편집기 도구 - Markdown 및 Mermaid 편집기',
         description: '',
         keywords: '편집기 도구, Markdown 편집기, Mermaid 편집기, 다이어그램 편집기, 문서화 도구'
+      },
+      zh: {
+        title: '编辑器工具 - Markdown 和 Mermaid 编辑器',
+        description: '',
+        keywords: '编辑器工具, Markdown编辑器, Mermaid编辑器, 图表编辑器, 文档工具'
       }
     },
     priority: 'medium',
@@ -741,6 +812,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'Plan du Site - Répertoire de Tous les Outils pour Développeurs',
         description: '',
         keywords: 'plan site, outils développeur, outils JSON, outils texte, utilitaires réseau'
+      },
+      zh: {
+        title: '网站地图 - 所有开发者工具目录',
+        description: '',
+        keywords: '网站地图, 开发者工具, JSON工具, 文本工具, 网络实用程序, 免费在线工具'
       },
       de: {
         title: 'Sitemap - Verzeichnis Aller Entwicklertools',
@@ -815,6 +891,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '회사 소개 - DevTools Hub 팀 및 미션',
         description: '',
         keywords: '회사 소개, 개발자 도구, 미션, 팀, 회사 정보'
+      },
+      zh: {
+        title: '关于我们 - DevTools Hub 团队与使命',
+        description: '',
+        keywords: '关于我们, 开发者工具, 使命, 团队, 公司信息'
       }
     },
     priority: 'low',
@@ -864,6 +945,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '개인정보 처리방침 - 데이터 보호 및 사용자 권리',
         description: '',
         keywords: '개인정보 처리방침, 데이터 보호, 개인정보, 개인정보 보호 권리'
+      },
+      zh: {
+        title: '隐私政策 - 数据保护与用户权利',
+        description: '',
+        keywords: '隐私政策, 数据保护, 个人信息, 隐私权'
       }
     },
     priority: 'low',
@@ -913,6 +999,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '서비스 약관 - 사용자 계약 및 법적 조건',
         description: '',
         keywords: '서비스 약관, 법적 계약, 이용약관, 사용자 계약'
+      },
+      zh: {
+        title: '服务条款 - 用户协议与法律条款',
+        description: '',
+        keywords: '服务条款, 法律协议, 条款与条件, 用户协议'
       }
     },
     priority: 'low',
@@ -962,6 +1053,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '404 찾을 수 없음 - 페이지를 찾을 수 없음',
         description: '',
         keywords: '404 오류, 페이지를 찾을 수 없음, DevTools Hub'
+      },
+      zh: {
+        title: '404 未找到 - 页面未找到',
+        description: '',
+        keywords: '404错误, 页面未找到, DevTools Hub'
       }
     },
     priority: 'low',
@@ -1011,6 +1107,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '타임스탬프 변환기 - Unix 시간 및 날짜 변환기',
         description: '',
         keywords: '타임스탬프 변환기, Unix 시간, 날짜 변환기, 에포크 시간, 시간 변환'
+      },
+      zh: {
+        title: '时间戳转换器 - Unix时间和日期转换器',
+        description: '',
+        keywords: '时间戳转换器, Unix时间, 日期转换器, epoch时间, 时间转换'
       }
     },
     priority: 'high',
@@ -1060,6 +1161,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '시간대 변환기 - 세계 시간대 변환기',
         description: '',
         keywords: '시간대 변환기, 세계 시간, 시간대 변환, 글로벌 시간, UTC 변환기'
+      },
+      zh: {
+        title: '时区转换器 - 世界时区转换器',
+        description: '',
+        keywords: '时区转换器, 世界时间, 时区转换, 全球时间, UTC转换器'
       }
     },
     priority: 'high',
@@ -1108,7 +1214,12 @@ export const SEO_PAGES: SEOPageConfig[] = [
       ko: {
         title: '날짜 계산기 - 날짜 차이 및 기간 계산기',
         description: '',
-        keywords: '날짜 계산기, 날짜 차이, 날짜 산술, 기간 계산기, 날짜 간 일수'
+        keywords: '날짜 계산기, 날짜 차이, 날짜 연산, 기간 계산기, 날짜 간 일수'
+      },
+      zh: {
+        title: '日期计算器 - 日期差异和持续时间计算器',
+        description: '',
+        keywords: '日期计算器, 日期差异, 日期算术, 持续时间计算器, 日期之间的天数'
       }
     },
     priority: 'medium',
@@ -1158,6 +1269,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'URL 인코더/디코더 - URL 인코딩 및 디코딩 온라인',
         description: '',
         keywords: 'URL 인코더, URL 디코더, 퍼센트 인코딩, URL 인코딩, 웹 개발'
+      },
+      zh: {
+        title: 'URL编码/解码器 - 在线编码和解码URL',
+        description: '',
+        keywords: 'URL编码器, URL解码器, 百分号编码, URL编码, web开发'
       }
     },
     priority: 'high',
@@ -1207,6 +1323,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'Base64 인코더/디코더 - Base64 인코딩 및 디코딩 온라인',
         description: '',
         keywords: 'Base64 인코더, Base64 디코더, Base64 변환, 인코드 디코드, 데이터 인코딩'
+      },
+      zh: {
+        title: 'Base64编码/解码器 - 在线编码和解码Base64',
+        description: '',
+        keywords: 'Base64编码器, Base64解码器, Base64转换, 编码解码, 数据编码'
       }
     },
     priority: 'high',
@@ -1256,6 +1377,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'IP 조회 - IP 주소 정보 및 위치 정보',
         description: '',
         keywords: 'IP 조회, IP 주소, 위치 정보, ISP 조회, 네트워크 정보'
+      },
+      zh: {
+        title: 'IP查询 - IP地址信息和地理位置',
+        description: '',
+        keywords: 'IP查询, IP地址, 地理位置, ISP查询, 网络信息'
       }
     },
     priority: 'medium',
@@ -1284,27 +1410,32 @@ export const SEO_PAGES: SEOPageConfig[] = [
       de: {
         title: 'JWT-Decoder - JSON Web Token Decoder & Validator',
         description: '',
-        keywords: 'JWT decoder, JSON Web Token, JWT validator, token decoder, authentifizierung'
+        keywords: 'JWT-Decoder, JSON Web Token, JWT-Validator, Token-Decoder, Authentifizierung'
       },
       pt: {
-        title: 'Decodificador JWT - Decodificador e Validador JSON Web Token',
+        title: 'Decodificador JWT - Decodificador e Validador de JSON Web Token',
         description: '',
         keywords: 'decodificador JWT, JSON Web Token, validador JWT, decodificador token, autenticação'
       },
       ru: {
         title: 'JWT Декодер - Декодер и Валидатор JSON Web Token',
         description: '',
-        keywords: 'JWT декодер, JSON Web Token, JWT валидатор, декодер токенов, аутентификация'
+        keywords: 'JWT декодер, JSON Web Token, JWT валидатор, декодер токена, аутентификация'
       },
       ja: {
-        title: 'JWTデコーダー - JSON Web Tokenデコーダー・バリデーター',
+        title: 'JWTデコーダー - JSON Web Tokenデコーダー＆バリデーター',
         description: '',
         keywords: 'JWTデコーダー, JSON Web Token, JWTバリデーター, トークンデコーダー, 認証'
       },
       ko: {
-        title: 'JWT 디코더 - JSON Web Token 디코더 및 검증기',
+        title: 'JWT 디코더 - JSON 웹 토큰 디코더 및 유효성 검사기',
         description: '',
-        keywords: 'JWT 디코더, JSON Web Token, JWT 검증기, 토큰 디코더, 인증'
+        keywords: 'JWT 디코더, JSON 웹 토큰, JWT 유효성 검사기, 토큰 디코더, 인증'
+      },
+      zh: {
+        title: 'JWT解码器 - JSON Web Token解码器和验证器',
+        description: '',
+        keywords: 'JWT解码器, JSON Web Token, JWT验证器, 令牌解码器, 身份验证'
       }
     },
     priority: 'high',
@@ -1354,6 +1485,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'Markdown 편집기 - 실시간 미리보기 Markdown 편집기',
         description: '',
         keywords: 'Markdown 편집기, 실시간 미리보기, Markdown 변환기, 문서 편집기, 텍스트 편집기'
+      },
+      zh: {
+        title: 'Markdown编辑器 - 实时预览Markdown编辑器',
+        description: '',
+        keywords: 'Markdown编辑器, 实时预览, Markdown转换器, 文档编辑器, 文本编辑器'
       }
     },
     priority: 'high',
@@ -1403,6 +1539,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'Mermaid 다이어그램 편집기 - 플로우차트 및 다이어그램 생성',
         description: '',
         keywords: 'Mermaid 편집기, 플로우차트 생성기, 다이어그램 편집기, 시퀀스 다이어그램, 차트 생성기'
+      },
+      zh: {
+        title: 'Mermaid图表编辑器 - 创建流程图和图表',
+        description: '',
+        keywords: 'Mermaid编辑器, 流程图创建器, 图表编辑器, 序列图, 图表制作器'
       }
     },
     priority: 'high',
@@ -1442,6 +1583,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'Счетчик Слов и Символов - Инструмент Статистики Текста',
         description: '',
         keywords: 'счетчик слов, счетчик символов, статистика текста, подсчет слов, подсчет символов'
+      },
+      zh: {
+        title: '单词和字符计数器 - 文本统计工具',
+        description: '',
+        keywords: '单词计数器, 字符计数器, 文本统计, 词数, 字符数'
       },
       ja: {
         title: '文字・単語カウンター - テキスト統計ツール',
@@ -1501,6 +1647,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '텍스트 뒤집기 - 텍스트 및 문자열 뒤집기 도구',
         description: '',
         keywords: '텍스트 뒤집기, 텍스트 역순, 문자열 뒤집기, 텍스트 조작, 단어 뒤집기'
+      },
+      zh: {
+        title: '文本反向器 - 反转文本和字符串的工具',
+        description: '',
+        keywords: '文本反向器, 反向文本, 字符串反向器, 文本操作, 反向单词'
       }
     },
     priority: 'low',
@@ -1550,6 +1701,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '공백 제거기 - 여분의 공백 및 줄바꿈 제거',
         description: '',
         keywords: '공백 제거기, 스페이스 제거, 텍스트 정리기, 텍스트 형식, 줄바꿈 제거'
+      },
+      zh: {
+        title: '空格移除器 - 删除多余的空格和换行符',
+        description: '',
+        keywords: '空格移除器, 删除空格, 文本清理器, 格式化文本, 删除换行符'
       }
     },
     priority: 'low',
@@ -1599,6 +1755,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: 'Lorem Ipsum 생성기 - 플레이스홀더 텍스트 생성기',
         description: '',
         keywords: 'Lorem Ipsum 생성기, 플레이스홀더 텍스트, 더미 텍스트, 텍스트 생성기, 디자인 텍스트'
+      },
+      zh: {
+        title: 'Lorem Ipsum 生成器 - 占位符文本生成器',
+        description: '',
+        keywords: 'Lorem Ipsum 生成器, 占位符文本, 虚拟文本, 文本生成器, 设计文本'
       }
     },
     priority: 'medium',
@@ -1606,7 +1767,7 @@ export const SEO_PAGES: SEOPageConfig[] = [
   },
 
   // Text Comparison Tool
-  {
+{
     path: '/:lang/text-diff',
     tdk: {
       en: {
@@ -1648,6 +1809,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '텍스트 비교 도구 - 텍스트 비교 및 차이점 온라인',
         description: '',
         keywords: '텍스트 비교, 텍스트 차이, 텍스트 비교, 텍스트 차이점, 차이 도구'
+      },
+      zh: {
+        title: '文本比较工具 - 在线比较和区分文本',
+        description: '',
+        keywords: '文本比较, 文本差异, 比较文本, 文本不同, 差异工具'
       }
     },
     priority: 'medium',
@@ -1697,6 +1863,11 @@ export const SEO_PAGES: SEOPageConfig[] = [
         title: '대소문자 변환기 - 텍스트 케이스 온라인 변환',
         description: '',
         keywords: '대소문자 변환기, 텍스트 케이스, 대문자, 소문자, 제목 케이스, camelCase, snake_case'
+      },
+      zh: {
+        title: '大小写转换器 - 在线转换文本大小写',
+        description: '',
+        keywords: '大小写转换器, 文本大小写, 大写, 小写, 标题大小写, 驼峰命名,蛇形命名'
       }
     },
     priority: 'high',
