@@ -120,7 +120,7 @@ const MermaidGraphInternational: React.FC<MermaidGraphInternationalProps> = ({
           onClick={handleDownloadSVG}
         >
           <Download className="h-4 w-4 mr-1" />
-          {t('editor.downloadSvg')}
+          {t('tools.editor.downloadSvg')}
         </Button>
       </div>
       

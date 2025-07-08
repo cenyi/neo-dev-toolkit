@@ -248,11 +248,14 @@ export const pt = {
           description: 'Escreva e pré-visualize Markdown com destaque de sintaxe e pré-visualização ao vivo.',
           placeholder: 'Digite seu conteúdo Markdown aqui...'
         },
-        mermaid: {
-          title: 'Editor de Diagramas Mermaid',
-          description: 'Crie fluxogramas, diagramas de sequência e outros diagramas com a sintaxe Mermaid.',
-          invalidSyntax: 'Sintaxe Mermaid inválida'
-        }
+
+      },
+      mermaid: {
+        title: 'Editor de Diagramas Mermaid',
+        description: 'Crie fluxogramas, diagramas de sequência e outros diagramas com a sintaxe Mermaid.',
+        invalidSyntax: 'Sintaxe Mermaid inválida',
+        placeholder: 'Digite seu código Mermaid aqui...',
+        syntaxError: 'Erro de sintaxe no código Mermaid'
       }
     },
     editor: {

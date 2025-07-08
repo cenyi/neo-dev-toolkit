@@ -14,15 +14,15 @@ const EditorToolsPage: React.FC = () => {
     {
       path: `/${lang}/editor/markdown`,
       icon: FileCode,
-      title: t('editor.markdown.title'),
-      description: t('editor.markdown.description'),
+      title: t('tools.editor.markdown.title'),
+      description: t('tools.editor.markdown.description'),
       color: 'text-yellow-500'
     },
     {
       path: `/${lang}/editor/mermaid`,
       icon: Code,
-      title: t('editor.mermaid.title'),
-      description: t('editor.mermaid.description'),
+      title: t('tools.editor.mermaid.title'),
+      description: t('tools.editor.mermaid.description'),
       color: 'text-indigo-500'
     }
   ];
@@ -30,17 +30,17 @@ const EditorToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <title>{t('editor.meta.title')}</title>
-  <meta name="description" content={t('editor.meta.description')} />
+  <title>{t('tools.editor.meta.title')}</title>
+  <meta name="description" content={t('tools.editor.meta.description')} />
 </Helmet>
       <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">{t('editor.title')}</h1>
+        <h1 className="text-4xl font-bold mb-4 text-foreground">{t('tools.editor.title')}</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          {t('editor.subtitle')}
+          {t('tools.editor.subtitle')}
         </p>
       </header>
 
-        <h2 className="text-2xl font-semibold mb-6 text-center">{t('editor.toolsTitle')}</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">{t('tools.editor.toolsTitle')}</h2>
 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {editorTools.map(({ path, icon: Icon, title, description, color }) => (
             <Link key={path} to={path} className="group">
@@ -66,24 +66,24 @@ const EditorToolsPage: React.FC = () => {
         </div>
 
         <section className="mt-16 text-center">
-          <h2 className="text-2xl font-semibold mb-4">{t('editor.experience.title')}</h2>
+          <h2 className="text-2xl font-semibold mb-4">{t('tools.editor.experience.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">{t('editor.experience.livePreview.title')}</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.editor.experience.livePreview.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                {t('editor.experience.livePreview.description')}
+                {t('tools.editor.experience.livePreview.description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">{t('editor.experience.syntaxHighlighting.title')}</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.editor.experience.syntaxHighlighting.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                {t('editor.experience.syntaxHighlighting.description')}
+                {t('tools.editor.experience.syntaxHighlighting.description')}
               </p>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-medium mb-2">{t('editor.experience.exportReady.title')}</h3>
+              <h3 className="text-lg font-medium mb-2">{t('tools.editor.experience.exportReady.title')}</h3>
               <p className="text-muted-foreground text-sm">
-                {t('editor.experience.exportReady.description')}
+                {t('tools.editor.experience.exportReady.description')}
               </p>
             </div>
           </div>

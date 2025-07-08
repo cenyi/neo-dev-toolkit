@@ -209,6 +209,13 @@ export const fr = {
         description: 'Éditeur Markdown avec coloration syntaxique et aperçu en temps réel.',
         placeholder: 'Entrez votre contenu Markdown ici...'
       },
+      mermaid: {
+        title: 'Diagrammes Mermaid',
+        description: 'Créez des diagrammes et des organigrammes avec la syntaxe Mermaid',
+        placeholder: 'Entrez votre code de diagramme Mermaid ici...',
+        syntaxError: 'Erreur de Syntaxe',
+        invalidSyntax: 'Syntaxe Mermaid invalide'
+      },
       crypto: {
         title: 'Outils de Cryptographie',
         description: 'Sécurisez vos données avec nos outils de cryptographie : générateurs de hachage (MD5, SHA-1, SHA-256, SHA-512), HMAC et chiffrement AES.',
@@ -252,13 +259,10 @@ export const fr = {
         },
         markdown: {
           title: 'Éditeur Markdown',
-          description: 'Rédigez et prévisualisez du Markdown avec coloration syntaxique et aperçu en direct.'
+          description: 'Rédigez et prévisualisez du Markdown avec coloration syntaxique et aperçu en direct.',
+          placeholder: "Saisissez ici le contenu Markdown..."
         },
-        mermaid: {
-          title: 'Diagrammes Mermaid',
-          description: 'Créer des diagrammes et des organigrammes avec Mermaid',
-          invalidSyntax: 'Syntaxe Mermaid invalide'
-        }
+
       },
       time: {
         title: 'Outils de Date et Heure',

@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
         { path: `/${lang}/editor/markdown`, name: 'Markdown Editor' },
         { path: `/${lang}/editor/mermaid`, name: 'Mermaid Editor' },
         { path: `/${lang}/time/timestamp-converter`, name: 'Timestamp Converter' },
-        { path: `/${lang}/encryption`, name: 'Encryption Tool' }
+        { path: `/${lang}/crypto/encryption`, name: 'Encryption Tool' }
       ]
     }
   ];

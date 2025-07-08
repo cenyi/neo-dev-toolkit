@@ -22,13 +22,13 @@ const MarkdownEditor: React.FC = () => {
     try {
       await navigator.clipboard.writeText(input);
       toast({
-        title: t('editor.copied'),
-        description: t('editor.copySuccess'),
+        title: t('tools.editor.copied'),
+        description: t('tools.editor.copySuccess'),
       });
     } catch (err) {
       toast({
-        title: t('editor.copyError'),
-        description: t('editor.copyErrorDesc'),
+        title: t('tools.editor.copyError'),
+        description: t('tools.editor.copyErrorDesc'),
         variant: "destructive",
       });
     }
@@ -37,15 +37,15 @@ const MarkdownEditor: React.FC = () => {
   const handleClear = () => {
     setInput('');
     toast({
-      title: t('editor.cleared'),
-      description: t('editor.clearSuccess'),
+      title: t('tools.editor.cleared'),
+      description: t('tools.editor.clearSuccess'),
     });
   };
 
   return (
     <ToolPageLayout
-      title={t('tools.markdown.title')}
-      description={t('tools.markdown.description')}
+      title={t('tools.editor.markdown.title')}
+      description={t('tools.editor.markdown.description')}
     >
       <Card>
         <CardContent className="pt-6">
@@ -58,7 +58,7 @@ const MarkdownEditor: React.FC = () => {
                     size="icon"
                     className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
                     onClick={handleCopy}
-                    title={t('editor.copy')}
+                    title={t('tools.editor.copy')}
                   >
                     <Copy className="h-4 w-4" />
                   </Button>
@@ -67,7 +67,7 @@ const MarkdownEditor: React.FC = () => {
                     size="icon"
                     className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
                     onClick={handleClear}
-                    title={t('editor.clear')}
+                    title={t('tools.editor.clear')}
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -75,7 +75,7 @@ const MarkdownEditor: React.FC = () => {
                 <SimpleCodeEditor
                   value={input}
                   onChange={setInput}
-                  placeholder={t('tools.markdown.placeholder')}
+                  placeholder={t('tools.editor.markdown.placeholder')}
                 />
               </div>
             </ResizablePanel>

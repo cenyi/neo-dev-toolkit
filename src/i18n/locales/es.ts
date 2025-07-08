@@ -333,17 +333,17 @@ export const es = {
     },
       editor: {
         meta: {
-          title: 'Editores de Código y Documentos',
-          description: 'Editores en línea gratuitos: Markdown con vista previa en vivo y herramienta de diagramas Mermaid. Escriba, previsualice y exporte contenido profesional fácilmente.'
+          title: 'Editor de Código y Documentos',
+          description: 'Editor online gratuito: editor Markdown con vista previa en vivo y herramienta de diagramas Mermaid. Crea, previsualiza y exporta contenido profesional fácilmente.'
         },
-        title: 'Editores de Código y Documentos',
-        subtitle: 'Editores profesionales en línea para documentación Markdown y diagramas Mermaid. Cree, edite y previsualice su contenido con renderizado en tiempo real.',
-        toolsTitle: 'Herramientas de Edición',
+        title: 'Editor de Código y Documentos',
+        subtitle: 'Editor online profesional para Markdown y diagramas Mermaid. Crea, edita y previsualiza contenido con renderizado en tiempo real.',
+        toolsTitle: 'Herramientas del Editor',
         experience: {
           title: 'Experiencia de Edición Profesional',
           livePreview: {
             title: 'Vista Previa en Vivo',
-            description: 'Vea sus diagramas de Markdown y Mermaid renderizados en tiempo real mientras escribe.'
+            description: 'Observa cómo se renderizan Markdown y diagramas Mermaid en tiempo real mientras escribes.'
           },
           syntaxHighlighting: {
             title: 'Resaltado de Sintaxis',
@@ -351,18 +351,17 @@ export const es = {
           },
           exportReady: {
             title: 'Listo para Exportar',
-            description: 'Copie o descargue su contenido renderizado para usarlo en documentación y presentaciones.'
+            description: 'Copia o descarga el contenido renderizado para usar en documentos y presentaciones.'
           }
         },
         markdown: {
-          title: 'Editor de Markdown',
-          description: 'Escriba y previsualice Markdown con resaltado de sintaxis y vista previa en vivo.',
-          placeholder: 'Ingrese su contenido de Markdown aquí...'
+          title: 'Editor Markdown',
+          description: 'Escribe y previsualiza Markdown con resaltado de sintaxis y vista previa en vivo.'
         },
         mermaid: {
-          title: 'Editor de Diagramas Mermaid',
-          description: 'Cree diagramas de flujo, diagramas de secuencia y otros diagramas con la sintaxis de Mermaid.',
-          invalidSyntax: 'Sintaxis de Mermaid inválida'
+          title: 'Diagramas Mermaid',
+          description: 'Crea diagramas y flujos con Mermaid',
+          placeholder: 'Introduce aquí el código Mermaid...'
         }
       },
         crypto: {
@@ -377,12 +376,14 @@ export const es = {
         encryption: {
           title: 'Herramienta de Cifrado',
           description: 'Cifre y descifre texto utilizando diversos algoritmos como AES, DES y Rabbit.'
-        },
-        mermaid: {
-          title: 'Diagramas Mermaid',
-          description: 'Crear diagramas y diagramas de flujo con Mermaid',
-          invalidSyntax: 'Sintaxis de Mermaid inválida'
         }
+      },
+      mermaid: {
+        title: 'Diagramas Mermaid',
+        description: 'Crear diagramas y diagramas de flujo con Mermaid',
+        invalidSyntax: 'Sintaxis de Mermaid inválida',
+        placeholder: 'Ingrese su sintaxis de Mermaid aquí...',
+        syntaxError: 'Error de sintaxis en el código Mermaid'
       }
     },
     toasts: {

@@ -30,13 +30,13 @@ const MermaidEditor: React.FC = () => {
     try {
       await navigator.clipboard.writeText(input);
       toast({
-        title: t('editor.copied'),
-        description: t('editor.copySuccess'),
+        title: t('tools.editor.copied'),
+        description: t('tools.editor.copySuccess'),
       });
     } catch (err) {
       toast({
-        title: t('editor.copyError'),
-        description: t('editor.copyErrorDesc'),
+        title: t('tools.editor.copyError'),
+        description: t('tools.editor.copyErrorDesc'),
         variant: "destructive",
       });
     }
@@ -45,8 +45,8 @@ const MermaidEditor: React.FC = () => {
   const handleClear = () => {
     setInput('');
     toast({
-      title: t('editor.cleared'),
-      description: t('editor.clearSuccess'),
+      title: t('tools.editor.cleared'),
+      description: t('tools.editor.clearSuccess'),
     });
   };
 
@@ -119,7 +119,7 @@ const MermaidEditor: React.FC = () => {
             previewRef.current.innerHTML = svg;
             if (error) setError(null);
           } catch (e: any) {
-            setError(e.message?.replace(/mermaid.parseError: /s, '') || t('tools.mermaid.invalidSyntax'));
+            setError(e.message?.replace(/mermaid.parseError: /s, '') || t('tools.editor.mermaid.invalidSyntax'));
           }
         } else {
           previewRef.current.innerHTML = '';
@@ -134,8 +134,8 @@ const MermaidEditor: React.FC = () => {
 
   return (
     <ToolPageLayout
-      title={t('tools.mermaid.title')}
-      description={t('tools.mermaid.description')}
+      title={t('tools.editor.mermaid.title')}
+      description={t('tools.editor.mermaid.description')}
     >
       <Card>
         <CardContent className="pt-6">
@@ -149,7 +149,7 @@ const MermaidEditor: React.FC = () => {
                       size="icon"
                       className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
                       onClick={handleCopy}
-                      title={t('editor.copy')}
+                      title={t('tools.editor.copy')}
                     >
                       <Copy className="h-4 w-4" />
                     </Button>
@@ -158,7 +158,7 @@ const MermaidEditor: React.FC = () => {
                       size="icon"
                       className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
                       onClick={handleClear}
-                      title={t('editor.clear')}
+                      title={t('tools.editor.clear')}
                     >
                       <X className="h-4 w-4" />
                     </Button>
@@ -166,7 +166,7 @@ const MermaidEditor: React.FC = () => {
                   <SimpleCodeEditor
                     value={input}
                     onChange={setInput}
-                    placeholder={t('tools.mermaid.placeholder')}
+                    placeholder={t('tools.editor.mermaid.placeholder')}
                   />
                 </div>
               </ResizablePanel>
@@ -187,10 +187,10 @@ const MermaidEditor: React.FC = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem onClick={handleDownloadSVG}>
-                          {t('editor.downloadSvg')}
+                          {t('tools.editor.downloadSvg')}
                         </DropdownMenuItem>
                         <DropdownMenuItem onClick={handleDownloadPNG}>
-                          {t('editor.downloadPng')}
+                          {t('tools.editor.downloadPng')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -205,7 +205,7 @@ const MermaidEditor: React.FC = () => {
               <div className="absolute bottom-4 right-4 w-auto max-w-md z-10">
                 <Alert variant="destructive">
                   <Terminal className="h-4 w-4" />
-                  <AlertTitle>{t('tools.mermaid.syntaxError')}</AlertTitle>
+                  <AlertTitle>{t('tools.editor.mermaid.syntaxError')}</AlertTitle>
                   <AlertDescription>
                     <pre className="text-xs whitespace-pre-wrap font-mono">{error}</pre>
                   </AlertDescription>

@@ -24,7 +24,7 @@ const CaseConverter: React.FC = () => {
   const handleCopy = () => {
     if (!output) return;
     navigator.clipboard.writeText(output);
-    toast.success(t('editor.copySuccess'));
+    toast.success(t('tools.editor.copySuccess'));
   };
   
   return (

@@ -386,7 +386,7 @@ function App() {
                   <Route path="/date-calculator" element={<Navigate to="/:lang/time/date-calculator" replace />} />
 
                   {/* Encryption Tools */}
-                  <Route path=":lang/encryption" element={
+                  <Route path=":lang/crypto/encryption" element={
                     <PageWrapper 
                       title="Encryption Tool"
                       description="Secure encryption tools: AES encryption, password generator, and hash calculator for data security."

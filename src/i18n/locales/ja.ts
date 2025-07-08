@@ -274,11 +274,14 @@ export const ja = {
           title: 'Markdown エディタ',
           description: 'シンタックスハイライトとライブプレビューを備えたMarkdownの作成とプレビュー。'
         },
-        mermaid: {
-          title: 'Mermaid ダイアグラム',
-          description: 'Mermaid でダイアグラムとフローチャートを作成',
-          invalidSyntax: '無効な Mermaid 構文'
-        }
+
+      },
+      mermaid: {
+        title: 'Mermaid ダイアグラム',
+        description: 'Mermaid でダイアグラムとフローチャートを作成',
+        invalidSyntax: '無効な Mermaid 構文',
+        placeholder: 'ここにMermaidコードを入力してください...',
+        syntaxError: 'Mermaidコードの構文エラー'
       }
     },
     toasts: {

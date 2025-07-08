@@ -634,7 +634,7 @@ export const SEO_PAGES: SEOPageConfig[] = [
 
   // Encryption Tool
   {
-    path: '/:lang/encryption',
+    path: '/:lang/crypto/encryption',
     tdk: {
       en: {
         title: 'Encryption Tool - AES, Hash & Password Generator',

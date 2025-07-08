@@ -299,16 +299,17 @@ export const en = {
       editor: {
         meta: {
           title: 'Code & Document Editors',
-          description: 'Free online editors: Markdown with live preview & Mermaid diagram tool. Write, preview, and export professional content easily.'
+          description: 'Free online editors: Markdown editor with live preview and Mermaid diagram tools. Easily create, preview, and export professional content.'
         },
         title: 'Code & Document Editors',
-        subtitle: 'Professional online editors for Markdown documentation and Mermaid diagrams. Create, edit, and preview your content with real-time rendering.',
+        description: 'Professional online editors for Markdown documents and Mermaid diagrams. Features live preview, syntax highlighting, and multiple export formats.',
+        subtitle: 'Professional online editors for Markdown documents and Mermaid diagrams. Create, edit, and preview your content with real-time rendering.',
         toolsTitle: 'Editor Tools',
         experience: {
           title: 'Professional Editing Experience',
           livePreview: {
             title: 'Live Preview',
-            description: 'See your Markdown and Mermaid diagrams rendered in real-time as you type.'
+            description: 'See your Markdown and Mermaid diagrams render in real-time as you type.'
           },
           syntaxHighlighting: {
             title: 'Syntax Highlighting',
@@ -316,7 +317,7 @@ export const en = {
           },
           exportReady: {
             title: 'Export Ready',
-            description: 'Copy or download your rendered content for use in documentation and presentations.'
+            description: 'Copy or download your rendered content for use in documents and presentations.'
           }
         },
         markdown: {
@@ -325,12 +326,24 @@ export const en = {
           placeholder: 'Enter your Markdown content here...'
         },
         mermaid: {
-          title: 'Mermaid Diagram Editor',
-          description: 'Create flowcharts, sequence diagrams, and other diagrams with Mermaid syntax.',
+          title: 'Mermaid Diagrams',
+          description: 'Create diagrams and flowcharts with Mermaid syntax',
+          placeholder: 'Enter your Mermaid diagram code here...',
+          syntaxError: 'Syntax Error',
           invalidSyntax: 'Invalid Mermaid syntax'
-        }
+        },
+        copy: 'Copy content',
+        clear: 'Clear content',
+        copied: 'Copied',
+        copySuccess: 'Content copied to clipboard',
+        copyError: 'Copy failed',
+        copyErrorDesc: 'Unable to copy to clipboard',
+        cleared: 'Cleared',
+        clearSuccess: 'Content cleared',
+        downloadSvg: 'Download SVG',
+        downloadPng: 'Download PNG'
       },
-        crypto: { 
+      crypto: { 
         title: 'Crypto Tools',
         description: 'Secure your data with our crypto tools: hash generators (MD5, SHA-1, SHA-256, SHA-512), HMAC, and AES encryption.',
         jwtDecoder: {
@@ -342,11 +355,6 @@ export const en = {
         encryption: {
           title: 'Encryption Tool',
           description: 'Encrypt and decrypt text using various algorithms like AES, DES, and Rabbit.'
-        },
-        mermaid: {
-          title: 'Mermaid Diagrams',
-          description: 'Create diagrams and flowcharts with Mermaid',
-          invalidSyntax: 'Invalid Mermaid syntax'
         }
        },
        time: {
@@ -428,18 +436,7 @@ export const en = {
         emptyContent: 'No content to copy'
       }
     },
-    editor: {
-      copy: 'Copy content',
-      clear: 'Clear content',
-      copied: 'Copied',
-      copySuccess: 'Content copied to clipboard',
-      copyError: 'Copy failed',
-      copyErrorDesc: 'Unable to copy to clipboard',
-      cleared: 'Cleared',
-      clearSuccess: 'Content cleared',
-      downloadSvg: 'Download SVG',
-      downloadPng: 'Download PNG'
-    },
+
     availableTools: 'Available Tools',
     whyChooseUs: {
       title: 'Why Choose Our Tools?',

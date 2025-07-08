@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
       color: 'text-yellow-500'
     },
     {
-      path: `/${lang}/encryption`,
+      path: `/${lang}/crypto/encryption`,
       icon: Key,
       titleKey: 'tools.crypto.title',
       descKey: 'tools.crypto.description',

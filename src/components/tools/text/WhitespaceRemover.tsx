@@ -22,7 +22,7 @@ const WhitespaceRemover: React.FC = () => {
   const handleCopy = () => {
     if (!output) return;
     navigator.clipboard.writeText(output);
-    toast.success(t('editor.copySuccess'));
+    toast.success(t('tools.editor.copySuccess'));
   };
   return <div className="container mx-auto p-4">
       <Card>

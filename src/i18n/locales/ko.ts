@@ -234,12 +234,19 @@ export const ko = {
           description: '구문 강조 및 실시간 미리보기로 Markdown을 작성하고 미리봅니다.',
           placeholder: '여기에 Markdown 내용을 입력하세요...'
         },
-        mermaid: {
-          title: 'Mermaid 다이어그램 편집기',
-          description: 'Mermaid 구문을 사용하여 순서도, 시퀀스 다이어그램 및 기타 다이어그램을 만듭니다.',
-          invalidSyntax: '잘못된 Mermaid 구문'
-        }
-      } 
+
+      },
+      mermaid: {
+        title: 'Mermaid 다이어그램',
+        description: 'Mermaid를 사용하여 다이어그램 및 순서도 만들기',
+        invalidSyntax: '잘못된 Mermaid 구문',
+        placeholder: '여기에 Mermaid 구문을 입력하세요...',
+        syntaxError: 'Mermaid 코드의 구문 오류'
+      },
+      markdown: {
+        title: 'Markdown 편집기',
+        description: '구문 강조 및 실시간 미리보기로 Markdown을 작성하고 미리봅니다.'
+      }
     },
     toasts: {
       common: {

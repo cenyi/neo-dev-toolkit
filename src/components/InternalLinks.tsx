@@ -76,12 +76,12 @@ const InternalLinks: React.FC = () => {
     '/network/base64-encoder': [
       { path: `/${lang}/network/url-encoder`, title: 'URL Encoder', description: 'Encode/decode URLs', category: 'Network' },
       { path: `/${lang}/network/jwt-decoder`, title: 'JWT Decoder', description: 'Decode JWT tokens', category: 'Network' },
-      { path: `/${lang}/encryption`, title: 'Encryption Tool', description: 'Encrypt/decrypt data', category: 'Security' },
+      { path: `/${lang}/crypto/encryption`, title: 'Encryption Tool', description: 'Encrypt/decrypt data', category: 'Security' },
     ],
     '/network/jwt-decoder': [
       { path: `/${lang}/network/base64-encoder`, title: 'Base64 Encoder', description: 'Decode JWT payload', category: 'Network' },
       { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format JWT payload', category: 'JSON' },
-      { path: `/${lang}/encryption`, title: 'Encryption Tool', description: 'Security utilities', category: 'Security' },
+      { path: `/${lang}/crypto/encryption`, title: 'Encryption Tool', description: 'Security utilities', category: 'Security' },
     ],
     '/network/ip-lookup': [
       { path: `/${lang}/network/url-encoder`, title: 'URL Encoder', description: 'Encode URLs with IPs', category: 'Network' },
@@ -115,7 +115,7 @@ const InternalLinks: React.FC = () => {
       { path: `/${lang}/text/text-diff`, title: 'Text Diff', description: 'Compare regex results', category: 'Text' },
       { path: `/${lang}/network/url-encoder`, title: 'URL Encoder', description: 'Test URL patterns', category: 'Network' },
     ],
-    '/encryption': [
+    '/crypto/encryption': [
       { path: `/${lang}/network/base64-encoder`, title: 'Base64 Encoder', description: 'Encode encrypted data', category: 'Network' },
       { path: `/${lang}/network/jwt-decoder`, title: 'JWT Decoder', description: 'Decode secure tokens', category: 'Network' },
       { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format encrypted JSON', category: 'JSON' },

@@ -55,7 +55,7 @@ const basePath = `/${lang}`;
       '/editor': t('tools.editor.title'),
       '/editor/markdown': 'Markdown Editor',
       '/editor/mermaid': 'Mermaid Editor',
-      '/encryption': t('tools.crypto.title'),
+      '/crypto/encryption': t('tools.crypto.title'),
       '/regex': t('tools.regex.title'),
       '/about': t('about.title'),
       '/privacy': t('privacy.title'),
