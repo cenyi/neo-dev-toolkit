@@ -19,6 +19,8 @@ export const useJsonTool = () => {
   const [extractPath, setExtractPath] = useState('');
   const [outputContent, setOutputContent] = useState<string | null>(null);
   const [outputTitle, setOutputTitle] = useState<string | null>(null);
+  const [rootClassName, setRootClassName] = useState<string>('GeneratedClass');
+  const [usePrivateFields, setUsePrivateFields] = useState<boolean>(false);
 
   // 集成历史记录功能
   const { history, addToHistory, removeFromHistory, clearHistory } = useJsonHistory();
@@ -172,6 +174,53 @@ export const useJsonTool = () => {
     clearGraph();
   };
 
+  // 复制输出代码到剪贴板
+  const copyOutputCode = () => {
+    if (!outputContent) {
+      toast({
+        title: i18n.t('toasts.common.info'),
+        description: i18n.t('toasts.info.emptyContent'),
+      });
+      return;
+    }
+    navigator.clipboard.writeText(outputContent);
+    toast({
+      title: i18n.t('toasts.common.success'),
+      description: i18n.t('toasts.success.copied'),
+    });
+  };
+
+  // 加载示例JSON
+  const loadSampleJson = () => {
+    const sampleJson = {
+      "animals": {
+        "dog": [
+          {
+            "name": "Rufus",
+            "breed": "labrador",
+            "count": 1,
+            "twoFeet": false
+          },
+          {
+            "name": "Marty",
+            "breed": "whippet",
+            "count": 1,
+            "twoFeet": false
+          }
+        ],
+        "cat": {
+          "name": "Matilda"
+        }
+      }
+    };
+    const formattedJson = JSON.stringify(sampleJson, null, 2);
+    setInput(formattedJson);
+    setIsMinified(false);
+    setOutputContent(null);
+    setOutputTitle(null);
+    clearGraph();
+  };
+
   // 从历史记录中选择项目
   const handleSelectFromHistory = (content: string) => {
     setInput(content);
@@ -207,11 +256,18 @@ export const useJsonTool = () => {
     setOutputTitle,
   });
 
-  const { handleConvertToYaml, handleConvertToXml, handleConvertToCsv } = useJsonConversion({
+  const {
+    handleConvertToYaml,
+    handleConvertToXml,
+    handleConvertToCsv,
+    handleConvertToDart,
+  } = useJsonConversion({
     input,
     isValid,
     setOutputContent,
     setOutputTitle,
+    rootClassName,
+    usePrivateFields
   });
 
   // 当图形数据更新时，更新输出内容
@@ -238,11 +294,19 @@ export const useJsonTool = () => {
     handleConvertToYaml,
     handleConvertToXml,
     handleConvertToCsv,
+    handleConvertToDart,
     handleGenerateGraph,
     // 历史记录相关
     history,
     handleSelectFromHistory,
     removeFromHistory,
     clearHistory,
+    rootClassName,
+    setRootClassName,
+    // 新增功能
+    usePrivateFields,
+    setUsePrivateFields,
+    copyOutputCode,
+    loadSampleJson
   };
 };

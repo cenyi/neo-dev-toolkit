@@ -4,15 +4,18 @@ import i18n from '@/i18n';
 import { dump as toYaml } from 'js-yaml';
 import { parse as toXml } from 'js2xmlparser';
 import { Parser as CsvParser } from '@json2csv/plainjs';
+import { jsonToDart } from '../utils/jsonToDartConverter';
 
 interface UseJsonConversionProps {
   input: string;
   isValid: boolean;
   setOutputContent: (content: string | null) => void;
   setOutputTitle: (title: string | null) => void;
+  rootClassName?: string;
+  usePrivateFields?: boolean;
 }
 
-export const useJsonConversion = ({ input, isValid, setOutputContent, setOutputTitle }: UseJsonConversionProps) => {
+export const useJsonConversion = ({ input, isValid, setOutputContent, setOutputTitle, rootClassName = 'GeneratedClass', usePrivateFields = false }: UseJsonConversionProps) => {
 
   const handleConvertToYaml = () => {
     if (!isValid || !input.trim()) {
@@ -85,9 +88,31 @@ export const useJsonConversion = ({ input, isValid, setOutputContent, setOutputT
     }
   };
 
+  const handleConvertToDart = () => {
+    if (!isValid || !input.trim()) {
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.invalidJson'), variant: 'destructive' });
+      return;
+    }
+    try {
+      const parsed = JSON.parse(input);
+      // 修正：rootClassName 为空时使用默认值
+      const className = rootClassName && rootClassName.trim() ? rootClassName : 'GeneratedClass';
+      const dartCode = jsonToDart(parsed, className, usePrivateFields);
+      setOutputContent(dartCode);
+      setOutputTitle(i18n.t('tools.json.convertedToDartTitle'));
+      navigator.clipboard.writeText(dartCode);
+      toast({ title: i18n.t('toasts.common.success'), description: i18n.t('toasts.success.convertedToDartAndCopied') });
+    } catch (error) {
+      setOutputContent(null);
+      setOutputTitle(null);
+      toast({ title: i18n.t('toasts.common.error'), description: i18n.t('toasts.error.conversionFailed'), variant: 'destructive' });
+    }
+  };
+
   return {
     handleConvertToYaml,
     handleConvertToXml,
     handleConvertToCsv,
+    handleConvertToDart,
   };
 };

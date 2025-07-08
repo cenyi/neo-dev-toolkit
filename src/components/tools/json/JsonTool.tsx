@@ -25,34 +25,49 @@ const JsonTool: React.FC = () => {
     handleConvertToYaml,
     handleConvertToXml,
     handleConvertToCsv,
+    handleConvertToDart,
     handleGenerateGraph,
     history,
     handleSelectFromHistory,
     removeFromHistory,
     clearHistory,
+    rootClassName,
+    setRootClassName,
+    usePrivateFields,
+    setUsePrivateFields,
+    copyOutputCode,
+    loadSampleJson
   } = useJsonTool();
 
   return (
     <div className="h-screen flex flex-col">
       <div className="p-4">
         <JsonToolbar
-        onFormat={handleToggleMinifyFormat}
-        onMinify={handleToggleMinifyFormat}
-        onCopy={copyToClipboard}
-        onClear={clearAll}
-        isFormatMinifyDisabled={isFormatMinifyDisabled}
-        onExtract={handleExtractValue}
-        extractPath={extractPath}
-        onExtractPathChange={onExtractPathChange}
-        onConvertToYaml={handleConvertToYaml}
-        onConvertToXml={handleConvertToXml}
-        onConvertToCsv={handleConvertToCsv}
-        onGenerateGraph={handleGenerateGraph}
-        history={history}
-        onSelectHistory={handleSelectFromHistory}
-        onRemoveHistoryItem={removeFromHistory}
-        onClearHistory={clearHistory}
-      />
+          onFormat={handleToggleMinifyFormat}
+          onMinify={handleToggleMinifyFormat}
+          onCopy={copyToClipboard}
+          onClear={clearAll}
+          isFormatMinifyDisabled={!isValid || !input.trim()}
+          onExtract={handleExtractValue}
+          extractPath={extractPath}
+          onExtractPathChange={onExtractPathChange}
+          onConvertToYaml={handleConvertToYaml}
+          onConvertToXml={handleConvertToXml}
+          onConvertToCsv={handleConvertToCsv}
+          onConvertToDart={handleConvertToDart}
+          onGenerateGraph={handleGenerateGraph}
+          history={history}
+          onSelectHistory={handleSelectFromHistory}
+          onRemoveHistoryItem={removeFromHistory}
+          onClearHistory={clearHistory}
+          rootClassName={rootClassName}
+          setRootClassName={setRootClassName}
+          usePrivateFields={usePrivateFields}
+          setUsePrivateFields={setUsePrivateFields}
+          onCopyOutputCode={copyOutputCode}
+          onLoadSampleJson={loadSampleJson}
+          outputTitle={outputTitle}
+        />
       </div>
       
       <div className="flex-1 flex flex-col md:flex-row gap-4 min-h-0">

@@ -40,6 +40,7 @@ export const zh = {
             toYaml: '转为 YAML',
             toXml: '转为 XML',
             toCsv: '转为 CSV',
+            toDart: '转为 Dart',
             blue: '蓝色',
             system: '系统',
             comingSoon: '即将推出',
@@ -109,7 +110,9 @@ export const zh = {
                 mock: {
                     title: 'Mock 数据生成器',
                     description: '生成用于测试和开发的 Mock JSON 数据。'
-                }
+                },
+                convertedToDartTitle: '转换为 Dart 类',
+                rootClassName: '根类名',
             },
             regex: {
                 title: '正则表达式工具',
@@ -426,7 +429,8 @@ export const zh = {
                 graphGenerated: '图表生成成功',
                 convertedToYamlAndCopied: '已转换为 YAML 并复制到剪贴板',
                 convertedToXmlAndCopied: '已转换为 XML 并复制到剪贴板',
-                convertedToCsvAndCopied: '已转换为 CSV 并复制到剪贴板'
+                convertedToCsvAndCopied: '已转换为 CSV 并复制到剪贴板',
+                convertedToDartAndCopied: '已转换为 Dart 类并复制到剪贴板'
             },
             error: {
                 invalidJson: '请输入有效的 JSON',

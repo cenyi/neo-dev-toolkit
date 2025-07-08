@@ -41,7 +41,8 @@ export const en = {
       download: 'Download', 
       toYaml: 'To YAML', 
       toXml: 'To XML', 
-      toCsv: 'To CSV', 
+      toCsv: 'To CSV',
+      toDart: 'To Dart', 
       blue: 'Blue', 
       system: 'System', 
       comingSoon: 'Coming Soon', 
@@ -112,7 +113,9 @@ export const en = {
         mock: {
           title: 'Mock Data Generator',
           description: 'Generate mock JSON data for testing and development.'
-        }
+        },
+        convertedToDartTitle: 'Converted to Dart Classes',
+        rootClassName: 'Root Class Name',
       },
       regex: {
         title: 'Regular Expression Tool',
@@ -421,7 +424,8 @@ export const en = {
         graphGenerated: 'Graph generated successfully',
         convertedToYamlAndCopied: 'Converted to YAML and copied to clipboard',
         convertedToXmlAndCopied: 'Converted to XML and copied to clipboard',
-        convertedToCsvAndCopied: 'Converted to CSV and copied to clipboard'
+        convertedToCsvAndCopied: 'Converted to CSV and copied to clipboard',
+        convertedToDartAndCopied: 'Converted to Dart classes and copied to clipboard'
       },
       error: {
         invalidJson: 'Please enter valid JSON',
