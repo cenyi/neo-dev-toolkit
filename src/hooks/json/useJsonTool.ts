@@ -21,6 +21,7 @@ export const useJsonTool = () => {
   const [outputTitle, setOutputTitle] = useState<string | null>(null);
   const [rootClassName, setRootClassName] = useState<string>('GeneratedClass');
   const [usePrivateFields, setUsePrivateFields] = useState<boolean>(false);
+  const [useModernDartSyntax, setUseModernDartSyntax] = useState<boolean>(false);
 
   // 集成历史记录功能
   const { history, addToHistory, removeFromHistory, clearHistory } = useJsonHistory();
@@ -267,7 +268,8 @@ export const useJsonTool = () => {
     setOutputContent,
     setOutputTitle,
     rootClassName,
-    usePrivateFields
+    usePrivateFields,
+    useModernDartSyntax
   });
 
   // 当图形数据更新时，更新输出内容
@@ -306,6 +308,8 @@ export const useJsonTool = () => {
     // 新增功能
     usePrivateFields,
     setUsePrivateFields,
+    useModernDartSyntax,
+    setUseModernDartSyntax,
     copyOutputCode,
     loadSampleJson
   };

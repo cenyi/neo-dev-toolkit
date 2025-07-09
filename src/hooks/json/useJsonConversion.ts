@@ -13,9 +13,10 @@ interface UseJsonConversionProps {
   setOutputTitle: (title: string | null) => void;
   rootClassName?: string;
   usePrivateFields?: boolean;
+  useModernDartSyntax?: boolean;
 }
 
-export const useJsonConversion = ({ input, isValid, setOutputContent, setOutputTitle, rootClassName = 'GeneratedClass', usePrivateFields = false }: UseJsonConversionProps) => {
+export const useJsonConversion = ({ input, isValid, setOutputContent, setOutputTitle, rootClassName = 'GeneratedClass', usePrivateFields = false, useModernDartSyntax = false }: UseJsonConversionProps) => {
 
   const handleConvertToYaml = () => {
     if (!isValid || !input.trim()) {
@@ -97,7 +98,7 @@ export const useJsonConversion = ({ input, isValid, setOutputContent, setOutputT
       const parsed = JSON.parse(input);
       // 修正：rootClassName 为空时使用默认值
       const className = rootClassName && rootClassName.trim() ? rootClassName : 'GeneratedClass';
-      const dartCode = jsonToDart(parsed, className, usePrivateFields);
+      const dartCode = jsonToDart(parsed, className, usePrivateFields, useModernDartSyntax);
       setOutputContent(dartCode);
       setOutputTitle(i18n.t('tools.json.convertedToDartTitle'));
       navigator.clipboard.writeText(dartCode);

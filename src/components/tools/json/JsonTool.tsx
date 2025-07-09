@@ -35,6 +35,8 @@ const JsonTool: React.FC = () => {
     setRootClassName,
     usePrivateFields,
     setUsePrivateFields,
+    useModernDartSyntax,
+    setUseModernDartSyntax,
     copyOutputCode,
     loadSampleJson
   } = useJsonTool();
@@ -64,6 +66,8 @@ const JsonTool: React.FC = () => {
           setRootClassName={setRootClassName}
           usePrivateFields={usePrivateFields}
           setUsePrivateFields={setUsePrivateFields}
+          useModernDartSyntax={useModernDartSyntax}
+          setUseModernDartSyntax={setUseModernDartSyntax}
           onCopyOutputCode={copyOutputCode}
           onLoadSampleJson={loadSampleJson}
           outputTitle={outputTitle}
@@ -81,7 +85,7 @@ const JsonTool: React.FC = () => {
           />
           </div>
         <div className="flex-1 flex flex-col min-h-0 min-w-0 p-4">
-          <JsonResultDisplay outputContent={outputContent} title={outputTitle} />
+          <JsonResultDisplay outputContent={outputContent} title={outputTitle} onCopyOutputCode={copyOutputCode} />
           </div>
       </div>
       </div>

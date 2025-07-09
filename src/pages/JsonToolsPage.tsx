@@ -45,6 +45,13 @@ const JsonToolsPage: React.FC = () => {
       title: t('tools.json.mock.title'),
       description: t('tools.json.mock.description'),
       color: 'text-indigo-500'
+    },
+    {
+      path: `/${lang}/json/to-dart`,
+      icon: Code,
+      title: t('tools.json.toDart.title'),
+      description: t('tools.json.toDart.description'),
+      color: 'text-cyan-500'
     }
   ];
 

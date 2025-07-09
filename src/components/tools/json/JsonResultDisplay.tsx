@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button';
 interface JsonResultDisplayProps {
   outputContent: string | null;
   title: string | null;
+  onCopyOutputCode?: () => void;
 }
 
-const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, title }) => {
+const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, title, onCopyOutputCode }) => {
   const { t } = useTranslation();
   const isGraphView = title === t('tools.json.graphTitle');
   const isDartView = title === t('tools.json.convertedToDartTitle');
@@ -31,6 +32,7 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
         <h3 className="text-lg font-semibold">{title || t('tools.json.output')}</h3>
         {isDartView && (
           <div className="flex gap-2">
+            <Button size="sm" onClick={onCopyOutputCode}>{t('common.copyCode')}</Button>
             <Button size="sm" onClick={handleDownload}>{t('common.download') || 'Download'}</Button>
           </div>
         )}

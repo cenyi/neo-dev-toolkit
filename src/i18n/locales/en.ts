@@ -60,7 +60,9 @@ export const en = {
       output: 'Output',
       result: 'Result',
       graph: 'Structure Graph',
-      zoomLevel: 'Zoom Level'
+      zoomLevel: 'Zoom Level',
+      copyCode: 'Copy Code',
+      loadSample: 'Try Sample JSON'
     },
     home: { 
       title: 'Developer Tools Hub', 
@@ -113,6 +115,18 @@ export const en = {
         mock: {
           title: 'Mock Data Generator',
           description: 'Generate mock JSON data for testing and development.'
+        },
+        toDart: {
+          title: 'JSON to Dart Converter',
+          description: 'Convert JSON data to Dart classes with customizable options.',
+          configuration: 'Configuration',
+          configurationDescription: 'Customize the generated Dart classes',
+          usePrivateFields: 'Use Private Fields',
+          useModernSyntax: 'Use Modern Dart Syntax',
+          emptyInputError: 'Please enter JSON data to convert',
+          convertSuccess: 'Successfully converted to Dart classes',
+          dartOutput: 'Dart Output',
+          dartOutputPlaceholder: 'Generated Dart classes will appear here'
         },
         convertedToDartTitle: 'Converted to Dart Classes',
         rootClassName: 'Root Class Name',

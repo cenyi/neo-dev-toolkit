@@ -19,4 +19,14 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    include: [
+      '@monaco-editor/react',
+      'monaco-editor/esm/vs/editor/editor.api'
+    ],
+  },
+  define: {
+    // 配置Monaco Editor使用本地资源而不是CDN
+    'process.env.MONACO_EDITOR_CDN': JSON.stringify(false),
+  },
 }));

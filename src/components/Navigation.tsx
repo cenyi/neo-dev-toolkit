@@ -17,7 +17,8 @@ const Navigation: React.FC = () => {
       { path: `/${lang}/json/schema-validator`, name: 'JSON Schema Validator' },
       { path: `/${lang}/json/codegen`, name: 'Generate Code Types' },
       { path: `/${lang}/json/diff`, name: 'Diff Tool' },
-      { path: `/${lang}/json/mock`, name: 'Mock Data Generator' }
+      { path: `/${lang}/json/mock`, name: 'Mock Data Generator' },
+      { path: `/${lang}/json/to-dart`, name: 'JSON to Dart Converter' }
     ], [lang]);
 
   const networkTools = useMemo(() => [

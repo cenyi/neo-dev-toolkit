@@ -58,7 +58,9 @@ export const zh = {
             output: '输出',
             result: '结果',
             graph: '结构图',
-            zoomLevel: '缩放级别'
+            zoomLevel: '缩放级别',
+            copyCode: '复制代码',
+            loadSample: '来个JSON，试试'
         },
         home: {
             title: '开发者工具中心',
@@ -110,6 +112,18 @@ export const zh = {
                 mock: {
                     title: 'Mock 数据生成器',
                     description: '生成用于测试和开发的 Mock JSON 数据。'
+                },
+                toDart: {
+                    title: 'JSON 转 Dart 转换器',
+                    description: '将 JSON 数据转换为 Dart 类，支持自定义选项。',
+                    configuration: '配置选项',
+                    configurationDescription: '自定义生成的 Dart 类',
+                    usePrivateFields: '使用私有字段',
+                    useModernSyntax: '使用现代 Dart 语法',
+                    emptyInputError: '请输入要转换的 JSON 数据',
+                    convertSuccess: '成功转换为 Dart 类',
+                    dartOutput: 'Dart 输出',
+                    dartOutputPlaceholder: '生成的 Dart 类将显示在此处'
                 },
                 convertedToDartTitle: '转换为 Dart 类',
                 rootClassName: '根类名',

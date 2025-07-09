@@ -35,6 +35,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import AboutUs from "./pages/AboutUs";
 import JsonToolsPage from "./pages/JsonToolsPage";
+import JsonToDartPage from "./pages/tools/JsonToDartPage";
 import NetworkToolsPage from "./pages/NetworkToolsPage";
 import TextToolsPage from "./pages/TextToolsPage";
 import CryptoToolsPage from "./pages/CryptoToolsPage";
@@ -125,6 +126,15 @@ function App() {
                       keywords="mock data generator, JSON mock data, test data generator, fake data, API testing data"
                     >
                       <JsonMock />
+                    </PageWrapper>
+                  } />
+                  <Route path=":lang/json/to-dart" element={
+                    <PageWrapper 
+                      title="JSON to Dart Converter"
+                      description="Convert JSON data to Dart classes with customizable options. Generate clean Dart code from JSON instantly."
+                      keywords="JSON to Dart, Dart class generator, JSON converter, Dart code generator, JSON to model"
+                    >
+                      <JsonToDartPage />
                     </PageWrapper>
                   } />
                   {/* JSON Redirects */}

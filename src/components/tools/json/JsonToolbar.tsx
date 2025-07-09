@@ -29,6 +29,8 @@ interface JsonToolbarProps {
   setRootClassName: (name: string) => void;
   usePrivateFields: boolean;
   setUsePrivateFields: (value: boolean) => void;
+  useModernDartSyntax: boolean;
+  setUseModernDartSyntax: (value: boolean) => void;
   onCopyOutputCode: () => void;
   onLoadSampleJson: () => void;
   outputTitle: string | null;
@@ -56,6 +58,8 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
   setRootClassName,
   usePrivateFields,
   setUsePrivateFields,
+  useModernDartSyntax,
+  setUseModernDartSyntax,
   onCopyOutputCode,
   onLoadSampleJson,
   outputTitle,
@@ -90,14 +94,11 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
         <Button onClick={onGenerateGraph} disabled={isFormatMinifyDisabled} className="text-sm font-extrabold">
           {t('tools.json.generateGraph')}
         </Button>
-        <Button onClick={onCopyOutputCode} className="text-sm font-extrabold">
-          复制代码
-        </Button>
         <Button onClick={onClear} variant="destructive" className="text-sm font-extrabold">
           {t('common.clear')}
         </Button>
         <Button onClick={onLoadSampleJson} variant="outline" className="text-sm font-extrabold">
-          来个JSON，试试
+          {t('common.loadSample')}
         </Button>
         <JsonHistoryModal
           history={history}
@@ -121,6 +122,17 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
               />
               <Label htmlFor="use-private-fields" className="font-bold text-xs text-blue-700 dark:text-blue-300">
                 私有字段
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="use-modern-dart-syntax"
+                checked={useModernDartSyntax}
+                onCheckedChange={(checked) => setUseModernDartSyntax(checked as boolean)}
+                disabled={isFormatMinifyDisabled}
+              />
+              <Label htmlFor="use-modern-dart-syntax" className="font-bold text-xs text-blue-700 dark:text-blue-300">
+                现代语法
               </Label>
             </div>
             <Label htmlFor="root-class-name" className="font-bold text-xs text-blue-700 dark:text-blue-300">{t('tools.json.rootClassName') || '类名'}:</Label>
