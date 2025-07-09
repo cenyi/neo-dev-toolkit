@@ -416,6 +416,60 @@ export const SEO_PAGES: SEOPageConfig[] = [
     category: 'JSON Tools'
   },
 
+  // JSON to Dart Converter
+  {
+    path: '/:lang/json/to-dart',
+    tdk: {
+      en: {
+        title: 'json to dart ,convert json to dart',
+        description: 'JSON to Dart Converter: Instantly generate type-safe Dart classes from JSON. Convert JSON to Dart code with null safety, nested objects support, and json_serializable compatibility for Flutter apps. Free online tool for developers.',
+        keywords: 'JSON to Dart, JSON converter, Dart class generator, JSON to code, Dart model generator, JSON parser'
+      },
+      es: {
+        title: 'Convertir JSON a Dart, Objective-C, Go, Java, C++, Dart y más • Herramientas de Desarrollador',
+        description: 'toJsons puede proporcionar herramientas de codificación en línea para varios lenguajes como Java, Dart, JavaScript, Flow, Python, TypeScript, Go, Rust, Objective-C, Kotlin, C++ y otros, incluyendo JSON, Tiempo, Cripto, Texto, Red, etc.',
+        keywords: 'JSON a Dart, convertidor JSON, generador clases Dart, JSON a código, generador modelos Dart'
+      },
+      fr: {
+        title: 'Convertir JSON en Dart, Objective-C, Go, Java, C++, Dart et plus • Outils Développeur',
+        description: 'toJsons peut fournir des outils de codage en ligne pour divers langages tels que Java, Dart, JavaScript, Flow, Python, TypeScript, Go, Rust, Objective-C, Kotlin, C++ et autres, y compris JSON, Temps, Crypto, Texte, Réseau, etc.',
+        keywords: 'JSON vers Dart, convertisseur JSON, générateur classes Dart, JSON vers code, générateur modèles Dart'
+      },
+      de: {
+        title: 'JSON zu Dart, Objective-C, Go, Java, C++, Dart und mehr konvertieren • Entwicklertools',
+        description: 'toJsons kann Online-Codierungstools für verschiedene Sprachen wie Java, Dart, JavaScript, Flow, Python, TypeScript, Go, Rust, Objective-C, Kotlin, C++ und andere bereitstellen, einschließlich JSON, Zeit, Krypto, Text, Netzwerk usw.',
+        keywords: 'JSON zu Dart, JSON Konverter, Dart Klassen Generator, JSON zu Code, Dart Modell Generator'
+      },
+      pt: {
+        title: 'Converter JSON para Dart, Objective-C, Go, Java, C++, Dart e mais • Ferramentas Desenvolvedor',
+        description: 'toJsons pode fornecer ferramentas de codificação online para várias linguagens como Java, Dart, JavaScript, Flow, Python, TypeScript, Go, Rust, Objective-C, Kotlin, C++ e outras, incluindo JSON, Tempo, Cripto, Texto, Rede, etc.',
+        keywords: 'JSON para Dart, conversor JSON, gerador classes Dart, JSON para código, gerador modelos Dart'
+      },
+      ru: {
+        title: 'Конвертировать JSON в Dart, Objective-C, Go, Java, C++, Dart и другие • Инструменты Разработчика',
+        description: 'toJsons может предоставить онлайн-инструменты кодирования для различных языков, таких как Java, Dart, JavaScript, Flow, Python, TypeScript, Go, Rust, Objective-C, Kotlin, C++ и других, включая JSON, Время, Криптография, Текст, Сеть и т.д.',
+        keywords: 'JSON в Dart, конвертер JSON, генератор классов Dart, JSON в код, генератор моделей Dart'
+      },
+      ja: {
+        title: 'JSONをDart、Objective-C、Go、Java、C++、Dartなどに変換 • 開発者ツール',
+        description: 'toJsonsは、Java、Dart、JavaScript、Flow、Python、TypeScript、Go、Rust、Objective-C、Kotlin、C++などの様々な言語のオンラインエンコーディングツールを提供でき、JSON、時間、暗号、テキスト、ネットワークなどを含みます。',
+        keywords: 'JSON to Dart, JSONコンバーター, Dartクラスジェネレーター, JSONからコード, Dartモデルジェネレーター'
+      },
+      ko: {
+        title: 'JSON을 Dart, Objective-C, Go, Java, C++, Dart 등으로 변환 • 개발자 도구',
+        description: 'toJsons는 Java, Dart, JavaScript, Flow, Python, TypeScript, Go, Rust, Objective-C, Kotlin, C++ 등 다양한 언어의 온라인 인코딩 도구를 제공할 수 있으며, JSON, 시간, 암호화, 텍스트, 네트워크 등을 포함합니다.',
+        keywords: 'JSON to Dart, JSON 변환기, Dart 클래스 생성기, JSON을 코드로, Dart 모델 생성기'
+      },
+      zh: {
+        title: '将JSON转换为Dart、Objective-C、Go、Java、C++、Dart等 • 开发者工具',
+        description: 'toJsons可以提供各种语言的在线编码工具，如Java、Dart、JavaScript、Flow、Python、TypeScript、Go、Rust、Objective-C、Kotlin、C++等，包括JSON、时间、加密、文本、网络等。',
+        keywords: 'JSON转Dart, JSON转换器, Dart类生成器, JSON转代码, Dart模型生成器'
+      }
+    },
+    priority: 'medium',
+    category: 'JSON Tools'
+  },
+
   // Text Tools Category
   {
     path: '/:lang/text',
@@ -1935,13 +1989,13 @@ export const findPageByPath = (path: string): SEOPageConfig | undefined => {
 export const generateBreadcrumbs = (currentPath: string, lang: SupportedLanguage = 'en') => {
   const pathSegments = currentPath.split('/').filter(segment => segment && segment !== lang);
   const breadcrumbs = [{ title: 'Home', path: `/${lang}` }];
-  
+
   let currentFullPath = `/${lang}`;
-  
+
   pathSegments.forEach((segment, index) => {
     currentFullPath += `/${segment}`;
     const page = SEO_PAGES.find(p => p.path.replace('/:lang', `/${lang}`) === currentFullPath);
-    
+
     if (page) {
       const tdk = getTDKForLanguage(page, lang);
       breadcrumbs.push({
@@ -1950,17 +2004,17 @@ export const generateBreadcrumbs = (currentPath: string, lang: SupportedLanguage
       });
     } else {
       // 정확한 일치를 찾을 수 없으면 일반 제목 생성
-      const title = segment.split('-').map(word => 
+      const title = segment.split('-').map(word =>
         word.charAt(0).toUpperCase() + word.slice(1)
       ).join(' ');
-      
+
       breadcrumbs.push({
         title,
         path: currentFullPath
       });
     }
   });
-  
+
   return breadcrumbs;
 };
 
@@ -1977,10 +2031,10 @@ export const generateSitemapForLanguage = (lang: SupportedLanguage) => {
 // 모든 언어의 사이트맵 생성
 export const generateAllLanguageSitemaps = () => {
   const sitemaps: Record<SupportedLanguage, any[]> = {} as any;
-  
+
   SUPPORTED_LANGUAGES.forEach(lang => {
     sitemaps[lang] = generateSitemapForLanguage(lang);
   });
-  
+
   return sitemaps;
 };
