@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { findPageByPath } from '@/config/seo-pages';
 import { Link } from 'react-router-dom';
 import { Network, Link as LinkIcon, Eye, Key } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +10,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const NetworkToolsPage: React.FC = () => {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
+
+  // Get SEO configuration from seo-pages.ts
+  const seoConfig = findPageByPath(`/:lang/network`);
+  const tdk = seoConfig?.tdk?.[lang as keyof typeof seoConfig.tdk] || seoConfig?.tdk?.en;
 
   const networkTools = [
     {
@@ -44,7 +49,9 @@ const NetworkToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <meta name="description" content={t('tools.network.description')} />
+  <title>{tdk?.title || t('tools.network.title')} - Neo Dev Toolkit</title>
+  <meta name="description" content={tdk?.description || t('tools.network.description')} />
+  <meta name="keywords" content={tdk?.keywords || "network tools, URL encoder, Base64 converter, IP lookup, JWT decoder, encoding tools"} />
 </Helmet>
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 text-foreground">{t('tools.network.title')}</h1>

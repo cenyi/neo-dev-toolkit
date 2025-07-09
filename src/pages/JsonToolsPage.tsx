@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { findPageByPath } from '@/config/seo-pages';
 import { Link } from 'react-router-dom';
 import { FileJson, FileCode, GitCompare, Shuffle, Code } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +10,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const JsonToolsPage: React.FC = () => {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
+
+  // Get SEO configuration from seo-pages.ts
+  const seoConfig = findPageByPath(`/:lang/json`);
+  const tdk = seoConfig?.tdk?.[lang as keyof typeof seoConfig.tdk] || seoConfig?.tdk?.en;
 
   const jsonTools = [
     {
@@ -58,7 +63,9 @@ const JsonToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <meta name="description" content="Professional JSON tools: formatter, validator, schema checker, diff tool & mock generator. Free, privacy-focused, no signup required." />
+  <title>{tdk?.title || 'JSON Developer Tools'} - Neo Dev Toolkit</title>
+  <meta name="description" content={tdk?.description || "Professional JSON tools: formatter, validator, schema checker, diff tool & mock generator. Free, privacy-focused, no signup required."} />
+  <meta name="keywords" content={tdk?.keywords || "JSON tools, JSON formatter, JSON validator, JSON schema, JSON diff, JSON mock generator"} />
 </Helmet>
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 text-foreground">JSON Developer Tools</h1>

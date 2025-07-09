@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { findPageByPath } from '@/config/seo-pages';
 import { Link } from 'react-router-dom';
 import { Type, Hash, RotateCcw, Eraser, FileText, GitCompare } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +10,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const TextToolsPage: React.FC = () => {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
+
+  // Get SEO configuration from seo-pages.ts
+  const seoConfig = findPageByPath(`/:lang/text`);
+  const tdk = seoConfig?.tdk?.[lang as keyof typeof seoConfig.tdk] || seoConfig?.tdk?.en;
 
   const textTools = [
     {
@@ -58,7 +63,9 @@ const TextToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <meta name="description" content={t('tools.text.description')} />
+  <title>{tdk?.title || t('tools.text.title')} - Neo Dev Toolkit</title>
+  <meta name="description" content={tdk?.description || t('tools.text.description')} />
+  <meta name="keywords" content={tdk?.keywords || "text tools, case converter, word counter, text reverser, lorem ipsum generator"} />
 </Helmet>
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 text-foreground">{t('tools.text.title')}</h1>

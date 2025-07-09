@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { findPageByPath } from '@/config/seo-pages';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -16,8 +18,13 @@ interface DecodedJwt {
 const JwtDecoderPage: React.FC = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const { lang: currentLang } = useParams<{ lang: string }>();
   const [token, setToken] = useState('');
   const [error, setError] = useState<string | null>(null);
+
+  // Get SEO configuration from seo-pages.ts
+  const seoConfig = findPageByPath(`/:lang/jwt`);
+  const tdk = seoConfig?.tdk?.[currentLang as keyof typeof seoConfig.tdk] || seoConfig?.tdk?.en;
 
   const decoded = useMemo<DecodedJwt | null>(() => {
     if (!token) {
@@ -43,8 +50,9 @@ const JwtDecoderPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{`${t('tools.crypto.jwtDecoder.title')} - ${t('home.title')}`}</title>
-        <meta name="description" content={t('tools.crypto.jwtDecoder.description')} />
+        <title>{tdk?.title || t('tools.crypto.jwtDecoder.title')} - Neo Dev Toolkit</title>
+        <meta name="description" content={tdk?.description || t('tools.crypto.jwtDecoder.description')} />
+        <meta name="keywords" content={tdk?.keywords || "JWT decoder, JSON Web Token, JWT validator, token decoder, authentication"} />
       </Helmet>
       <div className="p-4 space-y-4">
         <div className="relative">

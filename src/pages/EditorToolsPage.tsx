@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { findPageByPath } from '@/config/seo-pages';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FileCode, Code } from 'lucide-react';
@@ -9,6 +10,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const EditorToolsPage: React.FC = () => {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
+
+  // Get SEO configuration from seo-pages.ts
+  const seoConfig = findPageByPath(`/:lang/editor`);
+  const tdk = seoConfig?.tdk?.[lang as keyof typeof seoConfig.tdk] || seoConfig?.tdk?.en;
 
   const editorTools = [
     {
@@ -30,8 +35,9 @@ const EditorToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <title>{t('tools.editor.meta.title')}</title>
-  <meta name="description" content={t('tools.editor.meta.description')} />
+  <title>{tdk?.title || t('tools.editor.meta.title')} - Neo Dev Toolkit</title>
+  <meta name="description" content={tdk?.description || t('tools.editor.meta.description')} />
+  <meta name="keywords" content={tdk?.keywords || "editor tools, markdown editor, mermaid editor, code editor, online editor"} />
 </Helmet>
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 text-foreground">{t('tools.editor.title')}</h1>

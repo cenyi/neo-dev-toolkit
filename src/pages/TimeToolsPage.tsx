@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { findPageByPath } from '@/config/seo-pages';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Clock, Globe, Calendar } from 'lucide-react';
@@ -9,6 +10,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const TimeToolsPage: React.FC = () => {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
+
+  // Get SEO configuration from seo-pages.ts
+  const seoConfig = findPageByPath(`/:lang/time`);
+  const tdk = seoConfig?.tdk?.[lang as keyof typeof seoConfig.tdk] || seoConfig?.tdk?.en;
 
   const timeTools = [
     {
@@ -37,8 +42,9 @@ const TimeToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
 <Helmet>
-  <title>{t('time.meta.title')}</title>
-  <meta name="description" content={t('time.meta.description')} />
+  <title>{tdk?.title || t('time.meta.title')} - Neo Dev Toolkit</title>
+  <meta name="description" content={tdk?.description || t('time.meta.description')} />
+  <meta name="keywords" content={tdk?.keywords || "time tools, timestamp converter, timezone converter, date calculator, time utilities"} />
 </Helmet>
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 text-foreground">{t('time.title')}</h1>

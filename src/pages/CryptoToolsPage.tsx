@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { findPageByPath } from '@/config/seo-pages';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Key, Lock } from 'lucide-react';
@@ -9,6 +10,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const CryptoToolsPage: React.FC = () => {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
+
+  // Get SEO configuration from seo-pages.ts
+  const seoConfig = findPageByPath(`/:lang/crypto`);
+  const tdk = seoConfig?.tdk?.[lang as keyof typeof seoConfig.tdk] || seoConfig?.tdk?.en;
 
   const cryptoTools = [
     {
@@ -30,8 +35,9 @@ const CryptoToolsPage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <Helmet>
-        <title>{t('tools.crypto.title')}</title>
-        <meta name="description" content={t('tools.crypto.description')} />
+        <title>{tdk?.title || t('tools.crypto.title')} - Neo Dev Toolkit</title>
+        <meta name="description" content={tdk?.description || t('tools.crypto.description')} />
+        <meta name="keywords" content={tdk?.keywords || "crypto tools, JWT decoder, encryption, decryption, security tools"} />
       </Helmet>
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 text-foreground">{t('tools.crypto.title')}</h1>
