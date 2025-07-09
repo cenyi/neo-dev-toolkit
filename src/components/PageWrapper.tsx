@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import Navigation from './Navigation';
@@ -19,6 +19,23 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
   const location = useLocation();
   const { lang } = useParams<{ lang?: string }>();
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
+
+  // 初始化时从本地存储恢复语言设置
+  useEffect(() => {
+    const savedLang = localStorage.getItem('i18nextLng');
+    if (savedLang) {
+      // 更新i18n语言
+      if (i18n.language !== savedLang) {
+        i18n.changeLanguage(savedLang);
+      }
+      // 更新URL以匹配保存的语言
+      if (!location.pathname.startsWith(`/${savedLang}`)) {
+        const newPath = location.pathname.replace(/^\/[^\/]+/, `/${savedLang}`);
+        navigate(newPath, { replace: true });
+      }
+    }
+  }, [i18n, navigate, location.pathname]);
 
   useEffect(() => {
     if (lang && i18n.language !== lang) {

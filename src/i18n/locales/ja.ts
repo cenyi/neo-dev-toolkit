@@ -1,5 +1,9 @@
 export const ja = {
   translation: {
+    siteMap: 'サイトマップ',
+    siteMapDescription: '当社のプラットフォームで利用可能なすべての開発者ツールとページの完全なディレクトリ。開発ニーズに最適なツールを見つけてください。',
+    allDeveloperTools: 'すべての開発者ツール',
+    allDeveloperToolsDescription: 'カテゴリ别に整理された无料オンライン開発者ツールの完全なコレクション',
     nav: {
       home: 'ホーム',
       json: 'JSON',
@@ -37,7 +41,19 @@ export const ja = {
     home: {
       title: '開発者ツールハブ',
       subtitle: 'モダンなニューモーフィックデザインのプロフェッショナル開発ツール',
-      description: 'JSON フォーマット、テキスト処理、暗号化などを含む、必須の開発者ツールの包括的なコレクション。'
+      description: 'JSON フォーマット、テキスト処理、暗号化などを含む、必須の開発者ツールの包括的なコレクション。',
+      headerTitle: '無料のオンライン開発者ツールハブ - Lovable で構築',
+      toolsCollectionTitle: 'プロフェッショナル開発者ツールコレクション',
+      whyChooseTitle: 'なぜDevTools Hubを開発ニーズに選ぶべきですか？',
+      feature1Title: '100% 無料 & 登録不要',
+      feature1Description: 'すべてのツールは完全に無料で、アカウント不要で利用できます',
+      feature2Title: 'プライバシーを重視した開発',
+      feature2Description: 'あなたのデータはブラウザ内に留まります - サーバーには送信されません',
+      feature3Title: 'モダンなレスポンシブインターフェース',
+      feature3Description: 'Lovable AIでパワードされたクリーンでレスポンシブなデザインで、すべてのデバイスで完璧に動作します',
+      popularToolsTitle: '人気の開発者ツール', 
+      popularToolsDescription: '最も人気で頻繁に使用される開発者ツール'
+    }
     },
     tools: {
       json: {
@@ -381,4 +397,5 @@ export const ja = {
       description: 'このツールは開発中です。ご期待ください。'
     }
   }
-};
+
+export default ja;

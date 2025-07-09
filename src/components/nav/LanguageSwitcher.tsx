@@ -22,8 +22,22 @@ const LanguageSwitcher: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // 初始化时从本地存储恢复语言设置
+  React.useEffect(() => {
+    const savedLang = localStorage.getItem('i18nextLng');
+    if (savedLang && languages.some(lang => lang.code === savedLang)) {
+      i18n.changeLanguage(savedLang);
+      // 更新URL以匹配保存的语言
+      if (!location.pathname.startsWith(`/${savedLang}`)) {
+        const newPath = location.pathname.replace(/^\/[^\/]+/, `/${savedLang}`);
+        navigate(newPath, { replace: true });
+      }
+    }
+  }, [i18n, navigate, location.pathname]);
+
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
+    localStorage.setItem('i18nextLng', code); // 保存语言选择到本地存储
     const newPath = location.pathname.replace(/^\/[^\/]+/, `/${code}`);
     navigate(newPath);
   };

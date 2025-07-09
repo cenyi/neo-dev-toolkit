@@ -1,5 +1,9 @@
 export const de = {
   translation: {
+    siteMap: 'Site-Karte',
+    siteMapDescription: 'Vollständiges Verzeichnis aller Entwicklertools und Seiten, die auf unserer Plattform verfügbar sind. Finden Sie das perfekte Tool für Ihre Entwicklungsbedürfnisse.',
+    allDeveloperTools: 'Alle Entwicklertools',
+    allDeveloperToolsDescription: 'Vollständige Sammlung kostenloser Online-Entwicklertools, organisiert nach Kategorien',
     nav: {
       home: 'Startseite',
       json: 'JSON',
@@ -58,11 +62,11 @@ export const de = {
       result: 'Ergebnis',
       zoomLevel: 'Zoom-Stufe'
     },
-    home: {
+    home: { 
       title: 'Entwickler-Tools Hub',
-      subtitle: 'Professionelle Entwicklungstools mit modernem neomorphischem Design',
-      description: 'Eine umfassende Sammlung wichtiger Entwicklertools einschließlich JSON-Formatierung, Textverarbeitung, Verschlüsselung und mehr.',
-      headerTitle: 'Kostenlose Online-Entwicklertools Hub',
+      subtitle: 'Professionelle Entwicklungstools gebaut mit Lovable AI Technologie',
+      description: 'Eine umfassende Sammlung wichtiger Entwicklertools einschließlich JSON-Formatierung, Textverarbeitung, Verschlüsselung und mehr. Gebaut mit Lovable AI für optimale Leistung.',
+      headerTitle: 'Kostenloser Online-Entwicklertools Hub - Gebaut mit Lovable',
       toolsCollectionTitle: 'Professionelle Entwicklertools-Sammlung',
       whyChooseTitle: 'Warum DevTools Hub für Ihre Entwicklungsbedürfnisse wählen?',
       feature1Title: '100% Kostenlos & Keine Registrierung',
@@ -70,7 +74,9 @@ export const de = {
       feature2Title: 'Datenschutz-fokussierte Entwicklung',
       feature2Description: 'Ihre Daten bleiben in Ihrem Browser - nichts wird an unsere Server gesendet',
       feature3Title: 'Moderne Responsive Benutzeroberfläche',
-      feature3Description: 'Sauberes, responsives Design, das perfekt auf allen Geräten funktioniert'
+      feature3Description: 'Sauberes, responsives Design, das perfekt auf allen Geräten funktioniert',
+      popularToolsTitle: 'Beliebte Entwicklertools',
+      popularToolsDescription: 'Die beliebtesten und am häufigsten verwendeten Entwicklertools'
     },
     tools: {
       json: {

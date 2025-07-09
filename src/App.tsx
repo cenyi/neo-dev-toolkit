@@ -51,9 +51,8 @@ import "@/i18n";
 const supportedLangs = ['en', 'es', 'fr', 'de', 'pt', 'ru', 'ja', 'ko', 'zh'];
 
 const LanguageRedirect = () => {
-  const lang = navigator.language.split('-')[0];
-  const targetLang = supportedLangs.includes(lang) ? lang : 'en';
-  return <Navigate to={`/${targetLang}`} replace />;
+  // 始终默认重定向到英文路径
+  return <Navigate to="/en" replace />;
 };
 
 const queryClient = new QueryClient();

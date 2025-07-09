@@ -2,7 +2,22 @@ export const ko = {
   translation: {
     nav: { home: '홈', json: 'JSON', network: '네트워크', text: '텍스트', time: '시간', encryption: '암호화', markdown: 'Markdown', mermaid: 'Mermaid' },
     common: { theme: '테마', language: '언어', light: '라이트', dark: '다크', copy: '복사', clear: '지우기', format: '형식 지정', minify: '최소화', validate: '유효성 검사', convert: '변환', encrypt: '암호화', decrypt: '복호화', preview: '미리보기', download: '다운로드', toYaml: 'YAML로', toXml: 'XML로', toCsv: 'CSV로', blue: '파란색', system: '시스템', comingSoon: '곧 출시 예정' },
-    home: { title: '개발자 도구 허브', subtitle: '현대적인 뉴모피즘 디자인의 전문 개발 도구', description: 'JSON 서식 지정, 텍스트 처리, 암호화 등을 포함한 필수 개발자 도구 모음입니다.' },
+    home: { 
+      title: '개발자 도구 허브',
+      subtitle: 'Lovable AI 기술로 구축된 전문 개발 도구',
+      description: 'JSON 서식 지정, 텍스트 처리, 암호화 등을 포함한 필수 개발자 도구 모음입니다. 최적의 성능을 위해 Lovable AI로 구축되었습니다.',
+      headerTitle: '무료 온라인 개발자 도구 허브 - Lovable로 제작',
+      toolsCollectionTitle: '전문 개발자 도구 컬렉션',
+      whyChooseTitle: '개발 필요에 DevTools Hub를 선택하는 이유는 무엇입니까?',
+      feature1Title: '100% 무료 & 등록 없음',
+      feature1Description: '모든 도구는 계정 없이 완전히 무료로 사용할 수 있습니다',
+      feature2Title: '개인 정보 보호 중심 개발',
+      feature2Description: '데이터는 브라우저에 남아 있습니다 - 서버로 전송되는 것이 없습니다',
+      feature3Title: '모던 반응형 인터페이스',
+      feature3Description: 'Lovable AI로 구동되는 깨끗하고 반응형 디자인이 모든 장치에서 완벽하게 작동합니다',
+      popularToolsTitle: '인기 있는 개발자 도구',
+      popularToolsDescription: '가장 인기 있고 자주 사용되는 개발자 도구'
+    },
     tools: { 
       json: {
         title: 'JSON 도구',

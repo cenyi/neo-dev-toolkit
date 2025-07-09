@@ -1,5 +1,9 @@
 export const es = {
   translation: {
+    siteMap: 'Mapa del Sitio',
+    siteMapDescription: 'Directorio completo de todas las herramientas y páginas para desarrolladores disponibles en nuestra plataforma. Encuentra la herramienta perfecta para tus necesidades de desarrollo.',
+    allDeveloperTools: 'Todas las Herramientas para Desarrolladores',
+    allDeveloperToolsDescription: 'Colección completa de herramientas gratuitas para desarrolladores organizadas por categoría',
     nav: {
       home: 'Inicio',
       json: 'JSON',
@@ -71,7 +75,9 @@ export const es = {
       feature2Title: 'Desarrollo Enfocado en Privacidad',
       feature2Description: 'Tus datos permanecen en tu navegador - nada se envía a nuestros servidores',
       feature3Title: 'Interfaz Moderna y Responsiva',
-      feature3Description: 'Diseño limpio y responsivo potenciado por Lovable AI que funciona perfectamente en todos los dispositivos'
+      feature3Description: 'Diseño limpio y responsivo potenciado por Lovable AI que funciona perfectamente en todos los dispositivos',
+      popularToolsTitle: 'Herramientas Populares para Desarrolladores',
+      popularToolsDescription: 'Las herramientas para desarrolladores más populares y frecuentemente utilizadas'
     },
     tools: {
       json: {

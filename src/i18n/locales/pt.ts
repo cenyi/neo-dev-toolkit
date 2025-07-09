@@ -2,7 +2,22 @@ export const pt = {
   translation: {
     nav: { home: 'Início', json: 'JSON', network: 'Rede', text: 'Texto', time: 'Tempo', encryption: 'Criptografia', markdown: 'Markdown', mermaid: 'Mermaid' },
     common: { theme: 'Tema', language: 'Idioma', light: 'Claro', dark: 'Escuro', copy: 'Copiar', clear: 'Limpar', format: 'Formatar', minify: 'Minimizar', validate: 'Validar', convert: 'Converter', encrypt: 'Criptografar', decrypt: 'Descriptografar', preview: 'Visualizar', download: 'Baixar', toYaml: 'Para YAML', toXml: 'Para XML', toCsv: 'Para CSV', blue: 'Azul', system: 'Sistema', comingSoon: 'Em breve', error: 'Erro' },
-    home: { title: 'Hub de Ferramentas para Desenvolvedores', subtitle: 'Ferramentas de desenvolvimento profissionais com design neomórfico moderno', description: 'Uma coleção abrangente de ferramentas essenciais para desenvolvedores, incluindo formatação JSON, processamento de texto, criptografia e muito mais.' },
+    home: { 
+      title: 'Hub de Ferramentas para Desenvolvedores',
+      subtitle: 'Ferramentas de desenvolvimento profissionais construídas com tecnologia Lovable AI',
+      description: 'Uma coleção abrangente de ferramentas essenciais para desenvolvedores, incluindo formatação JSON, processamento de texto, criptografia e muito mais. Construído com Lovable AI para desempenho ótimo.',
+      headerTitle: 'Hub Gratuito de Ferramentas para Desenvolvedores Online - Construído com Lovable',
+      toolsCollectionTitle: 'Coleção de Ferramentas Profissionais para Desenvolvedores',
+      whyChooseTitle: 'Por Que Escolher o DevTools Hub para Suas Necessidades de Desenvolvimento?',
+      feature1Title: '100% Gratuito e Sem Registro',
+      feature1Description: 'Todas as ferramentas são completamente gratuitas para usar sem necessidade de conta',
+      feature2Title: 'Desenvolvimento Focado na Privacidade',
+      feature2Description: 'Seus dados permanecem no seu navegador - nada é enviado para nossos servidores',
+      feature3Title: 'Interface Moderna e Responsiva',
+      feature3Description: 'Design limpo e responsivo impulsionado por Lovable AI que funciona perfeitamente em todos os dispositivos',
+      popularToolsTitle: 'Ferramentas Populares para Desenvolvedores',
+      popularToolsDescription: 'As ferramentas mais populares e frequentemente usadas por desenvolvedores'
+    },
     tools: { 
       json: {
         title: 'Ferramentas JSON',

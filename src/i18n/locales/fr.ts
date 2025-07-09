@@ -1,5 +1,9 @@
 export const fr = {
   translation: {
+    siteMap: 'Plan du Site',
+    siteMapDescription: 'Annuaire complet de tous les outils et pages de développement disponibles sur notre plateforme. Trouvez l\'outil parfait pour vos besoins de développement.',
+    allDeveloperTools: 'Tous les Outils pour Développeurs',
+    allDeveloperToolsDescription: 'Collection complète d\'outils gratuits pour développeurs organisés par catégorie',
     nav: {
       home: 'Accueil',
       json: 'JSON',
@@ -49,17 +53,19 @@ export const fr = {
     },
     home: {
       title: 'Hub d\'Outils pour Développeurs',
-      subtitle: 'Outils de développement professionnels avec un design néomorphique moderne',
-      description: 'Une collection complète d\'outils essentiels pour développeurs incluant le formatage JSON, le traitement de texte, le chiffrement et plus encore.',
-      headerTitle: 'Hub d\'Outils Développeurs Gratuits en Ligne',
-      toolsCollectionTitle: 'Collection d\'Outils Développeurs Professionnels',
-      whyChooseTitle: 'Pourquoi Choisir DevTools Hub pour Vos Besoins de Développement ?',
+      subtitle: 'Outils de développement professionnels construits avec la technologie Lovable AI',
+      description: 'Une collection complète d\'outils essentiels pour les développeurs, y compris le formatage JSON, le traitement de texte, le chiffrement et plus encore. Construit avec Lovable AI pour des performances optimales.',
+      headerTitle: 'Hub Gratuit d\'Outils pour Développeurs en Ligne - Construit avec Lovable',
+      toolsCollectionTitle: 'Collection d\'Outils Professionnels pour Développeurs',
+      whyChooseTitle: 'Pourquoi Choisir DevTools Hub pour vos Besoins de Développement?',
       feature1Title: '100% Gratuit & Sans Inscription',
       feature1Description: 'Tous les outils sont entièrement gratuits sans création de compte',
       feature2Title: 'Développement Axé sur la Confidentialité',
       feature2Description: 'Vos données restent dans votre navigateur - rien n\'est envoyé à nos serveurs',
       feature3Title: 'Interface Moderne Responsive',
-      feature3Description: 'Design propre et responsive qui fonctionne parfaitement sur tous les appareils'
+      feature3Description: 'Design propre et responsive qui fonctionne parfaitement sur tous les appareils',
+      popularToolsTitle: 'Outils Populaires pour Développeurs',
+      popularToolsDescription: 'Les outils les plus populaires et fréquemment utilisés par les développeurs'
     },
     tools: {
       json: {

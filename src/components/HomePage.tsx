@@ -1,72 +1,96 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { buildPath } from '../config/routes';
-import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
-import { 
-  FileJson, 
-  Network, 
-  FileText, 
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
+import {
+  FileJson,
+  Network,
+  FileText,
   Key,
   FileCode,
-  Code,
   Clock,
   Hash
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { HomePageToolsShowcase } from './AllPagesLinks';
 
 const HomePage: React.FC = () => {
   const { lang = 'en' } = useParams<{ lang: string }>();
-  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  // 初始化时从本地存储恢复语言设置
+  useEffect(() => {
+    const savedLang = localStorage.getItem('i18nextLng');
+    if (savedLang) {
+      // 更新i18n语言
+      if (i18n.language !== savedLang) {
+        i18n.changeLanguage(savedLang);
+      }
+      // 更新URL以匹配保存的语言
+      if (!location.pathname.startsWith(`/${savedLang}`)) {
+        const newPath = location.pathname.replace(/^\/[^\/]+/, `/${savedLang}`);
+        navigate(newPath, { replace: true });
+      }
+    }
+  }, [navigate, location.pathname, i18n]);
+
+  // 确保使用有效的语言
+  useEffect(() => {
+    if (lang && i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
+  }, [lang, i18n]);
 
   const tools = [
     {
       path: buildPath('JSON_TOOLS', { lang }),
       icon: FileJson,
-      titleKey: 'tools.json.title',
-      descKey: 'tools.json.description',
+      title: t('tools.json.title'),
+      description: t('tools.json.description'),
       color: 'text-blue-500'
     },
     {
       path: buildPath('NETWORK_TOOLS', { lang }),
       icon: Network,
-      titleKey: 'tools.network.title',
-      descKey: 'tools.network.description',
+      title: t('tools.network.title'),
+      description: t('tools.network.description'),
       color: 'text-green-500'
     },
     {
       path: buildPath('TEXT_TOOLS', { lang }),
       icon: FileText,
-      titleKey: 'tools.text.title',
-      descKey: 'tools.text.description',
+      title: t('tools.text.title'),
+      description: t('tools.text.description'),
       color: 'text-purple-500'
     },
     {
       path: `/${lang}/time`,
       icon: Clock,
-      titleKey: 'tools.time.title',
-      descKey: 'tools.time.description',
+      title: t('tools.time.title'),
+      description: t('tools.time.description'),
       color: 'text-cyan-500'
     },
     {
       path: `/${lang}/regex`,
       icon: Hash,
-      titleKey: 'tools.regex.title',
-      descKey: 'tools.regex.description',
+      title: t('tools.regex.title'),
+      description: t('tools.regex.description'),
       color: 'text-orange-500'
     },
     {
       path: buildPath('EDITOR', { lang }),
       icon: FileCode,
-      titleKey: 'tools.editor.title',
-      descKey: 'tools.editor.description',
+      title: t('tools.editor.title'),
+      description: t('tools.editor.description'),
       color: 'text-yellow-500'
     },
     {
       path: `/${lang}/crypto/encryption`,
       icon: Key,
-      titleKey: 'tools.crypto.title',
-      descKey: 'tools.crypto.description',
+      title: t('tools.crypto.title'),
+      description: t('tools.crypto.description'),
       color: 'text-red-500'
     }
   ];
@@ -89,7 +113,7 @@ const HomePage: React.FC = () => {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {tools.map(({ path, icon: Icon, titleKey, descKey, color }) => (
+            {tools.map(({ path, icon: Icon, title, description, color }) => (
               <Link 
                 key={path} 
                 to={path} 
@@ -100,10 +124,10 @@ const HomePage: React.FC = () => {
                     <Icon size={32} className={color} />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-foreground">
-                    {t(titleKey)}
+                    {title}
                   </h3>
                   <p className="text-muted-foreground text-sm">
-                    {t(descKey)}
+                    {description}
                   </p>
                 </div>
               </Link>

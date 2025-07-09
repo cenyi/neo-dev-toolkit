@@ -1,5 +1,9 @@
 export const zh = {
     translation: {
+        siteMap: '网站地图',
+        siteMapDescription: '我们平台上所有开发者工具和页面的完整目录。找到适合您开发需求的完美工具。',
+        allDeveloperTools: '所有开发者工具',
+        allDeveloperToolsDescription: '按类别组织的免费在线开发者工具的完整集合',
         nav: {
             home: '首页',
             json: 'JSON',
