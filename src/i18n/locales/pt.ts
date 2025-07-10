@@ -304,9 +304,7 @@ export const pt = {
         "invalidSyntax": "Sintaxe Mermaid inválida",
         "placeholder": "Digite seu código Mermaid aqui...",
         "syntaxError": "Erro de sintaxe no código Mermaid"
-      }
-    },
-    "editor": {
+      },
       "copy": "Copiar conteúdo",
       "clear": "Limpar conteúdo",
       "copied": "Copiado",
