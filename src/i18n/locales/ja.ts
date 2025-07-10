@@ -1,4 +1,4 @@
-const ja = {
+export const ja = {
   "translation": {
     "siteMap": "サイトマップ",
     "siteMapDescription": "当社のプラットフォームで利用可能なすべての開発者ツールとページの完全なディレクトリ。開発ニーズに最適なツールを見つけてください。",

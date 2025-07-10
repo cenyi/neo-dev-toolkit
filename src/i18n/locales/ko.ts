@@ -1,4 +1,4 @@
-const ko = {
+export const ko = {
   translation: {
     allPagesLinks: {
       popularTools: '인기 도구',
