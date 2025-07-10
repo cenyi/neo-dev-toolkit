@@ -144,6 +144,9 @@ export const ko = {
         rootClassNamePlaceholder: '예: MyRootClass',
         convertedToDartTitle: 'Dart 클래스로 변환됨',
         rootClassName: '루트 클래스 이름',
+        convertedToYamlTitle: 'YAML로 변환됨',
+        convertedToXmlTitle: 'XML로 변환됨',
+        convertedToCsvTitle: 'CSV로 변환됨',
       },
       regex: {
         title: '정규 표현식 도구',

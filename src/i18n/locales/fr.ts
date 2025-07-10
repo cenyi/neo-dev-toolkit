@@ -143,7 +143,10 @@ export const fr = {
         "modernSyntax": "Syntaxe Moderne",
         "rootClassNamePlaceholder": "par exemple MyRootClass",
         "convertedToDartTitle": "Convertit en Classes Dart",
-        "rootClassName": "Nom de Classe Racine"
+        "rootClassName": "Nom de Classe Racine",
+        "convertedToYamlTitle": "Convertit en YAML",
+        "convertedToXmlTitle": "Convertit en XML",
+        "convertedToCsvTitle": "Convertit en CSV",
       },
       "regex": {
         "title": "Outil d'Expression Régulière",

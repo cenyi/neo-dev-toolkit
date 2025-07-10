@@ -144,6 +144,9 @@ export const zh = {
         rootClassNamePlaceholder: '例如 MyRootClass',
         convertedToDartTitle: '已转换为Dart类',
         rootClassName: '根类名称',
+        convertedToYamlTitle: '已转换为YAML',
+        convertedToXmlTitle: '已转换为XML',
+        convertedToCsvTitle: '已转换为CSV',
       },
       regex: {
         title: '正则表达式工具',

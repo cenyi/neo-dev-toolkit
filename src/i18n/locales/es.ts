@@ -143,7 +143,10 @@ export const es = {
         "modernSyntax": "Sintaxis Moderna",
         "rootClassNamePlaceholder": "ej: MiClaseRaíz",
         "convertedToDartTitle": "Convertido a Clases Dart",
-        "rootClassName": "Nombre de Clase Raíz"
+        "rootClassName": "Nombre de Clase Raíz",
+        "convertedToYamlTitle": "Convertido a YAML",
+        "convertedToXmlTitle": "Convertido a XML",
+        "convertedToCsvTitle": "Convertido a CSV",
       },
       "regex": {
         "title": "Herramienta de Expresión Regular",

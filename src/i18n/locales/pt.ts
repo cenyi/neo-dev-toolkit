@@ -86,7 +86,28 @@ export const pt = {
         "mock": {
           "title": "Gerador de Dados Mock",
           "description": "Gere dados JSON mock para testes e desenvolvimento."
-        }
+        },
+        "toDart": {
+          title: 'Conversor de JSON para Dart',
+          description: 'Converta dados JSON para classes Dart com opções personalizáveis.',
+          configuration: 'Configuração',
+          configurationDescription: 'Personalize as classes Dart geradas',
+          usePrivateFields: 'Usar Campos Privados',
+          useModernSyntax: 'Usar Sintaxe Moderna do Dart',
+          emptyInputError: 'Por favor, insira dados JSON para conversão',
+          convertSuccess: 'Convertido para classes Dart com sucesso',
+          dartOutput: 'Saída Dart',
+          dartOutputPlaceholder: 'As classes Dart geradas aparecerão aqui'
+        },
+        dartConfig: 'Configuração do Dart',
+        privateFields: 'Campos Privados',
+        modernSyntax: 'Sintaxe Moderna',
+        rootClassNamePlaceholder: 'ex: MinhaClasseRaiz',
+        convertedToDartTitle: 'Convertido para Classes Dart',
+        rootClassName: 'Nome da Classe Raiz',
+        convertedToYamlTitle: 'Convertido para YAML',
+        convertedToXmlTitle: 'Convertido para XML',
+        convertedToCsvTitle: 'Convertido para CSV',
       },
       "network": {
         "title": "Ferramentas de Rede e Codificação",

@@ -91,7 +91,28 @@ export const ru = {
         "mock": {
           "title": "Генератор Mock Данных",
           "description": "Генерируйте mock JSON данные для тестирования и разработки."
-        }
+        },
+        "toDart": {
+          title: 'Конвертер JSON в Dart',
+          description: 'Преобразование данных JSON в классы Dart с настраиваемыми параметрами.',
+          configuration: 'Конфигурация',
+          configurationDescription: 'Настройте сгенерированные классы Dart',
+          usePrivateFields: 'Использовать приватные поля',
+          useModernSyntax: 'Использовать современный синтаксис Dart',
+          emptyInputError: 'Пожалуйста, введите JSON данные для преобразования',
+          convertSuccess: 'Успешно преобразовано в классы Dart',
+          dartOutput: 'Вывод Dart',
+          dartOutputPlaceholder: 'Сгенерированные классы Dart появятся здесь'
+        },
+        dartConfig: 'Конфигурация Dart',
+        privateFields: 'Приватные поля',
+        modernSyntax: 'Современный синтаксис',
+        rootClassNamePlaceholder: 'напр. MyRootClass',
+        convertedToDartTitle: 'Преобразовано в классы Dart',
+        rootClassName: 'Имя корневого класса',
+        convertedToYamlTitle: 'Преобразовано в YAML',
+        convertedToXmlTitle: 'Преобразовано в XML',
+        convertedToCsvTitle: 'Преобразовано в CSV',
       },
       "network": {
         "title": "Сетевые и кодировочные инструменты",

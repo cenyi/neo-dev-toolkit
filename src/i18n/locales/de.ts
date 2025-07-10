@@ -143,7 +143,10 @@ export const de = {
         "modernSyntax": "Moderne Syntax",
         "rootClassNamePlaceholder": "z.B. MyRootClass",
         "convertedToDartTitle": "In Dart-Klassen Konvertiert",
-        "rootClassName": "Stammklasse-Name"
+        "rootClassName": "Stammklasse-Name",
+        "convertedToYamlTitle": 'In YAML umgewandelt',
+        "convertedToXmlTitle": 'In XML umgewandelt',
+        "convertedToCsvTitle": 'In CSV umgewandelt',
       },
       "regex": {
         "title": "Regulärer Ausdruck Tool",

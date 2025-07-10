@@ -92,7 +92,28 @@ export const ja = {
       "mock": {
         "title": "モックデータジェネレータ",
         "description": "テストと開発用のモックJSONデータを生成します。"
-      }
+      },
+     "toDart": {
+        title: 'JSONからDartへのコンバーター',
+        description: 'カスタマイズ可能なオプションでJSONデータをDartクラスに変換します。',
+        configuration: '設定',
+        configurationDescription: '生成されたDartクラスをカスタマイズします',
+        usePrivateFields: 'プライベートフィールドを使用',
+        useModernSyntax: 'モダンなDart構文を使用',
+        emptyInputError: '変換するJSONデータを入力してください',
+        convertSuccess: 'Dartクラスに正常に変換されました',
+        dartOutput: 'Dart出力',
+        dartOutputPlaceholder: '生成されたDartクラスがここに表示されます'
+      },
+      dartConfig: 'Dart設定',
+      privateFields: 'プライベートフィールド',
+      modernSyntax: 'モダンな構文',
+      rootClassNamePlaceholder: '例: MyRootClass',
+      convertedToDartTitle: 'Dartクラスに変換されました',
+      rootClassName: 'ルートクラス名',
+      convertedToYamlTitle: 'YAMLに変換されました',
+      convertedToXmlTitle: 'XMLに変換されました',
+      convertedToCsvTitle: 'CSVに変換されました',
     },
     "network": {
       "title": "ネットワークとエンコーディングツール",
