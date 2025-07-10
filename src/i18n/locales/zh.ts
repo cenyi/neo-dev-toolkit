@@ -208,7 +208,9 @@ export const zh = {
         },
         urlEncoder: {
           title: 'URL编码器/解码器',
-          description: '编码URL以安全传输或解码百分比编码的URL。'
+          description: '编码URL以安全传输或解码百分比编码的URL。',
+          encode: '编码',
+          decode: '解码'
         },
         base64Encoder: {
           title: 'Base64编码器/解码器',

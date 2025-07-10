@@ -208,11 +208,21 @@ export const en = {
         },
         urlEncoder: {
           title: 'URL Encoder / Decoder',
-          description: 'Encode URLs for safe transmission or decode percent-encoded URLs.'
+          description: 'Encode URLs for safe transmission or decode percent-encoded URLs.',
+          encode: 'Encode',
+          decode: 'Decode',
+          input: 'Input',
+          output: 'Output',
+          inputPlaceholder: 'Enter text to encode or decode...',
+          outputPlaceholder: 'Encoded or decoded result will appear here'
         },
         base64Encoder: {
           title: 'Base64 Encoder / Decoder',
-          description: 'Encode text to Base64 or decode Base64 strings back to text.'
+          description: 'Encode text to Base64 or decode Base64 strings back to text.',
+          input: 'Input',
+          output: 'Output',
+          inputPlaceholder: 'Enter text to encode or decode...',
+          outputPlaceholder: 'Encoded or decoded result will appear here'
         },
         ipLookup: {
           title: 'IP Address Lookup',
