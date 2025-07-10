@@ -111,12 +111,12 @@ const HomePage: React.FC = () => {
           <h2 className="text-3xl font-bold text-center mb-8 text-foreground">
             {t('home.toolsCollectionTitle')}
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {tools.map(({ path, icon: Icon, title, description, color }) => (
-              <Link 
-                key={path} 
-                to={path} 
+              <Link
+                key={path}
+                to={path}
                 className="group block h-full rounded-2xl border bg-card text-card-foreground shadow-sm hover:shadow-md"
               >
                 <div className="p-6 h-full flex flex-col items-center text-center">
@@ -161,9 +161,6 @@ const HomePage: React.FC = () => {
           </div>
         </section>
       </main>
-      
-      {/* SEO优化：全站工具链接汇总 */}
-      <HomePageToolsShowcase />
     </div>
   );
 };

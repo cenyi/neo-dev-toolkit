@@ -26,19 +26,19 @@ interface AllPagesLinksProps {
   compact?: boolean; // 紧凑模式
 }
 
-const AllPagesLinks: React.FC<AllPagesLinksProps> = ({ 
-  showAllPages = false, 
-  compact = false 
+const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
+  showAllPages = false,
+  compact = false
 }) => {
   const { t } = useTranslation();
   const { lang = 'en' } = useParams<{ lang: string }>();
   const currentLang = (lang as SupportedLanguage) || 'en';
-  
+
   // 获取要显示的页面
-  const pagesToShow = showAllPages 
+  const pagesToShow = showAllPages
     ? SEO_PAGES.filter(page => !['Error', 'Legal'].includes(page.category))
     : getMultiLanguageHighPriorityPages();
-  
+
   // 按分类分组
   const pagesByCategory = pagesToShow.reduce((acc, page) => {
     if (!acc[page.category]) {
@@ -47,16 +47,16 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
     acc[page.category].push(page);
     return acc;
   }, {} as Record<string, SEOPageConfig[]>);
-  
+
   // 构建实际路径
   const buildActualPath = (templatePath: string) => {
     return templatePath.replace('/:lang', `/${lang}`);
   };
-  
+
   if (compact) {
     // 紧凑模式：只显示高优先级页面的简单链接列表
     const highPriorityPages = getMultiLanguageHighPriorityPages();
-    
+
     return (
       <div className="bg-muted/30 py-8">
         <div className="container mx-auto px-4">
@@ -81,7 +81,7 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
       </div>
     );
   }
-  
+
   return (
     <div className="bg-muted/20 py-12">
       <div className="container mx-auto px-4">
@@ -90,17 +90,17 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
             {showAllPages ? t('allPagesLinks.allTools') : t('allPagesLinks.popularTools')}
           </h2>
           <p className="text-muted-foreground">
-            {showAllPages 
+            {showAllPages
               ? t('allPagesLinks.allToolsDescription')
               : t('allPagesLinks.popularToolsDescription')
             }
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {Object.entries(pagesByCategory).map(([category, pages]) => {
             const IconComponent = categoryIcons[category as keyof typeof categoryIcons] || Info;
-            
+
             return (
               <Card key={category} className="hover:shadow-lg transition-shadow">
                 <CardHeader className="pb-3">
@@ -117,10 +117,10 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
                     {pages.map((page) => {
                       const actualPath = buildActualPath(page.path);
                       const tdk = getTDKForLanguage(page, currentLang);
-                      const displayTitle = tdk.title.includes(' - ') 
-                        ? tdk.title.split(' - ')[0] 
+                      const displayTitle = tdk.title.includes(' - ')
+                        ? tdk.title.split(' - ')[0]
                         : tdk.title;
-                      
+
                       return (
                         <Link
                           key={page.path}
@@ -143,7 +143,7 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
             );
           })}
         </div>
-        
+
         {!showAllPages && (
           <div className="text-center mt-8">
             <Link
@@ -161,16 +161,6 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
 };
 
 export default AllPagesLinks;
-
-// 导出一个专门用于首页的版本
-export const HomePageToolsShowcase: React.FC = () => {
-  return <AllPagesLinks showAllPages={false} compact={false} />;
-};
-
-// 导出一个紧凑版本，用于页面底部
-export const CompactToolsLinks: React.FC = () => {
-  return <AllPagesLinks showAllPages={false} compact={true} />;
-};
 
 // 导出完整版本，用于站点地图页面
 export const FullToolsDirectory: React.FC = () => {

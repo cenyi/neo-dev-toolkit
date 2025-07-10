@@ -62,8 +62,8 @@ const Footer: React.FC = () => {
               <ul className="space-y-2">
                 {category.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link 
-                      to={link.path} 
+                    <Link
+                      to={link.path}
                       className="text-sm text-foreground hover:text-primary transition-colors"
                       title={`${link.name} - Free Online Tool`}
                     >
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
             </div>
           ))}
         </div>
-        
+
         {/* 原有的Footer内容 */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left border-t border-border pt-8">
           <div className="col-span-2 md:col-span-1">
@@ -107,16 +107,9 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-8 border-t border-border pt-8 text-center">
           <p className="text-base text-muted-foreground">{t('footer.copyright', { year: currentYear })}</p>
-          <div className="mt-2">
-            <Link to={`/${lang}/sitemap`} className="text-sm text-foreground hover:text-primary transition-colors">
-              Site Map
-            </Link>
-          </div>
         </div>
       </div>
-      
-      {/* SEO优化：紧凑版工具链接 */}
-      <CompactToolsLinks />
+
     </footer>
   );
 };
