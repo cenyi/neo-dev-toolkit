@@ -387,10 +387,6 @@ export const ko = {
           description: 'AES, DES 및 Rabbit과 같은 다양한 알고리즘을 사용하여 텍스트를 암호화하고 복호화합니다.'
         }
        },
-       time: {
-         title: '날짜 & 시간 도구',
-         description: '타임스탬프 변환, 타임존 처리 및 날짜 계산을 위한 필수 날짜 및 시간 유틸리티.'
-       }
     },
     time: {
       description: '타임스탬프 변환, 타임존 처리 및 날짜 계산을 위한 필수 날짜 및 시간 유틸리티.',

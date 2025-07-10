@@ -224,10 +224,6 @@ export const pt = {
           "description": "Criptografe e descriptografe texto usando vários algoritmos como AES, DES e Rabbit."
         }
       },
-      "time": {
-        "title": "Ferramentas de Data e Hora",
-        "description": "Utilitários essenciais de data e hora para conversão de timestamp, manipulação de fuso horário e cálculos de data."
-      }
     },
     "time": {
       "description": "Utilitários essenciais de data e hora para conversão de timestamp, manipulação de fuso horário e cálculos de data.",

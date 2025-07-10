@@ -144,6 +144,9 @@ export const en = {
         rootClassNamePlaceholder: 'e.g. MyRootClass',
         convertedToDartTitle: 'Converted to Dart Classes',
         rootClassName: 'Root Class Name',
+        convertedToYamlTitle: 'Converted to YAML',
+        convertedToXmlTitle: 'Converted to XML',
+        convertedToCsvTitle: 'Converted to CSV',
       },
       regex: {
         title: 'Regular Expression Tool',
@@ -388,10 +391,6 @@ export const en = {
           description: 'Encrypt and decrypt text using various algorithms like AES, DES, and Rabbit.'
         }
        },
-       time: {
-         title: 'Date & Time Tools',
-         description: 'Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.'
-       }
     },
     time: {
       description: 'Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.',

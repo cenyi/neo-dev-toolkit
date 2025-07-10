@@ -387,10 +387,6 @@ export const fr = {
           "description": "Chiffrez et déchiffrez du texte en utilisant divers algorithmes comme AES, DES et Rabbit."
         }
       },
-      "time": {
-        "title": "Outils de Date & d'Heure",
-        "description": "Utilitaires essentiels de date et d'heure pour la conversion de timestamp, la gestion de fuseau horaire et les calculs de date."
-      }
     },
     "time": {
       "description": "Utilitaires essentiels de date et d'heure pour la conversion de timestamp, la gestion de fuseau horaire et les calculs de date.",

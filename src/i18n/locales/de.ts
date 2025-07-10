@@ -387,10 +387,6 @@ export const de = {
           "description": "Verschlüsseln und entschlüsseln Sie Text mithilfe verschiedener Algorithmen wie AES, DES und Rabbit."
         }
       },
-      "time": {
-        "title": "Datum- & Zeit-Tools",
-        "description": "Essentielle Datum- und Zeitdienstprogramme für Zeitstempel-Konvertierung, Zeitzonen-Handling und Datumskalkulationen."
-      }
     },
     "time": {
       "description": "Essentielle Datum- und Zeitdienstprogramme für Zeitstempel-Konvertierung, Zeitzonen-Handling und Datumskalkulationen.",

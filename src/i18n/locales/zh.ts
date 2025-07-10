@@ -388,10 +388,6 @@ export const zh = {
           description: '使用各种算法（如AES、DES和Rabbit）加密和解密文本。'
         }
        },
-       time: {
-         title: '日期和时间工具',
-         description: '用于时间戳转换、时区处理和日期计算的必备日期和时间实用工具。'
-       }
     },
     time: {
       description: '用于时间戳转换、时区处理和日期计算的必备日期和时间实用工具。',

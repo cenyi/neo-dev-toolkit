@@ -388,10 +388,6 @@ export const es = {
           "description": "Cifra y descifra texto utilizando varios algoritmos como AES, DES y Rabbit."
         }
       },
-      "time": {
-        "title": "Herramientas de Fecha y Hora",
-        "description": "Utilidades esenciales de fecha y hora para conversión de marcas de tiempo, manejo de zonas horarias y cálculos de fecha."
-      }
     },
     "time": {
       "description": "Utilidades esenciales de fecha y hora para conversión de marcas de tiempo, manejo de zonas horarias y cálculos de fecha.",
