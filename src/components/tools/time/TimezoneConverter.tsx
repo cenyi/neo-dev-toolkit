@@ -87,24 +87,24 @@ const TimezoneConverter: React.FC = () => {
 
   return (
     <ToolPageLayout
-      title={t('tools.timezoneConverter.title')}
-      description={t('tools.timezoneConverter.description')}
+      title={t('tools.time.timezoneConverter.title')}
+      description={t('tools.time.timezoneConverter.description')}
     >
       <Card>
         <CardContent className="space-y-4 pt-6">
           <div>
-            <label htmlFor="source-datetime" className="text-sm font-medium">{t('tools.timezoneConverter.sourceDateTime')}</label>
-            <Input 
-              id="source-datetime" 
-              type="datetime-local" 
-              value={sourceDateTime} 
+            <label htmlFor="source-datetime" className="text-sm font-medium">{t('tools.time.timezoneConverter.sourceDateTime')}</label>
+            <Input
+              id="source-datetime"
+              type="datetime-local"
+              value={sourceDateTime}
               onChange={e => setSourceDateTime(e.target.value)}
               aria-label="Source date and time input"
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="source-timezone" className="text-sm font-medium">{t('tools.timezoneConverter.sourceTimezone')}</label>
+              <label htmlFor="source-timezone" className="text-sm font-medium">{t('tools.time.timezoneConverter.sourceTimezone')}</label>
               <Select value={sourceTimezone} onValueChange={setSourceTimezone}>
                 <SelectTrigger id="source-timezone" aria-label="Select source timezone">
                   <SelectValue />
@@ -115,7 +115,7 @@ const TimezoneConverter: React.FC = () => {
               </Select>
             </div>
             <div>
-              <label htmlFor="target-timezone" className="text-sm font-medium">{t('tools.timezoneConverter.targetTimezone')}</label>
+              <label htmlFor="target-timezone" className="text-sm font-medium">{t('tools.time.timezoneConverter.targetTimezone')}</label>
               <Select value={targetTimezone} onValueChange={setTargetTimezone}>
                 <SelectTrigger id="target-timezone" aria-label="Select target timezone">
                   <SelectValue />
@@ -127,10 +127,10 @@ const TimezoneConverter: React.FC = () => {
             </div>
           </div>
           <div>
-            <label className="text-sm font-medium">{t('tools.timezoneConverter.convertedDateTime')}</label>
-            <Input 
-              value={convertedDateTime} 
-              readOnly 
+            <label className="text-sm font-medium">{t('tools.time.timezoneConverter.convertedDateTime')}</label>
+            <Input
+              value={convertedDateTime}
+              readOnly
               className="font-mono"
               aria-label="Converted date and time result"
             />

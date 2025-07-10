@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
-import { CompactToolsLinks } from './AllPagesLinks';
+
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
       links: [
         { path: `/${lang}/editor/markdown`, name: t('tools.editor.markdown.title') },
         { path: `/${lang}/editor/mermaid`, name: t('tools.editor.mermaid.title') },
-        { path: `/${lang}/time/timestamp-converter`, name: t('tools.time.timestampConverter.title') },
+        { path: `/${lang}/time/timestamp-converter`, name: t('tools.timestampConverter.title') },
         { path: `/${lang}/crypto/encryption`, name: t('tools.crypto.title') }
       ]
     }
