@@ -1,560 +1,563 @@
 export const zh = {
-    translation: {
-        allPagesLinks: {
-            popularTools: '热门工具',
-            popularToolsDescription: '我们精心挑选的最有用的开发者工具集合',
-            allTools: '所有开发者工具',
-            allToolsDescription: '浏览我们完整的开发实用工具集合'
+  "translation": {
+    "allPagesLinks": {
+      "popularTools": "Popular Tools",
+      "popularToolsDescription": "Hand-picked collection of our most useful developer tools",
+      "allTools": "All Developer Tools",
+      "allToolsDescription": "Browse our complete collection of development utilities"
+    },
+    "nav": {
+      "home": "Home",
+      "json": "JSON",
+      "network": "Network",
+      "text": "Text",
+      "time": "Time",
+      "encryption": "Encryption",
+      "markdown": "Markdown",
+      "mermaid": "Mermaid",
+      "regex": "RegEx",
+      "editor": "Editor"
+    },
+    "navTitles": {
+      "home": "Go to Home - Free Developer Tools Hub",
+      "json": "JSON Tools - Format, validate and process JSON data",
+      "network": "Network Tools - URL encoding, IP lookup and utilities",
+      "text": "Text Tools - Process and convert text formats",
+      "time": "Time Tools - Timestamp and timezone converters",
+      "encryption": "Encryption Tools - Hash generation and crypto utilities",
+      "regex": "Regular Expression Tool - Test and validate regex patterns",
+      "editor": "Code Editors - Markdown and Mermaid diagram editors"
+    },
+    "common": {
+      "theme": "Theme",
+      "language": "Language",
+      "light": "Light",
+      "dark": "Dark",
+      "copy": "Copy",
+      "clear": "Clear",
+      "format": "Format",
+      "minify": "Minify",
+      "validate": "Validate",
+      "convert": "Convert",
+      "encrypt": "Encrypt",
+      "decrypt": "Decrypt",
+      "preview": "Preview",
+      "download": "Download",
+      "toYaml": "To YAML",
+      "toXml": "To XML",
+      "toCsv": "To CSV",
+      "toDart": "To Dart",
+      "blue": "Blue",
+      "system": "System",
+      "comingSoon": "Coming Soon",
+      "error": "Error",
+      "success": "Success",
+      "info": "Info",
+      "notFound": "Not Found",
+      "compare": "Compare",
+      "test": "Test",
+      "match": "Match",
+      "replace": "Replace",
+      "flags": "Flags",
+      "pattern": "Pattern",
+      "input": "Input",
+      "output": "Output",
+      "result": "Result",
+      "graph": "Structure Graph",
+      "zoomLevel": "Zoom Level",
+      "copyCode": "Copy Code",
+      "loadSample": "Try Sample JSON"
+    },
+    "home": {
+      "title": "Developer Tools Hub",
+      "subtitle": "Professional development tools",
+      "description": "A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more. For optimal performance.",
+      "headerTitle": "Free Online Developer Tools Hub",
+      "toolsCollectionTitle": "Professional Developer Tools Collection",
+      "whyChooseTitle": "Why Choose DevTools Hub for Your Development Needs?",
+      "feature1Title": "100% Free & No Registration",
+      "feature1Description": "All tools are completely free to use with no account required",
+      "feature2Title": "Privacy Focused Development",
+      "feature2Description": "Your data stays in your browser - nothing is sent to our servers",
+      "feature3Title": "Modern Responsive Interface",
+      "feature3Description": "Clean, responsive design powered by Lovable AI that works perfectly on all devices"
+    },
+    "tools": {
+      "json": {
+        "title": "JSON Tools",
+        "description": "Comprehensive JSON tools for formatting, validation, schema checking, and data manipulation.",
+        "formatter": {
+          "title": "JSON Formatter & Validator",
+          "description": "Format, beautify, and validate your JSON data."
         },
-        siteMap: '网站地图',
-        siteMapDescription: '我们平台上所有开发者工具和页面的完整目录。找到适合您开发需求的完美工具。',
-        allDeveloperTools: '所有开发者工具',
-        allDeveloperToolsDescription: '按类别组织的免费在线开发者工具的完整集合',
-        nav: {
-            home: '首页',
-            json: 'JSON',
-            network: '网络',
-            text: '文本',
-            time: '时间',
-            encryption: '加密',
-            markdown: 'Markdown',
-            mermaid: 'Mermaid',
-            regex: '正则表达式',
-            editor: '编辑器'
+        "schemaValidator": {
+          "title": "JSON Schema Validator",
+          "description": "Validate your JSON objects against a JSON Schema."
         },
-        navTitles: {
-            home: '首页 - 免费开发者工具中心',
-            json: 'JSON 工具 - 格式化、验证和处理 JSON 数据',
-            network: '网络工具 - URL 编码、IP 查询和实用工具',
-            text: '文本工具 - 处理和转换文本格式',
-            time: '时间工具 - 时间戳和时区转换器',
-            encryption: '加密工具 - 哈希生成和加密实用工具',
-            regex: '正则表达式工具 - 测试和验证正则表达式模式',
-            editor: '代码编辑器 - Markdown 和 Mermaid 图表编辑器'
+        "codegen": {
+          "title": "Generate Code Types",
+          "description": "Generate code types in various languages from a JSON object."
         },
-        common: {
-            theme: '主题',
-            language: '语言',
-            light: '浅色',
-            dark: '深色',
-            copy: '复制',
-            clear: '清除',
-            format: '格式化',
-            minify: '压缩',
-            validate: '验证',
-            convert: '转换',
-            encrypt: '加密',
-            decrypt: '解密',
-            preview: '预览',
-            download: '下载',
-            toYaml: '转为 YAML',
-            toXml: '转为 XML',
-            toCsv: '转为 CSV',
-            toDart: '转为 Dart',
-            blue: '蓝色',
-            system: '系统',
-            comingSoon: '即将推出',
-            error: '错误',
-            success: '成功',
-            info: '信息',
-            notFound: '未找到',
-            compare: '比较',
-            test: '测试',
-            match: '匹配',
-            replace: '替换',
-            flags: '标志',
-            pattern: '模式',
-            input: '输入',
-            output: '输出',
-            result: '结果',
-            graph: '结构图',
-            zoomLevel: '缩放级别',
-            copyCode: '复制代码',
-            loadSample: '来个JSON，试试'
+        "history": {
+          "title": "History",
+          "emptyMessage": "No history yet",
+          "searchPlaceholder": "Search by keyword",
+          "clearAll": "Clear All",
+          "historyCleared": "History cleared"
         },
-        home: {
-            title: '开发者工具中心',
-            subtitle: '专业开发工具',
-            description: '一套全面的必备开发工具集，包括 JSON 格式化、文本处理、加密等功能。性能卓越。',
-            headerTitle: '免费在线开发工具中心',
-            toolsCollectionTitle: '专业开发者工具集合',
-            whyChooseTitle: '为什么选择 DevTools Hub 满足您的开发需求？',
-            feature1Title: '100% 免费且无需注册',
-            feature1Description: '所有工具完全免费使用，无需帐户',
-            feature2Title: '注重隐私的开发',
-            feature2Description: '您的数据保留在您的浏览器中 - 不会发送到我们的服务器',
-            feature3Title: '现代响应式界面',
-            feature3Description: '由 Lovable AI 提供支持的简洁、响应式设计，可在所有设备上完美运行'
+        "generateGraph": "Generate Graph",
+        "extractValue": "Extract Value",
+        "fieldPath": "Field Path",
+        "extractPlaceholder": "Enter JSONPath (e.g., $.users[0].name)",
+        "graphTitle": "JSON Structure Graph",
+        "input": "Input",
+        "placeholder": "Please input or paste JSON data",
+        "output": "Output",
+        "outputPlaceholder": "Formatted JSON will appear here",
+        "validJson": "Valid JSON",
+        "invalidJson": "Invalid JSON",
+        "syntaxErrorAtPosition": "Syntax Error at Position",
+        "syntaxErrorGeneric": "Syntax Error",
+        "diff": {
+          "title": "JSON Diff Tool",
+          "description": "Compare two JSON objects and highlight the differences."
         },
-        tools: {
-            json: {
-                title: 'JSON 工具',
-                description: '全面的 JSON 工具，用于格式化、验证、模式检查和数据操作。',
-                formatter: {
-                    title: 'JSON 格式化和校验',
-                    description: '格式化、美化和校验您的 JSON 数据。'
-                },
-                schemaValidator: {
-                    title: 'JSON Schema 校验',
-                    description: '根据 JSON Schema 验证您的 JSON 对象。'
-                },
-                codegen: {
-                    title: '生成代码类型',
-                    description: '从 JSON 对象生成各种语言的代码类型。'
-                },
-                history: {
-                    title: '历史记录'
-                },
-                generateGraph: '生成图表',
-                extractValue: '提取值',
-                fieldPath: '字段路径',
-                extractPlaceholder: '输入 JSONPath (例如: $.users[0].name)',
-                graphTitle: 'JSON 结构图',
-                input: '输入',
-                output: '输出',
-                outputPlaceholder: '格式化后的 JSON 将显示在此处',
-                validJson: '有效的 JSON',
-                invalidJson: '无效的 JSON',
-                diff: {
-                    title: 'JSON 比对工具',
-                    description: '比较两个 JSON 对象并高亮显示差异。'
-                },
-                mock: {
-                    title: 'Mock 数据生成器',
-                    description: '生成用于测试和开发的 Mock JSON 数据。'
-                },
-                toDart: {
-                    title: 'JSON 转 Dart 转换器',
-                    description: '将 JSON 数据转换为 Dart 类，支持自定义选项。',
-                    configuration: '配置选项',
-                    configurationDescription: '自定义生成的 Dart 类',
-                    usePrivateFields: '使用私有字段',
-                    useModernSyntax: '使用现代 Dart 语法',
-                    emptyInputError: '请输入要转换的 JSON 数据',
-                    convertSuccess: '成功转换为 Dart 类',
-                    dartOutput: 'Dart 输出',
-                    dartOutputPlaceholder: '生成的 Dart 类将显示在此处'
-                },
-                convertedToDartTitle: '转换为 Dart 类',
-                rootClassName: '根类名',
-            },
-            regex: {
-                title: '正则表达式工具',
-                description: '使用正则表达式进行测试、匹配和替换',
-                pattern: '正则表达式模式',
-                patternPlaceholder: '输入正则表达式模式...',
-                testString: '测试字符串',
-                testStringPlaceholder: '输入要测试的文本...',
-                replacement: '替换文本',
-                replacementPlaceholder: '输入替换文本...',
-                flags: '标志',
-                global: '全局匹配 (g)',
-                ignoreCase: '忽略大小写 (i)',
-                multiline: '多行 (m)',
-                dotAll: '点匹配换行符 (s)',
-                unicode: 'Unicode (u)',
-                sticky: '粘性 (y)',
-                matches: '匹配项',
-                noMatches: '未找到匹配项',
-                replacedText: '替换后的文本',
-                invalidRegex: '无效的正则表达式'
-            },
-            jwtDecoder: {
-                title: 'JWT 解码器',
-                description: '解码和验证 JWT 令牌',
-                encodedToken: '编码令牌',
-                header: '头部',
-                payload: '有效载荷',
-                placeholder: '在此处粘贴您的 JWT',
-                headerPlaceholder: '解码后的头部将显示在此处',
-                payloadPlaceholder: '解码后的有效载荷将显示在此处'
-            },
-            jsonDiff: {
-                title: 'JSON 差异比较',
-                description: '比较两个 JSON 对象之间的差异',
-                originalJson: '原始 JSON',
-                newJson: '新 JSON',
-                originalPlaceholder: '在此处粘贴原始 JSON',
-                newPlaceholder: '在此处粘贴新 JSON',
-                diffResult: '差异结果'
-            },
-            network: {
-                title: '网络和编码工具',
-                description: '免费网络工具：URL 编码/解码、Base64 转换器、IP 查询和 JWT 解码器。安全的客户端处理，无需存储数据。',
-                subtitle: '为 Web 开发人员提供的基本网络和编码实用程序。使用我们安全的、注重隐私的工具处理 URL 编码、Base64 转换、IP 查询和 JWT 解码。',
-                utilityTools: '网络实用工具',
-                secureTitle: '安全网络实用程序',
-                clientSideProcessing: {
-                    title: '客户端处理',
-                    description: '所有编码和解码都在您的浏览器中进行，以实现最大程度的安全性。'
-                },
-                noDataStorage: {
-                    title: '无数据存储',
-                    description: '我们不存储或记录您的任何输入数据或结果。'
-                },
-                instantResults: {
-                    title: '即时结果',
-                    description: '快速处理，输入时即可获得实时结果。'
-                },
-                urlEncoder: {
-                    title: 'URL 编码器/解码器',
-                    description: '对 URL 进行编码以进行安全传输，或对百分比编码的 URL 进行解码。'
-                },
-                base64Encoder: {
-                    title: 'Base64 编码器/解码器',
-                    description: '将文本编码为 Base64，或将 Base64 字符串解码回文本。'
-                },
-                ipLookup: {
-                    title: 'IP 地址查询',
-                    description: '获取任何 IP 地址的地理位置、ISP 信息和网络详细信息。',
-                    placeholder: '输入 IP 地址或域名',
-                    lookup: '查询',
-                    myIp: '查询我的 IP',
-                    results: '查询结果'
-                },
-                jwtDecoder: {
-                    title: 'JWT 令牌解码器',
-                    description: '解码 JSON Web 令牌并查看标头、有效负载和签名信息。'
-                }
-            },
-            text: {
-                title: '文本处理工具',
-                description: '基本文本工具：大小写转换器、字数计数器、文本反向器、空白移除器和差异检查器。免费、快速、客户端处理。',
-                subtitle: '为作家、开发人员和内容创作者提供的强大的文本操作和分析工具。使用我们全面的套件转换、分析和比较文本。',
-                utilityTools: '文本处理实用程序',
-                whyUse: {
-                    title: '为什么使用我们的文本工具？',
-                    realTime: {
-                        title: '实时处理',
-                        description: '通过实时文本处理，在您键入时立即查看结果。'
-                    },
-                    privacy: {
-                        title: '隐私保护',
-                        description: '所有文本处理都在本地进行 - 您的内容永远不会离开您的浏览器。'
-                    },
-                    multiPurpose: {
-                        title: '多用途',
-                        description: '从简单的大小写转换到复杂的文本分析和比较。'
-                    }
-                },
-                caseConverter: {
-                    title: '大小写转换器',
-                    description: '在大写、小写、标题大小写和句子大小写之间转换文本。',
-                    placeholder: '输入要转换大小写的文本...',
-                    upperCase: '全部大写',
-                    lowerCase: '全部小写',
-                    titleCase: '标题大小写',
-                    sentenceCase: '句子大小写',
-                    result: '转换后的文本'
-                },
-                wordCounter: {
-                    title: '单词和字符计数器',
-                    description: '计算文本中的单词、字符、句子和段落。',
-                    placeholder: '在此输入要统计的文本...',
-                    words: '单词数',
-                    characters: '字符数',
-                    charactersNoSpaces: '字符数（不含空格）',
-                    sentences: '句子数',
-                    paragraphs: '段落数'
-                },
-                textReverser: {
-                    title: '文本反向器',
-                    description: '立即反转文本中字符的顺序。',
-                    placeholder: '在此输入要反转的文本...',
-                    reversedText: '反转后的文本'
-                },
-                whitespaceRemover: {
-                    title: '空白移除器',
-                    description: '删除多余的空格、修剪空白并清理文本格式。',
-                    placeholder: '在此输入要处理的文本...',
-                    result: '处理结果',
-                    removeAll: '删除所有空白',
-                    removeTrim: '删除首尾空白',
-                    removeExtra: '删除多余空白',
-                    removeLines: '删除换行符'
-                },
-                loremIpsumGenerator: {
-                    title: 'Lorem Ipsum 生成器',
-                    description: '为设计和开发项目生成占位符文本。',
-                    count: '数量',
-                    type: '类型',
-                    paragraphs: '段落',
-                    sentences: '句子',
-                    words: '单词',
-                    generate: '生成',
-                    copy: '复制',
-                    copied: '已复制到剪贴板！'
-                },
-                textDiff: {
-                    title: '文本比较工具',
-                    description: '比较两个文本并使用可视化差异显示突出显示差异。',
-                    compareText: '比较文本',
-                    clearAll: '清空全部',
-                    originalText: '原始文本',
-                    newText: '新文本'
-                },
-                base64: {
-                    title: 'Base64 编码器/解码器',
-                    description: '将文本编码为 Base64，或将 Base64 字符串解码回文本。',
-                    encode: '编码',
-                    decode: '解码',
-                    input: '输入',
-                    output: '输出',
-                    inputPlaceholder: '在此输入要编码或解码的文本...',
-                    outputPlaceholder: '编码或解码的结果将显示在此处'
-                }
-            },
-            url: {
-                title: 'URL 编码器/解码器',
-                description: '对 URL 进行编码以进行安全传输，或对百分比编码的 URL 进行解码。'
-            },
-            timestampConverter: {
-                title: '时间戳转换器',
-                description: '在 Unix 时间戳和人类可读日期之间转换',
-                timestamp: 'Unix 时间戳',
-                timestampPlaceholder: '输入 Unix 时间戳（秒）',
-                dateTime: '日期和时间 (UTC)',
-                current: '当前时间'
-            },
-            timezoneConverter: {
-                title: '时区转换器',
-                description: '在不同时区之间转换日期和时间',
-                sourceDateTime: '源日期和时间',
-                sourceTimezone: '源时区',
-                targetTimezone: '目标时区',
-                convertedDateTime: '转换后的日期和时间'
-            },
-            time: {
-                description: '用于时间戳转换、时区处理和日期计算的基本日期和时间实用程序。',
-                meta: {
-                    title: '日期和时间工具 - 时间戳、时区和日期计算器',
-                    description: '免费的时间工具：时间戳转换器、时区计算器和日期计算。精确、支持夏令时、开发人员友好的实用程序。'
-                },
-                title: '日期和时间工具',
-                subtitle: '为开发人员和专业人士提供的基本日期和时间实用程序。精确处理时间戳转换、时区计算和日期算术。',
-                toolsTitle: '时间管理工具',
-                timestamp: {
-                    title: '时间戳转换器',
-                    description: '在Unix时间戳和人类可读的日期和时间之间进行转换。'
-                },
-                timezone: {
-                    title: '时区转换器',
-                    description: '在全球不同时区之间转换日期和时间，支持夏令时。'
-                },
-                dateCalculator: {
-                    title: '日期计算器',
-                    description: '从日期中增加或减少天数、月数和年数。计算日期差异。',
-                    startDate: '开始日期',
-                    add: '增加',
-                    subtract: '减少',
-                    years: '年',
-                    months: '月',
-                    days: '天',
-                    resultDate: '结果日期'
-                },
-                calculations: {
-                    title: '精确的时间计算',
-                    precise: {
-                        title: '精确计算',
-                        description: '精确处理复杂的时区转换和日期计算。'
-                    },
-                    global: {
-                        title: '全球支持',
-                        description: '支持全球所有时区，并自动调整夏令时。'
-                    },
-                    developerFriendly: {
-                        title: '开发人员友好',
-                        description: '非常适合API开发、日志分析和时间戳调试。'
-                    }
-                }
-            },
-            editor: {
-                meta: {
-                    title: '代码和文档编辑器',
-                    description: '免费在线编辑器：支持实时预览的 Markdown 编辑器和 Mermaid 图表工具。轻松编写、预览和导出专业内容。'
-                },
-                title: '代码和文档编辑器',
-                description: '专业的 Markdown 文档和 Mermaid 图表在线编辑器。支持实时预览、语法高亮和多种导出格式。',
-                subtitle: '专业的 Markdown 文档和 Mermaid 图表在线编辑器。通过实时渲染创建、编辑和预览您的内容。',
-                toolsTitle: '编辑器工具',
-                experience: {
-                    title: '专业编辑体验',
-                    livePreview: {
-                        title: '实时预览',
-                        description: '在您输入时实时查看 Markdown 和 Mermaid 图表的渲染效果。'
-                    },
-                    syntaxHighlighting: {
-                        title: '语法高亮',
-                        description: '专业的代码编辑器，支持语法高亮和自动补全。'
-                    },
-                    exportReady: {
-                        title: '导出就绪',
-                        description: '复制或下载渲染后的内容，用于文档和演示。'
-                    }
-                },
-                markdown: {
-                    title: "Markdown 编辑器",
-                    description: "支持语法高亮和实时预览的 Markdown 编辑器。",
-                    placeholder: '在此输入 Markdown 内容...'
-                },
-                mermaid: {
-                    title: 'Mermaid 图表',
-                    description: '使用 Mermaid 语法创建图表和流程图',
-                    placeholder: '在此输入您的 Mermaid 图表代码...',
-                    syntaxError: '语法错误',
-                    invalidSyntax: '无效的 Mermaid 语法'
-                },
-                copy: '复制内容',
-                clear: '清除内容',
-                copied: '已复制',
-                copySuccess: '内容已复制到剪贴板',
-                copyError: '复制失败',
-                copyErrorDesc: '无法复制到剪贴板',
-                cleared: '已清除',
-                clearSuccess: '内容已清除',
-                downloadSvg: '下载 SVG',
-                downloadPng: '下载 PNG'
-            },
-            crypto: {
-                title: '加密工具',
-                description: '使用我们的加密工具保护您的数据：哈希生成器（MD5、SHA-1、SHA-256、SHA-512）、HMAC 和 AES 加密。',
-                jwtDecoder: {
-                    title: 'JWT 解码器',
-                    description: '解码并检查 JSON Web Token 以查看其有效负载和标头数据。',
-                    placeholder: '在此处粘贴您的 JWT',
-                    invalidToken: '无效的 JWT 令牌'
-                },
-                encryption: {
-                    title: '加密工具',
-                    description: '使用 AES、DES 和 Rabbit 等各种算法加密和解密文本。'
-                }
-            }
+        "mock": {
+          "title": "Mock Data Generator",
+          "description": "Generate mock JSON data for testing and development."
         },
-        url: {
-            input: '输入文本',
-            output: '输出',
-            inputPlaceholder: '输入要编码/解码的文本或 URL',
-            outputPlaceholder: '编码/解码结果将显示在此处',
-            encode: '编码',
-            decode: '解码'
+        "toDart": {
+          "title": "JSON to Dart Converter",
+          "description": "Convert JSON data to Dart classes with customizable options.",
+          "configuration": "Configuration",
+          "configurationDescription": "Customize the generated Dart classes",
+          "usePrivateFields": "Use Private Fields",
+          "useModernSyntax": "Use Modern Dart Syntax",
+          "emptyInputError": "Please enter JSON data to convert",
+          "convertSuccess": "Successfully converted to Dart classes",
+          "dartOutput": "Dart Output",
+          "dartOutputPlaceholder": "Generated Dart classes will appear here"
         },
-        toasts: {
-            common: {
-                success: '成功',
-                error: '错误',
-                info: '信息',
-                notFound: '未找到'
-            },
-            success: {
-                copied: '已复制到剪贴板',
-                formattedAndCopied: 'JSON 已格式化并复制到剪贴板',
-                minifiedAndCopied: 'JSON 已压缩并复制到剪贴板',
-                extractedAndCopied: '值已提取并复制到剪贴板',
-                graphGenerated: '图表生成成功',
-                convertedToYamlAndCopied: '已转换为 YAML 并复制到剪贴板',
-                convertedToXmlAndCopied: '已转换为 XML 并复制到剪贴板',
-                convertedToCsvAndCopied: '已转换为 CSV 并复制到剪贴板',
-                convertedToDartAndCopied: '已转换为 Dart 类并复制到剪贴板'
-            },
-            error: {
-                invalidJson: '请输入有效的 JSON',
-                invalidJsonFormat: '无效的 JSON 格式',
-                missingPath: '请输入提取路径',
-                notFound: '在指定路径未找到值',
-                extractError: '提取值时出错',
-                conversionFailed: '转换失败',
-                csvConversionRequiresArray: 'CSV 转换需要一个对象数组'
-            },
-            info: {
-                emptyContent: '没有内容可复制'
-            }
+        "dartConfig": "Dart Configuration",
+        "privateFields": "Private Fields",
+        "modernSyntax": "Modern Syntax",
+        "rootClassNamePlaceholder": "e.g. MyRootClass",
+        "convertedToDartTitle": "Converted to Dart Classes",
+        "rootClassName": "Root Class Name"
+      },
+      "regex": {
+        "title": "Regular Expression Tool",
+        "description": "Test, match, and replace with regular expressions",
+        "pattern": "Regular Expression Pattern",
+        "patternPlaceholder": "Enter regex pattern...",
+        "testString": "Test String",
+        "testStringPlaceholder": "Enter text to test...",
+        "replacement": "Replacement Text",
+        "replacementPlaceholder": "Enter replacement text...",
+        "flags": "Flags",
+        "global": "Global match (g)",
+        "ignoreCase": "Ignore case (i)",
+        "multiline": "Multiline (m)",
+        "dotAll": "Dot matches newline (s)",
+        "unicode": "Unicode (u)",
+        "sticky": "Sticky (y)",
+        "matches": "Matches",
+        "noMatches": "No matches found",
+        "replacedText": "Replaced Text",
+        "invalidRegex": "Invalid regular expression"
+      },
+      "jwtDecoder": {
+        "title": "JWT Decoder",
+        "description": "Decode and verify JWT tokens",
+        "encodedToken": "Encoded Token",
+        "header": "Header",
+        "payload": "Payload",
+        "placeholder": "Paste your JWT here",
+        "headerPlaceholder": "Decoded header will appear here",
+        "payloadPlaceholder": "Decoded payload will appear here"
+      },
+      "jsonDiff": {
+        "title": "JSON Diff",
+        "description": "Compare differences between two JSON objects",
+        "originalJson": "Original JSON",
+        "newJson": "New JSON",
+        "originalPlaceholder": "Paste original JSON here",
+        "newPlaceholder": "Paste new JSON here",
+        "diffResult": "Diff Result"
+      },
+      "network": {
+        "title": "Network & Encoding Tools",
+        "description": "Free network tools: URL encoder/decoder, Base64 converter, IP lookup & JWT decoder. Secure, client-side processing, no data storage required.",
+        "subtitle": "Essential network and encoding utilities for web developers. Handle URL encoding, Base64 conversion, IP lookups, and JWT decoding with our secure, privacy-focused tools.",
+        "utilityTools": "Network Utility Tools",
+        "secureTitle": "Secure Network Utilities",
+        "clientSideProcessing": {
+          "title": "Client-Side Processing",
+          "description": "All encoding and decoding happens in your browser for maximum security."
         },
-        availableTools: '可用工具',
-        whyChooseUs: {
-            title: '为什么选择我们的工具？',
-            privacyFocused: {
-                title: '注重隐私',
-                description: '所有处理都在您的浏览器本地进行。您的数据永远不会离开您的设备。'
-            },
-            professionalGrade: {
-                title: '专业级别',
-                description: '采用现代网络技术构建，专为专业开发人员设计。'
-            },
-            freeAndOpen: {
-                title: '免费开放',
-                description: '无需注册。免费使用所有功能，没有任何限制。'
-            }
+        "noDataStorage": {
+          "title": "No Data Storage",
+          "description": "We don't store or log any of your input data or results."
         },
-        underConstruction: {
-            description: '此工具正在开发中，敬请期待。'
+        "instantResults": {
+          "title": "Instant Results",
+          "description": "Fast processing with real-time results as you type."
         },
-        notFound: {
-            title: '页面未找到',
-            description: '抱歉，您正在查找的页面不存在或已被移动。',
-            backToHome: '返回首页',
-            path: '路径'
+        "urlEncoder": {
+          "title": "URL Encoder / Decoder",
+          "description": "Encode URLs for safe transmission or decode percent-encoded URLs."
         },
-        encryption: {
-            algorithm: '算法',
-            selectAlgorithm: '选择一个算法',
-            inputText: '输入文本',
-            inputPlaceholder: '输入要处理的文本...',
-            output: '输出',
-            outputPlaceholder: '处理后的输出将显示在此处...',
-            regenerate: '重新生成'
+        "base64Encoder": {
+          "title": "Base64 Encoder / Decoder",
+          "description": "Encode text to Base64 or decode Base64 strings back to text."
         },
-        footer: {
-            legal: '法律',
-            company: '公司',
-            friendlyLinks: '友情链接',
-            privacy: '隐私政策',
-            terms: '服务条款',
-            about: '关于我们',
-            copyright: '© {{year}} 开发者工具中心。保留所有权利。',
-            description: '您的一站式开发「瑞士军刀」。专业的 JSON、文本、加密等工具，助您简化工作流程。',
-            lovable: 'Lovable',
-            vercel: 'Vercel',
-            github: 'GitHub',
-            deepseek: 'DeepSeek',
+        "ipLookup": {
+          "title": "IP Address Lookup",
+          "description": "Get geolocation, ISP information, and network details for any IP address.",
+          "placeholder": "Enter IP address or domain name",
+          "lookup": "Lookup",
+          "myIp": "Check My IP",
+          "results": "Lookup Results"
         },
-        about: {
-            title: '关于我们',
-            missionTitle: '我们的使命',
-            missionText: '我们的使命是为开发者提供一套全面、易用且强大的工具集，作为他们日常工作的「瑞士军刀」。我们旨在创建一个开发实用工具的一站式商店，让每个人的工作流程更高效、更愉快。',
-            featuresTitle: '我们提供什么',
-            feature1: '全面的工具集：从 JSON 格式化和文本操作到加密和图表绘制。',
-            feature2: '现代设计：由 Lovable AI 提供支持的简洁、直观且响应迅速的界面。',
-            feature3: '注重隐私：我们的服务器上不存储任何数据。所有处理都在您的浏览器中进行。',
-            feature4: '先进技术：我们利用前沿技术提供最佳开发体验。',
+        "jwtDecoder": {
+          "title": "JWT Token Decoder",
+          "description": "Decode JSON Web Tokens and view header, payload, and signature information."
         },
-        privacy: {
-            title: '隐私政策',
-            lastUpdated: '最后更新：2025 年 6 月 15 日',
-            introduction: '欢迎来到开发者工具中心。我们致力于保护您的隐私。我们的隐私政策解释了我们如何处理与我们的网站和服务相关的信息。',
-            informationWeCollectTitle: '我们收集的信息',
-            informationWeCollectText: '我们不收集用户的任何个人身份信息。我们工具处理的所有数据（例如 JSON、文本、文件）都保留在您的客户端，绝不会发送到我们的服务器或存储在我们的服务器上。',
-            cookiesTitle: 'Cookie 和本地存储',
-            cookiesText: '我们使用浏览器本地存储来保存您的偏好，例如您选择的主题（浅色/深色）和语言。这纯粹是为了功能目的，以增强您的用户体验，不会跟踪您。',
-            thirdPartyServicesTitle: '第三方服务',
-            thirdPartyServicesText: '我们的网站不与任何会收集您个人数据的第三方服务集成。我们提供指向 GitHub 等外部网站的链接，但我们不对其隐私惯例负责。',
-            changesToPolicyTitle: '本政策的变更',
-            changesToPolicyText: '我们可能会不时更新我们的隐私政策。我们将通过在此页面上发布新的隐私政策来通知您任何变更。建议您定期查看本隐私政策以了解任何变更。',
-            contactUsTitle: '联系我们',
-            contactUsText: '如果您对本隐私政策有任何疑问，请随时在我们的开源存储库中与我们联系。',
+        "base64": {
+          "title": "Base64 Encoder/Decoder",
+          "description": "Encode text to Base64 or decode Base64 strings back to text.",
+          "encode": "Encode",
+          "decode": "Decode",
+          "input": "Input",
+          "output": "Output",
+          "inputPlaceholder": "Enter text to encode or decode...",
+          "outputPlaceholder": "Encoded or decoded result will appear here"
+        }
+      },
+      "text": {
+        "title": "Text Processing Tools",
+        "description": "Essential text tools: case converter, word counter, text reverser, whitespace remover & diff checker. Free, fast, client-side processing.",
+        "subtitle": "Powerful text manipulation and analysis tools for writers, developers, and content creators. Transform, analyze, and compare text with our comprehensive suite.",
+        "utilityTools": "Text Processing Utilities",
+        "whyUse": {
+          "title": "Why Use Our Text Tools?",
+          "realTime": {
+            "title": "Real-Time Processing",
+            "description": "See results instantly as you type with real-time text processing."
+          },
+          "privacy": {
+            "title": "Privacy Protected",
+            "description": "All text processing happens locally - your content never leaves your browser."
+          },
+          "multiPurpose": {
+            "title": "Multi-Purpose",
+            "description": "From simple case conversion to complex text analysis and comparison."
+          }
         },
-        terms: {
-            title: '服务条款',
-            lastUpdated: '最后更新：2025 年 6 月 15 日',
-            acceptanceTitle: '接受条款',
-            acceptanceText: '通过访问和使用开发者工具中心（“本服务”），您接受并同意受本协议条款和规定的约束。如果您不同意遵守这些条款，请不要使用本服务。',
-            useOfServiceTitle: '服务的使用',
-            useOfServiceText: '本服务免费提供给个人和商业使用。您同意负责任地使用本服务，不得用于任何恶意或非法活动。您对使用我们的工具处理的任何数据负全部责任。',
-            disclaimerTitle: '免责声明',
-            disclaimerText: '本服务按“原样”和“可用”提供，不作任何明示或暗示的保证。我们不保证通过本服务处理的任何工具或数据的准确性、可靠性或完整性。',
-            limitationTitle: '责任限制',
-            limitationText: '在任何情况下，开发者工具中心或其维护者均不对因使用或无法使用本服务而产生的任何直接、间接、附带、特殊或后果性损害承担责任。',
-            changesToTermsTitle: '条款的变更',
-            changesToTermsText: '我们保留随时修改这些条款的权利。我们将在此页面上发布这些条款的最新版本。您在任何变更后继续使用本服务即表示您接受新条款。',
+        "caseConverter": {
+          "title": "Case Converter",
+          "description": "Convert text between uppercase, lowercase, title case, and sentence case.",
+          "placeholder": "Enter text to convert case...",
+          "upperCase": "UPPERCASE",
+          "lowerCase": "lowercase",
+          "titleCase": "Title Case",
+          "sentenceCase": "Sentence case",
+          "result": "Converted Text"
         },
+        "wordCounter": {
+          "title": "Word & Character Counter",
+          "description": "Count words, characters, sentences, and paragraphs in your text.",
+          "placeholder": "Enter your text here to count words and characters...",
+          "words": "Words",
+          "characters": "Characters",
+          "charactersNoSpaces": "Characters (no spaces)",
+          "sentences": "Sentences",
+          "paragraphs": "Paragraphs"
+        },
+        "textReverser": {
+          "title": "Text Reverser",
+          "description": "Reverse the order of characters in your text instantly.",
+          "placeholder": "Enter text to reverse...",
+          "reversedText": "Reversed Text"
+        },
+        "whitespaceRemover": {
+          "title": "Whitespace Remover",
+          "description": "Remove extra spaces, trim whitespace, and clean up text formatting.",
+          "placeholder": "Enter text to clean up whitespace...",
+          "result": "Cleaned Text",
+          "removeAll": "Remove All Spaces",
+          "removeTrim": "Trim Whitespace",
+          "removeExtra": "Remove Extra Spaces",
+          "removeLines": "Remove Empty Lines"
+        },
+        "loremIpsumGenerator": {
+          "title": "Lorem Ipsum Generator",
+          "description": "Generate placeholder text for design and development projects.",
+          "count": "Count",
+          "type": "Type",
+          "paragraphs": "Paragraphs",
+          "sentences": "Sentences",
+          "words": "Words",
+          "generate": "Generate",
+          "copy": "Copy",
+          "copied": "Copied to clipboard"
+        },
+        "textDiff": {
+          "title": "Text Comparison Tool",
+          "description": "Compare two texts and highlight differences with visual diff display.",
+          "compareText": "Compare Text",
+          "clearAll": "Clear All",
+          "originalText": "Original Text",
+          "newText": "New Text"
+        }
+      },
+      "timestampConverter": {
+        "title": "Timestamp Converter",
+        "description": "Convert between Unix timestamps and human-readable dates",
+        "timestamp": "Unix Timestamp",
+        "timestampPlaceholder": "Enter Unix timestamp (seconds)",
+        "dateTime": "Date & Time (UTC)",
+        "current": "Current Time"
+      },
+      "timezoneConverter": {
+        "title": "Timezone Converter",
+        "description": "Convert date and time between different timezones",
+        "sourceDateTime": "Source Date & Time",
+        "sourceTimezone": "From Timezone",
+        "targetTimezone": "To Timezone",
+        "convertedDateTime": "Converted Date & Time"
+      },
+      "editor": {
+        "meta": {
+          "title": "Code & Document Editors",
+          "description": "Free online editors: Markdown editor with live preview and Mermaid diagram tools. Easily create, preview, and export professional content."
+        },
+        "title": "Code & Document Editors",
+        "description": "Professional online editors for Markdown documents and Mermaid diagrams. Features live preview, syntax highlighting, and multiple export formats.",
+        "subtitle": "Professional online editors for Markdown documents and Mermaid diagrams. Create, edit, and preview your content with real-time rendering.",
+        "toolsTitle": "Editor Tools",
+        "experience": {
+          "title": "Professional Editing Experience",
+          "livePreview": {
+            "title": "Live Preview",
+            "description": "See your Markdown and Mermaid diagrams render in real-time as you type."
+          },
+          "syntaxHighlighting": {
+            "title": "Syntax Highlighting",
+            "description": "Professional code editor with syntax highlighting and auto-completion."
+          },
+          "exportReady": {
+            "title": "Export Ready",
+            "description": "Copy or download your rendered content for use in documents and presentations."
+          }
+        },
+        "markdown": {
+          "title": "Markdown Editor",
+          "description": "Write and preview Markdown with syntax highlighting and live preview.",
+          "placeholder": "Enter your Markdown content here..."
+        },
+        "mermaid": {
+          "title": "Mermaid Diagrams",
+          "description": "Create diagrams and flowcharts with Mermaid syntax",
+          "placeholder": "Enter your Mermaid diagram code here...",
+          "syntaxError": "Syntax Error",
+          "invalidSyntax": "Invalid Mermaid syntax"
+        },
+        "copy": "Copy content",
+        "clear": "Clear content",
+        "copied": "Copied",
+        "copySuccess": "Content copied to clipboard",
+        "copyError": "Copy failed",
+        "copyErrorDesc": "Unable to copy to clipboard",
+        "cleared": "Cleared",
+        "clearSuccess": "Content cleared",
+        "downloadSvg": "Download SVG",
+        "downloadPng": "Download PNG"
+      },
+      "crypto": {
+        "title": "Crypto Tools",
+        "description": "Secure your data with our crypto tools: hash generators (MD5, SHA-1, SHA-256, SHA-512), HMAC, and AES encryption.",
+        "jwtDecoder": {
+          "title": "JWT Decoder",
+          "description": "Decode and inspect JSON Web Tokens to view their payload and header data.",
+          "placeholder": "Paste your JWT here",
+          "invalidToken": "Invalid JWT token"
+        },
+        "encryption": {
+          "title": "Encryption Tool",
+          "description": "Encrypt and decrypt text using various algorithms like AES, DES, and Rabbit."
+        }
+      },
+      "time": {
+        "title": "Date & Time Tools",
+        "description": "Essential date and time utilities for timestamp conversion, timezone handling, and date calculations."
+      }
+    },
+    "time": {
+      "description": "Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.",
+      "meta": {
+        "title": "Date & Time Tools - Timestamp, Timezone, and Date Calculators",
+        "description": "Free time tools: timestamp converter, timezone calculator & date arithmetic. Accurate, DST-aware, developer-friendly utilities."
+      },
+      "title": "Date & Time Tools",
+      "subtitle": "Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision.",
+      "toolsTitle": "Time Management Tools",
+      "timestamp": {
+        "title": "Timestamp Converter",
+        "description": "Convert between Unix timestamps and human-readable dates and times."
+      },
+      "timezone": {
+        "title": "Timezone Converter",
+        "description": "Convert date and time between different timezones worldwide with DST support."
+      },
+      "dateCalculator": {
+        "title": "Date Calculator",
+        "description": "Add or subtract days, months, and years from dates. Calculate date differences.",
+        "startDate": "Start Date",
+        "add": "Add",
+        "subtract": "Subtract",
+        "years": "Years",
+        "months": "Months",
+        "days": "Days",
+        "resultDate": "Result Date"
+      },
+      "calculations": {
+        "title": "Accurate Time Calculations",
+        "precise": {
+          "title": "Precise Calculations",
+          "description": "Handle complex timezone conversions and date calculations with accuracy."
+        },
+        "global": {
+          "title": "Global Support",
+          "description": "Support for all world timezones with automatic daylight saving time adjustments."
+        },
+        "developerFriendly": {
+          "title": "Developer Friendly",
+          "description": "Perfect for API development, log analysis, and timestamp debugging."
+        }
+      }
+    },
+    "toasts": {
+      "common": {
+        "success": "Success",
+        "error": "Error",
+        "info": "Info",
+        "notFound": "Not Found"
+      },
+      "success": {
+        "copied": "Copied to clipboard",
+        "formattedAndCopied": "JSON formatted and copied to clipboard",
+        "minifiedAndCopied": "JSON minified and copied to clipboard",
+        "extractedAndCopied": "Value extracted and copied to clipboard",
+        "graphGenerated": "Graph generated successfully",
+        "convertedToYamlAndCopied": "Converted to YAML and copied to clipboard",
+        "convertedToXmlAndCopied": "Converted to XML and copied to clipboard",
+        "convertedToCsvAndCopied": "Converted to CSV and copied to clipboard",
+        "convertedToDartAndCopied": "Converted to Dart classes and copied to clipboard"
+      },
+      "error": {
+        "invalidJson": "Please enter valid JSON",
+        "invalidJsonFormat": "Invalid JSON format",
+        "missingPath": "Please enter extraction path",
+        "notFound": "No value found at the specified path",
+        "extractError": "Error extracting value",
+        "conversionFailed": "Conversion failed",
+        "csvConversionRequiresArray": "CSV conversion requires an array of objects",
+        "syntaxErrorAtPosition": "Syntax error at position {position}",
+        "syntaxErrorGeneric": "Syntax error in JSON"
+      },
+      "info": {
+        "emptyContent": "No content to copy"
+      }
+    },
+    "availableTools": "Available Tools",
+    "whyChooseUs": {
+      "title": "Why Choose Our Tools?",
+      "privacyFocused": {
+        "title": "Privacy Focused",
+        "description": "All processing happens locally in your browser. Your data never leaves your device."
+      },
+      "professionalGrade": {
+        "title": "Professional Grade",
+        "description": "Built with modern web technologies and designed for professional developers."
+      },
+      "freeAndOpen": {
+        "title": "Free & Open",
+        "description": "No registration required. Use all features for free with no limitations."
+      }
+    },
+    "underConstruction": {
+      "description": "This tool is under development, please stay tuned."
+    },
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "Sorry, the page you are looking for does not exist or has been moved.",
+      "backToHome": "Back to Home",
+      "path": "Path"
+    },
+    "encryption": {
+      "algorithm": "Algorithm",
+      "selectAlgorithm": "Select an algorithm",
+      "inputText": "Input Text",
+      "inputPlaceholder": "Enter text to process...",
+      "output": "Output",
+      "outputPlaceholder": "Processed output will appear here...",
+      "regenerate": "Regenerate"
+    },
+    "footer": {
+      "legal": "Legal",
+      "company": "Company",
+      "friendlyLinks": "Friendly links",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "about": "About us",
+      "copyright": "© {{year}} Developer Tools Hub. All rights reserved.",
+      "description": "Your all-in-one \"Swiss Army knife\" for development. Professional tools for JSON, text, encryption and more to streamline your workflow.",
+      "lovable": "Lovable",
+      "vercel": "Vercel",
+      "github": "GitHub",
+      "deepseek": "DeepSeek"
+    },
+    "about": {
+      "title": "About Us",
+      "missionTitle": "Our Mission",
+      "missionText": "Our mission is to provide developers with a comprehensive, easy-to-use, and powerful toolkit that acts as a \"Swiss Army knife\" for their daily tasks. We aim to create a one-stop shop for development utilities, making workflows more efficient and enjoyable for everyone.",
+      "featuresTitle": "What We Offer",
+      "feature1": "Comprehensive Toolset: From JSON formatting and text manipulation to encryption and diagramming.",
+      "feature2": "Modern Design: A clean, intuitive, and responsive interface powered by Lovable AI.",
+      "feature3": "Privacy-Focused: No data is stored on our servers. All processing happens in your browser.",
+      "feature4": "Advanced Technology: We leverage cutting-edge technology for optimal development experience."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: June 15, 2025",
+      "introduction": "Welcome to Developer Tools Hub. We are committed to protecting your privacy. Our Privacy Policy explains how we handle information in relation to our website and services.",
+      "informationWeCollectTitle": "Information We Collect",
+      "informationWeCollectText": "We do not collect any personally identifiable information from our users. All data processed by our tools (e.g., JSON, text, files) remains on your client-side and is never sent to or stored on our servers.",
+      "cookiesTitle": "Cookies and Local Storage",
+      "cookiesText": "We use browser local storage to save your preferences, such as your selected theme (light/dark) and language. This is purely for functional purposes to enhance your user experience and does not track you.",
+      "thirdPartyServicesTitle": "Third-Party Services",
+      "thirdPartyServicesText": "Our website does not integrate with any third-party services that would collect your personal data. We provide links to external sites like GitHub, but we are not responsible for their privacy practices.",
+      "changesToPolicyTitle": "Changes to this Policy",
+      "changesToPolicyText": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.",
+      "contactUsTitle": "Contact Us",
+      "contactUsText": "If you have any questions about this Privacy Policy, feel free to contact us at our open-source repository."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: June 15, 2025",
+      "acceptanceTitle": "Acceptance of Terms",
+      "acceptanceText": "By accessing and using Developer Tools Hub (\"the Service\"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this Service.",
+      "useOfServiceTitle": "Use of Service",
+      "useOfServiceText": "The Service is provided free of charge for personal and commercial use. You agree to use the Service responsibly and not for any malicious or illegal activities. You are solely responsible for any data you process using our tools.",
+      "disclaimerTitle": "Disclaimer of Warranties",
+      "disclaimerText": "The Service is provided \"as is\" and \"as available\" without any warranties of any kind, either expressed or implied. We do not warrant the accuracy, reliability, or completeness of any tools or data processed through the service.",
+      "limitationTitle": "Limitation of Liability",
+      "limitationText": "In no event shall Developer Tools Hub or its maintainers be liable for any direct, indirect, incidental, special, or consequential damages arising out of the use of or inability to use the Service.",
+      "changesToTermsTitle": "Changes to Terms",
+      "changesToTermsText": "We reserve the right to modify these terms at any time. We will post the most current version of these terms on this page. Your continued use of the Service after any changes constitutes your acceptance of the new Terms."
     }
+  }
 };
+
+export default zh;

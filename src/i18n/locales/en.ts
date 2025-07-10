@@ -1,5 +1,3 @@
-
-
 export const en = {
   translation: {
     allPagesLinks: {
@@ -101,7 +99,11 @@ export const en = {
           description: 'Generate code types in various languages from a JSON object.'
         },
         history: {
-          title: 'History'
+          title: 'History',
+          emptyMessage: 'No history yet',
+          searchPlaceholder: 'Search by keyword',
+          clearAll: 'Clear All',
+          historyCleared: 'History cleared',
         },
         generateGraph: 'Generate Graph',
         extractValue: 'Extract Value',
@@ -114,6 +116,8 @@ export const en = {
         outputPlaceholder: 'Formatted JSON will appear here',
         validJson: 'Valid JSON',
         invalidJson: 'Invalid JSON',
+        syntaxErrorAtPosition: 'Syntax Error at Position',
+        syntaxErrorGeneric: 'Syntax Error',
         diff: {
           title: 'JSON Diff Tool',
           description: 'Compare two JSON objects and highlight the differences.'
@@ -134,6 +138,10 @@ export const en = {
           dartOutput: 'Dart Output',
           dartOutputPlaceholder: 'Generated Dart classes will appear here'
         },
+        dartConfig: 'Dart Configuration',
+        privateFields: 'Private Fields',
+        modernSyntax: 'Modern Syntax',
+        rootClassNamePlaceholder: 'e.g. MyRootClass',
         convertedToDartTitle: 'Converted to Dart Classes',
         rootClassName: 'Root Class Name',
       },
@@ -454,8 +462,10 @@ export const en = {
         notFound: 'No value found at the specified path',
         extractError: 'Error extracting value',
         conversionFailed: 'Conversion failed',
-        csvConversionRequiresArray: 'CSV conversion requires an array of objects'
-      },
+        csvConversionRequiresArray: 'CSV conversion requires an array of objects',
+        syntaxErrorAtPosition: 'Syntax error at position {position}',
+        syntaxErrorGeneric: 'Syntax error in JSON'
+        },
       info: {
         emptyContent: 'No content to copy'
       }

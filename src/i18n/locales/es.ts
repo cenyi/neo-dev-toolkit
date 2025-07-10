@@ -1,525 +1,563 @@
 export const es = {
-  translation: {
-    siteMap: 'Mapa del Sitio',
-    siteMapDescription: 'Directorio completo de todas las herramientas y páginas para desarrolladores disponibles en nuestra plataforma. Encuentra la herramienta perfecta para tus necesidades de desarrollo.',
-    allDeveloperTools: 'Todas las Herramientas para Desarrolladores',
-    allDeveloperToolsDescription: 'Colección completa de herramientas gratuitas para desarrolladores organizadas por categoría',
-    nav: {
-      home: 'Inicio',
-      json: 'JSON',
-      network: 'Red',
-      text: 'Texto',
-      time: 'Tiempo',
-      encryption: 'Encriptación',
-      markdown: 'Markdown',
-      mermaid: 'Mermaid',
-      regex: 'RegEx',
-      editor: 'Editor'
+  "translation": {
+    "allPagesLinks": {
+      "popularTools": "Popular Tools",
+      "popularToolsDescription": "Hand-picked collection of our most useful developer tools",
+      "allTools": "All Developer Tools",
+      "allToolsDescription": "Browse our complete collection of development utilities"
     },
-    navTitles: {
-      home: 'Ir al Inicio - Hub Gratuito de Herramientas para Desarrolladores',
-      json: 'Herramientas JSON - Formatear, validar y procesar datos JSON',
-      network: 'Herramientas de Red - Codificación URL, búsqueda IP y utilidades',
-      text: 'Herramientas de Texto - Procesar y convertir formatos de texto',
-      time: 'Herramientas de Tiempo - Convertidores de timestamp y zona horaria',
-      encryption: 'Herramientas de Encriptación - Generación hash y utilidades crypto',
-      regex: 'Herramienta de Expresiones Regulares - Probar y validar patrones regex',
-      editor: 'Editores de Código - Editores Markdown y diagramas Mermaid'
+    "nav": {
+      "home": "Home",
+      "json": "JSON",
+      "network": "Network",
+      "text": "Text",
+      "time": "Time",
+      "encryption": "Encryption",
+      "markdown": "Markdown",
+      "mermaid": "Mermaid",
+      "regex": "RegEx",
+      "editor": "Editor"
     },
-    common: {
-      theme: 'Tema',
-      language: 'Idioma',
-      light: 'Claro',
-      dark: 'Oscuro',
-      copy: 'Copiar',
-      clear: 'Limpiar',
-      format: 'Formatear',
-      minify: 'Minificar',
-      validate: 'Validar',
-      convert: 'Convertir',
-      encrypt: 'Encriptar',
-      decrypt: 'Desencriptar',
-      preview: 'Vista previa',
-      download: 'Descargar',
-      toYaml: 'A YAML',
-      toXml: 'A XML',
-      toCsv: 'A CSV',
-      blue: 'Azul',
-      system: 'Sistema',
-      comingSoon: 'Próximamente',
-      error: 'Error',
-      success: 'Éxito',
-      info: 'Información',
-      notFound: 'No encontrado',
-      compare: 'Comparar',
-      test: 'Probar',
-      match: 'Coincidir',
-      replace: 'Reemplazar',
-      flags: 'Banderas',
-      pattern: 'Patrón',
-      input: 'Entrada',
-      output: 'Salida',
-      result: 'Resultado',
-      graph: 'Gráfico de Estructura',
-      zoomLevel: 'Nivel de Zoom'
+    "navTitles": {
+      "home": "Go to Home - Free Developer Tools Hub",
+      "json": "JSON Tools - Format, validate and process JSON data",
+      "network": "Network Tools - URL encoding, IP lookup and utilities",
+      "text": "Text Tools - Process and convert text formats",
+      "time": "Time Tools - Timestamp and timezone converters",
+      "encryption": "Encryption Tools - Hash generation and crypto utilities",
+      "regex": "Regular Expression Tool - Test and validate regex patterns",
+      "editor": "Code Editors - Markdown and Mermaid diagram editors"
     },
-    home: { 
-      title: 'Hub de Herramientas para Desarrolladores',
-      subtitle: 'Herramientas de desarrollo profesionales',
-      description: 'Una colección completa de herramientas esenciales para desarrolladores que incluye formato JSON, procesamiento de texto, encriptación y más. Para rendimiento óptimo.',
-      headerTitle: 'Hub Gratuito de Herramientas para Desarrolladores Online',
-      toolsCollectionTitle: 'Colección Profesional de Herramientas para Desarrolladores',
-      whyChooseTitle: '¿Por qué Elegir DevTools Hub para tus Necesidades de Desarrollo?',
-      feature1Title: '100% Gratis y Sin Registro',
-      feature1Description: 'Todas las herramientas son completamente gratuitas sin necesidad de cuenta',
-      feature2Title: 'Desarrollo Enfocado en Privacidad',
-      feature2Description: 'Tus datos permanecen en tu navegador - nada se envía a nuestros servidores',
-      feature3Title: 'Interfaz Moderna y Responsiva',
-      feature3Description: 'Diseño limpio y responsivo potenciado por Lovable AI que funciona perfectamente en todos los dispositivos',
-      popularToolsTitle: 'Herramientas Populares para Desarrolladores',
-      popularToolsDescription: 'Las herramientas para desarrolladores más populares y frecuentemente utilizadas'
+    "common": {
+      "theme": "Theme",
+      "language": "Language",
+      "light": "Light",
+      "dark": "Dark",
+      "copy": "Copy",
+      "clear": "Clear",
+      "format": "Format",
+      "minify": "Minify",
+      "validate": "Validate",
+      "convert": "Convert",
+      "encrypt": "Encrypt",
+      "decrypt": "Decrypt",
+      "preview": "Preview",
+      "download": "Download",
+      "toYaml": "To YAML",
+      "toXml": "To XML",
+      "toCsv": "To CSV",
+      "toDart": "To Dart",
+      "blue": "Blue",
+      "system": "System",
+      "comingSoon": "Coming Soon",
+      "error": "Error",
+      "success": "Success",
+      "info": "Info",
+      "notFound": "Not Found",
+      "compare": "Compare",
+      "test": "Test",
+      "match": "Match",
+      "replace": "Replace",
+      "flags": "Flags",
+      "pattern": "Pattern",
+      "input": "Input",
+      "output": "Output",
+      "result": "Result",
+      "graph": "Structure Graph",
+      "zoomLevel": "Zoom Level",
+      "copyCode": "Copy Code",
+      "loadSample": "Try Sample JSON"
     },
-    tools: {
-      json: {
-        title: 'Herramientas JSON',
-        description: 'Herramientas JSON integrales para formateo, validación, verificación de esquemas y manipulación de datos.',
-        formatter: {
-          title: 'Formateador y Validador JSON',
-          description: 'Formatea, embellece y valida tus datos JSON.'
+    "home": {
+      "title": "Developer Tools Hub",
+      "subtitle": "Professional development tools",
+      "description": "A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more. For optimal performance.",
+      "headerTitle": "Free Online Developer Tools Hub",
+      "toolsCollectionTitle": "Professional Developer Tools Collection",
+      "whyChooseTitle": "Why Choose DevTools Hub for Your Development Needs?",
+      "feature1Title": "100% Free & No Registration",
+      "feature1Description": "All tools are completely free to use with no account required",
+      "feature2Title": "Privacy Focused Development",
+      "feature2Description": "Your data stays in your browser - nothing is sent to our servers",
+      "feature3Title": "Modern Responsive Interface",
+      "feature3Description": "Clean, responsive design powered by Lovable AI that works perfectly on all devices"
+    },
+    "tools": {
+      "json": {
+        "title": "JSON Tools",
+        "description": "Comprehensive JSON tools for formatting, validation, schema checking, and data manipulation.",
+        "formatter": {
+          "title": "JSON Formatter & Validator",
+          "description": "Format, beautify, and validate your JSON data."
         },
-        schemaValidator: {
-          title: 'Validador de Esquemas JSON',
-          description: 'Valida tus objetos JSON contra un Esquema JSON.'
+        "schemaValidator": {
+          "title": "JSON Schema Validator",
+          "description": "Validate your JSON objects against a JSON Schema."
         },
-        codegen: {
-          title: 'Generar Tipos de Código',
-          description: 'Genera tipos de código en varios lenguajes desde un objeto JSON.'
+        "codegen": {
+          "title": "Generate Code Types",
+          "description": "Generate code types in various languages from a JSON object."
         },
-        history: {
-          title: 'Historial'
+        "history": {
+          "title": "History",
+          "emptyMessage": "No history yet",
+          "searchPlaceholder": "Search by keyword",
+          "clearAll": "Clear All",
+          "historyCleared": "History cleared"
         },
-        generateGraph: 'Generar Gráfico',
-        extractValue: 'Extraer Valor',
-        fieldPath: 'Ruta del Campo',
-        extractPlaceholder: 'Ingrese JSONPath (ej: $.users[0].name)',
-        graphTitle: 'Gráfico de Estructura JSON',
-        input: 'Entrada',
-        output: 'Salida',
-        outputPlaceholder: 'El JSON formateado aparecerá aquí',
-        placeholder: 'Por favor, ingrese o pegue datos JSON',
-        validJson: 'JSON válido',
-        invalidJson: 'JSON inválido',
-        diff: {
-          title: 'Herramienta de Diferencias JSON',
-          description: 'Compara dos objetos JSON y resalta las diferencias.'
+        "generateGraph": "Generate Graph",
+        "extractValue": "Extract Value",
+        "fieldPath": "Field Path",
+        "extractPlaceholder": "Enter JSONPath (e.g., $.users[0].name)",
+        "graphTitle": "JSON Structure Graph",
+        "input": "Input",
+        "placeholder": "Please input or paste JSON data",
+        "output": "Output",
+        "outputPlaceholder": "Formatted JSON will appear here",
+        "validJson": "Valid JSON",
+        "invalidJson": "Invalid JSON",
+        "syntaxErrorAtPosition": "Syntax Error at Position",
+        "syntaxErrorGeneric": "Syntax Error",
+        "diff": {
+          "title": "JSON Diff Tool",
+          "description": "Compare two JSON objects and highlight the differences."
         },
-        mock: {
-          title: 'Generador de Datos Mock',
-          description: 'Genera datos JSON simulados para pruebas y desarrollo.'
+        "mock": {
+          "title": "Mock Data Generator",
+          "description": "Generate mock JSON data for testing and development."
+        },
+        "toDart": {
+          "title": "JSON to Dart Converter",
+          "description": "Convert JSON data to Dart classes with customizable options.",
+          "configuration": "Configuration",
+          "configurationDescription": "Customize the generated Dart classes",
+          "usePrivateFields": "Use Private Fields",
+          "useModernSyntax": "Use Modern Dart Syntax",
+          "emptyInputError": "Please enter JSON data to convert",
+          "convertSuccess": "Successfully converted to Dart classes",
+          "dartOutput": "Dart Output",
+          "dartOutputPlaceholder": "Generated Dart classes will appear here"
+        },
+        "dartConfig": "Dart Configuration",
+        "privateFields": "Private Fields",
+        "modernSyntax": "Modern Syntax",
+        "rootClassNamePlaceholder": "e.g. MyRootClass",
+        "convertedToDartTitle": "Converted to Dart Classes",
+        "rootClassName": "Root Class Name"
+      },
+      "regex": {
+        "title": "Regular Expression Tool",
+        "description": "Test, match, and replace with regular expressions",
+        "pattern": "Regular Expression Pattern",
+        "patternPlaceholder": "Enter regex pattern...",
+        "testString": "Test String",
+        "testStringPlaceholder": "Enter text to test...",
+        "replacement": "Replacement Text",
+        "replacementPlaceholder": "Enter replacement text...",
+        "flags": "Flags",
+        "global": "Global match (g)",
+        "ignoreCase": "Ignore case (i)",
+        "multiline": "Multiline (m)",
+        "dotAll": "Dot matches newline (s)",
+        "unicode": "Unicode (u)",
+        "sticky": "Sticky (y)",
+        "matches": "Matches",
+        "noMatches": "No matches found",
+        "replacedText": "Replaced Text",
+        "invalidRegex": "Invalid regular expression"
+      },
+      "jwtDecoder": {
+        "title": "JWT Decoder",
+        "description": "Decode and verify JWT tokens",
+        "encodedToken": "Encoded Token",
+        "header": "Header",
+        "payload": "Payload",
+        "placeholder": "Paste your JWT here",
+        "headerPlaceholder": "Decoded header will appear here",
+        "payloadPlaceholder": "Decoded payload will appear here"
+      },
+      "jsonDiff": {
+        "title": "JSON Diff",
+        "description": "Compare differences between two JSON objects",
+        "originalJson": "Original JSON",
+        "newJson": "New JSON",
+        "originalPlaceholder": "Paste original JSON here",
+        "newPlaceholder": "Paste new JSON here",
+        "diffResult": "Diff Result"
+      },
+      "network": {
+        "title": "Network & Encoding Tools",
+        "description": "Free network tools: URL encoder/decoder, Base64 converter, IP lookup & JWT decoder. Secure, client-side processing, no data storage required.",
+        "subtitle": "Essential network and encoding utilities for web developers. Handle URL encoding, Base64 conversion, IP lookups, and JWT decoding with our secure, privacy-focused tools.",
+        "utilityTools": "Network Utility Tools",
+        "secureTitle": "Secure Network Utilities",
+        "clientSideProcessing": {
+          "title": "Client-Side Processing",
+          "description": "All encoding and decoding happens in your browser for maximum security."
+        },
+        "noDataStorage": {
+          "title": "No Data Storage",
+          "description": "We don't store or log any of your input data or results."
+        },
+        "instantResults": {
+          "title": "Instant Results",
+          "description": "Fast processing with real-time results as you type."
+        },
+        "urlEncoder": {
+          "title": "URL Encoder / Decoder",
+          "description": "Encode URLs for safe transmission or decode percent-encoded URLs."
+        },
+        "base64Encoder": {
+          "title": "Base64 Encoder / Decoder",
+          "description": "Encode text to Base64 or decode Base64 strings back to text."
+        },
+        "ipLookup": {
+          "title": "IP Address Lookup",
+          "description": "Get geolocation, ISP information, and network details for any IP address.",
+          "placeholder": "Enter IP address or domain name",
+          "lookup": "Lookup",
+          "myIp": "Check My IP",
+          "results": "Lookup Results"
+        },
+        "jwtDecoder": {
+          "title": "JWT Token Decoder",
+          "description": "Decode JSON Web Tokens and view header, payload, and signature information."
+        },
+        "base64": {
+          "title": "Base64 Encoder/Decoder",
+          "description": "Encode text to Base64 or decode Base64 strings back to text.",
+          "encode": "Encode",
+          "decode": "Decode",
+          "input": "Input",
+          "output": "Output",
+          "inputPlaceholder": "Enter text to encode or decode...",
+          "outputPlaceholder": "Encoded or decoded result will appear here"
         }
       },
-      regex: {
-        title: 'Herramienta de Expresiones Regulares',
-        description: 'Probar, coincidir y reemplazar con expresiones regulares',
-        pattern: 'Patrón de Expresión Regular',
-        patternPlaceholder: 'Ingresar patrón regex...',
-        testString: 'Cadena de Prueba',
-        testStringPlaceholder: 'Ingresar texto para probar...',
-        replacement: 'Texto de Reemplazo',
-        replacementPlaceholder: 'Ingresar texto de reemplazo...',
-        flags: 'Banderas',
-        global: 'Coincidencia global (g)',
-        ignoreCase: 'Ignorar mayúsculas (i)',
-        multiline: 'Multilínea (m)',
-        dotAll: 'Punto coincide con nueva línea (s)',
-        unicode: 'Unicode (u)',
-        sticky: 'Pegajoso (y)',
-        matches: 'Coincidencias',
-        noMatches: 'No se encontraron coincidencias',
-        replacedText: 'Texto Reemplazado',
-        invalidRegex: 'Expresión regular inválida'
-      },
-      jwtDecoder: {
-        title: 'Decodificador JWT',
-        description: 'Decodificar y verificar tokens JWT',
-        encodedToken: 'Token Codificado',
-        header: 'Encabezado',
-        payload: 'Carga útil',
-        placeholder: 'Pegar tu JWT aquí',
-        headerPlaceholder: 'El encabezado decodificado aparecerá aquí',
-        payloadPlaceholder: 'La carga útil decodificada aparecerá aquí'
-      },
-      jsonDiff: {
-        title: 'Diferencias JSON',
-        description: 'Comparar diferencias entre dos objetos JSON',
-        originalJson: 'JSON Original',
-        newJson: 'JSON Nuevo',
-        originalPlaceholder: 'Pegar JSON original aquí',
-        newPlaceholder: 'Pegar JSON nuevo aquí',
-        diffResult: 'Resultado de Diferencias'
-      },
-      network: {
-        title: 'Herramientas de Red y Codificación',
-        description: 'Herramientas de red gratuitas: codificador/decodificador de URL, convertidor de Base64, búsqueda de IP y decodificador de JWT. Procesamiento seguro del lado del cliente, no se requieren datos de almacenamiento.',
-        subtitle: 'Utilidades esenciales de red y codificación para desarrolladores web. Maneje la codificación de URL, la conversión de Base64, las búsquedas de IP y la decodificación de JWT con nuestras herramientas seguras y centradas en la privacidad.',
-        utilityTools: 'Herramientas de Utilidad de Red',
-        secureTitle: 'Utilidades de Red Seguras',
-        clientSideProcessing: {
-          title: 'Procesamiento del Lado del Cliente',
-          description: 'Toda la codificación y decodificación se realiza en su navegador para una máxima seguridad.'
-        },
-        noDataStorage: {
-          title: 'Sin Almacenamiento de Datos',
-          description: 'No almacenamos ni registramos ninguno de sus datos de entrada o resultados.'
-        },
-        instantResults: {
-          title: 'Resultados Instantáneos',
-          description: 'Procesamiento rápido con resultados en tiempo real a medida que escribe.'
-        },
-        urlEncoder: {
-          title: 'Codificador / Decodificador de URL',
-          description: 'Codifique las URL para una transmisión segura o decodifique las URL codificadas en porcentaje.'
-        },
-        base64Encoder: {
-          title: 'Codificador / Decodificador de Base64',
-          description: 'Codifique texto a Base64 o decodifique cadenas de Base64 de nuevo a texto.'
-        },
-        ipLookup: {
-          title: 'Búsqueda de Dirección IP',
-          description: 'Obtenga geolocalización, información del ISP y detalles de la red para cualquier dirección IP.',
-          placeholder: 'Ingrese dirección IP o nombre de dominio',
-          lookup: 'Buscar',
-          myIp: 'Verificar Mi IP',
-          results: 'Resultados de Búsqueda'
-        },
-        jwtDecoder: {
-          title: 'Decodificador de Token JWT',
-          description: 'Decodifique los Tokens Web JSON y vea la información del encabezado, la carga útil y la firma.'
-        },
-        base64: {
-          title: 'Codificador / Decodificador de Base64',
-          description: 'Codifique texto a Base64 o decodifique cadenas de Base64 de nuevo a texto.',
-          encode: 'Codificar',
-          decode: 'Decodificar',
-          input: 'Entrada',
-          output: 'Salida',
-          inputPlaceholder: 'Ingrese texto para codificar o decodificar...',
-          outputPlaceholder: 'El resultado codificado o decodificado aparecerá aquí'
-        }
-      },
-      text: {
-        title: 'Herramientas de Procesamiento de Texto',
-        description: 'Herramientas de texto esenciales: convertidor de mayúsculas y minúsculas, contador de palabras, inversor de texto, eliminador de espacios en blanco y verificador de diferencias. Procesamiento gratuito, rápido y del lado del cliente.',
-        subtitle: 'Potentes herramientas de manipulación y análisis de texto para escritores, desarrolladores y creadores de contenido. Transforme, analice y compare texto con nuestra completa suite.',
-        utilityTools: 'Utilidades de Procesamiento de Texto',
-        whyUse: {
-          title: '¿Por Qué Usar Nuestras Herramientas de Texto?',
-          realTime: {
-            title: 'Procesamiento en Tiempo Real',
-            description: 'Vea los resultados al instante mientras escribe con el procesamiento de texto en tiempo real.'
+      "text": {
+        "title": "Text Processing Tools",
+        "description": "Essential text tools: case converter, word counter, text reverser, whitespace remover & diff checker. Free, fast, client-side processing.",
+        "subtitle": "Powerful text manipulation and analysis tools for writers, developers, and content creators. Transform, analyze, and compare text with our comprehensive suite.",
+        "utilityTools": "Text Processing Utilities",
+        "whyUse": {
+          "title": "Why Use Our Text Tools?",
+          "realTime": {
+            "title": "Real-Time Processing",
+            "description": "See results instantly as you type with real-time text processing."
           },
-          privacy: {
-            title: 'Privacidad Protegida',
-            description: 'Todo el procesamiento de texto se realiza localmente: su contenido nunca abandona su navegador.'
+          "privacy": {
+            "title": "Privacy Protected",
+            "description": "All text processing happens locally - your content never leaves your browser."
           },
-          multiPurpose: {
-            title: 'Multiuso',
-            description: 'Desde la simple conversión de mayúsculas y minúsculas hasta el complejo análisis y comparación de texto.'
+          "multiPurpose": {
+            "title": "Multi-Purpose",
+            "description": "From simple case conversion to complex text analysis and comparison."
           }
         },
-        caseConverter: {
-          title: 'Convertidor de Mayúsculas y Minúsculas',
-          description: 'Convierte texto entre mayúsculas, minúsculas, mayúsculas de título y mayúsculas de oración.',
-          placeholder: 'Ingrese texto para convertir mayúsculas y minúsculas...',
-          upperCase: 'MAYÚSCULAS',
-          lowerCase: 'minúsculas',
-          titleCase: 'Mayúsculas de Título',
-          sentenceCase: 'Mayúsculas de oración',
-          result: 'Texto Convertido'
+        "caseConverter": {
+          "title": "Case Converter",
+          "description": "Convert text between uppercase, lowercase, title case, and sentence case.",
+          "placeholder": "Enter text to convert case...",
+          "upperCase": "UPPERCASE",
+          "lowerCase": "lowercase",
+          "titleCase": "Title Case",
+          "sentenceCase": "Sentence case",
+          "result": "Converted Text"
         },
-        wordCounter: {
-          title: 'Contador de Palabras y Caracteres',
-          description: 'Cuente palabras, caracteres, oraciones y párrafos en su texto.',
-          placeholder: 'Ingrese su texto aquí para contar palabras y caracteres...',
-          words: 'Palabras',
-          characters: 'Caracteres',
-          charactersNoSpaces: 'Caracteres (sin espacios)',
-          sentences: 'Oraciones',
-          paragraphs: 'Párrafos'
+        "wordCounter": {
+          "title": "Word & Character Counter",
+          "description": "Count words, characters, sentences, and paragraphs in your text.",
+          "placeholder": "Enter your text here to count words and characters...",
+          "words": "Words",
+          "characters": "Characters",
+          "charactersNoSpaces": "Characters (no spaces)",
+          "sentences": "Sentences",
+          "paragraphs": "Paragraphs"
         },
-        textReverser: {
-          title: 'Inversor de Texto',
-          description: 'Invierta el orden de los caracteres en su texto al instante.',
-          placeholder: 'Ingrese texto para invertir...',
-          reversedText: 'Texto Invertido'
+        "textReverser": {
+          "title": "Text Reverser",
+          "description": "Reverse the order of characters in your text instantly.",
+          "placeholder": "Enter text to reverse...",
+          "reversedText": "Reversed Text"
         },
-        whitespaceRemover: {
-          title: 'Eliminador de Espacios en Blanco',
-          description: 'Elimine espacios adicionales, recorte espacios en blanco y limpie el formato del texto.',
-          placeholder: 'Ingrese texto para limpiar espacios en blanco...',
-          result: 'Texto Limpio',
-          removeAll: 'Eliminar Todos los Espacios',
-          removeTrim: 'Recortar Espacios en Blanco',
-          removeExtra: 'Eliminar Espacios Adicionales',
-          removeLines: 'Eliminar Líneas Vacías'
+        "whitespaceRemover": {
+          "title": "Whitespace Remover",
+          "description": "Remove extra spaces, trim whitespace, and clean up text formatting.",
+          "placeholder": "Enter text to clean up whitespace...",
+          "result": "Cleaned Text",
+          "removeAll": "Remove All Spaces",
+          "removeTrim": "Trim Whitespace",
+          "removeExtra": "Remove Extra Spaces",
+          "removeLines": "Remove Empty Lines"
         },
-        loremIpsumGenerator: {
-          title: 'Generador de Lorem Ipsum',
-          description: 'Genere texto de marcador de posición para proyectos de diseño y desarrollo.',
-          count: 'Cantidad',
-          type: 'Tipo',
-          paragraphs: 'Párrafos',
-          sentences: 'Oraciones',
-          words: 'Palabras',
-          generate: 'Generar',
-          copy: 'Copiar',
-          copied: 'Copiado al portapapeles'
+        "loremIpsumGenerator": {
+          "title": "Lorem Ipsum Generator",
+          "description": "Generate placeholder text for design and development projects.",
+          "count": "Count",
+          "type": "Type",
+          "paragraphs": "Paragraphs",
+          "sentences": "Sentences",
+          "words": "Words",
+          "generate": "Generate",
+          "copy": "Copy",
+          "copied": "Copied to clipboard"
         },
-        textDiff: {
-          title: 'Herramienta de Comparación de Texto',
-          description: 'Compare dos textos y resalte las diferencias con visualización de diferencias.',
-          compareText: 'Comparar Texto',
-          clearAll: 'Limpiar Todo',
-          originalText: 'Texto Original',
-          newText: 'Texto Nuevo'
+        "textDiff": {
+          "title": "Text Comparison Tool",
+          "description": "Compare two texts and highlight differences with visual diff display.",
+          "compareText": "Compare Text",
+          "clearAll": "Clear All",
+          "originalText": "Original Text",
+          "newText": "New Text"
         }
       },
-      timestampConverter: {
-        title: 'Convertidor de Timestamp',
-        description: 'Convertir entre timestamps Unix y fechas legibles',
-        timestamp: 'Timestamp Unix',
-        timestampPlaceholder: 'Ingresar timestamp Unix (segundos)',
-        dateTime: 'Fecha y Hora (UTC)',
-        current: 'Hora Actual'
+      "timestampConverter": {
+        "title": "Timestamp Converter",
+        "description": "Convert between Unix timestamps and human-readable dates",
+        "timestamp": "Unix Timestamp",
+        "timestampPlaceholder": "Enter Unix timestamp (seconds)",
+        "dateTime": "Date & Time (UTC)",
+        "current": "Current Time"
       },
-      timezoneConverter: {
-        title: 'Convertidor de Zona Horaria',
-        description: 'Convertir fecha y hora entre diferentes zonas horarias',
-        sourceDateTime: 'Fecha y Hora de Origen',
-        sourceTimezone: 'Desde Zona Horaria',
-        targetTimezone: 'A Zona Horaria',
-        convertedDateTime: 'Fecha y Hora Convertida'
+      "timezoneConverter": {
+        "title": "Timezone Converter",
+        "description": "Convert date and time between different timezones",
+        "sourceDateTime": "Source Date & Time",
+        "sourceTimezone": "From Timezone",
+        "targetTimezone": "To Timezone",
+        "convertedDateTime": "Converted Date & Time"
       },
-      time: {
-        description: 'Utilidades esenciales de fecha y hora para conversión de marcas de tiempo, manejo de zonas horarias y cálculos de fechas.',
-      meta: {
-        title: 'Herramientas de Fecha y Hora - Calculadoras de Marca de Tiempo, Zona Horaria y Fecha',
-        description: 'Herramientas de tiempo gratuitas: convertidor de marca de tiempo, calculadora de zona horaria y aritmética de fechas. Utilidades precisas, compatibles con DST y amigables para desarrolladores.'
-      },
-      title: 'Herramientas de Fecha y Hora',
-      subtitle: 'Utilidades esenciales de fecha y hora para desarrolladores y profesionales. Maneje conversiones de marca de tiempo, cálculos de zona horaria y aritmética de fechas con precisión.',
-      toolsTitle: 'Herramientas de Gestión del Tiempo',
-      timestamp: {
-        title: 'Convertidor de Marca de Tiempo',
-        description: 'Convierta entre marcas de tiempo de Unix y fechas y horas legibles por humanos.'
-      },
-      timezone: {
-        title: 'Convertidor de Zona Horaria',
-        description: 'Convierta fechas y horas entre diferentes zonas horarias de todo el mundo con soporte para DST.'
-      },
-      dateCalculator: {
-        title: 'Calculadora de Fecha',
-        description: 'Sume o reste días, meses y años de las fechas. Calcule las diferencias de fecha.'
-      },
-      calculations: {
-        title: 'Cálculos de Tiempo Precisos',
-        precise: {
-          title: 'Cálculos Precisos',
-          description: 'Maneje conversiones complejas de zonas horarias y cálculos de fechas con precisión.'
+      "editor": {
+        "meta": {
+          "title": "Code & Document Editors",
+          "description": "Free online editors: Markdown editor with live preview and Mermaid diagram tools. Easily create, preview, and export professional content."
         },
-        global: {
-          title: 'Soporte Global',
-          description: 'Soporte para todas las zonas horarias del mundo con ajustes automáticos de horario de verano.'
-        },
-        developerFriendly: {
-          title: 'Amigable para Desarrolladores',
-          description: 'Perfecto para el desarrollo de API, análisis de registros y depuración de marcas de tiempo.'
-        }
-      }
-    },
-      editor: {
-        meta: {
-          title: 'Editor de Código y Documentos',
-          description: 'Editor online gratuito: editor Markdown con vista previa en vivo y herramienta de diagramas Mermaid. Crea, previsualiza y exporta contenido profesional fácilmente.'
-        },
-        title: 'Editor de Código y Documentos',
-        subtitle: 'Editor online profesional para Markdown y diagramas Mermaid. Crea, edita y previsualiza contenido con renderizado en tiempo real.',
-        toolsTitle: 'Herramientas del Editor',
-        experience: {
-          title: 'Experiencia de Edición Profesional',
-          livePreview: {
-            title: 'Vista Previa en Vivo',
-            description: 'Observa cómo se renderizan Markdown y diagramas Mermaid en tiempo real mientras escribes.'
+        "title": "Code & Document Editors",
+        "description": "Professional online editors for Markdown documents and Mermaid diagrams. Features live preview, syntax highlighting, and multiple export formats.",
+        "subtitle": "Professional online editors for Markdown documents and Mermaid diagrams. Create, edit, and preview your content with real-time rendering.",
+        "toolsTitle": "Editor Tools",
+        "experience": {
+          "title": "Professional Editing Experience",
+          "livePreview": {
+            "title": "Live Preview",
+            "description": "See your Markdown and Mermaid diagrams render in real-time as you type."
           },
-          syntaxHighlighting: {
-            title: 'Resaltado de Sintaxis',
-            description: 'Editor de código profesional con resaltado de sintaxis y autocompletado.'
+          "syntaxHighlighting": {
+            "title": "Syntax Highlighting",
+            "description": "Professional code editor with syntax highlighting and auto-completion."
           },
-          exportReady: {
-            title: 'Listo para Exportar',
-            description: 'Copia o descarga el contenido renderizado para usar en documentos y presentaciones.'
+          "exportReady": {
+            "title": "Export Ready",
+            "description": "Copy or download your rendered content for use in documents and presentations."
           }
         },
-        markdown: {
-          title: 'Editor Markdown',
-          description: 'Escribe y previsualiza Markdown con resaltado de sintaxis y vista previa en vivo.'
+        "markdown": {
+          "title": "Markdown Editor",
+          "description": "Write and preview Markdown with syntax highlighting and live preview.",
+          "placeholder": "Enter your Markdown content here..."
         },
-        mermaid: {
-          title: 'Diagramas Mermaid',
-          description: 'Crea diagramas y flujos con Mermaid',
-          placeholder: 'Introduce aquí el código Mermaid...'
+        "mermaid": {
+          "title": "Mermaid Diagrams",
+          "description": "Create diagrams and flowcharts with Mermaid syntax",
+          "placeholder": "Enter your Mermaid diagram code here...",
+          "syntaxError": "Syntax Error",
+          "invalidSyntax": "Invalid Mermaid syntax"
+        },
+        "copy": "Copy content",
+        "clear": "Clear content",
+        "copied": "Copied",
+        "copySuccess": "Content copied to clipboard",
+        "copyError": "Copy failed",
+        "copyErrorDesc": "Unable to copy to clipboard",
+        "cleared": "Cleared",
+        "clearSuccess": "Content cleared",
+        "downloadSvg": "Download SVG",
+        "downloadPng": "Download PNG"
+      },
+      "crypto": {
+        "title": "Crypto Tools",
+        "description": "Secure your data with our crypto tools: hash generators (MD5, SHA-1, SHA-256, SHA-512), HMAC, and AES encryption.",
+        "jwtDecoder": {
+          "title": "JWT Decoder",
+          "description": "Decode and inspect JSON Web Tokens to view their payload and header data.",
+          "placeholder": "Paste your JWT here",
+          "invalidToken": "Invalid JWT token"
+        },
+        "encryption": {
+          "title": "Encryption Tool",
+          "description": "Encrypt and decrypt text using various algorithms like AES, DES, and Rabbit."
         }
       },
-        crypto: {
-        title: 'Herramientas de Criptografía',
-        description: 'Asegure sus datos con nuestras herramientas de criptografía: generadores de hash (MD5, SHA-1, SHA-256, SHA-512), HMAC y cifrado AES.',
-        jwtDecoder: {
-          title: 'Decodificador JWT',
-          description: 'Decodifica e inspecciona JSON Web Tokens para ver su carga útil y datos de encabezado.',
-          placeholder: 'Pega tu JWT aquí',
-          invalidToken: 'Token JWT inválido'
+      "time": {
+        "title": "Date & Time Tools",
+        "description": "Essential date and time utilities for timestamp conversion, timezone handling, and date calculations."
+      }
+    },
+    "time": {
+      "description": "Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.",
+      "meta": {
+        "title": "Date & Time Tools - Timestamp, Timezone, and Date Calculators",
+        "description": "Free time tools: timestamp converter, timezone calculator & date arithmetic. Accurate, DST-aware, developer-friendly utilities."
+      },
+      "title": "Date & Time Tools",
+      "subtitle": "Essential date and time utilities for developers and professionals. Handle timestamp conversions, timezone calculations, and date arithmetic with precision.",
+      "toolsTitle": "Time Management Tools",
+      "timestamp": {
+        "title": "Timestamp Converter",
+        "description": "Convert between Unix timestamps and human-readable dates and times."
+      },
+      "timezone": {
+        "title": "Timezone Converter",
+        "description": "Convert date and time between different timezones worldwide with DST support."
+      },
+      "dateCalculator": {
+        "title": "Date Calculator",
+        "description": "Add or subtract days, months, and years from dates. Calculate date differences.",
+        "startDate": "Start Date",
+        "add": "Add",
+        "subtract": "Subtract",
+        "years": "Years",
+        "months": "Months",
+        "days": "Days",
+        "resultDate": "Result Date"
+      },
+      "calculations": {
+        "title": "Accurate Time Calculations",
+        "precise": {
+          "title": "Precise Calculations",
+          "description": "Handle complex timezone conversions and date calculations with accuracy."
         },
-        encryption: {
-          title: 'Herramienta de Cifrado',
-          description: 'Cifre y descifre texto utilizando diversos algoritmos como AES, DES y Rabbit.'
+        "global": {
+          "title": "Global Support",
+          "description": "Support for all world timezones with automatic daylight saving time adjustments."
+        },
+        "developerFriendly": {
+          "title": "Developer Friendly",
+          "description": "Perfect for API development, log analysis, and timestamp debugging."
         }
-      },
-      mermaid: {
-        title: 'Diagramas Mermaid',
-        description: 'Crear diagramas y diagramas de flujo con Mermaid',
-        invalidSyntax: 'Sintaxis de Mermaid inválida',
-        placeholder: 'Ingrese su sintaxis de Mermaid aquí...',
-        syntaxError: 'Error de sintaxis en el código Mermaid'
       }
     },
-    toasts: {
-      common: {
-        error: 'Error',
-        success: 'Éxito',
-        info: 'Información',
-        notFound: 'No encontrado'
+    "toasts": {
+      "common": {
+        "success": "Success",
+        "error": "Error",
+        "info": "Info",
+        "notFound": "Not Found"
       },
-      error: {
-        invalidJson: 'Por favor ingresa un JSON válido',
-        invalidJsonFormat: 'Formato JSON inválido',
-        missingPath: 'Por favor ingresa la ruta de extracción',
-        notFound: 'No se encontró valor en la ruta especificada',
-        extractError: 'Error al extraer el valor',
-        conversionFailed: 'La conversión falló',
-        csvConversionRequiresArray: 'La conversión CSV requiere un array de objetos'
+      "success": {
+        "copied": "Copied to clipboard",
+        "formattedAndCopied": "JSON formatted and copied to clipboard",
+        "minifiedAndCopied": "JSON minified and copied to clipboard",
+        "extractedAndCopied": "Value extracted and copied to clipboard",
+        "graphGenerated": "Graph generated successfully",
+        "convertedToYamlAndCopied": "Converted to YAML and copied to clipboard",
+        "convertedToXmlAndCopied": "Converted to XML and copied to clipboard",
+        "convertedToCsvAndCopied": "Converted to CSV and copied to clipboard",
+        "convertedToDartAndCopied": "Converted to Dart classes and copied to clipboard"
       },
-      success: {
-        copied: 'Copiado al portapapeles',
-        formattedAndCopied: 'JSON formateado y copiado al portapapeles',
-        minifiedAndCopied: 'JSON minificado y copiado al portapapeles',
-        extractedAndCopied: 'Valor extraído y copiado al portapapeles',
-        graphGenerated: 'Gráfico generado exitosamente',
-        convertedToYamlAndCopied: 'Convertido a YAML y copiado al portapapeles',
-        convertedToXmlAndCopied: 'Convertido a XML y copiado al portapapeles',
-        convertedToCsvAndCopied: 'Convertido a CSV y copiado al portapapeles'
+      "error": {
+        "invalidJson": "Please enter valid JSON",
+        "invalidJsonFormat": "Invalid JSON format",
+        "missingPath": "Please enter extraction path",
+        "notFound": "No value found at the specified path",
+        "extractError": "Error extracting value",
+        "conversionFailed": "Conversion failed",
+        "csvConversionRequiresArray": "CSV conversion requires an array of objects",
+        "syntaxErrorAtPosition": "Syntax error at position {position}",
+        "syntaxErrorGeneric": "Syntax error in JSON"
       },
-      info: {
-        emptyContent: 'No hay contenido para copiar'
+      "info": {
+        "emptyContent": "No content to copy"
       }
     },
-    editor: {
-      copy: 'Copiar contenido',
-      clear: 'Limpiar contenido',
-      copied: 'Copiado',
-      copySuccess: 'Contenido copiado al portapapeles',
-      copyError: 'Falló la copia',
-      copyErrorDesc: 'No se pudo copiar al portapapeles',
-      cleared: 'Limpiado',
-      clearSuccess: 'Contenido limpiado',
-      downloadSvg: 'Descargar SVG',
-      downloadPng: 'Descargar PNG'
-    },
-    availableTools: 'Herramientas Disponibles',
-    whyChooseUs: {
-      title: '¿Por Qué Elegir Nuestras Herramientas?',
-      privacyFocused: {
-        title: 'Enfoque en la Privacidad',
-        description: 'Todo el procesamiento ocurre localmente en su navegador. Sus datos nunca abandonan su dispositivo.'
+    "availableTools": "Available Tools",
+    "whyChooseUs": {
+      "title": "Why Choose Our Tools?",
+      "privacyFocused": {
+        "title": "Privacy Focused",
+        "description": "All processing happens locally in your browser. Your data never leaves your device."
       },
-      professionalGrade: {
-        title: 'Grado Profesional',
-        description: 'Construido con tecnologías web modernas y diseñado para desarrolladores profesionales.'
+      "professionalGrade": {
+        "title": "Professional Grade",
+        "description": "Built with modern web technologies and designed for professional developers."
       },
-      freeAndOpen: {
-        title: 'Gratis y Abierto',
-        description: 'No se requiere registro. Use todas las funciones de forma gratuita sin limitaciones.'
+      "freeAndOpen": {
+        "title": "Free & Open",
+        "description": "No registration required. Use all features for free with no limitations."
       }
     },
-    underConstruction: {
-      description: 'Esta herramienta está en desarrollo, por favor mantente al tanto.'
+    "underConstruction": {
+      "description": "This tool is under development, please stay tuned."
     },
-    notFound: {
-      title: 'Página No Encontrada',
-      description: 'Lo siento, la página que buscas no existe o ha sido movida.',
-      backToHome: 'Volver al Inicio',
-      path: 'Ruta'
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "Sorry, the page you are looking for does not exist or has been moved.",
+      "backToHome": "Back to Home",
+      "path": "Path"
     },
-    encryption: {
-      algorithm: 'Algoritmo',
-      selectAlgorithm: 'Seleccionar un algoritmo',
-      inputText: 'Texto de Entrada',
-      inputPlaceholder: 'Ingresar texto para procesar...',
-      output: 'Salida',
-      outputPlaceholder: 'La salida procesada aparecerá aquí...',
-      regenerate: 'Regenerar'
+    "encryption": {
+      "algorithm": "Algorithm",
+      "selectAlgorithm": "Select an algorithm",
+      "inputText": "Input Text",
+      "inputPlaceholder": "Enter text to process...",
+      "output": "Output",
+      "outputPlaceholder": "Processed output will appear here...",
+      "regenerate": "Regenerate"
     },
-    footer: {
-      legal: 'Legal',
-      company: 'Empresa',
-      friendlyLinks: 'Enlaces amigables',
-      privacy: 'Política de Privacidad',
-      terms: 'Términos de Servicio',
-      about: 'Acerca de nosotros',
-      copyright: '© {{year}} Hub de Herramientas para Desarrolladores. Todos los derechos reservados.',
-      description: 'Tu "navaja suiza" todo en uno para desarrollo construido con Lovable AI. Herramientas profesionales para JSON, texto, encriptación y más para optimizar tu flujo de trabajo.',
-      lovable: 'Lovable',
-      vercel: 'Vercel',
-      github: 'GitHub',
-      deepseek: 'DeepSeek'
+    "footer": {
+      "legal": "Legal",
+      "company": "Company",
+      "friendlyLinks": "Friendly links",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "about": "About us",
+      "copyright": "© {{year}} Developer Tools Hub. All rights reserved.",
+      "description": "Your all-in-one \"Swiss Army knife\" for development. Professional tools for JSON, text, encryption and more to streamline your workflow.",
+      "lovable": "Lovable",
+      "vercel": "Vercel",
+      "github": "GitHub",
+      "deepseek": "DeepSeek"
     },
-    about: {
-      title: 'Acerca de Nosotros',
-      missionTitle: 'Nuestra Misión',
-      missionText: 'Nuestra misión es proporcionar a los desarrolladores un conjunto de herramientas integral, fácil de usar y potente construido con Lovable AI que actúe como una "navaja suiza" para sus tareas diarias. Nuestro objetivo es crear una tienda única para utilidades de desarrollo, haciendo que los flujos de trabajo sean más eficientes y agradables para todos.',
-      featuresTitle: 'Lo que Ofrecemos',
-      feature1: 'Conjunto de herramientas integral: Desde formato JSON y manipulación de texto hasta encriptación y diagramas.',
-      feature2: 'Diseño moderno: Una interfaz limpia, intuitiva y responsiva potenciada por Lovable AI.',
-      feature3: 'Enfocado en la privacidad: No se almacenan datos en nuestros servidores. Todo el procesamiento ocurre en tu navegador.',
-      feature4: 'Construido con Lovable: Aprovechamos la tecnología Lovable AI para una experiencia de desarrollo óptima.'
+    "about": {
+      "title": "About Us",
+      "missionTitle": "Our Mission",
+      "missionText": "Our mission is to provide developers with a comprehensive, easy-to-use, and powerful toolkit that acts as a \"Swiss Army knife\" for their daily tasks. We aim to create a one-stop shop for development utilities, making workflows more efficient and enjoyable for everyone.",
+      "featuresTitle": "What We Offer",
+      "feature1": "Comprehensive Toolset: From JSON formatting and text manipulation to encryption and diagramming.",
+      "feature2": "Modern Design: A clean, intuitive, and responsive interface powered by Lovable AI.",
+      "feature3": "Privacy-Focused: No data is stored on our servers. All processing happens in your browser.",
+      "feature4": "Advanced Technology: We leverage cutting-edge technology for optimal development experience."
     },
-    privacy: {
-      title: 'Política de Privacidad',
-      lastUpdated: 'Última actualización: 15 de junio de 2025',
-      introduction: 'Bienvenido al Hub de Herramientas para Desarrolladores. Estamos comprometidos a proteger tu privacidad. Nuestra Política de Privacidad explica cómo manejamos la información en relación con nuestro sitio web y servicios.',
-      informationWeCollectTitle: 'Información que Recopilamos',
-      informationWeCollectText: 'No recopilamos ninguna información de identificación personal de nuestros usuarios. Todos los datos procesados por nuestras herramientas (por ejemplo, JSON, texto, archivos) permanecen en tu lado del cliente y nunca se envían o almacenan en nuestros servidores.',
-      cookiesTitle: 'Cookies y Almacenamiento Local',
-      cookiesText: 'Utilizamos el almacenamiento local del navegador para guardar tus preferencias, como el tema seleccionado (claro/oscuro) y el idioma. Esto es puramente con fines funcionales para mejorar tu experiencia de usuario y no te rastrea.',
-      thirdPartyServicesTitle: 'Servicios de Terceros',
-      thirdPartyServicesText: 'Nuestro sitio web no se integra con ningún servicio de terceros que recopile tus datos personales. Proporcionamos enlaces a sitios externos como GitHub, pero no somos responsables de sus prácticas de privacidad.',
-      changesToPolicyTitle: 'Cambios a esta Política',
-      changesToPolicyText: 'Podemos actualizar nuestra Política de Privacidad de vez en cuando. Te notificaremos de cualquier cambio publicando la nueva Política de Privacidad en esta página. Se te aconseja revisar esta Política de Privacidad periódicamente para cualquier cambio.',
-      contactUsTitle: 'Contáctanos',
-      contactUsText: 'Si tienes alguna pregunta sobre esta Política de Privacidad, no dudes en contactarnos en nuestro repositorio de código abierto.'
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: June 15, 2025",
+      "introduction": "Welcome to Developer Tools Hub. We are committed to protecting your privacy. Our Privacy Policy explains how we handle information in relation to our website and services.",
+      "informationWeCollectTitle": "Information We Collect",
+      "informationWeCollectText": "We do not collect any personally identifiable information from our users. All data processed by our tools (e.g., JSON, text, files) remains on your client-side and is never sent to or stored on our servers.",
+      "cookiesTitle": "Cookies and Local Storage",
+      "cookiesText": "We use browser local storage to save your preferences, such as your selected theme (light/dark) and language. This is purely for functional purposes to enhance your user experience and does not track you.",
+      "thirdPartyServicesTitle": "Third-Party Services",
+      "thirdPartyServicesText": "Our website does not integrate with any third-party services that would collect your personal data. We provide links to external sites like GitHub, but we are not responsible for their privacy practices.",
+      "changesToPolicyTitle": "Changes to this Policy",
+      "changesToPolicyText": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.",
+      "contactUsTitle": "Contact Us",
+      "contactUsText": "If you have any questions about this Privacy Policy, feel free to contact us at our open-source repository."
     },
-    terms: {
-      title: 'Términos de Servicio',
-      lastUpdated: 'Última actualización: 15 de junio de 2025',
-      acceptanceTitle: 'Aceptación de Términos',
-      acceptanceText: 'Al acceder y usar el Hub de Herramientas para Desarrolladores ("el Servicio"), aceptas y acuerdas estar sujeto a los términos y disposiciones de este acuerdo. Si no estás de acuerdo en cumplir con estos términos, por favor no uses este Servicio.',
-      useOfServiceTitle: 'Uso del Servicio',
-      useOfServiceText: 'El Servicio se proporciona de forma gratuita para uso personal y comercial. Aceptas usar el Servicio de manera responsable y no para actividades maliciosas o ilegales. Eres el único responsable de cualquier dato que proceses usando nuestras herramientas.',
-      disclaimerTitle: 'Renuncia de Garantías',
-      disclaimerText: 'El Servicio se proporciona "tal como está" y "según disponibilidad" sin garantías de ningún tipo, ya sean expresas o implícitas. No garantizamos la precisión, confiabilidad o completitud de cualquier herramienta o dato procesado a través del servicio.',
-      limitationTitle: 'Limitación de Responsabilidad',
-      limitationText: 'En ningún caso el Hub de Herramientas para Desarrolladores o sus mantenedores serán responsables de cualquier daño directo, indirecto, incidental, especial o consecuente que surja del uso o la incapacidad de usar el Servicio.',
-      changesToTermsTitle: 'Cambios a los Términos',
-      changesToTermsText: 'Nos reservamos el derecho de modificar estos términos en cualquier momento. Publicaremos la versión más actual de estos términos en esta página. Tu uso continuado del Servicio después de cualquier cambio constituye tu aceptación de los nuevos Términos.'
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: June 15, 2025",
+      "acceptanceTitle": "Acceptance of Terms",
+      "acceptanceText": "By accessing and using Developer Tools Hub (\"the Service\"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this Service.",
+      "useOfServiceTitle": "Use of Service",
+      "useOfServiceText": "The Service is provided free of charge for personal and commercial use. You agree to use the Service responsibly and not for any malicious or illegal activities. You are solely responsible for any data you process using our tools.",
+      "disclaimerTitle": "Disclaimer of Warranties",
+      "disclaimerText": "The Service is provided \"as is\" and \"as available\" without any warranties of any kind, either expressed or implied. We do not warrant the accuracy, reliability, or completeness of any tools or data processed through the service.",
+      "limitationTitle": "Limitation of Liability",
+      "limitationText": "In no event shall Developer Tools Hub or its maintainers be liable for any direct, indirect, incidental, special, or consequential damages arising out of the use of or inability to use the Service.",
+      "changesToTermsTitle": "Changes to Terms",
+      "changesToTermsText": "We reserve the right to modify these terms at any time. We will post the most current version of these terms on this page. Your continued use of the Service after any changes constitutes your acceptance of the new Terms."
     }
   }
 };
+
+export default es;
