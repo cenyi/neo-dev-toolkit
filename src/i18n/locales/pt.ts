@@ -297,113 +297,113 @@ export const pt = {
         "title": "Editor de Markdown",
         "description": "Escreva e pré-visualize Markdown com destaque de sintaxe e pré-visualização ao vivo.",
         "placeholder": "Digite seu conteúdo Markdown aqui..."
+      },
+      "mermaid": {
+        "title": "Editor de Diagramas Mermaid",
+        "description": "Crie fluxogramas, diagramas de sequência e outros diagramas com a sintaxe Mermaid.",
+        "invalidSyntax": "Sintaxe Mermaid inválida",
+        "placeholder": "Digite seu código Mermaid aqui...",
+        "syntaxError": "Erro de sintaxe no código Mermaid"
       }
     },
-    "mermaid": {
-      "title": "Editor de Diagramas Mermaid",
-      "description": "Crie fluxogramas, diagramas de sequência e outros diagramas com a sintaxe Mermaid.",
-      "invalidSyntax": "Sintaxe Mermaid inválida",
-      "placeholder": "Digite seu código Mermaid aqui...",
-      "syntaxError": "Erro de sintaxe no código Mermaid"
-    }
-  },
-  "editor": {
-    "copy": "Copiar conteúdo",
-    "clear": "Limpar conteúdo",
-    "copied": "Copiado",
-    "copySuccess": "Conteúdo copiado para a área de transferência",
-    "copyError": "Falha ao copiar",
-    "copyErrorDesc": "Não foi possível copiar para a área de transferência",
-    "cleared": "Limpo",
-    "clearSuccess": "Conteúdo limpo",
-    "downloadSvg": "Baixar SVG",
-    "downloadPng": "Baixar PNG"
-  },
-  "availableTools": "Ferramentas Disponíveis",
-  "whyChooseUs": {
-    "title": "Por Que Escolher Nossas Ferramentas?",
-    "privacyFocused": {
-      "title": "Foco na Privacidade",
-      "description": "Todo o processamento é feito localmente no seu navegador. Seus dados nunca saem do seu dispositivo."
+    "editor": {
+      "copy": "Copiar conteúdo",
+      "clear": "Limpar conteúdo",
+      "copied": "Copiado",
+      "copySuccess": "Conteúdo copiado para a área de transferência",
+      "copyError": "Falha ao copiar",
+      "copyErrorDesc": "Não foi possível copiar para a área de transferência",
+      "cleared": "Limpo",
+      "clearSuccess": "Conteúdo limpo",
+      "downloadSvg": "Baixar SVG",
+      "downloadPng": "Baixar PNG"
     },
-    "professionalGrade": {
-      "title": "Nível Profissional",
-      "description": "Construído com tecnologias web modernas e projetado para desenvolvedores profissionais."
+    "availableTools": "Ferramentas Disponíveis",
+    "whyChooseUs": {
+      "title": "Por Que Escolher Nossas Ferramentas?",
+      "privacyFocused": {
+        "title": "Foco na Privacidade",
+        "description": "Todo o processamento é feito localmente no seu navegador. Seus dados nunca saem do seu dispositivo."
+      },
+      "professionalGrade": {
+        "title": "Nível Profissional",
+        "description": "Construído com tecnologias web modernas e projetado para desenvolvedores profissionais."
+      },
+      "freeAndOpen": {
+        "title": "Gratuito e Aberto",
+        "description": "Não é necessário se inscrever. Use todos os recursos gratuitamente, sem limitações."
+      }
     },
-    "freeAndOpen": {
-      "title": "Gratuito e Aberto",
-      "description": "Não é necessário se inscrever. Use todos os recursos gratuitamente, sem limitações."
+    "underConstruction": {
+      "description": "Esta ferramenta está em desenvolvimento, fique atento."
+    },
+    "notFound": {
+      "title": "Página Não Encontrada",
+      "description": "Desculpe, a página que você está procurando não existe ou foi movida.",
+      "backToHome": "Voltar ao Início",
+      "path": "Caminho"
+    },
+    "encryption": {
+      "algorithm": "Algoritmo",
+      "selectAlgorithm": "Selecione um algoritmo",
+      "inputText": "Texto de Entrada",
+      "inputPlaceholder": "Digite texto para processar...",
+      "output": "Saída",
+      "outputPlaceholder": "A saída processada aparecerá aqui...",
+      "regenerate": "Regenerar"
+    },
+    "footer": {
+      "legal": "Legal",
+      "company": "Empresa",
+      "friendlyLinks": "Links amigáveis",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço",
+      "about": "Sobre nós",
+      "copyright": "© {{year}} Hub de Ferramentas para Desenvolvedores. Todos os direitos reservados.",
+      "description": "Seu \"canivete suíço\" completo para desenvolvimento. Com ferramentas para JSON, texto, criptografia e muito mais para otimizar seu fluxo de trabalho.",
+      "vercel": "Vercel",
+      "github": "GitHub",
+      "deepseek": "DeepSeek"
+    },
+    "about": {
+      "title": "Sobre Nós",
+      "missionTitle": "Nossa Missão",
+      "missionText": "Nossa missão é fornecer aos desenvolvedores um kit de ferramentas abrangente, fácil de usar e poderoso que atue como um \"canivete suíço\" para suas tarefas diárias. Nosso objetivo é criar um balcão único para utilitários de desenvolvimento, tornando os fluxos de trabalho mais eficientes e agradáveis para todos.",
+      "featuresTitle": "O que Oferecemos",
+      "feature1": "Conjunto de Ferramentas Abrangente: Desde formatação JSON e manipulação de texto até criptografia e diagramação.",
+      "feature2": "Design Moderno: Uma interface neumórfica limpa, intuitiva e responsiva.",
+      "feature3": "Foco na Privacidade: Nenhum dado é armazenado em nossos servidores. Todo o processamento acontece no seu navegador.",
+      "feature4": "Código Aberto: Acreditamos no poder da comunidade e no desenvolvimento transparente."
+    },
+    "privacy": {
+      "title": "Política de Privacidade",
+      "lastUpdated": "Última atualização: 15 de junho de 2025",
+      "introduction": "Bem-vindo ao Developer Tools Hub. Estamos empenhados em proteger a sua privacidade. A nossa Política de Privacidade explica como tratamos as informações relacionadas com o nosso website e serviços.",
+      "informationWeCollectTitle": "Informações que Coletamos",
+      "informationWeCollectText": "Não coletamos nenhuma informação de identificação pessoal de nossos usuários. Todos os dados processados por nossas ferramentas (por exemplo, JSON, texto, arquivos) permanecem do lado do cliente e nunca são enviados ou armazenados em nossos servidores.",
+      "cookiesTitle": "Cookies e Armazenamento Local",
+      "cookiesText": "Usamos o armazenamento local do navegador para salvar suas preferências, como o tema selecionado (claro/escuro) e o idioma. Isso é puramente para fins funcionais para aprimorar sua experiência de usuário и não o rastreia.",
+      "thirdPartyServicesTitle": "Serviços de Terceiros",
+      "thirdPartyServicesText": "Nosso site não se integra a nenhum serviço de terceiros que colete seus dados pessoais. Fornecemos links para sites externos como o GitHub, mas não somos responsáveis por suas práticas de privacidade.",
+      "changesToPolicyTitle": "Alterações a esta Política",
+      "changesToPolicyText": "Podemos atualizar nossa Política de Privacidade de tempos em tempos. Iremos notificá-lo de quaisquer alterações publicando a nova Política de Privacidade nesta página. Aconselha-se a rever esta Política de Privacidade periodicamente para quaisquer alterações.",
+      "contactUsTitle": "Contate-Nos",
+      "contactUsText": "Se você tiver alguma dúvida sobre esta Política de Privacidade, sinta-se à vontade para nos contatar em nosso repositório de código aberto."
+    },
+    "terms": {
+      "title": "Termos de Serviço",
+      "lastUpdated": "Última atualização: 15 de junho de 2025",
+      "acceptanceTitle": "Aceitação dos Termos",
+      "acceptanceText": "Ao acessar e usar o Developer Tools Hub (\"o Serviço\"), você aceita e concorda em ficar vinculado aos termos e disposições deste acordo. Se você não concorda em cumprir estes termos, por favor, não use este Serviço.",
+      "useOfServiceTitle": "Uso do Serviço",
+      "useOfServiceText": "O Serviço é fornecido gratuitamente para uso pessoal и comercial. Você concorda em usar o Serviço de forma responsável e não para quaisquer atividades maliciosas ou ilegais. Você é o único responsável por quaisquer dados que processe usando nossas ferramentas.",
+      "disclaimerTitle": "Isenção de Garantias",
+      "disclaimerText": "O Serviço é fornecido \"como está\" e \"conforme disponível\" sem quaisquer garantias de qualquer tipo, expressas ou implícitas. Não garantimos a precisão, confiabilidade ou integridade de qualquer ferramenta ou dados processados através do serviço.",
+      "limitationTitle": "Limitação de Responsabilidade",
+      "limitationText": "Em nenhum caso o Developer Tools Hub ou seus mantenedores serão responsáveis por quaisquer danos diretos, indiretos, incidentais, especiais ou consequenciais decorrentes do uso ou da incapacidade de usar o Serviço.",
+      "changesToTermsTitle": "Alterações nos Termos",
+      "changesToTermsText": "Reservamo-nos o direito de modificar estes termos a qualquer momento. Publicaremos a versão mais atual destes termos nesta página. O uso contínuo do Serviço após quaisquer alterações constitui sua aceitação dos novos Termos."
     }
-  },
-  "underConstruction": {
-    "description": "Esta ferramenta está em desenvolvimento, fique atento."
-  },
-  "notFound": {
-    "title": "Página Não Encontrada",
-    "description": "Desculpe, a página que você está procurando não existe ou foi movida.",
-    "backToHome": "Voltar ao Início",
-    "path": "Caminho"
-  },
-  "encryption": {
-    "algorithm": "Algoritmo",
-    "selectAlgorithm": "Selecione um algoritmo",
-    "inputText": "Texto de Entrada",
-    "inputPlaceholder": "Digite texto para processar...",
-    "output": "Saída",
-    "outputPlaceholder": "A saída processada aparecerá aqui...",
-    "regenerate": "Regenerar"
-  },
-  "footer": {
-    "legal": "Legal",
-    "company": "Empresa",
-    "friendlyLinks": "Links amigáveis",
-    "privacy": "Política de Privacidade",
-    "terms": "Termos de Serviço",
-    "about": "Sobre nós",
-    "copyright": "© {{year}} Hub de Ferramentas para Desenvolvedores. Todos os direitos reservados.",
-    "description": "Seu \"canivete suíço\" completo para desenvolvimento. Com ferramentas para JSON, texto, criptografia e muito mais para otimizar seu fluxo de trabalho.",
-    "vercel": "Vercel",
-    "github": "GitHub",
-    "deepseek": "DeepSeek"
-  },
-  "about": {
-    "title": "Sobre Nós",
-    "missionTitle": "Nossa Missão",
-    "missionText": "Nossa missão é fornecer aos desenvolvedores um kit de ferramentas abrangente, fácil de usar e poderoso que atue como um \"canivete suíço\" para suas tarefas diárias. Nosso objetivo é criar um balcão único para utilitários de desenvolvimento, tornando os fluxos de trabalho mais eficientes e agradáveis para todos.",
-    "featuresTitle": "O que Oferecemos",
-    "feature1": "Conjunto de Ferramentas Abrangente: Desde formatação JSON e manipulação de texto até criptografia e diagramação.",
-    "feature2": "Design Moderno: Uma interface neumórfica limpa, intuitiva e responsiva.",
-    "feature3": "Foco na Privacidade: Nenhum dado é armazenado em nossos servidores. Todo o processamento acontece no seu navegador.",
-    "feature4": "Código Aberto: Acreditamos no poder da comunidade e no desenvolvimento transparente."
-  },
-  "privacy": {
-    "title": "Política de Privacidade",
-    "lastUpdated": "Última atualização: 15 de junho de 2025",
-    "introduction": "Bem-vindo ao Developer Tools Hub. Estamos empenhados em proteger a sua privacidade. A nossa Política de Privacidade explica como tratamos as informações relacionadas com o nosso website e serviços.",
-    "informationWeCollectTitle": "Informações que Coletamos",
-    "informationWeCollectText": "Não coletamos nenhuma informação de identificação pessoal de nossos usuários. Todos os dados processados por nossas ferramentas (por exemplo, JSON, texto, arquivos) permanecem do lado do cliente e nunca são enviados ou armazenados em nossos servidores.",
-    "cookiesTitle": "Cookies e Armazenamento Local",
-    "cookiesText": "Usamos o armazenamento local do navegador para salvar suas preferências, como o tema selecionado (claro/escuro) e o idioma. Isso é puramente para fins funcionais para aprimorar sua experiência de usuário и não o rastreia.",
-    "thirdPartyServicesTitle": "Serviços de Terceiros",
-    "thirdPartyServicesText": "Nosso site não se integra a nenhum serviço de terceiros que colete seus dados pessoais. Fornecemos links para sites externos como o GitHub, mas não somos responsáveis por suas práticas de privacidade.",
-    "changesToPolicyTitle": "Alterações a esta Política",
-    "changesToPolicyText": "Podemos atualizar nossa Política de Privacidade de tempos em tempos. Iremos notificá-lo de quaisquer alterações publicando a nova Política de Privacidade nesta página. Aconselha-se a rever esta Política de Privacidade periodicamente para quaisquer alterações.",
-    "contactUsTitle": "Contate-Nos",
-    "contactUsText": "Se você tiver alguma dúvida sobre esta Política de Privacidade, sinta-se à vontade para nos contatar em nosso repositório de código aberto."
-  },
-  "terms": {
-    "title": "Termos de Serviço",
-    "lastUpdated": "Última atualização: 15 de junho de 2025",
-    "acceptanceTitle": "Aceitação dos Termos",
-    "acceptanceText": "Ao acessar e usar o Developer Tools Hub (\"o Serviço\"), você aceita e concorda em ficar vinculado aos termos e disposições deste acordo. Se você não concorda em cumprir estes termos, por favor, não use este Serviço.",
-    "useOfServiceTitle": "Uso do Serviço",
-    "useOfServiceText": "O Serviço é fornecido gratuitamente para uso pessoal и comercial. Você concorda em usar o Serviço de forma responsável e não para quaisquer atividades maliciosas ou ilegais. Você é o único responsável por quaisquer dados que processe usando nossas ferramentas.",
-    "disclaimerTitle": "Isenção de Garantias",
-    "disclaimerText": "O Serviço é fornecido \"como está\" e \"conforme disponível\" sem quaisquer garantias de qualquer tipo, expressas ou implícitas. Não garantimos a precisão, confiabilidade ou integridade de qualquer ferramenta ou dados processados através do serviço.",
-    "limitationTitle": "Limitação de Responsabilidade",
-    "limitationText": "Em nenhum caso o Developer Tools Hub ou seus mantenedores serão responsáveis por quaisquer danos diretos, indiretos, incidentais, especiais ou consequenciais decorrentes do uso ou da incapacidade de usar o Serviço.",
-    "changesToTermsTitle": "Alterações nos Termos",
-    "changesToTermsText": "Reservamo-nos o direito de modificar estes termos a qualquer momento. Publicaremos a versão mais atual destes termos nesta página. O uso contínuo do Serviço após quaisquer alterações constitui sua aceitação dos novos Termos."
   }
 };
 
