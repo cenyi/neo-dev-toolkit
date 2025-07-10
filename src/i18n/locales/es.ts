@@ -65,9 +65,9 @@ export const es = {
     },
     home: { 
       title: 'Hub de Herramientas para Desarrolladores',
-      subtitle: 'Herramientas de desarrollo profesionales construidas con tecnología Lovable AI',
-      description: 'Una colección completa de herramientas esenciales para desarrolladores que incluye formato JSON, procesamiento de texto, encriptación y más. Construido con Lovable AI para rendimiento óptimo.',
-      headerTitle: 'Hub Gratuito de Herramientas para Desarrolladores Online - Construido con Lovable',
+      subtitle: 'Herramientas de desarrollo profesionales',
+      description: 'Una colección completa de herramientas esenciales para desarrolladores que incluye formato JSON, procesamiento de texto, encriptación y más. Para rendimiento óptimo.',
+      headerTitle: 'Hub Gratuito de Herramientas para Desarrolladores Online',
       toolsCollectionTitle: 'Colección Profesional de Herramientas para Desarrolladores',
       whyChooseTitle: '¿Por qué Elegir DevTools Hub para tus Necesidades de Desarrollo?',
       feature1Title: '100% Gratis y Sin Registro',

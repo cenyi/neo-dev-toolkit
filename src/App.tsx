@@ -69,8 +69,16 @@ function App() {
               <Sonner />
               <main className="flex-grow">
                 <Routes>
-          {/* 语言前缀路由重定向 */}
-          <Route path="/" element={<LanguageRedirect />} />
+          {/* 直接首页路由 */}
+          <Route path="/" element={
+            <PageWrapper 
+              title="Developer Tools Hub" 
+              description="Free developer tools built with Lovable AI" 
+              keywords="developer tools, JSON formatter, text converter, encryption utilities"
+            >
+              <HomePage />
+            </PageWrapper>
+          } />
                   <Route path=":lang/json/formatter" element={
                     <PageWrapper 
                       title="JSON Formatter & Validator" 

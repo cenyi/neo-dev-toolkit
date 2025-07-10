@@ -64,9 +64,9 @@ export const de = {
     },
     home: { 
       title: 'Entwickler-Tools Hub',
-      subtitle: 'Professionelle Entwicklungstools gebaut mit Lovable AI Technologie',
-      description: 'Eine umfassende Sammlung wichtiger Entwicklertools einschließlich JSON-Formatierung, Textverarbeitung, Verschlüsselung und mehr. Gebaut mit Lovable AI für optimale Leistung.',
-      headerTitle: 'Kostenloser Online-Entwicklertools Hub - Gebaut mit Lovable',
+      subtitle: 'Professionelle Entwicklungstools',
+      description: 'Eine umfassende Sammlung wichtiger Entwicklertools einschließlich JSON-Formatierung, Textverarbeitung, Verschlüsselung und mehr. Für optimale Leistung.',
+      headerTitle: 'Kostenloser Online-Entwicklertools Hub',
       toolsCollectionTitle: 'Professionelle Entwicklertools-Sammlung',
       whyChooseTitle: 'Warum DevTools Hub für Ihre Entwicklungsbedürfnisse wählen?',
       feature1Title: '100% Kostenlos & Keine Registrierung',

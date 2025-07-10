@@ -12,39 +12,39 @@ const Footer: React.FC = () => {
   // 工具分类链接 - 根据内部链接SEO最佳实践
   const toolCategories = [
     {
-      title: 'JSON Tools',
+      title: t('tools.json.title'),
       links: [
-        { path: `/${lang}/json/formatter`, name: 'JSON Formatter' },
-        { path: `/${lang}/json/schema-validator`, name: 'Schema Validator' },
-        { path: `/${lang}/json/diff`, name: 'JSON Diff' },
-        { path: `/${lang}/json/codegen`, name: 'Code Generator' }
+        { path: `/${lang}/json/formatter`, name: t('tools.json.formatter.title') },
+        { path: `/${lang}/json/schema-validator`, name: t('tools.json.schemaValidator.title') },
+        { path: `/${lang}/json/diff`, name: t('tools.json.diff.title') },
+        { path: `/${lang}/json/codegen`, name: t('tools.json.codegen.title') }
       ]
     },
     {
-      title: 'Text Tools',
+      title: t('tools.text.title'),
       links: [
-        { path: `/${lang}/text/case-converter`, name: 'Case Converter' },
-        { path: `/${lang}/text/word-counter`, name: 'Word Counter' },
-        { path: `/${lang}/text/text-diff`, name: 'Text Diff' },
-        { path: `/${lang}/regex`, name: 'Regex Tool' }
+        { path: `/${lang}/text/case-converter`, name: t('tools.text.caseConverter.title') },
+        { path: `/${lang}/text/word-counter`, name: t('tools.text.wordCounter.title') },
+        { path: `/${lang}/text/text-diff`, name: t('tools.text.textDiff.title') },
+        { path: `/${lang}/regex`, name: t('tools.regex.title') }
       ]
     },
     {
-      title: 'Network Tools',
+      title: t('tools.network.title'),
       links: [
-        { path: `/${lang}/network/url-encoder`, name: 'URL Encoder' },
-        { path: `/${lang}/network/base64-encoder`, name: 'Base64 Encoder' },
-        { path: `/${lang}/network/jwt-decoder`, name: 'JWT Decoder' },
-        { path: `/${lang}/network/ip-lookup`, name: 'IP Lookup' }
+        { path: `/${lang}/network/url-encoder`, name: t('tools.network.urlEncoder.title') },
+        { path: `/${lang}/network/base64-encoder`, name: t('tools.network.base64Encoder.title') },
+        { path: `/${lang}/network/jwt-decoder`, name: t('tools.jwtDecoder.title') },
+        { path: `/${lang}/network/ip-lookup`, name: t('tools.network.ipLookup.title') }
       ]
     },
     {
-      title: 'Other Tools',
+      title: t('tools.other.title'),
       links: [
-        { path: `/${lang}/editor/markdown`, name: 'Markdown Editor' },
-        { path: `/${lang}/editor/mermaid`, name: 'Mermaid Editor' },
-        { path: `/${lang}/time/timestamp-converter`, name: 'Timestamp Converter' },
-        { path: `/${lang}/crypto/encryption`, name: 'Encryption Tool' }
+        { path: `/${lang}/editor/markdown`, name: t('tools.editor.markdown.title') },
+        { path: `/${lang}/editor/mermaid`, name: t('tools.editor.mermaid.title') },
+        { path: `/${lang}/time/timestamp-converter`, name: t('tools.time.timestampConverter.title') },
+        { path: `/${lang}/crypto/encryption`, name: t('tools.crypto.title') }
       ]
     }
   ];

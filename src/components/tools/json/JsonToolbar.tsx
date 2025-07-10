@@ -112,7 +112,7 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
         {/* 动态配置区域 - 根据当前输出类型显示 */}
         {isDartMode && (
           <div className="flex items-center gap-2 p-2 bg-blue-50 dark:bg-blue-950 rounded border border-blue-200 dark:border-blue-800">
-            <span className="text-xs font-semibold text-blue-700 dark:text-blue-300">Dart配置:</span>
+            <span className="text-xs font-semibold text-blue-700 dark:text-blue-300">{t('tools.json.dartConfig')}</span>
             <div className="flex items-center gap-2">
               <Checkbox
                 id="use-private-fields"
@@ -121,7 +121,7 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
                 disabled={isFormatMinifyDisabled}
               />
               <Label htmlFor="use-private-fields" className="font-bold text-xs text-blue-700 dark:text-blue-300">
-                私有字段
+                {t('tools.json.privateFields')}
               </Label>
             </div>
             <div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ const JsonToolbar: React.FC<JsonToolbarProps> = ({
                 disabled={isFormatMinifyDisabled}
               />
               <Label htmlFor="use-modern-dart-syntax" className="font-bold text-xs text-blue-700 dark:text-blue-300">
-                现代语法
+                {t('tools.json.modernSyntax')}
               </Label>
             </div>
             <Label htmlFor="root-class-name" className="font-bold text-xs text-blue-700 dark:text-blue-300">{t('tools.json.rootClassName') || '类名'}:</Label>

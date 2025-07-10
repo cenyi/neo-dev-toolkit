@@ -18,51 +18,51 @@ const UrlEncoderDecoder: React.FC = () => {
   const handleCopy = () => {
     if (output) {
       navigator.clipboard.writeText(output);
-      toast.success(t('tools.editor.copySuccess', 'Copied to clipboard'));
+      toast.success(t('tools.editor.copySuccess'));
     }
   };
 
   return (
     <ToolPageLayout
-      title={t('tools.url.title', 'URL Encoder / Decoder')}
-      description={t('tools.url.description', 'Encode or decode URLs for safe web transmission')}
+      title={t('tools.network.urlEncoder.title')}
+      description={t('tools.network.urlEncoder.description')}
     >
       <Card>
         <CardContent className="space-y-4 pt-6">
           <div className="space-y-2">
-            <Label htmlFor="input">{t('url.input', 'Input Text')}</Label>
+            <Label htmlFor="input">{t('tools.network.urlEncoder.input')}</Label>
             <Textarea
               id="input"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={t('url.inputPlaceholder', 'Enter text or URL to encode/decode')}
+              placeholder={t('tools.network.urlEncoder.inputPlaceholder')}
               className="min-h-[120px] font-mono"
             />
           </div>
 
           <div className="flex flex-wrap gap-2">
             <Button onClick={handleEncode} disabled={!input.trim()}>
-              {t('url.encode', 'Encode')}
+              {t('tools.network.urlEncoder.encode')}
             </Button>
             <Button onClick={handleDecode} disabled={!input.trim()}>
-              {t('url.decode', 'Decode')}
+              {t('tools.network.urlEncoder.decode')}
             </Button>
             <Button onClick={clearAll} variant="outline">
-              {t('common.clear', 'Clear')}
+              {t('common.clear')}
             </Button>
           </div>
 
           {error && (
             <Alert variant="destructive">
               <AlertTriangle className="h-4 w-4" />
-              <AlertTitle>{t('common.error', 'Error')}</AlertTitle>
+              <AlertTitle>{t('common.error')}</AlertTitle>
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
 
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label htmlFor="output">{t('url.output', 'Output')}</Label>
+              <Label htmlFor="output">{t('tools.network.urlEncoder.output')}</Label>
               <Button
                 variant="outline"
                 size="sm"
@@ -71,14 +71,14 @@ const UrlEncoderDecoder: React.FC = () => {
                 className="text-xs"
               >
                 <Copy size={14} className="mr-1" />
-                {t('common.copy', 'Copy')}
+                {t('common.copy')}
               </Button>
             </div>
             <Textarea
               id="output"
               value={output}
               readOnly
-              placeholder={t('url.outputPlaceholder', 'Encoded/decoded result will appear here')}
+              placeholder={t('tools.network.urlEncoder.outputPlaceholder')}
               className="min-h-[120px] font-mono bg-muted"
             />
           </div>

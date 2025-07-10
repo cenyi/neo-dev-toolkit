@@ -1,5 +1,11 @@
 export const zh = {
     translation: {
+        allPagesLinks: {
+            popularTools: '热门工具',
+            popularToolsDescription: '我们精心挑选的最有用的开发者工具集合',
+            allTools: '所有开发者工具',
+            allToolsDescription: '浏览我们完整的开发实用工具集合'
+        },
         siteMap: '网站地图',
         siteMapDescription: '我们平台上所有开发者工具和页面的完整目录。找到适合您开发需求的完美工具。',
         allDeveloperTools: '所有开发者工具',
@@ -68,9 +74,9 @@ export const zh = {
         },
         home: {
             title: '开发者工具中心',
-            subtitle: '由 Lovable AI 技术构建的专业开发工具',
-            description: '一个全面的基本开发者工具集合，包括 JSON 格式化、文本处理、加密等。由 Lovable AI 构建，以实现最佳性能。',
-            headerTitle: '免费在线开发者工具中心 - 由 Lovable 构建',
+            subtitle: '专业开发工具',
+            description: '一套全面的必备开发工具集，包括 JSON 格式化、文本处理、加密等功能。性能卓越。',
+            headerTitle: '免费在线开发工具中心',
             toolsCollectionTitle: '专业开发者工具集合',
             whyChooseTitle: '为什么选择 DevTools Hub 满足您的开发需求？',
             feature1Title: '100% 免费且无需注册',
@@ -505,7 +511,7 @@ export const zh = {
             terms: '服务条款',
             about: '关于我们',
             copyright: '© {{year}} 开发者工具中心。保留所有权利。',
-            description: '您的一站式“瑞士军刀”，用于由 Lovable AI 构建的开发。用于 JSON、文本、加密等的专业工具，以简化您的工作流程。',
+            description: '您的一站式开发「瑞士军刀」。专业的 JSON、文本、加密等工具，助您简化工作流程。',
             lovable: 'Lovable',
             vercel: 'Vercel',
             github: 'GitHub',
@@ -514,12 +520,12 @@ export const zh = {
         about: {
             title: '关于我们',
             missionTitle: '我们的使命',
-            missionText: '我们的使命是为开发人员提供一个全面、易于使用且功能强大的工具包，该工具包由 Lovable AI 构建，可作为其日常任务的“瑞士军刀”。我们的目标是为开发实用程序创建一个一站式商店，使每个人的工作流程更高效、更愉快。',
+            missionText: '我们的使命是为开发者提供一套全面、易用且强大的工具集，作为他们日常工作的「瑞士军刀」。我们旨在创建一个开发实用工具的一站式商店，让每个人的工作流程更高效、更愉快。',
             featuresTitle: '我们提供什么',
             feature1: '全面的工具集：从 JSON 格式化和文本操作到加密和图表绘制。',
             feature2: '现代设计：由 Lovable AI 提供支持的简洁、直观且响应迅速的界面。',
             feature3: '注重隐私：我们的服务器上不存储任何数据。所有处理都在您的浏览器中进行。',
-            feature4: '由 Lovable 构建：我们利用 Lovable AI 技术实现最佳开发体验。',
+            feature4: '先进技术：我们利用前沿技术提供最佳开发体验。',
         },
         privacy: {
             title: '隐私政策',

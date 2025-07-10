@@ -12,99 +12,99 @@ const InternalLinks: React.FC = () => {
   // Define related tools for each route - 扩展内部链接推荐
   const relatedTools: Record<string, Array<{ path: string; title: string; description: string; category?: string }>> = {
     '/json/formatter': [
-      { path: `/${lang}/json/schema-validator`, title: 'JSON Schema Validator', description: 'Validate JSON against schemas', category: 'JSON' },
-      { path: `/${lang}/json/diff`, title: 'JSON Diff Tool', description: 'Compare JSON objects', category: 'JSON' },
-      { path: `/${lang}/json/codegen`, title: 'Code Generator', description: 'Generate types from JSON', category: 'JSON' },
-      { path: `/${lang}/text/text-diff`, title: 'Text Comparison', description: 'Compare text documents', category: 'Text' },
+      { path: `/${lang}/json/schema-validator`, title: t('tools.json.schemaValidator.title'), description: t('tools.json.schemaValidator.description'), category: t('categories.json') },
+      { path: `/${lang}/json/diff`, title: t('tools.json.diff.title'), description: t('tools.json.diff.description'), category: t('categories.json') },
+      { path: `/${lang}/json/codegen`, title: t('tools.json.codegen.title'), description: t('tools.json.codegen.description'), category: t('categories.json') },
+      { path: `/${lang}/text/text-diff`, title: t('tools.text.diff.title'), description: t('tools.text.diff.description'), category: t('categories.text') },
     ],
     '/json/schema-validator': [
-      { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format and validate JSON', category: 'JSON' },
+      { path: `/${lang}/json/formatter`, title: t('tools.json.formatter.title'), description: t('tools.json.formatter.description'), category: t('categories.json') },
       { path: `/${lang}/json/codegen`, title: 'Code Generator', description: 'Generate types from JSON', category: 'JSON' },
-      { path: `/${lang}/json/mock`, title: 'Mock Data Generator', description: 'Generate test JSON data', category: 'JSON' },
+      { path: `/${lang}/json/mock`, title: t('tools.json.mock.title'), description: t('tools.json.mock.description'), category: t('categories.json') },
     ],
     '/json/diff': [
       { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format JSON data', category: 'JSON' },
-      { path: `/${lang}/text/text-diff`, title: 'Text Diff', description: 'Compare text files', category: 'Text' },
-      { path: `/${lang}/json/schema-validator`, title: 'Schema Validator', description: 'Validate JSON schemas', category: 'JSON' },
+      { path: `/${lang}/text/text-diff`, title: t('tools.text.diff.title'), description: t('tools.text.diff.description'), category: t('categories.text') },
+      { path: `/${lang}/json/schema-validator`, title: t('tools.json.schemaValidator.title'), description: t('tools.json.schemaValidator.description'), category: t('categories.json') },
     ],
     '/json/codegen': [
-      { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format JSON first', category: 'JSON' },
-      { path: `/${lang}/json/schema-validator`, title: 'Schema Validator', description: 'Validate before generating', category: 'JSON' },
-      { path: `/${lang}/json/mock`, title: 'Mock Generator', description: 'Generate test data', category: 'JSON' },
+      { path: `/${lang}/json/formatter`, title: t('tools.json.formatter.title'), description: t('tools.json.formatter.description'), category: t('categories.json') },
+      { path: `/${lang}/json/schema-validator`, title: t('tools.json.schemaValidator.title'), description: t('tools.json.schemaValidator.description'), category: t('categories.json') },
+      { path: `/${lang}/json/mock`, title: t('tools.json.mock.title'), description: t('tools.json.mock.description'), category: t('categories.json') },
     ],
     '/json/mock': [
-      { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format generated data', category: 'JSON' },
-      { path: `/${lang}/json/schema-validator`, title: 'Schema Validator', description: 'Validate mock data', category: 'JSON' },
-      { path: `/${lang}/json/codegen`, title: 'Code Generator', description: 'Generate types from mock', category: 'JSON' },
+      { path: `/${lang}/json/formatter`, title: t('tools.json.formatter.title'), description: t('tools.json.formatter.description'), category: t('categories.json') },
+      { path: `/${lang}/json/schema-validator`, title: t('tools.json.schemaValidator.title'), description: t('tools.json.schemaValidator.description'), category: t('categories.json') },
+      { path: `/${lang}/json/codegen`, title: t('tools.json.codegen.title'), description: t('tools.json.codegen.description'), category: t('categories.json') },
     ],
     '/text/case-converter': [
-      { path: `/${lang}/text/word-counter`, title: 'Word & Character Counter', description: 'Count words and characters', category: 'Text' },
-      { path: `/${lang}/text/whitespace-remover`, title: 'Whitespace Remover', description: 'Clean up text spacing', category: 'Text' },
-      { path: `/${lang}/text/text-reverser`, title: 'Text Reverser', description: 'Reverse text order', category: 'Text' },
-      { path: `/${lang}/network/url-encoder`, title: 'URL Encoder', description: 'Encode/decode URLs', category: 'Network' },
+      { path: `/${lang}/text/word-counter`, title: t('tools.text.wordCounter.title'), description: t('tools.text.wordCounter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/whitespace-remover`, title: t('tools.text.whitespaceRemover.title'), description: t('tools.text.whitespaceRemover.description'), category: t('categories.text') },
+      { path: `/${lang}/text/text-reverser`, title: t('tools.text.reverser.title'), description: t('tools.text.reverser.description'), category: t('categories.text') },
+      { path: `/${lang}/network/url-encoder`, title: t('tools.network.urlEncoder.title'), description: t('tools.network.urlEncoder.description'), category: t('categories.network') },
     ],
     '/text/word-counter': [
-      { path: `/${lang}/text/case-converter`, title: 'Case Converter', description: 'Convert text case', category: 'Text' },
-      { path: `/${lang}/text/text-reverser`, title: 'Text Reverser', description: 'Reverse text characters', category: 'Text' },
-      { path: `/${lang}/text/whitespace-remover`, title: 'Whitespace Remover', description: 'Clean text formatting', category: 'Text' },
+      { path: `/${lang}/text/case-converter`, title: t('tools.text.caseConverter.title'), description: t('tools.text.caseConverter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/text-reverser`, title: t('tools.text.reverser.title'), description: t('tools.text.reverser.description'), category: t('categories.text') },
+      { path: `/${lang}/text/whitespace-remover`, title: t('tools.text.whitespaceRemover.title'), description: t('tools.text.whitespaceRemover.description'), category: t('categories.text') },
     ],
     '/text/text-reverser': [
-      { path: `/${lang}/text/case-converter`, title: 'Case Converter', description: 'Change text case', category: 'Text' },
-      { path: `/${lang}/text/word-counter`, title: 'Word Counter', description: 'Count reversed text', category: 'Text' },
-      { path: `/${lang}/text/whitespace-remover`, title: 'Whitespace Remover', description: 'Clean reversed text', category: 'Text' },
+      { path: `/${lang}/text/case-converter`, title: t('tools.text.caseConverter.title'), description: t('tools.text.caseConverter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/word-counter`, title: t('tools.text.wordCounter.title'), description: t('tools.text.wordCounter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/whitespace-remover`, title: t('tools.text.whitespaceRemover.title'), description: t('tools.text.whitespaceRemover.description'), category: t('categories.text') },
     ],
     '/text/whitespace-remover': [
-      { path: `/${lang}/text/case-converter`, title: 'Case Converter', description: 'Convert cleaned text', category: 'Text' },
-      { path: `/${lang}/text/word-counter`, title: 'Word Counter', description: 'Count cleaned text', category: 'Text' },
-      { path: `/${lang}/text/lorem-ipsum-generator`, title: 'Lorem Ipsum', description: 'Generate placeholder text', category: 'Text' },
+      { path: `/${lang}/text/case-converter`, title: t('tools.text.caseConverter.title'), description: t('tools.text.caseConverter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/word-counter`, title: t('tools.text.wordCounter.title'), description: t('tools.text.wordCounter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/lorem-ipsum-generator`, title: t('tools.text.loremIpsum.title'), description: t('tools.text.loremIpsum.description'), category: t('categories.text') },
     ],
     '/text/lorem-ipsum-generator': [
-      { path: `/${lang}/text/word-counter`, title: 'Word Counter', description: 'Count generated text', category: 'Text' },
-      { path: `/${lang}/text/case-converter`, title: 'Case Converter', description: 'Convert Lorem Ipsum case', category: 'Text' },
-      { path: `/${lang}/text/whitespace-remover`, title: 'Whitespace Remover', description: 'Clean generated text', category: 'Text' },
+      { path: `/${lang}/text/word-counter`, title: t('tools.text.wordCounter.title'), description: t('tools.text.wordCounter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/case-converter`, title: t('tools.text.caseConverter.title'), description: t('tools.text.caseConverter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/whitespace-remover`, title: t('tools.text.whitespaceRemover.title'), description: t('tools.text.whitespaceRemover.description'), category: t('categories.text') },
     ],
     '/text/text-diff': [
-      { path: `/${lang}/json/diff`, title: 'JSON Diff', description: 'Compare JSON objects', category: 'JSON' },
-      { path: `/${lang}/text/word-counter`, title: 'Word Counter', description: 'Count text differences', category: 'Text' },
-      { path: `/${lang}/text/case-converter`, title: 'Case Converter', description: 'Normalize text case', category: 'Text' },
+      { path: `/${lang}/json/diff`, title: t('tools.json.diff.title'), description: t('tools.json.diff.description'), category: t('categories.json') },
+      { path: `/${lang}/text/word-counter`, title: t('tools.text.wordCounter.title'), description: t('tools.text.wordCounter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/case-converter`, title: t('tools.text.caseConverter.title'), description: t('tools.text.caseConverter.description'), category: t('categories.text') },
     ],
     '/network/url-encoder': [
-      { path: `/${lang}/network/base64-encoder`, title: 'Base64 Encoder', description: 'Encode/decode Base64', category: 'Network' },
-      { path: `/${lang}/text/case-converter`, title: 'Case Converter', description: 'Convert text case', category: 'Text' },
-      { path: `/${lang}/network/jwt-decoder`, title: 'JWT Decoder', description: 'Decode JWT tokens', category: 'Network' },
+      { path: `/${lang}/network/base64-encoder`, title: t('tools.network.base64Encoder.title'), description: t('tools.network.base64Encoder.description'), category: t('categories.network') },
+      { path: `/${lang}/text/case-converter`, title: t('tools.text.caseConverter.title'), description: t('tools.text.caseConverter.description'), category: t('categories.text') },
+      { path: `/${lang}/network/jwt-decoder`, title: t('tools.network.jwtDecoder.title'), description: t('tools.network.jwtDecoder.description'), category: t('categories.network') },
     ],
     '/network/base64-encoder': [
-      { path: `/${lang}/network/url-encoder`, title: 'URL Encoder', description: 'Encode/decode URLs', category: 'Network' },
-      { path: `/${lang}/network/jwt-decoder`, title: 'JWT Decoder', description: 'Decode JWT tokens', category: 'Network' },
-      { path: `/${lang}/crypto/encryption`, title: 'Encryption Tool', description: 'Encrypt/decrypt data', category: 'Security' },
+      { path: `/${lang}/network/url-encoder`, title: t('tools.network.urlEncoder.title'), description: t('tools.network.urlEncoder.description'), category: t('categories.network') },
+      { path: `/${lang}/network/jwt-decoder`, title: t('tools.network.jwtDecoder.title'), description: t('tools.network.jwtDecoder.description'), category: t('categories.network') },
+      { path: `/${lang}/crypto/encryption`, title: t('tools.crypto.encryption.title'), description: t('tools.crypto.encryption.description'), category: t('categories.security') },
     ],
     '/network/jwt-decoder': [
-      { path: `/${lang}/network/base64-encoder`, title: 'Base64 Encoder', description: 'Decode JWT payload', category: 'Network' },
-      { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format JWT payload', category: 'JSON' },
-      { path: `/${lang}/crypto/encryption`, title: 'Encryption Tool', description: 'Security utilities', category: 'Security' },
+      { path: `/${lang}/network/base64-encoder`, title: t('tools.network.base64Encoder.title'), description: t('tools.network.base64Encoder.description'), category: t('categories.network') },
+      { path: `/${lang}/json/formatter`, title: t('tools.json.formatter.title'), description: t('tools.json.formatter.description'), category: t('categories.json') },
+      { path: `/${lang}/crypto/encryption`, title: t('tools.crypto.encryption.title'), description: t('tools.crypto.encryption.description'), category: t('categories.security') },
     ],
     '/network/ip-lookup': [
-      { path: `/${lang}/network/url-encoder`, title: 'URL Encoder', description: 'Encode URLs with IPs', category: 'Network' },
-      { path: `/${lang}/network/base64-encoder`, title: 'Base64 Encoder', description: 'Encode network data', category: 'Network' },
-      { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format IP lookup results', category: 'JSON' },
+      { path: `/${lang}/network/url-encoder`, title: t('tools.network.urlEncoder.title'), description: t('tools.network.urlEncoder.description'), category: t('categories.network') },
+      { path: `/${lang}/network/base64-encoder`, title: t('tools.network.base64Encoder.title'), description: t('tools.network.base64Encoder.description'), category: t('categories.network') },
+      { path: `/${lang}/json/formatter`, title: t('tools.json.formatter.title'), description: t('tools.json.formatter.description'), category: t('categories.json') },
     ],
     '/time/timestamp-converter': [
-      { path: `/${lang}/time/timezone-converter`, title: 'Timezone Converter', description: 'Convert between timezones', category: 'Time' },
-      { path: `/${lang}/time/date-calculator`, title: 'Date Calculator', description: 'Calculate date differences', category: 'Time' },
-      { path: `/${lang}/json/formatter`, title: 'JSON Formatter', description: 'Format timestamp data', category: 'JSON' },
+      { path: `/${lang}/time/timezone-converter`, title: t('tools.time.timezoneConverter.title'), description: t('tools.time.timezoneConverter.description'), category: t('categories.time') },
+      { path: `/${lang}/time/date-calculator`, title: t('tools.time.dateCalculator.title'), description: t('tools.time.dateCalculator.description'), category: t('categories.time') },
+      { path: `/${lang}/json/formatter`, title: t('tools.json.formatter.title'), description: t('tools.json.formatter.description'), category: t('categories.json') },
     ],
     '/time/timezone-converter': [
-      { path: `/${lang}/time/timestamp-converter`, title: 'Timestamp Converter', description: 'Convert Unix timestamps', category: 'Time' },
-      { path: `/${lang}/time/date-calculator`, title: 'Date Calculator', description: 'Add/subtract dates', category: 'Time' },
+      { path: `/${lang}/time/timestamp-converter`, title: t('tools.time.timestampConverter.title'), description: t('tools.time.timestampConverter.description'), category: t('categories.time') },
+      { path: `/${lang}/time/date-calculator`, title: t('tools.time.dateCalculator.title'), description: t('tools.time.dateCalculator.description'), category: t('categories.time') },
     ],
     '/time/date-calculator': [
-      { path: `/${lang}/time/timestamp-converter`, title: 'Timestamp Converter', description: 'Convert calculated dates', category: 'Time' },
-      { path: `/${lang}/time/timezone-converter`, title: 'Timezone Converter', description: 'Convert timezones', category: 'Time' },
+      { path: `/${lang}/time/timestamp-converter`, title: t('tools.time.timestampConverter.title'), description: t('tools.time.timestampConverter.description'), category: t('categories.time') },
+      { path: `/${lang}/time/timezone-converter`, title: t('tools.time.timezoneConverter.title'), description: t('tools.time.timezoneConverter.description'), category: t('categories.time') },
     ],
     '/editor/markdown': [
-      { path: `/${lang}/editor/mermaid`, title: 'Mermaid Editor', description: 'Create diagrams and flowcharts', category: 'Editor' },
-      { path: `/${lang}/text/word-counter`, title: 'Word Counter', description: 'Count markdown content', category: 'Text' },
-      { path: `/${lang}/text/case-converter`, title: 'Case Converter', description: 'Convert markdown text', category: 'Text' },
+      { path: `/${lang}/editor/mermaid`, title: t('tools.editor.mermaid.title'), description: t('tools.editor.mermaid.description'), category: t('categories.editor') },
+      { path: `/${lang}/text/word-counter`, title: t('tools.text.wordCounter.title'), description: t('tools.text.wordCounter.description'), category: t('categories.text') },
+      { path: `/${lang}/text/case-converter`, title: t('tools.text.caseConverter.title'), description: t('tools.text.caseConverter.description'), category: t('categories.text') },
     ],
     '/editor/mermaid': [
       { path: `/${lang}/editor/markdown`, title: 'Markdown Editor', description: 'Edit markdown with preview', category: 'Editor' },
@@ -132,9 +132,9 @@ const InternalLinks: React.FC = () => {
   return (
     <Card className="mt-8 border-border/40">
       <CardHeader>
-        <CardTitle className="text-lg">Related Tools</CardTitle>
+        <CardTitle className="text-lg">{t('internalLinks.relatedTools.title')}</CardTitle>
         <CardDescription>
-          Discover other tools that might be useful for your workflow
+          {t('internalLinks.relatedTools.description')}
         </CardDescription>
       </CardHeader>
       <CardContent>

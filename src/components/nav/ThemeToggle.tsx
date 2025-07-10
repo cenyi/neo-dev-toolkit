@@ -20,7 +20,7 @@ const ThemeToggle: React.FC = () => {
     { value: 'light', label: t('common.light'), icon: <Sun className="h-4 w-4" /> },
     { value: 'dark', label: t('common.dark'), icon: <Moon className="h-4 w-4" /> },
     { value: 'blue', label: t('common.blue'), icon: <Palette className="h-4 w-4" /> },
-    { value: 'matrix', label: "Matrix", icon: <Terminal className="h-4 w-4" /> },
+    { value: 'matrix', label: t('common.matrix'), icon: <Terminal className="h-4 w-4" /> },
     { value: 'system', label: t('common.system'), icon: <Monitor className="h-4 w-4" /> },
   ];
 

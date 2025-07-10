@@ -66,14 +66,14 @@ const AccessibilityEnhancements: React.FC<AccessibilityEnhancementsProps> = ({ c
           className="bg-primary text-primary-foreground px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
           onFocus={(e) => e.currentTarget.scrollIntoView({ behavior: 'smooth' })}
         >
-          Skip to main content (Alt+M)
+          {t('accessibility.skipToMainContent')} (Alt+M)
         </a>
         <a
           href="#navigation"
           className="bg-primary text-primary-foreground px-4 py-2 rounded-md ml-2 focus:outline-none focus:ring-2 focus:ring-ring"
           onFocus={(e) => e.currentTarget.scrollIntoView({ behavior: 'smooth' })}
         >
-          Skip to navigation (Alt+N)
+          {t('accessibility.skipToNavigation')} (Alt+N)
         </a>
       </div>
 
@@ -83,10 +83,10 @@ const AccessibilityEnhancements: React.FC<AccessibilityEnhancementsProps> = ({ c
           className="bg-accent text-accent-foreground p-2 rounded-md shadow-md hover:bg-accent/80 focus:outline-none focus:ring-2 focus:ring-ring"
           onClick={() => {
             document.body.classList.toggle('left-handed-layout');
-            announceToScreenReader('Layout orientation toggled');
+            announceToScreenReader(t('accessibility.layoutOrientationToggled'));
           }}
-          aria-label="Toggle left-handed layout"
-          title="Toggle layout for left-handed users"
+          aria-label={t('accessibility.toggleLeftHandedLayout')}
+          title={t('accessibility.toggleLeftHandedLayoutTitle')}
         >
           <svg
             width="16"
@@ -109,10 +109,10 @@ const AccessibilityEnhancements: React.FC<AccessibilityEnhancementsProps> = ({ c
           className="bg-accent text-accent-foreground p-2 rounded-md shadow-md hover:bg-accent/80 focus:outline-none focus:ring-2 focus:ring-ring"
           onClick={() => {
             document.body.classList.toggle('high-contrast');
-            announceToScreenReader('High contrast mode toggled');
+            announceToScreenReader(t('accessibility.highContrastToggled'));
           }}
-          aria-label="Toggle high contrast mode"
-          title="Toggle high contrast for better visibility"
+          aria-label={t('accessibility.toggleHighContrast')}
+          title={t('accessibility.toggleHighContrastTitle')}
         >
           <svg
             width="16"

@@ -53,9 +53,9 @@ export const fr = {
     },
     home: {
       title: 'Hub d\'Outils pour Développeurs',
-      subtitle: 'Outils de développement professionnels construits avec la technologie Lovable AI',
-      description: 'Une collection complète d\'outils essentiels pour les développeurs, y compris le formatage JSON, le traitement de texte, le chiffrement et plus encore. Construit avec Lovable AI pour des performances optimales.',
-      headerTitle: 'Hub Gratuit d\'Outils pour Développeurs en Ligne - Construit avec Lovable',
+      subtitle: 'Outils de développement professionnels',
+      description: 'Une collection complète d\'outils essentiels pour les développeurs, y compris le formatage JSON, le traitement de texte, le chiffrement et plus encore. Pour des performances optimales.',
+      headerTitle: 'Hub Gratuit d\'Outils pour Développeurs en Ligne',
       toolsCollectionTitle: 'Collection d\'Outils Professionnels pour Développeurs',
       whyChooseTitle: 'Pourquoi Choisir DevTools Hub pour vos Besoins de Développement?',
       feature1Title: '100% Gratuit & Sans Inscription',

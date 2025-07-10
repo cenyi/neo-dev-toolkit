@@ -4,9 +4,9 @@ export const ko = {
     common: { theme: '테마', language: '언어', light: '라이트', dark: '다크', copy: '복사', clear: '지우기', format: '형식 지정', minify: '최소화', validate: '유효성 검사', convert: '변환', encrypt: '암호화', decrypt: '복호화', preview: '미리보기', download: '다운로드', toYaml: 'YAML로', toXml: 'XML로', toCsv: 'CSV로', blue: '파란색', system: '시스템', comingSoon: '곧 출시 예정' },
     home: { 
       title: '개발자 도구 허브',
-      subtitle: 'Lovable AI 기술로 구축된 전문 개발 도구',
-      description: 'JSON 서식 지정, 텍스트 처리, 암호화 등을 포함한 필수 개발자 도구 모음입니다. 최적의 성능을 위해 Lovable AI로 구축되었습니다.',
-      headerTitle: '무료 온라인 개발자 도구 허브 - Lovable로 제작',
+      subtitle: '전문 개발 도구',
+      description: 'JSON 서식 지정, 텍스트 처리, 암호화 등을 포함한 필수 개발자 도구 모음입니다. 최적의 성능을 위해 구축되었습니다.',
+      headerTitle: '무료 온라인 개발자 도구 허브',
       toolsCollectionTitle: '전문 개발자 도구 컬렉션',
       whyChooseTitle: '개발 필요에 DevTools Hub를 선택하는 이유는 무엇입니까?',
       feature1Title: '100% 무료 & 등록 없음',

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { SEO_PAGES, getPagesByCategory, getHighPriorityPages, getTDKForLanguage, type SEOPageConfig, type SupportedLanguage, getMultiLanguageHighPriorityPages, getMultiLanguagePagesByCategory } from '@/config/seo-pages';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileJson, FileText, Network, Edit, Clock, Shield, Regex, Home, Info, FileCheck, Scale } from 'lucide-react';
@@ -29,6 +30,7 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
   showAllPages = false, 
   compact = false 
 }) => {
+  const { t } = useTranslation();
   const { lang = 'en' } = useParams<{ lang: string }>();
   const currentLang = (lang as SupportedLanguage) || 'en';
   
@@ -58,7 +60,7 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
     return (
       <div className="bg-muted/30 py-8">
         <div className="container mx-auto px-4">
-          <h3 className="text-lg font-semibold mb-4 text-center">Popular Developer Tools</h3>
+          <h3 className="text-lg font-semibold mb-4 text-center">{t('allPagesLinks.popularTools')}</h3>
           <div className="flex flex-wrap justify-center gap-2">
             {highPriorityPages.map((page) => {
               const actualPath = buildActualPath(page.path);
@@ -85,12 +87,12 @@ const AllPagesLinks: React.FC<AllPagesLinksProps> = ({
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold mb-2">
-            {showAllPages ? 'All Developer Tools' : 'Popular Developer Tools'}
+            {showAllPages ? t('allPagesLinks.allTools') : t('allPagesLinks.popularTools')}
           </h2>
           <p className="text-muted-foreground">
             {showAllPages 
-              ? 'Complete collection of free online developer tools organized by category'
-              : 'Most popular and frequently used developer tools'
+              ? t('allPagesLinks.allToolsDescription')
+              : t('allPagesLinks.popularToolsDescription')
             }
           </p>
         </div>

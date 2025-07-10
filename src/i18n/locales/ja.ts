@@ -42,7 +42,7 @@ export const ja = {
       title: '開発者ツールハブ',
       subtitle: 'モダンなニューモーフィックデザインのプロフェッショナル開発ツール',
       description: 'JSON フォーマット、テキスト処理、暗号化などを含む、必須の開発者ツールの包括的なコレクション。',
-      headerTitle: '無料のオンライン開発者ツールハブ - Lovable で構築',
+      headerTitle: '無料のオンライン開発者ツールハブ',
       toolsCollectionTitle: 'プロフェッショナル開発者ツールコレクション',
       whyChooseTitle: 'なぜDevTools Hubを開発ニーズに選ぶべきですか？',
       feature1Title: '100% 無料 & 登録不要',
