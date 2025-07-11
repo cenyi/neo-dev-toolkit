@@ -1,4 +1,3 @@
-
 // 导入必要的React钩子
 import { useState, useRef } from 'react';
 // 导入国际化钩子
@@ -28,6 +27,7 @@ interface ToolDropdownProps {
 const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, contentWidth = 'w-64' }) => {
   // 国际化翻译函数
   const { t } = useTranslation();
+
   // 当前位置信息
   const location = useLocation();
   // 导航函数
@@ -39,22 +39,31 @@ const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, conten
   // 容器引用
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // 2025-07-11修正：用于存储菜单定位
+  const [dropdownPosition, setDropdownPosition] = useState<{left: number; top: number; width: number}>({left: 0, top: 0, width: 160});
+
   // 检查当前是否有激活的工具
   const isActive = tools.some(tool => location.pathname === tool.path);
 
   // 鼠标进入处理函数
   const handleMouseEnter = () => {
-    console.log('Mouse entered, opening dropdown');
+    // 2025-07-11修正：菜单打开时获取按钮位置并设置菜单定位
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setDropdownPosition({
+        left: rect.left,
+        top: rect.bottom + 4, // 下移4px间距
+        width: rect.width
+      });
+    }
     setIsOpen(true);
   };
 
   // 鼠标离开处理函数
   const handleMouseLeave = (e: React.MouseEvent) => {
-    // 检查e.relatedTarget是否是有效的Node
     if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget as Node)) {
       return;
     }
-    console.log('Mouse left container');
     setIsOpen(false);
   };
 
@@ -69,14 +78,14 @@ const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, conten
     >
       {/* 导航按钮 */}
       <button
-  ref={buttonRef}
-  className={`nav-button px-4 py-2.5 rounded-xl text-sm font-medium flex items-center space-x-2.5 hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:shadow-md transition-colors duration-150 py-2 ${isActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}
->
-        <Icon size={16} />  {/* 显示图标 */}
-        <span>{t(`nav.${navKey}`)}</span>  {/* 显示翻译后的导航文本，设置最小宽度为100px */}
-        <ChevronDown size={16} />  {/* 显示下拉箭头 */}
+        ref={buttonRef}
+        className={`nav-button px-4 py-2.5 rounded-xl text-sm font-medium flex items-center space-x-2.5 hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:shadow-md transition-colors duration-150 py-2 ${isActive ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'}`}
+      >
+        <Icon size={16} />
+        <span>{t(`nav.${navKey}`)}</span>
+        <ChevronDown size={16} />
       </button>
-      
+
       {/* 下拉菜单 */}
       {isOpen && (
         <DropdownMenu
@@ -85,14 +94,24 @@ const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, conten
           modal={false}
         >
           <DropdownMenuContent
-  className="absolute top-full mt-1 z-50 border-border bg-background/95 backdrop-blur-md"
-  style={{
-    minWidth: buttonRef.current?.offsetWidth,  // 最小宽度与按钮相同
-    left: containerRef.current 
-      ? buttonRef.current?.offsetLeft
-      : 0  // 左对齐按钮
-  }}
->
+            // className="absolute top-full mt-1 z-50 border-border bg-background/95 backdrop-blur-md"
+            // style={{
+            //   minWidth: buttonRef.current?.offsetWidth,  // 最小宽度与按钮相同
+            //   left: containerRef.current 
+            //     ? buttonRef.current?.offsetLeft
+            //     : 0  // 左对齐按钮
+            // }}
+            // ---------------------------2025-07-11修正：采用fixed定位与getBoundingClientRect---------------------------
+            className="z-50 border-border bg-background/95 backdrop-blur-md shadow-xl rounded-md"
+            style={{
+              position: "fixed",
+              left: dropdownPosition.left,
+              top: dropdownPosition.top,
+              minWidth: dropdownPosition.width,
+              marginTop: 0,
+            }}
+            // --------------------------------------------------------------------------------------------------------
+          >
             {/* 渲染工具列表 */}
             {tools.map((tool) => (
               <DropdownMenuItem
@@ -110,4 +129,4 @@ const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, conten
   );
 };
 
-export default ToolDropdown;  // 导出组件
+export default ToolDropdown;
