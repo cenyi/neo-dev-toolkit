@@ -6,13 +6,12 @@
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
-/* 全局缩放效果 - 相当于浏览器75%缩放 */
+/* 紧凑布局设置 */
 html {
-  transform: scale(0.75);
-  transform-origin: top center;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  font-size: 13px;
 }
 
 body {
@@ -20,6 +19,97 @@ body {
   justify-content: center;
   margin: 0 auto;
   max-width: 1200px;
+  line-height: 1.3;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 优化容器间距 */
+.container,
+.card,
+.panel,
+.section {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 优化按钮样式 */
+button {
+  padding: 0.2rem 0.4rem;
+  margin: 0.08rem;
+  font-size: 13px;
+}
+
+/* 优化表单元素 */
+input,
+select,
+textarea {
+  padding: 0.2rem 0.4rem;
+  margin: 0.15rem 0;
+  font-size: 13px;
+}
+
+/* 优化标题间距 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
+/* 优化段落间距 */
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+/* 优化列表间距 */
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.2rem;
+}
+
+/* 优化表格间距 */
+table {
+  border-collapse: collapse;
+  margin-bottom: 0.5rem;
+}
+
+th,
+td {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+
+  .container,
+  .card,
+  .panel,
+  .section {
+    padding: 0.35rem;
+    margin-bottom: 0.35rem;
+  }
 }
 
 @layer base {
