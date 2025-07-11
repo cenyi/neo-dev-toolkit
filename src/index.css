@@ -9,9 +9,17 @@
 /* 全局缩放效果 - 相当于浏览器75%缩放 */
 html {
   transform: scale(0.75);
-  transform-origin: top left;
-  width: 133.33%; /* 100% / 0.75 */
-  height: 133.33%;
+  transform-origin: top center;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 @layer base {
