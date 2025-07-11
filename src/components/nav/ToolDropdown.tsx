@@ -50,10 +50,12 @@ const ToolDropdown: React.FC<ToolDropdownProps> = ({ navKey, tools, Icon, conten
 
   // 鼠标离开处理函数
   const handleMouseLeave = (e: React.MouseEvent) => {
-    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
-      console.log('Mouse left container');
-      setIsOpen(false);
+    // 检查e.relatedTarget是否是有效的Node
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget as Node)) {
+      return;
     }
+    console.log('Mouse left container');
+    setIsOpen(false);
   };
 
   return (
