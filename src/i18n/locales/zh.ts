@@ -208,7 +208,9 @@ export const zh = {
         },
         urlEncoder: {
           title: 'URL编码器/解码器',
-          description: '编码URL以安全传输或解码百分比编码的URL。'
+          description: '编码URL以安全传输或解码百分比编码的URL。',
+          encode: '编码',
+          decode: '解码'
         },
         base64Encoder: {
           title: 'Base64编码器/解码器',
@@ -236,6 +238,9 @@ export const zh = {
           inputPlaceholder: '输入要编码或解码的文本...',
           outputPlaceholder: '编码或解码结果将显示在这里'
         }
+      },
+      other: {
+        title: '其他工具'
       },
       text: {
         title: '文本处理工具',
@@ -314,21 +319,25 @@ export const zh = {
           newText: '新文本'
         }
       },
-      timestampConverter: {
-        title: '时间戳转换器',
-        description: '在Unix时间戳和人类可读日期之间转换',
-        timestamp: 'Unix时间戳',
-        timestampPlaceholder: '输入Unix时间戳（秒）',
-        dateTime: '日期和时间（UTC）',
-        current: '当前时间'
-      },
-      timezoneConverter: {
-        title: '时区转换器',
-        description: '在不同时区之间转换日期和时间',
-        sourceDateTime: '源日期和时间',
-        sourceTimezone: '来自时区',
-        targetTimezone: '到时区',
-        convertedDateTime: '转换后的日期和时间'
+      time: {
+        title: '时间工具',
+        description: '时间工具：时间戳转换器、时区转换器',
+        timestampConverter: {
+          title: '时间戳转换器',
+          description: '在Unix时间戳和人类可读日期之间转换',
+          timestamp: 'Unix时间戳',
+          timestampPlaceholder: '输入Unix时间戳（秒）',
+          dateTime: '日期和时间（UTC）',
+          current: '当前时间'
+        },
+        timezoneConverter: {
+          title: '时区转换器',
+          description: '在不同时区之间转换日期和时间',
+          sourceDateTime: '源日期和时间',
+          sourceTimezone: '来自时区',
+          targetTimezone: '到时区',
+          convertedDateTime: '转换后的日期和时间'
+        },
       },
       editor: {
         meta: {
@@ -393,6 +402,9 @@ export const zh = {
        },
     },
     time: {
+        timestampConverter: {
+          title: '时间戳转换器'
+        },
       description: '用于时间戳转换、时区处理和日期计算的必备日期和时间实用工具。',
       meta: {
         title: '日期和时间工具 - 时间戳、时区和日期计算器',

@@ -6,14 +6,14 @@ export const en = {
       allTools: 'All Developer Tools',
       allToolsDescription: 'Browse our complete collection of development utilities'
     },
-    nav: { 
-      home: 'Home', 
-      json: 'JSON', 
-      network: 'Network', 
-      text: 'Text', 
-      time: 'Time', 
-      encryption: 'Encryption', 
-      markdown: 'Markdown', 
+    nav: {
+      home: 'Home',
+      json: 'JSON',
+      network: 'Network',
+      text: 'Text',
+      time: 'Time',
+      encryption: 'Encryption',
+      markdown: 'Markdown',
       mermaid: 'Mermaid',
       regex: 'RegEx',
       editor: 'Editor'
@@ -28,32 +28,32 @@ export const en = {
       regex: 'Regular Expression Tool - Test and validate regex patterns',
       editor: 'Code Editors - Markdown and Mermaid diagram editors'
     },
-    common: { 
-      theme: 'Theme', 
-      language: 'Language', 
-      light: 'Light', 
-      dark: 'Dark', 
-      copy: 'Copy', 
-      clear: 'Clear', 
-      format: 'Format', 
-      minify: 'Minify', 
-      validate: 'Validate', 
-      convert: 'Convert', 
-      encrypt: 'Encrypt', 
-      decrypt: 'Decrypt', 
-      preview: 'Preview', 
-      download: 'Download', 
-      toYaml: 'To YAML', 
-      toXml: 'To XML', 
+    common: {
+      theme: 'Theme',
+      language: 'Language',
+      light: 'Light',
+      dark: 'Dark',
+      copy: 'Copy',
+      clear: 'Clear',
+      format: 'Format',
+      minify: 'Minify',
+      validate: 'Validate',
+      convert: 'Convert',
+      encrypt: 'Encrypt',
+      decrypt: 'Decrypt',
+      preview: 'Preview',
+      download: 'Download',
+      toYaml: 'To YAML',
+      toXml: 'To XML',
       toCsv: 'To CSV',
-      toDart: 'To Dart', 
-      blue: 'Blue', 
-      system: 'System', 
-      comingSoon: 'Coming Soon', 
-      error: 'Error', 
-      success: 'Success', 
-      info: 'Info', 
-      notFound: 'Not Found', 
+      toDart: 'To Dart',
+      blue: 'Blue',
+      system: 'System',
+      comingSoon: 'Coming Soon',
+      error: 'Error',
+      success: 'Success',
+      info: 'Info',
+      notFound: 'Not Found',
       compare: 'Compare',
       test: 'Test',
       match: 'Match',
@@ -68,9 +68,9 @@ export const en = {
       copyCode: 'Copy Code',
       loadSample: 'Try Sample JSON'
     },
-    home: { 
-      title: 'Developer Tools Hub', 
-      subtitle: 'Professional development tools', 
+    home: {
+      title: 'Developer Tools Hub',
+      subtitle: 'Professional development tools',
       description: 'A comprehensive collection of essential developer tools including JSON formatting, text processing, encryption, and more. For optimal performance.',
       headerTitle: 'Free Online Developer Tools Hub',
       toolsCollectionTitle: 'Professional Developer Tools Collection',
@@ -82,7 +82,7 @@ export const en = {
       feature3Title: 'Modern Responsive Interface',
       feature3Description: 'Clean, responsive design powered by Lovable AI that works perfectly on all devices'
     },
-    tools: { 
+    tools: {
       json: {
         title: 'JSON Tools',
         description: 'Comprehensive JSON tools for formatting, validation, schema checking, and data manipulation.',
@@ -208,11 +208,21 @@ export const en = {
         },
         urlEncoder: {
           title: 'URL Encoder / Decoder',
-          description: 'Encode URLs for safe transmission or decode percent-encoded URLs.'
+          description: 'Encode URLs for safe transmission or decode percent-encoded URLs.',
+          encode: 'Encode',
+          decode: 'Decode',
+          input: 'Input',
+          output: 'Output',
+          inputPlaceholder: 'Enter text to encode or decode...',
+          outputPlaceholder: 'Encoded or decoded result will appear here'
         },
         base64Encoder: {
           title: 'Base64 Encoder / Decoder',
-          description: 'Encode text to Base64 or decode Base64 strings back to text.'
+          description: 'Encode text to Base64 or decode Base64 strings back to text.',
+          input: 'Input',
+          output: 'Output',
+          inputPlaceholder: 'Enter text to encode or decode...',
+          outputPlaceholder: 'Encoded or decoded result will appear here'
         },
         ipLookup: {
           title: 'IP Address Lookup',
@@ -236,7 +246,10 @@ export const en = {
           inputPlaceholder: 'Enter text to encode or decode...',
           outputPlaceholder: 'Encoded or decoded result will appear here'
         }
-      }, 
+      },
+      other: {
+        title: 'Other Tools'
+      },
       text: {
         title: 'Text Processing Tools',
         description: 'Essential text tools: case converter, word counter, text reverser, whitespace remover & diff checker. Free, fast, client-side processing.',
@@ -314,21 +327,25 @@ export const en = {
           newText: 'New Text'
         }
       },
-      timestampConverter: {
-        title: 'Timestamp Converter',
-        description: 'Convert between Unix timestamps and human-readable dates',
-        timestamp: 'Unix Timestamp',
-        timestampPlaceholder: 'Enter Unix timestamp (seconds)',
-        dateTime: 'Date & Time (UTC)',
-        current: 'Current Time'
-      },
-      timezoneConverter: {
-        title: 'Timezone Converter',
-        description: 'Convert date and time between different timezones',
-        sourceDateTime: 'Source Date & Time',
-        sourceTimezone: 'From Timezone',
-        targetTimezone: 'To Timezone',
-        convertedDateTime: 'Converted Date & Time'
+      time: {
+        title: 'Time Tools',
+        description: 'Time conversion and manipulation tools for date and time manipulation.',
+        timestampConverter: {
+          title: 'Timestamp Converter',
+          description: 'Convert between Unix timestamps and human-readable dates',
+          timestamp: 'Unix Timestamp',
+          timestampPlaceholder: 'Enter Unix timestamp (seconds)',
+          dateTime: 'Date & Time (UTC)',
+          current: 'Current Time'
+        },
+        timezoneConverter: {
+          title: 'Timezone Converter',
+          description: 'Convert date and time between different timezones',
+          sourceDateTime: 'Source Date & Time',
+          sourceTimezone: 'From Timezone',
+          targetTimezone: 'To Timezone',
+          convertedDateTime: 'Converted Date & Time'
+        }
       },
       editor: {
         meta: {
@@ -377,7 +394,7 @@ export const en = {
         downloadSvg: 'Download SVG',
         downloadPng: 'Download PNG'
       },
-      crypto: { 
+      crypto: {
         title: 'Crypto Tools',
         description: 'Secure your data with our crypto tools: hash generators (MD5, SHA-1, SHA-256, SHA-512), HMAC, and AES encryption.',
         jwtDecoder: {
@@ -393,6 +410,9 @@ export const en = {
        },
     },
     time: {
+        timestampConverter: {
+          title: 'Timestamp Converter'
+        },
       description: 'Essential date and time utilities for timestamp conversion, timezone handling, and date calculations.',
       meta: {
         title: 'Date & Time Tools - Timestamp, Timezone, and Date Calculators',

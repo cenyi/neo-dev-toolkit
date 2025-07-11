@@ -20,13 +20,13 @@ const TimestampConverter: React.FC = () => {
     const ss = date.getUTCSeconds().toString().padStart(2, '0');
     return `${YYYY}-${MM}-${DD}T${hh}:${mm}:${ss}`;
   };
-  
+
   const handleSetCurrentTime = () => {
     const now = new Date();
     setTimestamp(Math.floor(now.getTime() / 1000).toString());
     setDateTime(toUTCString(now));
   };
-  
+
   useEffect(() => {
     document.title = "Timestamp Converter - DevTools Hub";
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -64,26 +64,26 @@ const TimestampConverter: React.FC = () => {
 
   return (
     <ToolPageLayout
-      title={t('tools.timestampConverter.title')}
-      description={t('tools.timestampConverter.description')}
+      title={t('tools.time.timestampConverter.title')}
+      description={t('tools.time.timestampConverter.description')}
     >
       <Card>
         <CardContent className="space-y-4 pt-6">
           <div className="flex items-end space-x-2">
             <div className="flex-grow">
-              <label htmlFor="timestamp" className="text-sm font-medium">{t('tools.timestampConverter.timestamp')}</label>
+              <label htmlFor="timestamp" className="text-sm font-medium">{t('tools.time.timestampConverter.timestamp')}</label>
               <Input
                 id="timestamp"
                 value={timestamp}
                 onChange={handleTimestampChange}
-                placeholder={t('tools.timestampConverter.timestampPlaceholder')}
+                placeholder={t('tools.time.timestampConverter.timestampPlaceholder')}
               />
             </div>
-            <Button onClick={handleSetCurrentTime}>{t('tools.timestampConverter.current')}</Button>
+            <Button onClick={handleSetCurrentTime}>{t('tools.time.timestampConverter.current')}</Button>
           </div>
 
           <div className="flex-grow">
-            <label htmlFor="datetime" className="text-sm font-medium">{t('tools.timestampConverter.dateTime')}</label>
+            <label htmlFor="datetime" className="text-sm font-medium">{t('tools.time.timestampConverter.dateTime')}</label>
             <Input
               id="datetime"
               type="datetime-local"

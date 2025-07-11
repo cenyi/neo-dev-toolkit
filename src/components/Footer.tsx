@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
-import { CompactToolsLinks } from './AllPagesLinks';
+
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
       links: [
         { path: `/${lang}/editor/markdown`, name: t('tools.editor.markdown.title') },
         { path: `/${lang}/editor/mermaid`, name: t('tools.editor.mermaid.title') },
-        { path: `/${lang}/time/timestamp-converter`, name: t('tools.time.timestampConverter.title') },
+        { path: `/${lang}/time/timestamp-converter`, name: t('tools.timestampConverter.title') },
         { path: `/${lang}/crypto/encryption`, name: t('tools.crypto.title') }
       ]
     }
@@ -62,8 +62,8 @@ const Footer: React.FC = () => {
               <ul className="space-y-2">
                 {category.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link 
-                      to={link.path} 
+                    <Link
+                      to={link.path}
                       className="text-sm text-foreground hover:text-primary transition-colors"
                       title={`${link.name} - Free Online Tool`}
                     >
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
             </div>
           ))}
         </div>
-        
+
         {/* 原有的Footer内容 */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left border-t border-border pt-8">
           <div className="col-span-2 md:col-span-1">
@@ -107,16 +107,9 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-8 border-t border-border pt-8 text-center">
           <p className="text-base text-muted-foreground">{t('footer.copyright', { year: currentYear })}</p>
-          <div className="mt-2">
-            <Link to={`/${lang}/sitemap`} className="text-sm text-foreground hover:text-primary transition-colors">
-              Site Map
-            </Link>
-          </div>
         </div>
       </div>
-      
-      {/* SEO优化：紧凑版工具链接 */}
-      <CompactToolsLinks />
+
     </footer>
   );
 };

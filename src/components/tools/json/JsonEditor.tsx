@@ -74,6 +74,35 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
           showSnippets: false 
         }
       });
+
+      // Add wheel event handler to allow page scrolling when editor is at top/bottom
+      const editorDomNode = editor.getDomNode();
+      if (editorDomNode) {
+        // Use capture phase to intercept before Monaco handles it
+        editorDomNode.addEventListener('wheel', (e: WheelEvent) => {
+          const scrollTop = editor.getScrollTop();
+          const scrollHeight = editor.getScrollHeight();
+          const clientHeight = editorDomNode.clientHeight;
+          
+          // Check if scrolling up and already at top
+          if (e.deltaY < 0 && scrollTop <= 0) {
+            // Prevent Monaco from handling this event and let page scroll
+            e.stopImmediatePropagation();
+            // Manually trigger page scroll
+            window.scrollBy(0, e.deltaY);
+            return;
+          }
+          
+          // Check if scrolling down and already at bottom
+          if (e.deltaY > 0 && scrollTop + clientHeight >= scrollHeight) {
+            // Prevent Monaco from handling this event and let page scroll
+            e.stopImmediatePropagation();
+            // Manually trigger page scroll
+            window.scrollBy(0, e.deltaY);
+            return;
+          }
+        }, { capture: true });
+      }
     } catch (error) {
       console.error("Monaco Editor mount error:", error);
       setLoadError(true);
