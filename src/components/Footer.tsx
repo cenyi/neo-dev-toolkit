@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
       links: [
         { path: `/${lang}/editor/markdown`, name: t('tools.editor.markdown.title') },
         { path: `/${lang}/editor/mermaid`, name: t('tools.editor.mermaid.title') },
-        { path: `/${lang}/time/timestamp-converter`, name: t('tools.timestampConverter.title') },
+        { path: `/${lang}/time/timestamp-converter`, name: t('tools.time.timestampConverter.title') },
         { path: `/${lang}/crypto/encryption`, name: t('tools.crypto.title') }
       ]
     }
