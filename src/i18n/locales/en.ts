@@ -179,15 +179,6 @@ export const en = {
         headerPlaceholder: 'Decoded header will appear here',
         payloadPlaceholder: 'Decoded payload will appear here'
       },
-      jsonDiff: {
-        title: 'JSON Diff',
-        description: 'Compare differences between two JSON objects',
-        originalJson: 'Original JSON',
-        newJson: 'New JSON',
-        originalPlaceholder: 'Paste original JSON here',
-        newPlaceholder: 'Paste new JSON here',
-        diffResult: 'Diff Result'
-      },
       network: {
         title: 'Network & Encoding Tools',
         description: 'Free network tools: URL encoder/decoder, Base64 converter, IP lookup & JWT decoder. Secure, client-side processing, no data storage required.',
@@ -324,6 +315,11 @@ export const en = {
           compareText: 'Compare Text',
           clearAll: 'Clear All',
           originalText: 'Original Text',
+          originalJson: 'Original JSON',
+          newJson: 'New JSON',
+          originalPlaceholder: 'Paste original JSON here',
+          newPlaceholder: 'Paste new JSON here',
+          diffResult: 'Diff Result',
           newText: 'New Text'
         }
       },

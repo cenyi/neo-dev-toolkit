@@ -38,21 +38,21 @@ const TextToolsPage: React.FC = () => {
       color: 'text-green-500'
     },
     {
-      path: '/text/whitespace-remover',
+      path: `/${lang}/text/whitespace-remover`,
       icon: Eraser,
       title: t('tools.text.whitespaceRemover.title'),
       description: t('tools.text.whitespaceRemover.description'),
       color: 'text-orange-500'
     },
     {
-      path: '/text/lorem-ipsum-generator',
+      path: `/${lang}/text/lorem-ipsum-generator`,
       icon: FileText,
       title: t('tools.text.loremIpsumGenerator.title'),
       description: t('tools.text.loremIpsumGenerator.description'),
       color: 'text-indigo-500'
     },
     {
-      path: '/text/text-diff',
+      path: `/${lang}/text/text-diff`,
       icon: GitCompare,
       title: t('tools.text.textDiff.title'),
       description: t('tools.text.textDiff.description'),
