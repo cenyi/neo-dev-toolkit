@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; // 2023-10-27 添加useState导入
 import { useTranslation } from 'react-i18next';
 import { useJsonTool } from '@/hooks/json/useJsonTool';
 import JsonToolbar from './JsonToolbar';
@@ -41,23 +41,62 @@ const JsonTool: React.FC = () => {
     loadSampleJson
   } = useJsonTool();
 
+  // 2023-10-27 添加结果区域显示控制状态
+  const [isResultVisible, setIsResultVisible] = useState(false);
+
   return (
     <div className="h-screen flex flex-col">
       <div className="p-4">
         <JsonToolbar
-          onFormat={handleToggleMinifyFormat}
-          onMinify={handleToggleMinifyFormat}
+          onFormat={() => {
+            handleToggleMinifyFormat(true);
+            // 点击Format按钮时隐藏结果区域
+            setIsResultVisible(false);
+          }}
+          onMinify={() => {
+            handleToggleMinifyFormat(false);
+            // 点击Minify按钮时隐藏结果区域
+            setIsResultVisible(false);
+          }}
           onCopy={copyToClipboard}
-          onClear={clearAll}
+          onClear={() => {
+            clearAll();
+            // 点击Clear按钮时显示结果区域
+            setIsResultVisible(false);
+          }}
           isFormatMinifyDisabled={!isValid || !input.trim()}
-          onExtract={handleExtractValue}
+          onExtract={()=>{
+            handleExtractValue();
+            // 点击Extract按钮时显示结果区域
+            setIsResultVisible(true);
+          }}
           extractPath={extractPath}
           onExtractPathChange={onExtractPathChange}
-          onConvertToYaml={handleConvertToYaml}
-          onConvertToXml={handleConvertToXml}
-          onConvertToCsv={handleConvertToCsv}
-          onConvertToDart={handleConvertToDart}
-          onGenerateGraph={handleGenerateGraph}
+          onConvertToYaml={()=>{
+            handleConvertToYaml();
+            // 点击Convert to YAML按钮时显示结果区域
+            setIsResultVisible(true);
+          }}
+          onConvertToXml={()=>{
+            handleConvertToXml();
+            // 点击Convert to XML按钮时显示结果区域
+            setIsResultVisible(true);
+          }}
+          onConvertToCsv={()=>{
+            handleConvertToCsv();
+            // 点击Convert to CSV按钮时显示结果区域
+            setIsResultVisible(true);
+          }}
+          onConvertToDart={()=>{
+            handleConvertToDart();
+            // 点击Convert to Dart按钮时显示结果区域
+            setIsResultVisible(true);
+          }}
+          onGenerateGraph={()=>{
+            handleGenerateGraph();
+            // 点击Generate Graph按钮时显示结果区域
+            setIsResultVisible(true);
+          }}
           history={history}
           onSelectHistory={handleSelectFromHistory}
           onRemoveHistoryItem={removeFromHistory}
@@ -84,7 +123,7 @@ const JsonTool: React.FC = () => {
             validationError={validationError}
           />
           </div>
-        <div className="flex-1 flex flex-col min-h-0 min-w-0 p-4">
+        <div className={`flex-1 flex flex-col min-h-0 min-w-0 p-4 ${!isResultVisible ? 'hidden' : ''}`}>
           <JsonResultDisplay outputContent={outputContent} title={outputTitle} onCopyOutputCode={copyOutputCode} />
           </div>
       </div>

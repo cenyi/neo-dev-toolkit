@@ -102,7 +102,7 @@ export const useJsonTool = () => {
     clearGraph();
   };
 
-  const handleToggleMinifyFormat = () => {
+  const handleToggleMinifyFormat = (minify?:boolean) => {
     setOutputContent(null);
     setOutputTitle(null);
     clearGraph();
@@ -116,7 +116,9 @@ export const useJsonTool = () => {
     }
 
     try {
-      if (isMinified) {
+    // 如果提供了minify参数，就使用它；否则切换当前状态
+    const shouldMinify = minify !== undefined ? minify : !isMinified;
+    if (shouldMinify) {
         const formattedJson = formatJsonSafely(input);
         setInput(formattedJson);
         navigator.clipboard.writeText(formattedJson);
