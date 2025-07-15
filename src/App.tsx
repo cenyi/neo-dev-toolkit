@@ -51,8 +51,8 @@ import "@/i18n";
 const supportedLangs = ['en', 'es', 'fr', 'de', 'pt', 'ru', 'ja', 'ko', 'zh'];
 
 const LanguageRedirect = () => {
-  // 始终默认重定向到英文路径
-  return <Navigate to="/en" replace />;
+  // 默认重定向到英文的JSON formatter页面
+  return <Navigate to="/en/json/formatter" replace />;
 };
 
 const queryClient = new QueryClient();
@@ -69,16 +69,8 @@ function App() {
               <Sonner />
               <main className="flex-grow">
                 <Routes>
-          {/* 直接首页路由 */}
-          <Route path="/" element={
-            <PageWrapper 
-              title="Developer Tools Hub" 
-              description="Free developer tools built with Lovable AI" 
-              keywords="developer tools, JSON formatter, text converter, encryption utilities"
-            >
-              <HomePage />
-            </PageWrapper>
-          } />
+          {/* 直接首页路由 - 重定向到JSON formatter */}
+          <Route path="/" element={<LanguageRedirect />} />
                   <Route path=":lang/json/formatter" element={
                     <PageWrapper 
                       title="JSON Formatter & Validator" 
