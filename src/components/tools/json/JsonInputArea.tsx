@@ -22,7 +22,7 @@ const JsonInputArea: React.FC<JsonInputAreaProps> = ({
   const { t } = useTranslation();
   
   return (
-    <div className="h-[700px] flex flex-col bg-background border rounded-lg min-w-0 overflow-hidden">
+    <div className="h-full flex flex-col bg-background border rounded-lg min-w-0 overflow-hidden">
       <div className="flex items-center justify-between px-4 pt-4 mb-3">
         <h3 className="text-lg font-semibold">{t('tools.json.input')}</h3>
         {value.trim() && (

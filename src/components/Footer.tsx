@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 
 
-const Footer: React.FC = () => {
+const Footer: React.FC<{ fullWidth?: boolean }> = ({ fullWidth = false }) => {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentYear = new Date().getFullYear();
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-card border-t">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <div className={`${fullWidth ? 'w-full px-0' : 'max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8'}`}>
         {/* 工具分类内部链接区域 */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {toolCategories.map((category, index) => (

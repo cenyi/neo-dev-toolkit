@@ -13,9 +13,10 @@ interface PageWrapperProps {
   children: React.ReactNode;
   description?: string;
   keywords?: string;
+  fullWidth?: boolean;
 }
 
-const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description, keywords }) => {
+const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description, keywords, fullWidth = false }) => {
   const location = useLocation();
   const { lang } = useParams<{ lang?: string }>();
   const { i18n } = useTranslation();
@@ -53,6 +54,17 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
     { code: 'ja', name: '日本語' },
     { code: 'ko', name: '한국어' },
   ];
+
+  useEffect(() => {
+    if (fullWidth) {
+      document.body.classList.add('full-width');
+    } else {
+      document.body.classList.remove('full-width');
+    }
+    return () => {
+      document.body.classList.remove('full-width');
+    };
+  }, [fullWidth]);
 
   return (
     <AccessibilityEnhancements>
@@ -95,17 +107,29 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
 </Helmet>
       
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
-        <div className="container mx-auto px-4 py-8">
-          <div id="navigation">
-            <Navigation />
+        {fullWidth ? (
+          <>
+            <Navigation fullWidth={fullWidth} />
+            {!isHomePage && <BreadcrumbNav />}
+            <main id="main-content" className="focus:outline-none" tabIndex={-1}>
+              {children}
+              <InternalLinks />
+            </main>
+            <Footer fullWidth={fullWidth} />
+          </>
+        ) : (
+          <div className="container mx-auto px-4 py-8">
+            <div id="navigation">
+              <Navigation fullWidth={fullWidth} />
+            </div>
+            {!isHomePage && <BreadcrumbNav />}
+            <main id="main-content" className="mt-8 focus:outline-none" tabIndex={-1}>
+              {children}
+              <InternalLinks />
+            </main>
+            <Footer />
           </div>
-          {!isHomePage && <BreadcrumbNav />}
-          <main id="main-content" className="mt-8 focus:outline-none" tabIndex={-1}>
-            {children}
-            <InternalLinks />
-          </main>
-          <Footer />
-        </div>
+        )}
       </div>
     </AccessibilityEnhancements>
   );

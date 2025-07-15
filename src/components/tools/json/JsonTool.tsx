@@ -41,80 +41,57 @@ const JsonTool: React.FC = () => {
     loadSampleJson
   } = useJsonTool();
 
-  // 2023-10-27 添加结果区域显示控制状态
-  const [isResultVisible, setIsResultVisible] = useState(false);
-
   return (
     <div className="h-screen flex flex-col">
-      <div className="p-4">
-        <JsonToolbar
-          onFormat={() => {
-            handleToggleMinifyFormat(true);
-            // 点击Format按钮时隐藏结果区域
-            setIsResultVisible(false);
-          }}
-          onMinify={() => {
-            handleToggleMinifyFormat(false);
-            // 点击Minify按钮时隐藏结果区域
-            setIsResultVisible(false);
-          }}
-          onCopy={copyToClipboard}
-          onClear={() => {
-            clearAll();
-            // 点击Clear按钮时显示结果区域
-            setIsResultVisible(false);
-          }}
-          isFormatMinifyDisabled={!isValid || !input.trim()}
-          onExtract={()=>{
-            handleExtractValue();
-            // 点击Extract按钮时显示结果区域
-            setIsResultVisible(true);
-          }}
-          extractPath={extractPath}
-          onExtractPathChange={onExtractPathChange}
-          onConvertToYaml={()=>{
-            handleConvertToYaml();
-            // 点击Convert to YAML按钮时显示结果区域
-            setIsResultVisible(true);
-          }}
-          onConvertToXml={()=>{
-            handleConvertToXml();
-            // 点击Convert to XML按钮时显示结果区域
-            setIsResultVisible(true);
-          }}
-          onConvertToCsv={()=>{
-            handleConvertToCsv();
-            // 点击Convert to CSV按钮时显示结果区域
-            setIsResultVisible(true);
-          }}
-          onConvertToDart={()=>{
-            handleConvertToDart();
-            // 点击Convert to Dart按钮时显示结果区域
-            setIsResultVisible(true);
-          }}
-          onGenerateGraph={()=>{
-            handleGenerateGraph();
-            // 点击Generate Graph按钮时显示结果区域
-            setIsResultVisible(true);
-          }}
-          history={history}
-          onSelectHistory={handleSelectFromHistory}
-          onRemoveHistoryItem={removeFromHistory}
-          onClearHistory={clearHistory}
-          rootClassName={rootClassName}
-          setRootClassName={setRootClassName}
-          usePrivateFields={usePrivateFields}
-          setUsePrivateFields={setUsePrivateFields}
-          useModernDartSyntax={useModernDartSyntax}
-          setUseModernDartSyntax={setUseModernDartSyntax}
-          onCopyOutputCode={copyOutputCode}
-          onLoadSampleJson={loadSampleJson}
-          outputTitle={outputTitle}
-        />
-      </div>
+      <JsonToolbar
+        onFormat={() => {
+          handleToggleMinifyFormat(true);
+        }}
+        onMinify={() => {
+          handleToggleMinifyFormat(false);
+        }}
+        onCopy={copyToClipboard}
+        onClear={() => {
+          clearAll();
+        }}
+        isFormatMinifyDisabled={!isValid || !input.trim()}
+        onExtract={()=>{
+          handleExtractValue();
+        }}
+        extractPath={extractPath}
+        onExtractPathChange={onExtractPathChange}
+        onConvertToYaml={()=>{
+          handleConvertToYaml();
+        }}
+        onConvertToXml={()=>{
+          handleConvertToXml();
+        }}
+        onConvertToCsv={()=>{
+          handleConvertToCsv();
+        }}
+        onConvertToDart={()=>{
+          handleConvertToDart();
+        }}
+        onGenerateGraph={()=>{
+          handleGenerateGraph();
+        }}
+        history={history}
+        onSelectHistory={handleSelectFromHistory}
+        onRemoveHistoryItem={removeFromHistory}
+        onClearHistory={clearHistory}
+        rootClassName={rootClassName}
+        setRootClassName={setRootClassName}
+        usePrivateFields={usePrivateFields}
+        setUsePrivateFields={setUsePrivateFields}
+        useModernDartSyntax={useModernDartSyntax}
+        setUseModernDartSyntax={setUseModernDartSyntax}
+        onCopyOutputCode={copyOutputCode}
+        onLoadSampleJson={loadSampleJson}
+        outputTitle={outputTitle}
+      />
       
-      <div className="flex-1 flex flex-col md:flex-row gap-4 min-h-0">
-        <div className="flex-1 flex flex-col min-h-0 min-w-0 p-4">
+      <div className="flex-1 flex flex-row min-h-0">
+        <div className="flex-1 flex flex-col min-h-0 min-w-0">
           <JsonInputArea
             value={input}
             onChange={handleInputChange}
@@ -123,7 +100,7 @@ const JsonTool: React.FC = () => {
             validationError={validationError}
           />
           </div>
-        <div className={`flex-1 flex flex-col min-h-0 min-w-0 p-4 ${!isResultVisible ? 'hidden' : ''}`}>
+        <div className="flex-1 flex flex-col min-h-0 min-w-0">
           <JsonResultDisplay outputContent={outputContent} title={outputTitle} onCopyOutputCode={copyOutputCode} />
           </div>
       </div>

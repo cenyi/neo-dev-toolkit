@@ -13,9 +13,7 @@ export const useJsonTool = () => {
   const [input, setInput] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
-  const [isMinified, setIsMinified] = useState(false);
   const lastValidJsonRef = useRef<string | null>(null);
-  const isMinifyingRef = useRef(false);
   const [extractPath, setExtractPath] = useState('');
   const [outputContent, setOutputContent] = useState<string | null>(null);
   const [outputTitle, setOutputTitle] = useState<string | null>(null);
@@ -78,25 +76,15 @@ export const useJsonTool = () => {
 
   // 仅在输入或校验状态变化时校验
   useEffect(() => {
-    if (isMinifyingRef.current) {
-      isMinifyingRef.current = false;
-      validateAndFormatJson(input);
-      return;
-    }
-
     const formatted = validateAndFormatJson(input);
-    // 自动格式化，仅在有效且未是格式化后的内容时触发
-    // 防止死循环：只有当输入内容不同于格式化结果时才 setInput
     if (isValid && input.trim() && formatted !== input) {
       setInput(formatted ?? '');
-      setIsMinified(false);
     }
-    // eslint-disable-next-line
+   // eslint-disable-next-line
   }, [input, t]);
 
   const handleInputChange = (value: string) => {
     setInput(value);
-    setIsMinified(false);
     setOutputContent(null);
     setOutputTitle(null);
     clearGraph();
@@ -114,30 +102,27 @@ export const useJsonTool = () => {
       });
       return;
     }
-
     try {
-    // 如果提供了minify参数，就使用它；否则切换当前状态
-    const shouldMinify = minify !== undefined ? minify : !isMinified;
-    if (shouldMinify) {
+      const shouldFormat = minify !== undefined ? minify : true;
+      if (shouldFormat) {
         const formattedJson = formatJsonSafely(input);
-        setInput(formattedJson);
+        setOutputContent(formattedJson);
+        setOutputTitle(t('tools.json.formattedJsonTitle'));
         navigator.clipboard.writeText(formattedJson);
         toast({
           title: i18n.t('toasts.common.success'),
           description: i18n.t('toasts.success.formattedAndCopied'),
         });
-        setIsMinified(false);
       } else {
         const parsed = parseJsonWithBigInt(input);
         const minified = stringifyJsonWithBigInt(parsed);
-        isMinifyingRef.current = true;
-        setInput(minified);
+        setOutputContent(minified);
+        setOutputTitle(t('tools.json.minifiedJsonTitle'));
         navigator.clipboard.writeText(minified);
         toast({
           title: i18n.t('toasts.common.success'),
           description: i18n.t('toasts.success.minifiedAndCopied'),
         });
-        setIsMinified(true);
       }
     } catch (error) {
       toast({
@@ -149,9 +134,6 @@ export const useJsonTool = () => {
   };
 
   const copyToClipboard = () => {
-    setOutputContent(null);
-    setOutputTitle(null);
-    clearGraph();
     if (!input.trim()) {
       toast({
         title: i18n.t('toasts.common.info'),
@@ -170,7 +152,6 @@ export const useJsonTool = () => {
     setInput('');
     setValidationError(null);
     setIsValid(true);
-    setIsMinified(false);
     setExtractPath('');
     setOutputContent(null);
     setOutputTitle(null);
@@ -218,7 +199,6 @@ export const useJsonTool = () => {
     };
     const formattedJson = JSON.stringify(sampleJson, null, 2);
     setInput(formattedJson);
-    setIsMinified(false);
     setOutputContent(null);
     setOutputTitle(null);
     clearGraph();
@@ -227,7 +207,6 @@ export const useJsonTool = () => {
   // 从历史记录中选择项目
   const handleSelectFromHistory = (content: string) => {
     setInput(content);
-    setIsMinified(false);
     setOutputContent(null);
     setOutputTitle(null);
     clearGraph();

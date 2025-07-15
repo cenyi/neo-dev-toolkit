@@ -27,7 +27,7 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
   };
 
   return (
-    <div className="h-[700px] flex flex-col bg-background border rounded-lg overflow-hidden">
+    <div className="h-full flex flex-col bg-background border rounded-lg overflow-hidden">
       <div className="px-4 pt-4 mb-3 flex items-center justify-between">
         <h3 className="text-lg font-semibold">{title || t('tools.json.output')}</h3>
         {isDartView && (

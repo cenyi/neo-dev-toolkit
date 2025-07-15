@@ -7,7 +7,7 @@ import ThemeToggle from './nav/ThemeToggle';
 import LanguageSwitcher from './nav/LanguageSwitcher';
 import ToolDropdown from './nav/ToolDropdown';
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC<{ fullWidth?: boolean }> = ({ fullWidth = false }) => {
   const { t } = useTranslation();
   const location = useLocation();
   const { lang = 'en' } = useParams<{ lang?: string }>();
@@ -65,8 +65,8 @@ const Navigation: React.FC = () => {
   ], [lang]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 max-w-full px-2 sm:px-4 mb-4 bg-gradient-to-r from-background/90 to-background/70 backdrop-blur-md border border-border/60 rounded-b-2xl shadow-xl transition-all duration-300">
-      <div className="flex items-center justify-between p-4 px-4 py-3">
+    <nav className={`fixed top-0 left-0 right-0 z-50 max-w-full ${fullWidth ? 'px-0' : 'px-2 sm:px-4'} mb-4 bg-gradient-to-r from-background/90 to-background/70 backdrop-blur-md border border-border/60 rounded-b-2xl shadow-xl transition-all duration-300`}>
+      <div className={`flex items-center justify-between ${fullWidth ? 'p-0' : 'p-4 px-4 py-3'}`}>
         <div className="flex flex-wrap items-center gap-0.5 sm:gap-1 px-2 md:flex-nowrap md:space-x-2 md:overflow-x-auto md:hide-scrollbar md:gap-2 md:[scrollbar-width:none] md:[-ms-overflow-style:none] md:[&::-webkit-scrollbar]:hidden">
           {navItems.map(({ path, key, icon: Icon, tools, dropdownWidth }) => {
             if (tools) {

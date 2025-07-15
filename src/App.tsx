@@ -84,6 +84,7 @@ function App() {
                       title="JSON Formatter & Validator" 
                       description="Free online JSON formatter with syntax highlighting. Validate, minify and format JSON data instantly. No signup required."
                       keywords="JSON formatter, JSON validator, JSON beautifier, JSON minifier, online JSON tool, free JSON formatter"
+                      fullWidth={true}
                     >
                       <JsonTool />
                     </PageWrapper>
