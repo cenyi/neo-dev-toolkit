@@ -23,8 +23,8 @@ const JsonInputArea: React.FC<JsonInputAreaProps> = ({
   
   return (
     <div className="h-full flex flex-col bg-background min-w-0 overflow-hidden">
-      <div className="flex items-center justify-between pt-4 mb-3">
-        <h3 className="text-lg font-semibold">{t('tools.json.input')}</h3>
+      <div className="flex items-center justify-between pt-3 mb-2" style={{ minHeight: '32px' }}>
+        <h3 className="text-base font-semibold">{t('tools.json.input')}</h3>
         {value.trim() && (
           <div className="flex items-center gap-2">
             {isValid ? (
@@ -42,18 +42,18 @@ const JsonInputArea: React.FC<JsonInputAreaProps> = ({
         )}
       </div>
 
-      {validationError && (
-        <div className="mb-3">
+      <div className="mb-2" style={{ minHeight: '44px' }}>
+        {validationError && (
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription className="text-sm">
               {validationError}
             </AlertDescription>
           </Alert>
-        </div>
-      )}
+        )}
+      </div>
 
-      <div className="flex-1 pb-4 overflow-hidden">
+      <div className="flex-1 pb-3 overflow-hidden">
         <JsonEditor
           value={value}
           onChange={onChange}

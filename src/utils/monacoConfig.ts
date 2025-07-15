@@ -14,15 +14,12 @@ export const configureMonaco = () => {
       }
     }
   });
-  
-  console.log('Monaco Editor configured to use local resources');
 };
 
 // 预加载Monaco Editor以避免首次使用时的延迟
 export const preloadMonaco = async () => {
   try {
     await loader.init();
-    console.log('Monaco Editor preloaded successfully');
   } catch (error) {
     console.warn('Monaco Editor preload failed, will fallback to textarea:', error);
   }

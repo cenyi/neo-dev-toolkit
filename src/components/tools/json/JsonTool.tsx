@@ -42,7 +42,7 @@ const JsonTool: React.FC = () => {
   } = useJsonTool();
 
   return (
-    <div className="w-full h-screen flex flex-col">
+    <div className="w-full h-screen flex flex-col px-4 lg:px-6 xl:px-8">
       <JsonToolbar
         onFormat={() => {
           handleToggleMinifyFormat(true);

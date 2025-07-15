@@ -46,7 +46,7 @@ i18n
     transSupportBasicHtmlNodes: true,
     reloadOnPrerender: process.env.NODE_ENV === 'development'
   },
-    debug: true, // 开启debug模式以便排查问题
+    debug: false, // 关闭debug模式
   });
 
 export default i18n;

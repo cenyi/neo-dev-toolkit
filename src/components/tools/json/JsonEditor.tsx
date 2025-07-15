@@ -27,7 +27,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (isLoading) {
-        console.warn('Monaco Editor loading timeout, falling back to textarea');
         setLoadError(true);
         setIsLoading(false);
       }
@@ -38,7 +37,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
 
   const handleEditorDidMount = useCallback((editor: any, monaco: any) => {
     try {
-      console.log('Monaco Editor mounted successfully');
       editorRef.current = editor;
       setIsLoading(false);
       setLoadError(false);
@@ -104,7 +102,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
         }, { capture: true });
       }
     } catch (error) {
-      console.error("Monaco Editor mount error:", error);
       setLoadError(true);
       setIsLoading(false);
     }
@@ -151,7 +148,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
           try {
             monaco.editor.setTheme(theme === 'dark' || theme === 'matrix' ? 'vs-dark' : 'vs');
           } catch (error) {
-            console.warn('Monaco beforeMount error:', error);
             setLoadError(true);
             setIsLoading(false);
           }
@@ -181,7 +177,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
         }
         onValidate={(markers) => {
           if (markers.length > 0) {
-            console.warn('Monaco validation markers:', markers);
           }
         }}
       />

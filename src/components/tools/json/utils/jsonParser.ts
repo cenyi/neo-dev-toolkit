@@ -30,9 +30,6 @@ export const parseJsonWithBigInt = (jsonString: string): any => {
       /,\s*(-?\d{16,})\b/g,
       ', "$1"'
     );
-    
-    console.log('处理大整数前:', jsonString);
-    console.log('处理大整数后:', processedString);
   }
   
   return JSON.parse(processedString);
@@ -53,7 +50,6 @@ export const formatJsonSafely = (jsonString: string): string => {
     const parsed = parseJsonWithBigInt(jsonString);
     return stringifyJsonWithBigInt(parsed, 2);
   } catch (error) {
-    console.error('JSON格式化错误:', error);
     throw error;
   }
 };

@@ -77,58 +77,6 @@ const AccessibilityEnhancements: React.FC<AccessibilityEnhancementsProps> = ({ c
         </a>
       </div>
 
-      {/* Left-handed layout option */}
-      <div className="fixed top-16 right-4 z-40">
-        <button
-          className="bg-accent text-accent-foreground p-2 rounded-md shadow-md hover:bg-accent/80 focus:outline-none focus:ring-2 focus:ring-ring"
-          onClick={() => {
-            document.body.classList.toggle('left-handed-layout');
-            announceToScreenReader(t('accessibility.layoutOrientationToggled'));
-          }}
-          aria-label={t('accessibility.toggleLeftHandedLayout')}
-          title={t('accessibility.toggleLeftHandedLayoutTitle')}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-          </svg>
-        </button>
-      </div>
-
-      {/* High contrast mode toggle */}
-      <div className="fixed top-28 right-4 z-40">
-        <button
-          className="bg-accent text-accent-foreground p-2 rounded-md shadow-md hover:bg-accent/80 focus:outline-none focus:ring-2 focus:ring-ring"
-          onClick={() => {
-            document.body.classList.toggle('high-contrast');
-            announceToScreenReader(t('accessibility.highContrastToggled'));
-          }}
-          aria-label={t('accessibility.toggleHighContrast')}
-          title={t('accessibility.toggleHighContrastTitle')}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 2a10 10 0 0 0 0 20V2z" />
-          </svg>
-        </button>
-      </div>
 
       {children}
     </>

@@ -31,7 +31,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
     // 添加超时检测
     const timeout = setTimeout(() => {
       if (isLoading) {
-        console.warn('Monaco Editor loading timeout, falling back to textarea');
         setLoadError(true);
         setIsLoading(false);
       }
@@ -42,7 +41,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
 
   const handleEditorDidMount = useCallback((editor: any, monaco: any) => {
     try {
-      console.log('Monaco Editor mounted successfully');
       editorRef.current = editor;
       setIsLoading(false);
       setLoadError(false);
@@ -63,7 +61,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
         },
       });
     } catch (error) {
-      console.error("Monaco Editor mount error:", error);
       setLoadError(true);
       setIsLoading(false);
     }
@@ -145,7 +142,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
             // 预配置以加快加载速度
             monaco.editor.setTheme(theme === 'dark' || theme === 'matrix' ? 'vs-dark' : 'vs');
           } catch (error) {
-            console.warn('Monaco beforeMount error:', error);
           }
         }}
         options={{
@@ -185,7 +181,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
         onValidate={(markers) => {
           // 处理验证错误
           if (markers.length > 0) {
-            console.warn('Monaco validation markers:', markers);
           }
         }}
       />

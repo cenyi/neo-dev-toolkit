@@ -17,7 +17,6 @@ Changes are reflected in real-time.
 function greet(name) {
   return "Hello, " + name + "!";
 }
-console.log(greet("Markdown"));
 \`\`\`
 
 > Blockquote
