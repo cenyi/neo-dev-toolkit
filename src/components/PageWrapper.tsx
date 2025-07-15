@@ -58,11 +58,14 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
   useEffect(() => {
     if (fullWidth) {
       document.body.classList.add('full-width');
+      document.documentElement.classList.add('full-width');
     } else {
       document.body.classList.remove('full-width');
+      document.documentElement.classList.remove('full-width');
     }
     return () => {
       document.body.classList.remove('full-width');
+      document.documentElement.classList.remove('full-width');
     };
   }, [fullWidth]);
 
@@ -106,12 +109,12 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ title, children, description,
       </script>
 </Helmet>
       
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
+      <div className={`min-h-screen w-full bg-gradient-to-br from-background via-background to-accent/5${fullWidth ? ' p-0 m-0' : ''}`}>
         {fullWidth ? (
           <>
             <Navigation fullWidth={fullWidth} />
             {!isHomePage && <BreadcrumbNav />}
-            <main id="main-content" className="focus:outline-none" tabIndex={-1}>
+            <main id="main-content" className="w-full focus:outline-none" tabIndex={-1}>
               {children}
               <InternalLinks />
             </main>

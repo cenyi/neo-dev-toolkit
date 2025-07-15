@@ -42,7 +42,7 @@ const JsonTool: React.FC = () => {
   } = useJsonTool();
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="w-full h-screen flex flex-col">
       <JsonToolbar
         onFormat={() => {
           handleToggleMinifyFormat(true);
@@ -90,8 +90,8 @@ const JsonTool: React.FC = () => {
         outputTitle={outputTitle}
       />
       
-      <div className="flex-1 flex flex-row min-h-0">
-        <div className="flex-1 flex flex-col min-h-0 min-w-0">
+      <div className="w-full flex-1 flex flex-row min-h-0 gap-4">
+        <div className="w-[40%] flex flex-col min-h-0 min-w-0">
           <JsonInputArea
             value={input}
             onChange={handleInputChange}
@@ -99,10 +99,10 @@ const JsonTool: React.FC = () => {
             isValid={isValid}
             validationError={validationError}
           />
-          </div>
-        <div className="flex-1 flex flex-col min-h-0 min-w-0">
+        </div>
+        <div className="w-[60%] flex flex-col min-h-0 min-w-0">
           <JsonResultDisplay outputContent={outputContent} title={outputTitle} onCopyOutputCode={copyOutputCode} />
-          </div>
+        </div>
       </div>
       </div>
     );

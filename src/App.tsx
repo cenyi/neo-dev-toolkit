@@ -64,7 +64,7 @@ function App() {
       <ThemeProvider>
         <TooltipProvider>
           <BrowserRouter>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen w-full">
               <Toaster />
               <Sonner />
               <main className="flex-grow">

@@ -27,8 +27,8 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
   };
 
   return (
-    <div className="h-full flex flex-col bg-background border rounded-lg overflow-hidden">
-      <div className="px-4 pt-4 mb-3 flex items-center justify-between">
+    <div className="h-full flex flex-col bg-background overflow-hidden">
+      <div className="pt-4 mb-3 flex items-center justify-between">
         <h3 className="text-lg font-semibold">{title || t('tools.json.output')}</h3>
         {isDartView && (
           <div className="flex gap-2">
@@ -37,7 +37,7 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
           </div>
         )}
       </div>
-      <div className="flex-1 px-4 pb-4 overflow-hidden">
+      <div className="flex-1 pb-4 overflow-hidden">
         {isGraphView ? (
           <MermaidGraphInternational 
             content={outputContent ?? ''} 

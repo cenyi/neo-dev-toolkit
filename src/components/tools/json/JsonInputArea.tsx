@@ -22,8 +22,8 @@ const JsonInputArea: React.FC<JsonInputAreaProps> = ({
   const { t } = useTranslation();
   
   return (
-    <div className="h-full flex flex-col bg-background border rounded-lg min-w-0 overflow-hidden">
-      <div className="flex items-center justify-between px-4 pt-4 mb-3">
+    <div className="h-full flex flex-col bg-background min-w-0 overflow-hidden">
+      <div className="flex items-center justify-between pt-4 mb-3">
         <h3 className="text-lg font-semibold">{t('tools.json.input')}</h3>
         {value.trim() && (
           <div className="flex items-center gap-2">
@@ -43,7 +43,7 @@ const JsonInputArea: React.FC<JsonInputAreaProps> = ({
       </div>
 
       {validationError && (
-        <div className="mx-4 mb-3">
+        <div className="mb-3">
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription className="text-sm">
@@ -53,7 +53,7 @@ const JsonInputArea: React.FC<JsonInputAreaProps> = ({
         </div>
       )}
 
-      <div className="flex-1 px-4 pb-4 overflow-hidden">
+      <div className="flex-1 pb-4 overflow-hidden">
         <JsonEditor
           value={value}
           onChange={onChange}
