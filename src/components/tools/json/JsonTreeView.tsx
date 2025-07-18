@@ -8,11 +8,20 @@ import {
   Hash, 
   ToggleLeft, 
   Quote,
-  Circle
+  Circle,
+  Copy
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from '@/components/ui/context-menu';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
 
 interface JsonTreeViewProps {
   data: string;
@@ -32,6 +41,8 @@ interface TreeNodeProps {
   expandAll?: boolean;
   collapseAll?: boolean;
   sortMode?: 'none' | 'asc' | 'desc';
+  expandKey?: number;
+  collapseKey?: number;
 }
 
 const TreeNode: React.FC<TreeNodeProps> = ({ 
@@ -42,22 +53,41 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   path, 
   expandAll = false,
   collapseAll = false,
-  sortMode = 'none'
+  sortMode = 'none',
+  expandKey = 0,
+  collapseKey = 0
 }) => {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(level < 2); // Auto-expand first 2 levels
   
   // 处理全局展开/折叠控制
   useEffect(() => {
-    if (expandAll) {
+    if (expandKey > 0) {
       setIsExpanded(true);
     }
-  }, [expandAll]);
+  }, [expandKey]);
   
   useEffect(() => {
-    if (collapseAll) {
+    if (collapseKey > 0) {
       setIsExpanded(false);
     }
-  }, [collapseAll]);
+  }, [collapseKey]);
+  
+  const copyToClipboard = async (text: string, type: 'key' | 'value') => {
+    try {
+      await navigator.clipboard.writeText(text);
+      const message = type === 'key' ? t('tools.json.keyNameCopied') : t('tools.json.valueCopied');
+      toast.success(message);
+    } catch (err) {
+      toast.error(t('tools.json.copyFailed'));
+    }
+  };
+
+  const getValueString = (val: unknown): string => {
+    if (val === null) return 'null';
+    if (typeof val === 'string') return val;
+    return JSON.stringify(val, null, 2);
+  };
   
   const getValueType = (val: unknown): string => {
     if (val === null) return 'null';
@@ -107,6 +137,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           expandAll={expandAll}
           collapseAll={collapseAll}
           sortMode={sortMode}
+          expandKey={expandKey}
+          collapseKey={collapseKey}
         />
       ));
     }
@@ -133,6 +165,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           expandAll={expandAll}
           collapseAll={collapseAll}
           sortMode={sortMode}
+          expandKey={expandKey}
+          collapseKey={collapseKey}
         />
       ));
     }
@@ -142,66 +176,86 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   
   return (
     <div className="select-none">
-      <div 
-        className={cn(
-          "flex items-center py-1 px-2 hover:bg-muted/50 rounded-sm cursor-pointer transition-colors",
-          "text-sm"
-        )}
-        style={{ paddingLeft: `${8 + indent}px` }}
-        onClick={() => hasChildren && setIsExpanded(!isExpanded)}
-      >
-        <div className="flex items-center flex-1 min-w-0">
-          <div className="flex items-center mr-1">
-            {hasChildren && (
-              isExpanded ? (
-                <ChevronDown className="h-4 w-4 text-muted-foreground mr-1" />
-              ) : (
-                <ChevronRight className="h-4 w-4 text-muted-foreground mr-1" />
-              )
+      <ContextMenu>
+        <ContextMenuTrigger asChild>
+          <div 
+            className={cn(
+              "flex items-center py-1 px-2 hover:bg-muted/50 rounded-sm cursor-pointer transition-colors",
+              "text-sm"
             )}
-            <div className="mr-2">
-              {getValueIcon(value)}
+            style={{ paddingLeft: `${8 + indent}px` }}
+            onClick={() => hasChildren && setIsExpanded(!isExpanded)}
+          >
+            <div className="flex items-center flex-1 min-w-0">
+              <div className="flex items-center mr-1">
+                {hasChildren && (
+                  isExpanded ? (
+                    <ChevronDown className="h-4 w-4 text-muted-foreground mr-1" />
+                  ) : (
+                    <ChevronRight className="h-4 w-4 text-muted-foreground mr-1" />
+                  )
+                )}
+                <div className="mr-2">
+                  {getValueIcon(value)}
+                </div>
+              </div>
+              
+              <span className="font-medium text-foreground mr-2 truncate">
+                {name}
+              </span>
+              
+              <Badge 
+                variant="outline" 
+                className={cn(
+                  "text-xs mr-2 px-1.5 py-0.5 font-mono",
+                  getValueType(value) === 'string' && "bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800",
+                  getValueType(value) === 'number' && "bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-800",
+                  getValueType(value) === 'boolean' && "bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800",
+                  getValueType(value) === 'null' && "bg-gray-50 dark:bg-gray-900 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700",
+                  getValueType(value) === 'array' && "bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800",
+                  getValueType(value) === 'object' && "bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+                )}
+              >
+                {getValueType(value)}
+              </Badge>
+              
+              {!hasChildren && (
+                <span className={cn(
+                  "text-xs truncate flex-1 font-mono",
+                  typeof value === 'string' && "text-green-600 dark:text-green-400",
+                  typeof value === 'number' && "text-orange-600 dark:text-orange-400",
+                  typeof value === 'boolean' && "text-indigo-600 dark:text-indigo-400",
+                  value === null && "text-gray-500 dark:text-gray-400 italic"
+                )}>
+                  {getValuePreview(value)}
+                </span>
+              )}
+              
+              {hasChildren && (
+                <span className="text-muted-foreground text-xs font-mono">
+                  {getValuePreview(value)}
+                </span>
+              )}
             </div>
           </div>
-          
-          <span className="font-medium text-foreground mr-2 truncate">
-            {name}
-          </span>
-          
-          <Badge 
-            variant="outline" 
-            className={cn(
-              "text-xs mr-2 px-1.5 py-0.5 font-mono",
-              getValueType(value) === 'string' && "bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800",
-              getValueType(value) === 'number' && "bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-800",
-              getValueType(value) === 'boolean' && "bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800",
-              getValueType(value) === 'null' && "bg-gray-50 dark:bg-gray-900 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700",
-              getValueType(value) === 'array' && "bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800",
-              getValueType(value) === 'object' && "bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
-            )}
+        </ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem
+            onClick={() => copyToClipboard(name, 'key')}
+            className="flex items-center gap-2"
           >
-            {getValueType(value)}
-          </Badge>
-          
-          {!hasChildren && (
-            <span className={cn(
-              "text-xs truncate flex-1 font-mono",
-              typeof value === 'string' && "text-green-600 dark:text-green-400",
-              typeof value === 'number' && "text-orange-600 dark:text-orange-400",
-              typeof value === 'boolean' && "text-indigo-600 dark:text-indigo-400",
-              value === null && "text-gray-500 dark:text-gray-400 italic"
-            )}>
-              {getValuePreview(value)}
-            </span>
-          )}
-          
-          {hasChildren && (
-            <span className="text-muted-foreground text-xs font-mono">
-              {getValuePreview(value)}
-            </span>
-          )}
-        </div>
-      </div>
+            <Copy className="h-4 w-4" />
+            {t('tools.json.copyKey')}
+          </ContextMenuItem>
+          <ContextMenuItem
+            onClick={() => copyToClipboard(getValueString(value), 'value')}
+            className="flex items-center gap-2"
+          >
+            <Copy className="h-4 w-4" />
+            {t('tools.json.copyValue')}
+          </ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
       
       {renderChildren()}
     </div>
@@ -216,6 +270,9 @@ const JsonTreeView: React.FC<JsonTreeViewProps> = ({
   onExpandAllChange,
   onCollapseAllChange
 }) => {
+  const [expandKey, setExpandKey] = useState(0);
+  const [collapseKey, setCollapseKey] = useState(0);
+  
   const treeData = useMemo(() => {
     try {
       return JSON.parse(data);
@@ -224,18 +281,26 @@ const JsonTreeView: React.FC<JsonTreeViewProps> = ({
     }
   }, [data]);
 
-  // 重置展开/折叠状态的回调
+  // 处理展开/折叠状态变化
   useEffect(() => {
-    if (expandAll && onExpandAllChange) {
-      const timer = setTimeout(() => onExpandAllChange(false), 100);
-      return () => clearTimeout(timer);
+    if (expandAll) {
+      setExpandKey(prev => prev + 1);
+      if (onExpandAllChange) {
+        // 延迟重置，让组件有时间响应状态变化
+        const timer = setTimeout(() => onExpandAllChange(false), 200);
+        return () => clearTimeout(timer);
+      }
     }
   }, [expandAll, onExpandAllChange]);
 
   useEffect(() => {
-    if (collapseAll && onCollapseAllChange) {
-      const timer = setTimeout(() => onCollapseAllChange(false), 100);
-      return () => clearTimeout(timer);
+    if (collapseAll) {
+      setCollapseKey(prev => prev + 1);
+      if (onCollapseAllChange) {
+        // 延迟重置，让组件有时间响应状态变化
+        const timer = setTimeout(() => onCollapseAllChange(false), 200);
+        return () => clearTimeout(timer);
+      }
     }
   }, [collapseAll, onCollapseAllChange]);
 
@@ -252,6 +317,7 @@ const JsonTreeView: React.FC<JsonTreeViewProps> = ({
       <ScrollArea className="flex-1">
         <div className="p-2">
           <TreeNode 
+            key={`${expandKey}-${collapseKey}`}
             name="root" 
             value={treeData} 
             level={0} 
@@ -259,6 +325,8 @@ const JsonTreeView: React.FC<JsonTreeViewProps> = ({
             expandAll={expandAll}
             collapseAll={collapseAll}
             sortMode={sortMode}
+            expandKey={expandKey}
+            collapseKey={collapseKey}
           />
         </div>
       </ScrollArea>

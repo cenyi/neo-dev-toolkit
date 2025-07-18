@@ -1,14 +1,36 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { JsonViewer } from '@textea/json-viewer';
 import { useTheme } from '@/contexts/ThemeContext';
 
 interface JsonVisualViewProps {
   data: string;
   sortMode?: 'none' | 'asc' | 'desc';
+  expandAll?: boolean;
+  collapseAll?: boolean;
 }
 
-const JsonVisualView: React.FC<JsonVisualViewProps> = ({ data, sortMode = 'none' }) => {
+const JsonVisualView: React.FC<JsonVisualViewProps> = ({ 
+  data, 
+  sortMode = 'none', 
+  expandAll = false, 
+  collapseAll = false 
+}) => {
   const { theme } = useTheme();
+  const [expandKey, setExpandKey] = useState(0);
+  const [collapseKey, setCollapseKey] = useState(0);
+
+  // 处理展开/折叠状态变化
+  useEffect(() => {
+    if (expandAll) {
+      setExpandKey(prev => prev + 1);
+    }
+  }, [expandAll]);
+
+  useEffect(() => {
+    if (collapseAll) {
+      setCollapseKey(prev => prev + 1);
+    }
+  }, [collapseAll]);
 
   const parsedData = useMemo(() => {
     try {
@@ -60,11 +82,19 @@ const JsonVisualView: React.FC<JsonVisualViewProps> = ({ data, sortMode = 'none'
   return (
     <div className="h-full overflow-auto p-4">
       <JsonViewer
+        key={`${expandKey}-${collapseKey}`}
         value={parsedData}
         theme={isDarkMode ? 'dark' : 'light'}
-        defaultInspectDepth={2}
+        defaultInspectDepth={collapseKey > expandKey ? 0 : (expandKey > 0 ? 10 : 2)}
         defaultInspectControl={(path) => {
-          // Auto-expand first 2 levels
+          // 根据展开/折叠状态控制默认展开深度
+          if (collapseKey > expandKey) {
+            return false; // 全部折叠
+          }
+          if (expandKey > 0) {
+            return true; // 全部展开
+          }
+          // 默认展开前2层
           return path.length <= 2;
         }}
         displayDataTypes={true}

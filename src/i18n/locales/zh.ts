@@ -166,6 +166,11 @@ export const zh = {
         cancelSort: '取消排序',
         sortAscending: '按键名正序排序',
         sortDescending: '按键名倒序排序',
+        copyKey: '复制键名',
+        copyValue: '复制值',
+        keyNameCopied: '键名已复制到剪贴板',
+        valueCopied: '值已复制到剪贴板',
+        copyFailed: '复制失败',
       },
       regex: {
         title: '正则表达式工具',

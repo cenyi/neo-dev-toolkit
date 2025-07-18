@@ -166,6 +166,11 @@ export const en = {
         cancelSort: 'Cancel Sort',
         sortAscending: 'Sort Keys Ascending',
         sortDescending: 'Sort Keys Descending',
+        copyKey: 'Copy Key',
+        copyValue: 'Copy Value',
+        keyNameCopied: 'Key name copied to clipboard',
+        valueCopied: 'Value copied to clipboard',
+        copyFailed: 'Copy failed',
       },
       regex: {
         title: 'Regular Expression Tool',

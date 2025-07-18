@@ -100,8 +100,6 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
               onClick={() => {
                 setExpandAll(true);
                 setCollapseAll(false);
-                // 重置状态以便再次点击
-                setTimeout(() => setExpandAll(false), 100);
               }}
               title={t('tools.json.expandAllNodes')}
             >
@@ -114,8 +112,6 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
               onClick={() => {
                 setCollapseAll(true);
                 setExpandAll(false);
-                // 重置状态以便再次点击
-                setTimeout(() => setCollapseAll(false), 100);
               }}
               title={t('tools.json.collapseAllNodes')}
             >
@@ -214,6 +210,8 @@ const JsonResultDisplay: React.FC<JsonResultDisplayProps> = ({ outputContent, ti
               <JsonVisualView 
                 data={outputContent ?? ''} 
                 sortMode={sortMode}
+                expandAll={expandAll}
+                collapseAll={collapseAll}
               />
             </div>
           </TabsContent>
