@@ -172,10 +172,21 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
   .sidebar.collapsed .nav-link {
     justify-content: center;
     padding: 12px 0;
+    text-align: center;
   }
 
   .sidebar.collapsed .nav-icon {
     margin-right: 0;
+    display: inline-block;
+  }
+
+  /* 确保折叠时导航链接内的所有元素都居中 */
+  .sidebar.collapsed .nav-menu li {
+    text-align: center;
+  }
+
+  .sidebar.collapsed .nav-menu ul {
+    padding: 0;
   }
 </style>
 
