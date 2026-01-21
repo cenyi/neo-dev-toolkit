@@ -13,19 +13,19 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
   </div>
   <nav class="nav-menu">
     <ul>
-      <li><a href="/" class="nav-link active">
+      <li><a href="/" class="nav-link active" title={t.navHome}>
         <span class="nav-icon">🏠</span>
         <span class="nav-text">{t.navHome}</span>
       </a></li>
-      <li><a href="/about" class="nav-link">
+      <li><a href="/about" class="nav-link" title={t.navAbout}>
         <span class="nav-icon">ℹ️</span>
         <span class="nav-text">{t.navAbout}</span>
       </a></li>
-      <li><a href="/settings" class="nav-link">
+      <li><a href="/settings" class="nav-link" title={t.navSettings}>
         <span class="nav-icon">⚙️</span>
         <span class="nav-text">{t.navSettings}</span>
       </a></li>
-      <li><a href="#" class="nav-link" onclick="switchLanguage()">
+      <li><a href="#" class="nav-link" onclick="switchLanguage()" title={t.navLanguage}>
         <span class="nav-icon">🌐</span>
         <span class="nav-text">{t.navLanguage}</span>
       </a></li>

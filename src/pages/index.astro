@@ -65,13 +65,13 @@ const sampleJson = {
         </div>
 
         <div class="output-controls">
-          <button id="format-btn">{t.format}</button>
           <button id="collapse-all">{t.collapseAll}</button>
           <button id="expand-all">{t.expandAll}</button>
           <button id="remove-comments">{t.removeComments}</button>
           <button id="compress-copy">{t.compressCopy}</button>
           <button id="escape-copy">{t.escapeCopy}</button>
           <button id="json-to-xml">{t.jsonToXml}</button>
+          <button id="history-btn">History</button>
           <span class="json-action-group">
             <button id="json-to-ts">{t.jsonToTs}</button>
             <button id="clear-btn">{t.clear}</button>
@@ -86,7 +86,10 @@ const sampleJson = {
           <button class="close-output-btn" id="close-output" title="关闭">×</button>
         </div>
         <div class="output-content" id="output-content">
-          <div id="output-json"></div>
+          <div class="output-editor-wrapper">
+            <div class="output-line-numbers" id="output-line-numbers"></div>
+            <div id="output-json"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -114,12 +117,30 @@ const sampleJson = {
 
   /* 左侧输入区域 */
   .input-area {
-    width: 50%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
     min-width: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0 auto;
+    max-width: 50%;
+  }
+
+  /* 当输出区域展开时，调整布局 */
+  .output-area.expanded {
+    flex: 1;
+    width: 50%;
+    opacity: 1;
+    border-left: 1px solid #e5e7eb;
+    padding-left: 0;
+  }
+
+  /* 当输出区域展开时，输入区域也调整为50% */
+  .editor-workspace:has(.output-area.expanded) .input-area {
+    flex: 1;
+    max-width: 100%;
+    margin: 0;
   }
 
   .input-section {
@@ -277,6 +298,7 @@ const sampleJson = {
   #clear-btn {
     border-radius: 0 5px 5px 0;
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    margin-right: 6px;
   }
 
   #clear-btn:hover {
@@ -341,21 +363,46 @@ const sampleJson = {
     color: #dc2626;
   }
 
+  /* 输出内容区域，与输入框相同样式 */
   .output-content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .output-editor-wrapper {
+    display: flex;
     border: 1px solid #e1e4e8;
     border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    flex: 1;
     background: linear-gradient(to bottom, #fafbfc 0%, #f5f6f8 100%);
-    overflow: auto;
+  }
+
+  .output-line-numbers {
+    background: #f6f8fa;
+    padding: 12px 8px;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 13px;
     line-height: 1.5;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-    padding: 12px;
+    color: #6b7280;
+    user-select: none;
+    border-right: 1px solid #e1e4e8;
+    min-width: 40px;
+    text-align: right;
+    overflow: hidden;
   }
 
   #output-json {
-    min-height: 100%;
+    flex: 1;
+    padding: 12px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow: auto;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    min-height: 0;
   }
 
   /* JSON树形查看器样式 */
@@ -565,7 +612,56 @@ const sampleJson = {
     lineNumbers.textContent = lineNumbersHTML;
   }
 
-  // 初始化行号功能
+  // 输出框行号更新函数
+  function updateOutputLineNumbers() {
+    const outputJson = document.getElementById('output-json');
+    const lineNumbers = document.getElementById('output-line-numbers');
+    
+    // 计算输出内容的行数
+    const text = outputJson.textContent || outputJson.innerText;
+    const lines = text.split('\n').length;
+    
+    let lineNumbersHTML = '';
+    for (let i = 1; i <= lines; i++) {
+      lineNumbersHTML += `${i}\n`;
+    }
+    
+    lineNumbers.textContent = lineNumbersHTML;
+    
+    // 同步滚动
+    outputJson.addEventListener('scroll', () => {
+      lineNumbers.scrollTop = outputJson.scrollTop;
+    });
+  }
+
+  // 自动格式化函数
+  function autoFormatJson() {
+    const textarea = document.getElementById('json-input');
+    const inputText = textarea.value.trim();
+    
+    if (!inputText) {
+      return;
+    }
+    
+    try {
+      // 尝试解析JSON
+      const parsed = JSON.parse(inputText);
+      // 格式化JSON并更新输入框
+      const formatted = JSON.stringify(parsed, null, 2);
+      
+      // 保存光标位置
+      const cursorPos = textarea.selectionStart;
+      const beforeCursor = inputText.substring(0, cursorPos);
+      
+      textarea.value = formatted;
+      updateLineNumbers();
+    } catch (e) {
+      // 如果解析失败，不进行格式化
+      return;
+    }
+  }
+
+  // 初始化行号功能和自动格式化
   document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.getElementById('json-input');
     const lineNumbers = document.getElementById('line-numbers');
@@ -573,8 +669,13 @@ const sampleJson = {
     // 初始更新行号
     updateLineNumbers();
     
-    // 监听输入事件，更新行号
-    textarea.addEventListener('input', updateLineNumbers);
+    // 监听输入事件，更新行号和自动格式化
+    textarea.addEventListener('input', () => {
+      updateLineNumbers();
+      // 使用防抖函数，延迟500ms执行自动格式化
+      clearTimeout(window.autoFormatTimeout);
+      window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
+    });
     
     // 监听滚动事件，同步行号滚动
     textarea.addEventListener('scroll', () => {
@@ -744,6 +845,9 @@ const sampleJson = {
     }
 
     expandOutput(title);
+    
+    // 更新输出框行号
+    setTimeout(updateOutputLineNumbers, 100);
   }
 
   function initializeJsonFormatter() {
@@ -765,7 +869,6 @@ const sampleJson = {
     });
 
     // 按钮事件绑定
-    document.getElementById('format-btn').addEventListener('click', () => formatInput());
     document.getElementById('clear-btn').addEventListener('click', clearInputs);
     document.getElementById('collapse-all').addEventListener('click', collapseAll);
     document.getElementById('expand-all').addEventListener('click', expandAll);
@@ -775,9 +878,9 @@ const sampleJson = {
     document.getElementById('json-to-xml').addEventListener('click', () => jsonToXmlAndCopy());
     document.getElementById('json-to-ts').addEventListener('click', () => jsonToTsAndCopy());
     document.getElementById('close-output').addEventListener('click', closeOutput);
+    document.getElementById('history-btn').addEventListener('click', showHistory);
 
-    // 初始格式化
-    formatInput();
+    // 移除了初始格式化，使用自动格式化替代
   }
 
   // 防抖函数
@@ -793,19 +896,7 @@ const sampleJson = {
     };
   }
 
-  // 格式化输入
-  function formatInput() {
-    const inputEl = getInputEditorElement();
-
-    try {
-      const parsedData = parseJson(inputEl.value);
-      showJsonResult(parsedData, '格式化结果');
-    } catch (error) {
-      const outputEl = document.getElementById('output-json');
-      outputEl.innerHTML = `<div style="color: #dc2626; padding: 12px; background: #fef2f2; border-radius: 6px;">${translations.parsingError || '解析错误'}: ${error.message}</div>`;
-      expandOutput('错误');
-    }
-  }
+  // 格式化输入函数已移除，使用自动格式化替代
 
   // 解析JSON
   function parseJson(str) {
@@ -834,6 +925,7 @@ const sampleJson = {
       const fn = new Function('obj', `return (${extractFnStr})(obj);`);
       const result = fn(parsedData);
 
+      // 只有在应用提取函数后才显示输出框
       showJsonResult(result, '提取结果');
     } catch (error) {
       alert((translations.extractionError || '提取错误') + ': ' + error.message);
@@ -1009,5 +1101,198 @@ const sampleJson = {
       case 'object': return 'object';
       default: return 'any';
     }
+  }
+
+  // 本地存储相关函数
+  const HISTORY_KEY = 'json-formatter-history';
+  const MAX_HISTORY_ITEMS = 10;
+
+  // 保存历史记录
+  function saveToHistory(data) {
+    try {
+      const history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+      
+      // 移除重复项
+      const filteredHistory = history.filter(item => item.data !== data);
+      
+      // 添加到历史记录开头
+      filteredHistory.unshift({
+        id: Date.now(),
+        data: data,
+        timestamp: new Date().toISOString()
+      });
+      
+      // 限制历史记录数量
+      const limitedHistory = filteredHistory.slice(0, MAX_HISTORY_ITEMS);
+      
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(limitedHistory));
+    } catch (error) {
+      console.error('保存历史记录失败:', error);
+    }
+  }
+
+  // 获取历史记录
+  function getHistory() {
+    try {
+      return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+    } catch (error) {
+      console.error('获取历史记录失败:', error);
+      return [];
+    }
+  }
+
+  // 清除历史记录
+  function clearHistory() {
+    try {
+      localStorage.removeItem(HISTORY_KEY);
+    } catch (error) {
+      console.error('清除历史记录失败:', error);
+    }
+  }
+
+  // 显示历史记录
+  function showHistory() {
+    const history = getHistory();
+    
+    if (history.length === 0) {
+      alert('暂无历史记录');
+      return;
+    }
+    
+    // 创建历史记录弹窗
+    const historyContainer = document.createElement('div');
+    historyContainer.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      max-width: 80%;
+      max-height: 80%;
+      overflow-y: auto;
+    `;
+    
+    // 创建标题
+    const title = document.createElement('h3');
+    title.textContent = '历史记录';
+    title.style.cssText = `
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 18px;
+    `;
+    historyContainer.appendChild(title);
+    
+    // 创建历史记录列表
+    const historyList = document.createElement('ul');
+    historyList.style.cssText = `
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    `;
+    
+    history.forEach(item => {
+      const listItem = document.createElement('li');
+      listItem.style.cssText = `
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      `;
+      
+      listItem.onmouseenter = () => {
+        listItem.style.backgroundColor = '#f5f5f5';
+      };
+      
+      listItem.onmouseleave = () => {
+        listItem.style.backgroundColor = 'transparent';
+      };
+      
+      // 创建历史记录内容
+      const historyContent = document.createElement('div');
+      historyContent.style.cssText = `
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 500px;
+      `;
+      historyContent.textContent = item.data.substring(0, 100) + (item.data.length > 100 ? '...' : '');
+      
+      // 创建时间戳
+      const timestamp = document.createElement('div');
+      timestamp.style.cssText = `
+        font-size: 10px;
+        color: #999;
+        margin-top: 5px;
+      `;
+      timestamp.textContent = new Date(item.timestamp).toLocaleString();
+      
+      // 点击历史记录恢复数据
+      listItem.onclick = () => {
+        const textarea = document.getElementById('json-input');
+        textarea.value = item.data;
+        updateLineNumbers();
+        document.body.removeChild(overlay);
+        document.body.removeChild(historyContainer);
+      };
+      
+      listItem.appendChild(historyContent);
+      listItem.appendChild(timestamp);
+      historyList.appendChild(listItem);
+    });
+    
+    historyContainer.appendChild(historyList);
+    
+    // 创建清除历史记录按钮
+    const clearBtn = document.createElement('button');
+    clearBtn.textContent = '清除历史记录';
+    clearBtn.style.cssText = `
+      margin-top: 15px;
+      padding: 6px 12px;
+      background: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    `;
+    
+    clearBtn.onclick = () => {
+      if (confirm('确定要清除所有历史记录吗？')) {
+        clearHistory();
+        document.body.removeChild(overlay);
+        document.body.removeChild(historyContainer);
+        alert('历史记录已清除');
+      }
+    };
+    
+    historyContainer.appendChild(clearBtn);
+    
+    // 创建遮罩层
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    `;
+    
+    // 点击遮罩层关闭弹窗
+    overlay.onclick = () => {
+      document.body.removeChild(overlay);
+      document.body.removeChild(historyContainer);
+    };
+    
+    // 添加到页面
+    document.body.appendChild(overlay);
+    document.body.appendChild(historyContainer);
   }
 </script>
