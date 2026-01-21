@@ -41,7 +41,10 @@ export const locales = {
     navHome: "Home",
     navAbout: "About",
     navSettings: "Settings",
-    navLanguage: "Language"
+    navLanguage: "Language",
+    navPrivacy: "Privacy Policy",
+    navTerms: "Terms of Service",
+    navContact: "Contact Us"
   },
   zh: {
     title: "JSON格式化工具",
@@ -84,6 +87,9 @@ export const locales = {
     navHome: "首页",
     navAbout: "关于",
     navSettings: "设置",
-    navLanguage: "语言"
+    navLanguage: "语言",
+    navPrivacy: "隐私政策",
+    navTerms: "服务条款",
+    navContact: "联系我们"
   }
 };

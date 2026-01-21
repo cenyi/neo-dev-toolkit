@@ -43,12 +43,7 @@ const sampleJson = {
         <div class="input-section">
           <div class="section-label">JSON viewer All in one</div>
           <div class="input-editor-wrapper">
-            <div class="line-numbers" id="line-numbers"></div>
-            <textarea
-              id="json-input"
-              class="json-input"
-              placeholder={t.inputPlaceholder}
-            ></textarea>
+            <div id="monaco-editor-container" class="monaco-editor-container"></div>
           </div>
         </div>
 
@@ -61,6 +56,7 @@ const sampleJson = {
               placeholder={t.extractionPlaceholder}
             />
             <button id="apply-extract">{t.apply}</button>
+            <button id="clear-extract-fn">Clear</button>
           </div>
         </div>
 
@@ -85,7 +81,6 @@ const sampleJson = {
         </div>
         <div class="output-content" id="output-content">
           <div class="output-editor-wrapper">
-            <div class="output-line-numbers" id="output-line-numbers"></div>
             <div id="output-json"></div>
           </div>
         </div>
@@ -93,6 +88,9 @@ const sampleJson = {
     </div>
   </div>
 </BaseLayout>
+
+<!-- Monaco Editor CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
 
 <style>
   .json-formatter-container {
@@ -163,44 +161,16 @@ const sampleJson = {
     border-radius: 8px;
     overflow: hidden;
     flex: 1;
+    min-height: 0;
+    position: relative;
   }
 
-  .line-numbers {
-    background: #f6f8fa;
-    padding: 12px 8px;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 13px;
-    line-height: 1.5;
-    color: #6b7280;
-    user-select: none;
-    border-right: 1px solid #e1e4e8;
-    min-width: 40px;
-    text-align: right;
-    overflow: hidden;
-    white-space: pre;
-  }
-
-  .json-input {
+  .monaco-editor-container {
     flex: 1;
     width: 100%;
-    min-height: 300px;
-    padding: 12px;
-    border: none;
-    border-radius: 0;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 13px;
-    line-height: 1.5;
-    resize: none;
-    background: #fafbfc;
-    color: var(--text-color);
-    transition: all 0.2s;
-  }
-
-  .json-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    background: #fff;
+    height: 100%;
+    min-height: 400px;
+    position: relative;
   }
 
   /* 提取区域 */
@@ -258,6 +228,14 @@ const sampleJson = {
   .extraction-controls button:hover {
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     transform: translateY(-1px);
+  }
+
+  #clear-extract-fn {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+
+  #clear-extract-fn:hover {
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
   }
 
   /* 按钮组 */
@@ -366,21 +344,6 @@ const sampleJson = {
     overflow: hidden;
     flex: 1;
     background: linear-gradient(to bottom, #fafbfc 0%, #f5f6f8 100%);
-  }
-
-  .output-line-numbers {
-    background: #f6f8fa;
-    padding: 12px 8px;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 13px;
-    line-height: 1.5;
-    color: #6b7280;
-    user-select: none;
-    border-right: 1px solid #e1e4e8;
-    min-width: 40px;
-    text-align: right;
-    overflow: hidden;
-    white-space: pre;
   }
 
   #output-json {
@@ -560,8 +523,15 @@ const sampleJson = {
   }
 </style>
 
-<script>
-  // 全局翻译对象
+<script type="module">
+  // 使用 CDN 导入 Monaco Editor
+  import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+
+  // 配置 Monaco Editor 的资源路径
+  monaco.editor.setTheme('vs');
+
+  // 全局变量
+  let editor = null;
   let translations = {};
 
   // DOM加载完成后初始化
@@ -579,98 +549,156 @@ const sampleJson = {
       tsSuccess: container.dataset.tsSuccess
     };
 
+    // 初始化 Monaco Editor
+    initializeMonacoEditor();
+
     initializeJsonFormatter();
   });
 
-  // 获取编辑器元素
-  function getInputEditorElement() {
-    return document.getElementById('json-input');
-  }
-
-  // 行号更新函数
-  function updateLineNumbers() {
-    const textarea = document.getElementById('json-input');
-    const lineNumbers = document.getElementById('line-numbers');
-    const lines = textarea.value.split('\n').length;
-    
-    let lineNumbersHTML = '';
-    for (let i = 1; i <= lines; i++) {
-      lineNumbersHTML += `${i}\n`;
+  // 初始化 Monaco Editor
+  function initializeMonacoEditor() {
+    const container = document.getElementById('monaco-editor-container');
+    if (!container) {
+      console.error('Monaco Editor container not found');
+      return;
     }
-    
-    lineNumbers.textContent = lineNumbersHTML;
-  }
 
-  // 输出框行号更新函数
-  function updateOutputLineNumbers() {
-    const outputJson = document.getElementById('output-json');
-    const lineNumbers = document.getElementById('output-line-numbers');
-    
-    // 计算输出内容的行数
-    const text = outputJson.textContent || outputJson.innerText;
-    const lines = text.split('\n').length;
-    
-    let lineNumbersHTML = '';
-    for (let i = 1; i <= lines; i++) {
-      lineNumbersHTML += `${i}\n`;
-    }
-    
-    lineNumbers.textContent = lineNumbersHTML;
-    
-    // 同步滚动
-    outputJson.addEventListener('scroll', () => {
-      lineNumbers.scrollTop = outputJson.scrollTop;
+    // 使用 requestAnimationFrame 确保 DOM 完全渲染后再创建编辑器
+    requestAnimationFrame(() => {
+      // 确保容器有正确的尺寸
+      console.log('Container dimensions:', {
+        width: container.offsetWidth,
+        height: container.offsetHeight
+      });
+
+      // 如果容器高度还是0，再等待一帧
+      if (container.offsetHeight === 0) {
+        requestAnimationFrame(() => createEditor(container));
+      } else {
+        createEditor(container);
+      }
     });
+  }
+
+  // 创建 Monaco Editor
+  function createEditor(container) {
+    // 创建编辑器
+    editor = monaco.editor.create(container, {
+      value: '',
+      language: 'json',
+      theme: 'vs',
+      automaticLayout: true,
+      fontSize: 13,
+      fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+      lineHeight: 21,
+      minimap: { enabled: false },
+      scrollBeyondLastLine: false,
+      wordWrap: 'off',
+      // 行号配置
+      lineNumbers: 'on',
+      lineNumbersMinChars: 3,
+      // 折叠配置
+      folding: true,
+      foldingStrategy: 'indentation',
+      foldingHighlight: true,
+      showFoldingControls: 'always',
+      // 其他配置
+      matchBrackets: 'always',
+      autoClosingBrackets: 'always',
+      autoClosingQuotes: 'always',
+      formatOnPaste: true,
+      formatOnType: true,
+      tabSize: 2,
+      renderLineHighlight: 'all',
+      scrollbar: {
+        vertical: 'visible',
+        horizontal: 'visible'
+      },
+      padding: { top: 12, bottom: 12 }
+    });
+
+    console.log('Monaco Editor created successfully');
+
+    // 调试：检查 DOM 结构
+    setTimeout(() => {
+      const monacoContainer = container.querySelector('.monaco-editor');
+      if (monacoContainer) {
+        const margin = monacoContainer.querySelector('.margin');
+        console.log('Monaco DOM structure:', {
+          container: container.offsetWidth,
+          monacoEditor: monacoContainer.offsetWidth,
+          margin: margin ? margin.offsetWidth : 'NOT FOUND',
+          marginVisible: margin ? window.getComputedStyle(margin).display : 'N/A'
+        });
+      }
+    }, 200);
+
+    // 强制更新布局
+    setTimeout(() => {
+      if (editor) {
+        editor.layout();
+        console.log('Monaco Editor layout updated');
+      }
+    }, 100);
+
+    // 监听内容变化，自动格式化和保存历史
+    editor.onDidChangeModelContent(() => {
+      clearTimeout(window.autoFormatTimeout);
+      window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
+    });
+  }
+
+  // 获取编辑器中的文本
+  function getEditorContent() {
+    return editor ? editor.getValue() : '';
+  }
+
+  // 设置编辑器中的文本
+  function setEditorContent(content) {
+    if (editor) {
+      editor.setValue(content);
+    }
   }
 
   // 自动格式化函数
   function autoFormatJson() {
-    const textarea = document.getElementById('json-input');
-    const inputText = textarea.value.trim();
-    
+    const inputText = getEditorContent().trim();
+
     if (!inputText) {
       return;
     }
-    
+
     try {
       // 尝试解析JSON
       const parsed = JSON.parse(inputText);
-      // 格式化JSON并更新输入框
+      // 格式化JSON
       const formatted = JSON.stringify(parsed, null, 2);
-      
-      // 保存光标位置
-      const cursorPos = textarea.selectionStart;
-      const beforeCursor = inputText.substring(0, cursorPos);
-      
-      textarea.value = formatted;
-      updateLineNumbers();
+
+      // 只有当格式化后的内容与当前不同时才更新
+      if (formatted !== inputText) {
+        // 保存当前光标位置和滚动位置
+        const position = editor ? editor.getPosition() : null;
+        const scrollTop = editor ? editor.getScrollTop() : null;
+
+        // 更新编辑器内容
+        setEditorContent(formatted);
+
+        // 恢复光标位置和滚动位置
+        if (position && editor) {
+          editor.setPosition(position);
+        }
+        if (scrollTop !== null && editor) {
+          editor.setScrollTop(scrollTop);
+        }
+      }
+
+      // 保存到历史记录
+      saveToHistory(formatted);
     } catch (e) {
-      // 如果解析失败，不进行格式化
-      return;
+      // 解析失败，不做处理
+      console.debug('JSON parsing error:', e);
     }
   }
-
-  // 初始化行号功能和自动格式化
-  document.addEventListener('DOMContentLoaded', () => {
-    const textarea = document.getElementById('json-input');
-    const lineNumbers = document.getElementById('line-numbers');
-    
-    // 初始更新行号
-    updateLineNumbers();
-    
-    // 监听输入事件，更新行号和自动格式化
-    textarea.addEventListener('input', () => {
-      updateLineNumbers();
-      // 使用防抖函数，延迟500ms执行自动格式化
-      clearTimeout(window.autoFormatTimeout);
-      window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
-    });
-    
-    // 监听滚动事件，同步行号滚动
-    textarea.addEventListener('scroll', () => {
-      lineNumbers.scrollTop = textarea.scrollTop;
-    });
-  });
 
   // JSON树形查看器
   class JsonViewer {
@@ -807,6 +835,9 @@ const sampleJson = {
     }
   }
 
+  // 将 JsonViewer 暴露到全局
+  window.JsonViewer = JsonViewer;
+
   // 展开输出区域
   function expandOutput(title = '输出结果') {
     const outputArea = document.getElementById('output-area');
@@ -834,27 +865,17 @@ const sampleJson = {
     }
 
     expandOutput(title);
-    
-    // 更新输出框行号
-    setTimeout(updateOutputLineNumbers, 100);
   }
 
   function initializeJsonFormatter() {
-    const inputEl = getInputEditorElement();
-
-    // 实时格式化输入
-    inputEl.addEventListener('input', debounce(() => {
-      try {
-        const data = parseJson(inputEl.value);
-        showJsonResult(data, '格式化结果');
-      } catch (e) {
-        // 忽略输入时的解析错误
-      }
-    }, 800));
-
     // 应用提取函数
     document.getElementById('apply-extract').addEventListener('click', () => {
       applyExtractFunction();
+    });
+
+    // 清空提取函数输入框
+    document.getElementById('clear-extract-fn').addEventListener('click', () => {
+      document.getElementById('extract-fn').value = '';
     });
 
     // 按钮事件绑定
@@ -868,8 +889,6 @@ const sampleJson = {
     document.getElementById('json-to-ts').addEventListener('click', () => jsonToTsAndCopy());
     document.getElementById('close-output').addEventListener('click', closeOutput);
     document.getElementById('history-btn').addEventListener('click', showHistory);
-
-    // 移除了初始格式化，使用自动格式化替代
   }
 
   // 防抖函数
@@ -895,7 +914,6 @@ const sampleJson = {
 
   // 应用提取函数
   async function applyExtractFunction() {
-    const inputEl = getInputEditorElement();
     const extractFnStr = document.getElementById('extract-fn').value.trim();
 
     if (!extractFnStr) {
@@ -904,7 +922,7 @@ const sampleJson = {
     }
 
     try {
-      const inputText = inputEl.value;
+      const inputText = getEditorContent();
       if (!inputText.trim()) {
         alert(translations.enterData || '请输入数据');
         return;
@@ -923,7 +941,7 @@ const sampleJson = {
 
   // 清空输入
   function clearInputs() {
-    getInputEditorElement().value = '';
+    setEditorContent('');
     document.getElementById('extract-fn').value = '';
     document.getElementById('output-json').innerHTML = '';
     closeOutput();
@@ -931,41 +949,56 @@ const sampleJson = {
 
   // 折叠所有
   function collapseAll() {
+    // 折叠 Monaco Editor 中的所有可折叠区域
+    if (editor) {
+      editor.getAction('editor.foldAll').run();
+    }
+
+    // 折叠右侧输出区域
     const outputEl = document.getElementById('output-json');
-    const collapsibles = outputEl.querySelectorAll('.collapsible');
-    collapsibles.forEach(node => {
-      node.classList.add('collapsed');
-      const toggle = node.querySelector('.json-toggle');
-      if (toggle) toggle.textContent = '▶';
-    });
+    if (outputEl) {
+      const collapsibles = outputEl.querySelectorAll('.collapsible');
+      collapsibles.forEach(node => {
+        node.classList.add('collapsed');
+        const toggle = node.querySelector('.json-toggle');
+        if (toggle) toggle.textContent = '▶';
+      });
+    }
   }
 
   // 展开所有
   function expandAll() {
+    // 展开 Monaco Editor 中的所有可折叠区域
+    if (editor) {
+      editor.getAction('editor.unfoldAll').run();
+    }
+
+    // 展开右侧输出区域
     const outputEl = document.getElementById('output-json');
-    const collapsibles = outputEl.querySelectorAll('.collapsible');
-    collapsibles.forEach(node => {
-      node.classList.remove('collapsed');
-      const toggle = node.querySelector('.json-toggle');
-      if (toggle) toggle.textContent = '▼';
-    });
+    if (outputEl) {
+      const collapsibles = outputEl.querySelectorAll('.collapsible');
+      collapsibles.forEach(node => {
+        node.classList.remove('collapsed');
+        const toggle = node.querySelector('.json-toggle');
+        if (toggle) toggle.textContent = '▼';
+      });
+    }
   }
 
   // 去除注释
   function removeComments() {
-    const inputEl = getInputEditorElement();
-    let value = inputEl.value;
+    let value = getEditorContent();
     value = value.replace(/\/\*[\s\S]*?\*\//g, '');
     value = value.replace(/\/\/.*/g, '');
-    inputEl.value = value;
-    formatInput();
+    setEditorContent(value);
+    // 触发自动格式化
+    autoFormatJson();
   }
 
   // 压缩并复制
   async function compressAndCopy() {
-    const inputEl = getInputEditorElement();
     try {
-      const parsedData = parseJson(inputEl.value);
+      const parsedData = parseJson(getEditorContent());
       const compressed = JSON.stringify(parsedData);
       await navigator.clipboard.writeText(compressed);
       alert(translations.compressSuccess || '压缩成功并已复制到剪贴板');
@@ -976,9 +1009,8 @@ const sampleJson = {
 
   // 转义并复制
   async function escapeAndCopy() {
-    const inputEl = getInputEditorElement();
     try {
-      const parsedData = parseJson(inputEl.value);
+      const parsedData = parseJson(getEditorContent());
       const compressed = JSON.stringify(parsedData);
       const escaped = compressed.replace(/[\\]/g, '\\\\').replace(/["]/g, '\\"');
       await navigator.clipboard.writeText(escaped);
@@ -990,9 +1022,8 @@ const sampleJson = {
 
   // JSON转XML并复制
   async function jsonToXmlAndCopy() {
-    const inputEl = getInputEditorElement();
     try {
-      const parsedData = parseJson(inputEl.value);
+      const parsedData = parseJson(getEditorContent());
       const xmlString = jsonToXml(parsedData, 'root');
       await navigator.clipboard.writeText(xmlString);
       alert(translations.xmlSuccess || 'XML已复制到剪贴板');
@@ -1003,9 +1034,8 @@ const sampleJson = {
 
   // JSON转TypeScript并复制
   async function jsonToTsAndCopy() {
-    const inputEl = getInputEditorElement();
     try {
-      const parsedData = parseJson(inputEl.value);
+      const parsedData = parseJson(getEditorContent());
       const tsInterface = jsonToTsInterface(parsedData, 'DataType');
       await navigator.clipboard.writeText(tsInterface);
       alert(translations.tsSuccess || 'TypeScript接口已复制到剪贴板');
@@ -1094,7 +1124,7 @@ const sampleJson = {
 
   // 本地存储相关函数
   const HISTORY_KEY = 'json-formatter-history';
-  const MAX_HISTORY_ITEMS = 10;
+  const MAX_HISTORY_ITEMS = 50;
 
   // 保存历史记录
   function saveToHistory(data) {
@@ -1148,120 +1178,6 @@ const sampleJson = {
       return;
     }
     
-    // 创建历史记录弹窗
-    const historyContainer = document.createElement('div');
-    historyContainer.style.cssText = `
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      z-index: 1000;
-      max-width: 80%;
-      max-height: 80%;
-      overflow-y: auto;
-    `;
-    
-    // 创建标题
-    const title = document.createElement('h3');
-    title.textContent = '历史记录';
-    title.style.cssText = `
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 18px;
-    `;
-    historyContainer.appendChild(title);
-    
-    // 创建历史记录列表
-    const historyList = document.createElement('ul');
-    historyList.style.cssText = `
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    `;
-    
-    history.forEach(item => {
-      const listItem = document.createElement('li');
-      listItem.style.cssText = `
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-        cursor: pointer;
-        transition: background-color 0.2s;
-      `;
-      
-      listItem.onmouseenter = () => {
-        listItem.style.backgroundColor = '#f5f5f5';
-      };
-      
-      listItem.onmouseleave = () => {
-        listItem.style.backgroundColor = 'transparent';
-      };
-      
-      // 创建历史记录内容
-      const historyContent = document.createElement('div');
-      historyContent.style.cssText = `
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        font-size: 12px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 500px;
-      `;
-      historyContent.textContent = item.data.substring(0, 100) + (item.data.length > 100 ? '...' : '');
-      
-      // 创建时间戳
-      const timestamp = document.createElement('div');
-      timestamp.style.cssText = `
-        font-size: 10px;
-        color: #999;
-        margin-top: 5px;
-      `;
-      timestamp.textContent = new Date(item.timestamp).toLocaleString();
-      
-      // 点击历史记录恢复数据
-      listItem.onclick = () => {
-        const textarea = document.getElementById('json-input');
-        textarea.value = item.data;
-        updateLineNumbers();
-        document.body.removeChild(overlay);
-        document.body.removeChild(historyContainer);
-      };
-      
-      listItem.appendChild(historyContent);
-      listItem.appendChild(timestamp);
-      historyList.appendChild(listItem);
-    });
-    
-    historyContainer.appendChild(historyList);
-    
-    // 创建清除历史记录按钮
-    const clearBtn = document.createElement('button');
-    clearBtn.textContent = '清除历史记录';
-    clearBtn.style.cssText = `
-      margin-top: 15px;
-      padding: 6px 12px;
-      background: #ef4444;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 12px;
-    `;
-    
-    clearBtn.onclick = () => {
-      if (confirm('确定要清除所有历史记录吗？')) {
-        clearHistory();
-        document.body.removeChild(overlay);
-        document.body.removeChild(historyContainer);
-        alert('历史记录已清除');
-      }
-    };
-    
-    historyContainer.appendChild(clearBtn);
-    
     // 创建遮罩层
     const overlay = document.createElement('div');
     overlay.style.cssText = `
@@ -1274,6 +1190,362 @@ const sampleJson = {
       z-index: 999;
     `;
     
+    // 创建历史记录弹窗
+    const historyContainer = document.createElement('div');
+    historyContainer.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      width: 90%;
+      max-width: 1200px;
+      max-height: 90%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    `;
+    
+    // 创建标题行
+    const header = document.createElement('div');
+    header.style.cssText = `
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    `;
+    
+    // 创建标题
+    const title = document.createElement('h3');
+    title.textContent = '历史记录';
+    title.style.cssText = `
+      margin: 0;
+      font-size: 18px;
+    `;
+    header.appendChild(title);
+    
+    // 创建关闭按钮
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = '×';
+    closeBtn.style.cssText = `
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    `;
+    
+    closeBtn.onmouseenter = () => {
+      closeBtn.style.backgroundColor = '#f5f5f5';
+    };
+    
+    closeBtn.onmouseleave = () => {
+      closeBtn.style.backgroundColor = 'transparent';
+    };
+    
+    closeBtn.onclick = () => {
+      document.body.removeChild(overlay);
+      document.body.removeChild(historyContainer);
+    };
+    
+    header.appendChild(closeBtn);
+    historyContainer.appendChild(header);
+    
+    // 创建搜索框
+    const searchContainer = document.createElement('div');
+    searchContainer.style.cssText = `
+      margin-bottom: 15px;
+    `;
+    
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = '搜索历史记录...';
+    searchInput.style.cssText = `
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    `;
+    
+    searchContainer.appendChild(searchInput);
+    historyContainer.appendChild(searchContainer);
+    
+    // 创建清除历史记录按钮
+    const clearBtn = document.createElement('button');
+    clearBtn.textContent = '清除所有历史记录';
+    clearBtn.style.cssText = `
+      margin-bottom: 15px;
+      padding: 8px 16px;
+      background: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    `;
+    
+    clearBtn.onmouseenter = () => {
+      clearBtn.style.backgroundColor = '#dc2626';
+    };
+    
+    clearBtn.onmouseleave = () => {
+      clearBtn.style.backgroundColor = '#ef4444';
+    };
+    
+    clearBtn.onclick = () => {
+      if (confirm('确定要清除所有历史记录吗？')) {
+        clearHistory();
+        document.body.removeChild(overlay);
+        document.body.removeChild(historyContainer);
+        showToast('历史记录已清除');
+      }
+    };
+    
+    historyContainer.appendChild(clearBtn);
+    
+    // 创建表格容器
+    const tableContainer = document.createElement('div');
+    tableContainer.style.cssText = `
+      flex: 1;
+      overflow: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    `;
+    
+    // 创建表格
+    const table = document.createElement('table');
+    table.style.cssText = `
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    `;
+    
+    // 创建表头
+    const thead = document.createElement('thead');
+    thead.style.cssText = `
+      background-color: #f9fafb;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    `;
+    
+    const headerRow = document.createElement('tr');
+    const headers = ['序号', '时间', 'JSON数据', '操作'];
+    const headerWidths = ['60px', '150px', 'auto', '120px'];
+    
+    headers.forEach((headerText, index) => {
+      const th = document.createElement('th');
+      th.textContent = headerText;
+      th.style.cssText = `
+        padding: 10px 8px;
+        text-align: left;
+        border-bottom: 2px solid #ddd;
+        font-weight: 600;
+        width: ${headerWidths[index]};
+      `;
+      headerRow.appendChild(th);
+    });
+    
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+    
+    // 创建表体
+    const tbody = document.createElement('tbody');
+    
+    // 添加记录到表格的函数
+    function addRecordsToTable(records) {
+      tbody.innerHTML = '';
+      
+      records.forEach((item, index) => {
+        const tr = document.createElement('tr');
+        tr.style.cssText = `
+          border-bottom: 1px solid #eee;
+          transition: background-color 0.2s;
+        `;
+        
+        tr.onmouseenter = () => {
+          tr.style.backgroundColor = '#f5f5f5';
+        };
+        
+        tr.onmouseleave = () => {
+          tr.style.backgroundColor = 'transparent';
+        };
+        
+        // 序号列
+        const indexTd = document.createElement('td');
+        indexTd.textContent = index + 1;
+        indexTd.style.cssText = `
+          padding: 8px;
+          text-align: center;
+          font-weight: 500;
+        `;
+        tr.appendChild(indexTd);
+        
+        // 时间列
+        const timeTd = document.createElement('td');
+        timeTd.textContent = new Date(item.timestamp).toLocaleString();
+        timeTd.style.cssText = `
+          padding: 8px;
+          color: #666;
+        `;
+        tr.appendChild(timeTd);
+        
+        // JSON数据列
+        const dataTd = document.createElement('td');
+        dataTd.style.cssText = `
+          padding: 8px;
+          max-width: 500px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+          font-size: 12px;
+          cursor: pointer;
+          color: #2563eb;
+        `;
+        
+        const jsonPreview = item.data.substring(0, 150) + (item.data.length > 150 ? '...' : '');
+        dataTd.textContent = jsonPreview;
+        dataTd.title = '点击复制完整JSON';
+        
+        // 点击JSON数据复制到剪贴板
+        dataTd.onclick = (e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(item.data).then(() => {
+            showToast('JSON已复制到剪贴板');
+          }).catch(err => {
+            console.error('复制失败:', err);
+            showToast('复制失败，请重试');
+          });
+        };
+        
+        tr.appendChild(dataTd);
+        
+        // 操作列
+        const actionTd = document.createElement('td');
+        actionTd.style.cssText = `
+          padding: 8px;
+          display: flex;
+          gap: 6px;
+          justify-content: center;
+        `;
+        
+        // 复制按钮
+        const copyBtn = document.createElement('button');
+        copyBtn.textContent = '复制';
+        copyBtn.style.cssText = `
+          padding: 4px 8px;
+          background: #3b82f6;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 12px;
+          transition: background-color 0.2s;
+        `;
+        
+        copyBtn.onmouseenter = () => {
+          copyBtn.style.backgroundColor = '#2563eb';
+        };
+        
+        copyBtn.onmouseleave = () => {
+          copyBtn.style.backgroundColor = '#3b82f6';
+        };
+        
+        copyBtn.onclick = (e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(item.data).then(() => {
+            showToast('JSON已复制到剪贴板');
+          }).catch(err => {
+            console.error('复制失败:', err);
+            showToast('复制失败，请重试');
+          });
+        };
+        
+        actionTd.appendChild(copyBtn);
+        
+        // 删除按钮
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '删除';
+        deleteBtn.style.cssText = `
+          padding: 4px 8px;
+          background: #ef4444;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 12px;
+          transition: background-color 0.2s;
+        `;
+        
+        deleteBtn.onmouseenter = () => {
+          deleteBtn.style.backgroundColor = '#dc2626';
+        };
+        
+        deleteBtn.onmouseleave = () => {
+          deleteBtn.style.backgroundColor = '#ef4444';
+        };
+        
+        deleteBtn.onclick = (e) => {
+          e.stopPropagation();
+          if (confirm('确定要删除这条记录吗？')) {
+            const updatedHistory = history.filter(h => h.id !== item.id);
+            localStorage.setItem(HISTORY_KEY, JSON.stringify(updatedHistory));
+            // 更新表格
+            const filteredHistory = searchInput.value 
+              ? updatedHistory.filter(h => h.data.includes(searchInput.value))
+              : updatedHistory;
+            addRecordsToTable(filteredHistory);
+            showToast('记录已删除');
+          }
+        };
+        
+        actionTd.appendChild(deleteBtn);
+        tr.appendChild(actionTd);
+        
+        // 点击整行恢复数据
+        tr.onclick = () => {
+          setEditorContent(item.data);
+          autoFormatJson();
+          document.body.removeChild(overlay);
+          document.body.removeChild(historyContainer);
+        };
+        
+        tbody.appendChild(tr);
+      });
+    }
+    
+    // 初始加载所有记录
+    addRecordsToTable(history);
+    
+    table.appendChild(tbody);
+    tableContainer.appendChild(table);
+    historyContainer.appendChild(tableContainer);
+    
+    // 添加搜索功能
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const filteredHistory = history.filter(item => 
+        item.data.toLowerCase().includes(searchTerm)
+      );
+      addRecordsToTable(filteredHistory);
+    });
+    
     // 点击遮罩层关闭弹窗
     overlay.onclick = () => {
       document.body.removeChild(overlay);
@@ -1283,5 +1555,62 @@ const sampleJson = {
     // 添加到页面
     document.body.appendChild(overlay);
     document.body.appendChild(historyContainer);
+  }
+  
+  // 显示Toast提示
+  function showToast(message) {
+    // 检查是否已有Toast
+    let toast = document.getElementById('toast-message');
+    if (toast) {
+      toast.remove();
+    }
+    
+    toast = document.createElement('div');
+    toast.id = 'toast-message';
+    toast.textContent = message;
+    toast.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 4px;
+      z-index: 1001;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      animation: slideIn 0.3s ease-out;
+    `;
+    
+    // 添加动画样式
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    document.body.appendChild(toast);
+    
+    // 3秒后移除Toast
+    setTimeout(() => {
+      toast.style.animation = 'slideIn 0.3s ease-out reverse';
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+        if (style.parentNode) {
+          style.parentNode.removeChild(style);
+        }
+      }, 300);
+    }, 3000);
   }
 </script>

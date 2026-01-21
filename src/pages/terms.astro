@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { locales } from '../i18n/locales.js';
+
+// 获取语言参数
+const url = new URL(Astro.request.url);
+const lang = url.searchParams.get('lang') || 'en';
+const t = locales[lang] || locales.en;
+---
+
+<BaseLayout title={`${t.navTerms} | ${t.title}`} lang={lang}>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="page-container">
+    <h1>{t.navTerms}</h1>
+    <div class="content">
+      <h2>1. Introduction</h2>
+      <p>Welcome to our JSON Formatter & Parser website. These Terms of Service govern your use of our website.</p>
+      
+      <h2>2. Acceptance of Terms</h2>
+      <p>By accessing or using our website, you agree to be bound by these Terms of Service and our Privacy Policy.</p>
+      
+      <h2>3. Use of Our Website</h2>
+      <p>You may use our website for lawful purposes only. You agree not to use our website:</p>
+      <ul>
+        <li>In any way that violates any applicable federal, state, local, or international law or regulation.</li>
+        <li>For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way.</li>
+        <li>To transmit, or procure the sending of, any advertising or promotional material without our prior written consent.</li>
+      </ul>
+      
+      <h2>4. Intellectual Property Rights</h2>
+      <p>The content of our website, including but not limited to text, graphics, logos, icons, images, and software, is the property of our website and is protected by copyright and other intellectual property laws.</p>
+      
+      <h2>5. Disclaimer of Warranties</h2>
+      <p>Our website is provided on an "as is" and "as available" basis. We make no representations or warranties of any kind, express or implied, about the operation of our website or the information, content, materials, or products included on our website.</p>
+      
+      <h2>6. Limitation of Liability</h2>
+      <p>In no event shall our website, its directors, employees, partners, agents, suppliers, or affiliates be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use our website.</p>
+      
+      <h2>7. Changes to These Terms of Service</h2>
+      <p>We may update our Terms of Service from time to time. We will notify you of any changes by posting the new Terms of Service on this page.</p>
+      
+      <h2>8. Governing Law</h2>
+      <p>These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated, without regard to its conflict of law provisions.</p>
+      
+      <h2>9. Contact Us</h2>
+      <p>If you have any questions about these Terms of Service, please contact us at terms@example.com.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1f2937;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #374151;
+  }
+
+  p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+
+  ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+
+  .content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+</style>
