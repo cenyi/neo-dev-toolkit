@@ -199,8 +199,12 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
     // 更新主内容区域的 margin-left
     if (sidebar.classList.contains('collapsed')) {
       main.style.marginLeft = 'var(--sidebar-collapsed-width)';
+      // 保存折叠状态到 localStorage
+      localStorage.setItem('sidebarCollapsed', 'true');
     } else {
       main.style.marginLeft = 'var(--sidebar-width)';
+      // 保存展开状态到 localStorage
+      localStorage.setItem('sidebarCollapsed', 'false');
     }
 
     // 更新全局状态
@@ -221,11 +225,16 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
 
   // 初始化时检查是否需要折叠侧边栏
   window.addEventListener('DOMContentLoaded', () => {
-    if (window.appState && window.appState.sidebarCollapsed) {
+    // 优先从 localStorage 读取状态
+    const savedState = localStorage.getItem('sidebarCollapsed');
+    const shouldCollapse = savedState === 'true' || (savedState === null && window.appState?.sidebarCollapsed);
+
+    if (shouldCollapse) {
       const sidebar = document.getElementById('sidebar');
       const main = document.querySelector('main');
       sidebar.classList.add('collapsed');
       main.style.marginLeft = 'var(--sidebar-collapsed-width)';
+      window.appState.sidebarCollapsed = true;
     }
   });
 </script>
