@@ -71,11 +71,9 @@ const sampleJson = {
           <button id="compress-copy">{t.compressCopy}</button>
           <button id="escape-copy">{t.escapeCopy}</button>
           <button id="json-to-xml">{t.jsonToXml}</button>
+          <button id="json-to-ts">{t.jsonToTs}</button>
+          <button id="clear-btn">{t.clear}</button>
           <button id="history-btn">History</button>
-          <span class="json-action-group">
-            <button id="json-to-ts">{t.jsonToTs}</button>
-            <button id="clear-btn">{t.clear}</button>
-          </span>
         </div>
       </div>
 
@@ -287,19 +285,8 @@ const sampleJson = {
     transform: translateY(-1px);
   }
 
-  .json-action-group {
-    display: flex;
-    gap: 0;
-  }
-
-  #json-to-ts {
-    border-radius: 5px 0 0 5px;
-  }
-
   #clear-btn {
-    border-radius: 0 5px 5px 0;
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-    margin-right: 6px;
   }
 
   #clear-btn:hover {
