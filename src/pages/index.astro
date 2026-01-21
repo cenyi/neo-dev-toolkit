@@ -1,0 +1,1161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import JsonEditor from '../components/JsonEditor.astro';
+import JsonTreeView from '../components/JsonTreeView.astro';
+import { locales } from '../i18n/locales.js';
+
+// 获取语言参数
+const url = new URL(Astro.request.url);
+const lang = url.searchParams.get('lang') || 'en';
+const t = locales[lang] || locales.en;
+---
+
+<BaseLayout title={`${t.title} | ${t.description}`} lang={lang}>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container"
+       data-enter-extraction-fn={t.enterExtractionFn}
+       data-enter-data={t.enterData}
+       data-extraction-error={t.extractionError}
+       data-parsing-error={t.parsingError}
+       data-compress-success={t.compressSuccess}
+       data-escape-success={t.escapeSuccess}
+       data-xml-success={t.xmlSuccess}
+       data-ts-success={t.tsSuccess}>
+    <div class="input-section">
+      <JsonEditor
+        id="input-json"
+        placeholder={t.inputPlaceholder}
+        value={`{
+  "name": "JSON Formatter",
+  "version": "1.0.0",
+  "features": [
+    "Format JSON",
+    "Convert from XML/YAML",
+    "Extract fields with JS functions"
+  ],
+  "author": {
+    "name": "Dev Team",
+    "email": "team@example.com"
+  }
+}`}
+      />
+    </div>
+
+    <div class="extraction-section">
+      <div class="extraction-controls">
+        <label for="extract-fn">{t.extractionLabel}</label>
+        <input
+          type="text"
+          id="extract-fn"
+          placeholder={t.extractionPlaceholder}
+        />
+        <button id="apply-extract">{t.apply}</button>
+      </div>
+    </div>
+
+    <div class="output-section">
+      <div class="output-controls">
+        <button id="format-btn">{t.format}</button>
+        <button id="collapse-all">{t.collapseAll}</button>
+        <button id="expand-all">{t.expandAll}</button>
+        <button id="remove-comments">{t.removeComments}</button>
+        <button id="compress-copy">{t.compressCopy}</button>
+        <button id="escape-copy">{t.escapeCopy}</button>
+        <button id="json-to-xml">{t.jsonToXml}</button>
+        <span class="json-action-group">
+          <button id="json-to-ts">{t.jsonToTs}</button>
+          <button id="clear-btn">{t.clear}</button>
+        </span>
+      </div>
+
+      <div class="result-container">
+        <div id="output-json" class="json-output"></div>
+        <div id="extracted-output" class="extracted-output"></div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .json-formatter-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .json-formatter-container h1 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+
+  .json-formatter-container p {
+    margin-bottom: 20px;
+    color: #666;
+  }
+
+  .input-section {
+    margin-bottom: 20px;
+  }
+
+  .input-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .input-controls label {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+
+  .input-controls select, .input-controls button {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 14px;
+  }
+
+  .input-controls button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .input-controls button:hover {
+    background-color: #2563eb;
+  }
+
+  .editor-container {
+    position: relative;
+  }
+
+  #input-json {
+    width: 100%;
+    height: 300px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    resize: vertical;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  #input-json:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+
+  .extraction-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+  }
+
+  .extraction-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .extraction-controls label {
+    font-weight: bold;
+    color: var(--text-color);
+    white-space: nowrap;
+  }
+
+  .extraction-controls input {
+    flex: 1;
+    min-width: 300px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  .extraction-controls input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+
+  .extraction-controls button {
+    padding: 8px 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .extraction-controls button:hover {
+    background-color: #2563eb;
+  }
+
+  .output-section {
+    margin-top: 20px;
+  }
+
+  .output-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .output-controls button {
+    padding: 8px 12px;
+    background-color: #6b7280;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+
+  .output-controls button:hover {
+    background-color: #4b5563;
+  }
+
+  /* 特别样式使Clear按钮紧邻JSON to TS按钮，形成一个组合按钮组 */
+  .output-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+
+  .output-controls button {
+    padding: 8px 12px;
+    background-color: #6b7280;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+
+  .output-controls button:hover {
+    background-color: #4b5563;
+  }
+
+  /* 将JSON to TS和Clear按钮设计为相邻的组合 */
+  .json-action-group {
+    display: flex;
+    gap: 0;
+  }
+
+  #json-to-ts {
+    border-radius: 4px 0 0 4px;
+    margin-right: 0;
+  }
+
+  #clear-btn {
+    border-radius: 0 4px 4px 0;
+    margin-left: 0;
+    background-color: #ef4444; /* 红色背景表示清除操作 */
+  }
+
+  #json-to-ts {
+    border-right: 1px solid #4b5563;
+  }
+
+  #clear-btn:hover {
+    background-color: #dc2626;
+  }
+
+  /* JSON树形查看器样式 */
+  .json-root {
+    padding: 5px 0;
+  }
+
+  .json-bracket {
+    padding: 0 5px;
+  }
+
+  .result-container {
+    display: flex;
+    gap: 20px;
+    min-height: 400px;
+  }
+
+  .json-output, .extracted-output {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 15px;
+    background-color: #fafafa;
+    overflow: auto;
+    min-height: 400px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .json-output pre, .extracted-output pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+  }
+
+  /* JSON树形查看器样式 */
+  #json-viewer-container {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #fafafa;
+    min-height: 400px;
+    overflow: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .json-node {
+    margin-left: 20px;
+  }
+
+  .json-property {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .json-toggle {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 14px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-right: 5px;
+    font-size: 12px;
+    user-select: none;
+  }
+
+  .json-key {
+    color: #922ad9;
+    margin-right: 5px;
+  }
+
+  .json-separator {
+    margin-right: 5px;
+  }
+
+  .json-value-string {
+    color: #0b7a00;
+  }
+
+  .json-value-number {
+    color: #d35e5e;
+  }
+
+  .json-value-boolean {
+    color: #0066cc;
+  }
+
+  .json-value-null {
+    color: #808080;
+  }
+
+  .json-value-object,
+  .json-value-array {
+    color: #333;
+  }
+
+  .collapsed > .json-node {
+    display: none;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1200px) {
+    .result-container {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .json-formatter-container {
+      padding: 10px;
+    }
+
+    .input-controls, .extraction-controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .input-controls label, .extraction-controls label {
+      margin-bottom: 5px;
+    }
+
+    .extraction-controls input {
+      min-width: auto;
+    }
+
+    #input-json {
+      height: 200px;
+    }
+
+    .output-controls {
+      justify-content: center;
+    }
+
+    .result-container {
+      gap: 10px;
+    }
+
+    .json-output, .extracted-output {
+      min-height: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .output-controls {
+      flex-direction: column;
+    }
+
+    .output-controls button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // DOM加载完成后初始化
+  document.addEventListener('DOMContentLoaded', () => {
+    // 从DOM元素获取翻译文本
+    const container = document.querySelector('.json-formatter-container');
+    const translations = {
+      enterExtractionFn: container.dataset.enterExtractionFn,
+      enterData: container.dataset.enterData,
+      extractionError: container.dataset.extractionError,
+      parsingError: container.dataset.parsingError,
+      compressSuccess: container.dataset.compressSuccess,
+      escapeSuccess: container.dataset.escapeSuccess,
+      xmlSuccess: container.dataset.xmlSuccess,
+      tsSuccess: container.dataset.tsSuccess
+    };
+
+    initializeJsonFormatter(translations);
+  });
+
+  // 获取编辑器元素的辅助函数
+  function getInputEditorElement() {
+    // 查找具有json-input ID的textarea元素
+    return document.getElementById('json-input') || document.querySelector('.json-input');
+  }
+
+  // JSON树形查看器
+  class JsonViewer {
+    constructor(containerId, data) {
+      this.container = document.getElementById(containerId);
+      this.data = data;
+      this.render();
+      this.bindEvents();
+    }
+
+    render() {
+      this.container.innerHTML = this.renderValue(this.data, '', true);
+    }
+
+    renderValue(value, key = '', hasNext = true) {
+      if (value === null) {
+        return this.renderProperty(key, `<span class="json-value-null">null</span>`, hasNext);
+      }
+
+      if (typeof value === 'object') {
+        if (Array.isArray(value)) {
+          return this.renderObjectOrArray(key, value, 'array', hasNext);
+        } else {
+          return this.renderObjectOrArray(key, value, 'object', hasNext);
+        }
+      }
+
+      if (typeof value === 'string') {
+        return this.renderProperty(key, `<span class="json-value-string">"${this.escapeHtml(value)}"</span>`, hasNext);
+      }
+
+      if (typeof value === 'number') {
+        return this.renderProperty(key, `<span class="json-value-number">${value}</span>`, hasNext);
+      }
+
+      if (typeof value === 'boolean') {
+        return this.renderProperty(key, `<span class="json-value-boolean">${value}</span>`, hasNext);
+      }
+
+      return this.renderProperty(key, value, hasNext);
+    }
+
+    renderProperty(key, value, hasNext) {
+      if (key === '') {
+        // 根节点
+        if (typeof value === 'object') {
+          if (Array.isArray(value)) {
+            return this.renderObjectContent(value, 'array');
+          } else {
+            return this.renderObjectContent(value, 'object');
+          }
+        }
+        return `<div class="json-root">${value}${hasNext ? ',' : ''}</div>`;
+      }
+
+      return `
+        <div class="json-property">
+          <span class="json-toggle">▼</span>
+          <span class="json-key">"${key}"</span>
+          <span class="json-separator">:</span>
+          <span class="json-value">${value}</span>
+          ${hasNext ? '<span>,</span>' : ''}
+        </div>
+      `;
+    }
+
+    renderObjectOrArray(key, value, type, hasNext) {
+      const length = Array.isArray(value) ? value.length : Object.keys(value).length;
+      const displayName = type === 'array' ? `[${length}]` : `{${length}}`;
+
+      return `
+        <div class="json-property collapsible">
+          <span class="json-toggle">▼</span>
+          ${key ? `<span class="json-key">"${key}"</span><span class="json-separator">:</span>` : ''}
+          <span class="json-value json-value-${type}">${displayName}</span>
+          ${hasNext ? '<span>,</span>' : ''}
+          <div class="json-node">${this.renderObjectContent(value)}</div>
+        </div>
+      `;
+    }
+
+    renderObjectContent(obj) {
+      if (Array.isArray(obj)) {
+        return `
+          <div class="json-bracket">[</div>
+          <div class="json-node">
+            ${obj.map((item, index) => {
+              const hasNext = index < obj.length - 1;
+              return this.renderValue(item, '', hasNext);
+            }).join('')}
+          </div>
+          <div class="json-bracket">]</div>
+        `;
+      } else {
+        const entries = Object.entries(obj);
+        return `
+          <div class="json-bracket">{</div>
+          <div class="json-node">
+            ${entries.map(([key, value], index) => {
+              const hasNext = index < entries.length - 1;
+              return this.renderValue(value, key, hasNext);
+            }).join('')}
+          </div>
+          <div class="json-bracket">}</div>
+        `;
+      }
+    }
+
+    escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    bindEvents() {
+      this.container.addEventListener('click', (e) => {
+        const toggle = e.target.closest('.json-toggle');
+        if (toggle) {
+          this.toggleNode(toggle);
+        }
+      });
+    }
+
+    toggleNode(toggle) {
+      const property = toggle.parentElement;
+      property.classList.toggle('collapsed');
+
+      // 切换箭头方向
+      if (property.classList.contains('collapsed')) {
+        toggle.textContent = '▶';
+      } else {
+        toggle.textContent = '▼';
+      }
+    }
+  }
+
+  // 导出类供外部使用
+  window.JsonViewer = JsonViewer;
+
+  function initializeJsonFormatter(translations) {
+    const inputEl = getInputEditorElement();
+    const outputEl = document.getElementById('output-json');
+    const extractFnEl = document.getElementById('extract-fn');
+    const extractedOutputEl = document.getElementById('extracted-output');
+
+    // 实时格式化输入
+    inputEl.addEventListener('input', debounce(formatInput, 500));
+
+    // 应用提取函数
+    document.getElementById('apply-extract').addEventListener('click', () => {
+      applyExtractFunction(translations);
+    });
+
+    // 按钮事件绑定
+    document.getElementById('format-btn').addEventListener('click', formatInput);
+    document.getElementById('clear-btn').addEventListener('click', clearInputs);
+    document.getElementById('collapse-all').addEventListener('click', collapseAll);
+    document.getElementById('expand-all').addEventListener('click', expandAll);
+    document.getElementById('remove-comments').addEventListener('click', removeComments);
+    document.getElementById('compress-copy').addEventListener('click', () => {
+      compressAndCopy(translations);
+    });
+    document.getElementById('escape-copy').addEventListener('click', () => {
+      escapeAndCopy(translations);
+    });
+    document.getElementById('json-to-xml').addEventListener('click', () => {
+      jsonToXmlAndCopy(translations);
+    });
+    document.getElementById('json-to-ts').addEventListener('click', () => {
+      jsonToTsAndCopy(translations);
+    });
+
+    // 初始化示例数据 - 如果输入框为空则填入示例数据
+    if (!inputEl.value) {
+      inputEl.value = `{
+  "name": "JSON Formatter",
+  "version": "1.0.0",
+  "features": [
+    "Format JSON",
+    "Convert from XML/YAML",
+    "Extract fields with JS functions"
+  ],
+  "author": {
+    "name": "Dev Team",
+    "email": "team@example.com"
+  }
+}`;
+    }
+
+    formatInput();
+  }
+
+  // 防抖函数
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  // 格式化输入
+  function formatInput() {
+    const inputEl = getInputEditorElement();
+    const outputEl = document.getElementById('output-json');
+    const inputType = document.getElementById('input-type').value;
+
+    try {
+      let parsedData;
+
+      // 根据输入类型解析数据
+      switch(inputType) {
+        case 'json':
+          parsedData = parseJson(inputEl.value);
+          break;
+        case 'urlparams':
+          parsedData = parseUrlParams(inputEl.value);
+          break;
+        case 'xml':
+          parsedData = parseXml(inputEl.value);
+          break;
+        case 'yaml':
+          parsedData = parseYaml(inputEl.value);
+          break;
+        default:
+          parsedData = parseJson(inputEl.value);
+      }
+
+      // 显示格式化的JSON - 使用树形查看器
+      outputEl.innerHTML = '<div id="json-viewer-output"></div>';
+      // 初始化JSON树形查看器
+      if (window.JsonViewer) {
+        new window.JsonViewer('json-viewer-output', parsedData);
+      } else {
+        // 回退到普通pre显示
+        outputEl.innerHTML = '<pre>' + JSON.stringify(parsedData, null, 2) + '</pre>';
+      }
+
+      // 如果有提取函数，则应用它
+      const extractFnStr = document.getElementById('extract-fn').value.trim();
+      if (extractFnStr) {
+        // 使用全局翻译对象
+        applyExtractFunction(translations);
+      }
+    } catch (error) {
+      // 使用从DOM获取的翻译文本
+      outputEl.innerHTML = `<div style="color: red;">${translations.parsingError}${error.message}</div>`;
+    }
+  }
+
+  // 解析JSON
+  function parseJson(str) {
+    if (!str.trim()) return {};
+    return JSON.parse(str);
+  }
+
+  // 解析URL参数
+  function parseUrlParams(str) {
+    const params = new URLSearchParams(str.startsWith('?') ? str.substring(1) : str);
+    const result = {};
+    for (const [key, value] of params.entries()) {
+      result[key] = value;
+    }
+    return result;
+  }
+
+  // 解析XML (使用xml-js库)
+  async function parseXml(str) {
+    // 注意：在浏览器环境中，我们需要动态导入xml-js库
+    // 为了演示目的，这里提供一个改进的实现
+    try {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(str, "text/xml");
+
+      // 检查是否有解析错误
+      const parserError = xmlDoc.querySelector("parsererror");
+      if (parserError) {
+        throw new Error(parserError.textContent);
+      }
+
+      // 更完善的XML到JSON转换
+      function xmlToJson(xmlNode) {
+        let obj = {};
+
+        if (xmlNode.nodeType === 1) { // Element
+          // 处理属性
+          if (xmlNode.attributes.length > 0) {
+            obj["@attributes"] = {};
+            for (let j = 0; j < xmlNode.attributes.length; j++) {
+              const attribute = xmlNode.attributes.item(j);
+              obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+            }
+          }
+
+          // 处理子节点
+          if (xmlNode.hasChildNodes()) {
+            for (let i = 0; i < xmlNode.childNodes.length; i++) {
+              const item = xmlNode.childNodes.item(i);
+              const nodeName = item.nodeName;
+
+              if (nodeName === "#text") {
+                const textContent = item.nodeValue.trim();
+                if (textContent) {
+                  // 如果元素只有文本内容，直接返回文本
+                  if (xmlNode.children.length === 0) {
+                    return textContent;
+                  } else {
+                    obj["textContent"] = textContent;
+                  }
+                }
+              } else {
+                if (typeof obj[nodeName] === "undefined") {
+                  obj[nodeName] = xmlToJson(item);
+                } else {
+                  if (!Array.isArray(obj[nodeName])) {
+                    obj[nodeName] = [obj[nodeName]];
+                  }
+                  obj[nodeName].push(xmlToJson(item));
+                }
+              }
+            }
+          }
+        } else if (xmlNode.nodeType === 3) { // Text
+          return xmlNode.nodeValue.trim();
+        }
+
+        return obj;
+      }
+
+      return xmlToJson(xmlDoc.documentElement);
+    } catch (e) {
+      throw new Error(translations.xmlParsingError + e.message);
+    }
+  }
+
+  // 解析YAML (使用yaml库)
+  async function parseYaml(str) {
+    // 注意：在浏览器环境中，我们需要动态导入yaml库
+    // 为了演示目的，这里提供一个模拟实现
+    // 在实际部署时，需要确保yaml库可以在浏览器中工作
+    try {
+      // 模拟使用yaml库的逻辑
+      // 实际实现中需要通过CDN或构建工具引入yaml库
+
+      // 简单的YAML到JSON转换（仅支持基本结构）
+      const lines = str.split('\n');
+      const result = {};
+      let currentObj = result;
+      let stack = [result];
+
+      for (let line of lines) {
+        if (!line.trim() || line.startsWith('#')) continue;
+
+        const indent = line.search(/\S|$/);
+        const keyValue = line.trim().split(':');
+        const key = keyValue[0].replace(/['"]/g, '');
+        let value = keyValue.slice(1).join(':').trim();
+
+        // 调整当前对象层级
+        while (stack.length > 1 && indent < getIndentLevel(stack.length - 1)) {
+          stack.pop();
+        }
+        currentObj = stack[stack.length - 1];
+
+        if (value) {
+          // 尝试解析值
+          value = value.trim();
+          if (value === 'true') value = true;
+          else if (value === 'false') value = false;
+          else if (value === 'null') value = null;
+          else if (/^\d+$/.test(value)) value = parseInt(value);
+          else if (/^\d*\.\d+$/.test(value)) value = parseFloat(value);
+          else if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
+          else if (value.startsWith("'") && value.endsWith("'")) value = value.slice(1, -1);
+
+          currentObj[key] = value;
+        } else {
+          // 这是一个对象或数组
+          currentObj[key] = {};
+          stack.push(currentObj[key]);
+        }
+      }
+
+      function getIndentLevel(level) {
+        // 简化的缩进计算
+        return level * 2;
+      }
+
+      return result;
+    } catch (e) {
+      throw new Error(translations.yamlParsingError + e.message);
+    }
+  }
+
+  // 应用提取函数
+  async function applyExtractFunction(translations) {
+    const inputEl = getInputEditorElement();
+    const extractedOutputEl = document.getElementById('extracted-output');
+    const extractFnStr = document.getElementById('extract-fn').value.trim();
+
+    if (!extractFnStr) {
+      extractedOutputEl.innerHTML = `<div>${translations.enterExtractionFn}</div>`;
+      return;
+    }
+
+    try {
+      const inputText = inputEl.value;
+      if (!inputText.trim()) {
+        extractedOutputEl.innerHTML = `<div>${translations.enterData}</div>`;
+        return;
+      }
+
+      // 获取原始数据
+      const inputType = document.getElementById('input-type').value;
+      let parsedData;
+
+      switch(inputType) {
+        case 'json':
+          parsedData = parseJson(inputText);
+          break;
+        case 'urlparams':
+          parsedData = parseUrlParams(inputText);
+          break;
+        case 'xml':
+          parsedData = await parseXml(inputText);
+          break;
+        case 'yaml':
+          parsedData = await parseYaml(inputText);
+          break;
+        default:
+          parsedData = parseJson(inputText);
+      }
+
+      // 创建安全的执行环境
+      const fn = new Function('obj', `return (${extractFnStr})(obj);`);
+      const result = fn(parsedData);
+
+      // 显示提取结果 - 使用树形查看器
+      extractedOutputEl.innerHTML = '<div id="json-viewer-extracted"></div>';
+      // 初始化JSON树形查看器
+      if (window.JsonViewer) {
+        new window.JsonViewer('json-viewer-extracted', result);
+      } else {
+        // 回退到普通pre显示
+        extractedOutputEl.innerHTML = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+      }
+    } catch (error) {
+      extractedOutputEl.innerHTML = `<div style="color: red;">${translations.extractionError}${error.message}</div>`;
+    }
+  }
+
+  // 清空输入
+  function clearInputs() {
+    getInputEditorElement().value = '';
+    document.getElementById('extract-fn').value = '';
+    document.getElementById('output-json').innerHTML = '';
+    document.getElementById('extracted-output').innerHTML = '';
+  }
+
+  // 折叠所有
+  function collapseAll() {
+    // 这个功能需要更复杂的实现，使用JSON查看器库会更好
+    alert(translations.collapseMessage);
+  }
+
+  // 展开所有
+  function expandAll() {
+    // 这个功能需要更复杂的实现，使用JSON查看器库会更好
+    alert(translations.expandMessage);
+  }
+
+  // 去除注释
+  function removeComments() {
+    const inputEl = getInputEditorElement();
+    let value = inputEl.value;
+
+    // 移除JavaScript风格的注释
+    value = value.replace(/\/\*[\s\S]*?\*\//g, ''); // 块注释
+    value = value.replace(/\/\/.*/g, ''); // 行注释
+
+    inputEl.value = value;
+    formatInput();
+  }
+
+  // 压缩并复制
+  async function compressAndCopy(translations) {
+    const inputEl = getInputEditorElement();
+    try {
+      const inputType = document.getElementById('input-type').value;
+      let parsedData;
+
+      switch(inputType) {
+        case 'json':
+          parsedData = parseJson(inputEl.value);
+          break;
+        case 'urlparams':
+          parsedData = parseUrlParams(inputEl.value);
+          break;
+        case 'xml':
+          parsedData = await parseXml(inputEl.value);
+          break;
+        case 'yaml':
+          parsedData = await parseYaml(inputEl.value);
+          break;
+        default:
+          parsedData = parseJson(inputEl.value);
+      }
+
+      const compressed = JSON.stringify(parsedData);
+      navigator.clipboard.writeText(compressed);
+      alert(translations.compressSuccess);
+    } catch (error) {
+      alert(translations.parsingError + translations.compressError + error.message);
+    }
+  }
+
+  // 转义并复制
+  async function escapeAndCopy(translations) {
+    const inputEl = getInputEditorElement();
+    try {
+      const inputType = document.getElementById('input-type').value;
+      let parsedData;
+
+      switch(inputType) {
+        case 'json':
+          parsedData = parseJson(inputEl.value);
+          break;
+        case 'urlparams':
+          parsedData = parseUrlParams(inputEl.value);
+          break;
+        case 'xml':
+          parsedData = await parseXml(inputEl.value);
+          break;
+        case 'yaml':
+          parsedData = await parseYaml(inputEl.value);
+          break;
+        default:
+          parsedData = parseJson(inputEl.value);
+      }
+
+      const compressed = JSON.stringify(parsedData);
+      const escaped = compressed.replace(/[\\]/g, '\\\\').replace(/["]/g, '\\"');
+      navigator.clipboard.writeText(escaped);
+      alert(translations.escapeSuccess);
+    } catch (error) {
+      alert(translations.parsingError + translations.escapeError + error.message);
+    }
+  }
+
+  // JSON转XML并复制
+  async function jsonToXmlAndCopy(translations) {
+    const inputEl = getInputEditorElement();
+    try {
+      const inputType = document.getElementById('input-type').value;
+      let parsedData;
+
+      switch(inputType) {
+        case 'json':
+          parsedData = parseJson(inputEl.value);
+          break;
+        case 'urlparams':
+          parsedData = parseUrlParams(inputEl.value);
+          break;
+        case 'xml':
+          parsedData = await parseXml(inputEl.value);
+          break;
+        case 'yaml':
+          parsedData = await parseYaml(inputEl.value);
+          break;
+        default:
+          parsedData = parseJson(inputEl.value);
+      }
+
+      const xmlString = jsonToXml(parsedData, 'root');
+      navigator.clipboard.writeText(xmlString);
+      alert(translations.xmlSuccess);
+    } catch (error) {
+      alert(translations.parsingError + translations.xmlConversionError + error.message);
+    }
+  }
+
+  // JSON转TypeScript并复制
+  async function jsonToTsAndCopy(translations) {
+    const inputEl = getInputEditorElement();
+    try {
+      const inputType = document.getElementById('input-type').value;
+      let parsedData;
+
+      switch(inputType) {
+        case 'json':
+          parsedData = parseJson(inputEl.value);
+          break;
+        case 'urlparams':
+          parsedData = parseUrlParams(inputEl.value);
+          break;
+        case 'xml':
+          parsedData = await parseXml(inputEl.value);
+          break;
+        case 'yaml':
+          parsedData = await parseYaml(inputEl.value);
+          break;
+        default:
+          parsedData = parseJson(inputEl.value);
+      }
+
+      const tsInterface = jsonToTsInterface(parsedData, 'DataType');
+      navigator.clipboard.writeText(tsInterface);
+      alert(translations.tsSuccess);
+    } catch (error) {
+      alert(translations.parsingError + translations.tsConversionError + error.message);
+    }
+  }
+
+  // JSON转XML辅助函数
+  function jsonToXml(obj, tagName) {
+    if (obj === null || obj === undefined) {
+      return `<${tagName}></${tagName}>`;
+    }
+
+    if (typeof obj !== 'object') {
+      return `<${tagName}>${obj}</${tagName}>`;
+    }
+
+    if (Array.isArray(obj)) {
+      return obj.map(item => jsonToXml(item, tagName)).join('');
+    }
+
+    let xml = `<${tagName}>`;
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        const value = obj[key];
+        if (typeof value === 'object') {
+          xml += jsonToXml(value, key);
+        } else {
+          xml += `<${key}>${value}</${key}>`;
+        }
+      }
+    }
+    xml += `</${tagName}>`;
+
+    return xml;
+  }
+
+  // JSON转TypeScript接口辅助函数
+  function jsonToTsInterface(obj, interfaceName) {
+    if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+      return `// 无法从非对象类型生成接口`;
+    }
+
+    let ts = `interface ${interfaceName} {\n`;
+
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        const value = obj[key];
+        let type;
+
+        if (value === null) {
+          type = 'any'; // null值的类型不确定
+        } else if (Array.isArray(value)) {
+          if (value.length > 0) {
+            const elementType = typeof value[0];
+            type = `${getType(elementType)}[]`;
+          } else {
+            type = 'any[]';
+          }
+        } else if (typeof value === 'object') {
+          type = `${key.charAt(0).toUpperCase() + key.slice(1)}Type`;
+          ts += jsonToTsInterface(value, type); // 递归生成嵌套接口
+        } else {
+          type = getType(typeof value);
+        }
+
+        ts += `  ${key}: ${type};\n`;
+      }
+    }
+
+    ts += `}\n`;
+    return ts;
+  }
+
+  // 获取类型字符串
+  function getType(jsType) {
+    switch(jsType) {
+      case 'string': return 'string';
+      case 'number': return 'number';
+      case 'boolean': return 'boolean';
+      case 'object': return 'object';
+      default: return 'any';
+    }
+  }
+</script>

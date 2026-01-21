@@ -1,0 +1,215 @@
+<div id="json-viewer-container">
+  <div id="json-viewer"></div>
+</div>
+
+<style>
+  #json-viewer-container {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #fafafa;
+    min-height: 400px;
+    overflow: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .json-node {
+    margin-left: 20px;
+  }
+
+  .json-property {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .json-toggle {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 14px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-right: 5px;
+    font-size: 12px;
+    user-select: none;
+  }
+
+  .json-key {
+    color: #922ad9;
+    margin-right: 5px;
+  }
+
+  .json-separator {
+    margin-right: 5px;
+  }
+
+  .json-value-string {
+    color: #0b7a00;
+  }
+
+  .json-value-number {
+    color: #d35e5e;
+  }
+
+  .json-value-boolean {
+    color: #0066cc;
+  }
+
+  .json-value-null {
+    color: #808080;
+  }
+
+  .json-value-object,
+  .json-value-array {
+    color: #333;
+  }
+
+  .collapsed > .json-node {
+    display: none;
+  }
+</style>
+
+<script>
+  // JSON树形查看器
+  class JsonViewer {
+    constructor(containerId, data) {
+      this.container = document.getElementById(containerId);
+      this.data = data;
+      this.render();
+      this.bindEvents();
+    }
+
+    render() {
+      this.container.innerHTML = this.renderValue(this.data, '', true);
+    }
+
+    renderValue(value, key = '', hasNext = true) {
+      if (value === null) {
+        return this.renderProperty(key, `<span class="json-value-null">null</span>`, hasNext);
+      }
+
+      if (typeof value === 'object') {
+        if (Array.isArray(value)) {
+          return this.renderObjectOrArray(key, value, 'array', hasNext);
+        } else {
+          return this.renderObjectOrArray(key, value, 'object', hasNext);
+        }
+      }
+
+      if (typeof value === 'string') {
+        return this.renderProperty(key, `<span class="json-value-string">"${this.escapeHtml(value)}"</span>`, hasNext);
+      }
+
+      if (typeof value === 'number') {
+        return this.renderProperty(key, `<span class="json-value-number">${value}</span>`, hasNext);
+      }
+
+      if (typeof value === 'boolean') {
+        return this.renderProperty(key, `<span class="json-value-boolean">${value}</span>`, hasNext);
+      }
+
+      return this.renderProperty(key, value, hasNext);
+    }
+
+    renderProperty(key, value, hasNext) {
+      if (key === '') {
+        // 根节点
+        if (typeof value === 'object') {
+          if (Array.isArray(value)) {
+            return this.renderObjectContent(value, 'array');
+          } else {
+            return this.renderObjectContent(value, 'object');
+          }
+        }
+        return `<div class="json-root">${value}${hasNext ? ',' : ''}</div>`;
+      }
+
+      return `
+        <div class="json-property">
+          <span class="json-toggle">▼</span>
+          <span class="json-key">"${key}"</span>
+          <span class="json-separator">:</span>
+          <span class="json-value">${value}</span>
+          ${hasNext ? '<span>,</span>' : ''}
+        </div>
+      `;
+    }
+
+    renderObjectOrArray(key, value, type, hasNext) {
+      const length = Array.isArray(value) ? value.length : Object.keys(value).length;
+      const displayName = type === 'array' ? `[${length}]` : `{${length}}`;
+      
+      return `
+        <div class="json-property collapsible">
+          <span class="json-toggle">▼</span>
+          ${key ? `<span class="json-key">"${key}"</span><span class="json-separator">:</span>` : ''}
+          <span class="json-value json-value-${type}">${displayName}</span>
+          ${hasNext ? '<span>,</span>' : ''}
+          <div class="json-node">${this.renderObjectContent(value)}</div>
+        </div>
+      `;
+    }
+
+    renderObjectContent(obj) {
+      if (Array.isArray(obj)) {
+        return `
+          <div class="json-bracket">[</div>
+          <div class="json-node">
+            ${obj.map((item, index) => {
+              const hasNext = index < obj.length - 1;
+              return this.renderValue(item, '', hasNext);
+            }).join('')}
+          </div>
+          <div class="json-bracket">]</div>
+        `;
+      } else {
+        const entries = Object.entries(obj);
+        return `
+          <div class="json-bracket">{</div>
+          <div class="json-node">
+            ${entries.map(([key, value], index) => {
+              const hasNext = index < entries.length - 1;
+              return this.renderValue(value, key, hasNext);
+            }).join('')}
+          </div>
+          <div class="json-bracket">}</div>
+        `;
+      }
+    }
+
+    escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    bindEvents() {
+      this.container.addEventListener('click', (e) => {
+        const toggle = e.target.closest('.json-toggle');
+        if (toggle) {
+          this.toggleNode(toggle);
+        }
+      });
+    }
+
+    toggleNode(toggle) {
+      const property = toggle.parentElement;
+      property.classList.toggle('collapsed');
+      
+      // 切换箭头方向
+      if (property.classList.contains('collapsed')) {
+        toggle.textContent = '▶';
+      } else {
+        toggle.textContent = '▼';
+      }
+    }
+  }
+
+  // 导出类供外部使用
+  window.JsonViewer = JsonViewer;
+</script>

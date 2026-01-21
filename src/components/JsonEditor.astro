@@ -1,0 +1,106 @@
+---
+const { placeholder = "", value = "" } = Astro.props;
+---
+
+<div class="json-editor-wrapper">
+  <div class="line-numbers" id="line-numbers">
+    <div class="line-number">1</div>
+  </div>
+  <div class="editor-container">
+    <textarea 
+      id="json-input" 
+      class="json-input" 
+      placeholder={placeholder}
+    >{value}</textarea>
+  </div>
+</div>
+
+<style>
+  .json-editor-wrapper {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    overflow: hidden;
+  }
+
+  .line-numbers {
+    width: 50px;
+    background-color: #f5f5f5;
+    padding: 12px 8px;
+    text-align: right;
+    border-right: 1px solid var(--border-color);
+    user-select: none;
+    overflow: hidden;
+  }
+
+  .line-number {
+    line-height: 1.5;
+    font-size: 14px;
+    color: #999;
+  }
+
+  .editor-container {
+    flex: 1;
+    position: relative;
+  }
+
+  .json-input {
+    width: 100%;
+    height: 300px;
+    padding: 12px;
+    border: none;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    outline: none;
+    overflow: auto;
+  }
+
+  .json-input:focus {
+    outline: none;
+  }
+</style>
+
+<script>
+  // 更新行号
+  function updateLineNumbers() {
+    const textarea = document.getElementById('json-input');
+    const lineNumbers = document.getElementById('line-numbers');
+    
+    const lines = textarea.value.split('\n').length || 1;
+    lineNumbers.innerHTML = '';
+    
+    for (let i = 1; i <= lines; i++) {
+      const lineNumber = document.createElement('div');
+      lineNumber.className = 'line-number';
+      lineNumber.textContent = i;
+      lineNumbers.appendChild(lineNumber);
+    }
+  }
+
+  // 初始化
+  document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.getElementById('json-input');
+    
+    // 初始更新行号
+    updateLineNumbers();
+    
+    // 监听输入事件更新行号
+    textarea.addEventListener('input', updateLineNumbers);
+    textarea.addEventListener('scroll', () => {
+      document.getElementById('line-numbers').scrollTop = textarea.scrollTop;
+    });
+    
+    // 监听键盘事件更新行号（处理删除等情况）
+    textarea.addEventListener('keyup', updateLineNumbers);
+    textarea.addEventListener('paste', () => {
+      // 粘贴后稍等一下再更新行号，确保内容已更新
+      setTimeout(updateLineNumbers, 0);
+    });
+  });
+</script>
