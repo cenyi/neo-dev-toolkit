@@ -1,8 +1,19 @@
 ---
 const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLanguage: "Language" } } = Astro.props;
+
+// 获取当前页面路径
+const currentPath = Astro.url.pathname;
 ---
 
 <div class="sidebar" id="sidebar">
+  <script is:inline>
+    // 在页面渲染前立即设置折叠状态，避免展开→折叠的动画
+    (function() {
+      if (localStorage.getItem('sidebarCollapsed') === 'true') {
+        document.getElementById('sidebar').classList.add('collapsed');
+      }
+    })();
+  </script>
   <div class="sidebar-header">
     <h2 class="logo">JSON Formatter</h2>
     <button class="toggle-btn" onclick="toggleSidebar()">
@@ -13,15 +24,15 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
   </div>
   <nav class="nav-menu">
     <ul>
-      <li><a href="/" class="nav-link active" title={t.navHome}>
+      <li><a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`} title={t.navHome}>
         <span class="nav-icon">🏠</span>
         <span class="nav-text">{t.navHome}</span>
       </a></li>
-      <li><a href="/about" class="nav-link" title={t.navAbout}>
+      <li><a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`} title={t.navAbout}>
         <span class="nav-icon">ℹ️</span>
         <span class="nav-text">{t.navAbout}</span>
       </a></li>
-      <li><a href="/settings" class="nav-link" title={t.navSettings}>
+      <li><a href="/settings" class={`nav-link ${currentPath === '/settings' ? 'active' : ''}`} title={t.navSettings}>
         <span class="nav-icon">⚙️</span>
         <span class="nav-text">{t.navSettings}</span>
       </a></li>
@@ -223,18 +234,18 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
     window.location.href = url.toString();
   }
 
-  // 初始化时检查是否需要折叠侧边栏
+  // 初始化时设置主内容区域的 margin-left（与侧边栏状态保持一致）
   window.addEventListener('DOMContentLoaded', () => {
-    // 优先从 localStorage 读取状态
-    const savedState = localStorage.getItem('sidebarCollapsed');
-    const shouldCollapse = savedState === 'true' || (savedState === null && window.appState?.sidebarCollapsed);
+    const sidebar = document.getElementById('sidebar');
+    const main = document.querySelector('main');
 
-    if (shouldCollapse) {
-      const sidebar = document.getElementById('sidebar');
-      const main = document.querySelector('main');
-      sidebar.classList.add('collapsed');
+    // 根据侧边栏的当前状态设置 main 的 margin-left
+    if (sidebar.classList.contains('collapsed')) {
       main.style.marginLeft = 'var(--sidebar-collapsed-width)';
       window.appState.sidebarCollapsed = true;
+    } else {
+      main.style.marginLeft = 'var(--sidebar-width)';
+      window.appState.sidebarCollapsed = false;
     }
   });
 </script>
