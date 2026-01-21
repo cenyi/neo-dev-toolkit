@@ -11,39 +11,69 @@ const { title = "默认标题", lang = "zh-CN" } = Astro.props;
     <title>{title}</title>
     <style>
       :root {
-        --sidebar-width: 250px;
-        --sidebar-collapsed-width: 60px;
-        --primary-color: #3b82f6;
-        --secondary-color: #f3f4f6;
+        --sidebar-width: 220px;
+        --sidebar-collapsed-width: 56px;
+        --primary-color: #2563eb;
+        --secondary-color: #f1f3f5;
         --text-color: #1f2937;
         --bg-color: #ffffff;
         --border-color: #e5e7eb;
       }
-      
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-      
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         background-color: var(--bg-color);
         color: var(--text-color);
         height: 100vh;
         overflow: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
-      
+
       .layout-container {
         display: flex;
         height: 100vh;
       }
-      
+
       main {
         flex: 1;
-        padding: 20px;
+        padding: 16px;
         overflow-y: auto;
-        transition: margin-left 0.3s ease;
+        transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #fafbfc;
+      }
+
+      /* 自定义滚动条 */
+      main::-webkit-scrollbar,
+      .json-output::-webkit-scrollbar,
+      .extracted-output::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      main::-webkit-scrollbar-track,
+      .json-output::-webkit-scrollbar-track,
+      .extracted-output::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      main::-webkit-scrollbar-thumb,
+      .json-output::-webkit-scrollbar-thumb,
+      .extracted-output::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 4px;
+      }
+
+      main::-webkit-scrollbar-thumb:hover,
+      .json-output::-webkit-scrollbar-thumb:hover,
+      .extracted-output::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
       }
     </style>
     <script>

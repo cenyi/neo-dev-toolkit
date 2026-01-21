@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
-import JsonEditor from '../components/JsonEditor.astro';
-import JsonTreeView from '../components/JsonTreeView.astro';
 import { locales } from '../i18n/locales.js';
 
 // 获取语言参数
@@ -23,11 +21,20 @@ const t = locales[lang] || locales.en;
        data-escape-success={t.escapeSuccess}
        data-xml-success={t.xmlSuccess}
        data-ts-success={t.tsSuccess}>
-    <div class="input-section">
-      <JsonEditor
-        id="input-json"
-        placeholder={t.inputPlaceholder}
-        value={`{
+
+    <div class="editor-workspace">
+      <!-- 左侧输入区域 -->
+      <div class="input-area">
+        <div class="input-section">
+          <div class="section-label">{t.inputPlaceholder}</div>
+          <textarea
+            id="json-input"
+            class="json-input"
+            placeholder={`{
+  "name": "示例数据",
+  "version": "1.0.0"
+}`}
+          >{
   "name": "JSON Formatter",
   "version": "1.0.0",
   "features": [
@@ -39,40 +46,45 @@ const t = locales[lang] || locales.en;
     "name": "Dev Team",
     "email": "team@example.com"
   }
-}`}
-      />
-    </div>
+}</textarea>
+        </div>
 
-    <div class="extraction-section">
-      <div class="extraction-controls">
-        <label for="extract-fn">{t.extractionLabel}</label>
-        <input
-          type="text"
-          id="extract-fn"
-          placeholder={t.extractionPlaceholder}
-        />
-        <button id="apply-extract">{t.apply}</button>
+        <div class="extraction-section">
+          <div class="extraction-controls">
+            <label for="extract-fn">📊 {t.extractionLabel}</label>
+            <input
+              type="text"
+              id="extract-fn"
+              placeholder={t.extractionPlaceholder}
+            />
+            <button id="apply-extract">{t.apply}</button>
+          </div>
+        </div>
+
+        <div class="output-controls">
+          <button id="format-btn">{t.format}</button>
+          <button id="collapse-all">{t.collapseAll}</button>
+          <button id="expand-all">{t.expandAll}</button>
+          <button id="remove-comments">{t.removeComments}</button>
+          <button id="compress-copy">{t.compressCopy}</button>
+          <button id="escape-copy">{t.escapeCopy}</button>
+          <button id="json-to-xml">{t.jsonToXml}</button>
+          <span class="json-action-group">
+            <button id="json-to-ts">{t.jsonToTs}</button>
+            <button id="clear-btn">{t.clear}</button>
+          </span>
+        </div>
       </div>
-    </div>
 
-    <div class="output-section">
-      <div class="output-controls">
-        <button id="format-btn">{t.format}</button>
-        <button id="collapse-all">{t.collapseAll}</button>
-        <button id="expand-all">{t.expandAll}</button>
-        <button id="remove-comments">{t.removeComments}</button>
-        <button id="compress-copy">{t.compressCopy}</button>
-        <button id="escape-copy">{t.escapeCopy}</button>
-        <button id="json-to-xml">{t.jsonToXml}</button>
-        <span class="json-action-group">
-          <button id="json-to-ts">{t.jsonToTs}</button>
-          <button id="clear-btn">{t.clear}</button>
-        </span>
-      </div>
-
-      <div class="result-container">
-        <div id="output-json" class="json-output"></div>
-        <div id="extracted-output" class="extracted-output"></div>
+      <!-- 右侧输出区域 -->
+      <div class="output-area" id="output-area">
+        <div class="output-header">
+          <span class="output-title" id="output-title">输出结果</span>
+          <button class="close-output-btn" id="close-output" title="关闭">×</button>
+        </div>
+        <div class="output-content" id="output-content">
+          <div id="output-json"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -80,206 +92,245 @@ const t = locales[lang] || locales.en;
 
 <style>
   .json-formatter-container {
-    max-width: 1400px;
+    max-width: 1800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 12px;
+    height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
   }
 
-  .json-formatter-container h1 {
-    margin-bottom: 10px;
-    color: var(--text-color);
+  /* 主工作区 - 左右布局 */
+  .editor-workspace {
+    display: flex;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
   }
 
-  .json-formatter-container p {
-    margin-bottom: 20px;
-    color: #666;
+  /* 左侧输入区域 */
+  .input-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .input-section {
-    margin-bottom: 20px;
-  }
-
-  .input-controls {
+    flex: 1;
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    min-height: 0;
   }
 
-  .input-controls label {
-    font-weight: bold;
-    color: var(--text-color);
+  .section-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
-  .input-controls select, .input-controls button {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-size: 14px;
-  }
-
-  .input-controls button {
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  .input-controls button:hover {
-    background-color: #2563eb;
-  }
-
-  .editor-container {
-    position: relative;
-  }
-
-  #input-json {
+  .json-input {
+    flex: 1;
     width: 100%;
-    height: 300px;
+    min-height: 300px;
     padding: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 14px;
-    resize: vertical;
-    box-sizing: border-box;
-    background-color: var(--bg-color);
+    font-size: 13px;
+    line-height: 1.5;
+    resize: none;
+    background: #fafbfc;
     color: var(--text-color);
+    transition: all 0.2s;
   }
 
-  #input-json:focus {
+  .json-input:focus {
     outline: none;
     border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: #fff;
   }
 
+  /* 提取区域 */
   .extraction-section {
-    margin: 20px 0;
-    padding: 15px;
-    background-color: var(--secondary-color);
-    border-radius: 4px;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
   }
 
   .extraction-controls {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
-    flex-wrap: wrap;
   }
 
   .extraction-controls label {
-    font-weight: bold;
+    font-weight: 600;
     color: var(--text-color);
     white-space: nowrap;
+    font-size: 0.85rem;
   }
 
   .extraction-controls input {
     flex: 1;
-    min-width: 300px;
-    padding: 8px 12px;
+    min-width: 200px;
+    padding: 6px 10px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 5px;
+    font-size: 13px;
     background-color: var(--bg-color);
     color: var(--text-color);
+    transition: all 0.2s;
   }
 
   .extraction-controls input:focus {
     outline: none;
     border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 
   .extraction-controls button {
-    padding: 8px 12px;
-    background-color: var(--primary-color);
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.2s;
   }
 
   .extraction-controls button:hover {
-    background-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    transform: translateY(-1px);
   }
 
-  .output-section {
-    margin-top: 20px;
-  }
-
+  /* 按钮组 */
   .output-controls {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
+    gap: 6px;
   }
 
   .output-controls button {
-    padding: 8px 12px;
-    background-color: #6b7280;
+    padding: 6px 10px;
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.2s;
   }
 
   .output-controls button:hover {
-    background-color: #4b5563;
+    background: linear-gradient(135deg, #475569 0%, #334155 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
   }
 
-  /* 特别样式使Clear按钮紧邻JSON to TS按钮，形成一个组合按钮组 */
-  .output-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
-    align-items: center;
-  }
-
-  .output-controls button {
-    padding: 8px 12px;
-    background-color: #6b7280;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s;
-  }
-
-  .output-controls button:hover {
-    background-color: #4b5563;
-  }
-
-  /* 将JSON to TS和Clear按钮设计为相邻的组合 */
   .json-action-group {
     display: flex;
     gap: 0;
   }
 
   #json-to-ts {
-    border-radius: 4px 0 0 4px;
-    margin-right: 0;
+    border-radius: 5px 0 0 5px;
   }
 
   #clear-btn {
-    border-radius: 0 4px 4px 0;
-    margin-left: 0;
-    background-color: #ef4444; /* 红色背景表示清除操作 */
-  }
-
-  #json-to-ts {
-    border-right: 1px solid #4b5563;
+    border-radius: 0 5px 5px 0;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   }
 
   #clear-btn:hover {
-    background-color: #dc2626;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  }
+
+  /* 右侧输出区域 */
+  .output-area {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid transparent;
+  }
+
+  .output-area.expanded {
+    width: 50%;
+    opacity: 1;
+    border-left: 1px solid #e5e7eb;
+    padding-left: 12px;
+  }
+
+  .output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+    border-radius: 6px 6px 0 0;
+    border: 1px solid #e9ecef;
+    border-bottom: none;
+  }
+
+  .output-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .close-output-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #9ca3af;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+    line-height: 1;
+  }
+
+  .close-output-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+  }
+
+  .output-content {
+    flex: 1;
+    border: 1px solid #e1e4e8;
+    border-radius: 0 0 8px 8px;
+    background: linear-gradient(to bottom, #fafbfc 0%, #f5f6f8 100%);
+    overflow: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+  }
+
+  #output-json {
+    min-height: 100%;
   }
 
   /* JSON树形查看器样式 */
@@ -291,96 +342,75 @@ const t = locales[lang] || locales.en;
     padding: 0 5px;
   }
 
-  .result-container {
-    display: flex;
-    gap: 20px;
-    min-height: 400px;
-  }
-
-  .json-output, .extracted-output {
-    flex: 1;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 15px;
-    background-color: #fafafa;
-    overflow: auto;
-    min-height: 400px;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .json-output pre, .extracted-output pre {
-    white-space: pre-wrap;
-    word-break: break-word;
-    margin: 0;
-  }
-
-  /* JSON树形查看器样式 */
-  #json-viewer-container {
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 10px;
-    background-color: #fafafa;
-    min-height: 400px;
-    overflow: auto;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
   .json-node {
-    margin-left: 20px;
+    margin-left: 18px;
   }
 
   .json-property {
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding: 2px 0;
+    border-radius: 3px;
+    transition: background 0.1s;
+  }
+
+  .json-property:hover {
+    background: rgba(59, 130, 246, 0.05);
   }
 
   .json-toggle {
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     text-align: center;
-    line-height: 14px;
+    line-height: 12px;
     cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    margin-right: 5px;
-    font-size: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    margin-right: 6px;
+    font-size: 10px;
     user-select: none;
+    background: #fff;
+    color: #6b7280;
+    transition: all 0.15s;
+  }
+
+  .json-toggle:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
   }
 
   .json-key {
-    color: #922ad9;
-    margin-right: 5px;
+    color: #7c3aed;
+    margin-right: 6px;
+    font-weight: 500;
   }
 
   .json-separator {
-    margin-right: 5px;
+    margin-right: 6px;
+    color: #94a3b8;
   }
 
   .json-value-string {
-    color: #0b7a00;
+    color: #059669;
   }
 
   .json-value-number {
-    color: #d35e5e;
+    color: #dc2626;
   }
 
   .json-value-boolean {
-    color: #0066cc;
+    color: #2563eb;
   }
 
   .json-value-null {
-    color: #808080;
+    color: #9ca3af;
   }
 
   .json-value-object,
   .json-value-array {
-    color: #333;
+    color: #1f2937;
   }
 
   .collapsed > .json-node {
@@ -389,63 +419,95 @@ const t = locales[lang] || locales.en;
 
   /* 响应式设计 */
   @media (max-width: 1200px) {
-    .result-container {
-      flex-direction: column;
+    .output-area.expanded {
+      width: 60%;
     }
   }
 
   @media (max-width: 768px) {
     .json-formatter-container {
-      padding: 10px;
+      padding: 8px;
+      height: calc(100vh - 32px);
     }
 
-    .input-controls, .extraction-controls {
+    .editor-workspace {
       flex-direction: column;
-      align-items: stretch;
     }
 
-    .input-controls label, .extraction-controls label {
-      margin-bottom: 5px;
+    .input-area {
+      gap: 8px;
+    }
+
+    .extraction-controls {
+      flex-wrap: wrap;
     }
 
     .extraction-controls input {
-      min-width: auto;
+      min-width: 100%;
     }
 
-    #input-json {
-      height: 200px;
+    .json-input {
+      min-height: 200px;
     }
 
     .output-controls {
-      justify-content: center;
+      gap: 5px;
     }
 
-    .result-container {
-      gap: 10px;
+    .output-controls button {
+      padding: 6px 10px;
+      font-size: 11px;
     }
 
-    .json-output, .extracted-output {
-      min-height: 300px;
+    .output-area.expanded {
+      width: 100%;
+      border-left: none;
+      padding-left: 0;
+      margin-top: 12px;
+      height: 300px;
     }
   }
 
   @media (max-width: 480px) {
+    .json-formatter-container {
+      padding: 6px;
+    }
+
     .output-controls {
-      flex-direction: column;
+      gap: 4px;
     }
 
     .output-controls button {
-      width: 100%;
+      flex: 1;
+      min-width: 0;
+      padding: 6px 8px;
+      font-size: 11px;
+    }
+
+    .json-action-group {
+      flex: 1;
+    }
+
+    .json-input {
+      min-height: 150px;
+      font-size: 12px;
+    }
+
+    .extraction-section {
+      padding: 8px;
     }
   }
 </style>
 
 <script>
+  // 全局翻译对象
+  let translations = {};
+
   // DOM加载完成后初始化
   document.addEventListener('DOMContentLoaded', () => {
     // 从DOM元素获取翻译文本
     const container = document.querySelector('.json-formatter-container');
-    const translations = {
+    translations = {
       enterExtractionFn: container.dataset.enterExtractionFn,
       enterData: container.dataset.enterData,
       extractionError: container.dataset.extractionError,
@@ -456,19 +518,20 @@ const t = locales[lang] || locales.en;
       tsSuccess: container.dataset.tsSuccess
     };
 
-    initializeJsonFormatter(translations);
+    initializeJsonFormatter();
   });
 
-  // 获取编辑器元素的辅助函数
+  // 获取编辑器元素
   function getInputEditorElement() {
-    // 查找具有json-input ID的textarea元素
-    return document.getElementById('json-input') || document.querySelector('.json-input');
+    return document.getElementById('json-input');
   }
 
   // JSON树形查看器
   class JsonViewer {
     constructor(containerId, data) {
       this.container = document.getElementById(containerId);
+      if (!this.container) return;
+
       this.data = data;
       this.render();
       this.bindEvents();
@@ -508,7 +571,6 @@ const t = locales[lang] || locales.en;
 
     renderProperty(key, value, hasNext) {
       if (key === '') {
-        // 根节点
         if (typeof value === 'object') {
           if (Array.isArray(value)) {
             return this.renderObjectContent(value, 'array');
@@ -591,7 +653,6 @@ const t = locales[lang] || locales.en;
       const property = toggle.parentElement;
       property.classList.toggle('collapsed');
 
-      // 切换箭头方向
       if (property.classList.contains('collapsed')) {
         toggle.textContent = '▶';
       } else {
@@ -600,59 +661,66 @@ const t = locales[lang] || locales.en;
     }
   }
 
-  // 导出类供外部使用
-  window.JsonViewer = JsonViewer;
+  // 展开输出区域
+  function expandOutput(title = '输出结果') {
+    const outputArea = document.getElementById('output-area');
+    const outputTitle = document.getElementById('output-title');
+    outputArea.classList.add('expanded');
+    outputTitle.textContent = title;
+  }
 
-  function initializeJsonFormatter(translations) {
-    const inputEl = getInputEditorElement();
+  // 关闭输出区域
+  function closeOutput() {
+    const outputArea = document.getElementById('output-area');
+    outputArea.classList.remove('expanded');
+  }
+
+  // 显示JSON结果
+  function showJsonResult(data, title = '格式化结果') {
     const outputEl = document.getElementById('output-json');
-    const extractFnEl = document.getElementById('extract-fn');
-    const extractedOutputEl = document.getElementById('extracted-output');
+
+    outputEl.innerHTML = '<div id="json-viewer-output"></div>';
+
+    if (window.JsonViewer) {
+      new window.JsonViewer('json-viewer-output', data);
+    } else {
+      outputEl.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+    }
+
+    expandOutput(title);
+  }
+
+  function initializeJsonFormatter() {
+    const inputEl = getInputEditorElement();
 
     // 实时格式化输入
-    inputEl.addEventListener('input', debounce(formatInput, 500));
+    inputEl.addEventListener('input', debounce(() => {
+      try {
+        const data = parseJson(inputEl.value);
+        showJsonResult(data, '格式化结果');
+      } catch (e) {
+        // 忽略输入时的解析错误
+      }
+    }, 800));
 
     // 应用提取函数
     document.getElementById('apply-extract').addEventListener('click', () => {
-      applyExtractFunction(translations);
+      applyExtractFunction();
     });
 
     // 按钮事件绑定
-    document.getElementById('format-btn').addEventListener('click', formatInput);
+    document.getElementById('format-btn').addEventListener('click', () => formatInput());
     document.getElementById('clear-btn').addEventListener('click', clearInputs);
     document.getElementById('collapse-all').addEventListener('click', collapseAll);
     document.getElementById('expand-all').addEventListener('click', expandAll);
     document.getElementById('remove-comments').addEventListener('click', removeComments);
-    document.getElementById('compress-copy').addEventListener('click', () => {
-      compressAndCopy(translations);
-    });
-    document.getElementById('escape-copy').addEventListener('click', () => {
-      escapeAndCopy(translations);
-    });
-    document.getElementById('json-to-xml').addEventListener('click', () => {
-      jsonToXmlAndCopy(translations);
-    });
-    document.getElementById('json-to-ts').addEventListener('click', () => {
-      jsonToTsAndCopy(translations);
-    });
+    document.getElementById('compress-copy').addEventListener('click', () => compressAndCopy());
+    document.getElementById('escape-copy').addEventListener('click', () => escapeAndCopy());
+    document.getElementById('json-to-xml').addEventListener('click', () => jsonToXmlAndCopy());
+    document.getElementById('json-to-ts').addEventListener('click', () => jsonToTsAndCopy());
+    document.getElementById('close-output').addEventListener('click', closeOutput);
 
-    // 初始化示例数据 - 如果输入框为空则填入示例数据
-    if (!inputEl.value) {
-      inputEl.value = `{
-  "name": "JSON Formatter",
-  "version": "1.0.0",
-  "features": [
-    "Format JSON",
-    "Convert from XML/YAML",
-    "Extract fields with JS functions"
-  ],
-  "author": {
-    "name": "Dev Team",
-    "email": "team@example.com"
-  }
-}`;
-    }
-
+    // 初始格式化
     formatInput();
   }
 
@@ -672,49 +740,14 @@ const t = locales[lang] || locales.en;
   // 格式化输入
   function formatInput() {
     const inputEl = getInputEditorElement();
-    const outputEl = document.getElementById('output-json');
-    const inputType = document.getElementById('input-type').value;
 
     try {
-      let parsedData;
-
-      // 根据输入类型解析数据
-      switch(inputType) {
-        case 'json':
-          parsedData = parseJson(inputEl.value);
-          break;
-        case 'urlparams':
-          parsedData = parseUrlParams(inputEl.value);
-          break;
-        case 'xml':
-          parsedData = parseXml(inputEl.value);
-          break;
-        case 'yaml':
-          parsedData = parseYaml(inputEl.value);
-          break;
-        default:
-          parsedData = parseJson(inputEl.value);
-      }
-
-      // 显示格式化的JSON - 使用树形查看器
-      outputEl.innerHTML = '<div id="json-viewer-output"></div>';
-      // 初始化JSON树形查看器
-      if (window.JsonViewer) {
-        new window.JsonViewer('json-viewer-output', parsedData);
-      } else {
-        // 回退到普通pre显示
-        outputEl.innerHTML = '<pre>' + JSON.stringify(parsedData, null, 2) + '</pre>';
-      }
-
-      // 如果有提取函数，则应用它
-      const extractFnStr = document.getElementById('extract-fn').value.trim();
-      if (extractFnStr) {
-        // 使用全局翻译对象
-        applyExtractFunction(translations);
-      }
+      const parsedData = parseJson(inputEl.value);
+      showJsonResult(parsedData, '格式化结果');
     } catch (error) {
-      // 使用从DOM获取的翻译文本
-      outputEl.innerHTML = `<div style="color: red;">${translations.parsingError}${error.message}</div>`;
+      const outputEl = document.getElementById('output-json');
+      outputEl.innerHTML = `<div style="color: #dc2626; padding: 12px; background: #fef2f2; border-radius: 6px;">${translations.parsingError || '解析错误'}: ${error.message}</div>`;
+      expandOutput('错误');
     }
   }
 
@@ -724,198 +757,30 @@ const t = locales[lang] || locales.en;
     return JSON.parse(str);
   }
 
-  // 解析URL参数
-  function parseUrlParams(str) {
-    const params = new URLSearchParams(str.startsWith('?') ? str.substring(1) : str);
-    const result = {};
-    for (const [key, value] of params.entries()) {
-      result[key] = value;
-    }
-    return result;
-  }
-
-  // 解析XML (使用xml-js库)
-  async function parseXml(str) {
-    // 注意：在浏览器环境中，我们需要动态导入xml-js库
-    // 为了演示目的，这里提供一个改进的实现
-    try {
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(str, "text/xml");
-
-      // 检查是否有解析错误
-      const parserError = xmlDoc.querySelector("parsererror");
-      if (parserError) {
-        throw new Error(parserError.textContent);
-      }
-
-      // 更完善的XML到JSON转换
-      function xmlToJson(xmlNode) {
-        let obj = {};
-
-        if (xmlNode.nodeType === 1) { // Element
-          // 处理属性
-          if (xmlNode.attributes.length > 0) {
-            obj["@attributes"] = {};
-            for (let j = 0; j < xmlNode.attributes.length; j++) {
-              const attribute = xmlNode.attributes.item(j);
-              obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-            }
-          }
-
-          // 处理子节点
-          if (xmlNode.hasChildNodes()) {
-            for (let i = 0; i < xmlNode.childNodes.length; i++) {
-              const item = xmlNode.childNodes.item(i);
-              const nodeName = item.nodeName;
-
-              if (nodeName === "#text") {
-                const textContent = item.nodeValue.trim();
-                if (textContent) {
-                  // 如果元素只有文本内容，直接返回文本
-                  if (xmlNode.children.length === 0) {
-                    return textContent;
-                  } else {
-                    obj["textContent"] = textContent;
-                  }
-                }
-              } else {
-                if (typeof obj[nodeName] === "undefined") {
-                  obj[nodeName] = xmlToJson(item);
-                } else {
-                  if (!Array.isArray(obj[nodeName])) {
-                    obj[nodeName] = [obj[nodeName]];
-                  }
-                  obj[nodeName].push(xmlToJson(item));
-                }
-              }
-            }
-          }
-        } else if (xmlNode.nodeType === 3) { // Text
-          return xmlNode.nodeValue.trim();
-        }
-
-        return obj;
-      }
-
-      return xmlToJson(xmlDoc.documentElement);
-    } catch (e) {
-      throw new Error(translations.xmlParsingError + e.message);
-    }
-  }
-
-  // 解析YAML (使用yaml库)
-  async function parseYaml(str) {
-    // 注意：在浏览器环境中，我们需要动态导入yaml库
-    // 为了演示目的，这里提供一个模拟实现
-    // 在实际部署时，需要确保yaml库可以在浏览器中工作
-    try {
-      // 模拟使用yaml库的逻辑
-      // 实际实现中需要通过CDN或构建工具引入yaml库
-
-      // 简单的YAML到JSON转换（仅支持基本结构）
-      const lines = str.split('\n');
-      const result = {};
-      let currentObj = result;
-      let stack = [result];
-
-      for (let line of lines) {
-        if (!line.trim() || line.startsWith('#')) continue;
-
-        const indent = line.search(/\S|$/);
-        const keyValue = line.trim().split(':');
-        const key = keyValue[0].replace(/['"]/g, '');
-        let value = keyValue.slice(1).join(':').trim();
-
-        // 调整当前对象层级
-        while (stack.length > 1 && indent < getIndentLevel(stack.length - 1)) {
-          stack.pop();
-        }
-        currentObj = stack[stack.length - 1];
-
-        if (value) {
-          // 尝试解析值
-          value = value.trim();
-          if (value === 'true') value = true;
-          else if (value === 'false') value = false;
-          else if (value === 'null') value = null;
-          else if (/^\d+$/.test(value)) value = parseInt(value);
-          else if (/^\d*\.\d+$/.test(value)) value = parseFloat(value);
-          else if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
-          else if (value.startsWith("'") && value.endsWith("'")) value = value.slice(1, -1);
-
-          currentObj[key] = value;
-        } else {
-          // 这是一个对象或数组
-          currentObj[key] = {};
-          stack.push(currentObj[key]);
-        }
-      }
-
-      function getIndentLevel(level) {
-        // 简化的缩进计算
-        return level * 2;
-      }
-
-      return result;
-    } catch (e) {
-      throw new Error(translations.yamlParsingError + e.message);
-    }
-  }
-
   // 应用提取函数
-  async function applyExtractFunction(translations) {
+  async function applyExtractFunction() {
     const inputEl = getInputEditorElement();
-    const extractedOutputEl = document.getElementById('extracted-output');
     const extractFnStr = document.getElementById('extract-fn').value.trim();
 
     if (!extractFnStr) {
-      extractedOutputEl.innerHTML = `<div>${translations.enterExtractionFn}</div>`;
+      alert(translations.enterExtractionFn || '请输入提取函数');
       return;
     }
 
     try {
       const inputText = inputEl.value;
       if (!inputText.trim()) {
-        extractedOutputEl.innerHTML = `<div>${translations.enterData}</div>`;
+        alert(translations.enterData || '请输入数据');
         return;
       }
 
-      // 获取原始数据
-      const inputType = document.getElementById('input-type').value;
-      let parsedData;
-
-      switch(inputType) {
-        case 'json':
-          parsedData = parseJson(inputText);
-          break;
-        case 'urlparams':
-          parsedData = parseUrlParams(inputText);
-          break;
-        case 'xml':
-          parsedData = await parseXml(inputText);
-          break;
-        case 'yaml':
-          parsedData = await parseYaml(inputText);
-          break;
-        default:
-          parsedData = parseJson(inputText);
-      }
-
-      // 创建安全的执行环境
+      const parsedData = parseJson(inputText);
       const fn = new Function('obj', `return (${extractFnStr})(obj);`);
       const result = fn(parsedData);
 
-      // 显示提取结果 - 使用树形查看器
-      extractedOutputEl.innerHTML = '<div id="json-viewer-extracted"></div>';
-      // 初始化JSON树形查看器
-      if (window.JsonViewer) {
-        new window.JsonViewer('json-viewer-extracted', result);
-      } else {
-        // 回退到普通pre显示
-        extractedOutputEl.innerHTML = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
-      }
+      showJsonResult(result, '提取结果');
     } catch (error) {
-      extractedOutputEl.innerHTML = `<div style="color: red;">${translations.extractionError}${error.message}</div>`;
+      alert((translations.extractionError || '提取错误') + ': ' + error.message);
     }
   }
 
@@ -924,160 +789,91 @@ const t = locales[lang] || locales.en;
     getInputEditorElement().value = '';
     document.getElementById('extract-fn').value = '';
     document.getElementById('output-json').innerHTML = '';
-    document.getElementById('extracted-output').innerHTML = '';
+    closeOutput();
   }
 
   // 折叠所有
   function collapseAll() {
-    // 这个功能需要更复杂的实现，使用JSON查看器库会更好
-    alert(translations.collapseMessage);
+    const outputEl = document.getElementById('output-json');
+    const collapsibles = outputEl.querySelectorAll('.collapsible');
+    collapsibles.forEach(node => {
+      node.classList.add('collapsed');
+      const toggle = node.querySelector('.json-toggle');
+      if (toggle) toggle.textContent = '▶';
+    });
   }
 
   // 展开所有
   function expandAll() {
-    // 这个功能需要更复杂的实现，使用JSON查看器库会更好
-    alert(translations.expandMessage);
+    const outputEl = document.getElementById('output-json');
+    const collapsibles = outputEl.querySelectorAll('.collapsible');
+    collapsibles.forEach(node => {
+      node.classList.remove('collapsed');
+      const toggle = node.querySelector('.json-toggle');
+      if (toggle) toggle.textContent = '▼';
+    });
   }
 
   // 去除注释
   function removeComments() {
     const inputEl = getInputEditorElement();
     let value = inputEl.value;
-
-    // 移除JavaScript风格的注释
-    value = value.replace(/\/\*[\s\S]*?\*\//g, ''); // 块注释
-    value = value.replace(/\/\/.*/g, ''); // 行注释
-
+    value = value.replace(/\/\*[\s\S]*?\*\//g, '');
+    value = value.replace(/\/\/.*/g, '');
     inputEl.value = value;
     formatInput();
   }
 
   // 压缩并复制
-  async function compressAndCopy(translations) {
+  async function compressAndCopy() {
     const inputEl = getInputEditorElement();
     try {
-      const inputType = document.getElementById('input-type').value;
-      let parsedData;
-
-      switch(inputType) {
-        case 'json':
-          parsedData = parseJson(inputEl.value);
-          break;
-        case 'urlparams':
-          parsedData = parseUrlParams(inputEl.value);
-          break;
-        case 'xml':
-          parsedData = await parseXml(inputEl.value);
-          break;
-        case 'yaml':
-          parsedData = await parseYaml(inputEl.value);
-          break;
-        default:
-          parsedData = parseJson(inputEl.value);
-      }
-
+      const parsedData = parseJson(inputEl.value);
       const compressed = JSON.stringify(parsedData);
-      navigator.clipboard.writeText(compressed);
-      alert(translations.compressSuccess);
+      await navigator.clipboard.writeText(compressed);
+      alert(translations.compressSuccess || '压缩成功并已复制到剪贴板');
     } catch (error) {
-      alert(translations.parsingError + translations.compressError + error.message);
+      alert((translations.parsingError || '解析错误') + ': ' + error.message);
     }
   }
 
   // 转义并复制
-  async function escapeAndCopy(translations) {
+  async function escapeAndCopy() {
     const inputEl = getInputEditorElement();
     try {
-      const inputType = document.getElementById('input-type').value;
-      let parsedData;
-
-      switch(inputType) {
-        case 'json':
-          parsedData = parseJson(inputEl.value);
-          break;
-        case 'urlparams':
-          parsedData = parseUrlParams(inputEl.value);
-          break;
-        case 'xml':
-          parsedData = await parseXml(inputEl.value);
-          break;
-        case 'yaml':
-          parsedData = await parseYaml(inputEl.value);
-          break;
-        default:
-          parsedData = parseJson(inputEl.value);
-      }
-
+      const parsedData = parseJson(inputEl.value);
       const compressed = JSON.stringify(parsedData);
       const escaped = compressed.replace(/[\\]/g, '\\\\').replace(/["]/g, '\\"');
-      navigator.clipboard.writeText(escaped);
-      alert(translations.escapeSuccess);
+      await navigator.clipboard.writeText(escaped);
+      alert(translations.escapeSuccess || '转义成功并已复制到剪贴板');
     } catch (error) {
-      alert(translations.parsingError + translations.escapeError + error.message);
+      alert((translations.parsingError || '解析错误') + ': ' + error.message);
     }
   }
 
   // JSON转XML并复制
-  async function jsonToXmlAndCopy(translations) {
+  async function jsonToXmlAndCopy() {
     const inputEl = getInputEditorElement();
     try {
-      const inputType = document.getElementById('input-type').value;
-      let parsedData;
-
-      switch(inputType) {
-        case 'json':
-          parsedData = parseJson(inputEl.value);
-          break;
-        case 'urlparams':
-          parsedData = parseUrlParams(inputEl.value);
-          break;
-        case 'xml':
-          parsedData = await parseXml(inputEl.value);
-          break;
-        case 'yaml':
-          parsedData = await parseYaml(inputEl.value);
-          break;
-        default:
-          parsedData = parseJson(inputEl.value);
-      }
-
+      const parsedData = parseJson(inputEl.value);
       const xmlString = jsonToXml(parsedData, 'root');
-      navigator.clipboard.writeText(xmlString);
-      alert(translations.xmlSuccess);
+      await navigator.clipboard.writeText(xmlString);
+      alert(translations.xmlSuccess || 'XML已复制到剪贴板');
     } catch (error) {
-      alert(translations.parsingError + translations.xmlConversionError + error.message);
+      alert((translations.parsingError || '解析错误') + ': ' + error.message);
     }
   }
 
   // JSON转TypeScript并复制
-  async function jsonToTsAndCopy(translations) {
+  async function jsonToTsAndCopy() {
     const inputEl = getInputEditorElement();
     try {
-      const inputType = document.getElementById('input-type').value;
-      let parsedData;
-
-      switch(inputType) {
-        case 'json':
-          parsedData = parseJson(inputEl.value);
-          break;
-        case 'urlparams':
-          parsedData = parseUrlParams(inputEl.value);
-          break;
-        case 'xml':
-          parsedData = await parseXml(inputEl.value);
-          break;
-        case 'yaml':
-          parsedData = await parseYaml(inputEl.value);
-          break;
-        default:
-          parsedData = parseJson(inputEl.value);
-      }
-
+      const parsedData = parseJson(inputEl.value);
       const tsInterface = jsonToTsInterface(parsedData, 'DataType');
-      navigator.clipboard.writeText(tsInterface);
-      alert(translations.tsSuccess);
+      await navigator.clipboard.writeText(tsInterface);
+      alert(translations.tsSuccess || 'TypeScript接口已复制到剪贴板');
     } catch (error) {
-      alert(translations.parsingError + translations.tsConversionError + error.message);
+      alert((translations.parsingError || '解析错误') + ': ' + error.message);
     }
   }
 
@@ -1125,7 +921,7 @@ const t = locales[lang] || locales.en;
         let type;
 
         if (value === null) {
-          type = 'any'; // null值的类型不确定
+          type = 'any';
         } else if (Array.isArray(value)) {
           if (value.length > 0) {
             const elementType = typeof value[0];
@@ -1135,7 +931,7 @@ const t = locales[lang] || locales.en;
           }
         } else if (typeof value === 'object') {
           type = `${key.charAt(0).toUpperCase() + key.slice(1)}Type`;
-          ts += jsonToTsInterface(value, type); // 递归生成嵌套接口
+          ts += jsonToTsInterface(value, type);
         } else {
           type = getType(typeof value);
         }
