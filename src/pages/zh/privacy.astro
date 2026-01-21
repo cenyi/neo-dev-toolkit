@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { locales } from '../i18n/locales.js';
+
+// 获取语言参数
+const url = new URL(Astro.request.url);
+const lang = 'zh';
+const t = locales[lang] || locales.en;
+---
+
+<BaseLayout title={`${t.navPrivacy} | ${t.title}`} lang={lang}>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="page-container">
+    <h1>{t.navPrivacy}</h1>
+    <div class="content">
+      <h2>1. Introduction</h2>
+      <p>Welcome to our JSON Formatter & Parser website. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
+      
+      <h2>2. Information We Collect</h2>
+      <p>We do not collect any personal information from users of our website. All data processing is done locally in your browser.</p>
+      
+      <h2>3. How We Use Your Information</h2>
+      <p>Since we do not collect any personal information, we do not use your information for any purpose.</p>
+      
+      <h2>4. Disclosure of Your Information</h2>
+      <p>We do not disclose any personal information to third parties.</p>
+      
+      <h2>5. Security of Your Information</h2>
+      <p>Since we do not collect any personal information, there is no risk of your personal information being compromised.</p>
+      
+      <h2>6. Changes to This Privacy Policy</h2>
+      <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+      
+      <h2>7. Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us at privacy@example.com.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1f2937;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #374151;
+  }
+
+  p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+
+  .content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+</style>

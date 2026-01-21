@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { locales } from '../i18n/locales.js';
+
+// 获取语言参数
+const url = new URL(Astro.request.url);
+const lang = 'zh';
+const t = locales[lang] || locales.en;
+---
+
+<BaseLayout title={`${t.navContact} | ${t.title}`} lang={lang}>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="page-container">
+    <h1>{t.navContact}</h1>
+    <div class="content">
+      <h2>{lang === 'en' ? 'Contact Information' : '联系信息'}</h2>
+      <p>{lang === 'en' ? 'If you have any questions, feedback, or suggestions about our JSON Formatter & Parser, please feel free to contact us using the information below:' : '如果您对我们的 JSON 格式化工具 & 解析器有任何问题、反馈或建议，请随时使用以下信息与我们联系：'}</p>
+      
+      <h2>{lang === 'en' ? 'Email' : '邮箱'}</h2>
+      <p><a href="mailto:hi@tojsons.com" style="color: #2563eb; text-decoration: none;">hi@tojsons.com</a></p>
+      
+      <h2>{lang === 'en' ? 'How We Can Help' : '我们如何提供帮助'}</h2>
+      <p>{lang === 'en' ? 'We welcome your feedback and are committed to improving our service. Whether you have a bug report, feature request, or just want to say hello, we\'ll get back to you as soon as possible.' : '我们欢迎您的反馈，并致力于改进我们的服务。无论是 bug 报告、功能请求，还是只是想打个招呼，我们都会尽快回复您。'}</p>
+      
+      <h2>{lang === 'en' ? 'Response Time' : '回复时间'}</h2>
+      <p>{lang === 'en' ? 'We typically respond to all inquiries within 1-2 business days.' : '我们通常会在 1-2 个工作日内回复所有咨询。'}</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1f2937;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #374151;
+  }
+
+  p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+
+  .content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+</style>

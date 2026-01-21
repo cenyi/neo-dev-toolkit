@@ -59,17 +59,18 @@ const currentPath = Astro.url.pathname;
 <style>
   .sidebar {
     width: var(--sidebar-width);
-    background: linear-gradient(180deg, #f8f9fa 0%, #f1f3f5 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 3px 0 20px rgba(0,0,0,0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #e9ecef;
+    border-right: 1px solid #e5e7eb;
+    backdrop-filter: blur(10px);
   }
 
   .sidebar.collapsed {
@@ -77,27 +78,32 @@ const currentPath = Astro.url.pathname;
   }
 
   .sidebar-header {
-    padding: 16px 18px;
+    padding: 20px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #dee2e6;
-    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid #e5e7eb;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+    backdrop-filter: blur(10px);
   }
 
   .sidebar.collapsed .sidebar-header {
     justify-content: center;
-    padding: 16px 0;
+    padding: 20px 0;
   }
 
   .logo {
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 800;
     white-space: nowrap;
     overflow: hidden;
-    transition: opacity 0.25s ease, width 0.25s ease;
-    color: #1f2937;
-    letter-spacing: -0.02em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #0f172a;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .sidebar.collapsed .logo {
@@ -108,88 +114,139 @@ const currentPath = Astro.url.pathname;
   }
 
   .toggle-btn {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid #dee2e6;
-    border-radius: 6px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
     cursor: pointer;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
   .toggle-btn:hover {
-    background: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    border-color: #cbd5e1;
+  }
+
+  .toggle-btn:active {
+    transform: scale(0.95);
   }
 
   .hamburger {
-    width: 18px;
+    width: 16px;
     height: 2px;
-    background-color: var(--text-color);
+    background: linear-gradient(90deg, #64748b 0%, #94a3b8 100%);
     margin: 2px 0;
-    transition: 0.25s;
-    border-radius: 1px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+  }
+
+  .sidebar.collapsed .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  .sidebar.collapsed .hamburger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .sidebar.collapsed .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
   }
 
   .nav-menu {
-    padding: 16px 0;
+    padding: 20px 12px;
     flex-grow: 1;
+    overflow-y: auto;
   }
 
   .nav-menu ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
   .nav-menu li {
-    margin-bottom: 3px;
+    margin-bottom: 0;
   }
 
-  /* 移除旧的规则，使用新的规则只隐藏文字 */
-
   .nav-link {
-    display: block;
-    padding: 10px 18px;
-    text-decoration: none;
-    color: var(--text-color);
-    transition: all 0.2s;
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: #475569;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.875rem;
     font-weight: 500;
-    border-radius: 0;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%);
+    transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0 2px 2px 0;
   }
 
   .nav-link:hover {
-    background-color: rgba(59, 130, 246, 0.08);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
     color: #2563eb;
+    transform: translateX(2px);
+  }
+
+  .nav-link:hover::before {
+    height: 20px;
   }
 
   .nav-link.active {
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
     color: #2563eb;
-    border-left: 3px solid #2563eb;
-    padding-left: 15px;
+    font-weight: 600;
+  }
+
+  .nav-link.active::before {
+    height: 24px;
   }
 
   /* 导航图标和文字 */
   .nav-icon {
-    margin-right: 10px;
-    min-width: 18px;
+    margin-right: 12px;
+    min-width: 20px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .nav-text {
     white-space: nowrap;
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* 折叠时隐藏文字，只显示图标 */
   .sidebar.collapsed .nav-text {
-    display: none;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
   }
 
   .sidebar.collapsed .nav-link {
@@ -200,7 +257,11 @@ const currentPath = Astro.url.pathname;
 
   .sidebar.collapsed .nav-icon {
     margin-right: 0;
-    display: inline-block;
+    font-size: 1.25rem;
+  }
+
+  .sidebar.collapsed .nav-link:hover {
+    transform: scale(1.1);
   }
 
   /* 确保折叠时导航链接内的所有元素都居中 */
@@ -240,18 +301,29 @@ const currentPath = Astro.url.pathname;
     const newLang = currentLang === 'en' ? 'zh' : 'en';
     window.appState.lang = newLang;
 
-    // 更新URL参数
-    const url = new URL(window.location);
-    
+    // 获取当前路径
+    const currentPath = window.location.pathname;
+
+    // 构建新路径
+    let newPath;
     if (newLang === 'en') {
-      // 默认语言，移除lang参数
-      url.searchParams.delete('lang');
+      // 英文：移除 /zh 前缀
+      if (currentPath.startsWith('/zh')) {
+        newPath = currentPath.substring(3) || '/';
+      } else {
+        newPath = currentPath;
+      }
     } else {
-      // 非默认语言，设置lang参数
-      url.searchParams.set('lang', newLang);
+      // 中文：添加 /zh 前缀
+      if (currentPath.startsWith('/zh')) {
+        newPath = currentPath;
+      } else {
+        newPath = '/zh' + (currentPath === '/' ? '' : currentPath);
+      }
     }
-    
-    window.location.href = url.toString();
+
+    // 跳转到新路径
+    window.location.href = newPath;
   }
 
   // 初始化时设置主内容区域的 margin-left（与侧边栏状态保持一致）
