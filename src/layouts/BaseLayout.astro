@@ -47,6 +47,7 @@ const { title = "默认标题", lang = "zh-CN" } = Astro.props;
         overflow-y: auto;
         transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         background: #fafbfc;
+        margin-left: var(--sidebar-width);
       }
 
       /* 自定义滚动条 */
@@ -78,7 +79,7 @@ const { title = "默认标题", lang = "zh-CN" } = Astro.props;
     </style>
     <script>
       // 全局状态管理
-      const appState = {
+      window.appState = {
         sidebarCollapsed: false,
         lang: 'en'
       };
@@ -87,7 +88,7 @@ const { title = "默认标题", lang = "zh-CN" } = Astro.props;
       const urlParams = new URLSearchParams(window.location.search);
       const langParam = urlParams.get('lang');
       if (langParam) {
-        appState.lang = langParam;
+        window.appState.lang = langParam;
       }
     </script>
   </head>

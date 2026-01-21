@@ -7,6 +7,21 @@ import { locales } from '../i18n/locales.js';
 const url = new URL(Astro.request.url);
 const lang = url.searchParams.get('lang') || 'en';
 const t = locales[lang] || locales.en;
+
+// JSON 示例数据
+const sampleJson = {
+  "name": "JSON Formatter",
+  "version": "1.0.0",
+  "features": [
+    "Format JSON",
+    "Convert from XML/YAML",
+    "Extract fields with JS functions"
+  ],
+  "author": {
+    "name": "Dev Team",
+    "email": "team@example.com"
+  }
+};
 ---
 
 <BaseLayout title={`${t.title} | ${t.description}`} lang={lang}>
@@ -26,27 +41,15 @@ const t = locales[lang] || locales.en;
       <!-- 左侧输入区域 -->
       <div class="input-area">
         <div class="input-section">
-          <div class="section-label">{t.inputPlaceholder}</div>
-          <textarea
-            id="json-input"
-            class="json-input"
-            placeholder={`{
-  "name": "示例数据",
-  "version": "1.0.0"
-}`}
-          >{
-  "name": "JSON Formatter",
-  "version": "1.0.0",
-  "features": [
-    "Format JSON",
-    "Convert from XML/YAML",
-    "Extract fields with JS functions"
-  ],
-  "author": {
-    "name": "Dev Team",
-    "email": "team@example.com"
-  }
-}</textarea>
+          <div class="section-label">JSON viewer All in one</div>
+          <div class="input-editor-wrapper">
+            <div class="line-numbers" id="line-numbers"></div>
+            <textarea
+              id="json-input"
+              class="json-input"
+              placeholder={t.inputPlaceholder}
+            ></textarea>
+          </div>
         </div>
 
         <div class="extraction-section">
@@ -111,7 +114,7 @@ const t = locales[lang] || locales.en;
 
   /* 左侧输入区域 */
   .input-area {
-    flex: 1;
+    width: 50%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -135,13 +138,35 @@ const t = locales[lang] || locales.en;
     letter-spacing: 0.05em;
   }
 
+  .input-editor-wrapper {
+    display: flex;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    overflow: hidden;
+    flex: 1;
+  }
+
+  .line-numbers {
+    background: #f6f8fa;
+    padding: 12px 8px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #6b7280;
+    user-select: none;
+    border-right: 1px solid #e1e4e8;
+    min-width: 40px;
+    text-align: right;
+    overflow: hidden;
+  }
+
   .json-input {
     flex: 1;
     width: 100%;
     min-height: 300px;
     padding: 12px;
-    border: 1px solid #e1e4e8;
-    border-radius: 8px;
+    border: none;
+    border-radius: 0;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 13px;
     line-height: 1.5;
@@ -273,7 +298,7 @@ const t = locales[lang] || locales.en;
     width: 50%;
     opacity: 1;
     border-left: 1px solid #e5e7eb;
-    padding-left: 12px;
+    padding-left: 0;
   }
 
   .output-header {
@@ -525,6 +550,37 @@ const t = locales[lang] || locales.en;
   function getInputEditorElement() {
     return document.getElementById('json-input');
   }
+
+  // 行号更新函数
+  function updateLineNumbers() {
+    const textarea = document.getElementById('json-input');
+    const lineNumbers = document.getElementById('line-numbers');
+    const lines = textarea.value.split('\n').length;
+    
+    let lineNumbersHTML = '';
+    for (let i = 1; i <= lines; i++) {
+      lineNumbersHTML += `${i}\n`;
+    }
+    
+    lineNumbers.textContent = lineNumbersHTML;
+  }
+
+  // 初始化行号功能
+  document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.getElementById('json-input');
+    const lineNumbers = document.getElementById('line-numbers');
+    
+    // 初始更新行号
+    updateLineNumbers();
+    
+    // 监听输入事件，更新行号
+    textarea.addEventListener('input', updateLineNumbers);
+    
+    // 监听滚动事件，同步行号滚动
+    textarea.addEventListener('scroll', () => {
+      lineNumbers.scrollTop = textarea.scrollTop;
+    });
+  });
 
   // JSON树形查看器
   class JsonViewer {

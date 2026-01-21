@@ -13,10 +13,22 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
   </div>
   <nav class="nav-menu">
     <ul>
-      <li><a href="/" class="nav-link active">{t.navHome}</a></li>
-      <li><a href="/about" class="nav-link">{t.navAbout}</a></li>
-      <li><a href="/settings" class="nav-link">{t.navSettings}</a></li>
-      <li><a href="#" class="nav-link" onclick="switchLanguage()">{t.navLanguage}</a></li>
+      <li><a href="/" class="nav-link active">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-text">{t.navHome}</span>
+      </a></li>
+      <li><a href="/about" class="nav-link">
+        <span class="nav-icon">ℹ️</span>
+        <span class="nav-text">{t.navAbout}</span>
+      </a></li>
+      <li><a href="/settings" class="nav-link">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-text">{t.navSettings}</span>
+      </a></li>
+      <li><a href="#" class="nav-link" onclick="switchLanguage()">
+        <span class="nav-icon">🌐</span>
+        <span class="nav-text">{t.navLanguage}</span>
+      </a></li>
     </ul>
   </nav>
 </div>
@@ -142,14 +154,20 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
     padding-left: 15px;
   }
 
-  .nav-link i {
+  /* 导航图标和文字 */
+  .nav-icon {
     margin-right: 10px;
     min-width: 18px;
     text-align: center;
     font-size: 1rem;
   }
 
-  .sidebar.collapsed .nav-link span {
+  .nav-text {
+    white-space: nowrap;
+  }
+
+  /* 折叠时隐藏文字，只显示图标 */
+  .sidebar.collapsed .nav-text {
     display: none;
   }
 
@@ -158,15 +176,23 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
     padding: 12px 0;
   }
 
-  .sidebar.collapsed .nav-link i {
+  .sidebar.collapsed .nav-icon {
     margin-right: 0;
   }
 </style>
 
-<script>
+<script is:global>
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
+    const main = document.querySelector('main');
     sidebar.classList.toggle('collapsed');
+
+    // 更新主内容区域的 margin-left
+    if (sidebar.classList.contains('collapsed')) {
+      main.style.marginLeft = 'var(--sidebar-collapsed-width)';
+    } else {
+      main.style.marginLeft = 'var(--sidebar-width)';
+    }
 
     // 更新全局状态
     window.appState.sidebarCollapsed = sidebar.classList.contains('collapsed');
@@ -185,7 +211,12 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
   }
 
   // 初始化时检查是否需要折叠侧边栏
-  if (window.appState && window.appState.sidebarCollapsed) {
-    document.getElementById('sidebar').classList.add('collapsed');
-  }
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.appState && window.appState.sidebarCollapsed) {
+      const sidebar = document.getElementById('sidebar');
+      const main = document.querySelector('main');
+      sidebar.classList.add('collapsed');
+      main.style.marginLeft = 'var(--sidebar-collapsed-width)';
+    }
+  });
 </script>
