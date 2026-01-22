@@ -10,6 +10,9 @@ const { title = "默认标题", lang = "zh-CN" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
 
+    <!-- Monaco Editor CSS - 在 head 中提前加载，确保样式在编辑器初始化前生效 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBZG7E1Z6Y"></script>
     <script>

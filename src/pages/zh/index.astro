@@ -88,9 +88,6 @@ const sampleJson = {
   </div>
 </BaseLayout>
 
-<!-- Monaco Editor CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
-
 <style>
   .json-formatter-container {
     max-width: 1800px;
@@ -562,20 +559,23 @@ const sampleJson = {
       return;
     }
 
-    // 使用 requestAnimationFrame 确保 DOM 完全渲染后再创建编辑器
+    // 等待页面完全渲染，包括 CSS 样式应用
+    // 使用双重 requestAnimationFrame 确保浏览器完成布局计算
     requestAnimationFrame(() => {
-      // 确保容器有正确的尺寸
-      console.log('Container dimensions:', {
-        width: container.offsetWidth,
-        height: container.offsetHeight
-      });
+      requestAnimationFrame(() => {
+        // 确保容器有正确的尺寸
+        console.log('Container dimensions:', {
+          width: container.offsetWidth,
+          height: container.offsetHeight
+        });
 
-      // 如果容器高度还是0，再等待一帧
-      if (container.offsetHeight === 0) {
-        requestAnimationFrame(() => createEditor(container));
-      } else {
-        createEditor(container);
-      }
+        // 如果容器尺寸还是异常，再延迟一点
+        if (container.offsetWidth === 0 || container.offsetHeight === 0) {
+          setTimeout(() => createEditor(container), 50);
+        } else {
+          createEditor(container);
+        }
+      });
     });
   }
 
