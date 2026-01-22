@@ -93,6 +93,80 @@ const sampleJson = {
         </div>
       </div>
     </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+      <div class="section-header">
+        <h2>{t.featuresTitle}</h2>
+        <p>{t.featuresSubtitle}</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h3>{t.feature1Title}</h3>
+          <p>{t.feature1Desc}</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>{t.feature2Title}</h3>
+          <p>{t.feature2Desc}</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>{t.feature3Title}</h3>
+          <p>{t.feature3Desc}</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>{t.feature4Title}</h3>
+          <p>{t.feature4Desc}</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💻</div>
+          <h3>{t.feature5Title}</h3>
+          <p>{t.feature5Desc}</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>{t.feature6Title}</h3>
+          <p>{t.feature6Desc}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <div class="section-header">
+        <h2>{t.faqTitle}</h2>
+        <p>{t.faqSubtitle}</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>{t.faq1Question}</h3>
+          <p>{t.faq1Answer}</p>
+        </div>
+        <div class="faq-item">
+          <h3>{t.faq2Question}</h3>
+          <p>{t.faq2Answer}</p>
+        </div>
+        <div class="faq-item">
+          <h3>{t.faq3Question}</h3>
+          <p>{t.faq3Answer}</p>
+        </div>
+        <div class="faq-item">
+          <h3>{t.faq4Question}</h3>
+          <p>{t.faq4Answer}</p>
+        </div>
+        <div class="faq-item">
+          <h3>{t.faq5Question}</h3>
+          <p>{t.faq5Answer}</p>
+        </div>
+        <div class="faq-item">
+          <h3>{t.faq6Question}</h3>
+          <p>{t.faq6Answer}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </BaseLayout>
 
@@ -461,6 +535,167 @@ const sampleJson = {
 
   .collapsed > .json-node {
     display: none;
+  }
+
+  /* Features Section */
+  .features-section {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: #64748b;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e5e7eb;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 12px;
+  }
+
+  .feature-card p {
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    padding: 24px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-item:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 12px;
+  }
+
+  .faq-item p {
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* Features 和 FAQ 深色主题 */
+  [data-theme="dark"] .features-section {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+
+  [data-theme="dark"] .feature-card {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  [data-theme="dark"] .feature-card:hover {
+    border-color: #3b82f6;
+  }
+
+  [data-theme="dark"] .section-header h2 {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  [data-theme="dark"] .section-header p {
+    color: #94a3b8;
+  }
+
+  [data-theme="dark"] .feature-card h3,
+  [data-theme="dark"] .faq-item h3 {
+    color: #e5e7eb;
+  }
+
+  [data-theme="dark"] .feature-card p,
+  [data-theme="dark"] .faq-item p {
+    color: #94a3b8;
+  }
+
+  [data-theme="dark"] .faq-section {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  [data-theme="dark"] .faq-item {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-color: #334155;
+  }
+
+  [data-theme="dark"] .faq-item:hover {
+    border-color: #3b82f6;
   }
 
   /* 响应式设计 */
