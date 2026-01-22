@@ -480,13 +480,6 @@ const t = locales['zh'];
     }
   }
 
-  [data-theme="dark"] .validation-error {
-    background: linear-gradient(135deg, #450a0a 0%, #3f1616 100%);
-    border-color: #7f1d1d;
-    color: #fca5a5;
-    border-left-color: #ef4444;
-  }
-
   /* 提取区域 */
   .extraction-section {
     padding: 10px 12px;
@@ -1047,93 +1040,6 @@ const t = locales['zh'];
     font-size: 0.95rem;
   }
 
-  /* Tutorial 深色主题 */
-  [data-theme="dark"] .tutorial-section {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  }
-
-  [data-theme="dark"] .tutorial-step {
-    background: #334155;
-  }
-
-  [data-theme="dark"] .step-content h3 {
-    color: #e5e7eb;
-  }
-
-  [data-theme="dark"] .step-content p {
-    color: #cbd5e1;
-  }
-
-  [data-theme="dark"] .action-list li {
-    color: #cbd5e1;
-  }
-
-  [data-theme="dark"] .action-list li strong {
-    color: #e5e7eb;
-  }
-
-  /* Features 和 FAQ 深色主题 */
-  [data-theme="dark"] .features-section {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  }
-
-  [data-theme="dark"] .feature-card {
-    background: #1e293b;
-    border-color: #334155;
-  }
-
-  [data-theme="dark"] .feature-card:hover {
-    border-color: #3b82f6;
-  }
-
-  [data-theme="dark"] .section-header h2 {
-    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  [data-theme="dark"] .section-header p {
-    color: #94a3b8;
-  }
-
-  [data-theme="dark"] .feature-card h3,
-  [data-theme="dark"] .faq-item h3 {
-    color: #e5e7eb;
-  }
-
-  [data-theme="dark"] .feature-card p,
-  [data-theme="dark"] .faq-item p {
-    color: #94a3b8;
-  }
-
-  [data-theme="dark"] .faq-section {
-    background: transparent;
-    border: none;
-  }
-
-  [data-theme="dark"] .faq-item {
-    border-left-color: #3b82f6;
-  }
-
-  [data-theme="dark"] .faq-item:hover {
-    border-left-color: #60a5fa;
-  }
-
-  [data-theme="dark"] .faq-item h3 {
-    color: #e5e7eb;
-  }
-
-  [data-theme="dark"] .faq-item p {
-    color: #94a3b8;
-  }
-
-  /* 深色主题下的下拉选项 */
-  [data-theme="dark"] .output-controls select option {
-    background: #1e293b;
-    color: #e5e7eb;
-  }
-
   /* 响应式设计 */
   @media (max-width: 1200px) {
     .output-area.expanded {
@@ -1337,15 +1243,11 @@ const t = locales['zh'];
     // 获取保存的字体大小
     const savedFontSize = localStorage.getItem('editorFontSize') || '13';
 
-    // 获取当前主题
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-    const monacoTheme = currentTheme === 'dark' ? 'vs-dark' : 'vs';
-
     // 创建输入编辑器
     editor = monaco.editor.create(container, {
       value: '',
       language: 'json',
-      theme: monacoTheme,
+      theme: 'vs',
       automaticLayout: true,
       fontSize: parseInt(savedFontSize),
       fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
@@ -1385,7 +1287,7 @@ const t = locales['zh'];
       outputEditor = monaco.editor.create(outputContainer, {
         value: '',
         language: 'json',
-        theme: monacoTheme,
+        theme: 'vs',
         automaticLayout: true,
         fontSize: parseInt(savedFontSize),
         fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
@@ -1722,18 +1624,6 @@ const t = locales['zh'];
         outputEditor.updateOptions({ fontSize: fontSize });
       }
       localStorage.setItem('editorFontSize', fontSize);
-    });
-
-    // 监听主题切换事件，更新 Monaco Editor 主题
-    window.addEventListener('themeChanged', (e) => {
-      const newTheme = e.detail.theme === 'dark' ? 'vs-dark' : 'vs';
-      monaco.editor.setTheme(newTheme);
-      if (editor) {
-        editor.updateOptions({ theme: newTheme });
-      }
-      if (outputEditor) {
-        outputEditor.updateOptions({ theme: newTheme });
-      }
     });
   }
 
