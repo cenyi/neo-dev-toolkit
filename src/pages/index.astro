@@ -119,7 +119,7 @@ const t = locales['en'];
         </div>
         <div class="output-content" id="output-content">
           <div class="output-editor-wrapper">
-            <div id="output-json"></div>
+            <div id="output-monaco-container" class="monaco-editor-container"></div>
           </div>
         </div>
       </div>
@@ -1279,6 +1279,7 @@ const t = locales['en'];
 
   // 全局变量
   let editor = null;
+  let outputEditor = null;
   let translations = {};
 
   // DOM加载完成后初始化
@@ -1339,7 +1340,7 @@ const t = locales['en'];
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const monacoTheme = currentTheme === 'dark' ? 'vs-dark' : 'vs';
 
-    // 创建编辑器
+    // 创建输入编辑器
     editor = monaco.editor.create(container, {
       value: '',
       language: 'json',
@@ -1371,10 +1372,44 @@ const t = locales['en'];
         vertical: 'visible',
         horizontal: 'visible'
       },
-      padding: { top: 12, bottom: 12 }
+      padding: { top: 12, bottom: 12 },
+      readOnly: false
     });
 
     console.log('Monaco Editor created successfully');
+
+    // 创建输出编辑器
+    const outputContainer = document.getElementById('output-monaco-container');
+    if (outputContainer) {
+      outputEditor = monaco.editor.create(outputContainer, {
+        value: '',
+        language: 'json',
+        theme: monacoTheme,
+        automaticLayout: true,
+        fontSize: parseInt(savedFontSize),
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        lineHeight: 21,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        lineNumbers: 'on',
+        lineNumbersMinChars: 3,
+        folding: true,
+        foldingStrategy: 'indentation',
+        foldingHighlight: true,
+        showFoldingControls: 'always',
+        matchBrackets: 'always',
+        tabSize: 2,
+        renderLineHighlight: 'all',
+        scrollbar: {
+          vertical: 'visible',
+          horizontal: 'visible'
+        },
+        padding: { top: 12, bottom: 12 },
+        readOnly: true  // 输出编辑器只读
+      });
+      console.log('Output Monaco Editor created successfully');
+    }
 
     // 调试：检查 DOM 结构
     setTimeout(() => {
@@ -1641,17 +1676,13 @@ const t = locales['en'];
 
   // 显示JSON结果
   function showJsonResult(data, title = '格式化结果') {
-    const outputEl = document.getElementById('output-json');
-
-    outputEl.innerHTML = '<div id="json-viewer-output"></div>';
-
-    if (window.JsonViewer) {
-      new window.JsonViewer('json-viewer-output', data);
+    if (outputEditor) {
+      const jsonStr = JSON.stringify(data, null, 2);
+      outputEditor.setValue(jsonStr);
+      expandOutput(title);
     } else {
-      outputEl.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+      console.error('Output editor not initialized');
     }
-
-    expandOutput(title);
   }
 
   function initializeJsonFormatter() {
@@ -1686,16 +1717,22 @@ const t = locales['en'];
       const fontSize = parseInt(e.target.value);
       if (editor) {
         editor.updateOptions({ fontSize: fontSize });
-        localStorage.setItem('editorFontSize', fontSize);
       }
+      if (outputEditor) {
+        outputEditor.updateOptions({ fontSize: fontSize });
+      }
+      localStorage.setItem('editorFontSize', fontSize);
     });
 
     // 监听主题切换事件，更新 Monaco Editor 主题
     window.addEventListener('themeChanged', (e) => {
+      const newTheme = e.detail.theme === 'dark' ? 'vs-dark' : 'vs';
+      monaco.editor.setTheme(newTheme);
       if (editor) {
-        const newTheme = e.detail.theme === 'dark' ? 'vs-dark' : 'vs';
-        monaco.editor.setTheme(newTheme);
         editor.updateOptions({ theme: newTheme });
+      }
+      if (outputEditor) {
+        outputEditor.updateOptions({ theme: newTheme });
       }
     });
   }
@@ -1752,45 +1789,35 @@ const t = locales['en'];
   function clearInputs() {
     setEditorContent('');
     document.getElementById('extract-fn').value = '';
-    document.getElementById('output-json').innerHTML = '';
+    if (outputEditor) {
+      outputEditor.setValue('');
+    }
     closeOutput();
   }
 
   // 折叠所有
   function collapseAll() {
-    // 折叠 Monaco Editor 中的所有可折叠区域
+    // 折叠输入编辑器
     if (editor) {
       editor.getAction('editor.foldAll').run();
     }
 
-    // 折叠右侧输出区域
-    const outputEl = document.getElementById('output-json');
-    if (outputEl) {
-      const collapsibles = outputEl.querySelectorAll('.collapsible');
-      collapsibles.forEach(node => {
-        node.classList.add('collapsed');
-        const toggle = node.querySelector('.json-toggle');
-        if (toggle) toggle.textContent = '▶';
-      });
+    // 折叠输出编辑器
+    if (outputEditor) {
+      outputEditor.getAction('editor.foldAll').run();
     }
   }
 
   // 展开所有
   function expandAll() {
-    // 展开 Monaco Editor 中的所有可折叠区域
+    // 展开输入编辑器
     if (editor) {
       editor.getAction('editor.unfoldAll').run();
     }
 
-    // 展开右侧输出区域
-    const outputEl = document.getElementById('output-json');
-    if (outputEl) {
-      const collapsibles = outputEl.querySelectorAll('.collapsible');
-      collapsibles.forEach(node => {
-        node.classList.remove('collapsed');
-        const toggle = node.querySelector('.json-toggle');
-        if (toggle) toggle.textContent = '▼';
-      });
+    // 展开输出编辑器
+    if (outputEditor) {
+      outputEditor.getAction('editor.unfoldAll').run();
     }
   }
 
