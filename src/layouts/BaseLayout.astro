@@ -97,12 +97,13 @@ const { title = "默认标题", lang = "zh-CN" } = Astro.props;
         sidebarCollapsed: false,
         lang: 'en'
       };
-      
-      // 获取URL参数中的语言设置
-      const urlParams = new URLSearchParams(window.location.search);
-      const langParam = urlParams.get('lang');
-      if (langParam) {
-        window.appState.lang = langParam;
+
+      // 从路径判断当前语言设置
+      const currentPath = window.location.pathname;
+      if (currentPath.startsWith('/zh')) {
+        window.appState.lang = 'zh';
+      } else {
+        window.appState.lang = 'en';
       }
     </script>
   </head>
