@@ -1001,39 +1001,41 @@ const t = locales['zh'];
     line-height: 1.6;
   }
 
-  /* FAQ Section */
+  /* FAQ Section - 2列展开样式 */
   .faq-section {
     max-width: 1800px;
     margin: 60px auto 40px;
     padding: 40px 20px;
-    background: white;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
+    background: transparent;
+    border-radius: 0;
+    border: none;
   }
 
   .faq-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
     max-width: 1200px;
     margin: 0 auto;
   }
 
   .faq-item {
-    padding: 24px;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    border-left: 3px solid #3b82f6;
+    padding-left: 20px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .faq-item:hover {
-    border-color: #3b82f6;
-    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+    border-left-color: #2563eb;
+    padding-left: 24px;
   }
 
   .faq-item h3 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: #1e293b;
     margin-bottom: 12px;
@@ -1041,7 +1043,8 @@ const t = locales['zh'];
 
   .faq-item p {
     color: #64748b;
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 0.95rem;
   }
 
   /* Tutorial 深色主题 */
@@ -1105,17 +1108,24 @@ const t = locales['zh'];
   }
 
   [data-theme="dark"] .faq-section {
-    background: #1e293b;
-    border-color: #334155;
+    background: transparent;
+    border: none;
   }
 
   [data-theme="dark"] .faq-item {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    border-color: #334155;
+    border-left-color: #3b82f6;
   }
 
   [data-theme="dark"] .faq-item:hover {
-    border-color: #3b82f6;
+    border-left-color: #60a5fa;
+  }
+
+  [data-theme="dark"] .faq-item h3 {
+    color: #e5e7eb;
+  }
+
+  [data-theme="dark"] .faq-item p {
+    color: #94a3b8;
   }
 
   /* 深色主题下的下拉选项 */
@@ -1216,8 +1226,17 @@ const t = locales['zh'];
     /* FAQ 移动端优化 */
     .faq-grid {
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 24px;
       padding: 0 12px;
+    }
+
+    .faq-item {
+      border-left-width: 2px;
+      padding-left: 16px;
+    }
+
+    .faq-item:hover {
+      padding-left: 18px;
     }
   }
 

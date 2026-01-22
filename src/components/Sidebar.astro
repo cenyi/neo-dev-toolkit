@@ -55,8 +55,8 @@ const isActive = (path: string) => {
     <div class="nav-divider"></div>
 
     <ul class="nav-section">
-      <li><a href="#" class="nav-link" onclick="event.preventDefault(); toggleTheme();" title={t.navTheme} data-tooltip={t.navTheme}>
-        <span class="nav-icon">🎨</span>
+      <li><a href="#" class="nav-link theme-toggle" onclick="event.preventDefault(); toggleTheme();" title={t.navTheme} data-tooltip={t.navTheme}>
+        <span class="nav-icon theme-icon">🌙</span>
         <span class="nav-text">{t.navTheme}</span>
       </a></li>
       <li><a href="#" class="nav-link" onclick="event.preventDefault(); switchLanguage();" title={t.navLanguage} data-tooltip={t.navLanguage}>
@@ -536,7 +536,13 @@ const isActive = (path: string) => {
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-    // 设置主题
+    console.log('切换主题:', currentTheme, '->', newTheme);
+    
+    // 移除旧主题类，添加新主题类
+    html.removeAttribute('data-theme');
+    // 强制浏览器重绘
+    html.offsetHeight;
+    // 设置新主题
     html.setAttribute('data-theme', newTheme);
 
     // 保存到 localStorage
@@ -547,9 +553,28 @@ const isActive = (path: string) => {
       window.appState.theme = newTheme;
     }
 
+    // 更新主题图标
+    updateThemeIcon(newTheme);
+
     // 触发自定义事件，通知页面更新 Monaco Editor 主题
     window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: newTheme } }));
+    
+    console.log('主题切换完成，当前主题:', html.getAttribute('data-theme'));
   }
+
+  function updateThemeIcon(theme) {
+    // 根据主题更新图标
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+  }
+
+  // 初始化主题图标
+  window.addEventListener('DOMContentLoaded', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    updateThemeIcon(currentTheme);
+  });
 
   function showToolsComingSoon() {
     // 显示工具开发中提示
@@ -575,15 +600,12 @@ const isActive = (path: string) => {
       window.appState.sidebarCollapsed = false;
     }
 
-    // 初始化主题
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    if (window.appState) {
-      window.appState.theme = savedTheme;
-    }
+    // 初始化主题图标
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    updateThemeIcon(currentTheme);
 
     // 触发主题初始化事件，让页面知道初始主题
-    window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: savedTheme } }));
+    window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: currentTheme } }));
 
     // 移动端：点击外部区域关闭菜单
     if (window.innerWidth <= 768) {

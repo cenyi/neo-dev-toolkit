@@ -122,6 +122,8 @@ const defaultUrl = enUrl;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        /* 添加主题过渡效果 */
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
       }
 
       body {
@@ -434,7 +436,8 @@ const defaultUrl = enUrl;
       // 全局状态管理
       window.appState = {
         sidebarCollapsed: false,
-        lang: 'en'
+        lang: 'en',
+        theme: 'light'
       };
 
       // 从路径判断当前语言设置
@@ -443,6 +446,29 @@ const defaultUrl = enUrl;
         window.appState.lang = 'zh';
       } else {
         window.appState.lang = 'en';
+      }
+
+      // 初始化主题：优先使用localStorage保存的主题，其次使用系统主题偏好，默认使用浅色主题
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-theme', initialTheme);
+        window.appState.theme = initialTheme;
+      })();
+
+      // 监听系统主题变化
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          // 只有当用户没有手动设置过主题时，才跟随系统主题变化
+          if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            window.appState.theme = newTheme;
+            window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: newTheme } }));
+          }
+        });
       }
     </script>
   </head>
