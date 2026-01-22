@@ -77,6 +77,12 @@ const t = locales[lang];
         <!-- JSON 校验错误提示 -->
         <div id="json-validation-error" class="validation-error hidden"></div>
 
+        <!-- Placeholder 提示 -->
+        <div id="editor-placeholder" class="editor-placeholder">
+          <div class="placeholder-icon">📋</div>
+          <div class="placeholder-text">{t.inputPlaceholder}</div>
+        </div>
+
         <div class="extraction-section">
           <div class="extraction-controls">
             <label for="extract-fn">📊 {t.extractionLabel}</label>
@@ -466,6 +472,53 @@ const t = locales[lang];
     animation: slideDown 0.3s ease-out;
   }
 
+  /* Editor Placeholder */
+  .editor-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .editor-placeholder.hidden {
+    opacity: 0;
+  }
+
+  .placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  .placeholder-text {
+    font-size: 0.9375rem;
+    color: #9ca3af;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.6;
+  }
+
+  .validation-error {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 0.875rem;
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+    display: none;
+    animation: slideDown 0.3s ease-out;
+  }
+
   .validation-error.show {
     display: block;
   }
@@ -486,6 +539,10 @@ const t = locales[lang];
     border-color: #7f1d1d;
     color: #fca5a5;
     border-left-color: #ef4444;
+  }
+
+  [data-theme="dark"] .placeholder-text {
+    color: #64748b;
   }
 
   /* 提取区域 */
@@ -1275,28 +1332,9 @@ const t = locales[lang];
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const monacoTheme = currentTheme === 'dark' ? 'vs-dark' : 'vs';
 
-    // 示例JSON作为placeholder/初始值
-    const placeholderJson = `{
-  "name": "JSON Viewer",
-  "description": "Paste your JSON data here",
-  "features": [
-    "Format & Validate",
-    "Convert to XML/YAML/TypeScript",
-    "Extract fields with JavaScript"
-  ],
-  "example": {
-    "url": "https://api.example.com/data",
-    "method": "GET",
-    "response": {
-      "status": 200,
-      "data": []
-    }
-  }
-}`;
-
     // 创建编辑器
     editor = monaco.editor.create(container, {
-      value: placeholderJson,
+      value: '',
       language: 'json',
       theme: monacoTheme,
       automaticLayout: true,
@@ -1331,6 +1369,15 @@ const t = locales[lang];
 
     console.log('Monaco Editor created successfully');
 
+    // 初始化 placeholder 状态
+    const placeholder = document.getElementById('editor-placeholder');
+    if (placeholder) {
+      const content = editor.getValue().trim();
+      if (!content) {
+        placeholder.classList.remove('hidden');
+      }
+    }
+
     // 调试：检查 DOM 结构
     setTimeout(() => {
       const monacoContainer = container.querySelector('.monaco-editor');
@@ -1357,6 +1404,17 @@ const t = locales[lang];
     editor.onDidChangeModelContent(() => {
       clearTimeout(window.autoFormatTimeout);
       window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
+
+      // 控制 placeholder 显示/隐藏
+      const placeholder = document.getElementById('editor-placeholder');
+      if (placeholder) {
+        const content = editor.getValue().trim();
+        if (content) {
+          placeholder.classList.add('hidden');
+        } else {
+          placeholder.classList.remove('hidden');
+        }
+      }
     });
 
     // 监听 JSON 错误标记变化
