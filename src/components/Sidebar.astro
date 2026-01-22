@@ -41,32 +41,42 @@ const isActive = (path: string) => {
     </button>
   </div>
   <nav class="nav-menu">
-    <ul>
-      <li><a href={getPath('/')} class={`nav-link ${isActive('/') ? 'active' : ''}`} title={t.navHome}>
+    <ul class="nav-section">
+      <li><a href={getPath('/')} class={`nav-link ${isActive('/') ? 'active' : ''}`} title={t.navHome} data-tooltip={t.navHome}>
         <span class="nav-icon">🏠</span>
         <span class="nav-text">{t.navHome}</span>
       </a></li>
-      <li><a href={getPath('/about')} class={`nav-link ${isActive('/about') ? 'active' : ''}`} title={t.navAbout}>
+      <li><a href={getPath('/about')} class={`nav-link ${isActive('/about') ? 'active' : ''}`} title={t.navAbout} data-tooltip={t.navAbout}>
         <span class="nav-icon">ℹ️</span>
         <span class="nav-text">{t.navAbout}</span>
       </a></li>
-      <li><a href={getPath('/privacy')} class={`nav-link ${isActive('/privacy') ? 'active' : ''}`} title={t.navPrivacy}>
+    </ul>
+
+    <div class="nav-divider"></div>
+
+    <ul class="nav-section">
+      <li><a href={getPath('/privacy')} class={`nav-link ${isActive('/privacy') ? 'active' : ''}`} title={t.navPrivacy} data-tooltip={t.navPrivacy}>
         <span class="nav-icon">🔒</span>
         <span class="nav-text">{t.navPrivacy}</span>
       </a></li>
-      <li><a href={getPath('/terms')} class={`nav-link ${isActive('/terms') ? 'active' : ''}`} title={t.navTerms}>
+      <li><a href={getPath('/terms')} class={`nav-link ${isActive('/terms') ? 'active' : ''}`} title={t.navTerms} data-tooltip={t.navTerms}>
         <span class="nav-icon">📜</span>
         <span class="nav-text">{t.navTerms}</span>
       </a></li>
-      <li><a href={getPath('/contact')} class={`nav-link ${isActive('/contact') ? 'active' : ''}`} title={t.navContact}>
+      <li><a href={getPath('/contact')} class={`nav-link ${isActive('/contact') ? 'active' : ''}`} title={t.navContact} data-tooltip={t.navContact}>
         <span class="nav-icon">📧</span>
         <span class="nav-text">{t.navContact}</span>
       </a></li>
-      <li><a href="#" class="nav-link" onclick="event.preventDefault(); toggleTheme();" title={t.navTheme || 'Toggle Theme'}>
+    </ul>
+
+    <div class="nav-divider"></div>
+
+    <ul class="nav-section">
+      <li><a href="#" class="nav-link" onclick="event.preventDefault(); toggleTheme();" title={t.navTheme || 'Toggle Theme'} data-tooltip={t.navTheme || 'Theme'}>
         <span class="nav-icon">🎨</span>
         <span class="nav-text">{t.navTheme || 'Theme'}</span>
       </a></li>
-      <li><a href="#" class="nav-link" onclick="event.preventDefault(); switchLanguage();" title={t.navLanguage}>
+      <li><a href="#" class="nav-link" onclick="event.preventDefault(); switchLanguage();" title={t.navLanguage} data-tooltip={t.navLanguage}>
         <span class="nav-icon">🌐</span>
         <span class="nav-text">{t.navLanguage}</span>
       </a></li>
@@ -179,16 +189,24 @@ const isActive = (path: string) => {
   }
 
   .nav-menu {
-    padding: 20px 12px;
+    padding: 16px 8px;
     flex-grow: 1;
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
-  .nav-menu ul {
+  .nav-section {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 2px;
+    margin-bottom: 0;
+  }
+
+  .nav-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #e5e7eb 50%, transparent 100%);
+    margin: 12px 0;
   }
 
   .nav-menu li {
@@ -198,15 +216,21 @@ const isActive = (path: string) => {
   .nav-link {
     display: flex;
     align-items: center;
-    padding: 12px 14px;
+    padding: 10px 12px;
     text-decoration: none;
-    color: #475569;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 0.875rem;
+    color: #64748b;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.8125rem;
     font-weight: 500;
-    border-radius: 8px;
+    border-radius: 6px;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+  }
+
+  .nav-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
   }
 
   .nav-link::before {
@@ -218,46 +242,65 @@ const isActive = (path: string) => {
     width: 3px;
     height: 0;
     background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%);
-    transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 0 2px 2px 0;
   }
 
   .nav-link:hover {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
-    color: #2563eb;
-    transform: translateX(2px);
+    background: rgba(59, 130, 246, 0.06);
+    color: #3b82f6;
   }
 
   .nav-link:hover::before {
-    height: 20px;
+    height: 18px;
   }
 
   .nav-link.active {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
-    color: #2563eb;
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
     font-weight: 600;
   }
 
   .nav-link.active::before {
-    height: 24px;
+    height: 22px;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1);
+    pointer-events: none;
   }
 
   /* 导航图标和文字 */
   .nav-icon {
-    margin-right: 12px;
+    margin-right: 10px;
     min-width: 20px;
     text-align: center;
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0.3);
+  }
+
+  .nav-link:hover .nav-icon {
+    transform: scale(1.1);
+    filter: grayscale(0);
+  }
+
+  .nav-link.active .nav-icon {
+    filter: grayscale(0);
   }
 
   .nav-text {
     white-space: nowrap;
     opacity: 1;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-variant: normal;
   }
 
   /* 折叠时隐藏文字，只显示图标 */
@@ -269,17 +312,17 @@ const isActive = (path: string) => {
 
   .sidebar.collapsed .nav-link {
     justify-content: center;
-    padding: 12px 0;
+    padding: 10px 0;
     text-align: center;
   }
 
   .sidebar.collapsed .nav-icon {
     margin-right: 0;
-    font-size: 1.25rem;
+    font-size: 1.1875rem;
   }
 
   .sidebar.collapsed .nav-link:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   /* 确保折叠时导航链接内的所有元素都居中 */
@@ -289,6 +332,10 @@ const isActive = (path: string) => {
 
   .sidebar.collapsed .nav-menu ul {
     padding: 0;
+  }
+
+  .sidebar.collapsed .nav-divider {
+    margin: 8px 12px;
   }
 </style>
 

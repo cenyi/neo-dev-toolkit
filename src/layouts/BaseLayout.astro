@@ -162,6 +162,38 @@ const { title = "默认标题", lang = "zh-CN" } = Astro.props;
         background-color: #1e293b !important;
       }
 
+      /* Sidebar 深色主题优化 */
+      [data-theme="dark"] .nav-divider {
+        background: linear-gradient(90deg, transparent 0%, #334155 50%, transparent 100%);
+      }
+
+      [data-theme="dark"] .nav-link {
+        color: #94a3b8;
+      }
+
+      [data-theme="dark"] .nav-link:hover {
+        background: rgba(59, 130, 246, 0.12);
+        color: #60a5fa;
+      }
+
+      [data-theme="dark"] .nav-link.active {
+        background: rgba(59, 130, 246, 0.18);
+        color: #60a5fa;
+      }
+
+      [data-theme="dark"] .nav-link.active::after {
+        box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+      }
+
+      [data-theme="dark"] .nav-icon {
+        filter: grayscale(0.5);
+      }
+
+      [data-theme="dark"] .nav-link:hover .nav-icon,
+      [data-theme="dark"] .nav-link.active .nav-icon {
+        filter: grayscale(0);
+      }
+
       /* 按钮深色主题 */
       [data-theme="dark"] button,
       [data-theme="dark"] .output-controls button {
