@@ -46,15 +46,19 @@ const isActive = (path: string) => {
         <span class="nav-icon">🏠</span>
         <span class="nav-text">{t.navHome}</span>
       </a></li>
-      <li><a href={getPath('/about')} class={`nav-link ${isActive('/about') ? 'active' : ''}`} title={t.navAbout} data-tooltip={t.navAbout}>
-        <span class="nav-icon">ℹ️</span>
-        <span class="nav-text">{t.navAbout}</span>
+      <li><a href="#" class="nav-link" onclick="event.preventDefault(); showToolsComingSoon();" title={t.navTools} data-tooltip={t.navTools}>
+        <span class="nav-icon">🛠️</span>
+        <span class="nav-text">{t.navTools}</span>
       </a></li>
     </ul>
 
     <div class="nav-divider"></div>
 
     <ul class="nav-section">
+      <li><a href={getPath('/about')} class={`nav-link ${isActive('/about') ? 'active' : ''}`} title={t.navAbout} data-tooltip={t.navAbout}>
+        <span class="nav-icon">ℹ️</span>
+        <span class="nav-text">{t.navAbout}</span>
+      </a></li>
       <li><a href={getPath('/privacy')} class={`nav-link ${isActive('/privacy') ? 'active' : ''}`} title={t.navPrivacy} data-tooltip={t.navPrivacy}>
         <span class="nav-icon">🔒</span>
         <span class="nav-text">{t.navPrivacy}</span>
@@ -410,6 +414,16 @@ const isActive = (path: string) => {
 
     // 触发自定义事件，通知页面更新 Monaco Editor 主题
     window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: newTheme } }));
+  }
+
+  function showToolsComingSoon() {
+    // 显示工具开发中提示
+    const currentLang = window.appState.lang || 'en';
+    const message = currentLang === 'zh'
+      ? '工具正在开发中，敬请期待...'
+      : 'Tools are under development, please stay tuned...';
+
+    alert(message);
   }
 
   // 初始化时设置主内容区域的 margin-left（与侧边栏状态保持一致）
