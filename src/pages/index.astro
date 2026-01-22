@@ -69,6 +69,14 @@ const sampleJson = {
           <button id="json-to-ts">{t.jsonToTs}</button>
           <button id="clear-btn">{t.clear}</button>
           <button id="history-btn">History</button>
+          <select id="font-size-select" title="Font Size">
+            <option value="11">11px</option>
+            <option value="12">12px</option>
+            <option value="13" selected>13px</option>
+            <option value="14">14px</option>
+            <option value="15">15px</option>
+            <option value="16">16px</option>
+          </select>
         </div>
       </div>
 
@@ -251,6 +259,24 @@ const sampleJson = {
     font-size: 11px;
     font-weight: 500;
     transition: all 0.2s;
+  }
+
+  .output-controls select {
+    padding: 6px 10px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .output-controls select:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
   }
 
   .output-controls button:hover {
@@ -581,13 +607,16 @@ const sampleJson = {
 
   // 创建 Monaco Editor
   function createEditor(container) {
+    // 获取保存的字体大小
+    const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+
     // 创建编辑器
     editor = monaco.editor.create(container, {
       value: '',
       language: 'json',
       theme: 'vs',
       automaticLayout: true,
-      fontSize: 13,
+      fontSize: parseInt(savedFontSize),
       fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
       lineHeight: 21,
       minimap: { enabled: false },
@@ -888,6 +917,19 @@ const sampleJson = {
     document.getElementById('json-to-ts').addEventListener('click', () => jsonToTsAndCopy());
     document.getElementById('close-output').addEventListener('click', closeOutput);
     document.getElementById('history-btn').addEventListener('click', showHistory);
+
+    // 字体大小选择器
+    const fontSizeSelect = document.getElementById('font-size-select');
+    const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+    fontSizeSelect.value = savedFontSize;
+
+    fontSizeSelect.addEventListener('change', (e) => {
+      const fontSize = parseInt(e.target.value);
+      if (editor) {
+        editor.updateOptions({ fontSize: fontSize });
+        localStorage.setItem('editorFontSize', fontSize);
+      }
+    });
   }
 
   // 防抖函数
