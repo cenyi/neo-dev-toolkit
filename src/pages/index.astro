@@ -203,35 +203,53 @@ const t = locales['en'];
         <p>{t.featuresSubtitle}</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">✨</div>
-          <h3>{t.feature1Title}</h3>
-          <p>{t.feature1Desc}</p>
+        <div class="feature-item">
+          <div class="feature-number">01</div>
+          <div class="feature-content">
+            <div class="feature-icon">✨</div>
+            <h3>{t.feature1Title}</h3>
+            <p>{t.feature1Desc}</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔄</div>
-          <h3>{t.feature2Title}</h3>
-          <p>{t.feature2Desc}</p>
+        <div class="feature-item">
+          <div class="feature-number">02</div>
+          <div class="feature-content">
+            <div class="feature-icon">🔄</div>
+            <h3>{t.feature2Title}</h3>
+            <p>{t.feature2Desc}</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>{t.feature3Title}</h3>
-          <p>{t.feature3Desc}</p>
+        <div class="feature-item">
+          <div class="feature-number">03</div>
+          <div class="feature-content">
+            <div class="feature-icon">🎯</div>
+            <h3>{t.feature3Title}</h3>
+            <p>{t.feature3Desc}</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>{t.feature4Title}</h3>
-          <p>{t.feature4Desc}</p>
+        <div class="feature-item">
+          <div class="feature-number">04</div>
+          <div class="feature-content">
+            <div class="feature-icon">⚡</div>
+            <h3>{t.feature4Title}</h3>
+            <p>{t.feature4Desc}</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">💻</div>
-          <h3>{t.feature5Title}</h3>
-          <p>{t.feature5Desc}</p>
+        <div class="feature-item">
+          <div class="feature-number">05</div>
+          <div class="feature-content">
+            <div class="feature-icon">💻</div>
+            <h3>{t.feature5Title}</h3>
+            <p>{t.feature5Desc}</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h3>{t.feature6Title}</h3>
-          <p>{t.feature6Desc}</p>
+        <div class="feature-item">
+          <div class="feature-number">06</div>
+          <div class="feature-content">
+            <div class="feature-icon">🔒</div>
+            <h3>{t.feature6Title}</h3>
+            <p>{t.feature6Desc}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -801,6 +819,30 @@ const t = locales['en'];
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
+  .tutorial-section .section-header,
+  .faq-section .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .tutorial-section .section-header h2,
+  .faq-section .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tutorial-section .section-header p,
+  .faq-section .section-header p {
+    font-size: 1.1rem;
+    color: #64748b;
+  }
+
   .tutorial-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -938,74 +980,152 @@ const t = locales['en'];
     font-weight: 600;
   }
 
-  /* Features Section */
+  /* Features Section - 创意渐变效果 */
   .features-section {
     max-width: 1800px;
     margin: 60px auto 0;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    border-radius: 12px;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .section-header {
+  .features-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .features-section .section-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
   }
 
-  .section-header h2 {
+  .features-section .section-header h2 {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #1e293b;
+    color: white;
     margin-bottom: 12px;
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   }
 
-  .section-header p {
+  .features-section .section-header p {
     font-size: 1.1rem;
-    color: #64748b;
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
 
-  .feature-card {
-    background: white;
+  .feature-item {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .feature-item:hover::before {
+    transform: scaleX(1);
+  }
+
+  .feature-item:hover {
+    transform: translateY(-8px) rotateX(2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .feature-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(102, 126, 234, 0.08);
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    line-height: 1;
+    transition: all 0.4s ease;
+  }
+
+  .feature-item:hover .feature-number {
+    color: rgba(102, 126, 234, 0.15);
+    transform: scale(1.1);
+  }
+
+  .feature-content {
     padding: 32px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #e5e7eb;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    border-color: #3b82f6;
+    position: relative;
+    z-index: 1;
   }
 
   .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 
-  .feature-card h3 {
-    font-size: 1.25rem;
+  .feature-item:hover .feature-icon {
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  .feature-content h3 {
+    font-size: 1.35rem;
     font-weight: 700;
     color: #1e293b;
     margin-bottom: 12px;
+    transition: color 0.3s ease;
   }
 
-  .feature-card p {
+  .feature-item:hover .feature-content h3 {
+    color: #667eea;
+  }
+
+  .feature-content p {
     color: #64748b;
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 0.95rem;
   }
 
   /* FAQ Section - 2列展开样式 */
