@@ -1,5 +1,19 @@
 ---
-const { title = "默认标题", lang = "zh-CN" } = Astro.props;
+const { title = "默认标题", lang = "zh-CN", description = "", keywords = "", canonical = "", ogType = "website", ogImage = "/og-image.png" } = Astro.props;
+
+// 根据语言设置默认描述和关键词
+const defaultDescription = lang === 'zh'
+  ? "免费的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，提供字段提取、TypeScript接口生成等功能。100%浏览器本地运行，数据安全无忧。"
+  : "Free online JSON formatter, validator, and converter. Support JSON, URL params, XML, YAML conversion with field extraction, TypeScript generation. 100% browser-based, secure and private.";
+
+const defaultKeywords = lang === 'zh'
+  ? "JSON格式化,JSON校验,JSON在线工具,JSON解析器,JSON转XML,JSON转YAML,JSON转TypeScript,URL参数解析,在线JSON编辑器,免费JSON工具"
+  : "JSON formatter, JSON validator, JSON parser, JSON to XML, JSON to YAML, JSON to TypeScript, URL params parser, online JSON editor, free JSON tool, JSON viewer";
+
+const pageDescription = description || defaultDescription;
+const pageKeywords = keywords || defaultKeywords;
+const currentUrl = canonical || Astro.url.href;
+const siteName = lang === 'zh' ? "JSON Viewer" : "JSON Viewer";
 ---
 
 <!DOCTYPE html>
@@ -9,6 +23,33 @@ const { title = "默认标题", lang = "zh-CN" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={pageKeywords} />
+    <meta name="author" content="JSON Viewer Team" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={currentUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={lang === 'zh' ? "zh_CN" : "en_US"} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={currentUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
 
     <!-- Monaco Editor CSS - 在 head 中提前加载，确保样式在编辑器初始化前生效 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">

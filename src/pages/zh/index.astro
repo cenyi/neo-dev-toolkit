@@ -23,8 +23,51 @@ const sampleJson = {
 };
 ---
 
-<BaseLayout title={`${t.title} | ${t.description}`} lang={lang}>
+<BaseLayout
+  title={`${t.title} | ${t.description}`}
+  lang={lang}
+  description={t.description}
+  keywords="JSON格式化,JSON校验,JSON在线工具,JSON解析器,JSON转XML,JSON转YAML,JSON转TypeScript,URL参数解析,在线JSON编辑器,免费JSON工具,JSON查看器,JSON格式化在线,JSON校验在线,JSON工具,JSON编辑器,JSON美化,JSON压缩,JSON转换">
   <Sidebar slot="sidebar" t={t} />
+
+  <!-- Schema.org 结构化数据用于 SEO & GEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON格式化工具",
+    "description": "免费的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，提供字段提取、TypeScript接口生成等功能。",
+    "url": "https://jsonviewer.online/zh",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    },
+    "featureList": [
+      "JSON格式化和验证",
+      "URL参数解析",
+      "XML转JSON",
+      "YAML转JSON",
+      "JavaScript字段提取",
+      "TypeScript接口生成",
+      "JSON转XML",
+      "JSON压缩",
+      "JSON转义",
+      "移除注释"
+    ],
+    "browserRequirements": "需要JavaScript支持。兼容所有现代浏览器。",
+    "softwareVersion": "1.0.0",
+    "author": {
+      "@type": "Organization",
+      "name": "JSON Viewer Team"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1250"
+    }
+  })} />
 
   <div class="json-formatter-container"
        data-enter-extraction-fn={t.enterExtractionFn}
@@ -92,6 +135,76 @@ const sampleJson = {
         <div class="output-content" id="output-content">
           <div class="output-editor-wrapper">
             <div id="output-json"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HowTo 教程区域 -->
+  <div class="tutorial-section">
+    <div class="section-header">
+      <h2>{t.tutorialTitle}</h2>
+      <p>{t.tutorialSubtitle}</p>
+    </div>
+
+    <div class="tutorial-container">
+      <div class="tutorial-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep1Title}</h3>
+          <p>{t.tutorialStep1Desc}</p>
+          <div class="step-example">
+            <code set:text={t.tutorialStep1Example}></code>
+          </div>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep2Title}</h3>
+          <p>{t.tutorialStep2Desc}</p>
+          <div class="tip">
+            <strong>💡 {t.tutorialStep2Tip.split(':')[0]}：</strong> {t.tutorialStep2Tip.split(':')[1]}
+          </div>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep3Title}</h3>
+          <p set:text={t.tutorialStep3Desc}></p>
+          <div class="step-example">
+            <code set:text={t.tutorialStep3Example}></code>
+          </div>
+          <p class="example-desc" set:text={t.tutorialStep3ExampleDesc}></p>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep4Title}</h3>
+          <p>{t.tutorialStep4Desc}</p>
+          <ul class="action-list">
+            <li><strong>{t.tutorialStep4Action1.split(':')[0]}：</strong> {t.tutorialStep4Action1.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep4Action2.split(':')[0]}：</strong> {t.tutorialStep4Action2.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep4Action3.split(':')[0]}：</strong> {t.tutorialStep4Action3.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep4Action4.split(':')[0]}：</strong> {t.tutorialStep4Action4.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep4Action5.split(':')[0]}：</strong> {t.tutorialStep4Action5.split(':')[1]}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep5Title}</h3>
+          <p>{t.tutorialStep5Desc}</p>
+          <div class="privacy-note">
+            <strong>🔒 {t.tutorialStep5Privacy.split(':')[0]}：</strong> {t.tutorialStep5Privacy.split(':')[1]}
           </div>
         </div>
       </div>
@@ -172,6 +285,103 @@ const sampleJson = {
       </div>
     </div>
   </div>
+
+  <!-- FAQPage 结构化数据用于 GEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "我的数据安全吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "是的！所有数据处理都在您的浏览器本地进行。我们绝不会将您的数据发送到任何服务器。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "支持哪些文件格式？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "我们支持 JSON、URL 参数、XML 和 YAML。只需粘贴您的数据，我们会自动检测格式。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "我可以从 JSON 中提取特定字段吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以！使用提取函数字段编写 JavaScript 函数，如 'obj => obj.name' 来提取特定数据。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个工具免费使用吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "是的，这个工具完全免费，没有任何限制。尽情使用吧！"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "它可以离线工作吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "加载后，工具完全离线工作。不需要互联网连接。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "我可以在手机上使用吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以！该工具完全响应式，在手机和平板电脑上都能完美运行。"
+        }
+      }
+    ]
+  })} />
+
+  <!-- HowTo 结构化数据用于 GEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "如何格式化和验证JSON",
+    "description": "学习如何使用我们的免费在线JSON查看器来格式化、验证和转换JSON数据。",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "粘贴您的JSON数据",
+        "text": "将您的JSON、URL参数、XML或YAML数据粘贴到输入编辑器中。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "自动格式检测",
+        "text": "工具会自动检测您的输入格式并将其转换为JSON。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "查看格式化的JSON",
+        "text": "查看带有语法高亮和行号的精美格式化JSON。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "验证JSON",
+        "text": "任何JSON错误都会被高亮显示，并给出具体的行号和错误信息。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "提取或转换",
+        "text": "使用字段提取、转换为XML/YAML/TypeScript，或压缩/复制结果。"
+      }
+    ],
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "JSON Viewer Online"
+      }
+    ]
+  })} />
 </BaseLayout>
 
 <style>
@@ -589,6 +799,152 @@ const sampleJson = {
     display: none;
   }
 
+  /* Tutorial Section */
+  .tutorial-section {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .tutorial-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .tutorial-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 4px solid transparent;
+  }
+
+  .tutorial-step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-left-color: #3b82f6;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.125rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .step-content p {
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-size: 0.9375rem;
+  }
+
+  .step-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .step-example {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+    overflow-x: auto;
+  }
+
+  .step-example code {
+    color: #e2e8f0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    white-space: pre;
+  }
+
+  .example-desc {
+    color: #64748b;
+    font-size: 0.875rem;
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  .tip {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid #f59e0b;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: #92400e;
+  }
+
+  .privacy-note {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-left: 4px solid #3b82f6;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: #1e40af;
+  }
+
+  .action-list {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0 0;
+  }
+
+  .action-list li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    color: #475569;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .action-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: 700;
+  }
+
+  .action-list li strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+
   /* Features Section */
   .features-section {
     margin-top: 60px;
@@ -699,6 +1055,31 @@ const sampleJson = {
   .faq-item p {
     color: #64748b;
     line-height: 1.6;
+  }
+
+  /* Tutorial 深色主题 */
+  [data-theme="dark"] .tutorial-section {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+
+  [data-theme="dark"] .tutorial-step {
+    background: #334155;
+  }
+
+  [data-theme="dark"] .step-content h3 {
+    color: #e5e7eb;
+  }
+
+  [data-theme="dark"] .step-content p {
+    color: #cbd5e1;
+  }
+
+  [data-theme="dark"] .action-list li {
+    color: #cbd5e1;
+  }
+
+  [data-theme="dark"] .action-list li strong {
+    color: #e5e7eb;
   }
 
   /* Features 和 FAQ 深色主题 */

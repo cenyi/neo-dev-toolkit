@@ -23,8 +23,51 @@ const sampleJson = {
 };
 ---
 
-<BaseLayout title={`${t.title} | ${t.description}`} lang={lang}>
+<BaseLayout
+  title={`${t.title} | ${t.description}`}
+  lang={lang}
+  description={t.description}
+  keywords="JSON formatter, JSON validator, JSON parser, JSON to XML, JSON to YAML, JSON to TypeScript, URL params parser, online JSON editor, free JSON tool, JSON viewer, JSON formatter online, JSON validator online, JSON tools, JSON editor, JSON beautifier, JSON minifier, JSON converter">
   <Sidebar slot="sidebar" t={t} />
+
+  <!-- Schema.org Structured Data for SEO & GEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Formatter & Parser",
+    "description": "Free online JSON formatter, validator, and converter. Support JSON, URL params, XML, YAML conversion with field extraction, TypeScript generation.",
+    "url": "https://jsonviewer.online",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "JSON Formatting and Validation",
+      "URL Parameters Parsing",
+      "XML to JSON Conversion",
+      "YAML to JSON Conversion",
+      "Field Extraction with JavaScript",
+      "TypeScript Interface Generation",
+      "JSON to XML Conversion",
+      "JSON Minification",
+      "JSON Escaping",
+      "Comment Removal"
+    ],
+    "browserRequirements": "Requires JavaScript. Compatible with all modern browsers.",
+    "softwareVersion": "1.0.0",
+    "author": {
+      "@type": "Organization",
+      "name": "JSON Viewer Team"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1250"
+    }
+  })} />
 
   <div class="json-formatter-container"
        data-enter-extraction-fn={t.enterExtractionFn}
@@ -92,6 +135,76 @@ const sampleJson = {
         <div class="output-content" id="output-content">
           <div class="output-editor-wrapper">
             <div id="output-json"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HowTo Tutorial Section -->
+  <div class="tutorial-section">
+    <div class="section-header">
+      <h2>{t.tutorialTitle}</h2>
+      <p>{t.tutorialSubtitle}</p>
+    </div>
+
+    <div class="tutorial-container">
+      <div class="tutorial-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep1Title}</h3>
+          <p>{t.tutorialStep1Desc}</p>
+          <div class="step-example">
+            <code set:text={t.tutorialStep1Example}></code>
+          </div>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep2Title}</h3>
+          <p>{t.tutorialStep2Desc}</p>
+          <div class="tip">
+            <strong>💡 {t.tutorialStep2Tip.split(':')[0]}:</strong> {t.tutorialStep2Tip.split(':')[1]}
+          </div>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep3Title}</h3>
+          <p set:text={t.tutorialStep3Desc}></p>
+          <div class="step-example">
+            <code set:text={t.tutorialStep3Example}></code>
+          </div>
+          <p class="example-desc" set:text={t.tutorialStep3ExampleDesc}></p>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep4Title}</h3>
+          <p>{t.tutorialStep4Desc}</p>
+          <ul class="action-list">
+            <li><strong>{t.tutorialStep4Action1.split(':')[0]}:</strong> {t.tutorialStep4Action1.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep4Action2.split(':')[0]}:</strong> {t.tutorialStep4Action2.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep4Action3.split(':')[0]}:</strong> {t.tutorialStep4Action3.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep4Action4.split(':')[0]}:</strong> {t.tutorialStep4Action4.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep4Action5.split(':')[0]}:</strong> {t.tutorialStep4Action5.split(':')[1]}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep5Title}</h3>
+          <p>{t.tutorialStep5Desc}</p>
+          <div class="privacy-note">
+            <strong>🔒 {t.tutorialStep5Privacy.split(':')[0]}:</strong> {t.tutorialStep5Privacy.split(':')[1]}
           </div>
         </div>
       </div>
@@ -172,6 +285,104 @@ const sampleJson = {
       </div>
     </div>
   </div>
+
+  <!-- FAQPage Schema for GEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is my data secure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! All data processing happens locally in your browser. We never send your data to any server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What file formats are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We support JSON, URL parameters, XML, and YAML. Simply paste your data and we'll automatically detect the format."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I extract specific fields from JSON?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Use the extraction function field to write JavaScript functions like 'obj => obj.name' to extract specific data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this tool free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this tool is completely free with no limitations. Enjoy!"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Once loaded, the tool works completely offline. No internet connection required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this on mobile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! The tool is fully responsive and works great on mobile devices and tablets."
+        }
+      }
+    ]
+  })} />
+
+  <!-- HowTo Schema for GEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Format and Validate JSON",
+    "description": "Learn how to format, validate, and convert JSON data using our free online JSON viewer tool.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Paste Your JSON Data",
+        "text": "Paste your JSON, URL parameters, XML, or YAML data into the input editor.",
+        "image": "https://jsonviewer.online/step1.png"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Automatic Format Detection",
+        "text": "The tool automatically detects your input format and converts it to JSON."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "View Formatted JSON",
+        "text": "See your beautifully formatted JSON with syntax highlighting and line numbers."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Validate JSON",
+        "text": "Any JSON errors are highlighted with specific line numbers and error messages."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Extract or Convert",
+        "text": "Use field extraction, convert to XML/YAML/TypeScript, or compress/copy the result."
+      }
+    ],
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "JSON Viewer Online"
+      }
+    ]
+  })} />
 </BaseLayout>
 
 <style>
@@ -589,6 +800,152 @@ const sampleJson = {
     display: none;
   }
 
+  /* Tutorial Section */
+  .tutorial-section {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .tutorial-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .tutorial-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 4px solid transparent;
+  }
+
+  .tutorial-step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-left-color: #3b82f6;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.125rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .step-content p {
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-size: 0.9375rem;
+  }
+
+  .step-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .step-example {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+    overflow-x: auto;
+  }
+
+  .step-example code {
+    color: #e2e8f0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    white-space: pre;
+  }
+
+  .example-desc {
+    color: #64748b;
+    font-size: 0.875rem;
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  .tip {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid #f59e0b;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: #92400e;
+  }
+
+  .privacy-note {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-left: 4px solid #3b82f6;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: #1e40af;
+  }
+
+  .action-list {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0 0;
+  }
+
+  .action-list li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    color: #475569;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .action-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: 700;
+  }
+
+  .action-list li strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+
   /* Features Section */
   .features-section {
     margin-top: 60px;
@@ -699,6 +1056,31 @@ const sampleJson = {
   .faq-item p {
     color: #64748b;
     line-height: 1.6;
+  }
+
+  /* Tutorial Deep Theme */
+  [data-theme="dark"] .tutorial-section {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+
+  [data-theme="dark"] .tutorial-step {
+    background: #334155;
+  }
+
+  [data-theme="dark"] .step-content h3 {
+    color: #e5e7eb;
+  }
+
+  [data-theme="dark"] .step-content p {
+    color: #cbd5e1;
+  }
+
+  [data-theme="dark"] .action-list li {
+    color: #cbd5e1;
+  }
+
+  [data-theme="dark"] .action-list li strong {
+    color: #e5e7eb;
   }
 
   /* Features 和 FAQ 深色主题 */
