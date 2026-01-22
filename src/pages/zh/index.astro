@@ -46,6 +46,9 @@ const sampleJson = {
           </div>
         </div>
 
+        <!-- JSON 校验错误提示 -->
+        <div id="json-validation-error" class="validation-error hidden"></div>
+
         <div class="extraction-section">
           <div class="extraction-controls">
             <label for="extract-fn">📊 {t.extractionLabel}</label>
@@ -251,6 +254,42 @@ const sampleJson = {
     height: 100%;
     min-height: 400px;
     position: relative;
+  }
+
+  /* JSON 校验错误提示 */
+  .validation-error {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 0.875rem;
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+    display: none;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .validation-error.show {
+    display: block;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  [data-theme="dark"] .validation-error {
+    background: linear-gradient(135deg, #450a0a 0%, #3f1616 100%);
+    border-color: #7f1d1d;
+    color: #fca5a5;
+    border-left-color: #ef4444;
   }
 
   /* 提取区域 */
@@ -932,6 +971,35 @@ const sampleJson = {
     editor.onDidChangeModelContent(() => {
       clearTimeout(window.autoFormatTimeout);
       window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
+    });
+
+    // 监听 JSON 错误标记变化
+    monaco.editor.onDidChangeMarkers((markers) => {
+      const errorElement = document.getElementById('json-validation-error');
+      if (!errorElement) return;
+
+      const model = editor.getModel();
+      if (!model) return;
+
+      const modelMarkers = model.getAllMarkers();
+      if (modelMarkers.length === 0) {
+        // 没有错误，隐藏提示
+        errorElement.classList.remove('show');
+        errorElement.textContent = '';
+      } else {
+        // 有错误，显示第一个错误
+        const firstError = modelMarkers[0];
+        const errorInfo = firstError.message;
+
+        // 获取当前语言
+        const currentLang = window.appState.lang || 'zh';
+        const errorMessage = currentLang === 'zh'
+          ? `第 ${firstError.startLineNumber} 行错误：${errorInfo}`
+          : `Line ${firstError.startLineNumber} error: ${errorInfo}`;
+
+        errorElement.textContent = errorMessage;
+        errorElement.classList.add('show');
+      }
     });
   }
 
