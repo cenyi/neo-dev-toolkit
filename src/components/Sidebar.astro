@@ -407,6 +407,9 @@ const isActive = (path: string) => {
     if (window.appState) {
       window.appState.theme = newTheme;
     }
+
+    // 触发自定义事件，通知页面更新 Monaco Editor 主题
+    window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: newTheme } }));
   }
 
   // 初始化时设置主内容区域的 margin-left（与侧边栏状态保持一致）
@@ -429,5 +432,8 @@ const isActive = (path: string) => {
     if (window.appState) {
       window.appState.theme = savedTheme;
     }
+
+    // 触发主题初始化事件，让页面知道初始主题
+    window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: savedTheme } }));
   });
 </script>

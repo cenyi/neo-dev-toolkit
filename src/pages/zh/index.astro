@@ -848,11 +848,15 @@ const sampleJson = {
     // 获取保存的字体大小
     const savedFontSize = localStorage.getItem('editorFontSize') || '13';
 
+    // 获取当前主题
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const monacoTheme = currentTheme === 'dark' ? 'vs-dark' : 'vs';
+
     // 创建编辑器
     editor = monaco.editor.create(container, {
       value: '',
       language: 'json',
-      theme: 'vs',
+      theme: monacoTheme,
       automaticLayout: true,
       fontSize: parseInt(savedFontSize),
       fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
@@ -1166,6 +1170,15 @@ const sampleJson = {
       if (editor) {
         editor.updateOptions({ fontSize: fontSize });
         localStorage.setItem('editorFontSize', fontSize);
+      }
+    });
+
+    // 监听主题切换事件，更新 Monaco Editor 主题
+    window.addEventListener('themeChanged', (e) => {
+      if (editor) {
+        const newTheme = e.detail.theme === 'dark' ? 'vs-dark' : 'vs';
+        monaco.editor.setTheme(newTheme);
+        editor.updateOptions({ theme: newTheme });
       }
     });
   }
