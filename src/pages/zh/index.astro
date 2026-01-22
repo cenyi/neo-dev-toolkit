@@ -77,9 +77,6 @@ const t = locales[lang];
         <!-- JSON 校验错误提示 -->
         <div id="json-validation-error" class="validation-error hidden"></div>
 
-        <!-- Placeholder 提示 -->
-        <div id="editor-placeholder" class="editor-placeholder">
-          <div class="placeholder-icon">📋</div>
           <div class="placeholder-text">URL Params、XML、YAML粘贴自动转为JSON</div>
         </div>
 
@@ -455,40 +452,6 @@ const t = locales[lang];
     height: 100%;
     min-height: 400px;
     position: relative;
-  }
-
-  /* Editor Placeholder */
-  .editor-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    z-index: 1;
-    transition: opacity 0.2s ease;
-  }
-
-  .editor-placeholder.hidden {
-    opacity: 0;
-  }
-
-  .placeholder-icon {
-    font-size: 3rem;
-    margin-bottom: 16px;
-    opacity: 0.5;
-  }
-
-  .placeholder-text {
-    font-size: 0.9375rem;
-    color: #9ca3af;
-    text-align: center;
-    max-width: 80%;
-    line-height: 1.6;
   }
 
   /* JSON 校验错误提示 */
@@ -1400,15 +1363,6 @@ const t = locales[lang];
 
     console.log('Monaco Editor created successfully');
 
-    // 初始化 placeholder 状态
-    const placeholder = document.getElementById('editor-placeholder');
-    if (placeholder) {
-      const content = editor.getValue().trim();
-      if (!content) {
-        placeholder.classList.remove('hidden');
-      }
-    }
-
     // 调试：检查 DOM 结构
     setTimeout(() => {
       const monacoContainer = container.querySelector('.monaco-editor');
@@ -1435,17 +1389,6 @@ const t = locales[lang];
     editor.onDidChangeModelContent(() => {
       clearTimeout(window.autoFormatTimeout);
       window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
-
-      // 控制 placeholder 显示/隐藏
-      const placeholder = document.getElementById('editor-placeholder');
-      if (placeholder) {
-        const content = editor.getValue().trim();
-        if (content) {
-          placeholder.classList.add('hidden');
-        } else {
-          placeholder.classList.remove('hidden');
-        }
-      }
     });
 
     // 监听 JSON 错误标记变化
