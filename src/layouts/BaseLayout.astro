@@ -1,10 +1,16 @@
 ---
+import Footer from '../components/Footer.astro';
+
 const { title = "默认标题", lang = "zh-CN", description = "", keywords = "", canonical = "", ogType = "website", ogImage = "/og-image.png" } = Astro.props;
 
 // 根据语言设置默认描述和关键词
 const defaultDescription = lang === 'zh-CN'
   ? "免费的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，提供字段提取、TypeScript接口生成等功能。100%浏览器本地运行，数据安全无忧。"
   : "Free online JSON formatter, validator, and converter. Support JSON, URL params, XML, YAML conversion with field extraction, TypeScript generation. 100% browser-based, secure and private.";
+
+// 导入翻译
+import { locales } from '../i18n/locales.js';
+const t = locales[lang === 'zh-CN' ? 'zh' : 'en'] || locales.en;
 
 const defaultKeywords = lang === 'zh-CN'
   ? "JSON格式化,JSON校验,JSON在线工具,JSON解析器,JSON转XML,JSON转YAML,JSON转TypeScript,URL参数解析,在线JSON编辑器,免费JSON工具"
@@ -122,15 +128,16 @@ const defaultUrl = enUrl;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         background-color: var(--bg-color);
         color: var(--text-color);
-        height: 100vh;
-        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
 
       .layout-container {
         display: flex;
-        height: 100vh;
+        flex: 1;
       }
 
       main {
@@ -354,5 +361,6 @@ const defaultUrl = enUrl;
         <slot />
       </main>
     </div>
+    <Footer t={t} />
   </body>
 </html>

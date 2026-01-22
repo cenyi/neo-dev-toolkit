@@ -1,0 +1,238 @@
+---
+const { t = {} } = Astro.props;
+const currentPath = Astro.url.pathname;
+const isZhPage = currentPath.startsWith('/zh');
+const langPrefix = isZhPage ? '/zh' : '';
+---
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>{t.navProduct || 'Product'}</h4>
+      <ul>
+        <li><a href={langPrefix || '/'}>{t.navHome || 'Home'}</a></li>
+        <li><a href="#" onclick="event.preventDefault(); showToolsComingSoon();">{t.navTools || 'Tools'}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>{t.navCompany || 'Company'}</h4>
+      <ul>
+        <li><a href={langPrefix + '/about'}>{t.navAbout || 'About'}</a></li>
+        <li><a href={langPrefix + '/contact'}>{t.navContact || 'Contact'}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>{t.navLegal || 'Legal'}</h4>
+      <ul>
+        <li><a href={langPrefix + '/privacy'}>{t.navPrivacy || 'Privacy Policy'}</a></li>
+        <li><a href={langPrefix + '/terms'}>{t.navTerms || 'Terms of Service'}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>{t.navSettings || 'Settings'}</h4>
+      <ul>
+        <li><a href="#" onclick="event.preventDefault(); toggleTheme();">{t.navTheme || 'Theme'}</a></li>
+        <li><a href="#" onclick="event.preventDefault(); switchLanguage();">{t.navLanguage || 'Language'}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 JSON Viewer. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://github.com/cenyi/neo-dev-toolkit" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 9.8-9.8s-3.6-8.207-9.8c-8.5-8.5-11.698-2.206-11.698-6.593 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 9.8-9.8s-3.6-8.207-9.8c-8.5-8.5-3.494-11.698-2.206-11.698-6.593 0-12 5.373-12 12zm0-14c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10 4.477 10 10-4.477 10-10-10-4.477-10-10-10s10 4.477 10 10c0 5.523 4.477 10 10 10 4.477 10 10 10 4.477 10 10-4.477 10-10-10-4.477-10-10-10s10 4.477 10 10z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-top: 1px solid #e5e7eb;
+    padding: 40px 20px 20px;
+    margin-top: auto;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+  }
+
+  .footer-section h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-section li {
+    margin-bottom: 8px;
+  }
+
+  .footer-section a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+    display: block;
+  }
+
+  .footer-section a:hover {
+    color: #3b82f6;
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-bottom p {
+    color: #64748b;
+    font-size: 0.8125rem;
+    margin: 0;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .social-links a {
+    color: #64748b;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+  }
+
+  .social-links a:hover {
+    color: #3b82f6;
+  }
+
+  /* 深色主题 */
+  [data-theme="dark"] .footer {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-top-color: #334155;
+  }
+
+  [data-theme="dark"] .footer-section h4 {
+    color: #e5e7eb;
+  }
+
+  [data-theme="dark"] .footer-section a {
+    color: #94a3b8;
+  }
+
+  [data-theme="dark"] .footer-section a:hover {
+    color: #60a5fa;
+  }
+
+  [data-theme="dark"] .footer-bottom {
+    border-top-color: #334155;
+  }
+
+  [data-theme="dark"] .footer-bottom p {
+    color: #94a3b8;
+  }
+
+  [data-theme="dark"] .social-links a {
+    color: #94a3b8;
+  }
+
+  [data-theme="dark"] .social-links a:hover {
+    color: #60a5fa;
+  }
+
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 32px 16px 16px;
+    }
+
+    .footer-content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+</style>
+
+<script is:global>
+  function showToolsComingSoon() {
+    const currentLang = window.appState.lang || 'en';
+    const message = currentLang === 'zh'
+      ? '工具正在开发中，敬请期待...'
+      : 'Tools are under development, please stay tuned...';
+    alert(message);
+  }
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    if (window.appState) {
+      window.appState.theme = newTheme;
+    }
+    window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: newTheme } }));
+  }
+
+  function switchLanguage() {
+    const currentLang = window.appState.lang;
+    const newLang = currentLang === 'en' ? 'zh' : 'en';
+    window.appState.lang = newLang;
+    const currentPath = window.location.pathname;
+    let newPath;
+    if (newLang === 'en') {
+      if (currentPath.startsWith('/zh')) {
+        newPath = currentPath.substring(3) || '/';
+      } else {
+        newPath = currentPath;
+      }
+    } else {
+      if (currentPath.startsWith('/zh')) {
+        newPath = currentPath;
+      } else {
+        newPath = '/zh' + (currentPath === '/' ? '' : currentPath);
+      }
+    }
+    window.location.href = newPath;
+  }
+</script>
