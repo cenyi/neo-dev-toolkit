@@ -14,13 +14,36 @@ const pageDescription = description || defaultDescription;
 const pageKeywords = keywords || defaultKeywords;
 const currentUrl = canonical || Astro.url.href;
 const siteName = lang === 'zh' ? "JSON Viewer" : "JSON Viewer";
+
+// 计算语言alternates
+const path = Astro.url.pathname;
+const isZhPage = path.startsWith('/zh');
+
+// 生成alternate URL
+const enUrl = isZhPage
+  ? `https://jsonviewer.online${path.replace('/zh', '') || '/'}`
+  : `https://jsonviewer.online${path}`;
+
+const zhUrl = isZhPage
+  ? `https://jsonviewer.online${path}`
+  : `https://jsonviewer.online/zh${path === '/' ? '' : path}`;
+
+// 默认语言指向英文版
+const defaultUrl = enUrl;
 ---
 
 <!DOCTYPE html>
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
 
@@ -30,6 +53,11 @@ const siteName = lang === 'zh' ? "JSON Viewer" : "JSON Viewer";
     <meta name="author" content="JSON Viewer Team" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={currentUrl} />
+
+    <!-- Hreflang Tags for International SEO -->
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
+    <link rel="alternate" hreflang="x-default" href={defaultUrl} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={ogType} />

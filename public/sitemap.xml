@@ -1,87 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- English Pages -->
+  <!-- English Pages (Default Language) -->
   <url>
     <loc>https://jsonviewer.online/</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/" />
   </url>
   <url>
     <loc>https://jsonviewer.online/about</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/about" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/about" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/about" />
   </url>
   <url>
     <loc>https://jsonviewer.online/privacy</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/privacy" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/privacy" />
   </url>
   <url>
     <loc>https://jsonviewer.online/terms</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/terms" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/terms" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/terms" />
   </url>
   <url>
     <loc>https://jsonviewer.online/contact</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/contact" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/contact" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/contact" />
   </url>
 
-  <!-- Chinese Pages -->
+  <!-- Chinese Pages (Simplified Chinese) -->
   <url>
     <loc>https://jsonviewer.online/zh/</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/" />
   </url>
   <url>
     <loc>https://jsonviewer.online/zh/about</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/about" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/about" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/about" />
   </url>
   <url>
     <loc>https://jsonviewer.online/zh/privacy</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/privacy" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/privacy" />
   </url>
   <url>
     <loc>https://jsonviewer.online/zh/terms</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/terms" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/terms" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/terms" />
   </url>
   <url>
     <loc>https://jsonviewer.online/zh/contact</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jsonviewer.online/zh/contact" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jsonviewer.online/contact" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jsonviewer.online/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsonviewer.online/contact" />
   </url>
 </urlset>

@@ -1,37 +1,72 @@
 # robots.txt for JSON Viewer Online
+# https://jsonviewer.online
 
+# Global rule for all crawlers
 User-agent: *
 Allow: /
-
-# Sitemap
-Sitemap: https://jsonviewer.online/sitemap.xml
-
-# Crawl-delay (optional, respectful crawling)
 Crawl-delay: 1
 
-# Disallow specific paths if any
-# Disallow: /private/
-# Disallow: /api/
+# Sitemap location
+Sitemap: https://jsonviewer.online/sitemap.xml
 
-# Allow specific bots
+# Major Search Engines
 User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-# AI Search Engines (GEO optimization)
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Yandexbot
+Allow: /
+
+# AI Search Engines (GEO Optimization)
+# OpenAI / ChatGPT
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: CCbot
-Allow: /
-
+# Anthropic / Claude
 User-agent: anthropic-ai
 Allow: /
 
 User-agent: Claude-Web
 Allow: /
+
+# Common Crawl
+User-agent: CCbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# Disallow specific paths (uncomment if needed)
+# Disallow: /private/
+# Disallow: /api/
+# Disallow: /admin/
+
