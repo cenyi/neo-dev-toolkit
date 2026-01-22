@@ -3,33 +3,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { locales } from '../i18n/locales.js';
 
-// 获取语言参数
-const url = new URL(Astro.request.url);
-const lang = url.searchParams.get('lang') || 'en';
-const t = locales[lang] || locales.en;
+// 英文设置页面，固定使用英文语言
+const lang = 'en';
+const t = locales[lang];
 ---
 
-<BaseLayout title={`设置 - ${t.title}`} lang={lang}>
+<BaseLayout title={`Settings - ${t.title}`} lang={lang}>
   <Sidebar slot="sidebar" t={t} />
-  
+
   <div class="settings-container">
-    <h1>设置</h1>
-    
+    <h1>Settings</h1>
+
     <div class="setting-group">
-      <h2>界面设置</h2>
+      <h2>Interface Settings</h2>
       <div class="setting-item">
         <label>
           <input type="checkbox" id="dark-mode-toggle" />
-          启用深色模式
+          Enable Dark Mode
         </label>
       </div>
     </div>
-    
+
     <div class="setting-group">
-      <h2>编辑器设置</h2>
+      <h2>Editor Settings</h2>
       <div class="setting-item">
         <label>
-          字体大小: 
+          Font Size:
           <select id="font-size-select">
             <option value="12">12px</option>
             <option value="14" selected>14px</option>
@@ -41,25 +40,25 @@ const t = locales[lang] || locales.en;
       <div class="setting-item">
         <label>
           <input type="checkbox" id="auto-format-toggle" checked />
-          自动格式化
+          Auto Format
         </label>
       </div>
     </div>
-    
+
     <div class="setting-group">
-      <h2>快捷键</h2>
+      <h2>Keyboard Shortcuts</h2>
       <div class="shortcut-list">
         <div class="shortcut-item">
           <span class="shortcut-key">Ctrl + S</span>
-          <span>保存</span>
+          <span>Save</span>
         </div>
         <div class="shortcut-item">
           <span class="shortcut-key">Ctrl + Z</span>
-          <span>撤销</span>
+          <span>Undo</span>
         </div>
         <div class="shortcut-item">
           <span class="shortcut-key">Ctrl + Shift + Z</span>
-          <span>重做</span>
+          <span>Redo</span>
         </div>
       </div>
     </div>

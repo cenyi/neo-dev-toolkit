@@ -3,30 +3,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { locales } from '../i18n/locales.js';
 
-// 获取语言参数
-const url = new URL(Astro.request.url);
-const lang = url.searchParams.get('lang') || 'en';
-const t = locales[lang] || locales.en;
+// 英文关于页面，固定使用英文语言
+const lang = 'en';
+const t = locales[lang];
 ---
 
-<BaseLayout title={`关于 - ${t.title}`} lang={lang}>
+<BaseLayout title={`About - ${t.title}`} lang={lang}>
   <Sidebar slot="sidebar" t={t} />
-  
+
   <div class="about-container">
-    <h1>关于 JSON 格式化工具</h1>
-    <p>这是一个功能强大的在线JSON格式化和处理工具，支持多种数据格式的转换和处理。</p>
-    
-    <h2>功能特性</h2>
+    <h1>About JSON Formatter</h1>
+    <p>This is a powerful online JSON formatting and processing tool that supports conversion and processing of multiple data formats.</p>
+
+    <h2>Features</h2>
     <ul>
-      <li>JSON格式化与验证</li>
-      <li>URL参数、XML、YAML转JSON</li>
-      <li>JavaScript函数提取JSON字段</li>
-      <li>JSON压缩、转义、转换为其他格式</li>
-      <li>多语言支持（中英文）</li>
+      <li>JSON formatting and validation</li>
+      <li>URL parameters, XML, YAML to JSON conversion</li>
+      <li>JavaScript function for extracting JSON fields</li>
+      <li>JSON compression, escaping, and conversion to other formats</li>
+      <li>Multi-language support (English and Chinese)</li>
     </ul>
-    
-    <h2>技术栈</h2>
-    <p>该项目使用Astro框架构建，具有高性能和现代化的前端体验。</p>
+
+    <h2>Tech Stack</h2>
+    <p>This project is built with the Astro framework, providing high performance and a modern frontend experience.</p>
   </div>
 </BaseLayout>
 

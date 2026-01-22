@@ -3,10 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { locales } from '../i18n/locales.js';
 
-// 获取语言参数
-const url = new URL(Astro.request.url);
-const lang = url.searchParams.get('lang') || 'en';
-const t = locales[lang] || locales.en;
+// 英文联系页面，固定使用英文语言
+const lang = 'en';
+const t = locales[lang];
 ---
 
 <BaseLayout title={`${t.navContact} | ${t.title}`} lang={lang}>
@@ -15,17 +14,17 @@ const t = locales[lang] || locales.en;
   <div class="page-container">
     <h1>{t.navContact}</h1>
     <div class="content">
-      <h2>{lang === 'en' ? 'Contact Information' : '联系信息'}</h2>
-      <p>{lang === 'en' ? 'If you have any questions, feedback, or suggestions about our JSON Formatter & Parser, please feel free to contact us using the information below:' : '如果您对我们的 JSON 格式化工具 & 解析器有任何问题、反馈或建议，请随时使用以下信息与我们联系：'}</p>
-      
-      <h2>{lang === 'en' ? 'Email' : '邮箱'}</h2>
+      <h2>Contact Information</h2>
+      <p>If you have any questions, feedback, or suggestions about our JSON Formatter & Parser, please feel free to contact us using the information below:</p>
+
+      <h2>Email</h2>
       <p><a href="mailto:hi@tojsons.com" style="color: #2563eb; text-decoration: none;">hi@tojsons.com</a></p>
-      
-      <h2>{lang === 'en' ? 'How We Can Help' : '我们如何提供帮助'}</h2>
-      <p>{lang === 'en' ? 'We welcome your feedback and are committed to improving our service. Whether you have a bug report, feature request, or just want to say hello, we\'ll get back to you as soon as possible.' : '我们欢迎您的反馈，并致力于改进我们的服务。无论是 bug 报告、功能请求，还是只是想打个招呼，我们都会尽快回复您。'}</p>
-      
-      <h2>{lang === 'en' ? 'Response Time' : '回复时间'}</h2>
-      <p>{lang === 'en' ? 'We typically respond to all inquiries within 1-2 business days.' : '我们通常会在 1-2 个工作日内回复所有咨询。'}</p>
+
+      <h2>How We Can Help</h2>
+      <p>We welcome your feedback and are committed to improving our service. Whether you have a bug report, feature request, or just want to say hello, we'll get back to you as soon as possible.</p>
+
+      <h2>Response Time</h2>
+      <p>We typically respond to all inquiries within 1-2 business days.</p>
     </div>
   </div>
 </BaseLayout>
