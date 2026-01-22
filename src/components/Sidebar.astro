@@ -345,15 +345,16 @@ const isActive = (path: string) => {
   /* 移动端响应式设计 */
   @media (max-width: 768px) {
     .sidebar {
-      width: 100%;
-      height: auto;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #e5e7eb;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 100% !important;
+      height: auto !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 1000 !important;
+      border-bottom: 1px solid #e5e7eb !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+      border-right: none !important;
     }
 
     .sidebar-header {
