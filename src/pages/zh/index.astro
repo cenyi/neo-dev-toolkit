@@ -6,21 +6,6 @@ import { locales } from '../../i18n/locales.js';
 // 中文首页，固定使用中文语言
 const lang = 'zh-CN';
 const t = locales[lang];
-
-// JSON 示例数据
-const sampleJson = {
-  "name": "JSON Formatter",
-  "version": "1.0.0",
-  "features": [
-    "Format JSON",
-    "Convert from XML/YAML",
-    "Extract fields with JS functions"
-  ],
-  "author": {
-    "name": "Dev Team",
-    "email": "team@example.com"
-  }
-};
 ---
 
 <BaseLayout
@@ -1289,9 +1274,28 @@ const sampleJson = {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const monacoTheme = currentTheme === 'dark' ? 'vs-dark' : 'vs';
 
+    // 示例JSON作为placeholder/初始值
+    const placeholderJson = `{
+  "name": "JSON查看器",
+  "description": "在此处粘贴您的JSON数据",
+  "features": [
+    "格式化和验证",
+    "转换为XML/YAML/TypeScript",
+    "使用JavaScript提取字段"
+  ],
+  "example": {
+    "url": "https://api.example.com/data",
+    "method": "GET",
+    "response": {
+      "status": 200,
+      "data": []
+    }
+  }
+}`;
+
     // 创建编辑器
     editor = monaco.editor.create(container, {
-      value: '',
+      value: placeholderJson,
       language: 'json',
       theme: monacoTheme,
       automaticLayout: true,
