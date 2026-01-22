@@ -77,9 +77,6 @@ const t = locales['zh'];
         <!-- JSON 校验错误提示 -->
         <div id="json-validation-error" class="validation-error hidden"></div>
 
-          <div class="placeholder-text">URL Params、XML、YAML粘贴自动转为JSON</div>
-        </div>
-
         <div class="extraction-section">
           <div class="extraction-controls">
             <label for="extract-fn">📊 {t.extractionLabel}</label>
@@ -416,7 +413,7 @@ const t = locales['zh'];
   /* 当输出区域展开时，输入区域也调整为50% */
   .editor-workspace:has(.output-area.expanded) .input-area {
     flex: 1;
-    max-width: 100%;
+    max-width: 50%;
     margin: 0;
   }
 
@@ -488,10 +485,6 @@ const t = locales['zh'];
     border-color: #7f1d1d;
     color: #fca5a5;
     border-left-color: #ef4444;
-  }
-
-  [data-theme="dark"] .placeholder-text {
-    color: #64748b;
   }
 
   /* 提取区域 */
