@@ -354,6 +354,12 @@ const sampleJson = {
     transition: all 0.2s;
   }
 
+  .output-controls select option {
+    background: white;
+    color: #1f2937;
+    padding: 6px 10px;
+  }
+
   .output-controls select:hover {
     background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -703,6 +709,12 @@ const sampleJson = {
 
   [data-theme="dark"] .faq-item:hover {
     border-color: #3b82f6;
+  }
+
+  /* 深色主题下的下拉选项 */
+  [data-theme="dark"] .output-controls select option {
+    background: #1e293b;
+    color: #e5e7eb;
   }
 
   /* 响应式设计 */
