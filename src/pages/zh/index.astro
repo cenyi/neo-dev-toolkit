@@ -5,7 +5,7 @@ import { locales } from '../../i18n/locales.js';
 
 // 中文首页，固定使用中文语言
 const lang = 'zh-CN';
-const t = locales[lang];
+const t = locales['zh'];
 ---
 
 <BaseLayout
@@ -1394,7 +1394,7 @@ const t = locales[lang];
     });
 
     // 监听 JSON 错误标记变化
-    monaco.editor.onDidChangeMarkers((markers) => {
+    monaco.editor.onDidChangeMarkers(() => {
       const errorElement = document.getElementById('json-validation-error');
       if (!errorElement) return;
 

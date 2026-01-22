@@ -5,7 +5,7 @@ import { locales } from '../i18n/locales.js';
 
 // 英文首页，固定使用英文语言
 const lang = 'en-US';
-const t = locales[lang];
+const t = locales['en'];
 ---
 
 <BaseLayout
@@ -1405,21 +1405,21 @@ const t = locales[lang];
     });
 
     // 监听 JSON 错误标记变化
-    monaco.editor.onDidChangeMarkers((markers) => {
+    monaco.editor.onDidChangeMarkers(() => {
       const errorElement = document.getElementById('json-validation-error');
       if (!errorElement) return;
 
       const model = editor.getModel();
       if (!model) return;
 
-      const markers = model.getAllMarkers();
-      if (markers.length === 0) {
+      const modelMarkers = model.getAllMarkers();
+      if (modelMarkers.length === 0) {
         // 没有错误，隐藏提示
         errorElement.classList.remove('show');
         errorElement.textContent = '';
       } else {
         // 有错误，显示第一个错误
-        const firstError = markers[0];
+        const firstError = modelMarkers[0];
         const line = model.getLineContent(firstError.startLineNumber);
         const errorInfo = firstError.message;
 
