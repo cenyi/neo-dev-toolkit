@@ -168,6 +168,22 @@ const defaultUrl = enUrl;
       .extracted-output::-webkit-scrollbar-thumb:hover {
         background: #9ca3af;
       }
+
+      /* 移动端响应式布局 */
+      @media (max-width: 768px) {
+        main {
+          margin-left: 0;
+          margin-top: var(--sidebar-height, 60px);
+          padding: 12px;
+          height: calc(100vh - var(--sidebar-height, 60px));
+        }
+      }
+
+      @media (max-width: 480px) {
+        main {
+          padding: 8px;
+        }
+      }
     </style>
 
     <!-- 深色主题样式 -->

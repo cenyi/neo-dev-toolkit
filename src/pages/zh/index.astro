@@ -1186,6 +1186,11 @@ const t = locales[lang];
 
     .input-area {
       gap: 8px;
+      min-height: 300px;
+    }
+
+    .monaco-editor-container {
+      min-height: 250px;
     }
 
     .extraction-controls {
@@ -1202,11 +1207,19 @@ const t = locales[lang];
 
     .output-controls {
       gap: 5px;
+      flex-wrap: wrap;
     }
 
     .output-controls button {
       padding: 6px 10px;
       font-size: 11px;
+      flex: 1;
+      min-width: 80px;
+    }
+
+    .output-controls select {
+      flex: 1;
+      min-width: 100px;
     }
 
     .output-area.expanded {
@@ -1215,6 +1228,38 @@ const t = locales[lang];
       padding-left: 0;
       margin-top: 12px;
       height: 300px;
+    }
+
+    /* Tutorial section 移动端优化 */
+    .tutorial-step {
+      flex-direction: column;
+      padding: 16px;
+    }
+
+    .step-number {
+      margin-bottom: 12px;
+    }
+
+    .section-header {
+      padding: 20px 12px;
+    }
+
+    .section-header h2 {
+      font-size: 1.5rem;
+    }
+
+    /* Features 移动端优化 */
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0 12px;
+    }
+
+    /* FAQ 移动端优化 */
+    .faq-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0 12px;
     }
   }
 
