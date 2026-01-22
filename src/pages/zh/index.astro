@@ -55,7 +55,7 @@ const sampleJson = {
               placeholder={t.extractionPlaceholder}
             />
             <button id="apply-extract">{t.apply}</button>
-            <button id="clear-extract-fn">Clear</button>
+            <button id="clear-extract-fn">{t.clear}</button>
           </div>
         </div>
 
@@ -305,6 +305,10 @@ const sampleJson = {
     transition: all 0.2s;
   }
 
+  #apply-extract {
+    font-size: 13px;
+  }
+
   .extraction-controls button:hover {
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     transform: translateY(-1px);
@@ -312,6 +316,7 @@ const sampleJson = {
 
   #clear-extract-fn {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    font-size: 13px;
   }
 
   #clear-extract-fn:hover {
