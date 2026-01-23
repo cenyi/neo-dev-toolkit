@@ -13,6 +13,7 @@
     "@monaco-editor/loader": "^1.7.0",
     "astro": "^4.15.11",
     "xml-js": "^1.6.11",
-    "yaml": "^2.8.2"
+    "yaml": "^2.8.2",
+    "monaco-editor": "^0.45.0"
   }
 }
