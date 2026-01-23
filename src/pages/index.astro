@@ -68,7 +68,7 @@ const t = locales['en'];
       <!-- 左侧输入区域 -->
       <div class="input-area">
         <div class="input-section">
-          <div class="section-label">All-in-One JSON Viewer</div>
+          <h1 class="section-label">All-in-One JSON Viewer</h1>
           <div class="input-editor-wrapper">
             <div id="monaco-editor-container" class="monaco-editor-container"></div>
           </div>
@@ -450,6 +450,14 @@ const t = locales['en'];
     margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  /* H1标签样式重置，保持布局一致 */
+  h1.section-label {
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
   }
 
   .input-editor-wrapper {
