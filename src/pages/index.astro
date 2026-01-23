@@ -1312,11 +1312,8 @@ const t = locales['en'];
 </style>
 
 <script type="module">
-  // 使用本地安装的 Monaco Editor
-  import * as monaco from 'monaco-editor';
-
-  // 导入Monaco Editor CSS
-  import 'monaco-editor/min/vs/editor/editor.main.css';
+  // 使用 CDN 导入 Monaco Editor
+  import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
 
   // 配置 Monaco Editor 的资源路径
   monaco.editor.setTheme('vs');

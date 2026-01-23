@@ -85,6 +85,9 @@ const defaultUrl = enUrl;
     <meta name="theme-color" content="#2563eb" />
     <meta name="msapplication-TileColor" content="#2563eb" />
 
+    <!-- Monaco Editor CSS - 在 head 中提前加载，确保样式在编辑器初始化前生效 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBZG7E1Z6Y"></script>
     <script>
