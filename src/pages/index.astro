@@ -67,18 +67,21 @@ const t = locales['en'];
     <div class="editor-workspace">
       <!-- 左侧输入区域 -->
       <div class="input-area">
-        <div class="input-section">
-          <h1 class="section-label">All-in-One JSON Viewer</h1>
-          <div class="input-editor-wrapper">
-            <div id="monaco-editor-container" class="monaco-editor-container"></div>
+        <!-- 编辑器容器（用于左右布局） -->
+        <div class="editors-wrapper" id="editors-wrapper">
+          <div class="input-section">
+            <h1 class="section-label">All-in-One JSON Viewer</h1>
+            <div class="input-editor-wrapper">
+              <div id="monaco-editor-container" class="monaco-editor-container"></div>
+            </div>
           </div>
-        </div>
 
-        <!-- 比较模式：第二个编辑器 -->
-        <div class="input-section compare-editor hidden" id="compare-section">
-          <h2 class="section-label">{t.rightJson}</h2>
-          <div class="input-editor-wrapper">
-            <div id="monaco-compare-container" class="monaco-editor-container"></div>
+          <!-- 比较模式：第二个编辑器 -->
+          <div class="input-section compare-editor hidden" id="compare-section">
+            <h2 class="section-label">{t.rightJson}</h2>
+            <div class="input-editor-wrapper">
+              <div id="monaco-compare-container" class="monaco-editor-container"></div>
+            </div>
           </div>
         </div>
 
@@ -478,19 +481,19 @@ const t = locales['en'];
   }
 
   /* 比较模式下的标题优化 */
-  .input-area.compare-mode h1.section-label,
-  .input-area.compare-mode h2.section-label {
+  .editors-wrapper.compare-mode h1.section-label,
+  .editors-wrapper.compare-mode h2.section-label {
     margin-top: 0;
     margin-bottom: 6px;
     text-align: center;
   }
 
   /* 比较模式下添加边框区分两个编辑器 */
-  .input-area.compare-mode .input-editor-wrapper {
+  .editors-wrapper.compare-mode .input-section:first-child .input-editor-wrapper {
     border: 2px solid #3b82f6;
   }
 
-  .input-area.compare-mode .compare-editor .input-editor-wrapper {
+  .editors-wrapper.compare-mode .compare-editor .input-editor-wrapper {
     border: 2px solid #10b981;
   }
 
@@ -506,19 +509,26 @@ const t = locales['en'];
     display: none;
   }
 
+  /* 编辑器包装容器 */
+  .editors-wrapper {
+    display: flex;
+    flex: 1;
+    gap: 0;
+    min-height: 0;
+  }
+
   /* 比较模式下的布局调整 */
-  .input-area.compare-mode {
-    flex-direction: row;
+  .editors-wrapper.compare-mode {
     gap: 10px;
   }
 
-  .input-area.compare-mode .input-section {
+  .editors-wrapper.compare-mode .input-section {
     flex: 1;
     min-height: 0;
     min-width: 0;
   }
 
-  .input-area.compare-mode .compare-editor {
+  .editors-wrapper.compare-mode .compare-editor {
     flex: 1;
     min-height: 0;
     min-width: 0;
@@ -526,7 +536,7 @@ const t = locales['en'];
 
   /* 移动端比较模式保持上下结构 */
   @media (max-width: 768px) {
-    .input-area.compare-mode {
+    .editors-wrapper.compare-mode {
       flex-direction: column;
     }
   }
@@ -2631,13 +2641,13 @@ const t = locales['en'];
   // 切换比较模式
   function toggleCompareMode() {
     const compareSection = document.getElementById('compare-section');
-    const inputArea = document.querySelector('.input-area');
+    const editorsWrapper = document.getElementById('editors-wrapper');
 
     if (!isCompareMode) {
       // 进入比较模式
       isCompareMode = true;
       compareSection.classList.remove('hidden');
-      inputArea.classList.add('compare-mode');
+      editorsWrapper.classList.add('compare-mode');
 
       // 更新编辑器标题
       const firstLabel = document.querySelector('.input-section .section-label');
@@ -2653,7 +2663,7 @@ const t = locales['en'];
       // 退出比较模式
       isCompareMode = false;
       compareSection.classList.add('hidden');
-      inputArea.classList.remove('compare-mode');
+      editorsWrapper.classList.remove('compare-mode');
 
       // 恢复编辑器标题
       const firstLabel = document.querySelector('.input-section .section-label');
