@@ -74,6 +74,14 @@ const t = locales['zh'];
           </div>
         </div>
 
+        <!-- 比较模式：第二个编辑器 -->
+        <div class="input-section compare-editor hidden" id="compare-section">
+          <h2 class="section-label">{t.rightJson}</h2>
+          <div class="input-editor-wrapper">
+            <div id="monaco-compare-container" class="monaco-editor-container"></div>
+          </div>
+        </div>
+
         <!-- JSON 校验错误提示 -->
         <div id="json-validation-error" class="validation-error hidden"></div>
 
@@ -98,6 +106,7 @@ const t = locales['zh'];
           <button id="escape-copy">{t.escapeCopy}</button>
           <button id="json-to-xml">{t.jsonToXml}</button>
           <button id="json-to-ts">{t.jsonToTs}</button>
+          <button id="json-compare">{t.jsonCompare}</button>
           <button id="clear-btn">{t.clear}</button>
           <button id="history-btn">{t.history}</button>
           <select id="font-size-select" title="字体大小">
@@ -457,6 +466,81 @@ const t = locales['zh'];
     padding: 0;
     font-size: 0.85rem;
     font-weight: 600;
+  }
+
+  h2.section-label {
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  /* 比较模式样式 */
+  .compare-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .compare-editor.hidden {
+    display: none;
+  }
+
+  /* 比较模式下的布局调整 */
+  .input-area.compare-mode {
+    flex-direction: column;
+  }
+
+  .input-area.compare-mode .input-section {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .input-area.compare-mode .compare-editor {
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Diff结果样式 */
+  .diff-result {
+    padding: 16px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow: auto;
+  }
+
+  .diff-added {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 4px 8px;
+    margin: 2px 0;
+    border-left: 3px solid #28a745;
+  }
+
+  .diff-removed {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    margin: 2px 0;
+    border-left: 3px solid #dc3545;
+    text-decoration: line-through;
+  }
+
+  .diff-changed {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 4px 8px;
+    margin: 2px 0;
+    border-left: 3px solid #ffc107;
+  }
+
+  .diff-unchanged {
+    color: #6c757d;
+    padding: 4px 8px;
+    margin: 2px 0;
   }
 
   .input-editor-wrapper {
@@ -1366,7 +1450,9 @@ const t = locales['zh'];
   // 全局变量
   let editor = null;
   let outputEditor = null;
+  let compareEditor = null;
   let translations = {};
+  let isCompareMode = false;
 
   // DOM加载完成后初始化
   document.addEventListener('DOMContentLoaded', () => {
