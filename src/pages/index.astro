@@ -477,6 +477,23 @@ const t = locales['en'];
     margin-top: 10px;
   }
 
+  /* 比较模式下的标题优化 */
+  .input-area.compare-mode h1.section-label,
+  .input-area.compare-mode h2.section-label {
+    margin-top: 0;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  /* 比较模式下添加边框区分两个编辑器 */
+  .input-area.compare-mode .input-editor-wrapper {
+    border: 2px solid #3b82f6;
+  }
+
+  .input-area.compare-mode .compare-editor .input-editor-wrapper {
+    border: 2px solid #10b981;
+  }
+
   /* 比较模式样式 */
   .compare-editor {
     flex: 1;
@@ -491,17 +508,27 @@ const t = locales['en'];
 
   /* 比较模式下的布局调整 */
   .input-area.compare-mode {
-    flex-direction: column;
+    flex-direction: row;
+    gap: 10px;
   }
 
   .input-area.compare-mode .input-section {
     flex: 1;
     min-height: 0;
+    min-width: 0;
   }
 
   .input-area.compare-mode .compare-editor {
     flex: 1;
     min-height: 0;
+    min-width: 0;
+  }
+
+  /* 移动端比较模式保持上下结构 */
+  @media (max-width: 768px) {
+    .input-area.compare-mode {
+      flex-direction: column;
+    }
   }
 
   /* Diff结果样式 */
