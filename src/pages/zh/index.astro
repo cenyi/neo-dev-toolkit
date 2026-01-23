@@ -1579,6 +1579,43 @@ const t = locales['zh'];
       console.log('Output Monaco Editor created successfully');
     }
 
+    // 创建比较编辑器
+    const compareContainer = document.getElementById('monaco-compare-container');
+    if (compareContainer) {
+      compareEditor = monaco.editor.create(compareContainer, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: parseInt(savedFontSize),
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        lineHeight: 21,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        lineNumbers: 'on',
+        lineNumbersMinChars: 3,
+        folding: true,
+        foldingStrategy: 'indentation',
+        foldingHighlight: true,
+        showFoldingControls: 'always',
+        matchBrackets: 'always',
+        autoClosingBrackets: 'always',
+        autoClosingQuotes: 'always',
+        formatOnPaste: true,
+        formatOnType: true,
+        tabSize: 2,
+        renderLineHighlight: 'all',
+        scrollbar: {
+          vertical: 'visible',
+          horizontal: 'visible'
+        },
+        padding: { top: 12, bottom: 12 },
+        readOnly: false
+      });
+      console.log('Compare Monaco Editor created successfully');
+    }
+
     // 调试：检查 DOM 结构
     setTimeout(() => {
       const monacoContainer = container.querySelector('.monaco-editor');
@@ -1872,6 +1909,7 @@ const t = locales['zh'];
     document.getElementById('escape-copy').addEventListener('click', () => escapeAndCopy());
     document.getElementById('json-to-xml').addEventListener('click', () => jsonToXmlAndCopy());
     document.getElementById('json-to-ts').addEventListener('click', () => jsonToTsAndCopy());
+    document.getElementById('json-compare').addEventListener('click', () => toggleCompareMode());
     document.getElementById('close-output').addEventListener('click', closeOutput);
     document.getElementById('history-btn').addEventListener('click', showHistory);
 
@@ -2546,6 +2584,196 @@ const t = locales['zh'];
     // 添加到页面
     document.body.appendChild(overlay);
     document.body.appendChild(historyContainer);
+  }
+
+  // 切换比较模式
+  function toggleCompareMode() {
+    const compareSection = document.getElementById('compare-section');
+    const inputArea = document.querySelector('.input-area');
+
+    if (!isCompareMode) {
+      // 进入比较模式
+      isCompareMode = true;
+      compareSection.classList.remove('hidden');
+      inputArea.classList.add('compare-mode');
+
+      // 更新编辑器标题
+      const firstLabel = document.querySelector('.input-section .section-label');
+      if (firstLabel) {
+        firstLabel.textContent = translations.leftJson || '左侧JSON';
+      }
+
+      // 触发比较
+      setTimeout(() => {
+        compareJsons();
+      }, 100);
+    } else {
+      // 退出比较模式
+      isCompareMode = false;
+      compareSection.classList.add('hidden');
+      inputArea.classList.remove('compare-mode');
+
+      // 恢复编辑器标题
+      const firstLabel = document.querySelector('.input-section .section-label');
+      if (firstLabel) {
+        firstLabel.textContent = '一体化 JSON 工具';
+      }
+
+      // 清空比较编辑器
+      if (compareEditor) {
+        compareEditor.setValue('');
+      }
+    }
+
+    // 更新布局
+    setTimeout(() => {
+      if (editor) editor.layout();
+      if (compareEditor) compareEditor.layout();
+      if (outputEditor) outputEditor.layout();
+    }, 100);
+  }
+
+  // 比较两个JSON
+  function compareJsons() {
+    if (!editor || !compareEditor) {
+      alert(translations.enterData || '请输入要比较的数据');
+      return;
+    }
+
+    try {
+      const leftText = editor.getValue();
+      const rightText = compareEditor.getValue();
+
+      if (!leftText.trim() || !rightText.trim()) {
+        alert(translations.enterData || '请输入要比较的数据');
+        return;
+      }
+
+      const leftJson = JSON.parse(leftText);
+      const rightJson = JSON.parse(rightText);
+
+      const differences = findDifferences(leftJson, rightJson);
+      displayDifferences(differences);
+    } catch (error) {
+      alert((translations.compareError || '对比失败: ') + error.message);
+    }
+  }
+
+  // 查找差异
+  function findDifferences(obj1, obj2, path = '') {
+    const differences = [];
+
+    function compare(val1, val2, currentPath) {
+      const type1 = typeof val1;
+      const type2 = typeof val2;
+
+      // 类型不同
+      if (type1 !== type2) {
+        differences.push({
+          type: 'changed',
+          path: currentPath,
+          oldValue: val1,
+          newValue: val2,
+          message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`
+        });
+        return;
+      }
+
+      // 如果是对象或数组，递归比较
+      if (type1 === 'object' && val1 !== null && val2 !== null) {
+        const keys1 = Object.keys(val1);
+        const keys2 = Object.keys(val2);
+        const allKeys = new Set([...keys1, ...keys2]);
+
+        allKeys.forEach(key => {
+          const newPath = currentPath ? `${currentPath}.${key}` : key;
+
+          if (!(key in val1)) {
+            // 新增
+            differences.push({
+              type: 'added',
+              path: newPath,
+              value: val2[key],
+              message: `${newPath}: + ${JSON.stringify(val2[key])}`
+            });
+          } else if (!(key in val2)) {
+            // 删除
+            differences.push({
+              type: 'removed',
+              path: newPath,
+              value: val1[key],
+              message: `${newPath}: - ${JSON.stringify(val1[key])}`
+            });
+          } else {
+            // 递归比较
+            compare(val1[key], val2[key], newPath);
+          }
+        });
+      } else if (val1 !== val2) {
+        // 值不同
+        differences.push({
+          type: 'changed',
+          path: currentPath,
+          oldValue: val1,
+          newValue: val2,
+          message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`
+        });
+      }
+    }
+
+    compare(obj1, obj2, path);
+
+    return differences;
+  }
+
+  // 显示差异
+  function displayDifferences(differences) {
+    if (differences.length === 0) {
+      showToast(translations.noDifferences || '未发现差异 - 两个JSON完全相同！');
+      return;
+    }
+
+    let result = '<div class="diff-result">';
+    result += `<h3>${translations.differences || '差异'} (${differences.length})</h3>`;
+
+    differences.forEach(diff => {
+      let className = '';
+      let icon = '';
+
+      switch (diff.type) {
+        case 'added':
+          className = 'diff-added';
+          icon = '➕ ';
+          break;
+        case 'removed':
+          className = 'diff-removed';
+          icon = '➖ ';
+          break;
+        case 'changed':
+          className = 'diff-changed';
+          icon = '🔄 ';
+          break;
+        default:
+          className = 'diff-unchanged';
+          icon = '  ';
+      }
+
+      result += `<div class="${className}">${icon}${diff.message}</div>`;
+    });
+
+    result += '</div>';
+
+    // 在输出编辑器中显示
+    if (outputEditor) {
+      // 创建一个HTML版本的输出
+      const outputContent = document.getElementById('output-content');
+      if (outputContent) {
+        outputContent.innerHTML = result;
+        expandOutput(translations.differences || '差异');
+      }
+    }
+
+    showToast(translations.compareSuccess || `发现 ${differences.length} 处差异`);
   }
   
   // 显示Toast提示
