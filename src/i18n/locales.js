@@ -2,7 +2,7 @@
 export const locales = {
   en: {
     title: "JSON Formatter & Parser",
-    description: "Paste your JSON, URL params, XML, or YAML data, and we'll format it for you automatically.",
+    description: "Free online JSON formatter, validator, and converter. Format, validate, and convert JSON, URL params, XML, and YAML with syntax highlighting. Extract fields, generate TypeScript interfaces, and more. 100% browser-based, secure, and private.",
     inputPlaceholder: "Paste your JSON, URL params, XML, or YAML data here...",
     inputType: "Input Type:",
     json: "JSON",
@@ -105,7 +105,7 @@ export const locales = {
   },
   zh: {
     title: "JSON格式化工具",
-    description: "粘贴您的JSON、URL参数、XML或YAML数据，我们将自动为您格式化。",
+    description: "免费的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，提供字段提取、TypeScript接口生成等功能。100%浏览器本地运行，数据安全无忧，无需上传到服务器，保护您的隐私安全。",
     inputPlaceholder: "在此处粘贴您的JSON、URL参数、XML或YAML数据...",
     inputType: "输入类型:",
     json: "JSON",
