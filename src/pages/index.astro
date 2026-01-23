@@ -470,6 +470,50 @@ const t = locales['en'];
     position: relative;
   }
 
+  /* 美化Monaco Editor折叠按钮 */
+  .monaco-editor .codicon-add-selection,
+  .monaco-editor .codicon-chevron-right,
+  .monaco-editor .folding-icon::before,
+  .monaco-editor .codicon-folding-expanded,
+  .monaco-editor .codicon-folding-collapsed {
+    content: '' !important;
+  }
+
+  /* 自定义折叠按钮样式 */
+  .monaco-editor .folding-icon {
+    width: 16px !important;
+    height: 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  /* 展开状态的折叠按钮 */
+  .monaco-editor .folding-icon.collapsed::after,
+  .monaco-editor .codicon-folding-collapsed::after {
+    content: '▶' !important;
+    font-size: 10px !important;
+    color: #6b7280 !important;
+    display: inline-block !important;
+    margin-left: 1px !important;
+  }
+
+  /* 折叠状态的折叠按钮 */
+  .monaco-editor .folding-icon:not(.collapsed)::after,
+  .monaco-editor .codicon-folding-expanded::after {
+    content: '▼' !important;
+    font-size: 9px !important;
+    color: #6b7280 !important;
+    display: inline-block !important;
+  }
+
+  /* 折叠按钮hover效果 */
+  .monaco-editor .folding-icon:hover::after {
+    color: #3b82f6 !important;
+  }
+
   /* JSON 校验错误提示 */
   .validation-error {
     padding: 12px 16px;
@@ -1312,10 +1356,17 @@ const t = locales['en'];
 </style>
 
 <script type="module">
+  // 配置 Monaco Editor 的资源路径
+  window.MonacoEnvironment = {
+    getWorkerUrl: function (workerId, label) {
+      return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+    }
+  };
+
   // 使用 CDN 导入 Monaco Editor
   import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
 
-  // 配置 Monaco Editor 的资源路径
+  // 配置 Monaco Editor
   monaco.editor.setTheme('vs');
 
   // 全局变量
