@@ -27,12 +27,12 @@ const isZhPage = path.startsWith('/zh');
 
 // 生成alternate URL
 const enUrl = isZhPage
-  ? `https://jsonviewer.online${path.replace('/zh', '') || '/'}`
-  : `https://jsonviewer.online${path}`;
+  ? `https://tojsons.com${path.replace('/zh', '') || '/'}`
+  : `https://tojsons.com${path}`;
 
 const zhUrl = isZhPage
-  ? `https://jsonviewer.online${path}`
-  : `https://jsonviewer.online/zh${path === '/' ? '' : path}`;
+  ? `https://tojsons.com${path}`
+  : `https://tojsons.com/zh${path === '/' ? '' : path}`;
 
 // 默认语言指向英文版
 const defaultUrl = enUrl;
