@@ -185,13 +185,10 @@ const t = locales['en'];
         <div class="step-content">
           <h3>{t.tutorialStep4Title}</h3>
           <p>{t.tutorialStep4Desc}</p>
-          <ul class="action-list">
-            <li><strong>{t.tutorialStep4Action1.split(':')[0]}:</strong> {t.tutorialStep4Action1.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep4Action2.split(':')[0]}:</strong> {t.tutorialStep4Action2.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep4Action3.split(':')[0]}:</strong> {t.tutorialStep4Action3.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep4Action4.split(':')[0]}:</strong> {t.tutorialStep4Action4.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep4Action5.split(':')[0]}:</strong> {t.tutorialStep4Action5.split(':')[1]}</li>
-          </ul>
+          <div class="step-example">
+            <pre><code set:text={t.tutorialStep4Example}></code></pre>
+          </div>
+          <p class="example-desc" set:text={t.tutorialStep4ExampleDesc}></p>
         </div>
       </div>
 
@@ -200,8 +197,23 @@ const t = locales['en'];
         <div class="step-content">
           <h3>{t.tutorialStep5Title}</h3>
           <p>{t.tutorialStep5Desc}</p>
+          <ul class="action-list">
+            <li><strong>{t.tutorialStep5Action1.split(':')[0]}:</strong> {t.tutorialStep5Action1.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep5Action2.split(':')[0]}:</strong> {t.tutorialStep5Action2.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep5Action3.split(':')[0]}:</strong> {t.tutorialStep5Action3.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep5Action4.split(':')[0]}:</strong> {t.tutorialStep5Action4.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep5Action5.split(':')[0]}:</strong> {t.tutorialStep5Action5.split(':')[1]}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep6Title}</h3>
+          <p>{t.tutorialStep6Desc}</p>
           <div class="privacy-note">
-            <strong>🔒 {t.tutorialStep5Privacy.split(':')[0]}:</strong> {t.tutorialStep5Privacy.split(':')[1]}
+            <strong>🔒 {t.tutorialStep6Privacy.split(':')[0]}:</strong> {t.tutorialStep6Privacy.split(':')[1]}
           </div>
         </div>
       </div>
