@@ -62,7 +62,9 @@ const t = locales['en'];
        data-compress-success={t.compressSuccess}
        data-escape-success={t.escapeSuccess}
        data-xml-success={t.xmlSuccess}
-       data-ts-success={t.tsSuccess}>
+       data-ts-success={t.tsSuccess}
+       data-csv-success={t.csvSuccess}
+       data-excel-success={t.excelSuccess}>
 
     <div class="editor-workspace">
       <!-- 左侧输入区域 -->
@@ -110,6 +112,8 @@ const t = locales['en'];
           <button id="escape-copy">{t.escapeCopy}</button>
           <button id="json-to-xml">{t.jsonToXml}</button>
           <button id="json-to-ts">{t.jsonToTs}</button>
+          <button id="json-to-csv">{t.jsonToCsv}</button>
+          <button id="json-to-excel">{t.jsonToExcel}</button>
           <button id="json-compare">{t.jsonCompare}</button>
           <button id="clear-btn">{t.clear}</button>
           <button id="history-btn">{t.history}</button>
@@ -989,6 +993,7 @@ const t = locales['en'];
     .output-controls {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-auto-flow: dense;
       gap: 4px;
     }
 
@@ -1000,6 +1005,17 @@ const t = locales['en'];
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    /* 最后三个按钮（清空、历史记录、字体大小选择）在移动端小屏幕情况下并排显示 */
+    #clear-btn,
+    #history-btn,
+    #font-size-select {
+      grid-column: auto;
+      grid-row: span 1;
+      flex: 1;
+      width: auto;
+      min-width: 0;
     }
   }
 
@@ -1869,7 +1885,9 @@ const t = locales['en'];
       compressSuccess: container.dataset.compressSuccess,
       escapeSuccess: container.dataset.escapeSuccess,
       xmlSuccess: container.dataset.xmlSuccess,
-      tsSuccess: container.dataset.tsSuccess
+      tsSuccess: container.dataset.tsSuccess,
+      csvSuccess: container.dataset.csvSuccess,
+      excelSuccess: container.dataset.excelSuccess
     };
 
     // 初始化 Monaco Editor
@@ -2325,6 +2343,8 @@ const t = locales['en'];
     document.getElementById('escape-copy').addEventListener('click', () => escapeAndCopy());
     document.getElementById('json-to-xml').addEventListener('click', () => jsonToXmlAndCopy());
     document.getElementById('json-to-ts').addEventListener('click', () => jsonToTsAndCopy());
+    document.getElementById('json-to-csv').addEventListener('click', () => jsonToCsvAndCopy());
+    document.getElementById('json-to-excel').addEventListener('click', () => jsonToExcelAndCopy());
     document.getElementById('json-compare').addEventListener('click', () => toggleCompareMode());
     document.getElementById('close-output').addEventListener('click', closeOutput);
     document.getElementById('history-btn').addEventListener('click', showHistory);
@@ -2372,14 +2392,14 @@ const t = locales['en'];
     const extractFnStr = document.getElementById('extract-fn').value.trim();
 
     if (!extractFnStr) {
-      alert(translations.enterExtractionFn || '请输入提取函数');
+      alert(translations.enterExtractionFn || 'Please enter an extraction function');
       return;
     }
 
     try {
       const inputText = getEditorContent();
       if (!inputText.trim()) {
-        alert(translations.enterData || '请输入数据');
+        alert(translations.enterData || 'Please enter data to process');
         return;
       }
 
@@ -2388,9 +2408,9 @@ const t = locales['en'];
       const result = fn(parsedData);
 
       // 只有在应用提取函数后才显示输出框
-      showJsonResult(result, '提取结果');
+      showJsonResult(result, 'Extraction Result');
     } catch (error) {
-      alert((translations.extractionError || '提取错误') + ': ' + error.message);
+      alert((translations.extractionError || 'Extraction error') + ': ' + error.message);
     }
   }
 
@@ -2446,9 +2466,9 @@ const t = locales['en'];
       const parsedData = parseJson(getEditorContent());
       const compressed = JSON.stringify(parsedData);
       await navigator.clipboard.writeText(compressed);
-      alert(translations.compressSuccess || '压缩成功并已复制到剪贴板');
+      alert(translations.compressSuccess || 'Compressed JSON copied to clipboard!');
     } catch (error) {
-      alert((translations.parsingError || '解析错误') + ': ' + error.message);
+      alert((translations.parsingError || 'Error') + ': ' + error.message);
     }
   }
 
@@ -2459,9 +2479,9 @@ const t = locales['en'];
       const compressed = JSON.stringify(parsedData);
       const escaped = compressed.replace(/[\\]/g, '\\\\').replace(/["]/g, '\\"');
       await navigator.clipboard.writeText(escaped);
-      alert(translations.escapeSuccess || '转义成功并已复制到剪贴板');
+      alert(translations.escapeSuccess || 'Escaped JSON copied to clipboard!');
     } catch (error) {
-      alert((translations.parsingError || '解析错误') + ': ' + error.message);
+      alert((translations.parsingError || 'Error') + ': ' + error.message);
     }
   }
 
@@ -2471,9 +2491,9 @@ const t = locales['en'];
       const parsedData = parseJson(getEditorContent());
       const xmlString = jsonToXml(parsedData, 'root');
       await navigator.clipboard.writeText(xmlString);
-      alert(translations.xmlSuccess || 'XML已复制到剪贴板');
+      alert(translations.xmlSuccess || 'XML copied to clipboard!');
     } catch (error) {
-      alert((translations.parsingError || '解析错误') + ': ' + error.message);
+      alert((translations.parsingError || 'Error') + ': ' + error.message);
     }
   }
 
@@ -2483,9 +2503,33 @@ const t = locales['en'];
       const parsedData = parseJson(getEditorContent());
       const tsInterface = jsonToTsInterface(parsedData, 'DataType');
       await navigator.clipboard.writeText(tsInterface);
-      alert(translations.tsSuccess || 'TypeScript接口已复制到剪贴板');
+      alert(translations.tsSuccess || 'TypeScript interface copied to clipboard!');
     } catch (error) {
-      alert((translations.parsingError || '解析错误') + ': ' + error.message);
+      alert((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  // JSON转CSV并复制
+  async function jsonToCsvAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const csvString = jsonToCsv(parsedData);
+      await navigator.clipboard.writeText(csvString);
+      alert(translations.csvSuccess || 'CSV copied to clipboard!');
+    } catch (error) {
+      alert((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  // JSON转Excel并复制（实际生成CSV格式，可直接导入Excel）
+  async function jsonToExcelAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const csvString = jsonToCsv(parsedData);
+      await navigator.clipboard.writeText(csvString);
+      alert(translations.excelSuccess || 'Excel data copied to clipboard!');
+    } catch (error) {
+      alert((translations.parsingError || 'Error') + ': ' + error.message);
     }
   }
 
@@ -2517,6 +2561,60 @@ const t = locales['en'];
     xml += `</${tagName}>`;
 
     return xml;
+  }
+
+  // JSON转CSV辅助函数
+  function jsonToCsv(obj) {
+    // 处理空值
+    if (obj === null || obj === undefined) {
+      return '';
+    }
+
+    // 确保输入是数组，如果是单个对象则转换为数组
+    const jsonArray = Array.isArray(obj) ? obj : [obj];
+
+    // 如果数组为空，返回空字符串
+    if (jsonArray.length === 0) {
+      return '';
+    }
+
+    // 获取所有唯一的键作为CSV标题
+    const headers = new Set();
+    jsonArray.forEach(item => {
+      if (typeof item === 'object' && item !== null) {
+        Object.keys(item).forEach(key => headers.add(key));
+      }
+    });
+
+    // 将Set转换为数组
+    const headerArray = Array.from(headers);
+
+    // 生成CSV内容
+    let csv = headerArray.join(',') + '\n';
+
+    // 遍历数组生成CSV行
+    jsonArray.forEach(item => {
+      const row = headerArray.map(header => {
+        let value = item[header];
+        // 处理空值
+        if (value === null || value === undefined) {
+          value = '';
+        }
+        // 处理字符串包含逗号、引号或换行符的情况
+        if (typeof value === 'string') {
+          // 转义引号
+          value = value.replace(/"/g, '""');
+          // 如果包含逗号、引号或换行符，用引号包裹
+          if (value.includes(',') || value.includes('"') || value.includes('\n') || value.includes('\r')) {
+            value = `"${value}"`;
+          }
+        }
+        return value;
+      });
+      csv += row.join(',') + '\n';
+    });
+
+    return csv;
   }
 
   // JSON转TypeScript接口辅助函数
