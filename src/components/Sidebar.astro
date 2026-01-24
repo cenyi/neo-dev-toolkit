@@ -27,7 +27,8 @@ const isActive = (path: string) => {
   <script is:inline>
     // 在页面渲染前立即设置折叠状态，避免展开→折叠的动画
     (function() {
-      if (localStorage.getItem('sidebarCollapsed') === 'true') {
+      // 移动端不应用collapsed状态
+      if (window.innerWidth > 768 && localStorage.getItem('sidebarCollapsed') === 'true') {
         document.getElementById('sidebar').classList.add('collapsed');
       }
     })();
@@ -501,9 +502,38 @@ const isActive = (path: string) => {
       font-size: 0.875rem;
     }
   }
+
+  /* 移动端汉堡图标状态样式 */
+  @media (max-width: 768px) {
+    /* 移动端菜单打开时，汉堡图标变为X图标 */
+    .sidebar.mobile-open .hamburger:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 4px);
+    }
+
+    .sidebar.mobile-open .hamburger:nth-child(2) {
+      opacity: 0;
+    }
+
+    .sidebar.mobile-open .hamburger:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    /* 确保移动端不显示桌面端的折叠效果 */
+    .sidebar.collapsed .hamburger:nth-child(1) {
+      transform: none;
+    }
+
+    .sidebar.collapsed .hamburger:nth-child(2) {
+      opacity: 1;
+    }
+
+    .sidebar.collapsed .hamburger:nth-child(3) {
+      transform: none;
+    }
+  }
 </style>
 
-<script>
+<script is:inline>
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const main = document.querySelector('main');
@@ -514,7 +544,9 @@ const isActive = (path: string) => {
 
     if (isMobile) {
       // 移动端：切换菜单显示/隐藏
-      navMenu.classList.toggle('mobile-open');
+      const isMenuOpen = navMenu.classList.toggle('mobile-open');
+      // 同时切换sidebar的mobile-open类，用于控制汉堡图标状态
+      sidebar.classList.toggle('mobile-open', isMenuOpen);
     } else {
       // 桌面端：切换侧边栏折叠状态
       sidebar.classList.toggle('collapsed');
