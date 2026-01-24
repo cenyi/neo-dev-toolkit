@@ -9,10 +9,10 @@ const t = locales['en'];
 ---
 
 <BaseLayout
-  title={`${t.title} | ${t.description}`}
+  title="JSON Tools - Format, Compare & Convert JSON Online"
   lang={lang}
-  description={t.description}
-  keywords="JSON formatter, JSON validator, JSON parser, JSON to XML, JSON to YAML, JSON to TypeScript, URL params parser, online JSON editor, free JSON tool, JSON viewer, JSON formatter online, JSON validator online, JSON tools, JSON editor, JSON beautifier, JSON minifier, JSON converter">
+  description="Free online JSON tools: Format, validate, compare & convert JSON to CSV, Excel, XML, YAML. Browser-based, secure. JSON diff, minify, beautifier & parser."
+  keywords="JSON formatter, JSON validator, JSON parser, JSON compare, JSON diff, JSON minify, JSON to CSV, JSON to Excel, CSV to JSON, Excel to JSON, JSON to XML, JSON to YAML, JSON to TypeScript, JSON to table, JSON to csv converter, JSON to excel converter, JSON stringify, JSON escape, JSON beautifier, JSON viewer, JSON editor, JSON tools, URL params parser, JSON comparison online, JSON pretty print, JSON file converter, XML to JSON, YAML to JSON, string to JSON, text to JSON, HTML to JSON, PDF to JSON, image to JSON, XLSX to JSON, json2video, json2csv, jsoncompare, jsondiff, jsonminifier, jsonview, jsonrpc, jsonschema, jsonata, json5, jsonc, nlohmann json, python json, mysql json, online JSON tool, free JSON formatter, JSON checker, JSON analyzer, JSON converter online">
   <Sidebar slot="sidebar" t={t} />
 
   <!-- Schema.org Structured Data for SEO & GEO -->
@@ -280,6 +280,85 @@ const t = locales['en'];
             <p>{t.feature6Desc}</p>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Supported Formats Section -->
+    <div class="supported-formats-section">
+      <div class="section-header">
+        <h2>Supported JSON Conversion Features</h2>
+        <p>One-stop JSON toolkit for all your JSON processing needs</p>
+      </div>
+      <div class="formats-grid">
+        <div class="format-category">
+          <h3>📊 JSON Formatting</h3>
+          <ul>
+            <li>JSON Formatter</li>
+            <li>JSON Beautifier</li>
+            <li>JSON Minify</li>
+            <li>JSON Validator</li>
+            <li>JSON Escape</li>
+            <li>JSON Viewer</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>🔄 JSON Conversion</h3>
+          <ul>
+            <li>JSON to CSV Converter</li>
+            <li>JSON to Excel</li>
+            <li>JSON to XML</li>
+            <li>JSON to YAML</li>
+            <li>JSON to TypeScript</li>
+            <li>JSON to Table</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>➡️ Convert to JSON</h3>
+          <ul>
+            <li>CSV to JSON</li>
+            <li>Excel to JSON</li>
+            <li>XML to JSON</li>
+            <li>YAML to JSON</li>
+            <li>URL Params to JSON</li>
+            <li>String to JSON</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>🔧 JSON Tools</h3>
+          <ul>
+            <li>JSON Compare / JSON Diff</li>
+            <li>Compare JSON Online</li>
+            <li>Field Extraction</li>
+            <li>JSON Path Finder</li>
+            <li>JSON History</li>
+            <li>Remove Comments</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>💻 Developer Tools</h3>
+          <ul>
+            <li>TypeScript Interface</li>
+            <li>JSON Schema Generator</li>
+            <li>JSON Code Examples</li>
+            <li>Syntax Highlighting</li>
+            <li>Error Detection</li>
+            <li>Line Numbers</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>🔒 Security Features</h3>
+          <ul>
+            <li>100% Browser-based</li>
+            <li>Local Processing</li>
+            <li>No Server Upload</li>
+            <li>Works Offline</li>
+            <li>Privacy First</li>
+            <li>Secure Processing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="formats-note">
+        <p>💡 <strong>Tip:</strong> All JSON processing happens locally in your browser. Supports large JSON files with syntax highlighting, error detection, and smart folding. Perfect for developers, data analysts, API testing, and more.</p>
       </div>
     </div>
 
@@ -1551,6 +1630,109 @@ const t = locales['en'];
     font-size: 0.95rem;
   }
 
+  /* Supported Formats Section */
+  .supported-formats-section {
+    max-width: 1800px;
+    margin: 60px auto 0;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .supported-formats-section .section-header {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .supported-formats-section .section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .supported-formats-section .section-header p {
+    font-size: 1.1rem;
+    color: #64748b;
+  }
+
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .format-category {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e0f2fe;
+  }
+
+  .format-category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
+    border-color: #0ea5e9;
+  }
+
+  .format-category h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e0f2fe;
+  }
+
+  .format-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .format-category li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .format-category li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #0ea5e9;
+    font-weight: 700;
+  }
+
+  .formats-note {
+    max-width: 900px;
+    margin: 35px auto 0;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-left: 4px solid #3b82f6;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1e40af;
+    line-height: 1.7;
+  }
+
+  .formats-note strong {
+    font-weight: 700;
+    color: #1e3a8a;
+  }
+
   /* FAQ Section - 2列展开样式 */
   .faq-section {
     max-width: 1800px;
@@ -1753,6 +1935,23 @@ const t = locales['en'];
       grid-template-columns: 1fr;
       gap: 16px;
       padding: 0 12px;
+    }
+
+    /* Supported Formats 移动端优化 */
+    .formats-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0 12px;
+    }
+
+    .format-category {
+      padding: 18px;
+    }
+
+    .formats-note {
+      margin: 25px 12px 0;
+      padding: 14px 18px;
+      font-size: 0.9rem;
     }
 
     /* FAQ 移动端优化 */

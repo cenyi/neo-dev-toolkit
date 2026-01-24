@@ -9,10 +9,10 @@ const t = locales['zh'];
 ---
 
 <BaseLayout
-  title={`${t.title} | ${t.description}`}
+  title="JSON工具 - 格式化、对比、转换、校验在线工具"
   lang={lang}
-  description={t.description}
-  keywords="JSON格式化,JSON校验,JSON在线工具,JSON解析器,JSON转XML,JSON转YAML,JSON转TypeScript,URL参数解析,在线JSON编辑器,免费JSON工具,JSON查看器,JSON格式化在线,JSON校验在线,JSON工具,JSON编辑器,JSON美化,JSON压缩,JSON转换">
+  description="免费JSON工具：格式化、校验、对比、转换JSON（支持CSV/Excel/XML/YAML）。100%浏览器本地运行，数据安全隐私保护。在线JSON diff、美化、压缩、查看器。"
+  keywords="JSON格式化,JSON校验,JSON对比,JSON diff,JSON压缩,JSON转CSV,JSON转Excel,CSV转JSON,Excel转JSON,JSON转XML,JSON转YAML,JSON转TypeScript,JSON转表格,JSON转义,stringify,JSON美化,JSON查看器,JSON编辑器,JSON解析器,JSON工具,URL参数解析,JSON在线对比,JSON pretty print,XML转JSON,YAML转JSON,字符串转JSON,文本转JSON,HTML转JSON,PDF转JSON,图片转JSON,XLSX转JSON,json2video,json2csv,jsoncompare,jsondiff,jsonminifier,jsonview,jsonrpc,jsonschema,jsonata,json5,jsonc,nlohmann json,python json,mysql json,在线JSON工具,免费JSON格式化,JSON检查器,JSON分析器,JSON转换器">
   <Sidebar slot="sidebar" t={t} />
 
   <!-- Schema.org 结构化数据用于 SEO & GEO -->
@@ -280,6 +280,85 @@ const t = locales['zh'];
             <p>{t.feature6Desc}</p>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 支持的功能 Section -->
+    <div class="supported-formats-section">
+      <div class="section-header">
+        <h2>支持的JSON转换功能</h2>
+        <p>一站式JSON工具集，满足您的所有JSON处理需求</p>
+      </div>
+      <div class="formats-grid">
+        <div class="format-category">
+          <h3>📊 JSON格式化</h3>
+          <ul>
+            <li>JSON格式化 (JSON Formatter)</li>
+            <li>JSON美化 (JSON Beautifier)</li>
+            <li>JSON压缩 (JSON Minify)</li>
+            <li>JSON校验 (JSON Validator)</li>
+            <li>JSON转义 (JSON Escape)</li>
+            <li>JSON查看器 (JSON Viewer)</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>🔄 JSON转换</h3>
+          <ul>
+            <li>JSON转CSV (JSON to CSV Converter)</li>
+            <li>JSON转Excel (JSON to Excel)</li>
+            <li>JSON转XML (JSON to XML)</li>
+            <li>JSON转YAML (JSON to YAML)</li>
+            <li>JSON转TypeScript (JSON to TS)</li>
+            <li>JSON转表格 (JSON to Table)</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>➡️ 转换为JSON</h3>
+          <ul>
+            <li>CSV转JSON (CSV to JSON)</li>
+            <li>Excel转JSON (Excel to JSON)</li>
+            <li>XML转JSON (XML to JSON)</li>
+            <li>YAML转JSON (YAML to JSON)</li>
+            <li>URL参数转JSON (URL Params to JSON)</li>
+            <li>字符串转JSON (String to JSON)</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>🔧 JSON工具</h3>
+          <ul>
+            <li>JSON对比 (JSON Compare / JSON Diff)</li>
+            <li>JSON在线对比 (Compare JSON Online)</li>
+            <li>JSON字段提取 (Field Extraction)</li>
+            <li>JSON路径查找 (JSON Path Finder)</li>
+            <li>JSON历史记录 (JSON History)</li>
+            <li>JSON注释移除 (Remove Comments)</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>💻 开发者工具</h3>
+          <ul>
+            <li>TypeScript接口生成 (TS Interface)</li>
+            <li>JSON Schema生成器</li>
+            <li>JSON代码示例</li>
+            <li>JSON语法高亮</li>
+            <li>JSON错误检测 (JSON Error Check)</li>
+            <li>JSON行号显示</li>
+          </ul>
+        </div>
+        <div class="format-category">
+          <h3>🔒 安全特性</h3>
+          <ul>
+            <li>100%浏览器运行 (Browser-based)</li>
+            <li>数据本地处理 (Local Processing)</li>
+            <li>无需上传服务器 (No Server Upload)</li>
+            <li>离线可用 (Works Offline)</li>
+            <li>隐私保护 (Privacy First)</li>
+            <li>安全加密 (Secure Processing)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="formats-note">
+        <p>💡 <strong>提示：</strong> 所有JSON处理均在浏览器本地完成，支持大型JSON文件，提供语法高亮、错误提示、智能折叠等功能。适用于开发者、数据分析师、API测试等场景。</p>
       </div>
     </div>
 
@@ -1436,6 +1515,109 @@ const t = locales['zh'];
     font-size: 0.95rem;
   }
 
+  /* 支持的功能 Section */
+  .supported-formats-section {
+    max-width: 1800px;
+    margin: 60px auto 0;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .supported-formats-section .section-header {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .supported-formats-section .section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .supported-formats-section .section-header p {
+    font-size: 1.1rem;
+    color: #64748b;
+  }
+
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .format-category {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e0f2fe;
+  }
+
+  .format-category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
+    border-color: #0ea5e9;
+  }
+
+  .format-category h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e0f2fe;
+  }
+
+  .format-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .format-category li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .format-category li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #0ea5e9;
+    font-weight: 700;
+  }
+
+  .formats-note {
+    max-width: 900px;
+    margin: 35px auto 0;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-left: 4px solid #3b82f6;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1e40af;
+    line-height: 1.7;
+  }
+
+  .formats-note strong {
+    font-weight: 700;
+    color: #1e3a8a;
+  }
+
   /* FAQ Section - 2列展开样式 */
   .faq-section {
     max-width: 1800px;
@@ -1548,6 +1730,23 @@ const t = locales['zh'];
       grid-template-columns: 1fr;
       gap: 16px;
       padding: 0 12px;
+    }
+
+    /* Supported Formats 移动端优化 */
+    .formats-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0 12px;
+    }
+
+    .format-category {
+      padding: 18px;
+    }
+
+    .formats-note {
+      margin: 25px 12px 0;
+      padding: 14px 18px;
+      font-size: 0.9rem;
     }
 
     /* FAQ 移动端优化 */
