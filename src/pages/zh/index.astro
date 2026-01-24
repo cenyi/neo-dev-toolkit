@@ -69,6 +69,7 @@ const t = locales['zh'];
       <div class="input-area">
         <!-- 编辑器容器（用于左右布局） -->
         <div class="editors-wrapper" id="editors-wrapper">
+          <!-- 两个独立编辑器 -->
           <div class="input-section">
             <h1 class="section-label">一体化 JSON 工具</h1>
             <div class="input-editor-wrapper">
@@ -415,8 +416,8 @@ const t = locales['zh'];
   .json-formatter-container {
     max-width: 1800px;
     margin: 0 auto;
-    padding: 12px;
-    height: calc(100vh - 40px);
+    padding: 8px;
+    height: calc(100vh - var(--sidebar-height, 40px));
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -459,6 +460,41 @@ const t = locales['zh'];
     margin: 0;
   }
 
+  /* 移动端优化输入区域布局 */
+  @media (max-width: 768px) {
+    .json-formatter-container {
+      height: calc(100vh - var(--sidebar-height, 40px));
+      padding: 6px;
+    }
+
+    .input-area {
+      max-width: 100%;
+      margin: 0;
+      gap: 6px;
+    }
+    
+    /* 移动端输出区域展开时，输入区域保持100%宽度 */
+    .editor-workspace:has(.output-area.expanded) .input-area {
+      max-width: 100%;
+    }
+    
+    /* 优化移动端按钮组布局 */
+    .output-controls {
+      gap: 4px 6px;
+      flex-wrap: wrap;
+    }
+
+    .output-controls button,
+    .output-controls select {
+      flex: 0 0 auto;
+      min-width: fit-content;
+      padding: 6px 8px;
+      font-size: 11px;
+      white-space: nowrap;
+      max-width: none;
+    }
+  }
+
   .input-section {
     flex: 1;
     display: flex;
@@ -467,20 +503,24 @@ const t = locales['zh'];
   }
 
   .section-label {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    color: #6b7280;
+    color: #1f2937;
     margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    flex-shrink: 0;
   }
 
   /* H1标签样式重置，保持布局一致 */
   h1.section-label {
     margin: 0;
-    padding: 0;
-    font-size: 0.85rem;
-    font-weight: 600;
+    padding: 4px 0 6px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    flex-shrink: 0;
+    display: block;
   }
 
   h2.section-label {
@@ -549,6 +589,23 @@ const t = locales['zh'];
   @media (max-width: 768px) {
     .editors-wrapper.compare-mode {
       flex-direction: column;
+      gap: 8px;
+    }
+    
+    .editors-wrapper.compare-mode .input-section,
+    .editors-wrapper.compare-mode .compare-editor {
+      min-height: 200px;
+    }
+    
+    /* 调整比较模式下编辑器容器的高度 */
+    .editors-wrapper.compare-mode .monaco-editor-container {
+      min-height: 200px;
+    }
+    
+    /* 优化移动端比较模式下的标题显示 */
+    .editors-wrapper.compare-mode .section-label {
+      font-size: 0.75rem;
+      margin-bottom: 4px;
     }
   }
 
@@ -590,6 +647,22 @@ const t = locales['zh'];
     color: #6c757d;
     padding: 4px 8px;
     margin: 2px 0;
+  }
+
+  /* Monaco Editor差异高亮装饰 - 使用Monaco内置的装饰类 */
+  .monaco-editor .diff-removed {
+    background-color: rgba(239, 68, 68, 0.6) !important;
+    border-left: 4px solid #ef4444 !important;
+  }
+
+  .monaco-editor .diff-added {
+    background-color: rgba(34, 197, 94, 0.6) !important;
+    border-left: 4px solid #22c55e !important;
+  }
+
+  .monaco-editor .diff-changed {
+    background-color: rgba(234, 179, 8, 0.6) !important;
+    border-left: 4px solid #eab308 !important;
   }
 
   .input-editor-wrapper {
@@ -737,6 +810,12 @@ const t = locales['zh'];
 
   #apply-extract {
     font-size: 13px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  #apply-extract:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
   }
 
   .extraction-controls button:hover {
@@ -762,7 +841,7 @@ const t = locales['zh'];
 
   .output-controls button {
     padding: 6px 10px;
-    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
     border: none;
     border-radius: 5px;
@@ -770,6 +849,10 @@ const t = locales['zh'];
     font-size: 11px;
     font-weight: 500;
     transition: all 0.2s;
+    min-width: fit-content;
+    flex: 0 0 auto;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .output-controls select {
@@ -782,6 +865,8 @@ const t = locales['zh'];
     font-size: 11px;
     font-weight: 500;
     transition: all 0.2s;
+    min-width: fit-content;
+    flex: 0 0 auto;
   }
 
   .output-controls select option {
@@ -797,17 +882,51 @@ const t = locales['zh'];
   }
 
   .output-controls button:hover {
-    background: linear-gradient(135deg, #475569 0%, #334155 100%);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
     transform: translateY(-1px);
   }
 
   #clear-btn {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
   }
 
   #clear-btn:hover {
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+  }
+
+  /* 移动端按钮布局优化 */
+  @media (max-width: 768px) {
+    .output-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px 8px;
+    }
+
+    .output-controls button,
+    .output-controls select {
+      font-size: 11px;
+      padding: 8px 6px;
+      min-height: 36px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .output-controls {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px 6px;
+    }
+
+    .output-controls button,
+    .output-controls select {
+      font-size: 10px;
+      padding: 7px 5px;
+      min-height: 34px;
+    }
   }
 
   /* 右侧输出区域 */
@@ -1354,8 +1473,8 @@ const t = locales['zh'];
 
   @media (max-width: 768px) {
     .json-formatter-container {
-      padding: 8px;
-      height: calc(100vh - 32px);
+      padding: 6px;
+      height: calc(100vh - var(--sidebar-height, 40px));
       flex-shrink: 0;
     }
 
@@ -1364,12 +1483,12 @@ const t = locales['zh'];
     }
 
     .input-area {
-      gap: 8px;
-      min-height: 300px;
+      gap: 6px;
+      min-height: 180px;
     }
 
     .monaco-editor-container {
-      min-height: 250px;
+      min-height: 150px;
     }
 
     .extraction-controls {
@@ -1378,27 +1497,6 @@ const t = locales['zh'];
 
     .extraction-controls input {
       min-width: 100%;
-    }
-
-    .json-input {
-      min-height: 200px;
-    }
-
-    .output-controls {
-      gap: 5px;
-      flex-wrap: wrap;
-    }
-
-    .output-controls button {
-      padding: 6px 10px;
-      font-size: 11px;
-      flex: 1;
-      min-width: 80px;
-    }
-
-    .output-controls select {
-      flex: 1;
-      min-width: 100px;
     }
 
     .output-area.expanded {
@@ -1456,17 +1554,6 @@ const t = locales['zh'];
       padding: 6px;
     }
 
-    .output-controls {
-      gap: 4px;
-    }
-
-    .output-controls button {
-      flex: 1;
-      min-width: 0;
-      padding: 6px 8px;
-      font-size: 11px;
-    }
-
     .json-action-group {
       flex: 1;
     }
@@ -1502,6 +1589,8 @@ const t = locales['zh'];
   let compareEditor = null;
   let translations = {};
   let isCompareMode = false;
+  let leftDecorations = [];
+  let rightDecorations = [];
 
   // DOM加载完成后初始化
   document.addEventListener('DOMContentLoaded', () => {
@@ -1663,6 +1752,13 @@ const t = locales['zh'];
         readOnly: false
       });
       console.log('Compare Monaco Editor created successfully');
+
+      // 监听比较编辑器内容变化，自动更新差异高亮
+      compareEditor.onDidChangeModelContent(() => {
+        if (isCompareMode) {
+          highlightDifferences();
+        }
+      });
     }
 
     // 调试：检查 DOM 结构
@@ -1691,6 +1787,11 @@ const t = locales['zh'];
     editor.onDidChangeModelContent(() => {
       clearTimeout(window.autoFormatTimeout);
       window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
+
+      // 如果在比较模式，更新差异高亮
+      if (isCompareMode) {
+        highlightDifferences();
+      }
     });
 
     // 监听 JSON 错误标记变化
@@ -2639,23 +2740,22 @@ const t = locales['zh'];
   function toggleCompareMode() {
     const compareSection = document.getElementById('compare-section');
     const editorsWrapper = document.getElementById('editors-wrapper');
+    const firstSection = document.querySelector('.input-section');
 
     if (!isCompareMode) {
-      // 进入比较模式
+      // 进入比较模式 - 显示第二个编辑器
       isCompareMode = true;
       compareSection.classList.remove('hidden');
       editorsWrapper.classList.add('compare-mode');
 
-      // 更新编辑器标题
-      const firstLabel = document.querySelector('.input-section .section-label');
+      // 更新第一个编辑器标题
+      const firstLabel = firstSection.querySelector('.section-label');
       if (firstLabel) {
         firstLabel.textContent = translations.leftJson || '左侧JSON';
       }
 
-      // 触发比较
-      setTimeout(() => {
-        compareJsons();
-      }, 100);
+      // 立即更新差异高亮
+      highlightDifferences();
     } else {
       // 退出比较模式
       isCompareMode = false;
@@ -2663,10 +2763,13 @@ const t = locales['zh'];
       editorsWrapper.classList.remove('compare-mode');
 
       // 恢复编辑器标题
-      const firstLabel = document.querySelector('.input-section .section-label');
+      const firstLabel = firstSection.querySelector('.section-label');
       if (firstLabel) {
         firstLabel.textContent = '一体化 JSON 工具';
       }
+
+      // 清除高亮
+      clearHighlightDecorations();
 
       // 清空比较编辑器
       if (compareEditor) {
@@ -2682,37 +2785,105 @@ const t = locales['zh'];
     }, 100);
   }
 
-  // 比较两个JSON
-  function compareJsons() {
-    if (!editor || !compareEditor) {
-      alert(translations.enterData || '请输入要比较的数据');
-      return;
-    }
+  // 在两个编辑器中高亮显示差异
+  function highlightDifferences() {
+    if (!editor || !compareEditor) return;
+
+    // 清除之前的装饰
+    clearHighlightDecorations();
 
     try {
       const leftText = editor.getValue();
       const rightText = compareEditor.getValue();
 
-      if (!leftText.trim() || !rightText.trim()) {
-        alert(translations.enterData || '请输入要比较的数据');
-        return;
+      if (!leftText.trim() || !rightText.trim()) return;
+
+      // 简单的行比较方法
+      const leftLines = leftText.split('\n');
+      const rightLines = rightText.split('\n');
+      
+      // 在左侧编辑器中高亮差异
+      const leftDecorationsData = [];
+      const maxLines = Math.max(leftLines.length, rightLines.length);
+      
+      for (let i = 0; i < maxLines; i++) {
+        const leftLine = leftLines[i] || '';
+        const rightLine = rightLines[i] || '';
+        
+        // 跳过空行比较
+        if (!leftLine.trim() && !rightLine.trim()) continue;
+        
+        // 左侧有行，右侧没有 - 删除
+        if (leftLine.trim() && !rightLine.trim()) {
+          leftDecorationsData.push({
+            range: new monaco.Range(i + 1, 1, i + 1, 1000),
+            options: {
+              className: 'diff-removed',
+              hoverMessage: { value: '该行已删除' }
+            }
+          });
+        }
+        // 行内容不同 - 修改
+        else if (leftLine.trim() !== rightLine.trim()) {
+          leftDecorationsData.push({
+            range: new monaco.Range(i + 1, 1, i + 1, 1000),
+            options: {
+              className: 'diff-changed',
+              hoverMessage: { value: `修改: ${leftLine.trim()} → ${rightLine.trim()}` }
+            }
+          });
+        }
+      }
+      
+      // 在右侧编辑器中高亮差异
+      const rightDecorationsData = [];
+      for (let i = 0; i < maxLines; i++) {
+        const leftLine = leftLines[i] || '';
+        const rightLine = rightLines[i] || '';
+        
+        // 跳过空行比较
+        if (!leftLine.trim() && !rightLine.trim()) continue;
+        
+        // 右侧有行，左侧没有 - 新增
+        if (!leftLine.trim() && rightLine.trim()) {
+          rightDecorationsData.push({
+            range: new monaco.Range(i + 1, 1, i + 1, 1000),
+            options: {
+              className: 'diff-added',
+              hoverMessage: { value: '该行已新增' }
+            }
+          });
+        }
+        // 行内容不同 - 修改
+        else if (leftLine.trim() !== rightLine.trim()) {
+          rightDecorationsData.push({
+            range: new monaco.Range(i + 1, 1, i + 1, 1000),
+            options: {
+              className: 'diff-changed',
+              hoverMessage: { value: `修改: ${leftLine.trim()} → ${rightLine.trim()}` }
+            }
+          });
+        }
       }
 
-      const leftJson = JSON.parse(leftText);
-      const rightJson = JSON.parse(rightText);
-
-      const differences = findDifferences(leftJson, rightJson);
-      displayDifferences(differences);
+      // 应用装饰
+      if (editor) {
+        leftDecorations = editor.deltaDecorations([], leftDecorationsData);
+      }
+      if (compareEditor) {
+        rightDecorations = compareEditor.deltaDecorations([], rightDecorationsData);
+      }
     } catch (error) {
-      alert((translations.compareError || '对比失败: ') + error.message);
+      // JSON解析失败，不显示高亮
+      console.debug('Highlight differences error:', error);
     }
   }
 
-  // 查找差异
-  function findDifferences(obj1, obj2, path = '') {
+  // 查找差异（返回带行号信息的差异）
+  function findDifferences(obj1, obj2, path = '', depth = 0) {
     const differences = [];
 
-    function compare(val1, val2, currentPath) {
+    function compare(val1, val2, currentPath, currentLine = 0) {
       const type1 = typeof val1;
       const type2 = typeof val2;
 
@@ -2723,7 +2894,8 @@ const t = locales['zh'];
           path: currentPath,
           oldValue: val1,
           newValue: val2,
-          message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`
+          message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`,
+          line: currentLine
         });
         return;
       }
@@ -2734,8 +2906,9 @@ const t = locales['zh'];
         const keys2 = Object.keys(val2);
         const allKeys = new Set([...keys1, ...keys2]);
 
-        allKeys.forEach(key => {
+        allKeys.forEach((key, index) => {
           const newPath = currentPath ? `${currentPath}.${key}` : key;
+          const lineOffset = Math.floor(index / 5); // 估算行号
 
           if (!(key in val1)) {
             // 新增
@@ -2743,7 +2916,8 @@ const t = locales['zh'];
               type: 'added',
               path: newPath,
               value: val2[key],
-              message: `${newPath}: + ${JSON.stringify(val2[key])}`
+              message: `${newPath}: + ${JSON.stringify(val2[key])}`,
+              line: currentLine + lineOffset
             });
           } else if (!(key in val2)) {
             // 删除
@@ -2751,11 +2925,12 @@ const t = locales['zh'];
               type: 'removed',
               path: newPath,
               value: val1[key],
-              message: `${newPath}: - ${JSON.stringify(val1[key])}`
+              message: `${newPath}: - ${JSON.stringify(val1[key])}`,
+              line: currentLine + lineOffset
             });
           } else {
             // 递归比较
-            compare(val1[key], val2[key], newPath);
+            compare(val1[key], val2[key], newPath, currentLine + lineOffset);
           }
         });
       } else if (val1 !== val2) {
@@ -2765,7 +2940,8 @@ const t = locales['zh'];
           path: currentPath,
           oldValue: val1,
           newValue: val2,
-          message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`
+          message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`,
+          line: currentLine
         });
       }
     }
@@ -2775,56 +2951,18 @@ const t = locales['zh'];
     return differences;
   }
 
-  // 显示差异
-  function displayDifferences(differences) {
-    if (differences.length === 0) {
-      showToast(translations.noDifferences || '未发现差异 - 两个JSON完全相同！');
-      return;
+  // 清除高亮装饰
+  function clearHighlightDecorations() {
+    if (editor && leftDecorations.length > 0) {
+      editor.deltaDecorations(leftDecorations, []);
+      leftDecorations = [];
     }
-
-    let result = '<div class="diff-result">';
-    result += `<h3>${translations.differences || '差异'} (${differences.length})</h3>`;
-
-    differences.forEach(diff => {
-      let className = '';
-      let icon = '';
-
-      switch (diff.type) {
-        case 'added':
-          className = 'diff-added';
-          icon = '➕ ';
-          break;
-        case 'removed':
-          className = 'diff-removed';
-          icon = '➖ ';
-          break;
-        case 'changed':
-          className = 'diff-changed';
-          icon = '🔄 ';
-          break;
-        default:
-          className = 'diff-unchanged';
-          icon = '  ';
-      }
-
-      result += `<div class="${className}">${icon}${diff.message}</div>`;
-    });
-
-    result += '</div>';
-
-    // 在输出编辑器中显示
-    if (outputEditor) {
-      // 创建一个HTML版本的输出
-      const outputContent = document.getElementById('output-content');
-      if (outputContent) {
-        outputContent.innerHTML = result;
-        expandOutput(translations.differences || '差异');
-      }
+    if (compareEditor && rightDecorations.length > 0) {
+      compareEditor.deltaDecorations(rightDecorations, []);
+      rightDecorations = [];
     }
-
-    showToast(translations.compareSuccess || `发现 ${differences.length} 处差异`);
   }
-  
+
   // 显示Toast提示
   function showToast(message) {
     // 检查是否已有Toast

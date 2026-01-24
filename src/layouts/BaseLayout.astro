@@ -186,6 +186,12 @@ const defaultUrl = enUrl;
           padding: 12px;
           height: calc(100vh - var(--sidebar-height, 60px));
         }
+
+        /* 中文界面额外调整 */
+        [lang="zh-CN"] main {
+          margin-top: var(--sidebar-height, 60px);
+          height: calc(100vh - var(--sidebar-height, 60px));
+        }
       }
 
       @media (max-width: 480px) {
@@ -195,9 +201,9 @@ const defaultUrl = enUrl;
       }
     </style>
     <script>
-      // 全局状态管理
+      // 全局状态管理 - 从localStorage恢复侧边栏状态，如果没有则默认为展开
       window.appState = {
-        sidebarCollapsed: false,
+        sidebarCollapsed: localStorage.getItem('sidebarCollapsed') === 'true',
         lang: 'en'
       };
 
