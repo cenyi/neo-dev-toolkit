@@ -666,6 +666,8 @@ const isActive = (path: string) => {
         // 如果点击的不是侧边栏内部元素，并且菜单是打开的
         if (!sidebar.contains(e.target) && navMenu.classList.contains('mobile-open')) {
           navMenu.classList.remove('mobile-open');
+          // 同时移除sidebar的mobile-open类，让X图标变回汉堡图标
+          sidebar.classList.remove('mobile-open');
         }
       });
     }
