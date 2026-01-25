@@ -73,7 +73,13 @@ const t = locales['en'];
         <div class="editors-wrapper" id="editors-wrapper">
           <!-- 两个独立编辑器 -->
           <div class="input-section">
-            <h1 class="section-label">All-in-One JSON Viewer</h1>
+            <div class="section-header-row">
+              <h1 class="section-label">All-in-One JSON Viewer</h1>
+              <div class="editor-hint-inline" id="editor-hint">
+                <span class="hint-icon">✨</span>
+                <span class="hint-text">Smart Input: Auto-detects JSON, URL, XML & YAML</span>
+              </div>
+            </div>
             <div class="input-editor-wrapper">
               <div id="monaco-editor-container" class="monaco-editor-container"></div>
             </div>
@@ -584,6 +590,116 @@ const t = locales['en'];
     font-size: 0.875rem;
     font-weight: 600;
     margin-top: 10px;
+  }
+
+  /* Section Header Row - 标题和提示在同一行 */
+  .section-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Editor Hint Inline - 内联提示 */
+  .editor-hint-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+  }
+
+  .editor-hint-inline:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(37, 99, 235, 0.12) 100%);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 1px 4px rgba(59, 130, 246, 0.1);
+  }
+
+  .editor-hint-inline.hint-hidden {
+    opacity: 0;
+    transform: translateX(4px);
+    pointer-events: none;
+  }
+
+  .editor-hint-inline .hint-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .editor-hint-inline .hint-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #3b82f6;
+    white-space: nowrap;
+  }
+
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    .section-header-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .editor-hint-inline {
+      padding: 3px 8px;
+    }
+
+    .editor-hint-inline .hint-icon {
+      font-size: 12px;
+    }
+
+    .editor-hint-inline .hint-text {
+      font-size: 0.7rem;
+    }
+  }
+
+  /* 比较模式下的标题优化 */
+  @media (max-width: 768px) {
+    .editor-hint {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 8px 10px;
+    }
+
+    .hint-icon {
+      font-size: 16px;
+    }
+
+    .hint-title {
+      font-size: 0.8rem;
+    }
+
+    .hint-description {
+      font-size: 0.7rem;
+    }
+
+    .hint-features {
+      gap: 4px;
+    }
+
+    .hint-badge {
+      font-size: 0.65rem;
+      padding: 2px 6px;
+    }
+
+    .hint-security {
+      font-size: 0.65rem;
+      padding: 3px 8px;
+      align-self: flex-start;
+    }
   }
 
   /* 比较模式下的标题优化 */
@@ -2273,6 +2389,17 @@ const t = locales['en'];
       if (isCompareMode) {
         highlightDifferences();
       }
+
+      // 控制提示显示/隐藏
+      const hint = document.getElementById('editor-hint');
+      if (hint) {
+        const hasContent = getEditorContent().trim().length > 0;
+        if (hasContent) {
+          hint.classList.add('hint-hidden');
+        } else {
+          hint.classList.remove('hint-hidden');
+        }
+      }
     });
 
     // 监听 JSON 错误标记变化
@@ -2620,6 +2747,12 @@ const t = locales['en'];
       outputEditor.setValue('');
     }
     closeOutput();
+
+    // 重新显示提示
+    const hint = document.getElementById('editor-hint');
+    if (hint) {
+      hint.classList.remove('hint-hidden');
+    }
   }
 
   // 折叠所有
