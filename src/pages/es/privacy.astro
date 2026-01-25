@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Sidebar from '../components/Sidebar.astro';
-import enTranslations from '../i18n/locales/en.js';
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Sidebar from '../../../../../components/Sidebar.astro';
+import esTranslations from '../../../../../i18n/locales/es.js';
 
-const t = enTranslations.default;
+const t = esTranslations.default;
 ---
 
-<BaseLayout title={`${t.navPrivacy} - ${t.title}`} lang="en">
+<BaseLayout title={`${t.navPrivacy} - ${t.title}`} lang="es">
   <Sidebar slot="sidebar" t={t} />
 
   <div class="page-container">
@@ -14,22 +14,16 @@ const t = enTranslations.default;
     <div class="content">
       <h2>{t.privacySection1Title}</h2>
       <p>{t.privacySection1Desc}</p>
-
       <h2>{t.privacySection2Title}</h2>
       <p>{t.privacySection2Desc}</p>
-
       <h2>{t.privacySection3Title}</h2>
       <p>{t.privacySection3Desc}</p>
-
       <h2>{t.privacySection4Title}</h2>
       <p>{t.privacySection4Desc}</p>
-
       <h2>{t.privacySection5Title}</h2>
       <p>{t.privacySection5Desc}</p>
-
       <h2>{t.privacySection6Title}</h2>
       <p>{t.privacySection6Desc}</p>
-
       <h2>{t.privacySection7Title}</h2>
       <p>{t.privacySection7Desc}</p>
     </div>
@@ -42,26 +36,22 @@ const t = enTranslations.default;
     margin: 0 auto;
     padding: 40px 30px;
   }
-
   h1 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #1f2937;
   }
-
   h2 {
     font-size: 1.5rem;
     margin-top: 30px;
     margin-bottom: 15px;
     color: #374151;
   }
-
   p {
     margin-bottom: 15px;
     line-height: 1.6;
     color: #4b5563;
   }
-
   .content {
     background: white;
     padding: 30px;

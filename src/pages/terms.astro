@@ -1,50 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
-import { locales } from '../i18n/locales.js';
+import enTranslations from '../i18n/locales/en.js';
 
-// 英文服务条款页面，固定使用英文语言
-const lang = 'en-US';
-const t = locales['en'];
+const t = enTranslations.default;
 ---
 
-<BaseLayout title={`${t.navTerms} | ${t.title}`} lang={lang}>
+<BaseLayout title={`${t.navTerms} - ${t.title}`} lang="en">
   <Sidebar slot="sidebar" t={t} />
 
   <div class="page-container">
     <h1>{t.navTerms}</h1>
     <div class="content">
-      <h2>1. Introduction</h2>
-      <p>Welcome to our JSON Formatter & Parser website. These Terms of Service govern your use of our website.</p>
-      
-      <h2>2. Acceptance of Terms</h2>
-      <p>By accessing or using our website, you agree to be bound by these Terms of Service and our Privacy Policy.</p>
-      
-      <h2>3. Use of Our Website</h2>
-      <p>You may use our website for lawful purposes only. You agree not to use our website:</p>
+      <h2>{t.termsSection1Title}</h2>
+      <p>{t.termsSection1Desc}</p>
+
+      <h2>{t.termsSection2Title}</h2>
+      <p>{t.termsSection2Desc}</p>
+
+      <h2>{t.termsSection3Title}</h2>
+      <p>{t.termsSection3Desc}</p>
       <ul>
-        <li>In any way that violates any applicable federal, state, local, or international law or regulation.</li>
-        <li>For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way.</li>
-        <li>To transmit, or procure the sending of, any advertising or promotional material without our prior written consent.</li>
+        <li>{t.termsSection3Item1}</li>
+        <li>{t.termsSection3Item2}</li>
+        <li>{t.termsSection3Item3}</li>
       </ul>
-      
-      <h2>4. Intellectual Property Rights</h2>
-      <p>The content of our website, including but not limited to text, graphics, logos, icons, images, and software, is the property of our website and is protected by copyright and other intellectual property laws.</p>
-      
-      <h2>5. Disclaimer of Warranties</h2>
-      <p>Our website is provided on an "as is" and "as available" basis. We make no representations or warranties of any kind, express or implied, about the operation of our website or the information, content, materials, or products included on our website.</p>
-      
-      <h2>6. Limitation of Liability</h2>
-      <p>In no event shall our website, its directors, employees, partners, agents, suppliers, or affiliates be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use our website.</p>
-      
-      <h2>7. Changes to These Terms of Service</h2>
-      <p>We may update our Terms of Service from time to time. We will notify you of any changes by posting the new Terms of Service on this page.</p>
-      
-      <h2>8. Governing Law</h2>
-      <p>These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated, without regard to its conflict of law provisions.</p>
-      
-      <h2>9. Contact Us</h2>
-      <p>If you have any questions about these Terms of Service, please contact us at terms@example.com.</p>
+
+      <h2>{t.termsSection4Title}</h2>
+      <p>{t.termsSection4Desc}</p>
+
+      <h2>{t.termsSection5Title}</h2>
+      <p>{t.termsSection5Desc}</p>
+
+      <h2>{t.termsSection6Title}</h2>
+      <p>{t.termsSection6Desc}</p>
+
+      <h2>{t.termsSection7Title}</h2>
+      <p>{t.termsSection7Desc}</p>
+
+      <h2>{t.termsSection8Title}</h2>
+      <p>{t.termsSection8Desc}</p>
+
+      <h2>{t.termsSection9Title}</h2>
+      <p>{t.termsSection9Desc}</p>
     </div>
   </div>
 </BaseLayout>

@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Sidebar from '../../../../components/Sidebar.astro';
-import zhTranslations from '../../../../i18n/locales/zh.js';
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Sidebar from '../../../../../components/Sidebar.astro';
+import ptTranslations from '../../../../../i18n/locales/pt.js';
 
-const t = zhTranslations.default;
+const t = ptTranslations.default;
 ---
 
-<BaseLayout title={`${t.navTerms} - ${t.title}`} lang="zh-CN">
+<BaseLayout title={`${t.navTerms} - ${t.title}`} lang="pt">
   <Sidebar slot="sidebar" t={t} />
 
   <div class="page-container">

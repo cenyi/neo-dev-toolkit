@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Sidebar from '../components/Sidebar.astro';
-import enTranslations from '../i18n/locales/en.js';
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Sidebar from '../../../../../components/Sidebar.astro';
+import deTranslations from '../../../../../i18n/locales/de.js';
 
-const t = enTranslations.default;
+const t = deTranslations.default;
 ---
 
-<BaseLayout title={`${t.aboutTitle} - ${t.title}`} lang="en">
+<BaseLayout title={`${t.aboutTitle} - ${t.title}`} lang="de">
   <Sidebar slot="sidebar" t={t} />
 
   <div class="about-container">
@@ -33,27 +33,22 @@ const t = enTranslations.default;
     margin: 0 auto;
     padding: 40px 30px;
   }
-
   .about-container h1 {
     color: var(--text-color);
     margin-bottom: 20px;
   }
-
   .about-container h2 {
     color: var(--text-color);
     margin: 20px 0 10px;
   }
-
   .about-container p {
     margin-bottom: 15px;
     line-height: 1.6;
   }
-
   .about-container ul {
     margin-left: 20px;
     margin-bottom: 20px;
   }
-
   .about-container li {
     margin-bottom: 8px;
     line-height: 1.6;
