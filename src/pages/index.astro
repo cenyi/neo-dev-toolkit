@@ -1061,7 +1061,6 @@ const t = locales['en'];
   #apply-extract {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   }
-  }
 
   #apply-extract:hover {
     background: linear-gradient(135deg, #059669 0%, #047857 100%);
@@ -2766,7 +2765,7 @@ const t = locales['en'];
   function jsonToCsv(obj) {
     // 处理空值
     if (obj === null || obj === undefined) {
-      return '';
+      throw new Error('Input data cannot be empty');
     }
 
     // 确保输入是数组，如果是单个对象则转换为数组
@@ -2774,16 +2773,26 @@ const t = locales['en'];
 
     // 如果数组为空，返回空字符串
     if (jsonArray.length === 0) {
-      return '';
+      throw new Error('Input array cannot be empty');
     }
 
     // 获取所有唯一的键作为CSV标题
     const headers = new Set();
+    let hasValidData = false;
     jsonArray.forEach(item => {
       if (typeof item === 'object' && item !== null) {
-        Object.keys(item).forEach(key => headers.add(key));
+        const keys = Object.keys(item);
+        if (keys.length > 0) {
+          hasValidData = true;
+          keys.forEach(key => headers.add(key));
+        }
       }
     });
+
+    // 如果没有有效数据，抛出错误
+    if (!hasValidData) {
+      throw new Error('No valid data to convert');
+    }
 
     // 将Set转换为数组
     const headerArray = Array.from(headers);
@@ -2818,15 +2827,29 @@ const t = locales['en'];
 
   // JSON转TypeScript接口辅助函数
   function jsonToTsInterface(obj, interfaceName) {
-    if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
-      return `// 无法从非对象类型生成接口`;
+    if (typeof obj !== 'object' || obj === null) {
+      return `// Cannot generate interface from non-object type`;
+    }
+
+    // If it's an array, use the first element to generate the interface
+    let targetObj = obj;
+    if (Array.isArray(obj)) {
+      if (obj.length === 0) {
+        return `// Cannot generate interface from empty array`;
+      }
+      // Use the first element of the array to generate the interface
+      targetObj = obj[0];
+      // If the first element is not an object, return error message
+      if (typeof targetObj !== 'object' || targetObj === null) {
+        return `// Cannot generate interface from non-object type`;
+      }
     }
 
     let ts = `interface ${interfaceName} {\n`;
 
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        const value = obj[key];
+    for (const key in targetObj) {
+      if (targetObj.hasOwnProperty(key)) {
+        const value = targetObj[key];
         let type;
 
         if (value === null) {
@@ -2834,7 +2857,15 @@ const t = locales['en'];
         } else if (Array.isArray(value)) {
           if (value.length > 0) {
             const elementType = typeof value[0];
-            type = `${getType(elementType)}[]`;
+            if (elementType === 'object' && value[0] !== null) {
+              // If array elements are objects, generate nested interface
+              const nestedInterfaceName = `${key.charAt(0).toUpperCase() + key.slice(1)}Item`;
+              type = `${nestedInterfaceName}[]`;
+              ts += jsonToTsInterface(value[0], nestedInterfaceName);
+            } else {
+              // Otherwise use basic type
+              type = `${getType(elementType)}[]`;
+            }
           } else {
             type = 'any[]';
           }
@@ -2850,6 +2881,12 @@ const t = locales['en'];
     }
 
     ts += `}\n`;
+    
+    // If original input was an array, generate array type export
+    if (Array.isArray(obj)) {
+      ts += `\nexport type ${interfaceName}Array = ${interfaceName}[];\n`;
+    }
+    
     return ts;
   }
 
@@ -2916,7 +2953,7 @@ const t = locales['en'];
     const history = getHistory();
     
     if (history.length === 0) {
-      alert('暂无历史记录');
+      alert('No history records');
       return;
     }
     
@@ -2963,7 +3000,7 @@ const t = locales['en'];
     
     // 创建标题
     const title = document.createElement('h3');
-    title.textContent = '历史记录';
+    title.textContent = 'History';
     title.style.cssText = `
       margin: 0;
       font-size: 18px;

@@ -2398,7 +2398,13 @@ const t = locales['zh'];
   // 压缩并复制
   async function compressAndCopy() {
     try {
-      const parsedData = parseJson(getEditorContent());
+      const inputContent = getEditorContent().trim();
+      if (!inputContent) {
+        alert('请输入要处理的JSON数据');
+        return;
+      }
+      
+      const parsedData = parseJson(inputContent);
       const compressed = JSON.stringify(parsedData);
       await navigator.clipboard.writeText(compressed);
       alert(translations.compressSuccess || '压缩成功并已复制到剪贴板');
@@ -2472,7 +2478,7 @@ const t = locales['zh'];
   function jsonToCsv(obj) {
     // 处理空值
     if (obj === null || obj === undefined) {
-      return '';
+      throw new Error('输入数据不能为空');
     }
 
     // 确保输入是数组，如果是单个对象则转换为数组
@@ -2480,16 +2486,26 @@ const t = locales['zh'];
 
     // 如果数组为空，返回空字符串
     if (jsonArray.length === 0) {
-      return '';
+      throw new Error('输入数组不能为空');
     }
 
     // 获取所有唯一的键作为CSV标题
     const headers = new Set();
+    let hasValidData = false;
     jsonArray.forEach(item => {
       if (typeof item === 'object' && item !== null) {
-        Object.keys(item).forEach(key => headers.add(key));
+        const keys = Object.keys(item);
+        if (keys.length > 0) {
+          hasValidData = true;
+          keys.forEach(key => headers.add(key));
+        }
       }
     });
+
+    // 如果没有有效数据，抛出错误
+    if (!hasValidData) {
+      throw new Error('没有可转换的有效数据');
+    }
 
     // 将Set转换为数组
     const headerArray = Array.from(headers);
@@ -2554,15 +2570,29 @@ const t = locales['zh'];
 
   // JSON转TypeScript接口辅助函数
   function jsonToTsInterface(obj, interfaceName) {
-    if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+    if (typeof obj !== 'object' || obj === null) {
       return `// 无法从非对象类型生成接口`;
+    }
+
+    // 如果是数组，使用数组的第一个元素生成接口
+    let targetObj = obj;
+    if (Array.isArray(obj)) {
+      if (obj.length === 0) {
+        return `// 无法从空数组生成接口`;
+      }
+      // 使用数组的第一个元素生成接口
+      targetObj = obj[0];
+      // 如果第一个元素不是对象，返回错误信息
+      if (typeof targetObj !== 'object' || targetObj === null) {
+        return `// 无法从非对象类型生成接口`;
+      }
     }
 
     let ts = `interface ${interfaceName} {\n`;
 
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        const value = obj[key];
+    for (const key in targetObj) {
+      if (targetObj.hasOwnProperty(key)) {
+        const value = targetObj[key];
         let type;
 
         if (value === null) {
@@ -2570,7 +2600,15 @@ const t = locales['zh'];
         } else if (Array.isArray(value)) {
           if (value.length > 0) {
             const elementType = typeof value[0];
-            type = `${getType(elementType)}[]`;
+            if (elementType === 'object' && value[0] !== null) {
+              // 如果数组元素是对象，生成嵌套接口
+              const nestedInterfaceName = `${key.charAt(0).toUpperCase() + key.slice(1)}Item`;
+              type = `${nestedInterfaceName}[]`;
+              ts += jsonToTsInterface(value[0], nestedInterfaceName);
+            } else {
+              // 否则使用基本类型
+              type = `${getType(elementType)}[]`;
+            }
           } else {
             type = 'any[]';
           }
@@ -2586,6 +2624,12 @@ const t = locales['zh'];
     }
 
     ts += `}\n`;
+    
+    // 如果原始输入是数组，生成数组类型导出
+    if (Array.isArray(obj)) {
+      ts += `\nexport type ${interfaceName}Array = ${interfaceName}[];\n`;
+    }
+    
     return ts;
   }
 
