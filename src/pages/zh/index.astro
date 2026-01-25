@@ -3907,7 +3907,7 @@ const t = locales['zh'];
   function getPythonType(value) {
     if (value === null) return 'Optional[Any]';
     if (typeof value === 'string') return 'str';
-    if (typeof value === 'number') return 'int' if Number.isInteger(value) else 'float';
+    if (typeof value === 'number') return Number.isInteger(value) ? 'int' : 'float';
     if (typeof value === 'boolean') return 'bool';
     if (Array.isArray(value)) return 'List[Any]';
     return 'dict';
