@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
-import enTranslations from '../i18n/locales/en.js';
+import { locales } from '../i18n/locales.js';
 
-const t = enTranslations.default;
+const t = locales['en'];
 ---
 
 <BaseLayout title={`${t.navTerms} - ${t.title}`} lang="en">

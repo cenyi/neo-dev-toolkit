@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import koTranslations from '../../i18n/locales/ko.js';
+import { locales } from '../../i18n/locales.js';
 
-const t = koTranslations.default;
+const t = locales['ko'];
 ---
 
 <BaseLayout title={`${t.contactHeading} - ${t.title}`} lang="ko">

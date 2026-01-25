@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import esTranslations from '../../i18n/locales/es.js';
+import { locales } from '../../i18n/locales.js';
 
-const t = esTranslations.default;
+const t = locales['es'];
 ---
 
 <BaseLayout title={`${t.contactHeading} - ${t.title}`} lang="es">

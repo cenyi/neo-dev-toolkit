@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import frTranslations from '../../i18n/locales/fr.js';
+import { locales } from '../../i18n/locales.js';
 
-const t = frTranslations.default;
+const t = locales['fr'];
 ---
 
 <BaseLayout title={`${t.aboutTitle} - ${t.title}`} lang="fr">

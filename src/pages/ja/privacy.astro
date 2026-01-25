@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import jaTranslations from '../../i18n/locales/ja.js';
+import { locales } from '../../i18n/locales.js';
 
-const t = jaTranslations.default;
+const t = locales['ja'];
 ---
 
 <BaseLayout title={`${t.navPrivacy} - ${t.title}`} lang="ja">

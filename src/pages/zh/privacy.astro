@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Sidebar from '../../../../components/Sidebar.astro';
-import zhTranslations from '../../../../i18n/locales/zh.js';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { locales } from '../../i18n/locales.js';
 
-const t = zhTranslations.default;
+const t = locales['zh'];
 ---
 
 <BaseLayout title={`${t.navPrivacy} - ${t.title}`} lang="zh-CN">
