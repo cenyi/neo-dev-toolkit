@@ -77,7 +77,7 @@ const t = locales['en'];
               <h1 class="section-label">All-in-One JSON Viewer</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">Smart Input: Auto-detects JSON, URL, XML & YAML</span>
+                <span class="hint-text">Smart Input: Auto-detects JSON, URL, XML, YAML & 15+ formats</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -111,16 +111,43 @@ const t = locales['en'];
         </div>
 
         <div class="output-controls">
+          <!-- 基础操作 -->
           <button id="collapse-all">{t.collapseAll}</button>
           <button id="expand-all">{t.expandAll}</button>
           <button id="remove-comments">{t.removeComments}</button>
           <button id="compress-copy">{t.compressCopy}</button>
           <button id="escape-copy">{t.escapeCopy}</button>
+
+          <span class="button-separator">|</span>
+
+          <!-- 数据格式转换 -->
           <button id="json-to-xml">{t.jsonToXml}</button>
-          <button id="json-to-ts">{t.jsonToTs}</button>
+          <button id="json-to-yaml">{t.jsonToYaml}</button>
           <button id="json-to-csv">{t.jsonToCsv}</button>
           <button id="json-to-excel">{t.jsonToExcel}</button>
+          <button id="json-to-html">{t.jsonToHtml}</button>
+          <button id="json-to-pdf">{t.jsonToPdf}</button>
+
+          <span class="button-separator">|</span>
+
+          <!-- 代码生成 -->
+          <button id="json-to-ts">{t.jsonToTs}</button>
+          <button id="json-to-dart">{t.jsonToDart}</button>
+          <button id="json-to-c">{t.jsonToC}</button>
+          <button id="json-to-go">{t.jsonToGo}</button>
+          <button id="json-to-rust">{t.jsonToRust}</button>
+          <button id="json-to-python">{t.jsonToPython}</button>
+          <button id="json-to-schema">{t.jsonToSchema}</button>
+
+          <span class="button-separator">|</span>
+
+          <!-- 可视化与分析 -->
+          <button id="json-to-table">{t.jsonToTable}</button>
           <button id="json-compare">{t.jsonCompare}</button>
+
+          <span class="button-separator">|</span>
+
+          <!-- 其他 -->
           <button id="clear-btn">{t.clear}</button>
           <button id="history-btn">{t.history}</button>
           <select id="font-size-select" title="Font Size">
@@ -1171,6 +1198,102 @@ const t = locales['en'];
   #clear-btn:hover {
     background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
     box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+  }
+
+  /* 按钮分隔符样式 */
+  .button-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-weight: bold;
+    padding: 0 4px;
+    user-select: none;
+  }
+
+  @media (max-width: 768px) {
+    .button-separator {
+      display: none; /* 移动端隐藏分隔符 */
+    }
+  }
+
+  /* JSON表格样式 */
+  .json-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 14px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .json-table thead {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+  }
+
+  .json-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .json-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .json-table tbody tr:hover {
+    background-color: #f9fafb;
+  }
+
+  .json-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .json-table .key-column {
+    background-color: #f9fafb;
+    font-weight: 600;
+    width: 30%;
+    border-right: 1px solid #e5e7eb;
+  }
+
+  .json-table .inline-code {
+    background-color: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    color: #1f2937;
+    display: inline-block;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .json-table .number {
+    color: #ef4444;
+    font-weight: 600;
+  }
+
+  .json-table .boolean-true {
+    color: #10b981;
+    font-weight: 600;
+  }
+
+  .json-table .boolean-false {
+    color: #ef4444;
+    font-weight: 600;
+  }
+
+  .table-output {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
   }
 
   /* 移动端特殊按钮样式 */
@@ -3007,6 +3130,16 @@ const t = locales['en'];
     document.getElementById('json-to-ts').addEventListener('click', () => jsonToTsAndCopy());
     document.getElementById('json-to-csv').addEventListener('click', () => jsonToCsvAndCopy());
     document.getElementById('json-to-excel').addEventListener('click', () => jsonToExcelAndCopy());
+    document.getElementById('json-to-yaml').addEventListener('click', () => jsonToYamlAndCopy());
+    document.getElementById('json-to-html').addEventListener('click', () => jsonToHtmlAndCopy());
+    document.getElementById('json-to-table').addEventListener('click', () => jsonToTable());
+    document.getElementById('json-to-schema').addEventListener('click', () => jsonToSchema());
+    document.getElementById('json-to-pdf').addEventListener('click', () => jsonToPdf());
+    document.getElementById('json-to-dart').addEventListener('click', () => jsonToDartAndCopy());
+    document.getElementById('json-to-c').addEventListener('click', () => jsonToCAndCopy());
+    document.getElementById('json-to-go').addEventListener('click', () => jsonToGoAndCopy());
+    document.getElementById('json-to-rust').addEventListener('click', () => jsonToRustAndCopy());
+    document.getElementById('json-to-python').addEventListener('click', () => jsonToPythonAndCopy());
     document.getElementById('json-compare').addEventListener('click', () => toggleCompareMode());
     document.getElementById('close-output').addEventListener('click', closeOutput);
     document.getElementById('history-btn').addEventListener('click', showHistory);
@@ -3199,6 +3332,585 @@ const t = locales['en'];
     } catch (error) {
       showToast((translations.parsingError || 'Error') + ': ' + error.message);
     }
+  }
+
+  // ========== 方案1: JSON to YAML ==========
+  async function jsonToYamlAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const yamlString = jsonToYaml(parsedData);
+      await navigator.clipboard.writeText(yamlString);
+      showToast(translations.yamlSuccess || 'YAML copied to clipboard!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function jsonToYaml(obj, indent = 0) {
+    const spaces = '  '.repeat(indent);
+
+    if (obj === null || obj === undefined) {
+      return 'null';
+    }
+
+    if (typeof obj !== 'object') {
+      return String(obj);
+    }
+
+    if (Array.isArray(obj)) {
+      if (obj.length === 0) return '[]';
+      return obj.map(item => {
+        if (typeof item === 'object' && item !== null) {
+          return '-\n' + jsonToYaml(item, indent + 1).split('\n').map(line => spaces + line).join('\n').substring(2);
+        } else {
+          return '- ' + jsonToYaml(item, 0);
+        }
+      }).join('\n' + spaces);
+    }
+
+    // Object
+    const entries = Object.entries(obj);
+    if (entries.length === 0) return '{}';
+
+    return entries.map(([key, value]) => {
+      if (value === null) {
+        return `${key}: null`;
+      } else if (typeof value === 'object' && value !== null) {
+        return `${key}:\n${jsonToYaml(value, indent + 1).split('\n').map(line => spaces + line).join('\n')}`;
+      } else if (typeof value === 'string') {
+        return `${key}: "${value}"`;
+      } else {
+        return `${key}: ${value}`;
+      }
+    }).join('\n' + spaces);
+  }
+
+  // ========== 方案1: JSON to Table ==========
+  async function jsonToTable() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const tableHtml = jsonToTableHtml(parsedData);
+
+      // 在输出区域显示表格
+      if (outputEditor) {
+        const outputArea = document.getElementById('output-area');
+        const outputContent = document.getElementById('output-content');
+
+        // 创建一个临时容器来显示HTML
+        const tempDiv = document.createElement('div');
+        tempDiv.className = 'table-output';
+        tempDiv.innerHTML = `
+          <div style="padding: 20px; overflow: auto;">
+            ${tableHtml}
+          </div>
+        `;
+
+        // 隐藏编辑器，显示表格
+        outputContent.querySelector('.monaco-editor-container')?.style.setProperty('display', 'none');
+        const existingTable = outputContent.querySelector('.table-output');
+        if (existingTable) {
+          existingTable.remove();
+        }
+        outputContent.appendChild(tempDiv);
+
+        expandOutput('JSON Table');
+      }
+      showToast(translations.tableSuccess || 'Table generated successfully!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function jsonToTableHtml(obj) {
+    if (!obj || typeof obj !== 'object') {
+      return '<p>Input is not a valid JSON object</p>';
+    }
+
+    if (Array.isArray(obj)) {
+      if (obj.length === 0) {
+        return '<p>Empty array</p>';
+      }
+
+      // 获取所有可能的键
+      const allKeys = [...new Set(obj.flatMap(item => Object.keys(item || {})))];
+
+      if (allKeys.length === 0) {
+        return '<table class="json-table"><tbody><tr><td>Array with ' + obj.length + ' items (no properties)</td></tr></tbody></table>';
+      }
+
+      let html = '<table class="json-table"><thead><tr>';
+      allKeys.forEach(key => {
+        html += `<th>${escapeHtml(key)}</th>`;
+      });
+      html += '</tr></thead><tbody>';
+
+      obj.forEach(item => {
+        html += '<tr>';
+        allKeys.forEach(key => {
+          const value = item && item[key];
+          html += `<td>${formatValueForTable(value)}</td>`;
+        });
+        html += '</tr>';
+      });
+
+      html += '</tbody></table>';
+      return html;
+    }
+
+    // 对象转为表格
+    const entries = Object.entries(obj);
+    let html = '<table class="json-table"><tbody>';
+    entries.forEach(([key, value]) => {
+      html += '<tr>';
+      html += `<td class="key-column"><strong>${escapeHtml(key)}</strong></td>`;
+      html += `<td>${formatValueForTable(value)}</td>`;
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    return html;
+  }
+
+  function formatValueForTable(value) {
+    if (value === null || value === undefined) {
+      return '<em>null</em>';
+    }
+    if (typeof value === 'object') {
+      return `<code class="inline-code">${escapeHtml(JSON.stringify(value))}</code>`;
+    }
+    if (typeof value === 'boolean') {
+      return `<span class="boolean-${value}">${value}</span>`;
+    }
+    if (typeof value === 'number') {
+      return `<span class="number">${value}</span>`;
+    }
+    return escapeHtml(String(value));
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // ========== 方案1: JSON Schema ==========
+  async function jsonToSchema() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const schema = generateJsonSchema(parsedData, 'RootObject');
+
+      // 显示schema
+      if (outputEditor) {
+        const schemaStr = JSON.stringify(schema, null, 2);
+        outputEditor.setValue(schemaStr);
+        expandOutput('JSON Schema');
+      }
+      showToast(translations.schemaSuccess || 'JSON Schema generated successfully!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function generateJsonSchema(obj, typeName = 'Object') {
+    if (obj === null || obj === undefined) {
+      return { type: 'null' };
+    }
+
+    if (typeof obj === 'string') {
+      return { type: 'string' };
+    }
+
+    if (typeof obj === 'number') {
+      return { type: 'number' };
+    }
+
+    if (typeof obj === 'boolean') {
+      return { type: 'boolean' };
+    }
+
+    if (Array.isArray(obj)) {
+      if (obj.length > 0) {
+        return {
+          type: 'array',
+          items: generateJsonSchema(obj[0])
+        };
+      }
+      return {
+        type: 'array',
+        items: {}
+      };
+    }
+
+    // Object
+    const properties = {};
+    const required = [];
+
+    for (const [key, value] of Object.entries(obj)) {
+      properties[key] = generateJsonSchema(value);
+      required.push(key);
+    }
+
+    return {
+      type: 'object',
+      properties,
+      required
+    };
+  }
+
+  // ========== 方案2: JSON to HTML ==========
+  async function jsonToHtmlAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const htmlString = jsonToHtml(parsedData);
+      await navigator.clipboard.writeText(htmlString);
+      showToast(translations.htmlSuccess || 'HTML copied to clipboard!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function jsonToHtml(obj, indent = 0) {
+    const spaces = '  '.repeat(indent);
+
+    if (obj === null || obj === undefined) {
+      return `${spaces}<span class="json-null">null</span>\n`;
+    }
+
+    if (typeof obj !== 'object') {
+      const formatted = typeof obj === 'string' ? `"${obj}"` : String(obj);
+      return `${spaces}<span class="json-value">${escapeHtml(formatted)}</span>\n`;
+    }
+
+    if (Array.isArray(obj)) {
+      if (obj.length === 0) {
+        return `${spaces}<span class="json-bracket">[]</span>\n`;
+      }
+
+      let html = `${spaces}<span class="json-bracket">[</span>\n`;
+      obj.forEach((item, index) => {
+        html += jsonToHtml(item, indent + 1);
+        if (index < obj.length - 1) {
+          html = html.trimEnd() + ',\n';
+        }
+      });
+      html += `${spaces}<span class="json-bracket">]</span>\n`;
+      return html;
+    }
+
+    // Object
+    const entries = Object.entries(obj);
+    if (entries.length === 0) {
+      return `${spaces}<span class="json-bracket">{}</span>\n`;
+    }
+
+    let html = `${spaces}<div class="json-object">\n`;
+    html += `${spaces}<span class="json-bracket">{</span>\n`;
+    entries.forEach(([key, value], index) => {
+      html += `${spaces}  <span class="json-key">"${escapeHtml(key)}"</span>: `;
+      if (typeof value === 'object' && value !== null) {
+        html += '\n' + jsonToHtml(value, indent + 2);
+      } else {
+        html += jsonToHtml(value, 0).trim();
+      }
+      if (index < entries.length - 1) {
+        html += ',';
+      }
+      html += '\n';
+    });
+    html += `${spaces}<span class="json-bracket">}</span>\n`;
+    html += `${spaces}</div>\n`;
+    return html;
+  }
+
+  // ========== 方案2: JSON to PDF ==========
+  async function jsonToPdf() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+
+      // 使用html2pdf.js或jsPDF生成PDF
+      // 这里使用简单的HTML打印方案
+      const jsonStr = JSON.stringify(parsedData, null, 2);
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>JSON Export</title>
+          <style>
+            body { font-family: monospace; white-space: pre-wrap; padding: 20px; }
+            @media print {
+              body { padding: 0; }
+            }
+          </style>
+        </head>
+        <body>${escapeHtml(jsonStr)}</body>
+        </html>
+      `;
+
+      // 创建新窗口并打印
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(htmlContent);
+      printWindow.document.close();
+      printWindow.focus();
+
+      setTimeout(() => {
+        printWindow.print();
+      }, 250);
+
+      showToast(translations.pdfSuccess || 'PDF export initiated!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  // ========== 方案3: JSON to Dart ==========
+  async function jsonToDartAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const dartCode = jsonToDart(parsedData, 'JsonObject');
+      await navigator.clipboard.writeText(dartCode);
+      showToast(translations.dartSuccess || 'Dart code copied to clipboard!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function jsonToDart(obj, className = 'JsonObject') {
+    if (Array.isArray(obj)) {
+      if (obj.length > 0) {
+        const itemClass = `${className}Item`;
+        return `List<${itemClass}> ${camelCase(className)} = [${obj.map(() => `${itemClass}()`).join(', ')}];\n\n${jsonToDart(obj[0], itemClass)}`;
+      }
+      return `List<dynamic> ${camelCase(className)} = [];`;
+    }
+
+    if (typeof obj !== 'object' || obj === null) {
+      return `final ${camelCase(className)} = ${obj === null ? 'null' : JSON.stringify(obj)};`;
+    }
+
+    let code = `class ${className} {\n`;
+
+    // Fields
+    for (const [key, value] of Object.entries(obj)) {
+      const dartType = getDartType(value);
+      const fieldName = camelCase(key);
+      code += `  ${dartType} ${fieldName};\n`;
+    }
+
+    code += '\n';
+
+    // Constructor
+    code += `  ${className}({\n`;
+    for (const [key] of Object.entries(obj)) {
+      const fieldName = camelCase(key);
+      code += `    this.${fieldName},\n`;
+    }
+    code += `  });\n\n`;
+
+    // fromJson factory
+    code += `  factory ${className}.fromJson(Map<String, dynamic> json) {\n`;
+    code += `    return ${className}(\n`;
+    for (const [key, value] of Object.entries(obj)) {
+      const fieldName = camelCase(key);
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        code += `      ${fieldName}: ${fieldName}Class.fromJson(json['${key}']),\n`;
+      } else {
+        code += `      ${fieldName}: json['${key}'],\n`;
+      }
+    }
+    code += `    );\n`;
+    code += `  }\n\n`;
+
+    // toJson method
+    code += `  Map<String, dynamic> toJson() {\n`;
+    code += `    return {\n`;
+    for (const [key] of Object.entries(obj)) {
+      const fieldName = camelCase(key);
+      code += `      '${key}': this.${fieldName},\n`;
+    }
+    code += `    };\n`;
+    code += `  }\n`;
+
+    code += `}\n`;
+
+    return code;
+  }
+
+  function getDartType(value) {
+    if (value === null) return 'dynamic';
+    if (typeof value === 'string') return 'String';
+    if (typeof value === 'number') return Number.isInteger(value) ? 'int' : 'double';
+    if (typeof value === 'boolean') return 'bool';
+    if (Array.isArray(value)) return 'List<dynamic>';
+    return 'Map<String, dynamic>';
+  }
+
+  // ========== 方案3: JSON to C ==========
+  async function jsonToCAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const cCode = jsonToC(parsedData, 'JsonObject');
+      await navigator.clipboard.writeText(cCode);
+      showToast(translations.cSuccess || 'C code copied to clipboard!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function jsonToC(obj, structName = 'JsonObject') {
+    if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+      return `// Cannot generate C struct for ${typeof obj}`;
+    }
+
+    let code = `typedef struct {\n`;
+
+    for (const [key, value] of Object.entries(obj)) {
+      const cType = getCType(value);
+      const fieldName = camelCase(key);
+      code += `  ${cType} ${fieldName};\n`;
+    }
+
+    code += `} ${structName};\n`;
+
+    return code;
+  }
+
+  function getCType(value) {
+    if (value === null) return 'void*';
+    if (typeof value === 'string') return 'char*';
+    if (typeof value === 'number') return Number.isInteger(value) ? 'int' : 'double';
+    if (typeof value === 'boolean') return 'bool';
+    if (Array.isArray(value)) return 'void**';
+    return 'void*';
+  }
+
+  // ========== 方案3: JSON to Go ==========
+  async function jsonToGoAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const goCode = jsonToGo(parsedData, 'JsonObject');
+      await navigator.clipboard.writeText(goCode);
+      showToast(translations.goSuccess || 'Go code copied to clipboard!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function jsonToGo(obj, structName = 'JsonObject') {
+    if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+      return `// Cannot generate Go struct for ${typeof obj}`;
+    }
+
+    let code = `type ${structName} struct {\n`;
+
+    for (const [key, value] of Object.entries(obj)) {
+      const goType = getGoType(value);
+      const fieldName = pascalCase(key);
+      code += `  ${fieldName} ${goType} \`json:"${key}"\`\n`;
+    }
+
+    code += `}\n`;
+
+    return code;
+  }
+
+  function getGoType(value) {
+    if (value === null) return 'interface{}';
+    if (typeof value === 'string') return 'string';
+    if (typeof value === 'number') return Number.isInteger(value) ? 'int' : 'float64';
+    if (typeof value === 'boolean') return 'bool';
+    if (Array.isArray(value)) return '[]interface{}';
+    return 'map[string]interface{}';
+  }
+
+  function pascalCase(str) {
+    return str.replace(/(\w)(\w*)/g, (_, g1, g2) => g1.toUpperCase() + g2.toLowerCase()).replace(/[^a-zA-Z0-9]/g, '');
+  }
+
+  // ========== 方案3: JSON to Rust ==========
+  async function jsonToRustAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const rustCode = jsonToRust(parsedData, 'JsonObject');
+      await navigator.clipboard.writeText(rustCode);
+      showToast(translations.rustSuccess || 'Rust code copied to clipboard!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function jsonToRust(obj, structName = 'JsonObject') {
+    if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+      return `// Cannot generate Rust struct for ${typeof obj}`;
+    }
+
+    let code = `#[derive(Serialize, Deserialize)]\n`;
+    code += `struct ${structName} {\n`;
+
+    for (const [key, value] of Object.entries(obj)) {
+      const rustType = getRustType(value);
+      const fieldName = snakeCase(key);
+      code += `  #[serde(rename = "${key}")]\n`;
+      code += `  ${fieldName}: ${rustType},\n`;
+    }
+
+    code += `}\n`;
+
+    return code;
+  }
+
+  function getRustType(value) {
+    if (value === null) return 'Option<Value>';
+    if (typeof value === 'string') return 'String';
+    if (typeof value === 'number') return Number.isInteger(value) ? 'i64' : 'f64';
+    if (typeof value === 'boolean') return 'bool';
+    if (Array.isArray(value)) return 'Vec<Value>';
+    return 'Value';
+  }
+
+  function snakeCase(str) {
+    return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`).replace(/^_/, '').replace(/[^a-zA-Z0-9]/g, '_');
+  }
+
+  // ========== 方案3: JSON to Python ==========
+  async function jsonToPythonAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const pythonCode = jsonToPython(parsedData, 'JsonObject');
+      await navigator.clipboard.writeText(pythonCode);
+      showToast(translations.pythonSuccess || 'Python code copied to clipboard!');
+    } catch (error) {
+      showToast((translations.parsingError || 'Error') + ': ' + error.message);
+    }
+  }
+
+  function jsonToPython(obj, className = 'JsonObject') {
+    if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+      return `# Cannot generate Python class for ${typeof obj}`;
+    }
+
+    let code = `from dataclasses import dataclass\nfrom typing import Optional, List, Any\n\n`;
+    code += `@dataclass\nclass ${className}:\n`;
+
+    for (const [key, value] of Object.entries(obj)) {
+      const pythonType = getPythonType(value);
+      const fieldName = snakeCase(key);
+      code += `  ${fieldName}: ${pythonType}\n`;
+    }
+
+    return code;
+  }
+
+  function getPythonType(value) {
+    if (value === null) return 'Optional[Any]';
+    if (typeof value === 'string') return 'str';
+    if (typeof value === 'number') return 'int' if Number.isInteger(value) else 'float';
+    if (typeof value === 'boolean') return 'bool';
+    if (Array.isArray(value)) return 'List[Any]';
+    return 'dict';
+  }
+
+  // 通用工具函数
+  function camelCase(str) {
+    return str.replace(/[-_\s]+(.)?/g, (_, c) => c ? c.toUpperCase() : '');
   }
 
   // JSON转XML辅助函数

@@ -77,7 +77,7 @@ const t = locales['zh'];
               <h1 class="section-label">一体化 JSON 工具</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">超级智能输入：自动识别 JSON、URL、XML & YAML</span>
+                <span class="hint-text">超级智能输入：自动识别 JSON、URL、XML、YAML等15+种格式</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -111,16 +111,43 @@ const t = locales['zh'];
         </div>
 
         <div class="output-controls">
+          <!-- 基础操作 -->
           <button id="collapse-all">{t.collapseAll}</button>
           <button id="expand-all">{t.expandAll}</button>
           <button id="remove-comments">{t.removeComments}</button>
           <button id="compress-copy">{t.compressCopy}</button>
           <button id="escape-copy">{t.escapeCopy}</button>
+
+          <span class="button-separator">|</span>
+
+          <!-- 数据格式转换 -->
           <button id="json-to-xml">{t.jsonToXml}</button>
-          <button id="json-to-ts">{t.jsonToTs}</button>
+          <button id="json-to-yaml">{t.jsonToYaml}</button>
           <button id="json-to-csv">{t.jsonToCsv}</button>
           <button id="json-to-excel">{t.jsonToExcel}</button>
+          <button id="json-to-html">{t.jsonToHtml}</button>
+          <button id="json-to-pdf">{t.jsonToPdf}</button>
+
+          <span class="button-separator">|</span>
+
+          <!-- 代码生成 -->
+          <button id="json-to-ts">{t.jsonToTs}</button>
+          <button id="json-to-dart">{t.jsonToDart}</button>
+          <button id="json-to-c">{t.jsonToC}</button>
+          <button id="json-to-go">{t.jsonToGo}</button>
+          <button id="json-to-rust">{t.jsonToRust}</button>
+          <button id="json-to-python">{t.jsonToPython}</button>
+          <button id="json-to-schema">{t.jsonToSchema}</button>
+
+          <span class="button-separator">|</span>
+
+          <!-- 可视化与分析 -->
+          <button id="json-to-table">{t.jsonToTable}</button>
           <button id="json-compare">{t.jsonCompare}</button>
+
+          <span class="button-separator">|</span>
+
+          <!-- 其他 -->
           <button id="clear-btn">{t.clear}</button>
           <button id="history-btn">{t.history}</button>
           <select id="font-size-select" title="字体大小">
@@ -1070,6 +1097,102 @@ const t = locales['zh'];
   #clear-btn:hover {
     background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
     box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+  }
+
+  /* 按钮分隔符样式 */
+  .button-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-weight: bold;
+    padding: 0 4px;
+    user-select: none;
+  }
+
+  @media (max-width: 768px) {
+    .button-separator {
+      display: none; /* 移动端隐藏分隔符 */
+    }
+  }
+
+  /* JSON表格样式 */
+  .json-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 14px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .json-table thead {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+  }
+
+  .json-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .json-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .json-table tbody tr:hover {
+    background-color: #f9fafb;
+  }
+
+  .json-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .json-table .key-column {
+    background-color: #f9fafb;
+    font-weight: 600;
+    width: 30%;
+    border-right: 1px solid #e5e7eb;
+  }
+
+  .json-table .inline-code {
+    background-color: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    color: #1f2937;
+    display: inline-block;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .json-table .number {
+    color: #ef4444;
+    font-weight: 600;
+  }
+
+  .json-table .boolean-true {
+    color: #10b981;
+    font-weight: 600;
+  }
+
+  .json-table .boolean-false {
+    color: #ef4444;
+    font-weight: 600;
+  }
+
+  .table-output {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
   }
 
   /* 移动端按钮布局优化 */
@@ -2707,6 +2830,16 @@ const t = locales['zh'];
     document.getElementById('json-to-ts').addEventListener('click', () => jsonToTsAndCopy());
     document.getElementById('json-to-csv').addEventListener('click', () => jsonToCsvAndCopy());
     document.getElementById('json-to-excel').addEventListener('click', () => jsonToExcelAndCopy());
+    document.getElementById('json-to-yaml').addEventListener('click', () => jsonToYamlAndCopy());
+    document.getElementById('json-to-html').addEventListener('click', () => jsonToHtmlAndCopy());
+    document.getElementById('json-to-table').addEventListener('click', () => jsonToTable());
+    document.getElementById('json-to-schema').addEventListener('click', () => jsonToSchema());
+    document.getElementById('json-to-pdf').addEventListener('click', () => jsonToPdf());
+    document.getElementById('json-to-dart').addEventListener('click', () => jsonToDartAndCopy());
+    document.getElementById('json-to-c').addEventListener('click', () => jsonToCAndCopy());
+    document.getElementById('json-to-go').addEventListener('click', () => jsonToGoAndCopy());
+    document.getElementById('json-to-rust').addEventListener('click', () => jsonToRustAndCopy());
+    document.getElementById('json-to-python').addEventListener('click', () => jsonToPythonAndCopy());
     document.getElementById('json-compare').addEventListener('click', () => toggleCompareMode());
     document.getElementById('close-output').addEventListener('click', closeOutput);
     document.getElementById('history-btn').addEventListener('click', showHistory);
@@ -2905,6 +3038,64 @@ const t = locales['zh'];
     } catch (error) {
       alert((translations.parsingError || '解析错误') + ': ' + error.message);
     }
+  }
+
+  // 工具函数
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function camelCase(str) {
+    return str.replace(/[-_\s]+(.)?/g, (_, c) => c ? c.toUpperCase() : '');
+  }
+
+  function snakeCase(str) {
+    return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`).replace(/^_/, '').replace(/[^a-zA-Z0-9]/g, '_');
+  }
+
+  function pascalCase(str) {
+    return str.replace(/(\w)(\w*)/g, (_, g1, g2) => g1.toUpperCase() + g2.toLowerCase()).replace(/[^a-zA-Z0-9]/g, '');
+  }
+
+  // ========== 所有新转换函数 ==========
+
+  // JSON to YAML
+  async function jsonToYamlAndCopy() {
+    try {
+      const parsedData = parseJson(getEditorContent());
+      const yamlString = jsonToYaml(parsedData);
+      await navigator.clipboard.writeText(yamlString);
+      alert(translations.yamlSuccess || 'YAML已复制到剪贴板');
+    } catch (error) {
+      alert((translations.parsingError || '解析错误') + ': ' + error.message);
+    }
+  }
+
+  function jsonToYaml(obj, indent = 0) {
+    const spaces = '  '.repeat(indent);
+    if (obj === null || obj === undefined) return 'null';
+    if (typeof obj !== 'object') return String(obj);
+    if (Array.isArray(obj)) {
+      if (obj.length === 0) return '[]';
+      return obj.map(item => {
+        if (typeof item === 'object' && item !== null) {
+          return '-\n' + jsonToYaml(item, indent + 1).split('\n').map(line => spaces + line).join('\n').substring(2);
+        } else {
+          return '- ' + jsonToYaml(item, 0);
+        }
+      }).join('\n' + spaces);
+    }
+    const entries = Object.entries(obj);
+    if (entries.length === 0) return '{}';
+    return entries.map(([key, value]) => {
+      if (value === null) return `${key}: null`;
+      else if (typeof value === 'object' && value !== null) {
+        return `${key}:\n${jsonToYaml(value, indent + 1).split('\n').map(line => spaces + line).join('\n')}`;
+      } else if (typeof value === 'string') return `${key}: "${value}"`;
+      else return `${key}: ${value}`;
+    }).join('\n' + spaces);
   }
 
   // JSON转CSV辅助函数
