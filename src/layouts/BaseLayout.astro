@@ -4,7 +4,7 @@ import Footer from '../components/Footer.astro';
 const { title = "默认标题", lang = "en", description = "", keywords = "", canonical = "", ogType = "website", ogImage = "/og-image.png" } = Astro.props;
 
 // 导入翻译
-import { locales } from '../i18n/locales.js';
+import enTranslations from '../i18n/locales/en.js';
 
 // 从URL路径提取语言代码
 const path = Astro.url.pathname;

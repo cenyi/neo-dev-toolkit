@@ -2,11 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import { locales } from '../i18n/locales.js';
+import enTranslations from '../i18n/locales/en.js';
 
 // 英文首页，固定使用英文语言
 const lang = 'en-US';
-const t = locales['en'];
+const t = enTranslations.default;
 ---
 
 <BaseLayout
@@ -81,7 +81,7 @@ const t = locales['en'];
               <h1 class="section-label">All-in-One JSON Viewer</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">{t.smartInputHint}</span>
+                <span class="hint-text">Smart Input: Auto-detects JSON, URL, XML, YAML & 15+ formats</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -168,8 +168,8 @@ const t = locales['en'];
       <!-- 右侧输出区域 -->
       <div class="output-area" id="output-area">
         <div class="output-header">
-          <span class="output-title" id="output-title">{t.outputTitle}</span>
-          <button class="close-output-btn" id="close-output" title={t.closeOutput}>×</button>
+          <span class="output-title" id="output-title">Output Result</span>
+          <button class="close-output-btn" id="close-output" title="Close">×</button>
         </div>
         <div class="output-content" id="output-content">
           <div class="output-editor-wrapper">
