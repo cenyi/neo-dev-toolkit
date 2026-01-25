@@ -116,7 +116,14 @@ export const locales = {
     tutorialStep5Action5: "JSON to Excel: Export JSON to Excel, XML, TS",
     tutorialStep6Title: "JSON Viewer & History",
     tutorialStep6Desc: "Access recent JSON files via History. JSON viewer stores data locally for privacy. 100% browser-based processing",
-    tutorialStep6Privacy: "Privacy: All JSON processing in-browser. No server upload. Secure JSON tools"
+    tutorialStep6Privacy: "Privacy: All JSON processing in-browser. No server upload. Secure JSON tools",
+    deleteConfirm: "Are you sure you want to delete this record?",
+    noHistory: "No history records",
+    copiedSuccess: "Copied to clipboard!",
+    copyFailed: "Copy failed, please try again",
+    historyCleared: "History cleared",
+    recordDeleted: "Record deleted",
+    convertedFrom: "Converted from"
   },
   zh: {
     title: "JSON格式化工具",
@@ -234,6 +241,13 @@ export const locales = {
     tutorialStep5Action5: "JSON转Excel：导出JSON到Excel、XML、TS",
     tutorialStep6Title: "JSON查看器与历史记录",
     tutorialStep6Desc: "通过历史记录访问最近的JSON文件。JSON查看器本地存储数据保护隐私。100%浏览器端处理",
-    tutorialStep6Privacy: "隐私：所有JSON处理在浏览器中进行。无服务器上传。安全的JSON工具"
+    tutorialStep6Privacy: "隐私：所有JSON处理在浏览器中进行。无服务器上传。安全的JSON工具",
+    deleteConfirm: "确定要删除这条记录吗？",
+    noHistory: "暂无历史记录",
+    copiedSuccess: "已复制到剪贴板！",
+    copyFailed: "复制失败，请重试",
+    historyCleared: "历史记录已清除",
+    recordDeleted: "记录已删除",
+    convertedFrom: "已从"
   }
 };

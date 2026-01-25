@@ -2145,6 +2145,312 @@ const t = locales['zh'];
     }
   }
 
+  // ============ 输入类型检测和解析函数 ============
+
+  // 检测输入类型
+  function detectInputType(inputText) {
+    const trimmed = inputText.trim();
+
+    // 检测是否为URL参数
+    if (trimmed.includes('?') || /^\w+=/.test(trimmed)) {
+      return 'urlparams';
+    }
+
+    // 检测是否为XML
+    if (trimmed.startsWith('<?xml') || trimmed.startsWith('<!DOCTYPE') || /^<[\w-]+/.test(trimmed)) {
+      return 'xml';
+    }
+
+    // 检测是否为YAML
+    if (/^[\w-]+:\s*\n/.test(trimmed) || /^[\w-]+:\s*\S+/.test(trimmed)) {
+      // 简单的YAML特征：包含键值对，使用冒号分隔
+      // 排除JSON（JSON已经被JSON.parse处理过了）
+      try {
+        JSON.parse(trimmed);
+        return 'json';
+      } catch {
+        return 'yaml';
+      }
+    }
+
+    // 默认尝试JSON
+    return 'json';
+  }
+
+  // 解析URL参数为JSON对象
+  function parseUrlParams(inputText) {
+    const result = {};
+
+    // 移除URL前面的部分，只保留查询字符串
+    let queryString = inputText.trim();
+    const questionMarkIndex = queryString.indexOf('?');
+    if (questionMarkIndex !== -1) {
+      queryString = queryString.substring(questionMarkIndex + 1);
+    }
+
+    // 分割参数
+    const pairs = queryString.split('&');
+
+    for (const pair of pairs) {
+      if (!pair) continue;
+
+      let [key, value] = pair.split('=');
+
+      // 解码URL编码
+      if (key) {
+        key = decodeURIComponent(key.replace(/\+/g, ' '));
+      }
+      if (value !== undefined) {
+        value = decodeURIComponent(value.replace(/\+/g, ' '));
+      } else {
+        value = '';
+      }
+
+      // 尝试将值转换为数字或布尔值
+      if (value === 'true') {
+        value = true;
+      } else if (value === 'false') {
+        value = false;
+      } else if (!isNaN(value) && value !== '') {
+        const num = parseFloat(value);
+        if (!isNaN(num)) {
+          value = num;
+        }
+      }
+
+      // 处理重复的键（转换为数组）
+      if (key in result) {
+        if (!Array.isArray(result[key])) {
+          result[key] = [result[key]];
+        }
+        result[key].push(value);
+      } else {
+        result[key] = value;
+      }
+    }
+
+    return result;
+  }
+
+  // 解析XML为JSON对象
+  function parseXml(inputText) {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(inputText, 'text/xml');
+
+    // 检查解析错误
+    const parseError = xmlDoc.getElementsByTagName('parsererror');
+    if (parseError.length > 0) {
+      throw new Error('Invalid XML format');
+    }
+
+    // 递归转换XML节点为JSON
+    function xmlTojson(node) {
+      // 文本节点
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent.trim();
+        return text;
+      }
+
+      // 元素节点
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const obj = {};
+
+        // 处理属性
+        if (node.attributes) {
+          for (let i = 0; i < node.attributes.length; i++) {
+            const attr = node.attributes[i];
+            obj['@' + attr.name] = attr.value;
+          }
+        }
+
+        // 处理子节点
+        const children = {};
+        let hasChildren = false;
+
+        for (let i = 0; i < node.childNodes.length; i++) {
+          const child = node.childNodes[i];
+
+          if (child.nodeType === Node.TEXT_NODE) {
+            const text = child.textContent.trim();
+            if (text) {
+              // 如果只有文本内容，直接返回
+              if (Object.keys(obj).length === 0) {
+                return text;
+              }
+              obj['#text'] = text;
+            }
+          } else if (child.nodeType === Node.ELEMENT_NODE) {
+            hasChildren = true;
+            const childName = child.nodeName;
+            const childValue = xmlTojson(child);
+
+            if (childName in children) {
+              // 重复的节点转换为数组
+              if (!Array.isArray(children[childName])) {
+                children[childName] = [children[childName]];
+              }
+              children[childName].push(childValue);
+            } else {
+              children[childName] = childValue;
+            }
+          }
+        }
+
+        // 合并属性和子节点
+        if (hasChildren) {
+          Object.assign(obj, children);
+        }
+
+        // 如果只有属性，返回对象
+        // 如果属性为空且只有一个子节点，返回子节点
+        if (Object.keys(obj).length === 0) {
+          return null;
+        }
+
+        return obj;
+      }
+
+      return null;
+    }
+
+    // 从根元素开始转换
+    const rootElement = xmlDoc.documentElement;
+    const result = {};
+    result[rootElement.nodeName] = xmlTojson(rootElement);
+
+    return result;
+  }
+
+  // 解析YAML为JSON对象（简化版，支持常用YAML语法）
+  function parseYaml(inputText) {
+    const lines = inputText.split('\n');
+    const root = {};
+    const stack = [{ obj: root, indent: -1 }];
+
+    for (let i = 0; i < lines.length; i++) {
+      let line = lines[i];
+      const indent = line.search(/\S/);
+
+      if (indent === -1) continue; // 空行
+
+      // 回退到正确的层级
+      while (stack.length > 1 && stack[stack.length - 1].indent >= indent) {
+        stack.pop();
+      }
+
+      const current = stack[stack.length - 1].obj;
+
+      // 移除注释
+      const commentIndex = line.indexOf('#');
+      if (commentIndex !== -1) {
+        line = line.substring(0, commentIndex);
+      }
+
+      // 解析键值对
+      const colonIndex = line.indexOf(':');
+      if (colonIndex === -1) continue;
+
+      const key = line.substring(indent, colonIndex).trim();
+      let valueStr = line.substring(colonIndex + 1).trim();
+
+      // 处理不同的值类型
+      let value;
+      if (!valueStr || valueStr === '') {
+        // 空值，可能是对象或数组的开始
+        // 检查下一行来判断
+        if (i + 1 < lines.length) {
+          const nextLine = lines[i + 1];
+          const nextIndent = nextLine.search(/\S/);
+
+          if (nextIndent > indent) {
+            // 下一行缩进更大，表示这是一个对象/数组
+            value = nextLine.trim().startsWith('-') ? [] : {};
+            stack.push({ obj: value, indent: indent });
+          } else {
+            value = null;
+          }
+        } else {
+          value = null;
+        }
+      } else if (valueStr.startsWith('[') && valueStr.endsWith(']')) {
+        // 内联数组
+        try {
+          value = JSON.parse(valueStr);
+        } catch {
+          value = valueStr;
+        }
+      } else if (valueStr.startsWith('{') && valueStr.endsWith('}')) {
+        // 内联对象
+        try {
+          value = JSON.parse(valueStr);
+        } catch {
+          value = valueStr;
+        }
+      } else if (valueStr === 'true' || valueStr === 'false') {
+        // 布尔值
+        value = valueStr === 'true';
+      } else if (valueStr === 'null' || valueStr === '~') {
+        // null值
+        value = null;
+      } else if (valueStr.startsWith('"') || valueStr.startsWith("'")) {
+        // 带引号的字符串
+        value = valueStr.slice(1, -1);
+      } else if (!isNaN(valueStr)) {
+        // 数字
+        value = parseFloat(valueStr);
+      } else if (valueStr.startsWith('|') || valueStr.startsWith('>')) {
+        // 多行字符串
+        let multiLine = '';
+        let j = i + 1;
+        while (j < lines.length) {
+          const nextLine = lines[j];
+          const nextIndent = nextLine.search(/\S/);
+          if (nextIndent <= indent) break;
+          multiLine += (multiLine ? '\n' : '') + nextLine.trim();
+          j++;
+        }
+        value = multiLine;
+        i = j - 1;
+      } else {
+        // 普通字符串
+        value = valueStr;
+      }
+
+      // 处理数组项（以-开头）
+      if (key.startsWith('-')) {
+        const arrayKey = key.substring(1).trim();
+        if (!Array.isArray(current)) {
+          // 转换当前对象为数组
+          const temp = {};
+          Object.assign(temp, current);
+          const parentArray = [];
+          if (Object.keys(temp).length > 0) {
+            parentArray.push(temp);
+          }
+          // 这里需要特殊情况处理，简化处理
+          if (arrayKey) {
+            if (Array.isArray(current)) {
+              current.push({ [arrayKey]: value });
+            } else {
+              current[arrayKey] = value;
+            }
+          } else {
+            if (Array.isArray(current)) {
+              current.push(value);
+            } else {
+              const arr = [value];
+              Object.assign(current, arr);
+            }
+          }
+        }
+      } else {
+        current[key] = value;
+      }
+    }
+
+    return root;
+  }
+
   // 自动格式化函数
   function autoFormatJson() {
     const inputText = getEditorContent().trim();
@@ -2154,8 +2460,29 @@ const t = locales['zh'];
     }
 
     try {
-      // 尝试解析JSON
-      const parsed = JSON.parse(inputText);
+      // 检测输入类型
+      const inputType = detectInputType(inputText);
+
+      let parsed;
+      let converted = false;
+
+      // 根据类型解析
+      if (inputType === 'json') {
+        parsed = JSON.parse(inputText);
+      } else if (inputType === 'urlparams') {
+        parsed = parseUrlParams(inputText);
+        converted = true;
+      } else if (inputType === 'xml') {
+        parsed = parseXml(inputText);
+        converted = true;
+      } else if (inputType === 'yaml') {
+        parsed = parseYaml(inputText);
+        converted = true;
+      } else {
+        // 默认尝试JSON
+        parsed = JSON.parse(inputText);
+      }
+
       // 格式化JSON
       const formatted = JSON.stringify(parsed, null, 2);
 
@@ -2175,13 +2502,23 @@ const t = locales['zh'];
         if (scrollTop !== null && editor) {
           editor.setScrollTop(scrollTop);
         }
+
+        // 如果转换成功，显示提示
+        if (converted) {
+          const typeNames = {
+            'urlparams': 'URL 参数',
+            'xml': 'XML',
+            'yaml': 'YAML'
+          };
+          showToast(`已从 ${typeNames[inputType]} 转换为 JSON`);
+        }
       }
 
       // 保存到历史记录
       saveToHistory(formatted);
     } catch (e) {
       // 解析失败，不做处理
-      console.debug('JSON parsing error:', e);
+      console.debug('Parsing error:', e);
     }
   }
 
@@ -2417,14 +2754,14 @@ const t = locales['zh'];
     const extractFnStr = document.getElementById('extract-fn').value.trim();
 
     if (!extractFnStr) {
-      alert(translations.enterExtractionFn || '请输入提取函数');
+      showToast(translations.enterExtractionFn || '请输入提取函数');
       return;
     }
 
     try {
       const inputText = getEditorContent();
       if (!inputText.trim()) {
-        alert(translations.enterData || '请输入数据');
+        showToast(translations.enterData || '请输入数据');
         return;
       }
 
@@ -2435,7 +2772,7 @@ const t = locales['zh'];
       // 只有在应用提取函数后才显示输出框
       showJsonResult(result, '提取结果');
     } catch (error) {
-      alert((translations.extractionError || '提取错误') + ': ' + error.message);
+      showToast((translations.extractionError || '提取错误') + ': ' + error.message);
     }
   }
 
@@ -2496,7 +2833,7 @@ const t = locales['zh'];
     try {
       const inputContent = getEditorContent().trim();
       if (!inputContent) {
-        alert('请输入要处理的JSON数据');
+        showToast('请输入要处理的JSON数据');
         return;
       }
       
@@ -2606,27 +2943,40 @@ const t = locales['zh'];
     // 将Set转换为数组
     const headerArray = Array.from(headers);
 
+    // 辅助函数：将任意值转换为CSV字符串
+    function valueToCsvString(value) {
+      // 处理null和undefined
+      if (value === null || value === undefined) {
+        return '';
+      }
+
+      // 处理对象和数组（转换为JSON字符串）
+      if (typeof value === 'object') {
+        value = JSON.stringify(value);
+      }
+
+      // 转换为字符串
+      let str = String(value);
+
+      // 转义引号（将"变成""）
+      str = str.replace(/"/g, '""');
+
+      // 如果包含逗号、引号、换行符，用引号包裹
+      if (str.includes(',') || str.includes('"') || str.includes('\n') || str.includes('\r')) {
+        str = `"${str}"`;
+      }
+
+      return str;
+    }
+
     // 生成CSV内容
     let csv = headerArray.join(',') + '\n';
 
     // 遍历数组生成CSV行
     jsonArray.forEach(item => {
       const row = headerArray.map(header => {
-        let value = item[header];
-        // 处理空值
-        if (value === null || value === undefined) {
-          value = '';
-        }
-        // 处理字符串包含逗号、引号或换行符的情况
-        if (typeof value === 'string') {
-          // 转义引号
-          value = value.replace(/"/g, '""');
-          // 如果包含逗号、引号或换行符，用引号包裹
-          if (value.includes(',') || value.includes('"') || value.includes('\n') || value.includes('\r')) {
-            value = `"${value}"`;
-          }
-        }
-        return value;
+        const value = item[header];
+        return valueToCsvString(value);
       });
       csv += row.join(',') + '\n';
     });
@@ -2792,7 +3142,7 @@ const t = locales['zh'];
     const history = getHistory();
     
     if (history.length === 0) {
-      alert('暂无历史记录');
+      showToast('暂无历史记录');
       return;
     }
     
@@ -3121,15 +3471,15 @@ const t = locales['zh'];
         
         deleteBtn.onclick = (e) => {
           e.stopPropagation();
-          if (confirm('确定要删除这条记录吗？')) {
+          if (confirm(translations.deleteConfirm || '确定要删除这条记录吗？')) {
             const updatedHistory = history.filter(h => h.id !== item.id);
             localStorage.setItem(HISTORY_KEY, JSON.stringify(updatedHistory));
             // 更新表格
-            const filteredHistory = searchInput.value 
+            const filteredHistory = searchInput.value
               ? updatedHistory.filter(h => h.data.includes(searchInput.value))
               : updatedHistory;
             addRecordsToTable(filteredHistory);
-            showToast('记录已删除');
+            showToast(translations.recordDeleted || '记录已删除');
           }
         };
         
