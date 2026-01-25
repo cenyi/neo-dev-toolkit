@@ -97,6 +97,7 @@ export function isRTL(locale) {
   return config.rtlLocales.includes(locale);
 }
 
+export { translations as locales };
 export default {
   initI18n,
   t,
@@ -106,5 +107,6 @@ export default {
   getAvailableLocales,
   getLocaleInfo,
   isRTL,
-  config
+  config,
+  translations
 };
