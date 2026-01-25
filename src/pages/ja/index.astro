@@ -1,31 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 import { locales } from '../../i18n/locales.js';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 
-// 中文首页，固定使用中文语言
-const lang = 'zh-CN';
-const t = locales['zh'];
+// JA 首页，固定使用ja语言
+const lang = 'ja-JP';
+const t = locales['ja'];
 ---
 
 <BaseLayout
-  title="JSON工具 - 格式化、对比、转换、校验在线工具"
+  title="JSONツール - フォーマット、比較・変換 | オンライン"
   lang={lang}
-  description="免费JSON工具：格式化、校验、对比、转换JSON（支持CSV/Excel/XML/YAML）。100%浏览器本地运行，数据安全隐私保护。在线JSON diff、美化、压缩、查看器。"
-  keywords="JSON格式化,JSON校验,JSON对比,JSON diff,JSON压缩,JSON转CSV,JSON转Excel,CSV转JSON,Excel转JSON,JSON转XML,JSON转YAML,JSON转TypeScript,JSON转表格,JSON转义,stringify,JSON美化,JSON查看器,JSON编辑器,JSON解析器,JSON工具,URL参数解析,JSON在线对比,JSON pretty print,XML转JSON,YAML转JSON,字符串转JSON,文本转JSON,HTML转JSON,PDF转JSON,图片转JSON,XLSX转JSON,json2video,json2csv,jsoncompare,jsondiff,jsonminifier,jsonview,jsonrpc,jsonschema,jsonata,json5,jsonc,nlohmann json,python json,mysql json,在线JSON工具,免费JSON格式化,JSON检查器,JSON分析器,JSON转换器">
-  <div slot="header">
-    <LanguageSwitcher currentLocale="zh" />
-  </div>
+  description="無料のオンラインJSONツール：フォーマット、検証、比較、CSV、Excel、XML、YAMLへの変換。ブラウザベースで安全。JSON diff、圧縮、beautifier、パーサー。"
+  keywords="JSONフォーマット,JSONバリデータ,JSONパーサー,JSON比較,JSON diff,JSON最小化,JSON→CSV,JSON→Excel,JSONツール">
   <Sidebar slot="sidebar" t={t} />
+  <div slot="header">
+    <LanguageSwitcher currentLocale="ja" />
+  </div>
 
   <!-- Schema.org 结构化数据用于 SEO & GEO -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "JSON格式化工具",
-    "description": "免费的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，提供字段提取、TypeScript接口生成等功能。",
-    "url": "https://tojsons.com/zh",
+    "name": "JSONツール - フォーマット、比較・変換",
+    "description": "無料のオンラインJSONツール：フォーマット、検証、比較、CSV、Excel、XML、YAMLへの変換。ブラウザベースで安全。",
+    "url": "https://tojsons.com/ja",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -34,18 +34,18 @@ const t = locales['zh'];
       "priceCurrency": "CNY"
     },
     "featureList": [
-      "JSON格式化和验证",
-      "URL参数解析",
-      "XML转JSON",
-      "YAML转JSON",
-      "JavaScript字段提取",
-      "TypeScript接口生成",
-      "JSON转XML",
-      "JSON压缩",
-      "JSON转义",
-      "移除注释"
+      "JSONのフォーマットと検証",
+      "URLパラメータの解析",
+      "XMLからJSON",
+      "YAMLからJSON",
+      "JavaScriptフィールド抽出",
+      "TypeScriptインターフェース生成",
+      "JSONからXML",
+      "JSON圧縮",
+      "JSONエスケープ",
+      "コメント削除"
     ],
-    "browserRequirements": "需要JavaScript支持。兼容所有现代浏览器。",
+    "browserRequirements": "JavaScriptサポートが必要。すべての最新ブラウザに対応。",
     "softwareVersion": "1.0.0",
     "author": {
       "@type": "Organization",
@@ -78,10 +78,10 @@ const t = locales['zh'];
           <!-- 两个独立编辑器 -->
           <div class="input-section">
             <div class="section-header-row">
-              <h1 class="section-label">一体化 JSON 工具</h1>
+              <h1 class="section-label">オールインワン JSON ツール</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">超级智能输入：自动识别 JSON、URL、XML、YAML等15+种格式</span>
+                <span class="hint-text">スマート入力：JSON、URL、XML、YAMLなど15種類以上のフォーマットを自動検出</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -91,7 +91,7 @@ const t = locales['zh'];
 
           <!-- 比较模式：第二个编辑器 -->
           <div class="input-section compare-editor hidden" id="compare-section">
-            <h2 class="section-label">{t.rightJson}</h2>
+            <h2 class="section-label">右側JSON（比較用）</h2>
             <div class="input-editor-wrapper">
               <div id="monaco-compare-container" class="monaco-editor-container"></div>
             </div>
@@ -103,14 +103,14 @@ const t = locales['zh'];
 
         <div class="extraction-section">
           <div class="extraction-controls">
-            <label for="extract-fn">📊 {t.extractionLabel}</label>
+            <label for="extract-fn">📊 フィールド抽出</label>
             <input
               type="text"
               id="extract-fn"
               placeholder={t.extractionPlaceholder}
             />
-            <button id="apply-extract">{t.apply}</button>
-            <button id="clear-extract-fn">{t.clear}</button>
+            <button id="apply-extract">適用</button>
+            <button id="clear-extract-fn">クリア</button>
           </div>
         </div>
 
@@ -152,7 +152,7 @@ const t = locales['zh'];
           <span class="button-separator">|</span>
 
           <!-- 其他 -->
-          <button id="clear-btn">{t.clear}</button>
+          <button id="clear-btn">クリア</button>
           <button id="history-btn">{t.history}</button>
           <select id="font-size-select" title="字体大小">
             <option value="11">11px</option>
@@ -168,8 +168,8 @@ const t = locales['zh'];
       <!-- 右侧输出区域 -->
       <div class="output-area" id="output-area">
         <div class="output-header">
-          <span class="output-title" id="output-title">输出结果</span>
-          <button class="close-output-btn" id="close-output" title="关闭">×</button>
+          <span class="output-title" id="output-title">出力結果</span>
+          <button class="close-output-btn" id="close-output" title="閉じる">×</button>
         </div>
         <div class="output-content" id="output-content">
           <div class="output-editor-wrapper">
@@ -320,82 +320,82 @@ const t = locales['zh'];
       </div>
     </div>
 
-    <!-- 支持的功能 Section -->
+    <!-- サポート機能セクション -->
     <div class="supported-formats-section">
       <div class="section-header">
-        <h2>支持的JSON转换功能</h2>
-        <p>一站式JSON工具集，满足您的所有JSON处理需求</p>
+        <h2>サポートされるJSON変換機能</h2>
+        <p>すべてのJSON処理ニーズに対応する統合JSONツールキット</p>
       </div>
       <div class="formats-grid">
         <div class="format-category">
-          <h3>📊 JSON格式化</h3>
+          <h3>📊 JSONフォーマット</h3>
           <ul>
-            <li>JSON格式化 (JSON Formatter)</li>
-            <li>JSON美化 (JSON Beautifier)</li>
-            <li>JSON压缩 (JSON Minify)</li>
-            <li>JSON校验 (JSON Validator)</li>
-            <li>JSON转义 (JSON Escape)</li>
-            <li>JSON查看器 (JSON Viewer)</li>
+            <li>JSONフォーマッター (JSON Formatter)</li>
+            <li>JSONビューティファイア (JSON Beautifier)</li>
+            <li>JSONミニファイ (JSON Minify)</li>
+            <li>JSONバリデーター (JSON Validator)</li>
+            <li>JSONエスケープ (JSON Escape)</li>
+            <li>JSONビューアー (JSON Viewer)</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔄 JSON转换</h3>
+          <h3>🔄 JSON変換</h3>
           <ul>
-            <li>JSON转CSV (JSON to CSV Converter)</li>
-            <li>JSON转Excel (JSON to Excel)</li>
-            <li>JSON转XML (JSON to XML)</li>
-            <li>JSON转YAML (JSON to YAML)</li>
-            <li>JSON转TypeScript (JSON to TS)</li>
-            <li>JSON转表格 (JSON to Table)</li>
+            <li>JSONをCSVに変換 (JSON to CSV Converter)</li>
+            <li>JSONをExcelに変換 (JSON to Excel)</li>
+            <li>JSONをXMLに変換 (JSON to XML)</li>
+            <li>JSONをYAMLに変換 (JSON to YAML)</li>
+            <li>JSONをTypeScriptに変換 (JSON to TS)</li>
+            <li>JSONをテーブルに変換 (JSON to Table)</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>➡️ 转换为JSON</h3>
+          <h3>➡️ JSONに変換</h3>
           <ul>
-            <li>CSV转JSON (CSV to JSON)</li>
-            <li>Excel转JSON (Excel to JSON)</li>
-            <li>XML转JSON (XML to JSON)</li>
-            <li>YAML转JSON (YAML to JSON)</li>
-            <li>URL参数转JSON (URL Params to JSON)</li>
-            <li>字符串转JSON (String to JSON)</li>
+            <li>CSVをJSONに変換 (CSV to JSON)</li>
+            <li>ExcelをJSONに変換 (Excel to JSON)</li>
+            <li>XMLをJSONに変換 (XML to JSON)</li>
+            <li>YAMLをJSONに変換 (YAML to JSON)</li>
+            <li>URLパラメーターをJSONに変換 (URL Params to JSON)</li>
+            <li>文字列からJSONに変換 (String to JSON)</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔧 JSON工具</h3>
+          <h3>🔧 JSONツール</h3>
           <ul>
-            <li>JSON对比 (JSON Compare / JSON Diff)</li>
-            <li>JSON在线对比 (Compare JSON Online)</li>
-            <li>JSON字段提取 (Field Extraction)</li>
-            <li>JSON路径查找 (JSON Path Finder)</li>
-            <li>JSON历史记录 (JSON History)</li>
-            <li>JSON注释移除 (Remove Comments)</li>
+            <li>JSON比較 (JSON Compare / JSON Diff)</li>
+            <li>オンラインJSON比較 (Compare JSON Online)</li>
+            <li>JSONフィールド抽出 (Field Extraction)</li>
+            <li>JSONパスファインダー (JSON Path Finder)</li>
+            <li>JSON履歴 (JSON History)</li>
+            <li>JSONコメント削除 (Remove Comments)</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>💻 开发者工具</h3>
+          <h3>💻 開発者ツール</h3>
           <ul>
-            <li>TypeScript接口生成 (TS Interface)</li>
+            <li>TypeScriptインターフェース生成 (TS Interface)</li>
             <li>JSON Schema生成器</li>
-            <li>JSON代码示例</li>
-            <li>JSON语法高亮</li>
-            <li>JSON错误检测 (JSON Error Check)</li>
-            <li>JSON行号显示</li>
+            <li>JSONコード例</li>
+            <li>JSON構文の強調表示</li>
+            <li>JSONエラーチェック (JSON Error Check)</li>
+            <li>JSON行番号表示</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔒 安全特性</h3>
+          <h3>🔒 セキュリティ機能</h3>
           <ul>
-            <li>100%浏览器运行 (Browser-based)</li>
-            <li>数据本地处理 (Local Processing)</li>
-            <li>无需上传服务器 (No Server Upload)</li>
-            <li>离线可用 (Works Offline)</li>
-            <li>隐私保护 (Privacy First)</li>
-            <li>安全加密 (Secure Processing)</li>
+            <li>100%ブラウザベース (Browser-based)</li>
+            <li>ローカル処理 (Local Processing)</li>
+            <li>サーバーアップロード不要 (No Server Upload)</li>
+            <li>オフライン対応 (Works Offline)</li>
+            <li>プライバシー優先 (Privacy First)</li>
+            <li>安全な処理 (Secure Processing)</li>
           </ul>
         </div>
       </div>
       <div class="formats-note">
-        <p>💡 <strong>提示：</strong> 所有JSON处理均在浏览器本地完成，支持大型JSON文件，提供语法高亮、错误提示、智能折叠等功能。适用于开发者、数据分析师、API测试等场景。</p>
+        <p>💡 <strong>ヒント：</strong> すべてのJSON処理はブラウザ内でローカルに完了します。大きなJSONファイルをサポートし、構文の強調表示、エラーメッセージ、スマートな折りたたみなどの機能を提供します。開発者、データアナリスト、APIテストなどに最適です。</p>
       </div>
     </div>
 
@@ -494,39 +494,39 @@ const t = locales['zh'];
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "如何格式化和验证JSON",
-    "description": "学习如何使用我们的免费在线JSON查看器来格式化、验证和转换JSON数据。",
+    "name": "JSONのフォーマットと検証方法",
+    "description": "無料のオンラインJSONビューアーを使用してJSONデータをフォーマット、検証、変換する方法を学びます。",
     "step": [
       {
         "@type": "HowToStep",
-        "name": "粘贴您的JSON数据",
-        "text": "将您的JSON、URL参数、XML或YAML数据粘贴到输入编辑器中。"
+        "name": "JSONデータを貼り付け",
+        "text": "JSON、URLパラメータ、XML、またはYAMLデータを入力エディタに貼り付けます。"
       },
       {
         "@type": "HowToStep",
-        "name": "自动格式检测",
-        "text": "工具会自动检测您的输入格式并将其转换为JSON。"
+        "name": "自動フォーマット検出",
+        "text": "ツールが入力フォーマットを自動的に検出し、JSONに変換します。"
       },
       {
         "@type": "HowToStep",
-        "name": "查看格式化的JSON",
-        "text": "查看带有语法高亮和行号的精美格式化JSON。"
+        "name": "フォーマットされたJSONを表示",
+        "text": "シンタックスハイライトと行番号付きで美しくフォーマットされたJSONを表示します。"
       },
       {
         "@type": "HowToStep",
-        "name": "验证JSON",
-        "text": "任何JSON错误都会被高亮显示，并给出具体的行号和错误信息。"
+        "name": "JSONを検証",
+        "text": "JSONエラーは正確な行番号とエラーメッセージでハイライト表示されます。"
       },
       {
         "@type": "HowToStep",
-        "name": "提取或转换",
-        "text": "使用字段提取、转换为XML/YAML/TypeScript，或压缩/复制结果。"
+        "name": "抽出または変換",
+        "text": "フィールド抽出、XML/YAML/TypeScriptへの変換、または結果の圧縮/コピーを使用します。"
       }
     ],
     "tool": [
       {
         "@type": "HowToTool",
-        "name": "JSON Viewer Online"
+        "name": "オンラインJSONビューアー"
       }
     ]
   })} />
@@ -4118,7 +4118,7 @@ const t = locales['zh'];
       // 恢复编辑器标题
       const firstLabel = firstSection.querySelector('.section-label');
       if (firstLabel) {
-        firstLabel.textContent = '一体化 JSON 工具';
+        firstLabel.textContent = 'オールインワン JSON ツール';
       }
 
       // 清除高亮

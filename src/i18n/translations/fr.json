@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "language": "Français",
+    "code": "fr",
+    "direction": "ltr",
+    "version": "1.0.0"
+  },
+  "ui": {
+    "title": "Formateur JSON et Convertisseur Multiformat",
+    "description": "La Boîte à Outils JSON Ultime - Formater, Convertir, Valider JSON en ligne",
+    "keywords": "formateur JSON, validateur JSON, analyseur JSON, comparer JSON, diff JSON, minifier JSON, JSON en CSV, JSON en Excel, CSV en JSON, Excel en JSON, JSON en XML, JSON en YAML, JSON en TypeScript, diff JSON, échapper JSON, embellisseur JSON, visualiseur JSON, éditeur JSON, outils JSON"
+  },
+  "buttons": {
+    "collapseAll": "Réduire Tout",
+    "expandAll": "Développer Tout",
+    "removeComments": "Supprimer les Commentaires",
+    "compressCopy": "Comprimer JSON et Copier",
+    "escapeCopy": "Échapper JSON et Copier",
+    "jsonToXml": "JSON vers XML",
+    "jsonToYaml": "JSON vers YAML",
+    "jsonToTs": "JSON vers TypeScript",
+    "jsonToCsv": "JSON vers CSV",
+    "jsonToExcel": "JSON vers Excel",
+    "jsonToHtml": "JSON vers HTML",
+    "jsonToTable": "JSON vers Tableau",
+    "jsonToSchema": "Schéma JSON",
+    "jsonToPdf": "JSON vers PDF",
+    "jsonToDart": "JSON vers Dart",
+    "jsonToC": "JSON vers C",
+    "jsonToGo": "JSON vers Go",
+    "jsonToRust": "JSON vers Rust",
+    "jsonToPython": "JSON vers Python",
+    "jsonCompare": "Comparer JSON",
+    "clear": "Effacer",
+    "history": "Historique",
+    "fontSize": "Taille de Police"
+  },
+  "messages": {
+    "yamlSuccess": "YAML copié dans le presse-papiers!",
+    "tableSuccess": "Tableau généré avec succès!",
+    "schemaSuccess": "Schéma JSON généré avec succès!",
+    "htmlSuccess": "HTML copié dans le presse-papiers!",
+    "pdfSuccess": "Export PDF démarré!",
+    "dartSuccess": "Code Dart copié dans le presse-papiers!",
+    "cSuccess": "Code C copié dans le presse-papiers!",
+    "goSuccess": "Code Go copié dans le presse-papiers!",
+    "rustSuccess": "Code Rust copié dans le presse-papiers!",
+    "pythonSuccess": "Code Python copié dans le presse-papiers!",
+    "parsingError": "Erreur",
+    "enterExtractionFn": "Veuillez entrer une fonction d'extraction",
+    "enterData": "Veuillez entrer des données à traiter"
+  },
+  "placeholders": {
+    "inputPlaceholder": "Collez vos données JSON, paramètres URL, XML ou YAML ici...",
+    "extractionPlaceholder": "ex: obj => obj.nom ou obj => obj.données"
+  },
+  "hints": {
+    "smartInput": "Entrée Intelligente: Détecte automatiquement JSON, URL, XML, YAML et 15+ formats"
+  },
+  "features": {
+    "title": "Outils et Fonctionnalités JSON Puissants",
+    "subtitle": "Kit d'outils complet de formateur, validateur, convertisseur et analyseur JSON - Formater, Comparer, Convertir, Minifier et Embellir JSON",
+    "feature1Title": "Formateur et Validateur JSON",
+    "feature1Desc": "Formatez et validez JSON avec coloration syntaxique, détection d'erreurs et formatage automatique. Meilleur formateur JSON en ligne",
+    "feature2Title": "JSON vers CSV, Excel, XML, YAML",
+    "feature2Desc": "Convertissez JSON en CSV, Excel, XML, YAML et TypeScript. Prend également en charge CSV vers JSON, Excel vers JSON",
+    "feature3Title": "Outil de Comparaison et Diff JSON",
+    "feature3Desc": "Comparez deux fichiers JSON, mettez en surbrillance les différences avec le vérificateur de diff JSON. Outil de comparaison JSON en ligne",
+    "feature4Title": "Minificateur et Embellisseur JSON",
+    "feature4Desc": "Minifiez JSON pour la production, embellissez JSON pour la lecture. Échapper JSON, déséchapper et manipulation de chaînes",
+    "feature5Title": "Analyseur et Convertisseur JSON",
+    "feature5Desc": "Analysez les paramètres URL, XML, YAML vers JSON. Extrayez des champs, générez des interfaces TypeScript et des schémas",
+    "feature6Title": "Visualiseur JSON Sécurisé en Ligne",
+    "feature6Desc": "Visualiseur JSON 100% basé sur le navigateur. Aucune upload de données. Sécurisé, privé et capable de fonctionner hors ligne"
+  },
+  "faq": {
+    "title": "FAQ des Outils JSON - Formateur, Validateur et Convertisseur",
+    "subtitle": "Questions courantes sur le formateur JSON, validateur, convertisseur, analyseur, outil de comparaison et visualiseur JSON. Outils JSON gratuits en ligne",
+    "q1": "Mes données JSON sont-elles sécurisées et privées?",
+    "a1": "Oui! Tout le traitement JSON se produit localement dans votre navigateur. Aucune donnée JSON n'est envoyée vers des serveurs. Outils JSON 100% sécurisés.",
+    "q2": "Quels formats JSON puis-je convertir?",
+    "a2": "Le convertisseur JSON prend en charge: JSON vers CSV, JSON vers Excel, JSON vers XML, JSON vers YAML, JSON vers TypeScript. Aussi CSV vers JSON, Excel vers JSON, XML vers JSON, YAML vers JSON, paramètres URL vers JSON",
+    "q3": "Comment comparer deux fichiers JSON?",
+    "a3": "Utilisez l'outil de comparaison JSON pour voir les différences. Le vérificateur de diff JSON met en évidence les ajouts (vert), les suppressions (rouge) et les modifications (jaune). Comparez JSON en ligne instantanément",
+    "q4": "Puis-je extraire des champs de JSON?",
+    "a4": "Oui! L'analyseur JSON prend en charge l'extraction de champs. Utilisez des fonctions JavaScript comme 'obj => obj.nom' pour extraire des données spécifiques. Parfait pour les réponses d'API JSON",
+    "q5": "Ce formateur JSON est-il gratuit?",
+    "a5": "Oui! Tous les outils JSON sont 100% gratuits: formateur JSON, validateur, minificateur, embellisseur, convertisseur, outil de comparaison. Aucune limitation",
+    "q6": "Puis-je utiliser les outils JSON hors ligne?",
+    "a6": "Oui! Le visualiseur JSON fonctionne hors ligne après chargement. Pas besoin d'internet. Le formateur JSON, validateur, convertisseur fonctionnent tous basés sur le navigateur"
+  }
+}

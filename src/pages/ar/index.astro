@@ -1,31 +1,32 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 import { locales } from '../../i18n/locales.js';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 
-// 中文首页，固定使用中文语言
-const lang = 'zh-CN';
-const t = locales['zh'];
+// AR 首页，固定使用ar语言
+const lang = 'ar-SA';
+const t = locales['ar'];
 ---
 
 <BaseLayout
-  title="JSON工具 - 格式化、对比、转换、校验在线工具"
+  title="أدوات JSON - تنسيق ومقارنة وتحويل | أونلاين"
   lang={lang}
-  description="免费JSON工具：格式化、校验、对比、转换JSON（支持CSV/Excel/XML/YAML）。100%浏览器本地运行，数据安全隐私保护。在线JSON diff、美化、压缩、查看器。"
-  keywords="JSON格式化,JSON校验,JSON对比,JSON diff,JSON压缩,JSON转CSV,JSON转Excel,CSV转JSON,Excel转JSON,JSON转XML,JSON转YAML,JSON转TypeScript,JSON转表格,JSON转义,stringify,JSON美化,JSON查看器,JSON编辑器,JSON解析器,JSON工具,URL参数解析,JSON在线对比,JSON pretty print,XML转JSON,YAML转JSON,字符串转JSON,文本转JSON,HTML转JSON,PDF转JSON,图片转JSON,XLSX转JSON,json2video,json2csv,jsoncompare,jsondiff,jsonminifier,jsonview,jsonrpc,jsonschema,jsonata,json5,jsonc,nlohmann json,python json,mysql json,在线JSON工具,免费JSON格式化,JSON检查器,JSON分析器,JSON转换器">
-  <div slot="header">
-    <LanguageSwitcher currentLocale="zh" />
-  </div>
+  dir="rtl"
+  description="أدوات JSON مجانية عبر الإنترنت: تنسيق والتحقق من صحة ومقارنة وتحويل JSON إلى CSV و Excel و XML و YAML. يعتمد على المتصفح وآمن."
+  keywords="منسق JSON,مدقق JSON,محلل JSON,مقارنة JSON,diff JSON,تضييق JSON,JSON إلى CSV,JSON إلى Excel,أدوات JSON">
   <Sidebar slot="sidebar" t={t} />
+  <div slot="header">
+    <LanguageSwitcher currentLocale="ar" />
+  </div>
 
   <!-- Schema.org 结构化数据用于 SEO & GEO -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "JSON格式化工具",
-    "description": "免费的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，提供字段提取、TypeScript接口生成等功能。",
-    "url": "https://tojsons.com/zh",
+    "name": "أدوات JSON - تنسيق ومقارنة وتحويل",
+    "description": "أدوات JSON مجانية عبر الإنترنت: تنسيق والتحقق من صحة ومقارنة وتحويل JSON إلى CSV و Excel و XML و YAML. يعتمد على المتصفح وآمن.",
+    "url": "https://tojsons.com/ar",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -34,16 +35,16 @@ const t = locales['zh'];
       "priceCurrency": "CNY"
     },
     "featureList": [
-      "JSON格式化和验证",
-      "URL参数解析",
-      "XML转JSON",
-      "YAML转JSON",
-      "JavaScript字段提取",
-      "TypeScript接口生成",
-      "JSON转XML",
-      "JSON压缩",
-      "JSON转义",
-      "移除注释"
+      "تنسيق JSON والتحقق من صحته",
+      "تحليل معلمات URL",
+      "XML إلى JSON",
+      "YAML إلى JSON",
+      "استخراج حقول JavaScript",
+      "توليد واجهات TypeScript",
+      "JSON إلى XML",
+      "ضغط JSON",
+      "هروب JSON",
+      "إزالة التعليقات"
     ],
     "browserRequirements": "需要JavaScript支持。兼容所有现代浏览器。",
     "softwareVersion": "1.0.0",
@@ -78,10 +79,10 @@ const t = locales['zh'];
           <!-- 两个独立编辑器 -->
           <div class="input-section">
             <div class="section-header-row">
-              <h1 class="section-label">一体化 JSON 工具</h1>
+              <h1 class="section-label">أداة JSON شاملة</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">超级智能输入：自动识别 JSON、URL、XML、YAML等15+种格式</span>
+                <span class="hint-text">{t.smartInput}</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -91,7 +92,7 @@ const t = locales['zh'];
 
           <!-- 比较模式：第二个编辑器 -->
           <div class="input-section compare-editor hidden" id="compare-section">
-            <h2 class="section-label">{t.rightJson}</h2>
+            <h2 class="section-label">JSON الأيمن (للمقارنة)</h2>
             <div class="input-editor-wrapper">
               <div id="monaco-compare-container" class="monaco-editor-container"></div>
             </div>
@@ -103,14 +104,14 @@ const t = locales['zh'];
 
         <div class="extraction-section">
           <div class="extraction-controls">
-            <label for="extract-fn">📊 {t.extractionLabel}</label>
+            <label for="extract-fn">📊 استخراج الحقول</label>
             <input
               type="text"
               id="extract-fn"
               placeholder={t.extractionPlaceholder}
             />
-            <button id="apply-extract">{t.apply}</button>
-            <button id="clear-extract-fn">{t.clear}</button>
+            <button id="apply-extract">تطبيق</button>
+            <button id="clear-extract-fn">مسح</button>
           </div>
         </div>
 
@@ -152,7 +153,7 @@ const t = locales['zh'];
           <span class="button-separator">|</span>
 
           <!-- 其他 -->
-          <button id="clear-btn">{t.clear}</button>
+          <button id="clear-btn">مسح</button>
           <button id="history-btn">{t.history}</button>
           <select id="font-size-select" title="字体大小">
             <option value="11">11px</option>
@@ -183,18 +184,18 @@ const t = locales['zh'];
   <!-- HowTo 教程区域 -->
   <div class="tutorial-section">
     <div class="section-header">
-      <h2>{t.tutorialTitle}</h2>
-      <p>{t.tutorialSubtitle}</p>
+      <h2>كيفية استخدام أدوات JSON</h2>
+      <p>تعرف على كيفية تنسيق وتحقق من صحة وتحويل JSON باستخدام أدواتنا المجانية</p>
     </div>
 
     <div class="tutorial-container">
       <div class="tutorial-step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h3>{t.tutorialStep1Title}</h3>
-          <p>{t.tutorialStep1Desc}</p>
+          <h3>لصق البيانات</h3>
+          <p>لصق بيانات JSON أو معلمات URL أو XML أو YAML في مربع الإدخال.</p>
           <div class="step-example">
-            <code set:text={t.tutorialStep1Example}></code>
+            <code>{"name": "مثال", "value": 123}</code>
           </div>
         </div>
       </div>
@@ -202,10 +203,10 @@ const t = locales['zh'];
       <div class="tutorial-step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h3>{t.tutorialStep2Title}</h3>
-          <p>{t.tutorialStep2Desc}</p>
+          <h3>التحقق من التنسيق</h3>
+          <p>سيقوم الأداة تلقائيًا بتنسيق البيانات وكتشاف الأخطاء.</p>
           <div class="tip">
-            <strong>💡 {t.tutorialStep2Tip.split(':')[0]}：</strong> {t.tutorialStep2Tip.split(':')[1]}
+            <strong>💡贴士：</strong> يمكنك استخدام مفتاح القلب Ctrl+Enter لتنسيق تلقائي.
           </div>
         </div>
       </div>
@@ -213,38 +214,38 @@ const t = locales['zh'];
       <div class="tutorial-step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <h3>{t.tutorialStep3Title}</h3>
-          <p set:text={t.tutorialStep3Desc}></p>
+          <h3>عرض النتيجة</h3>
+          <p>شاهد JSON المُنسق مع التمييز البنيوي والخطأ المُبرز.</p>
           <div class="step-example">
-            <code set:text={t.tutorialStep3Example}></code>
+            <code>{"name": "مثال", "value": 123}</code>
           </div>
-          <p class="example-desc" set:text={t.tutorialStep3ExampleDesc}></p>
+          <p class="example-desc">JSON المُنسق مع التمييز البنيوي.</p>
         </div>
       </div>
 
       <div class="tutorial-step">
         <div class="step-number">4</div>
         <div class="step-content">
-          <h3>{t.tutorialStep4Title}</h3>
-          <p>{t.tutorialStep4Desc}</p>
+          <h3>استخراج الحقول</h3>
+          <p>استخدم وظيفة التحديد لاستخراج حقول محددة من JSON.</p>
           <div class="step-example">
-            <pre><code set:text={t.tutorialStep4Example}></code></pre>
+            <pre>obj => obj.name</pre>
           </div>
-          <p class="example-desc" set:text={t.tutorialStep4ExampleDesc}></p>
+          <p class="example-desc">استخراج الحقل "الاسم" من كائن JSON.</p>
         </div>
       </div>
 
       <div class="tutorial-step">
         <div class="step-number">5</div>
         <div class="step-content">
-          <h3>{t.tutorialStep5Title}</h3>
-          <p>{t.tutorialStep5Desc}</p>
+          <h3>تحويل التنسيقات</h3>
+          <p>استخدم أزرار التحويل لتحويل JSON إلى تنسيقات أخرى:</p>
           <ul class="action-list">
-            <li><strong>{t.tutorialStep5Action1.split(':')[0]}：</strong> {t.tutorialStep5Action1.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep5Action2.split(':')[0]}：</strong> {t.tutorialStep5Action2.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep5Action3.split(':')[0]}：</strong> {t.tutorialStep5Action3.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep5Action4.split(':')[0]}：</strong> {t.tutorialStep5Action4.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep5Action5.split(':')[0]}：</strong> {t.tutorialStep5Action5.split(':')[1]}</li>
+            <li><strong>📋 JSON إلى CSV：</strong> تحويل JSON إلى تنسيق CSV</li>
+            <li><strong>📊 JSON إلى Excel：</strong> تحويل JSON إلى ملف Excel</li>
+            <li><strong>🔄 JSON إلى XML：</strong> تحويل JSON إلى تنسيق XML</li>
+            <li><strong>📝 JSON إلى YAML：</strong> تحويل JSON إلى تنسيق YAML</li>
+            <li><strong>💻 JSON إلى TypeScript：</strong> إنشاء واجهات TypeScript من JSON</li>
           </ul>
         </div>
       </div>
@@ -252,10 +253,10 @@ const t = locales['zh'];
       <div class="tutorial-step">
         <div class="step-number">6</div>
         <div class="step-content">
-          <h3>{t.tutorialStep6Title}</h3>
-          <p>{t.tutorialStep6Desc}</p>
+          <h3>الخصوصية والآمان</h3>
+          <p>جميع معالجة JSON تحدث محليًا في متصفحك، دون أي رفع إلى الخوادم.</p>
           <div class="privacy-note">
-            <strong>🔒 {t.tutorialStep6Privacy.split(':')[0]}：</strong> {t.tutorialStep6Privacy.split(':')[1]}
+            <strong>🔒 الخصوصية：</strong> لا يتم تشفير البيانات أو تخزينها على خوادمنا.
           </div>
         </div>
       </div>
@@ -265,8 +266,8 @@ const t = locales['zh'];
   <!-- Features Section -->
     <div class="features-section">
       <div class="section-header">
-        <h2>{t.featuresTitle}</h2>
-        <p>{t.featuresSubtitle}</p>
+        <h2>الميزات الرئيسية</h2>
+        <p>مجموعة أدوات JSON شاملة لجميع احتياجاتك</p>
       </div>
       <div class="features-grid">
         <div class="feature-item">
@@ -402,33 +403,33 @@ const t = locales['zh'];
     <!-- FAQ Section -->
     <div class="faq-section">
       <div class="section-header">
-        <h2>{t.faqTitle}</h2>
-        <p>{t.faqSubtitle}</p>
+        <h2>أسئلة شائعة</h2>
+        <p>إجابات على أسئلة الشائعة حول أدوات JSON</p>
       </div>
       <div class="faq-grid">
         <div class="faq-item">
-          <h3>{t.faq1Question}</h3>
-          <p>{t.faq1Answer}</p>
+          <h3>{t.q1}</h3>
+          <p>{t.a1}</p>
         </div>
         <div class="faq-item">
-          <h3>{t.faq2Question}</h3>
-          <p>{t.faq2Answer}</p>
+          <h3>{t.q2}</h3>
+          <p>{t.a2}</p>
         </div>
         <div class="faq-item">
-          <h3>{t.faq3Question}</h3>
-          <p>{t.faq3Answer}</p>
+          <h3>{t.q3}</h3>
+          <p>{t.a3}</p>
         </div>
         <div class="faq-item">
-          <h3>{t.faq4Question}</h3>
-          <p>{t.faq4Answer}</p>
+          <h3>{t.q4}</h3>
+          <p>{t.a4}</p>
         </div>
         <div class="faq-item">
-          <h3>{t.faq5Question}</h3>
-          <p>{t.faq5Answer}</p>
+          <h3>{t.q5}</h3>
+          <p>{t.a5}</p>
         </div>
         <div class="faq-item">
-          <h3>{t.faq6Question}</h3>
-          <p>{t.faq6Answer}</p>
+          <h3>{t.q6}</h3>
+          <p>{t.a6}</p>
         </div>
       </div>
     </div>
@@ -494,39 +495,39 @@ const t = locales['zh'];
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "如何格式化和验证JSON",
-    "description": "学习如何使用我们的免费在线JSON查看器来格式化、验证和转换JSON数据。",
+    "name": "كيفية تنسيق والتحقق من صحة JSON",
+    "description": "تعلم كيفية استخدام عارض JSON المجاني عبر الإنترنت لتنسيق والتحقق من صحة وتحويل بيانات JSON.",
     "step": [
       {
         "@type": "HowToStep",
-        "name": "粘贴您的JSON数据",
-        "text": "将您的JSON、URL参数、XML或YAML数据粘贴到输入编辑器中。"
+        "name": "الصق بيانات JSON",
+        "text": "الصق بيانات JSON أو معلمات URL أو XML أو YAML في محرر الإدخال."
       },
       {
         "@type": "HowToStep",
-        "name": "自动格式检测",
-        "text": "工具会自动检测您的输入格式并将其转换为JSON。"
+        "name": "الكشف التلقائي عن التنسيق",
+        "text": "سيكتشف الأداة تلقائياً تنسيق الإدخال الخاص بك ويحوله إلى JSON."
       },
       {
         "@type": "HowToStep",
-        "name": "查看格式化的JSON",
-        "text": "查看带有语法高亮和行号的精美格式化JSON。"
+        "name": "عرض JSON المنسق",
+        "text": "اعرض JSON منسقاً بشكل جميل مع تمييز بناء الجملة وأرقام الأسطر."
       },
       {
         "@type": "HowToStep",
-        "name": "验证JSON",
-        "text": "任何JSON错误都会被高亮显示，并给出具体的行号和错误信息。"
+        "name": "التحقق من صحة JSON",
+        "text": "سيتم تمييز أي أخطاء في JSON وإعطاء رقم السطر المحدد ومعلومات الخطأ."
       },
       {
         "@type": "HowToStep",
-        "name": "提取或转换",
-        "text": "使用字段提取、转换为XML/YAML/TypeScript，或压缩/复制结果。"
+        "name": "استخراج أو تحويل",
+        "text": "استخدم استخراج الحقول أو التحويل إلى XML/YAML/TypeScript أو ضغط/نسخ النتيجة."
       }
     ],
     "tool": [
       {
         "@type": "HowToTool",
-        "name": "JSON Viewer Online"
+        "name": "عارض JSON أونلاين"
       }
     ]
   })} />
@@ -4118,7 +4119,7 @@ const t = locales['zh'];
       // 恢复编辑器标题
       const firstLabel = firstSection.querySelector('.section-label');
       if (firstLabel) {
-        firstLabel.textContent = '一体化 JSON 工具';
+        firstLabel.textContent = 'أداة JSON شاملة';
       }
 
       // 清除高亮

@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "language": "English",
+    "code": "en",
+    "direction": "ltr",
+    "version": "1.0.0"
+  },
+  "ui": {
+    "title": "JSON Formatter & Multi-Format Converter",
+    "description": "The Ultimate JSON Toolkit - Format, Convert, Validate JSON online",
+    "keywords": "JSON formatter, JSON validator, JSON parser, JSON compare, JSON diff, JSON minify, JSON to CSV, JSON to Excel, CSV to JSON, Excel to JSON, JSON to XML, JSON to YAML, JSON to TypeScript, JSON diff, JSON escape, JSON beautifier, JSON viewer, JSON editor, JSON tools"
+  },
+  "buttons": {
+    "collapseAll": "Collapse All",
+    "expandAll": "Expand All",
+    "removeComments": "Remove Comments",
+    "compressCopy": "Compress JSON & Copy",
+    "escapeCopy": "Escape & Copy JSON",
+    "jsonToXml": "JSON to XML & Copy",
+    "jsonToYaml": "JSON to YAML & Copy",
+    "jsonToTs": "JSON to TypeScript & Copy",
+    "jsonToCsv": "JSON to CSV & Copy",
+    "jsonToExcel": "JSON to Excel & Copy",
+    "jsonToHtml": "JSON to HTML & Copy",
+    "jsonToTable": "JSON to Table",
+    "jsonToSchema": "JSON Schema",
+    "jsonToPdf": "JSON to PDF",
+    "jsonToDart": "JSON to Dart",
+    "jsonToC": "JSON to C",
+    "jsonToGo": "JSON to Go",
+    "jsonToRust": "JSON to Rust",
+    "jsonToPython": "JSON to Python",
+    "jsonCompare": "JSON Compare",
+    "clear": "Clear",
+    "history": "History",
+    "fontSize": "Font Size"
+  },
+  "messages": {
+    "yamlSuccess": "YAML copied to clipboard!",
+    "tableSuccess": "Table generated successfully!",
+    "schemaSuccess": "JSON Schema generated successfully!",
+    "htmlSuccess": "HTML copied to clipboard!",
+    "pdfSuccess": "PDF export initiated!",
+    "dartSuccess": "Dart code copied to clipboard!",
+    "cSuccess": "C code copied to clipboard!",
+    "goSuccess": "Go code copied to clipboard!",
+    "rustSuccess": "Rust code copied to clipboard!",
+    "pythonSuccess": "Python code copied to clipboard!",
+    "parsingError": "Error",
+    "enterExtractionFn": "Please enter an extraction function",
+    "enterData": "Please enter data to process"
+  },
+  "placeholders": {
+    "inputPlaceholder": "Paste your JSON, URL params, XML, or YAML data here...",
+    "extractionPlaceholder": "e.g., obj => obj.name or obj => obj.data"
+  },
+  "hints": {
+    "smartInput": "Smart Input: Auto-detects JSON, URL, XML, YAML & 15+ formats"
+  },
+  "features": {
+    "title": "Powerful JSON Tools & Features",
+    "subtitle": "Complete JSON formatter, validator, converter & parser toolkit - Format, Compare, Convert, Minify & Beautify JSON",
+    "feature1Title": "JSON Formatter & Validator",
+    "feature1Desc": "Format and validate JSON with syntax highlighting, error detection & auto-formatting. Best JSON formatter online",
+    "feature2Title": "JSON to CSV, Excel, XML, YAML",
+    "feature2Desc": "Convert JSON to CSV, Excel, XML, YAML & TypeScript. Also support CSV to JSON, Excel to JSON conversion",
+    "feature3Title": "JSON Compare & Diff Tool",
+    "feature3Desc": "Compare two JSON files, highlight differences with JSON diff checker. Online JSON comparison tool",
+    "feature4Title": "JSON Minify & Beautifier",
+    "feature4Desc": "Minify JSON for production, beautify JSON for reading. JSON escape, unescape & string manipulation",
+    "feature5Title": "JSON Parser & Converter",
+    "feature5Desc": "Parse URL parameters, XML, YAML to JSON. Extract fields, generate TypeScript interfaces & schemas",
+    "feature6Title": "Secure JSON Viewer Online",
+    "feature6Desc": "100% browser-based JSON viewer. No data uploaded. Secure, private & offline-capable JSON tools"
+  },
+  "faq": {
+    "title": "JSON Tools FAQ - Formatter, Validator & Converter",
+    "subtitle": "Common questions about JSON formatter, validator, converter, parser, compare tool & viewer. Free online JSON tools",
+    "q1": "Is my JSON data secure & private?",
+    "a1": "Yes! All JSON processing happens locally in your browser. No JSON data uploaded to servers. 100% secure JSON tools.",
+    "q2": "What JSON formats can I convert?",
+    "a2": "JSON converter supports: JSON to CSV, JSON to Excel, JSON to XML, JSON to YAML, JSON to TypeScript. Also CSV to JSON, Excel to JSON, XML to JSON, YAML to JSON, URL params to JSON",
+    "q3": "How do I compare two JSON files?",
+    "a3": "Use JSON compare tool to see differences. JSON diff checker highlights additions (green), deletions (red), and changes (yellow). Compare JSON online instantly",
+    "q4": "Can I extract fields from JSON?",
+    "a4": "Yes! JSON parser supports field extraction. Use JavaScript functions like 'obj => obj.name' to extract specific data. Perfect for JSON API responses",
+    "q5": "Is this JSON formatter free?",
+    "a5": "Yes! All JSON tools are 100% free: JSON formatter, validator, minifier, beautifier, converter, compare tool. No limitations",
+    "q6": "Can I use JSON tools offline?",
+    "a6": "Yes! JSON viewer works offline after loading. No internet needed. JSON formatter, validator, converter all work browser-based"
+  }
+}

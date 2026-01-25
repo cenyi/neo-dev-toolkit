@@ -1,51 +1,51 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 import { locales } from '../../i18n/locales.js';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 
-// 中文首页，固定使用中文语言
-const lang = 'zh-CN';
-const t = locales['zh'];
+// RU 首页，固定使用ru语言
+const lang = 'ru-RU';
+const t = locales['ru'];
 ---
 
 <BaseLayout
-  title="JSON工具 - 格式化、对比、转换、校验在线工具"
+  title="JSON инструменты - Форматирование, Сравнение и Конвертация | Онлайн"
   lang={lang}
-  description="免费JSON工具：格式化、校验、对比、转换JSON（支持CSV/Excel/XML/YAML）。100%浏览器本地运行，数据安全隐私保护。在线JSON diff、美化、压缩、查看器。"
-  keywords="JSON格式化,JSON校验,JSON对比,JSON diff,JSON压缩,JSON转CSV,JSON转Excel,CSV转JSON,Excel转JSON,JSON转XML,JSON转YAML,JSON转TypeScript,JSON转表格,JSON转义,stringify,JSON美化,JSON查看器,JSON编辑器,JSON解析器,JSON工具,URL参数解析,JSON在线对比,JSON pretty print,XML转JSON,YAML转JSON,字符串转JSON,文本转JSON,HTML转JSON,PDF转JSON,图片转JSON,XLSX转JSON,json2video,json2csv,jsoncompare,jsondiff,jsonminifier,jsonview,jsonrpc,jsonschema,jsonata,json5,jsonc,nlohmann json,python json,mysql json,在线JSON工具,免费JSON格式化,JSON检查器,JSON分析器,JSON转换器">
-  <div slot="header">
-    <LanguageSwitcher currentLocale="zh" />
-  </div>
+  description="Бесплатные онлайн JSON инструменты: форматирование, валидация, сравнение и конвертация JSON в CSV, Excel, XML, YAML. На базе браузера, безопасно."
+  keywords="JSON форматтер,JSON валидатор,JSON парсер,JSON сравнение,JSON diff,JSON минификатор,JSON в CSV,JSON в Excel,JSON инструменты">
   <Sidebar slot="sidebar" t={t} />
+  <div slot="header">
+    <LanguageSwitcher currentLocale="ru" />
+  </div>
 
-  <!-- Schema.org 结构化数据用于 SEO & GEO -->
+  <!-- Schema.org Структурированные данные для SEO & GEO -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "JSON格式化工具",
-    "description": "免费的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，提供字段提取、TypeScript接口生成等功能。",
-    "url": "https://tojsons.com/zh",
+    "name": "JSON инструменты - Форматирование, Сравнение и Конвертация",
+    "description": "Бесплатные онлайн JSON инструменты: форматирование, валидация, сравнение и конвертация JSON в CSV, Excel, XML, YAML. На базе браузера, безопасно.",
+    "url": "https://tojsons.com/ru",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "CNY"
+      "priceCurrency": "RUB"
     },
     "featureList": [
-      "JSON格式化和验证",
-      "URL参数解析",
-      "XML转JSON",
-      "YAML转JSON",
-      "JavaScript字段提取",
-      "TypeScript接口生成",
-      "JSON转XML",
-      "JSON压缩",
-      "JSON转义",
-      "移除注释"
+      "Форматирование и валидация JSON",
+      "Анализ параметров URL",
+      "XML в JSON",
+      "YAML в JSON",
+      "Извлечение полей JavaScript",
+      "Генерация интерфейсов TypeScript",
+      "JSON в XML",
+      "Сжатие JSON",
+      "Экранирование JSON",
+      "Удаление комментариев"
     ],
-    "browserRequirements": "需要JavaScript支持。兼容所有现代浏览器。",
+    "browserRequirements": "Требуется поддержка JavaScript. Совместимо со всеми современными браузерами.",
     "softwareVersion": "1.0.0",
     "author": {
       "@type": "Organization",
@@ -78,10 +78,10 @@ const t = locales['zh'];
           <!-- 两个独立编辑器 -->
           <div class="input-section">
             <div class="section-header-row">
-              <h1 class="section-label">一体化 JSON 工具</h1>
+              <h1 class="section-label">Универсальный JSON Инструмент</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">超级智能输入：自动识别 JSON、URL、XML、YAML等15+种格式</span>
+                <span class="hint-text">{t.smartInput}</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -91,7 +91,7 @@ const t = locales['zh'];
 
           <!-- 比较模式：第二个编辑器 -->
           <div class="input-section compare-editor hidden" id="compare-section">
-            <h2 class="section-label">{t.rightJson}</h2>
+            <h2 class="section-label">Правый JSON (для сравнения)</h2>
             <div class="input-editor-wrapper">
               <div id="monaco-compare-container" class="monaco-editor-container"></div>
             </div>
@@ -103,14 +103,14 @@ const t = locales['zh'];
 
         <div class="extraction-section">
           <div class="extraction-controls">
-            <label for="extract-fn">📊 {t.extractionLabel}</label>
+            <label for="extract-fn">📊 Извлечение Полей</label>
             <input
               type="text"
               id="extract-fn"
               placeholder={t.extractionPlaceholder}
             />
-            <button id="apply-extract">{t.apply}</button>
-            <button id="clear-extract-fn">{t.clear}</button>
+            <button id="apply-extract">Применить</button>
+            <button id="clear-extract-fn">Очистить</button>
           </div>
         </div>
 
@@ -152,7 +152,7 @@ const t = locales['zh'];
           <span class="button-separator">|</span>
 
           <!-- 其他 -->
-          <button id="clear-btn">{t.clear}</button>
+          <button id="clear-btn">Очистить</button>
           <button id="history-btn">{t.history}</button>
           <select id="font-size-select" title="字体大小">
             <option value="11">11px</option>
@@ -494,39 +494,39 @@ const t = locales['zh'];
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "如何格式化和验证JSON",
-    "description": "学习如何使用我们的免费在线JSON查看器来格式化、验证和转换JSON数据。",
+    "name": "Как форматировать и проверять JSON",
+    "description": "Узнайте, как использовать наш бесплатный онлайн JSON просмотрщик для форматирования, проверки и преобразования данных JSON.",
     "step": [
       {
         "@type": "HowToStep",
-        "name": "粘贴您的JSON数据",
-        "text": "将您的JSON、URL参数、XML或YAML数据粘贴到输入编辑器中。"
+        "name": "Вставьте данные JSON",
+        "text": "Вставьте ваши данные JSON, параметры URL, XML или YAML в редактор ввода."
       },
       {
         "@type": "HowToStep",
-        "name": "自动格式检测",
-        "text": "工具会自动检测您的输入格式并将其转换为JSON。"
+        "name": "Автоопределение формата",
+        "text": "Инструмент автоматически определит ваш формат ввода и преобразует его в JSON."
       },
       {
         "@type": "HowToStep",
-        "name": "查看格式化的JSON",
-        "text": "查看带有语法高亮和行号的精美格式化JSON。"
+        "name": "Просмотр форматированного JSON",
+        "text": "Просмотрите красиво форматированный JSON с подсветкой синтаксиса и номерами строк."
       },
       {
         "@type": "HowToStep",
-        "name": "验证JSON",
-        "text": "任何JSON错误都会被高亮显示，并给出具体的行号和错误信息。"
+        "name": "Проверка JSON",
+        "text": "Любые ошибки JSON будут выделены с точными номерами строк и сообщениями об ошибках."
       },
       {
         "@type": "HowToStep",
-        "name": "提取或转换",
-        "text": "使用字段提取、转换为XML/YAML/TypeScript，或压缩/复制结果。"
+        "name": "Извлечение или преобразование",
+        "text": "Используйте извлечение полей, преобразование в XML/YAML/TypeScript или сжатие/копирование результата."
       }
     ],
     "tool": [
       {
         "@type": "HowToTool",
-        "name": "JSON Viewer Online"
+        "name": "JSON просмотрщик онлайн"
       }
     ]
   })} />
@@ -4118,7 +4118,7 @@ const t = locales['zh'];
       // 恢复编辑器标题
       const firstLabel = firstSection.querySelector('.section-label');
       if (firstLabel) {
-        firstLabel.textContent = '一体化 JSON 工具';
+        firstLabel.textContent = 'Универсальный JSON Инструмент';
       }
 
       // 清除高亮

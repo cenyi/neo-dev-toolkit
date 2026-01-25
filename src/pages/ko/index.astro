@@ -1,31 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 import { locales } from '../../i18n/locales.js';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 
-// 中文首页，固定使用中文语言
-const lang = 'zh-CN';
-const t = locales['zh'];
+// KO 首页，固定使用ko语言
+const lang = 'ko-KR';
+const t = locales['ko'];
 ---
 
 <BaseLayout
-  title="JSON工具 - 格式化、对比、转换、校验在线工具"
+  title="JSON 도구 - 형식, 비교 및 변환 | 온라인"
   lang={lang}
-  description="免费JSON工具：格式化、校验、对比、转换JSON（支持CSV/Excel/XML/YAML）。100%浏览器本地运行，数据安全隐私保护。在线JSON diff、美化、压缩、查看器。"
-  keywords="JSON格式化,JSON校验,JSON对比,JSON diff,JSON压缩,JSON转CSV,JSON转Excel,CSV转JSON,Excel转JSON,JSON转XML,JSON转YAML,JSON转TypeScript,JSON转表格,JSON转义,stringify,JSON美化,JSON查看器,JSON编辑器,JSON解析器,JSON工具,URL参数解析,JSON在线对比,JSON pretty print,XML转JSON,YAML转JSON,字符串转JSON,文本转JSON,HTML转JSON,PDF转JSON,图片转JSON,XLSX转JSON,json2video,json2csv,jsoncompare,jsondiff,jsonminifier,jsonview,jsonrpc,jsonschema,jsonata,json5,jsonc,nlohmann json,python json,mysql json,在线JSON工具,免费JSON格式化,JSON检查器,JSON分析器,JSON转换器">
-  <div slot="header">
-    <LanguageSwitcher currentLocale="zh" />
-  </div>
+  description="무료 온라인 JSON 도구: 형식, 검증, 비교, CSV, Excel, XML, YAML로 변환. 브라우저 기반, 보안. JSON diff, 압축, beautifier, 파서."
+  keywords="JSON 포맷,JSON 유효성 검사,JSON 파서,JSON 비교,JSON diff,JSON 압축,JSON을 CSV,JSON을 Excel,JSON 도구">
   <Sidebar slot="sidebar" t={t} />
+  <div slot="header">
+    <LanguageSwitcher currentLocale="ko" />
+  </div>
 
   <!-- Schema.org 结构化数据用于 SEO & GEO -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "JSON格式化工具",
-    "description": "免费的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，提供字段提取、TypeScript接口生成等功能。",
-    "url": "https://tojsons.com/zh",
+    "name": "JSON 도구 - 형식, 비교 및 변환",
+    "description": "무료 온라인 JSON 도구: 형식, 검증, 비교, CSV, Excel, XML, YAML로 변환. 브라우저 기반, 보안.",
+    "url": "https://tojsons.com/ko",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -34,18 +34,18 @@ const t = locales['zh'];
       "priceCurrency": "CNY"
     },
     "featureList": [
-      "JSON格式化和验证",
-      "URL参数解析",
-      "XML转JSON",
-      "YAML转JSON",
-      "JavaScript字段提取",
-      "TypeScript接口生成",
-      "JSON转XML",
-      "JSON压缩",
-      "JSON转义",
-      "移除注释"
+      "JSON 형식 및 검증",
+      "URL 매개변수 분석",
+      "XML을 JSON으로",
+      "YAML을 JSON으로",
+      "JavaScript 필드 추출",
+      "TypeScript 인터페이스 생성",
+      "JSON을 XML로",
+      "JSON 압축",
+      "JSON 이스케이프",
+      "주석 제거"
     ],
-    "browserRequirements": "需要JavaScript支持。兼容所有现代浏览器。",
+    "browserRequirements": "JavaScript 지원 필요. 모든 최신 브라우저와 호환.",
     "softwareVersion": "1.0.0",
     "author": {
       "@type": "Organization",
@@ -78,10 +78,10 @@ const t = locales['zh'];
           <!-- 两个独立编辑器 -->
           <div class="input-section">
             <div class="section-header-row">
-              <h1 class="section-label">一体化 JSON 工具</h1>
+              <h1 class="section-label">올인원 JSON 도구</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">超级智能输入：自动识别 JSON、URL、XML、YAML等15+种格式</span>
+                <span class="hint-text">스마트 입력: 자동으로 JSON, URL, XML, YAML 등 15가지 이상의 형식을 감지합니다</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -91,7 +91,7 @@ const t = locales['zh'];
 
           <!-- 比较模式：第二个编辑器 -->
           <div class="input-section compare-editor hidden" id="compare-section">
-            <h2 class="section-label">{t.rightJson}</h2>
+            <h2 class="section-label">오른쪽 JSON(비교용)</h2>
             <div class="input-editor-wrapper">
               <div id="monaco-compare-container" class="monaco-editor-container"></div>
             </div>
@@ -103,14 +103,14 @@ const t = locales['zh'];
 
         <div class="extraction-section">
           <div class="extraction-controls">
-            <label for="extract-fn">📊 {t.extractionLabel}</label>
+            <label for="extract-fn">📊 필드 추출</label>
             <input
               type="text"
               id="extract-fn"
               placeholder={t.extractionPlaceholder}
             />
-            <button id="apply-extract">{t.apply}</button>
-            <button id="clear-extract-fn">{t.clear}</button>
+            <button id="apply-extract">적용</button>
+            <button id="clear-extract-fn">지우기</button>
           </div>
         </div>
 
@@ -152,9 +152,9 @@ const t = locales['zh'];
           <span class="button-separator">|</span>
 
           <!-- 其他 -->
-          <button id="clear-btn">{t.clear}</button>
+          <button id="clear-btn">지우기</button>
           <button id="history-btn">{t.history}</button>
-          <select id="font-size-select" title="字体大小">
+          <select id="font-size-select" title="글꼴 크기">
             <option value="11">11px</option>
             <option value="12">12px</option>
             <option value="13" selected>13px</option>
@@ -168,8 +168,8 @@ const t = locales['zh'];
       <!-- 右侧输出区域 -->
       <div class="output-area" id="output-area">
         <div class="output-header">
-          <span class="output-title" id="output-title">输出结果</span>
-          <button class="close-output-btn" id="close-output" title="关闭">×</button>
+          <span class="output-title" id="output-title">출력 결과</span>
+          <button class="close-output-btn" id="close-output" title="닫기">×</button>
         </div>
         <div class="output-content" id="output-content">
           <div class="output-editor-wrapper">
@@ -320,82 +320,82 @@ const t = locales['zh'];
       </div>
     </div>
 
-    <!-- 支持的功能 Section -->
+    <!-- 支持的 기능 Section -->
     <div class="supported-formats-section">
       <div class="section-header">
-        <h2>支持的JSON转换功能</h2>
-        <p>一站式JSON工具集，满足您的所有JSON处理需求</p>
+        <h2>지원되는 JSON 변환 기능</h2>
+        <p>모든 JSON 처리 요구 사항을 만족하는 일원화된 JSON 도구 키트</p>
       </div>
       <div class="formats-grid">
         <div class="format-category">
-          <h3>📊 JSON格式化</h3>
+          <h3>📊 JSON 포맷</h3>
           <ul>
-            <li>JSON格式化 (JSON Formatter)</li>
-            <li>JSON美化 (JSON Beautifier)</li>
-            <li>JSON压缩 (JSON Minify)</li>
-            <li>JSON校验 (JSON Validator)</li>
-            <li>JSON转义 (JSON Escape)</li>
-            <li>JSON查看器 (JSON Viewer)</li>
+            <li>JSON 포맷터 (JSON Formatter)</li>
+            <li>JSON 뷰티파이어 (JSON Beautifier)</li>
+            <li>JSON 압축 (JSON Minify)</li>
+            <li>JSON 유효성 검사 (JSON Validator)</li>
+            <li>JSON 이스케이프 (JSON Escape)</li>
+            <li>JSON 뷰어 (JSON Viewer)</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔄 JSON转换</h3>
+          <h3>🔄 JSON 변환</h3>
           <ul>
-            <li>JSON转CSV (JSON to CSV Converter)</li>
-            <li>JSON转Excel (JSON to Excel)</li>
-            <li>JSON转XML (JSON to XML)</li>
-            <li>JSON转YAML (JSON to YAML)</li>
-            <li>JSON转TypeScript (JSON to TS)</li>
-            <li>JSON转表格 (JSON to Table)</li>
+            <li>JSON을 CSV로 변환 (JSON to CSV Converter)</li>
+            <li>JSON을 Excel로 변환 (JSON to Excel)</li>
+            <li>JSON을 XML로 변환 (JSON to XML)</li>
+            <li>JSON을 YAML로 변환 (JSON to YAML)</li>
+            <li>JSON을 TypeScript로 변환 (JSON to TS)</li>
+            <li>JSON을 테이블로 변환 (JSON to Table)</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>➡️ 转换为JSON</h3>
+          <h3>➡️ JSON으로 변환</h3>
           <ul>
-            <li>CSV转JSON (CSV to JSON)</li>
-            <li>Excel转JSON (Excel to JSON)</li>
-            <li>XML转JSON (XML to JSON)</li>
-            <li>YAML转JSON (YAML to JSON)</li>
-            <li>URL参数转JSON (URL Params to JSON)</li>
-            <li>字符串转JSON (String to JSON)</li>
+            <li>CSV를 JSON으로 변환 (CSV to JSON)</li>
+            <li>Excel을 JSON으로 변환 (Excel to JSON)</li>
+            <li>XML을 JSON으로 변환 (XML to JSON)</li>
+            <li>YAML을 JSON으로 변환 (YAML to JSON)</li>
+            <li>URL 매개변수를 JSON으로 변환 (URL Params to JSON)</li>
+            <li>문자열을 JSON으로 변환 (String to JSON)</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔧 JSON工具</h3>
+          <h3>🔧 JSON 도구</h3>
           <ul>
-            <li>JSON对比 (JSON Compare / JSON Diff)</li>
-            <li>JSON在线对比 (Compare JSON Online)</li>
-            <li>JSON字段提取 (Field Extraction)</li>
-            <li>JSON路径查找 (JSON Path Finder)</li>
-            <li>JSON历史记录 (JSON History)</li>
-            <li>JSON注释移除 (Remove Comments)</li>
+            <li>JSON 비교 (JSON Compare / JSON Diff)</li>
+            <li>JSON 온라인 비교 (Compare JSON Online)</li>
+            <li>JSON 필드 추출 (Field Extraction)</li>
+            <li>JSON 경로 찾기 (JSON Path Finder)</li>
+            <li>JSON 히스토리 (JSON History)</li>
+            <li>JSON 주석 제거 (Remove Comments)</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>💻 开发者工具</h3>
+          <h3>💻 개발자 도구</h3>
           <ul>
-            <li>TypeScript接口生成 (TS Interface)</li>
-            <li>JSON Schema生成器</li>
-            <li>JSON代码示例</li>
-            <li>JSON语法高亮</li>
-            <li>JSON错误检测 (JSON Error Check)</li>
-            <li>JSON行号显示</li>
+            <li>TypeScript 인터페이스 생성 (TS Interface)</li>
+            <li>JSON Schema 생성기</li>
+            <li>JSON 코드 예제</li>
+            <li>JSON 문법 강조</li>
+            <li>JSON 오류 검사 (JSON Error Check)</li>
+            <li>JSON 행 번호 표시</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔒 安全特性</h3>
+          <h3>🔒 보안 기능</h3>
           <ul>
-            <li>100%浏览器运行 (Browser-based)</li>
-            <li>数据本地处理 (Local Processing)</li>
-            <li>无需上传服务器 (No Server Upload)</li>
-            <li>离线可用 (Works Offline)</li>
-            <li>隐私保护 (Privacy First)</li>
-            <li>安全加密 (Secure Processing)</li>
+            <li>100% 브라우저 기반 (Browser-based)</li>
+            <li>데이터 로컬 처리 (Local Processing)</li>
+            <li>서버 업로드 불필요 (No Server Upload)</li>
+            <li>오프라인 사용 가능 (Works Offline)</li>
+            <li>프라이버시 우선 (Privacy First)</li>
+            <li>안전한 처리 (Secure Processing)</li>
           </ul>
         </div>
       </div>
       <div class="formats-note">
-        <p>💡 <strong>提示：</strong> 所有JSON处理均在浏览器本地完成，支持大型JSON文件，提供语法高亮、错误提示、智能折叠等功能。适用于开发者、数据分析师、API测试等场景。</p>
+        <p>💡 <strong>팁:</strong> 모든 JSON 처리는 브라우저에서 로컬로 완료되며, 대용량 JSON 파일을 지원합니다. 문법 강조, 오류 메시지, 스마트 폴딩 등의 기능을 제공합니다. 개발자, 데이터 분석가, API 테스트 등 다양한 시나리오에 적합합니다.</p>
       </div>
     </div>
 
@@ -434,93 +434,93 @@ const t = locales['zh'];
     </div>
   </div>
 
-  <!-- FAQPage 结构化数据用于 GEO -->
+  <!-- FAQPage 구조화 데이터 GEO용 -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "我的数据安全吗？",
+        "name": "내 데이터는 안전한가요?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "是的！所有数据处理都在您的浏览器本地进行。我们绝不会将您的数据发送到任何服务器。"
+          "text": "네! 모든 데이터 처리는 브라우저에서 로컬로 수행됩니다. 우리는 귀하의 데이터를 어떤 서버에도 전송하지 않습니다."
         }
       },
       {
         "@type": "Question",
-        "name": "支持哪些文件格式？",
+        "name": "어떤 파일 형식을 지원하나요?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "我们支持 JSON、URL 参数、XML 和 YAML。只需粘贴您的数据，我们会自动检测格式。"
+          "text": "우리는 JSON, URL 매개변수, XML 및 YAML을 지원합니다. 데이터를 붙여넣기만 하면 자동으로 형식을 감지합니다."
         }
       },
       {
         "@type": "Question",
-        "name": "我可以从 JSON 中提取特定字段吗？",
+        "name": "JSON에서 특정 필드를 추출할 수 있나요?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "可以！使用提取函数字段编写 JavaScript 函数，如 'obj => obj.name' 来提取特定数据。"
+          "text": "네! 추출 함수 필드를 사용하여 'obj => obj.name'과 같은 JavaScript 함수를 작성하여 특정 데이터를 추출할 수 있습니다."
         }
       },
       {
         "@type": "Question",
-        "name": "这个工具免费使用吗？",
+        "name": "이 도구는 무료로 사용할 수 있나요?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "是的，这个工具完全免费，没有任何限制。尽情使用吧！"
+          "text": "네, 이 도구는 제한 없이 완전히 무료입니다. 자유롭게 사용하세요!"
         }
       },
       {
         "@type": "Question",
-        "name": "它可以离线工作吗？",
+        "name": "오프라인으로 사용할 수 있나요?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "加载后，工具完全离线工作。不需要互联网连接。"
+          "text": "로드 후 도구는 완전히 오프라인으로 작동합니다. 인터넷 연결이 필요하지 않습니다."
         }
       },
       {
         "@type": "Question",
-        "name": "我可以在手机上使用吗？",
+        "name": "모바일에서 사용할 수 있나요?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "可以！该工具完全响应式，在手机和平板电脑上都能完美运行。"
+          "text": "네! 이 도구는 완전히 반응형이며 모바일 및 태블릿에서 잘 작동합니다."
         }
       }
     ]
   })} />
 
-  <!-- HowTo 结构化数据用于 GEO -->
+  <!-- HowTo 구조화 데이터 GEO용 -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "如何格式化和验证JSON",
-    "description": "学习如何使用我们的免费在线JSON查看器来格式化、验证和转换JSON数据。",
+    "name": "JSON을 포맷하고 유효성 검사하는 방법",
+    "description": "무료 온라인 JSON 뷰어를 사용하여 JSON 데이터를 포맷, 유효성 검사 및 변환하는 방법을 배웁니다.",
     "step": [
       {
         "@type": "HowToStep",
-        "name": "粘贴您的JSON数据",
-        "text": "将您的JSON、URL参数、XML或YAML数据粘贴到输入编辑器中。"
+        "name": "JSON 데이터를 붙여넣기",
+        "text": "JSON, URL 매개변수, XML 또는 YAML 데이터를 입력 편집기에 붙여넣습니다."
       },
       {
         "@type": "HowToStep",
-        "name": "自动格式检测",
-        "text": "工具会自动检测您的输入格式并将其转换为JSON。"
+        "name": "자동 형식 감지",
+        "text": "도구는 입력 형식을 자동으로 감지하고 JSON으로 변환합니다."
       },
       {
         "@type": "HowToStep",
-        "name": "查看格式化的JSON",
-        "text": "查看带有语法高亮和行号的精美格式化JSON。"
+        "name": "포맷된 JSON 보기",
+        "text": "문법 강조와 행 번호가 있는 예쁘게 포맷된 JSON을 봅니다."
       },
       {
         "@type": "HowToStep",
-        "name": "验证JSON",
-        "text": "任何JSON错误都会被高亮显示，并给出具体的行号和错误信息。"
+        "name": "JSON 유효성 검사",
+        "text": "JSON 오류는 특정 행 번호와 오류 메시지와 함께 강조 표시됩니다."
       },
       {
         "@type": "HowToStep",
-        "name": "提取或转换",
-        "text": "使用字段提取、转换为XML/YAML/TypeScript，或压缩/复制结果。"
+        "name": "추출 또는 변환",
+        "text": "필드 추출, XML/YAML/TypeScript로 변환, 또는 결과를 압축/복사합니다."
       }
     ],
     "tool": [
@@ -4118,7 +4118,7 @@ const t = locales['zh'];
       // 恢复编辑器标题
       const firstLabel = firstSection.querySelector('.section-label');
       if (firstLabel) {
-        firstLabel.textContent = '一体化 JSON 工具';
+        firstLabel.textContent = '올인원 JSON 도구';
       }
 
       // 清除高亮

@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "language": "العربية",
+    "code": "ar",
+    "direction": "rtl",
+    "version": "1.0.0"
+  },
+  "ui": {
+    "title": "منسق JSON ومحول متعدد الصيغ",
+    "description": "مجموعة أدوات JSON الشاملة - تنسيق وتحويل والتحقق من JSON عبر الإنترنت",
+    "keywords": "منسق JSON، مدقق JSON، محلل JSON، مقارنة JSON، فرق JSON، ضغط JSON، JSON إلى CSV، JSON إلى Excel، CSV إلى JSON، Excel إلى JSON، JSON إلى XML، JSON إلى YAML، JSON إلى TypeScript، فرق JSON، الهروب JSON، تنسيق JSON، عارض JSON، محرر JSON، أدوات JSON"
+  },
+  "buttons": {
+    "collapseAll": "طي الكل",
+    "expandAll": "توسيع الكل",
+    "removeComments": "إزالة التعليقات",
+    "compressCopy": "ضغط JSON ونسخ",
+    "escapeCopy": "الهروب ونسخ JSON",
+    "jsonToXml": "JSON إلى XML",
+    "jsonToYaml": "JSON إلى YAML",
+    "jsonToTs": "JSON إلى TypeScript",
+    "jsonToCsv": "JSON إلى CSV",
+    "jsonToExcel": "JSON إلى Excel",
+    "jsonToHtml": "JSON إلى HTML",
+    "jsonToTable": "JSON إلى جدول",
+    "jsonToSchema": "مخطط JSON",
+    "jsonToPdf": "JSON إلى PDF",
+    "jsonToDart": "JSON إلى Dart",
+    "jsonToC": "JSON إلى C",
+    "jsonToGo": "JSON إلى Go",
+    "jsonToRust": "JSON إلى Rust",
+    "jsonToPython": "JSON إلى Python",
+    "jsonCompare": "مقارنة JSON",
+    "clear": "مسح",
+    "history": "السجل",
+    "fontSize": "حجم الخط"
+  },
+  "messages": {
+    "yamlSuccess": "تم نسخ YAML إلى الحافظة!",
+    "tableSuccess": "تم إنشاء الجدول بنجاح!",
+    "schemaSuccess": "تم إنشاء مخطط JSON بنجاح!",
+    "htmlSuccess": "تم نسخ HTML إلى الحافظة!",
+    "pdfSuccess": "تم بدء تصدير PDF!",
+    "dartSuccess": "تم نسخ كود Dart إلى الحافظة!",
+    "cSuccess": "تم نسخ كود C إلى الحافظة!",
+    "goSuccess": "تم نسخ كود Go إلى الحافظة!",
+    "rustSuccess": "تم نسخ كود Rust إلى الحافظة!",
+    "pythonSuccess": "تم نسخ كود Python إلى الحافظة!",
+    "parsingError": "خطأ",
+    "enterExtractionFn": "الرجاء إدخال وظيفة الاستخراج",
+    "enterData": "الرجاء إدخال البيانات للمعالجة"
+  },
+  "placeholders": {
+    "inputPlaceholder": "الصق بيانات JSON أو معلمات URL أو XML أو YAML هنا...",
+    "extractionPlaceholder": "مثال: obj => obj.name أو obj => obj.data"
+  },
+  "hints": {
+    "smartInput": "إدخال ذكي: يكتشف تلقائياً JSON و URL و XML و YAML و15+ تنسيقًا"
+  },
+  "features": {
+    "title": "أدوات JSON وميزات قوية",
+    "subtitle": "مجموعة أدوات كاملة لمنسق JSON والمدقق والمحلل - تنسيق ومقارنة وتحويل وضغط وتجميل JSON",
+    "feature1Title": "منسق JSON والمدقق",
+    "feature1Desc": "نسق وتحقق من JSON مع تمييز بناء الجملة واكتشاف الأخطاء والتنسيق التلقائي. أفضل منسق JSON عبر الإنترنت",
+    "feature2Title": "JSON إلى CSV و Excel و XML و YAML",
+    "feature2Desc": "حول JSON إلى CSV و Excel و XML و YAML و TypeScript. يدعم أيضًا CSV إلى JSON و Excel إلى JSON",
+    "feature3Title": "أداة مقارنة وفرق JSON",
+    "feature3Desc": "قارن ملفي JSON وسلط الفروق مع مدقق فرق JSON. أداة مقارنة JSON عبر الإنترنت",
+    "feature4Title": "ضاغط JSON ومجميل",
+    "feature4Desc": "ضغط JSON للإنتاج، جميل JSON للقراءة. الهروب وإلغاء الهروب ومعالجة السلاسل",
+    "feature5Title": "محلل JSON ومحول",
+    "feature5Desc": "تحليل معلمات URL و XML و YAML إلى JSON. استخراج الحقول وإنشاء واجهات TypeScript ومخططات",
+    "feature6Title": "عارض JSON الآمن عبر الإنترنت",
+    "feature6Desc": "عارض JSON 100% مبني على المتصفح. بدون رفع بيانات. آمن وخاص ويعمل بدون اتصال"
+  },
+  "faq": {
+    "title": "أسئلة شائعة حول أدوات JSON - المنسق والمدقق والمحول",
+    "subtitle": "أسئلة شائعة حول منسق JSON والمدقق والمحلل وأداة المقارنة والعارض. أدوات JSON مجانية عبر الإنترنت",
+    "q1": "هل بيانات JSON آمنة وخاصة؟",
+    "a1": "نعم! تتم جميع معالجة JSON محليًا في متصفحك. لا يتم رفع بيانات JSON إلى الخوادم. أدوات JSON آمنة 100%.",
+    "q2": "ما تنسيقات JSON يمكنني تحويلها؟",
+    "a2": "محول JSON يدعم: JSON إلى CSV و JSON إلى Excel و JSON إلى XML و JSON إلى YAML و JSON إلى TypeScript. أيضًا CSV إلى JSON و Excel إلى JSON و XML إلى JSON و YAML إلى JSON ومعلمات URL إلى JSON",
+    "q3": "كيف أقارن ملفي JSON؟",
+    "a3": "استخدم أداة مقارنة JSON لرؤية الاختلافات. مدقق فرق JSON يسلط الإضافات (خضر) والحذف (أحمر) والتغييرات (أصفر). قارن JSON عبر الإنترنت فورًا",
+    "q4": "هل يمكنني استخراج حقول من JSON؟",
+    "a4": "نعم! محلل JSON يدعم استخراج الحقول. استخدم دوال JavaScript مثل 'obj => obj.name' لاستخراج بيانات محددة. مثالي للاستجابات API JSON",
+    "q5": "هل منسق JSON مجاني؟",
+    "a5": "نعم! جميع أدوات JSON مجانية 100%: منسق JSON والمدقق والضاغط والمجمل والمحول وأداة المقارنة. بدون قيود",
+    "q6": "هل يمكنني استخدام أدوات JSON بدون اتصال؟",
+    "a6": "نعم! عارض JSON يعمل بدون اتصال بعد التحميل. لا حاجة للإنترنت. منسق JSON والمدقق والمحول تعمل جميعها بناءً على المتصفح"
+  }
+}

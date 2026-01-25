@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "language": "简体中文",
+    "code": "zh",
+    "direction": "ltr",
+    "version": "1.0.0"
+  },
+  "ui": {
+    "title": "JSON 格式化与多格式转换工具",
+    "description": "终极 JSON 工具集 - 在线格式化、转换、验证 JSON",
+    "keywords": "JSON格式化, JSON校验, JSON解析, JSON对比, JSON差异, JSON压缩, JSON转CSV, JSON转Excel, CSV转JSON, Excel转JSON, JSON转XML, JSON转YAML, JSON转TypeScript, JSON diff, JSON转义, JSON美化, JSON查看器, JSON编辑器, JSON工具"
+  },
+  "buttons": {
+    "collapseAll": "折叠全部",
+    "expandAll": "展开全部",
+    "removeComments": "去除注释",
+    "compressCopy": "压缩JSON并复制",
+    "escapeCopy": "转义JSON并复制",
+    "jsonToXml": "JSON转XML并复制",
+    "jsonToYaml": "JSON转YAML并复制",
+    "jsonToTs": "JSON转TypeScript并复制",
+    "jsonToCsv": "JSON转CSV并复制",
+    "jsonToExcel": "JSON转Excel并复制",
+    "jsonToHtml": "JSON转HTML并复制",
+    "jsonToTable": "JSON转表格",
+    "jsonToSchema": "JSON Schema",
+    "jsonToPdf": "JSON转PDF",
+    "jsonToDart": "JSON转Dart",
+    "jsonToC": "JSON转C",
+    "jsonToGo": "JSON转Go",
+    "jsonToRust": "JSON转Rust",
+    "jsonToPython": "JSON转Python",
+    "jsonCompare": "JSON对比",
+    "clear": "清空",
+    "history": "历史记录",
+    "fontSize": "字体大小"
+  },
+  "messages": {
+    "yamlSuccess": "YAML已复制到剪贴板！",
+    "tableSuccess": "表格生成成功！",
+    "schemaSuccess": "JSON Schema生成成功！",
+    "htmlSuccess": "HTML已复制到剪贴板！",
+    "pdfSuccess": "PDF导出已启动！",
+    "dartSuccess": "Dart代码已复制到剪贴板！",
+    "cSuccess": "C代码已复制到剪贴板！",
+    "goSuccess": "Go代码已复制到剪贴板！",
+    "rustSuccess": "Rust代码已复制到剪贴板！",
+    "pythonSuccess": "Python代码已复制到剪贴板！",
+    "parsingError": "错误",
+    "enterExtractionFn": "请输入提取函数",
+    "enterData": "请输入要处理的数据"
+  },
+  "placeholders": {
+    "inputPlaceholder": "在此处粘贴您的JSON、URL参数、XML或YAML数据...",
+    "extractionPlaceholder": "例如: obj => obj.name 或 obj => obj.data"
+  },
+  "hints": {
+    "smartInput": "超级智能输入：自动识别 JSON、URL、XML、YAML等15+种格式"
+  },
+  "features": {
+    "title": "强大的JSON工具与功能",
+    "subtitle": "完整的JSON格式化、校验、转换与解析工具集 - 格式化、对比、转换、压缩、美化JSON",
+    "feature1Title": "JSON格式化与校验器",
+    "feature1Desc": "格式化并校验JSON，支持语法高亮、错误检测与自动格式化。最佳在线JSON格式化工具",
+    "feature2Title": "JSON转CSV、Excel、XML、YAML",
+    "feature2Desc": "JSON转换器支持JSON转CSV、Excel、XML、YAML、TypeScript。同时支持CSV转JSON、Excel转JSON转换",
+    "feature3Title": "JSON对比与Diff工具",
+    "feature3Desc": "对比两个JSON文件，用JSON diff检查器高亮差异。在线JSON对比工具",
+    "feature4Title": "JSON压缩与美化工具",
+    "feature4Desc": "压缩JSON用于生产，美化JSON便于阅读。JSON转义、反转义与字符串处理",
+    "feature5Title": "JSON解析器与转换器",
+    "feature5Desc": "解析URL参数、XML、YAML转JSON。提取字段、生成TypeScript接口与schema",
+    "feature6Title": "安全的在线JSON查看器",
+    "feature6Desc": "100%浏览器端JSON查看器。无数据上传。安全、隐私、可离线的JSON工具"
+  },
+  "faq": {
+    "title": "JSON工具常见问题 - 格式化、校验与转换",
+    "subtitle": "关于JSON格式化器、校验器、转换器、解析器、对比工具与查看器的常见问题。免费在线JSON工具",
+    "q1": "我的JSON数据安全且隐私吗？",
+    "a1": "是的！所有JSON处理都在您的浏览器本地进行。无JSON数据上传到服务器。100%安全的JSON工具。",
+    "q2": "支持哪些JSON格式转换？",
+    "a2": "JSON转换器支持：JSON转CSV、JSON转Excel、JSON转XML、JSON转YAML、JSON转TypeScript。同时支持CSV转JSON、Excel转JSON、XML转JSON、YAML转JSON、URL参数转JSON",
+    "q3": "如何对比两个JSON文件？",
+    "a3": "使用JSON对比工具查看差异。JSON diff检查器高亮显示：➕绿色新增、➖红色删除、🔄黄色修改。在线对比JSON即时可见",
+    "q4": "我可以从JSON中提取字段吗？",
+    "a4": "可以！JSON解析器支持字段提取。使用JavaScript函数如'obj => obj.name'提取特定数据。完美处理JSON API响应",
+    "q5": "这个JSON格式化器免费吗？",
+    "a5": "是的！所有JSON工具100%免费：JSON格式化器、校验器、压缩器、美化器、转换器、对比工具。无任何限制",
+    "q6": "我可以离线使用JSON工具吗？",
+    "a6": "可以！JSON查看器加载后可离线工作。无需互联网。JSON格式化器、校验器、转换器全部基于浏览器运行"
+  }
+}

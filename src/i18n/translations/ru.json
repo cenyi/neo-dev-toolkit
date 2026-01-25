@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "language": "Русский",
+    "code": "ru",
+    "direction": "ltr",
+    "version": "1.0.0"
+  },
+  "ui": {
+    "title": "JSON Форматтер и Мультиформатный Конвертер",
+    "description": "Окончательный Набор JSON Инструментов - Форматирование, Конвертация, Валидация JSON онлайн",
+    "keywords": "JSON форматтер, JSON валидатор, JSON парсер, JSON сравнение, JSON diff, JSON минификатор, JSON в CSV, JSON в Excel, CSV в JSON, Excel в JSON, JSON в XML, JSON в YAML, JSON в TypeScript, JSON diff, JSON экранирование, JSON бьютификатор, JSON просмотрщик, JSON редактор, JSON инструменты"
+  },
+  "buttons": {
+    "collapseAll": "Свернуть Все",
+    "expandAll": "Развернуть Все",
+    "removeComments": "Удалить Комментарии",
+    "compressCopy": "Сжать JSON и Копировать",
+    "escapeCopy": "Экранировать JSON и Копировать",
+    "jsonToXml": "JSON в XML",
+    "jsonToYaml": "JSON в YAML",
+    "jsonToTs": "JSON в TypeScript",
+    "jsonToCsv": "JSON в CSV",
+    "jsonToExcel": "JSON в Excel",
+    "jsonToHtml": "JSON в HTML",
+    "jsonToTable": "JSON в Таблицу",
+    "jsonToSchema": "JSON Схема",
+    "jsonToPdf": "JSON в PDF",
+    "jsonToDart": "JSON в Dart",
+    "jsonToC": "JSON в C",
+    "jsonToGo": "JSON в Go",
+    "jsonToRust": "JSON в Rust",
+    "jsonToPython": "JSON в Python",
+    "jsonCompare": "Сравнить JSON",
+    "clear": "Очистить",
+    "history": "История",
+    "fontSize": "Размер Шрифта"
+  },
+  "messages": {
+    "yamlSuccess": "YAML скопирован в буфер обмена!",
+    "tableSuccess": "Таблица успешно создана!",
+    "schemaSuccess": "JSON схема успешно создана!",
+    "htmlSuccess": "HTML скопирован в буфер обмена!",
+    "pdfSuccess": "Экспорт PDF запущен!",
+    "dartSuccess": "Код Dart скопирован в буфер обмена!",
+    "cSuccess": "Код C скопирован в буфер обмена!",
+    "goSuccess": "Код Go скопирован в буфер обмена!",
+    "rustSuccess": "Код Rust скопирован в буфер обмена!",
+    "pythonSuccess": "Код Python скопирован в буфер обмена!",
+    "parsingError": "Ошибка",
+    "enterExtractionFn": "Пожалуйста, введите функцию извлечения",
+    "enterData": "Пожалуйста, введите данные для обработки"
+  },
+  "placeholders": {
+    "inputPlaceholder": "Вставьте сюда данные JSON, URL-параметры, XML или YAML...",
+    "extractionPlaceholder": "например: obj => obj.name или obj => obj.data"
+  },
+  "hints": {
+    "smartInput": "Умный ввод: Автоматически определяет JSON, URL, XML, YAML и 15+ форматов"
+  },
+  "features": {
+    "title": "Мощные JSON Инструменты и Функции",
+    "subtitle": "Полный набор инструментов для форматирования, валидации, конвертации и парсинга JSON - Форматировать, Сравнивать, Конвертировать, Минифицировать и Улучшать JSON",
+    "feature1Title": "JSON Форматтер и Валидатор",
+    "feature1Desc": "Форматируйте и валидируйте JSON с подсветкой синтаксиса, обнаружением ошибок и автоформатированием. Лучший онлайн форматтер JSON",
+    "feature2Title": "JSON в CSV, Excel, XML, YAML",
+    "feature2Desc": "Конвертируйте JSON в CSV, Excel, XML, YAML и TypeScript. Также поддерживает конвертацию CSV в JSON, Excel в JSON",
+    "feature3Title": "Инструмент Сравнения и Diff JSON",
+    "feature3Desc": "Сравните два JSON файла, выделите различия с JSON diff проверщиком. Онлайн инструмент сравнения JSON",
+    "feature4Title": "JSON Минификатор и Бьютификатор",
+    "feature4Desc": "Минифицируйте JSON для продакшена, бьютифицируйте JSON для чтения. Экранирование JSON, декодирование и манипуляция строк",
+    "feature5Title": "JSON Парсер и Конвертер",
+    "feature5Desc": "Парсить URL-параметры, XML, YAML в JSON. Извлекать поля, генерировать интерфейсы TypeScript и схемы",
+    "feature6Title": "Безопасный Онлайн JSON Просмотрщик",
+    "feature6Desc": "100% браузерный JSON просмотрщик. Без загрузки данных. Безопасный, приватный и работающий офлайн JSON инструмент"
+  },
+  "faq": {
+    "title": "Часто Задаваемые Вопросы по JSON Инструментам - Форматтер, Валидатор и Конвертер",
+    "subtitle": "Общие вопросы о JSON форматтере, валидаторе, конвертере, парсере, инструменте сравнения и просмотрщике JSON. Бесплатные онлайн JSON инструменты",
+    "q1": "Мои данные JSON в безопасности?",
+    "a1": "Да! Вся обработка JSON происходит локально в вашем браузере. Данные JSON не загружаются на серверы. 100% безопасные JSON инструменты.",
+    "q2": "Какие форматы JSON я могу конвертировать?",
+    "a2": "JSON конвертер поддерживает: JSON в CSV, JSON в Excel, JSON в XML, JSON в YAML, JSON в TypeScript. Также CSV в JSON, Excel в JSON, XML в JSON, YAML в JSON, URL-параметры в JSON",
+    "q3": "Как сравнить два JSON файла?",
+    "a3": "Используйте инструмент сравнения JSON для просмотра различий. JSON diff проверщик подсвечивает добавления (зеленый), удаления (красный) и изменения (желтый). Сравнивайте JSON онлайн мгновенно",
+    "q4": "Могу ли я извлекать поля из JSON?",
+    "a4": "Да! JSON парсер поддерживает извлечение полей. Используйте JavaScript функции как 'obj => obj.name' для извлечения конкретных данных. Идеально для JSON API ответов",
+    "q5": "Этот JSON форматтер бесплатный?",
+    "a5": "Да! Все JSON инструменты на 100% бесплатны: JSON форматтер, валидатор, минификатор, бьютификатор, конвертер, инструмент сравнения. Без ограничений",
+    "q6": "Могу ли я использовать JSON инструменты офлайн?",
+    "a6": "Да! JSON просмотрщик работает офлайн после загрузки. Не нужен интернет. JSON форматтер, валидатор, конвертер все работают на основе браузера"
+  }
+}

@@ -1,0 +1,127 @@
+---
+import config from '../i18n/config.js';
+
+interface Props {
+  currentLocale?: string;
+}
+
+const { currentLocale: current = 'en' } = Astro.props;
+
+const locales = config.locales.map(locale => ({
+  code: locale,
+  ...config.localeInfo[locale]
+}));
+---
+
+<div class="language-switcher" dir="ltr">
+  <select
+    id="language-select"
+    class="language-select"
+    onchange="changeLanguage(this.value)"
+  >
+    {locales.map(locale => (
+      <option
+        value={locale.code}
+        selected={current === locale.code}>
+        {locale.flag} {locale.nativeName}
+      </option>
+    ))}
+  </select>
+</div>
+
+<script define={{ language: 'en' }}>
+  function changeLanguage(newLocale) {
+    // 保存语言偏好
+    localStorage.setItem('preferredLocale', newLocale);
+
+    // 获取当前路径
+    const currentPath = window.location.pathname;
+
+    // 构建新路径
+    let newPath;
+    if (newLocale === 'en') {
+      // 英语是默认语言，不需要前缀
+      newPath = currentPath.replace(/^\/(zh|ja|ko|es|pt|fr|de|ru|ar)\//, '/');
+    } else {
+      // 其他语言需要前缀
+      if (currentPath === '/' || currentPath === '') {
+        newPath = `/${newLocale}/`;
+      } else {
+        // 替换现有的语言前缀或添加新的
+        const localePattern = /^\/(zh|ja|ko|es|pt|fr|de|ru|ar)\//;
+        if (localePattern.test(currentPath)) {
+          newPath = currentPath.replace(localePattern, `/${newLocale}/`);
+        } else {
+          newPath = `/${newLocale}${currentPath}`;
+        }
+      }
+    }
+
+    // 重新加载页面
+    window.location.href = newPath;
+  }
+</script>
+
+<style>
+  .language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .language-select {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    background: var(--bg-color, #ffffff);
+    color: var(--text-color, #1f2937);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+  }
+
+  .language-select:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .language-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    .language-switcher {
+      top: 10px;
+      right: 10px;
+    }
+
+    .language-select {
+      font-size: 12px;
+      padding: 8px 12px;
+      min-width: 150px;
+    }
+  }
+
+  /* RTL 语言支持 */
+  [dir="rtl"] .language-switcher {
+    right: auto;
+    left: 20px;
+  }
+
+  /* 深色模式支持 */
+  @media (prefers-color-scheme: dark) {
+    .language-select {
+      background: #1f2937;
+      color: #f9fafb;
+      border-color: #374151;
+    }
+  }
+</style>

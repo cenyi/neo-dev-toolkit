@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "language": "한국어",
+    "code": "ko",
+    "direction": "ltr",
+    "version": "1.0.0"
+  },
+  "ui": {
+    "title": "JSON 포맷터 및 멀티 포맷 변환기",
+    "description": "궁극의 JSON 툴킷 - 온라인 JSON 포맷, 변환, 검증",
+    "keywords": "JSON 포맷터, JSON 검증기, JSON 파서, JSON 비교, JSON diff, JSON 압축, JSON to CSV, JSON to Excel, CSV to JSON, Excel to JSON, JSON to XML, JSON to YAML, JSON to TypeScript, JSON diff, JSON 이스케이프, JSON 뷰티파이어, JSON 뷰어, JSON 에디터, JSON 도구"
+  },
+  "buttons": {
+    "collapseAll": "모두 접기",
+    "expandAll": "모두 펼치기",
+    "removeComments": "주석 제거",
+    "compressCopy": "JSON 압축 및 복사",
+    "escapeCopy": "JSON 이스케이프 및 복사",
+    "jsonToXml": "JSON→XML 변환",
+    "jsonToYaml": "JSON→YAML 변환",
+    "jsonToTs": "JSON→TypeScript 변환",
+    "jsonToCsv": "JSON→CSV 변환",
+    "jsonToExcel": "JSON→Excel 변환",
+    "jsonToHtml": "JSON→HTML 변환",
+    "jsonToTable": "JSON→테이블",
+    "jsonToSchema": "JSON 스키마",
+    "jsonToPdf": "JSON→PDF",
+    "jsonToDart": "JSON→Dart",
+    "jsonToC": "JSON→C",
+    "jsonToGo": "JSON→Go",
+    "jsonToRust": "JSON→Rust",
+    "jsonToPython": "JSON→Python",
+    "jsonCompare": "JSON 비교",
+    "clear": "지우기",
+    "history": "기록",
+    "fontSize": "글꼭 크기"
+  },
+  "messages": {
+    "yamlSuccess": "YAML을 클립보드에 복사했습니다!",
+    "tableSuccess": "테이블을 생성했습니다!",
+    "schemaSuccess": "JSON 스키마를 생성했습니다!",
+    "htmlSuccess": "HTML을 클립보드에 복사했습니다!",
+    "pdfSuccess": "PDF 내보내기를 시작했습니다!",
+    "dartSuccess": "Dart 코드를 클립보드에 복사했습니다!",
+    "cSuccess": "C 코드를 클립보드에 복사했습니다!",
+    "goSuccess": "Go 코드를 클립보드에 복사했습니다!",
+    "rustSuccess": "Rust 코드를 클립보드에 복사했습니다!",
+    "pythonSuccess": "Python 코드를 클립보드에 복사했습니다!",
+    "parsingError": "오류",
+    "enterExtractionFn": "추출 함수를 입력하세요",
+    "enterData": "처리할 데이터를 입력하세요"
+  },
+  "placeholders": {
+    "inputPlaceholder": "여기에 JSON, URL 매개변수, XML 또는 YAML 데이터를 붙여넣으세요...",
+    "extractionPlaceholder": "예: obj => obj.name 또는 obj => obj.data"
+  },
+  "hints": {
+    "smartInput": "스마트 입력: JSON, URL, XML, YAML 등 15+ 포맷 자동 감지"
+  },
+  "features": {
+    "title": "강력한 JSON 도구 및 기능",
+    "subtitle": "완전한 JSON 포맷터, 검증기, 변환기, 파서 툴킷 - 포맷, 비교, 변환, 압축, 미화",
+    "feature1Title": "JSON 포맷터 및 검증기",
+    "feature1Desc": "구문 강조, 오류 감지, 자동 포맷으로 JSON을 포맷하고 검증합니다. 최고의 온라인 JSON 포맷터",
+    "feature2Title": "JSON→CSV, Excel, XML, YAML",
+    "feature2Desc": "JSON을 CSV, Excel, XML, YAML, TypeScript로 변환합니다. CSV to JSON, Excel to JSON 변환도 지원",
+    "feature3Title": "JSON 비교 및 Diff 도구",
+    "feature3Desc": "두 개의 JSON 파일을 비교하고 JSON diff 검사기로 차이점을 강조합니다. 온라인 JSON 비교 도구",
+    "feature4Title": "JSON 압축 및 뷰티파이어",
+    "feature4Desc": "프로덕션용 JSON 압축, 읽기 쉬운 JSON 미화. JSON 이스케이프, 언이스케이프, 문자열 조작",
+    "feature5Title": "JSON 파서 및 변환기",
+    "feature5Desc": "URL 매개변수, XML, YAML을 JSON로 파싱합니다. 필드 추출, TypeScript 인터페이스 및 스키마 생성",
+    "feature6Title": "안전한 온라인 JSON 뷰어",
+    "feature6Desc": "100% 브라우저 기반 JSON 뷰어. 데이터 업로드 없음. 안전하고 프라이빗하며 오프라인 가능한 JSON 도구"
+  },
+  "faq": {
+    "title": "JSON 도구 FAQ - 포맷터, 검증기 및 변환기",
+    "subtitle": "JSON 포맷터, 검증기, 변환기, 파서, 비교 도구, 뷰어에 대한 일반적인 질문. 무료 온라인 JSON 도구",
+    "q1": "내 JSON 데이터는 안전하고 프라이빗한가요?",
+    "a1": "네! 모든 JSON 처리는 브라우저에서 로컬로 수행됩니다. JSON 데이터가 서버에 업로드되지 않습니다. 100% 안전한 JSON 도구입니다.",
+    "q2": "어떤 JSON 포맷 변환을 지원하나요?",
+    "a2": "JSON 변환기는 다음을 지원합니다: JSON→CSV, JSON→Excel, JSON→XML, JSON→YAML, JSON→TypeScript. 또한 CSV→JSON, Excel→JSON, XML→JSON, YAML→JSON, URL 매개변수→JSON",
+    "q3": "두 개의 JSON 파일을 비교하려면 어떻게 하나요?",
+    "a3": "JSON 비교 도구를 사용하여 차이점을 확인합니다. JSON diff 검사기는 추가(녹색), 제거(적색), 변경(노란색)을 강조합니다. 온라인에서 JSON을 즉시 비교",
+    "q4": "JSON에서 필드를 추출할 수 있나요?",
+    "a4": "네! JSON 파서는 필드 추출을 지원합니다. 'obj => obj.name'과 같은 JavaScript 함수를 사용하여 특정 데이터를 추출할 수 있습니다. JSON API 응답 처리에 최적",
+    "q5": "이 JSON 포맷터는 무료인가요?",
+    "a5": "네! 모든 JSON 도구는 100% 무료입니다: JSON 포맷터, 검증기, 압축 도구, 뷰티파이어, 변환기, 비교 도구. 제한 없음",
+    "q6": "JSON 도구를 오프라인으로 사용할 수 있나요?",
+    "a6": "네! JSON 뷰어는 로드 후 오프라인으로 작동합니다. 인터넷 불필요. JSON 포맷터, 검증기, 변환기는 모두 브라우저 기반으로 작동"
+  }
+}
