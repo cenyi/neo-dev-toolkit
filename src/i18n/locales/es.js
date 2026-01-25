@@ -123,5 +123,18 @@ export default {
   "formatCat6Item5": "Privacidad Primero",
   "formatCat6Item6": "Procesamiento Seguro",
   "formatsNote": "💡 <strong>Nota:</strong> Todo el procesamiento JSON se realiza localmente en su navegador. Admite archivos JSON grandes con resaltado de sintaxis, sugerencias de error, plegado inteligente y más. Adecuado para desarrolladores, analistas de datos, pruebas de API y más.",
-  "footerDescription": "Potentes herramientas JSON en línea: formateador, validador y convertidor. Admite conversión JSON, parámetros URL, XML, YAML con seguridad 100% basada en navegador."
+  "footerDescription": "Potentes herramientas JSON en línea: formateador, validador y convertidor. Admite conversión JSON, parámetros URL, XML, YAML con seguridad 100% basada en navegador.",
+  "faqTitle": "¿Están seguros y privados mis datos JSON?",
+  "faq1Question": "¿Están seguros y privados mis datos JSON?",
+  "faq1Answer": "¡Sí! Todo el procesamiento de JSON ocurre localmente en su navegador. No se cargan datos JSON en servidores. Herramientas JSON 100% seguras.",
+  "faq2Question": "¿Qué formatos JSON puedo convertir?",
+  "faq2Answer": "El convertidor JSON soporta: JSON a CSV, JSON a Excel, JSON a XML, JSON a YAML, JSON a TypeScript. También CSV a JSON, Excel a JSON, XML a JSON, YAML a JSON, parámetros URL a JSON",
+  "faq3Question": "¿Cómo comparo dos archivos JSON?",
+  "faq3Answer": "Use la herramienta de comparación JSON para ver diferencias. El verificador de diff JSON resalta adiciones (verde), eliminaciones (rojo) y cambios (amarillo). Compare JSON en línea al instante",
+  "faq4Question": "¿Puedo extraer campos de JSON?",
+  "faq4Answer": "¡Sí! El analizador JSON soporta extracción de campos. Use funciones JavaScript como 'obj => obj.nombre' para extraer datos específicos. Perfecto para respuestas de API JSON",
+  "faq5Question": "¿Es gratuito este formateador JSON?",
+  "faq5Answer": "¡Sí! Todas las herramientas JSON son 100% gratuitas: formateador JSON, validador, minificador, embellecedor, convertidor, herramienta de comparación. Sin limitaciones",
+  "faq6Question": "¿Puedo usar las herramientas JSON sin conexión?",
+  "faq6Answer": "¡Sí! El visor JSON funciona sin conexión después de cargar. No se necesita internet. El formateador, validador y convertidor JSON funcionan todos basados en navegador"
 };

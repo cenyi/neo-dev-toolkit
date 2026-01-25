@@ -123,5 +123,18 @@ export default {
   "formatCat6Item5": "Privacy First",
   "formatCat6Item6": "Secure Processing",
   "formatsNote": "💡 <strong>Note:</strong> All JSON processing is done locally in your browser. Supports large JSON files with syntax highlighting, error hints, smart folding, and more. Suitable for developers, data analysts, API testing, and more.",
-  "footerDescription": "Powerful online JSON formatter, validator, and converter. Support JSON, URL params, XML, YAML conversion with 100% browser-based security."
+  "footerDescription": "Powerful online JSON formatter, validator, and converter. Support JSON, URL params, XML, YAML conversion with 100% browser-based security.",
+  "faqTitle": "Is my JSON data secure & private?",
+  "faq1Question": "Is my JSON data secure & private?",
+  "faq1Answer": "Yes! All JSON processing happens locally in your browser. No JSON data uploaded to servers. 100% secure JSON tools.",
+  "faq2Question": "What JSON formats can I convert?",
+  "faq2Answer": "JSON converter supports: JSON to CSV, JSON to Excel, JSON to XML, JSON to YAML, JSON to TypeScript. Also CSV to JSON, Excel to JSON, XML to JSON, YAML to JSON, URL params to JSON",
+  "faq3Question": "How do I compare two JSON files?",
+  "faq3Answer": "Use JSON compare tool to see differences. JSON diff checker highlights additions (green), deletions (red), and changes (yellow). Compare JSON online instantly",
+  "faq4Question": "Can I extract fields from JSON?",
+  "faq4Answer": "Yes! JSON parser supports field extraction. Use JavaScript functions like 'obj => obj.name' to extract specific data. Perfect for JSON API responses",
+  "faq5Question": "Is this JSON formatter free?",
+  "faq5Answer": "Yes! All JSON tools are 100% free: JSON formatter, validator, minifier, beautifier, converter, compare tool. No limitations",
+  "faq6Question": "Can I use JSON tools offline?",
+  "faq6Answer": "Yes! JSON viewer works offline after loading. No internet needed. JSON formatter, validator, converter all work browser-based"
 };

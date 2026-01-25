@@ -123,5 +123,18 @@ export default {
   "formatCat6Item5": "Privatsphäre zuerst",
   "formatCat6Item6": "Sichere Verarbeitung",
   "formatsNote": "💡 <strong>Hinweis:</strong> Die gesamte JSON-Verarbeitung erfolgt lokal in Ihrem Browser. Unterstützt große JSON-Dateien mit Syntaxhervorhebung, Fehlerhinweisen, intelligentem Falten und mehr. Geeignet für Entwickler, Datenanalysten, API-Tests und mehr.",
-  "footerDescription": "Leistungsstarke Online-JSON-Tools: Formatierer, Validator und Konverter. Unterstützung für JSON-, URL-Parameter-, XML-, YAML-Konvertierung mit 100% browserbasierter Sicherheit."
+  "footerDescription": "Leistungsstarke Online-JSON-Tools: Formatierer, Validator und Konverter. Unterstützung für JSON-, URL-Parameter-, XML-, YAML-Konvertierung mit 100% browserbasierter Sicherheit.",
+  "faqTitle": "Sind meine JSON-Daten sicher & privat?",
+  "faq1Question": "Sind meine JSON-Daten sicher & privat?",
+  "faq1Answer": "Ja! Die gesamte JSON-Verarbeitung findet lokal in Ihrem Browser statt. Keine JSON-Daten werden auf Server hochgeladen. 100% sichere JSON-Tools.",
+  "faq2Question": "Welche JSON-Formate kann ich konvertieren?",
+  "faq2Answer": "JSON-Konverter unterstützt: JSON zu CSV, JSON zu Excel, JSON zu XML, JSON zu YAML, JSON zu TypeScript. Auch CSV zu JSON, Excel zu JSON, XML zu JSON, YAML zu JSON, URL-Parameter zu JSON",
+  "faq3Question": "Wie vergleiche ich zwei JSON-Dateien?",
+  "faq3Answer": "Verwenden Sie das JSON-Vergleichstool, um Unterschiede zu sehen. JSON-Diff-Checker hebt Hinzufügungen (grün), Löschungen (rot) und Änderungen (gelb) hervor. JSON online sofort vergleichen",
+  "faq4Question": "Kann ich Felder aus JSON extrahieren?",
+  "faq4Answer": "Ja! JSON-Parser unterstützt Feldextraktion. Verwenden Sie JavaScript-Funktionen wie 'obj => obj.name', um bestimmte Daten zu extrahrieren. Perfekt für JSON-API-Antworten",
+  "faq5Question": "Ist dieser JSON-Formatierer kostenlos?",
+  "faq5Answer": "Ja! Alle JSON-Tools sind 100% kostenlos: JSON-Formatierer, Validator, Minifier, Beautifier, Konverter, Vergleichstool. Keine Einschränkungen",
+  "faq6Question": "Kann ich JSON-Tools offline verwenden?",
+  "faq6Answer": "Ja! JSON-Viewer funktioniert offline nach dem Laden. Kein Internet erforderlich. JSON-Formatierer, Validator, Konverter funktionieren alle browserbasiert"
 };

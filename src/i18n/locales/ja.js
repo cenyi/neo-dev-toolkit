@@ -123,5 +123,18 @@ export default {
   "formatCat6Item5": "プライバシー第一",
   "formatCat6Item6": "安全な処理",
   "formatsNote": "💡 <strong>注：</strong>すべてのJSON処理はブラウザ内でローカルに行われます。大きなJSONファイル、シンタックスハイライト、エラーヒント、スマート折りたたみなどをサポート。開発者、データアナリスト、APIテストなどに最適。",
-  "footerDescription": "強力なオンラインJSONフォーマッター、バリデーター、コンバーター。JSON、URLパラメータ、XML、YAML変換をサポート、100%ブラウザベースで安全。"
+  "footerDescription": "強力なオンラインJSONフォーマッター、バリデーター、コンバーター。JSON、URLパラメータ、XML、YAML変換をサポート、100%ブラウザベースで安全。",
+  "faqTitle": "私のJSONデータは安全でプライベートですか？",
+  "faq1Question": "私のJSONデータは安全でプライベートですか？",
+  "faq1Answer": "はい！すべてのJSON処理はブラウザ内でローカルに行われます。サーバーへのJSONデータアップロードはありません。100%安全なJSONツールです。",
+  "faq2Question": "どのようなJSONフォーマット変換ができますか？",
+  "faq2Answer": "JSONコンバーターは以下をサポート: JSON→CSV、JSON→Excel、JSON→XML、JSON→YAML、JSON→TypeScript。また、CSV→JSON、Excel→JSON、XML→JSON、YAML→JSON、URLパラメータ→JSON",
+  "faq3Question": "2つのJSONファイルを比較するには？",
+  "faq3Answer": "JSON比較ツールを使用して差異を確認します。JSON diffチェッカーは追加（緑）、削除（赤）、変更（黄）をハイライトします。オンラインでJSONを即座に比較",
+  "faq4Question": "JSONからフィールドを抽出できますか？",
+  "faq4Answer": "はい！JSONパーサーはフィールド抽出をサポートしています。'obj => obj.name'のようなJavaScript関数を使用して特定のデータを抽出できます。JSON APIレスポンスの処理に最適",
+  "faq5Question": "このJSONフォーマッターは無料ですか？",
+  "faq5Answer": "はい！すべてのJSONツールは100%無料: JSONフォーマッター、バリデーター、圧縮ツール、ビューティファイア、コンバーター、比較ツール。制限なし",
+  "faq6Question": "JSONツールをオフラインで使用できますか？",
+  "faq6Answer": "はい！JSONビューアはロード後にオフラインで動作します。インターネット不要。JSONフォーマッター、バリデーター、コンバーターはすべてブラウザベースで動作"
 };

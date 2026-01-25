@@ -123,5 +123,18 @@ export default {
   "formatCat6Item5": "隐私保护 (Privacy First)",
   "formatCat6Item6": "安全加密 (Secure Processing)",
   "formatsNote": "💡 <strong>提示：</strong> 所有JSON处理均在浏览器本地完成，支持大型JSON文件，提供语法高亮、错误提示、智能折叠等功能。适用于开发者、数据分析师、API测试等场景。",
-  "footerDescription": "强大的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，100%浏览器本地运行，数据安全无忧。"
+  "footerDescription": "强大的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，100%浏览器本地运行，数据安全无忧。",
+  "faqTitle": "我的JSON数据安全且隐私吗？",
+  "faq1Question": "我的JSON数据安全且隐私吗？",
+  "faq1Answer": "是的！所有JSON处理都在您的浏览器本地进行。无JSON数据上传到服务器。100%安全的JSON工具。",
+  "faq2Question": "支持哪些JSON格式转换？",
+  "faq2Answer": "JSON转换器支持：JSON转CSV、JSON转Excel、JSON转XML、JSON转YAML、JSON转TypeScript。同时支持CSV转JSON、Excel转JSON、XML转JSON、YAML转JSON、URL参数转JSON",
+  "faq3Question": "如何对比两个JSON文件？",
+  "faq3Answer": "使用JSON对比工具查看差异。JSON diff检查器高亮显示：➕绿色新增、➖红色删除、🔄黄色修改。在线对比JSON即时可见",
+  "faq4Question": "我可以从JSON中提取字段吗？",
+  "faq4Answer": "可以！JSON解析器支持字段提取。使用JavaScript函数如'obj => obj.name'提取特定数据。完美处理JSON API响应",
+  "faq5Question": "这个JSON格式化器免费吗？",
+  "faq5Answer": "是的！所有JSON工具100%免费：JSON格式化器、校验器、压缩器、美化器、转换器、对比工具。无任何限制",
+  "faq6Question": "我可以离线使用JSON工具吗？",
+  "faq6Answer": "可以！JSON查看器加载后可离线工作。无需互联网。JSON格式化器、校验器、转换器全部基于浏览器运行"
 };

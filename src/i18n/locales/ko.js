@@ -123,5 +123,18 @@ export default {
   "formatCat6Item5": "개인정보 보호 우선",
   "formatCat6Item6": "안전한 처리",
   "formatsNote": "💡 <strong>참고:</strong> 모든 JSON 처리는 브라우저에서 로컬로 수행됩니다. 대용량 JSON 파일, 구문 강조, 오류 표시, 스마트 접기 등을 지원합니다. 개발자, 데이터 분석가, API 테스트 등에 적합.",
-  "footerDescription": "강력한 온라인 JSON 포맷터, 유효성 검사기 및 변환기. JSON, URL 매개변수, XML, YAML 변환을 지원하며 100% 브라우저 기반 보안을 제공."
+  "footerDescription": "강력한 온라인 JSON 포맷터, 유효성 검사기 및 변환기. JSON, URL 매개변수, XML, YAML 변환을 지원하며 100% 브라우저 기반 보안을 제공.",
+  "faqTitle": "내 JSON 데이터는 안전하고 프라이빗한가요?",
+  "faq1Question": "내 JSON 데이터는 안전하고 프라이빗한가요?",
+  "faq1Answer": "네! 모든 JSON 처리는 브라우저에서 로컬로 수행됩니다. JSON 데이터가 서버에 업로드되지 않습니다. 100% 안전한 JSON 도구입니다.",
+  "faq2Question": "어떤 JSON 포맷 변환을 지원하나요?",
+  "faq2Answer": "JSON 변환기는 다음을 지원합니다: JSON→CSV, JSON→Excel, JSON→XML, JSON→YAML, JSON→TypeScript. 또한 CSV→JSON, Excel→JSON, XML→JSON, YAML→JSON, URL 매개변수→JSON",
+  "faq3Question": "두 개의 JSON 파일을 비교하려면 어떻게 하나요?",
+  "faq3Answer": "JSON 비교 도구를 사용하여 차이점을 확인합니다. JSON diff 검사기는 추가(녹색), 제거(적색), 변경(노란색)을 강조합니다. 온라인에서 JSON을 즉시 비교",
+  "faq4Question": "JSON에서 필드를 추출할 수 있나요?",
+  "faq4Answer": "네! JSON 파서는 필드 추출을 지원합니다. 'obj => obj.name'과 같은 JavaScript 함수를 사용하여 특정 데이터를 추출할 수 있습니다. JSON API 응답 처리에 최적",
+  "faq5Question": "이 JSON 포맷터는 무료인가요?",
+  "faq5Answer": "네! 모든 JSON 도구는 100% 무료입니다: JSON 포맷터, 검증기, 압축 도구, 뷰티파이어, 변환기, 비교 도구. 제한 없음",
+  "faq6Question": "JSON 도구를 오프라인으로 사용할 수 있나요?",
+  "faq6Answer": "네! JSON 뷰어는 로드 후 오프라인으로 작동합니다. 인터넷 불필요. JSON 포맷터, 검증기, 변환기는 모두 브라우저 기반으로 작동"
 };

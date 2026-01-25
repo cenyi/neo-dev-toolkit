@@ -123,5 +123,18 @@ export default {
   "formatCat6Item5": "Privacité d'Abord",
   "formatCat6Item6": "Traitement Sécurisé",
   "formatsNote": "💡 <strong>Note :</strong> Tout le traitement JSON se fait localement dans votre navigateur. Prend en charge les gros fichiers JSON avec la coloration syntaxique, les indices d'erreur, le repli intelligent, et plus. Convient aux développeurs, analystes de données, tests API, et plus.",
-  "footerDescription": "Outils JSON en ligne puissants : formateur, validateur et convertisseur. Prend en charge la conversion JSON, paramètres URL, XML, YAML avec une sécurité 100% basée sur le navigateur."
+  "footerDescription": "Outils JSON en ligne puissants : formateur, validateur et convertisseur. Prend en charge la conversion JSON, paramètres URL, XML, YAML avec une sécurité 100% basée sur le navigateur.",
+  "faqTitle": "Mes données JSON sont-elles sécurisées et privées?",
+  "faq1Question": "Mes données JSON sont-elles sécurisées et privées?",
+  "faq1Answer": "Oui! Tout le traitement JSON se produit localement dans votre navigateur. Aucune donnée JSON n'est envoyée vers des serveurs. Outils JSON 100% sécurisés.",
+  "faq2Question": "Quels formats JSON puis-je convertir?",
+  "faq2Answer": "Le convertisseur JSON prend en charge: JSON vers CSV, JSON vers Excel, JSON vers XML, JSON vers YAML, JSON vers TypeScript. Aussi CSV vers JSON, Excel vers JSON, XML vers JSON, YAML vers JSON, paramètres URL vers JSON",
+  "faq3Question": "Comment comparer deux fichiers JSON?",
+  "faq3Answer": "Utilisez l'outil de comparaison JSON pour voir les différences. Le vérificateur de diff JSON met en évidence les ajouts (vert), les suppressions (rouge) et les modifications (jaune). Comparez JSON en ligne instantanément",
+  "faq4Question": "Puis-je extraire des champs de JSON?",
+  "faq4Answer": "Oui! L'analyseur JSON prend en charge l'extraction de champs. Utilisez des fonctions JavaScript comme 'obj => obj.nom' pour extraire des données spécifiques. Parfait pour les réponses d'API JSON",
+  "faq5Question": "Ce formateur JSON est-il gratuit?",
+  "faq5Answer": "Oui! Tous les outils JSON sont 100% gratuits: formateur JSON, validateur, minificateur, embellisseur, convertisseur, outil de comparaison. Aucune limitation",
+  "faq6Question": "Puis-je utiliser les outils JSON hors ligne?",
+  "faq6Answer": "Oui! Le visualiseur JSON fonctionne hors ligne après chargement. Pas besoin d'internet. Le formateur JSON, validateur, convertisseur fonctionnent tous basés sur le navigateur"
 };
