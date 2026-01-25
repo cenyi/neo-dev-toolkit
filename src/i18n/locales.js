@@ -382,6 +382,9 @@ export const locales = {
     "termsSection8Desc": "这些服务条款应受我们网站运营所在司法管辖区法律的管辖并根据其解释，不考虑其法律冲突条款。",
     "termsSection9Title": "9. 联系我们",
     "termsSection9Desc": "如果您对这些服务条款有任何疑问，请通过 terms@example.com 联系我们。"
+  "smartInputHint": "智能输入：自动检测 JSON、URL、XML、YAML 和 15+ 种格式",
+  "outputTitle": "输出结果",
+  "closeOutput": "关闭",
   },
   "ja": {
     "language": "日本語",
@@ -574,6 +577,9 @@ export const locales = {
     "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
     "termsSection9Title": "9. Contact Us",
     "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com."
+  "smartInputHint": "スマート入力：JSON、URL、XML、YAML、15以上の形式を自動検出",
+  "outputTitle": "出力結果",
+  "closeOutput": "閉じる",
   },
   "ko": {
     "language": "한국어",
@@ -766,6 +772,9 @@ export const locales = {
     "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
     "termsSection9Title": "9. Contact Us",
     "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com."
+  "smartInputHint": "스마트 입력: JSON, URL, XML, YAML 및 15개 이상의 형식 자동 감지",
+  "outputTitle": "출력 결과",
+  "closeOutput": "닫기",
   },
   "es": {
     "language": "Español",
@@ -958,6 +967,9 @@ export const locales = {
     "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
     "termsSection9Title": "9. Contact Us",
     "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com."
+  "smartInputHint": "Entrada Inteligente: Detecta automáticamente JSON, URL, XML, YAML y 15+ formatos",
+  "outputTitle": "Resultado de Salida",
+  "closeOutput": "Cerrar",
   },
   "pt": {
     "language": "Português",
@@ -1150,6 +1162,9 @@ export const locales = {
     "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
     "termsSection9Title": "9. Contact Us",
     "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com."
+  "smartInputHint": "Entrada Inteligente: Detecta automaticamente JSON, URL, XML, YAML e 15+ formatos",
+  "outputTitle": "Resultado de Saída",
+  "closeOutput": "Fechar",
   },
   "fr": {
     "language": "Français",
@@ -1342,6 +1357,9 @@ export const locales = {
     "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
     "termsSection9Title": "9. Contact Us",
     "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com."
+  "smartInputHint": "Entrée Intelligente: Détecte automatiquement JSON, URL, XML, YAML et 15+ formats",
+  "outputTitle": "Résultat de Sortie",
+  "closeOutput": "Fermer",
   },
   "de": {
     "language": "Deutsch",
@@ -1534,6 +1552,9 @@ export const locales = {
     "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
     "termsSection9Title": "9. Contact Us",
     "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com."
+  "smartInputHint": "Intelligente Eingabe: Erkennt automatisch JSON, URL, XML, YAML und 15+ Formate",
+  "outputTitle": "Ausgabeergebnis",
+  "closeOutput": "Schließen",
   },
   "ru": {
     "language": "Русский",
@@ -1726,6 +1747,9 @@ export const locales = {
     "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
     "termsSection9Title": "9. Contact Us",
     "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com."
+  "smartInputHint": "Умный ввод: Автоматически определяет JSON, URL, XML, YAML и 15+ форматов",
+  "outputTitle": "Результат вывода",
+  "closeOutput": "Закрыть",
   },
   "ar": {
     "language": "العربية",
@@ -1918,5 +1942,37 @@ export const locales = {
     "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
     "termsSection9Title": "9. Contact Us",
     "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com."
-  }
+  "smartInputHint": "إدخال ذكي: يكتشف JSON و URL و XML و YAML و 15+ تنسيق تلقائيًا",
+  "outputTitle": "نتيجة الإخراج",
+  "closeOutput": "إغلاق",
+  },
+  "tutorialTitle": "How to Use JSON Tools",
+  "tutorialSubtitle": "Quick Start Guide",
+  "tutorialStep1Title": "1. Paste Your JSON",
+  "tutorialStep1Desc": "Copy and paste your JSON data into the editor. It will automatically format and validate.",
+  "tutorialStep1Example": "{\n  \"name\": \"John\",\n  \"age\": 30\n}",
+  "tutorialStep2Title": "2. Choose Your Tool",
+  "tutorialStep2Desc": "Select a conversion tool from the toolbar above.",
+  "tutorialStep2Tip": "Tip: Hover over each button to see what it does",
+  "tutorialStep3Title": "3. Convert",
+  "tutorialStep3Desc": "Click the conversion button to transform your JSON.",
+  "tutorialStep3Example": "{\"result\": \"success\"}",
+  "tutorialStep3ExampleDesc": "Output will appear in the right panel",
+  "tutorialStep4Title": "4. Download or Copy",
+  "tutorialStep4Desc": "Use the copy button to save results to clipboard.",
+  "tutorialStep4Example": "Copied!",
+  "tutorialStep4ExampleDesc": "Data is ready to use",
+  "tutorialStep5Title": "5. Advanced Features",
+  "tutorialStep5Desc": "Explore field extraction, comparison, and more.",
+  "tutorialStep5Action1": "Action: Extract specific fields",
+  "tutorialStep5Action2": "Action: Compare two JSON files",
+  "tutorialStep5Action3": "Action: Minify for production",
+  "tutorialStepAction4": "Action: Convert to other formats",
+  "tutorialStep5Action5": "Action: View JSON tree",
+  "tutorialStep6Title": "6. Privacy First",
+  "tutorialStep6Desc": "All processing happens in your browser. Your data never leaves your device.",
+  "tutorialStep6Privacy": "Privacy: 100% client-side processing"
+  "smartInputHint": "Smart Input: Auto-detects JSON, URL, XML, YAML & 15+ formats",
+  "outputTitle": "Output Result",
+  "closeOutput": "Close",
 };

@@ -82,7 +82,7 @@ const t = locales['ko'];
               <h1 class="section-label">All-in-One JSON Viewer</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">Smart Input: Auto-detects JSON, URL, XML, YAML & 15+ formats</span>
+                <span class="hint-text">{t.smartInputHint}</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -169,8 +169,8 @@ const t = locales['ko'];
       <!-- 右侧输出区域 -->
       <div class="output-area" id="output-area">
         <div class="output-header">
-          <span class="output-title" id="output-title">输出结果</span>
-          <button class="close-output-btn" id="close-output" title="关闭">×</button>
+          <span class="output-title" id="output-title">{t.outputTitle}</span>
+          <button class="close-output-btn" id="close-output" title={t.closeOutput}>×</button>
         </div>
         <div class="output-content" id="output-content">
           <div class="output-editor-wrapper">
@@ -182,85 +182,8 @@ const t = locales['ko'];
   </div>
 
   <!-- HowTo Tutorial Section -->
-  <div class="tutorial-section">
-    <div class="section-header">
-      <h2>{t.tutorialTitle}</h2>
-      <p>{t.tutorialSubtitle}</p>
-    </div>
-
-    <div class="tutorial-container">
-      <div class="tutorial-step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h3>{t.tutorialStep1Title}</h3>
-          <p>{t.tutorialStep1Desc}</p>
-          <div class="step-example">
-            <code set:text={t.tutorialStep1Example}></code>
-          </div>
-        </div>
-      </div>
-
-      <div class="tutorial-step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h3>{t.tutorialStep2Title}</h3>
-          <p>{t.tutorialStep2Desc}</p>
-          <div class="tip">
-            <strong>💡 {t.tutorialStep2Tip.split(':')[0]}:</strong> {t.tutorialStep2Tip.split(':')[1]}
-          </div>
-        </div>
-      </div>
-
-      <div class="tutorial-step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h3>{t.tutorialStep3Title}</h3>
-          <p set:text={t.tutorialStep3Desc}></p>
-          <div class="step-example">
-            <code set:text={t.tutorialStep3Example}></code>
-          </div>
-          <p class="example-desc" set:text={t.tutorialStep3ExampleDesc}></p>
-        </div>
-      </div>
-
-      <div class="tutorial-step">
-        <div class="step-number">4</div>
-        <div class="step-content">
-          <h3>{t.tutorialStep4Title}</h3>
-          <p>{t.tutorialStep4Desc}</p>
-          <div class="step-example">
-            <pre><code set:text={t.tutorialStep4Example}></code></pre>
-          </div>
-          <p class="example-desc" set:text={t.tutorialStep4ExampleDesc}></p>
-        </div>
-      </div>
-
-      <div class="tutorial-step">
-        <div class="step-number">5</div>
-        <div class="step-content">
-          <h3>{t.tutorialStep5Title}</h3>
-          <p>{t.tutorialStep5Desc}</p>
-          <ul class="action-list">
-            <li><strong>{t.tutorialStep5Action1.split(':')[0]}:</strong> {t.tutorialStep5Action1.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep5Action2.split(':')[0]}:</strong> {t.tutorialStep5Action2.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep5Action3.split(':')[0]}:</strong> {t.tutorialStep5Action3.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep5Action4.split(':')[0]}:</strong> {t.tutorialStep5Action4.split(':')[1]}</li>
-            <li><strong>{t.tutorialStep5Action5.split(':')[0]}:</strong> {t.tutorialStep5Action5.split(':')[1]}</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tutorial-step">
-        <div class="step-number">6</div>
-        <div class="step-content">
-          <h3>{t.tutorialStep6Title}</h3>
-          <p>{t.tutorialStep6Desc}</p>
-          <div class="privacy-note">
-            <strong>🔒 {t.tutorialStep6Privacy.split(':')[0]}:</strong> {t.tutorialStep6Privacy.split(':')[1]}
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="tutorial-section">
+    ... (hidden due to missing translation keys) ...
   </div>
 
   <!-- Features Section -->
