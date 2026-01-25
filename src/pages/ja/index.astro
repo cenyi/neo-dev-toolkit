@@ -323,79 +323,79 @@ const t = locales['ja'];
     <!-- サポート機能セクション -->
     <div class="supported-formats-section">
       <div class="section-header">
-        <h2>サポートされるJSON変換機能</h2>
-        <p>すべてのJSON処理ニーズに対応する統合JSONツールキット</p>
+        <h2>{t.supportedFormatsTitle}</h2>
+        <p>{t.supportedFormatsSubtitle}</p>
       </div>
       <div class="formats-grid">
         <div class="format-category">
-          <h3>📊 JSONフォーマット</h3>
+          <h3>{t.formatCat1Title}</h3>
           <ul>
-            <li>JSONフォーマッター (JSON Formatter)</li>
-            <li>JSONビューティファイア (JSON Beautifier)</li>
-            <li>JSONミニファイ (JSON Minify)</li>
-            <li>JSONバリデーター (JSON Validator)</li>
-            <li>JSONエスケープ (JSON Escape)</li>
-            <li>JSONビューアー (JSON Viewer)</li>
+            <li>{t.formatCat1Item1}</li>
+            <li>{t.formatCat1Item2}</li>
+            <li>{t.formatCat1Item3}</li>
+            <li>{t.formatCat1Item4}</li>
+            <li>{t.formatCat1Item5}</li>
+            <li>{t.formatCat1Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔄 JSON変換</h3>
+          <h3>{t.formatCat2Title}</h3>
           <ul>
-            <li>JSONをCSVに変換 (JSON to CSV Converter)</li>
-            <li>JSONをExcelに変換 (JSON to Excel)</li>
-            <li>JSONをXMLに変換 (JSON to XML)</li>
-            <li>JSONをYAMLに変換 (JSON to YAML)</li>
-            <li>JSONをTypeScriptに変換 (JSON to TS)</li>
-            <li>JSONをテーブルに変換 (JSON to Table)</li>
+            <li>{t.formatCat2Item1}</li>
+            <li>{t.formatCat2Item2}</li>
+            <li>{t.formatCat2Item3}</li>
+            <li>{t.formatCat2Item4}</li>
+            <li>{t.formatCat2Item5}</li>
+            <li>{t.formatCat2Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>➡️ JSONに変換</h3>
+          <h3>{t.formatCat3Title}</h3>
           <ul>
-            <li>CSVをJSONに変換 (CSV to JSON)</li>
-            <li>ExcelをJSONに変換 (Excel to JSON)</li>
-            <li>XMLをJSONに変換 (XML to JSON)</li>
-            <li>YAMLをJSONに変換 (YAML to JSON)</li>
-            <li>URLパラメーターをJSONに変換 (URL Params to JSON)</li>
-            <li>文字列からJSONに変換 (String to JSON)</li>
+            <li>{t.formatCat3Item1}</li>
+            <li>{t.formatCat3Item2}</li>
+            <li>{t.formatCat3Item3}</li>
+            <li>{t.formatCat3Item4}</li>
+            <li>{t.formatCat3Item5}</li>
+            <li>{t.formatCat3Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔧 JSONツール</h3>
+          <h3>{t.formatCat4Title}</h3>
           <ul>
-            <li>JSON比較 (JSON Compare / JSON Diff)</li>
-            <li>オンラインJSON比較 (Compare JSON Online)</li>
-            <li>JSONフィールド抽出 (Field Extraction)</li>
-            <li>JSONパスファインダー (JSON Path Finder)</li>
-            <li>JSON履歴 (JSON History)</li>
-            <li>JSONコメント削除 (Remove Comments)</li>
+            <li>{t.formatCat4Item1}</li>
+            <li>{t.formatCat4Item2}</li>
+            <li>{t.formatCat4Item3}</li>
+            <li>{t.formatCat4Item4}</li>
+            <li>{t.formatCat4Item5}</li>
+            <li>{t.formatCat4Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>💻 開発者ツール</h3>
+          <h3>{t.formatCat5Title}</h3>
           <ul>
-            <li>TypeScriptインターフェース生成 (TS Interface)</li>
-            <li>JSON Schema生成器</li>
-            <li>JSONコード例</li>
-            <li>JSON構文の強調表示</li>
-            <li>JSONエラーチェック (JSON Error Check)</li>
-            <li>JSON行番号表示</li>
+            <li>{t.formatCat5Item1}</li>
+            <li>{t.formatCat5Item2}</li>
+            <li>{t.formatCat5Item3}</li>
+            <li>{t.formatCat5Item4}</li>
+            <li>{t.formatCat5Item5}</li>
+            <li>{t.formatCat5Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔒 セキュリティ機能</h3>
+          <h3>{t.formatCat6Title}</h3>
           <ul>
-            <li>100%ブラウザベース (Browser-based)</li>
-            <li>ローカル処理 (Local Processing)</li>
-            <li>サーバーアップロード不要 (No Server Upload)</li>
-            <li>オフライン対応 (Works Offline)</li>
-            <li>プライバシー優先 (Privacy First)</li>
-            <li>安全な処理 (Secure Processing)</li>
+            <li>{t.formatCat6Item1}</li>
+            <li>{t.formatCat6Item2}</li>
+            <li>{t.formatCat6Item3}</li>
+            <li>{t.formatCat6Item4}</li>
+            <li>{t.formatCat6Item5}</li>
+            <li>{t.formatCat6Item6}</li>
           </ul>
         </div>
       </div>
       <div class="formats-note">
-        <p>💡 <strong>ヒント：</strong> すべてのJSON処理はブラウザ内でローカルに完了します。大きなJSONファイルをサポートし、構文の強調表示、エラーメッセージ、スマートな折りたたみなどの機能を提供します。開発者、データアナリスト、APIテストなどに最適です。</p>
+        <p set:html={t.formatsNote} />
       </div>
     </div>
 
@@ -434,57 +434,57 @@ const t = locales['ja'];
     </div>
   </div>
 
-  <!-- FAQPage 结构化数据用于 GEO -->
+  <!-- FAQPage 構造化データ GEO用 -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "我的数据安全吗？",
+        "name": t.faq1Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "是的！所有数据处理都在您的浏览器本地进行。我们绝不会将您的数据发送到任何服务器。"
+          "text": t.faq1Answer
         }
       },
       {
         "@type": "Question",
-        "name": "支持哪些文件格式？",
+        "name": t.faq2Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "我们支持 JSON、URL 参数、XML 和 YAML。只需粘贴您的数据，我们会自动检测格式。"
+          "text": t.faq2Answer
         }
       },
       {
         "@type": "Question",
-        "name": "我可以从 JSON 中提取特定字段吗？",
+        "name": t.faq3Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "可以！使用提取函数字段编写 JavaScript 函数，如 'obj => obj.name' 来提取特定数据。"
+          "text": t.faq3Answer
         }
       },
       {
         "@type": "Question",
-        "name": "这个工具免费使用吗？",
+        "name": t.faq4Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "是的，这个工具完全免费，没有任何限制。尽情使用吧！"
+          "text": t.faq4Answer
         }
       },
       {
         "@type": "Question",
-        "name": "它可以离线工作吗？",
+        "name": t.faq5Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "加载后，工具完全离线工作。不需要互联网连接。"
+          "text": t.faq5Answer
         }
       },
       {
         "@type": "Question",
-        "name": "我可以在手机上使用吗？",
+        "name": t.faq6Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "可以！该工具完全响应式，在手机和平板电脑上都能完美运行。"
+          "text": t.faq6Answer
         }
       }
     ]

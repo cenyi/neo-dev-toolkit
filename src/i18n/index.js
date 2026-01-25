@@ -1,29 +1,29 @@
 // i18n Main Module
 import config from './config.js';
 
-// 导入所有翻译
-import enTranslations from './translations/en.json';
-import zhTranslations from './translations/zh.json';
-import jaTranslations from './translations/ja.json';
-import koTranslations from './translations/ko.json';
-import esTranslations from './translations/es.json';
-import ptTranslations from './translations/pt.json';
-import frTranslations from './translations/fr.json';
-import deTranslations from './translations/de.json';
-import ruTranslations from './translations/ru.json';
-import arTranslations from './translations/ar.json';
+// 导入所有翻译（从拆分的locale文件）
+import enTranslations from './locales/en.js';
+import zhTranslations from './locales/zh.js';
+import jaTranslations from './locales/ja.js';
+import koTranslations from './locales/ko.js';
+import esTranslations from './locales/es.js';
+import ptTranslations from './locales/pt.js';
+import frTranslations from './locales/fr.js';
+import deTranslations from './locales/de.js';
+import ruTranslations from './locales/ru.js';
+import arTranslations from './locales/ar.js';
 
 const translations = {
-  en: enTranslations,
-  zh: zhTranslations,
-  ja: jaTranslations,
-  ko: koTranslations,
-  es: esTranslations,
-  pt: ptTranslations,
-  fr: frTranslations,
-  de: deTranslations,
-  ru: ruTranslations,
-  ar: arTranslations
+  en: enTranslations.default,
+  zh: zhTranslations.default,
+  ja: jaTranslations.default,
+  ko: koTranslations.default,
+  es: esTranslations.default,
+  pt: ptTranslations.default,
+  fr: frTranslations.default,
+  de: deTranslations.default,
+  ru: ruTranslations.default,
+  ar: arTranslations.default
 };
 
 let currentLocale = config.defaultLocale;

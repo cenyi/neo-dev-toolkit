@@ -323,79 +323,79 @@ const t = locales['en'];
     <!-- Supported Formats Section -->
     <div class="supported-formats-section">
       <div class="section-header">
-        <h2>Supported JSON Conversion Features</h2>
-        <p>One-stop JSON toolkit for all your JSON processing needs</p>
+        <h2>{t.supportedFormatsTitle}</h2>
+        <p>{t.supportedFormatsSubtitle}</p>
       </div>
       <div class="formats-grid">
         <div class="format-category">
-          <h3>📊 JSON Formatting</h3>
+          <h3>{t.formatCat1Title}</h3>
           <ul>
-            <li>JSON Formatter</li>
-            <li>JSON Beautifier</li>
-            <li>JSON Minify</li>
-            <li>JSON Validator</li>
-            <li>JSON Escape</li>
-            <li>JSON Viewer</li>
+            <li>{t.formatCat1Item1}</li>
+            <li>{t.formatCat1Item2}</li>
+            <li>{t.formatCat1Item3}</li>
+            <li>{t.formatCat1Item4}</li>
+            <li>{t.formatCat1Item5}</li>
+            <li>{t.formatCat1Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔄 JSON Conversion</h3>
+          <h3>{t.formatCat2Title}</h3>
           <ul>
-            <li>JSON to CSV Converter</li>
-            <li>JSON to Excel</li>
-            <li>JSON to XML</li>
-            <li>JSON to YAML</li>
-            <li>JSON to TypeScript</li>
-            <li>JSON to Table</li>
+            <li>{t.formatCat2Item1}</li>
+            <li>{t.formatCat2Item2}</li>
+            <li>{t.formatCat2Item3}</li>
+            <li>{t.formatCat2Item4}</li>
+            <li>{t.formatCat2Item5}</li>
+            <li>{t.formatCat2Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>➡️ Convert to JSON</h3>
+          <h3>{t.formatCat3Title}</h3>
           <ul>
-            <li>CSV to JSON</li>
-            <li>Excel to JSON</li>
-            <li>XML to JSON</li>
-            <li>YAML to JSON</li>
-            <li>URL Params to JSON</li>
-            <li>String to JSON</li>
+            <li>{t.formatCat3Item1}</li>
+            <li>{t.formatCat3Item2}</li>
+            <li>{t.formatCat3Item3}</li>
+            <li>{t.formatCat3Item4}</li>
+            <li>{t.formatCat3Item5}</li>
+            <li>{t.formatCat3Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔧 JSON Tools</h3>
+          <h3>{t.formatCat4Title}</h3>
           <ul>
-            <li>JSON Compare / JSON Diff</li>
-            <li>Compare JSON Online</li>
-            <li>Field Extraction</li>
-            <li>JSON Path Finder</li>
-            <li>JSON History</li>
-            <li>Remove Comments</li>
+            <li>{t.formatCat4Item1}</li>
+            <li>{t.formatCat4Item2}</li>
+            <li>{t.formatCat4Item3}</li>
+            <li>{t.formatCat4Item4}</li>
+            <li>{t.formatCat4Item5}</li>
+            <li>{t.formatCat4Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>💻 Developer Tools</h3>
+          <h3>{t.formatCat5Title}</h3>
           <ul>
-            <li>TypeScript Interface</li>
-            <li>JSON Schema Generator</li>
-            <li>JSON Code Examples</li>
-            <li>Syntax Highlighting</li>
-            <li>Error Detection</li>
-            <li>Line Numbers</li>
+            <li>{t.formatCat5Item1}</li>
+            <li>{t.formatCat5Item2}</li>
+            <li>{t.formatCat5Item3}</li>
+            <li>{t.formatCat5Item4}</li>
+            <li>{t.formatCat5Item5}</li>
+            <li>{t.formatCat5Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔒 Security Features</h3>
+          <h3>{t.formatCat6Title}</h3>
           <ul>
-            <li>100% Browser-based</li>
-            <li>Local Processing</li>
-            <li>No Server Upload</li>
-            <li>Works Offline</li>
-            <li>Privacy First</li>
-            <li>Secure Processing</li>
+            <li>{t.formatCat6Item1}</li>
+            <li>{t.formatCat6Item2}</li>
+            <li>{t.formatCat6Item3}</li>
+            <li>{t.formatCat6Item4}</li>
+            <li>{t.formatCat6Item5}</li>
+            <li>{t.formatCat6Item6}</li>
           </ul>
         </div>
       </div>
       <div class="formats-note">
-        <p>💡 <strong>Tip:</strong> All JSON processing happens locally in your browser. Supports large JSON files with syntax highlighting, error detection, and smart folding. Perfect for developers, data analysts, API testing, and more.</p>
+        <p set:html={t.formatsNote} />
       </div>
     </div>
 
@@ -441,50 +441,50 @@ const t = locales['en'];
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Is my data secure?",
+        "name": t.faq1Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! All data processing happens locally in your browser. We never send your data to any server."
+          "text": t.faq1Answer
         }
       },
       {
         "@type": "Question",
-        "name": "What file formats are supported?",
+        "name": t.faq2Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We support JSON, URL parameters, XML, and YAML. Simply paste your data and we'll automatically detect the format."
+          "text": t.faq2Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Can I extract specific fields from JSON?",
+        "name": t.faq3Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! Use the extraction function field to write JavaScript functions like 'obj => obj.name' to extract specific data."
+          "text": t.faq3Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Is this tool free to use?",
+        "name": t.faq4Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, this tool is completely free with no limitations. Enjoy!"
+          "text": t.faq4Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Does it work offline?",
+        "name": t.faq5Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Once loaded, the tool works completely offline. No internet connection required."
+          "text": t.faq5Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Can I use this on mobile?",
+        "name": t.faq6Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! The tool is fully responsive and works great on mobile devices and tablets."
+          "text": t.faq6Answer
         }
       }
     ]

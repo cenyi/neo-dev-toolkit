@@ -1,19 +1,28 @@
 ---
 const { t = {} } = Astro.props;
 const currentPath = Astro.url.pathname;
-const isZhPage = currentPath.startsWith('/zh');
-const langPrefix = isZhPage ? '/zh' : '';
+
+// 支持的所有语言
+const supportedLangs = ['zh', 'ja', 'ko', 'es', 'pt', 'fr', 'de', 'ru', 'ar'];
+
+// 检测当前语言前缀
+let currentLang = 'en';
+let langPrefix = '';
+
+for (const lang of supportedLangs) {
+  if (currentPath.startsWith(`/${lang}`)) {
+    currentLang = lang;
+    langPrefix = `/${lang}`;
+    break;
+  }
+}
 ---
 
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-brand">
       <h3 class="brand-logo">JSON Viewer</h3>
-      <p class="brand-description">
-        {isZhPage
-          ? '强大的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，100%浏览器本地运行，数据安全无忧。'
-          : 'Powerful online JSON formatter, validator, and converter. Support JSON, URL params, XML, YAML conversion with 100% browser-based security.'}
-      </p>
+      <p class="brand-description" set:html={t.footerDescription || 'Powerful online JSON formatter, validator, and converter. Support JSON, URL params, XML, YAML conversion with 100% browser-based security.'} />
     </div>
 
     <div class="footer-section">
@@ -227,31 +236,69 @@ const langPrefix = isZhPage ? '/zh' : '';
 <script is:global>
   function showToolsComingSoon() {
     const currentLang = window.appState.lang || 'en';
-    const message = currentLang === 'zh'
-      ? '工具正在开发中，敬请期待...'
-      : 'Tools are under development, please stay tuned...';
-    alert(message);
+    const messages = {
+      zh: '工具正在开发中，敬请期待...',
+      ja: 'ツールは開発中です。もうしばらくお待ちください...',
+      ko: '도구 개발 중입니다. 기다려 주세요...',
+      es: 'Las herramientas están en desarrollo, estén atentos...',
+      pt: 'Ferramentas em desenvolvimento, fiquem atentos...',
+      fr: 'Outils en développement, restez à l\'écoute...',
+      de: 'Tools sind in Entwicklung, bleiben Sie dran...',
+      ru: 'Инструменты в разработке, оставайтесь с нами...',
+      ar: 'الأدوات قيد التطوير، ترقبوا...'
+    };
+    alert(messages[currentLang] || 'Tools are under development, please stay tuned...');
   }
 
   function switchLanguage() {
-    const currentLang = window.appState.lang;
-    const newLang = currentLang === 'en' ? 'zh' : 'en';
-    window.appState.lang = newLang;
+    const currentLang = window.appState.lang || 'en';
+    const supportedLangs = ['en', 'zh', 'ja', 'ko', 'es', 'pt', 'fr', 'de', 'ru', 'ar'];
     const currentPath = window.location.pathname;
-    let newPath;
-    if (newLang === 'en') {
-      if (currentPath.startsWith('/zh')) {
-        newPath = currentPath.substring(3) || '/';
-      } else {
-        newPath = currentPath;
-      }
-    } else {
-      if (currentPath.startsWith('/zh')) {
-        newPath = currentPath;
-      } else {
-        newPath = '/zh' + (currentPath === '/' ? '' : currentPath);
+
+    // 获取不带语言前缀的路径
+    let pathWithoutLang = currentPath;
+    for (const lang of supportedLangs) {
+      if (lang !== 'en' && currentPath.startsWith(`/${lang}`)) {
+        pathWithoutLang = currentPath.substring(lang.length + 1) || '/';
+        break;
       }
     }
-    window.location.href = newPath;
+
+    // 显示语言选择菜单
+    const langNames = {
+      en: 'English',
+      zh: '简体中文',
+      ja: '日本語',
+      ko: '한국어',
+      es: 'Español',
+      pt: 'Português',
+      fr: 'Français',
+      de: 'Deutsch',
+      ru: 'Русский',
+      ar: 'العربية'
+    };
+
+    let message = '选择语言 / Select Language:\n\n';
+    supportedLangs.forEach((lang, index) => {
+      message += `${index + 1}. ${langNames[lang]} (${lang})\n`;
+    });
+    message += '\n请输入数字 (1-10) / Enter number (1-10):';
+
+    const choice = prompt(message);
+    if (choice !== null) {
+      const index = parseInt(choice) - 1;
+      if (index >= 0 && index < supportedLangs.length) {
+        const newLang = supportedLangs[index];
+        let newPath;
+
+        if (newLang === 'en') {
+          newPath = pathWithoutLang;
+        } else {
+          newPath = `/${newLang}${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+        }
+
+        window.location.href = newPath;
+      }
+    }
   }
 </script>

@@ -320,82 +320,82 @@ const t = locales['pt'];
       </div>
     </div>
 
-    <!-- 支持的功能 Section -->
+    <!-- Recursos suportados Section -->
     <div class="supported-formats-section">
       <div class="section-header">
-        <h2>Recursos de conversão JSON suportados</h2>
-        <p>Conjunto de ferramentas JSON completo para todas as suas necessidades de processamento de JSON</p>
+        <h2>{t.supportedFormatsTitle}</h2>
+        <p>{t.supportedFormatsSubtitle}</p>
       </div>
       <div class="formats-grid">
         <div class="format-category">
-          <h3>📊 Formatação JSON</h3>
+          <h3>{t.formatCat1Title}</h3>
           <ul>
-            <li>Formatador JSON (JSON Formatter)</li>
-            <li>Beautificador JSON (JSON Beautifier)</li>
-            <li>Minificador JSON (JSON Minify)</li>
-            <li>Validador JSON (JSON Validator)</li>
-            <li>Escape JSON (JSON Escape)</li>
-            <li>Visualizador JSON (JSON Viewer)</li>
+            <li>{t.formatCat1Item1}</li>
+            <li>{t.formatCat1Item2}</li>
+            <li>{t.formatCat1Item3}</li>
+            <li>{t.formatCat1Item4}</li>
+            <li>{t.formatCat1Item5}</li>
+            <li>{t.formatCat1Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔄 Conversão JSON</h3>
+          <h3>{t.formatCat2Title}</h3>
           <ul>
-            <li>JSON para CSV (JSON to CSV Converter)</li>
-            <li>JSON para Excel (JSON to Excel)</li>
-            <li>JSON para XML (JSON to XML)</li>
-            <li>JSON para YAML (JSON to YAML)</li>
-            <li>JSON para TypeScript (JSON to TS)</li>
-            <li>JSON para Tabela (JSON to Table)</li>
+            <li>{t.formatCat2Item1}</li>
+            <li>{t.formatCat2Item2}</li>
+            <li>{t.formatCat2Item3}</li>
+            <li>{t.formatCat2Item4}</li>
+            <li>{t.formatCat2Item5}</li>
+            <li>{t.formatCat2Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>➡️ Converter para JSON</h3>
+          <h3>{t.formatCat3Title}</h3>
           <ul>
-            <li>CSV para JSON (CSV to JSON)</li>
-            <li>Excel para JSON (Excel to JSON)</li>
-            <li>XML para JSON (XML to JSON)</li>
-            <li>YAML para JSON (YAML to JSON)</li>
-            <li>Parâmetros de URL para JSON (URL Params to JSON)</li>
-            <li>String para JSON (String to JSON)</li>
+            <li>{t.formatCat3Item1}</li>
+            <li>{t.formatCat3Item2}</li>
+            <li>{t.formatCat3Item3}</li>
+            <li>{t.formatCat3Item4}</li>
+            <li>{t.formatCat3Item5}</li>
+            <li>{t.formatCat3Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔧 Ferramentas JSON</h3>
+          <h3>{t.formatCat4Title}</h3>
           <ul>
-            <li>Comparar JSON (JSON Compare / JSON Diff)</li>
-            <li>Comparar JSON Online (Compare JSON Online)</li>
-            <li>Extração de campos JSON (Field Extraction)</li>
-            <li>Localizador de caminho JSON (JSON Path Finder)</li>
-            <li>Histórico JSON (JSON History)</li>
-            <li>Remover comentários JSON (Remove Comments)</li>
+            <li>{t.formatCat4Item1}</li>
+            <li>{t.formatCat4Item2}</li>
+            <li>{t.formatCat4Item3}</li>
+            <li>{t.formatCat4Item4}</li>
+            <li>{t.formatCat4Item5}</li>
+            <li>{t.formatCat4Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>💻 Ferramentas para desenvolvedores</h3>
+          <h3>{t.formatCat5Title}</h3>
           <ul>
-            <li>Geração de interface TypeScript (TS Interface)</li>
-            <li>Gerador de JSON Schema</li>
-            <li>Exemplos de código JSON</li>
-            <li>Highlight de sintaxe JSON</li>
-            <li>Detecção de erros JSON (JSON Error Check)</li>
-            <li>Exibição de números de linha JSON</li>
+            <li>{t.formatCat5Item1}</li>
+            <li>{t.formatCat5Item2}</li>
+            <li>{t.formatCat5Item3}</li>
+            <li>{t.formatCat5Item4}</li>
+            <li>{t.formatCat5Item5}</li>
+            <li>{t.formatCat5Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔒 Recursos de segurança</h3>
+          <h3>{t.formatCat6Title}</h3>
           <ul>
-            <li>100% baseado em navegador (Browser-based)</li>
-            <li>Processamento local de dados (Local Processing)</li>
-            <li>Sem upload para servidores (No Server Upload)</li>
-            <li>Funciona offline (Works Offline)</li>
-            <li>Privacidade prioritária (Privacy First)</li>
-            <li>Processamento seguro (Secure Processing)</li>
+            <li>{t.formatCat6Item1}</li>
+            <li>{t.formatCat6Item2}</li>
+            <li>{t.formatCat6Item3}</li>
+            <li>{t.formatCat6Item4}</li>
+            <li>{t.formatCat6Item5}</li>
+            <li>{t.formatCat6Item6}</li>
           </ul>
         </div>
       </div>
       <div class="formats-note">
-        <p>💡 <strong>Dica：</strong> Todo o processamento JSON é feito localmente no navegador, suporta arquivos JSON grandes e oferece recursos como highlight de sintaxe, alertas de erro e colapsamento inteligente. Ideal para desenvolvedores, analistas de dados, testes de API e outros cenários.</p>
+        <p set:html={t.formatsNote} />
       </div>
     </div>
 
@@ -434,57 +434,57 @@ const t = locales['pt'];
     </div>
   </div>
 
-  <!-- FAQPage 结构化数据用于 GEO -->
+  <!-- FAQPage Dados estruturados para GEO -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Meus dados estão seguros?",
+        "name": t.faq1Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim! Todo o processamento de dados é feito localmente no seu navegador. Nunca enviamos seus dados para nenhum servidor."
+          "text": t.faq1Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Quais formatos de arquivo são suportados?",
+        "name": t.faq2Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Suportamos JSON, parâmetros de URL, XML e YAML. Basta colar seus dados e detectaremos automaticamente o formato."
+          "text": t.faq2Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Posso extrair campos específicos do JSON?",
+        "name": t.faq3Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim! Use o campo de função de extração para escrever uma função JavaScript, como 'obj => obj.name' para extrair dados específicos."
+          "text": t.faq3Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Esta ferramenta é gratuita para usar?",
+        "name": t.faq4Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim, esta ferramenta é completamente gratuita, sem quaisquer limitações. Aproveite!"
+          "text": t.faq4Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Ele pode trabalhar offline?",
+        "name": t.faq5Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Depois de carregado, a ferramenta funciona completamente offline. Não é necessária conexão com a internet."
+          "text": t.faq5Answer
         }
       },
       {
         "@type": "Question",
-        "name": "Posso usá-lo no celular?",
+        "name": t.faq6Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim! A ferramenta é totalmente responsiva e funciona perfeitamente em telefones celulares e tablets."
+          "text": t.faq6Answer
         }
       }
     ]

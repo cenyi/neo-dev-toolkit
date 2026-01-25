@@ -81,7 +81,7 @@ const t = locales['zh'];
               <h1 class="section-label">一体化 JSON 工具</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">超级智能输入：自动识别 JSON、URL、XML、YAML等15+种格式</span>
+                <span class="hint-text">{t.smartInput}</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -323,79 +323,79 @@ const t = locales['zh'];
     <!-- 支持的功能 Section -->
     <div class="supported-formats-section">
       <div class="section-header">
-        <h2>支持的JSON转换功能</h2>
-        <p>一站式JSON工具集，满足您的所有JSON处理需求</p>
+        <h2>{t.supportedFormatsTitle}</h2>
+        <p>{t.supportedFormatsSubtitle}</p>
       </div>
       <div class="formats-grid">
         <div class="format-category">
-          <h3>📊 JSON格式化</h3>
+          <h3>{t.formatCat1Title}</h3>
           <ul>
-            <li>JSON格式化 (JSON Formatter)</li>
-            <li>JSON美化 (JSON Beautifier)</li>
-            <li>JSON压缩 (JSON Minify)</li>
-            <li>JSON校验 (JSON Validator)</li>
-            <li>JSON转义 (JSON Escape)</li>
-            <li>JSON查看器 (JSON Viewer)</li>
+            <li>{t.formatCat1Item1}</li>
+            <li>{t.formatCat1Item2}</li>
+            <li>{t.formatCat1Item3}</li>
+            <li>{t.formatCat1Item4}</li>
+            <li>{t.formatCat1Item5}</li>
+            <li>{t.formatCat1Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔄 JSON转换</h3>
+          <h3>{t.formatCat2Title}</h3>
           <ul>
-            <li>JSON转CSV (JSON to CSV Converter)</li>
-            <li>JSON转Excel (JSON to Excel)</li>
-            <li>JSON转XML (JSON to XML)</li>
-            <li>JSON转YAML (JSON to YAML)</li>
-            <li>JSON转TypeScript (JSON to TS)</li>
-            <li>JSON转表格 (JSON to Table)</li>
+            <li>{t.formatCat2Item1}</li>
+            <li>{t.formatCat2Item2}</li>
+            <li>{t.formatCat2Item3}</li>
+            <li>{t.formatCat2Item4}</li>
+            <li>{t.formatCat2Item5}</li>
+            <li>{t.formatCat2Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>➡️ 转换为JSON</h3>
+          <h3>{t.formatCat3Title}</h3>
           <ul>
-            <li>CSV转JSON (CSV to JSON)</li>
-            <li>Excel转JSON (Excel to JSON)</li>
-            <li>XML转JSON (XML to JSON)</li>
-            <li>YAML转JSON (YAML to JSON)</li>
-            <li>URL参数转JSON (URL Params to JSON)</li>
-            <li>字符串转JSON (String to JSON)</li>
+            <li>{t.formatCat3Item1}</li>
+            <li>{t.formatCat3Item2}</li>
+            <li>{t.formatCat3Item3}</li>
+            <li>{t.formatCat3Item4}</li>
+            <li>{t.formatCat3Item5}</li>
+            <li>{t.formatCat3Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔧 JSON工具</h3>
+          <h3>{t.formatCat4Title}</h3>
           <ul>
-            <li>JSON对比 (JSON Compare / JSON Diff)</li>
-            <li>JSON在线对比 (Compare JSON Online)</li>
-            <li>JSON字段提取 (Field Extraction)</li>
-            <li>JSON路径查找 (JSON Path Finder)</li>
-            <li>JSON历史记录 (JSON History)</li>
-            <li>JSON注释移除 (Remove Comments)</li>
+            <li>{t.formatCat4Item1}</li>
+            <li>{t.formatCat4Item2}</li>
+            <li>{t.formatCat4Item3}</li>
+            <li>{t.formatCat4Item4}</li>
+            <li>{t.formatCat4Item5}</li>
+            <li>{t.formatCat4Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>💻 开发者工具</h3>
+          <h3>{t.formatCat5Title}</h3>
           <ul>
-            <li>TypeScript接口生成 (TS Interface)</li>
-            <li>JSON Schema生成器</li>
-            <li>JSON代码示例</li>
-            <li>JSON语法高亮</li>
-            <li>JSON错误检测 (JSON Error Check)</li>
-            <li>JSON行号显示</li>
+            <li>{t.formatCat5Item1}</li>
+            <li>{t.formatCat5Item2}</li>
+            <li>{t.formatCat5Item3}</li>
+            <li>{t.formatCat5Item4}</li>
+            <li>{t.formatCat5Item5}</li>
+            <li>{t.formatCat5Item6}</li>
           </ul>
         </div>
         <div class="format-category">
-          <h3>🔒 安全特性</h3>
+          <h3>{t.formatCat6Title}</h3>
           <ul>
-            <li>100%浏览器运行 (Browser-based)</li>
-            <li>数据本地处理 (Local Processing)</li>
-            <li>无需上传服务器 (No Server Upload)</li>
-            <li>离线可用 (Works Offline)</li>
-            <li>隐私保护 (Privacy First)</li>
-            <li>安全加密 (Secure Processing)</li>
+            <li>{t.formatCat6Item1}</li>
+            <li>{t.formatCat6Item2}</li>
+            <li>{t.formatCat6Item3}</li>
+            <li>{t.formatCat6Item4}</li>
+            <li>{t.formatCat6Item5}</li>
+            <li>{t.formatCat6Item6}</li>
           </ul>
         </div>
       </div>
       <div class="formats-note">
-        <p>💡 <strong>提示：</strong> 所有JSON处理均在浏览器本地完成，支持大型JSON文件，提供语法高亮、错误提示、智能折叠等功能。适用于开发者、数据分析师、API测试等场景。</p>
+        <p set:html={t.formatsNote} />
       </div>
     </div>
 
@@ -434,57 +434,57 @@ const t = locales['zh'];
     </div>
   </div>
 
-  <!-- FAQPage 结构化数据用于 GEO -->
+  <!-- FAQPage 结构化数据用于 SEO -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "我的数据安全吗？",
+        "name": t.faq1Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "是的！所有数据处理都在您的浏览器本地进行。我们绝不会将您的数据发送到任何服务器。"
+          "text": t.faq1Answer
         }
       },
       {
         "@type": "Question",
-        "name": "支持哪些文件格式？",
+        "name": t.faq2Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "我们支持 JSON、URL 参数、XML 和 YAML。只需粘贴您的数据，我们会自动检测格式。"
+          "text": t.faq2Answer
         }
       },
       {
         "@type": "Question",
-        "name": "我可以从 JSON 中提取特定字段吗？",
+        "name": t.faq3Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "可以！使用提取函数字段编写 JavaScript 函数，如 'obj => obj.name' 来提取特定数据。"
+          "text": t.faq3Answer
         }
       },
       {
         "@type": "Question",
-        "name": "这个工具免费使用吗？",
+        "name": t.faq4Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "是的，这个工具完全免费，没有任何限制。尽情使用吧！"
+          "text": t.faq4Answer
         }
       },
       {
         "@type": "Question",
-        "name": "它可以离线工作吗？",
+        "name": t.faq5Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "加载后，工具完全离线工作。不需要互联网连接。"
+          "text": t.faq5Answer
         }
       },
       {
         "@type": "Question",
-        "name": "我可以在手机上使用吗？",
+        "name": t.faq6Question,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "可以！该工具完全响应式，在手机和平板电脑上都能完美运行。"
+          "text": t.faq6Answer
         }
       }
     ]
