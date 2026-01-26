@@ -14,16 +14,16 @@ import ruTranslations from './locales/ru.js';
 import arTranslations from './locales/ar.js';
 
 const translations = {
-  en: enTranslations.default,
-  zh: zhTranslations.default,
-  ja: jaTranslations.default,
-  ko: koTranslations.default,
-  es: esTranslations.default,
-  pt: ptTranslations.default,
-  fr: frTranslations.default,
-  de: deTranslations.default,
-  ru: ruTranslations.default,
-  ar: arTranslations.default
+  en: enTranslations,
+  zh: zhTranslations,
+  ja: jaTranslations,
+  ko: koTranslations,
+  es: esTranslations,
+  pt: ptTranslations,
+  fr: frTranslations,
+  de: deTranslations,
+  ru: ruTranslations,
+  ar: arTranslations
 };
 
 let currentLocale = config.defaultLocale;
