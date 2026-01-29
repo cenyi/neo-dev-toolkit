@@ -6,51 +6,550 @@ import ptTranslations from '../../i18n/locales/pt.js';
 const t = ptTranslations;
 ---
 
-<BaseLayout title={`${t.contactHeading} - ${t.title}`} lang="pt">
+<BaseLayout title="Contato - Suporte de Ferramentas JSON" lang="pt" description="Entre em contato com nossa equipe. Resposta rápida em 24 horas. Email: hi@tojsons.com. Estamos aqui para ajudar com questões relacionadas às ferramentas JSON.">
   <Sidebar slot="sidebar" t={t} />
 
-  <div class="page-container">
-    <h1>{t.contactHeading}</h1>
-    <div class="content">
-      <h2>{t.contactEmailTitle}</h2>
-      <p>{t.contactIntro}</p>
-      <p><a href="mailto:hi@tojsons.com" style="color: #2563eb; text-decoration: none;">hi@tojsons.com</a></p>
+  <div class="contact-container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>Entre em Contato</h1>
+      <p class="hero-intro">
+        Tem perguntas, feedback ou sugestões? Adoramos ouvir de você!
+        Nossa equipe normalmente responde em 24 horas.
+      </p>
+    </section>
 
-      <h2>{t.contactHelpTitle}</h2>
-      <p>{t.contactHelpDesc}</p>
+    <!-- Contact Methods -->
+    <section class="contact-methods">
+      <h2>Métodos de Contato</h2>
 
-      <h2>{t.contactResponseTitle}</h2>
-      <p>{t.contactResponseDesc}</p>
-    </div>
+      <div class="contact-grid">
+        <!-- Email -->
+        <div class="contact-card primary">
+          <div class="contact-icon">📧</div>
+          <h3>Envie um Email</h3>
+          <p class="contact-email">hi@tojsons.com</p>
+          <p class="contact-desc">
+            Adequado para consultas gerais, solicitações de recursos, relatórios de bugs e oportunidades de parceria.
+          </p>
+          <a href="mailto:hi@tojsons.com" class="contact-button">Enviar Email</a>
+          <div class="response-time">
+            <span class="time-icon">⏰</span>
+            Resposta em 24 horas
+          </div>
+        </div>
+
+        <!-- Bug Reports -->
+        <div class="contact-card">
+          <div class="contact-icon">🐛</div>
+          <h3>Relatar Erro</h3>
+          <p class="contact-desc">
+            Encontrou um problema? Por favor, forneça as seguintes informações:
+          </p>
+          <ul class="bug-report-list">
+            <li>Passos para reproduzir o problema</li>
+            <li>Comportamento esperado vs. real</li>
+            <li>Capturas de tela ou mensagens de erro (se aplicável)</li>
+            <li>Navegador e versão</li>
+          </ul>
+          <a href="mailto:hi@tojsons.com?subject=Relatório de Erro" class="contact-button secondary">Relatar Erro</a>
+        </div>
+
+        <!-- Feature Requests -->
+        <div class="contact-card">
+          <div class="contact-icon">💡</div>
+          <h3>Sugestões de Recursos</h3>
+          <p class="contact-desc">
+            Tem ideias para melhorar a ferramenta? Adoraríamos ouvir!
+          </p>
+          <p class="contact-hint">
+            Por favor, descreva:
+          </p>
+          <ul class="feature-request-list">
+            <li>O recurso que você deseja</li>
+            <li>Por que seria útil</li>
+            <li>Como você imagina que funcionaria</li>
+          </ul>
+          <a href="mailto:hi@tojsons.com?subject=Sugestão de Recurso" class="contact-button secondary">Enviar Sugestão</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Perguntas Frequentes</h2>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Esta ferramenta é gratuita?</h3>
+          <p>Sim! Todas as nossas ferramentas JSON são completamente gratuitas, sem restrições. Não é necessário registro.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Meus dados estão seguros?</h3>
+          <p>Absolutamente seguros. Todo o processamento é realizado no seu navegador. Nunca visualizamos, armazenamos ou transmitimos seus dados. Consulte nossa <a href="/privacy">Política de Privacidade</a> para mais detalhes.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Pode ser usado offline?</h3>
+          <p>Sim! Após o carregamento da página, todas as ferramentas funcionam offline. Não é necessária conexão com a internet para o processamento.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Suporta arquivos JSON grandes?</h3>
+          <p>Sim, nossas ferramentas podem processar arquivos JSON de até 10MB. Para arquivos maiores, recomendamos usar o recurso de extração de campos.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Pode ser integrado ao meu site?</h3>
+          <p>Atualmente, oferecemos widgets incorporáveis para clientes empresariais. Entre em contato para mais detalhes.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Existe uma API?</h3>
+          <p>Estamos desenvolvendo uma API REST para acesso programático. Junte-se à nossa lista de e-mails para ser notificado quando for lançada.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Resources -->
+    <section class="resources-section">
+      <h2>Mais Recursos</h2>
+
+      <div class="resources-grid">
+        <a href="/privacy" class="resource-card">
+          <div class="resource-icon">🔒</div>
+          <h3>Política de Privacidade</h3>
+          <p>Saiba como protegemos seus dados</p>
+        </a>
+
+        <a href="/terms" class="resource-card">
+          <div class="resource-icon">📋</div>
+          <h3>Termos de Serviço</h3>
+          <p>Termos e condições de uso de nossas ferramentas</p>
+        </a>
+
+        <a href="/" class="resource-card">
+          <div class="resource-icon">🔧</div>
+          <h3>Ferramentas JSON</h3>
+          <p>Voltar para nossos formatadores e ferramentas JSON</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social-section">
+      <h2>Siga-nos</h2>
+      <p>Fique por dentro das novidades e dicas de JSON</p>
+
+      <div class="social-links">
+        <a href="https://github.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <span class="social-icon">📦</span>
+          <span>GitHub</span>
+        </a>
+
+        <a href="https://twitter.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <span class="social-icon">🐦</span>
+          <span>Twitter</span>
+        </a>
+
+        <a href="https://linkedin.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <span class="social-icon">💼</span>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Business Inquiries -->
+    <section class="business-section">
+      <h2>Consultas Comerciais</h2>
+
+      <div class="business-grid">
+        <div class="business-card">
+          <h3>🏢 Serviços Empresariais</h3>
+          <p>Precisa de recursos personalizados, suporte dedicado ou implantação local? Oferecemos soluções empresariais.</p>
+          <a href="mailto:hi@tojsons.com?subject=Consulta Empresarial" class="business-button">Contatar Vendas</a>
+        </div>
+
+        <div class="business-card">
+          <h3>🤝 Parcerias</h3>
+          <p>Interessado em colaborar conosco? Fazemos parcerias com serviços e plataformas complementares.</p>
+          <a href="mailto:hi@tojsons.com?subject=Consulta de Parceria" class="business-button">Tornar-se Parceiro</a>
+        </div>
+
+        <div class="business-card">
+          <h3>📢 Publicidade</h3>
+          <p>Alcance mensal de 50.000+ desenvolvedores. Saiba mais sobre nossas oportunidades de publicidade.</p>
+          <a href="mailto:hi@tojsons.com?subject=Consulta de Publicidade" class="business-button">Anunciar</a>
+        </div>
+      </div>
+    </section>
   </div>
 </BaseLayout>
 
 <style>
-  .page-container {
-    max-width: 1400px;
+  .contact-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 30px;
+    padding: 40px 20px;
   }
-  h1 {
-    font-size: 2rem;
+
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
     margin-bottom: 20px;
+  }
+
+  .hero-intro {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #4b5563;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Section Styling */
+  section {
+    margin-bottom: 80px;
+  }
+
+  section h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  /* Contact Methods */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .contact-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .contact-card:hover {
+    border-color: #2563eb;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .contact-card.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  .contact-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .contact-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: inherit;
+    margin-bottom: 15px;
+  }
+
+  .contact-email {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin: 20px 0;
+  }
+
+  .contact-card.primary .contact-email {
+    color: white;
+  }
+
+  .contact-desc {
+    color: #6b7280;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .contact-card.primary .contact-desc {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .contact-button {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+
+  .contact-card.primary .contact-button {
+    background: white;
+    color: #764ba2;
+  }
+
+  .contact-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+
+  .contact-button.secondary {
+    background: #f3f4f6;
     color: #1f2937;
   }
-  h2 {
-    font-size: 1.5rem;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: #374151;
+
+  .response-time {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 0.95rem;
   }
-  p {
-    margin-bottom: 15px;
+
+  .time-icon {
+    margin-right: 5px;
+  }
+
+  /* Lists */
+  .bug-report-list,
+  .feature-request-list {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 20px;
+  }
+
+  .bug-report-list li,
+  .feature-request-list li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    color: #6b7280;
+  }
+
+  .bug-report-list li:before,
+  .feature-request-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: bold;
+  }
+
+  .contact-hint {
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+  }
+
+  .faq-item {
+    background: #f9fafb;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #2563eb;
+  }
+
+  .faq-item h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 10px;
+  }
+
+  .faq-item p {
+    color: #6b7280;
     line-height: 1.6;
-    color: #4b5563;
+    margin: 0;
   }
-  .content {
+
+  .faq-item a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* Resources */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .resource-card {
+    display: block;
     background: white;
     padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    transition: all 0.3s;
+    text-align: center;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .resource-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .resource-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 10px;
+  }
+
+  .resource-card p {
+    color: #6b7280;
+    margin: 0;
+  }
+
+  /* Social Links */
+  .social-section {
+    text-align: center;
+  }
+
+  .social-section p {
+    color: #6b7280;
+    margin-bottom: 30px;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    background: #2563eb;
+    color: white;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Business Section */
+  .business-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .business-card {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .business-card h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .business-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  .business-button {
+    display: inline-block;
+    background: white;
+    color: #f5576c;
+    padding: 12px 28px;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .business-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-container {
+      padding: 30px 16px;
+    }
+
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+
+    .hero-intro {
+      font-size: 1.1rem;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+    }
+
+    .contact-grid,
+    .faq-grid,
+    .resources-grid,
+    .business-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .social-links {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .social-link {
+      justify-content: center;
+    }
   }
 </style>

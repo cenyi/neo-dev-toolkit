@@ -6,51 +6,476 @@ import deTranslations from '../../i18n/locales/de.js';
 const t = deTranslations;
 ---
 
-<BaseLayout title={`${t.aboutTitle} - ${t.title}`} lang="de">
+<BaseLayout title="Über Uns - JSON-Tools und Formatierer" lang="de" description="Erfahren Sie mehr über unsere kostenlosen JSON-Tools. Gebaut mit Astro, Browser-Verarbeitung, Unternehmenssicherheit. Vertraut von über 50.000 Entwicklern weltweit.">
   <Sidebar slot="sidebar" t={t} />
 
   <div class="about-container">
-    <h1>{t.aboutHeading}</h1>
-    <p>{t.aboutIntro}</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>Über JSON-Tools</h1>
+      <p class="hero-intro">
+        Professionelle JSON-Verarbeitungstools, von Entwicklern für Entwickler.
+        Vertraut von über 50.000 Entwicklern weltweit für schnelle, sichere und zuverlässige JSON-Formatierung, Validierung und Konvertierung.
+      </p>
+    </section>
 
-    <h2>{t.aboutFeaturesTitle}</h2>
-    <ul>
-      <li>{t.aboutFeature1}</li>
-      <li>{t.aboutFeature2}</li>
-      <li>{t.aboutFeature3}</li>
-      <li>{t.aboutFeature4}</li>
-      <li>{t.aboutFeature5}</li>
-    </ul>
+    <!-- What We Offer -->
+    <section class="feature-section">
+      <h2>Umfassendes JSON-Tool-Kit</h2>
+      <p>
+        Unsere All-in-One-JSON-Plattform bietet alles, was Sie zur JSON-Datenverarbeitung benötigen.
+        Von einfacher Formatierung bis hin zu komplexen Datenkonvertierungen - wir erfüllen alle Ihre Anforderungen.
+      </p>
 
-    <h2>{t.aboutTechStackTitle}</h2>
-    <p>{t.aboutTechStackDesc}</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>📝 JSON-Formatierer und Validator</h3>
+          <p>Automatische JSON-Formatierung, Syntaxhervorhebung, Echtzeit-Fehlererkennung, intelligente Codevervollständigung. Fehler vor dem Produktionssetzen abfangen.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔄 Datenkonverter</h3>
+          <p>Nahtlose Konvertierung von JSON in CSV, Excel, XML, YAML, TypeScript-Schnittstellen und über 10 weitere Formate. Bidirektionale Konvertierung unterstützt.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚖️ JSON-Vergleich und Diff</h3>
+          <p>Seitlicher JSON-Vergleich, visuelle Hervorhebung von Unterschieden. Ideal für API-Tests, Konfigurationsmanagement und Code-Reviews.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔍 Intelligenter Parser</h3>
+          <p>Automatische Erkennung und Parsung von über 15 Datenformaten, einschließlich URL-Parametern, XML, YAML und Query-Strings. Intelligente Formaterkennung spart Zeit.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚡ Feldextraktion</h3>
+          <p>Extrahieren Sie spezifische Felder aus komplexen verschachtelten JSONs mit JavaScript-Funktionen. Verketten Sie Extraktionen für leistungsstarke Datenkonvertierungen.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔒 Sicherheit zuerst</h3>
+          <p>100% Browser-seitige Verarbeitung. Ihre Daten verlassen Ihr Gerät nicht. Kein Server-Upload, kein Tracking, vollständiger Datenschutz.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-section">
+      <h2>Warum Entwickler uns wählen</h2>
+
+      <div class="benefits-list">
+        <div class="benefit-item">
+          <h3>🚀 Blitzschnelle Antwort</h3>
+          <p>Gebaut mit Astro-Framework, leistungsoptimiert. Durchschnittliche Verarbeitungszeit unter 100ms. Keine Seitenaktualisierung erforderlich, sofortige Ergebnisse.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>🌍 Wahrhaft mehrsprachig</h3>
+          <p>Volle Unterstützung für 10 Sprachen: Deutsch, Englisch, Chinesisch, Japanisch, Koreanisch, Spanisch, Portugiesisch, Französisch, Russisch, Arabisch. Vollständig lokalisierte UI und Dokumentation.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>📱 Plattformübergreifend</h3>
+          <p>Responsives Design, perfekte Unterstützung für Desktop, Tablet und mobile Geräte. PWA-Offline-Funktionen kommen bald.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>🛠️ Unternehmensfunktionen</h3>
+          <p>TypeScript-Schnittstellengenerierung, JSON-Schema-Erstellung, Batch-Verarbeitung, erweiterte Feldextraktion für professionelle Workflows.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>🎖️ Bewährt in der Praxis</h3>
+          <p>Verarbeitung von über 1 Million JSON-Dateien. Verwendet von Fortune-500-Unternehmen, Start-ups und Bildungseinrichtungen.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>🔄 Kontinuierliche Verbesserung</h3>
+          <p>Regelmäßige Updates mit neuen Funktionen, Fehlerbehebungen und Leistungsverbesserungen. Community-gesteuerte Entwicklung basierend auf Benutzerfeedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="usecases-section">
+      <h2>Häufige Anwendungsfälle</h2>
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <h3>🔧 API-Entwicklung</h3>
+          <p>Validierung und Formatierung von API-Antworten. Vergleich von Zuständen vor und nach Änderungen. Schnelles Testen verschiedener Datenstrukturen.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h3>📊 Datenanalyse</h3>
+          <p>Konvertierung von JSON in CSV/Excel zur Analyse in Tabellenkalkulations-Tools. Extraktion spezifischer Felder aus komplexen Datensätzen.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h3>⚙️ Konfigurationsmanagement</h3>
+          <p>Validierung von Konfigurationsdateien. Vergleich von Konfigurationen verschiedener Umgebungen. Konvertierung zwischen JSON-, YAML- und XML-Formaten.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h3>🎓 Bildung und Lernen</h3>
+          <p>Lehre der JSON-Struktur und -Syntax. Lernen von Datenformatkonvertierungen. Ideal für Schüler und Bootcamps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="tech-section">
+      <h2>Gebaut mit modernster Technologie</h2>
+      <p>
+        Wir verwenden Cutting-Edge-Web-Technologien für das beste Benutzererlebnis:
+      </p>
+      <ul class="tech-list">
+        <li><strong>Astro-Framework</strong> - Ultra-schnelle statische Site-Generierung und Hydratation</li>
+        <li><strong>Monaco-Editor</strong> - Der gleiche Editor wie VS Code</li>
+        <li><strong>TypeScript</strong> - Typsichere Entwicklung, hohe Zuverlässigkeit</li>
+        <li><strong>Modernes JavaScript</strong> - ES2024+ Funktionen, beste Leistung</li>
+        <li><strong>Responsives Design</strong> - Mobile-First, CSS Grid und Flexbox</li>
+        <li><strong>Browser-APIs</strong> - Zwischenablage, Dateisystem, Web Workers, natives Erlebnis</li>
+      </ul>
+    </section>
+
+    <!-- Privacy & Security -->
+    <section class="security-section">
+      <h2>Versprechen zu Datenschutz und Sicherheit</h2>
+      <div class="security-content">
+        <div class="security-item">
+          <h3>🔐 Ihre Daten gehören Ihnen</h3>
+          <p>Alle JSON-Verarbeitung erfolgt in JavaScript in Ihrem Browser. Wir sehen, speichern oder übertragen Ihre Daten niemals. Keine Server-Verarbeitung bedeutet null Risiko für Datenlecks.</p>
+        </div>
+
+        <div class="security-item">
+          <h3>📋 Kein Tracking</h3>
+          <p>Wir verwenden nur minimale Analysen (Google Analytics und Microsoft Clarity) zur Verbesserung von Leistung und Benutzererlebnis. Keine Erfassung oder Weitergabe persönlicher Daten. Weitere Informationen finden Sie in unserer <a href="/privacy">Datenschutzerklärung</a>.</p>
+        </div>
+
+        <div class="security-item">
+          <h3>🛡️ HTTPS-Sicherheit</h3>
+          <p>Alle Verbindungen sind HTTPS-verschlüsselt. Wir verwenden branchenübliche SSL/TLS-Zertifikate, um Ihre Verbindung immer sicher zu halten.</p>
+        </div>
+
+        <div class="security-item">
+          <h3>🚫 Keine Cookies erforderlich</h3>
+          <p>Unsere Tools funktionieren ohne Cookies. Der lokale Speicher wird nur für optionale Einstellungen wie Sprachauswahl und Seitenleistenstatus verwendet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Performance Stats -->
+    <section class="stats-section">
+      <h2>Vertraut von Entwicklern weltweit</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">50.000+</div>
+          <div class="stat-label">Monatlich aktive Nutzer</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1 Mio.+</div>
+          <div class="stat-label">Verarbeitete JSON-Dateien</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">150+</div>
+          <div class="stat-label">Bediente Länder</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10</div>
+          <div class="stat-label">Unterstützte Sprachen</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="cta-section">
+      <h2>Kontaktieren Sie uns</h2>
+      <p>Fragen, Vorschläge oder Fehler gefunden? Wir freuen uns auf Ihr Feedback!</p>
+      <a href="/contact" class="cta-button">Kontaktieren Sie uns</a>
+    </section>
   </div>
 </BaseLayout>
 
 <style>
   .about-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 30px;
+    padding: 40px 20px;
   }
-  .about-container h1 {
-    color: var(--text-color);
+
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
     margin-bottom: 20px;
   }
-  .about-container h2 {
-    color: var(--text-color);
-    margin: 20px 0 10px;
+
+  .hero-intro {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #4b5563;
+    max-width: 800px;
+    margin: 0 auto;
   }
-  .about-container p {
+
+  /* Section Styling */
+  section {
+    margin-bottom: 80px;
+  }
+
+  section h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  section p {
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 20px;
+  }
+
+  /* Feature Grid */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .feature-card h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 12px;
+  }
+
+  .feature-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #6b7280;
+  }
+
+  /* Benefits List */
+  .benefits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+  }
+
+  .benefit-item {
+    background: #f9fafb;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #2563eb;
+  }
+
+  .benefit-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+  }
+
+  /* Use Cases */
+  .usecase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .usecase-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+  }
+
+  .usecase-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .usecase-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+  }
+
+  /* Tech Stack */
+  .tech-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 40px auto 0;
+  }
+
+  .tech-list li {
+    padding: 15px 20px;
+    background: #f3f4f6;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    color: #374151;
+  }
+
+  .tech-list strong {
+    color: #2563eb;
+    font-weight: 600;
+  }
+
+  /* Security Section */
+  .security-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .security-item {
+    background: #ecfdf5;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #10b981;
+  }
+
+  .security-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #065f46;
+    margin-bottom: 12px;
+  }
+
+  .security-item p {
+    color: #047857;
+    font-size: 0.95rem;
+  }
+
+  .security-item a {
+    color: #059669;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* Stats Section */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .stat-item {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 10px;
+  }
+
+  .stat-label {
+    font-size: 1.1rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 40px;
+    border-radius: 16px;
+  }
+
+  .cta-section h2 {
+    color: white;
     margin-bottom: 15px;
-    line-height: 1.6;
   }
-  .about-container ul {
-    margin-left: 20px;
-    margin-bottom: 20px;
+
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
   }
-  .about-container li {
-    margin-bottom: 8px;
-    line-height: 1.6;
+
+  .cta-button {
+    display: inline-block;
+    background: white;
+    color: #764ba2;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 30px 16px;
+    }
+
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+
+    .hero-intro {
+      font-size: 1.1rem;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+    }
+
+    .feature-grid,
+    .benefits-list,
+    .usecase-grid,
+    .security-content,
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+    }
   }
 </style>

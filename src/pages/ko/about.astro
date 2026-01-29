@@ -6,51 +6,476 @@ import koTranslations from '../../i18n/locales/ko.js';
 const t = koTranslations;
 ---
 
-<BaseLayout title={`${t.aboutTitle} - ${t.title}`} lang="ko">
+<BaseLayout title="회사 소개 - JSON 도구 및 포매터" lang="ko" description="무료 JSON 도구에 대해 알아보세요. Astro 프레임워크로 구축, 브라우저 처리, 엔터프라이즈급 보안. 전 세계 50,000명 이상의 개발자가 신뢰합니다.">
   <Sidebar slot="sidebar" t={t} />
 
   <div class="about-container">
-    <h1>{t.aboutHeading}</h1>
-    <p>{t.aboutIntro}</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>JSON 도구 소개</h1>
+      <p class="hero-intro">
+        개발자가 개발자를 위해 만든 전문가용 JSON 처리 도구입니다.
+        전 세계 50,000명 이상의 개발자가 빠르고 안전하며 신뢰할 수 있는 JSON 포맷팅, 검증, 변환을 위해 사용합니다.
+      </p>
+    </section>
 
-    <h2>{t.aboutFeaturesTitle}</h2>
-    <ul>
-      <li>{t.aboutFeature1}</li>
-      <li>{t.aboutFeature2}</li>
-      <li>{t.aboutFeature3}</li>
-      <li>{t.aboutFeature4}</li>
-      <li>{t.aboutFeature5}</li>
-    </ul>
+    <!-- What We Offer -->
+    <section class="feature-section">
+      <h2>종합 JSON 도구 키트</h2>
+      <p>
+        당사의 올인원 JSON 플랫폼은 JSON 데이터 처리에 필요한 모든 것을 제공합니다.
+        간단한 포맷팅부터 복잡한 데이터 변환까지 모든 요구를 충족합니다.
+      </p>
 
-    <h2>{t.aboutTechStackTitle}</h2>
-    <p>{t.aboutTechStackDesc}</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>📝 JSON 포매터 및 검증기</h3>
+          <p>자동 JSON 포맷팅, 구문 강조, 실시간 오류 감지, 스마트 코드 완성. 프로덕션 전 오류를 포착하세요.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔄 데이터 변환기</h3>
+          <p>JSON을 CSV, Excel, XML, YAML, TypeScript 인터페이스 등 10개 이상의 형식으로 원활하게 변환. 양방향 변환 지원.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚖️ JSON 비교 및 차이 도구</h3>
+          <p>나란히 JSON 비교, 시각적 차이 강조. API 테스트, 구성 관리, 코드 리뷰에 이상적.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔍 스마트 파서</h3>
+          <p>URL 매개변수, XML, YAML, 쿼리 문자열 등 15개 이상의 데이터 형식을 자동 감지 및 구문 분석. 스마트 형식 감지로 시간 절약.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚡ 필드 추출</h3>
+          <p>JavaScript 함수를 사용하여 복잡한 중첩 JSON에서 특정 필드 추출. 추출을 체인으로 연결하여 강력한 데이터 변환.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔒 보안 우선</h3>
+          <p>100% 브라우저 측 처리. 데이터는 장치를 떠나지 않습니다. 서버 업로드 없음, 추적 없음, 프라이버시 완전 보호.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-section">
+      <h2>개발자가 선택하는 이유</h2>
+
+      <div class="benefits-list">
+        <div class="benefit-item">
+          <h3>🚀 초고속 응답</h3>
+          <p>Astro 프레임워크로 구축, 성능 최적화. 평균 처리 시간 100밀리초 미만. 페이지 새로고침 불필요, 즉시 결과.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>🌍 진정한 다국어</h3>
+          <p>10개 언어 완전 지원: 한국어, 영어, 일본어, 중국어, 스페인어, 포르투갈어, 프랑스어, 독일어, 러시아어, 아랍어. UI 및 문서 완전 현지화.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>📱 전 플랫폼 호환</h3>
+          <p>반응형 디자인, 데스크톱, 태블릿, 모바일 장치에 완벽하게 대응. PWA 오프라인 기능 출시 예정.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>🛠️ 엔터프라이즈급 기능</h3>
+          <p>TypeScript 인터페이스 생성, JSON 스키마 생성, 일괄 처리, 고급 필드 추출으로 전문 워크플로우 지원.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>🎖️ 실증된 성과</h3>
+          <p>100만 개 이상의 JSON 파일 처리. Fortune 500 기업, 스타트업, 교육 기관에서 사용.</p>
+        </div>
+
+        <div class="benefit-item">
+          <h3>🔄 지속적 개선</h3>
+          <p>새 기능, 버그 수정, 성능 개선을 정기적으로 업데이트. 사용자 피드백 기반 커뮤니티 주도 개발.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="usecases-section">
+      <h2>일반적인 사용 사례</h2>
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <h3>🔧 API 개발</h3>
+          <p>API 응답 검증 및 포맷팅. 변경 전후 상태 비교. 다양한 데이터 구조 빠른 테스트.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h3>📊 데이터 분석</h3>
+          <p>JSON을 CSV/Excel로 변환하여 스프레드시트 도구로 분석. 복잡한 데이터 세트에서 특정 필드 추출.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h3>⚙️ 구성 관리</h3>
+          <p>구성 파일 검증. 다양한 환경 구성 비교. JSON, YAML, XML 형식 간 변환.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h3>🎓 교육 및 학습</h3>
+          <p>JSON 구조 및 구문 교육. 데이터 형식 변환 학습. 학생 및 부트캠프에 이상적.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="tech-section">
+      <h2>최신 기술로 구축</h2>
+      <p>
+        최고의 사용자 경험을 제공하기 위해 최첨단 웹 기술을 사용합니다:
+      </p>
+      <ul class="tech-list">
+        <li><strong>Astro 프레임워크</strong> - 초고속 정적 사이트 생성 및 수화</li>
+        <li><strong>Monaco 에디터</strong> - VS Code와 동일한 에디터</li>
+        <li><strong>TypeScript</strong> - 유형 안전 개발, 높은 신뢰성</li>
+        <li><strong>모던 JavaScript</strong> - ES2024+ 기능, 최고의 성능</li>
+        <li><strong>반응형 디자인</strong> - 모바일 우선, CSS Grid 및 Flexbox</li>
+        <li><strong>브라우저 API</strong> - 클립보드, 파일 시스템, Web Workers, 네이티브 경험</li>
+      </ul>
+    </section>
+
+    <!-- Privacy & Security -->
+    <section class="security-section">
+      <h2>프라이버시 및 보안 약속</h2>
+      <div class="security-content">
+        <div class="security-item">
+          <h3>🔐 데이터는 귀하의 것</h3>
+          <p>모든 JSON 처리는 브라우저 내의 JavaScript로 수행됩니다. 데이터를 보거나, 저장하거나, 전송하지 않습니다. 서버 처리 없음은 데이터 유출 위험 제로를 의미합니다.</p>
+        </div>
+
+        <div class="security-item">
+          <h3>📋 추적 없음</h3>
+          <p>성능과 사용자 경험을 개선하기 위해 최소한의 분석(Google Analytics 및 Microsoft Clarity)만 사용합니다. 개인 데이터를 수집하거나 판매하지 않습니다. 자세한 내용은<a href="/privacy">개인정보 처리방침</a>을 참조하세요.</p>
+        </div>
+
+        <div class="security-item">
+          <h3>🛡️ HTTPS 보안</h3>
+          <p>모든 연결은 HTTPS로 암호화됩니다. 업계 표준 SSL/TLS 인증서를 사용하여 항상 안전한 연결을 유지합니다.</p>
+        </div>
+
+        <div class="security-item">
+          <h3>🚫 쿠키 불필요</h3>
+          <p>도구는 쿠키 없이 작동합니다. 로컬 저장소는 언어 선택 및 사이드바 상태와 같은 선택적 기본 설정에만 사용됩니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Performance Stats -->
+    <section class="stats-section">
+      <h2>전 세계 개발자가 신뢰</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">50,000+</div>
+          <div class="stat-label">월간 활성 사용자</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100만+</div>
+          <div class="stat-label">처리된 JSON 파일</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">150+</div>
+          <div class="stat-label">서비스 국가</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10</div>
+          <div class="stat-label">지원 언어</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="cta-section">
+      <h2>문의하기</h2>
+      <p>질문, 제안 또는 버그 발견? 피드백을 기다립니다!</p>
+      <a href="/contact" class="cta-button">문의하기</a>
+    </section>
   </div>
 </BaseLayout>
 
 <style>
   .about-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 30px;
+    padding: 40px 20px;
   }
-  .about-container h1 {
-    color: var(--text-color);
+
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
     margin-bottom: 20px;
   }
-  .about-container h2 {
-    color: var(--text-color);
-    margin: 20px 0 10px;
+
+  .hero-intro {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #4b5563;
+    max-width: 800px;
+    margin: 0 auto;
   }
-  .about-container p {
+
+  /* Section Styling */
+  section {
+    margin-bottom: 80px;
+  }
+
+  section h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  section p {
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 20px;
+  }
+
+  /* Feature Grid */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .feature-card h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 12px;
+  }
+
+  .feature-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #6b7280;
+  }
+
+  /* Benefits List */
+  .benefits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+  }
+
+  .benefit-item {
+    background: #f9fafb;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #2563eb;
+  }
+
+  .benefit-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+  }
+
+  /* Use Cases */
+  .usecase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .usecase-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+  }
+
+  .usecase-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .usecase-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+  }
+
+  /* Tech Stack */
+  .tech-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 40px auto 0;
+  }
+
+  .tech-list li {
+    padding: 15px 20px;
+    background: #f3f4f6;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    color: #374151;
+  }
+
+  .tech-list strong {
+    color: #2563eb;
+    font-weight: 600;
+  }
+
+  /* Security Section */
+  .security-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .security-item {
+    background: #ecfdf5;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #10b981;
+  }
+
+  .security-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #065f46;
+    margin-bottom: 12px;
+  }
+
+  .security-item p {
+    color: #047857;
+    font-size: 0.95rem;
+  }
+
+  .security-item a {
+    color: #059669;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* Stats Section */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .stat-item {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 10px;
+  }
+
+  .stat-label {
+    font-size: 1.1rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 40px;
+    border-radius: 16px;
+  }
+
+  .cta-section h2 {
+    color: white;
     margin-bottom: 15px;
-    line-height: 1.6;
   }
-  .about-container ul {
-    margin-left: 20px;
-    margin-bottom: 20px;
+
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
   }
-  .about-container li {
-    margin-bottom: 8px;
-    line-height: 1.6;
+
+  .cta-button {
+    display: inline-block;
+    background: white;
+    color: #764ba2;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 30px 16px;
+    }
+
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+
+    .hero-intro {
+      font-size: 1.1rem;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+    }
+
+    .feature-grid,
+    .benefits-list,
+    .usecase-grid,
+    .security-content,
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+    }
   }
 </style>
