@@ -28,9 +28,22 @@ const isActive = (path: string) => {
     // 在页面渲染前立即设置折叠状态，避免展开→折叠的动画
     (function() {
       // 移动端不应用collapsed状态
-      if (window.innerWidth > 768 && localStorage.getItem('sidebarCollapsed') === 'true') {
-        document.getElementById('sidebar').classList.add('collapsed');
+      const isCollapsed = window.innerWidth > 768 && localStorage.getItem('sidebarCollapsed') === 'true';
+      const sidebar = document.getElementById('sidebar');
+
+      if (isCollapsed) {
+        sidebar.classList.add('collapsed');
+      } else {
+        // 确保展开状态：移除collapsed类
+        sidebar.classList.remove('collapsed');
       }
+
+      // 调试：输出sidebar状态到控制台
+      console.log('Sidebar initialized:', {
+        isCollapsed: isCollapsed,
+        windowWidth: window.innerWidth,
+        localStorage: localStorage.getItem('sidebarCollapsed')
+      });
     })();
   </script>
   <div class="sidebar-header">
