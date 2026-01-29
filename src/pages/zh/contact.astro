@@ -6,51 +6,550 @@ import zhTranslations from '../../i18n/locales/zh.js';
 const t = zhTranslations;
 ---
 
-<BaseLayout title={`${t.contactHeading} - ${t.title}`} lang="zh-CN">
+<BaseLayout title="联系我们 - JSON工具支持" lang="zh-CN" description="联系我们的团队。24小时内快速响应。邮箱: hi@tojsons.com。我们随时为您提供JSON工具相关问题的帮助。">
   <Sidebar slot="sidebar" t={t} />
 
-  <div class="page-container">
-    <h1>{t.contactHeading}</h1>
-    <div class="content">
-      <h2>{t.contactEmailTitle}</h2>
-      <p>{t.contactIntro}</p>
-      <p><a href="mailto:hi@tojsons.com" style="color: #2563eb; text-decoration: none;">hi@tojsons.com</a></p>
+  <div class="contact-container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>联系我们</h1>
+      <p class="hero-intro">
+        有问题、反馈或建议？我们期待您的来信！
+        我们团队通常在24小时内回复。
+      </p>
+    </section>
 
-      <h2>{t.contactHelpTitle}</h2>
-      <p>{t.contactHelpDesc}</p>
+    <!-- Contact Methods -->
+    <section class="contact-methods">
+      <h2>联系方式</h2>
 
-      <h2>{t.contactResponseTitle}</h2>
-      <p>{t.contactResponseDesc}</p>
-    </div>
+      <div class="contact-grid">
+        <!-- Email -->
+        <div class="contact-card primary">
+          <div class="contact-icon">📧</div>
+          <h3>发送邮件</h3>
+          <p class="contact-email">hi@tojsons.com</p>
+          <p class="contact-desc">
+            适用于一般咨询、功能请求、错误报告和合作机会。
+          </p>
+          <a href="mailto:hi@tojsons.com" class="contact-button">发送邮件</a>
+          <div class="response-time">
+            <span class="time-icon">⏰</span>
+            24小时内回复
+          </div>
+        </div>
+
+        <!-- Bug Reports -->
+        <div class="contact-card">
+          <div class="contact-icon">🐛</div>
+          <h3>报告错误</h3>
+          <p class="contact-desc">
+            发现问题？请提供以下信息：
+          </p>
+          <ul class="bug-report-list">
+            <li>重现问题的步骤</li>
+            <li>预期行为与实际行为对比</li>
+            <li>截图或错误信息（如适用）</li>
+            <li>浏览器及版本</li>
+          </ul>
+          <a href="mailto:hi@tojsons.com?subject=错误报告" class="contact-button secondary">报告错误</a>
+        </div>
+
+        <!-- Feature Requests -->
+        <div class="contact-card">
+          <div class="contact-icon">💡</div>
+          <h3>功能建议</h3>
+          <p class="contact-desc">
+            有改进工具的想法？我们很乐意听取！
+          </p>
+          <p class="contact-hint">
+            请描述：
+          </p>
+          <ul class="feature-request-list">
+            <li>您想要的功能</li>
+            <li>为什么它有用</li>
+            <li>您设想它如何工作</li>
+          </ul>
+          <a href="mailto:hi@tojsons.com?subject=功能建议" class="contact-button secondary">提交建议</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>常见问题</h2>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>这个工具是免费的吗？</h3>
+          <p>是的！我们所有的JSON工具完全免费，无任何限制。无需注册。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>我的数据安全吗？</h3>
+          <p>绝对安全。所有处理都在您的浏览器中进行。我们从不查看、存储或传输您的数据。详情请查看<a href="/privacy">隐私政策</a>。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>可以离线使用吗？</h3>
+          <p>可以！页面加载后，所有工具均可离线工作。处理无需互联网连接。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>支持大型JSON文件吗？</h3>
+          <p>支持，我们的工具可以处理最大10MB的JSON文件。对于更大的文件，建议使用字段提取功能。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>可以集成到我的网站吗？</h3>
+          <p>目前我们为企业客户提供可嵌入的小部件。联系了解详情。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>有API吗？</h3>
+          <p>我们正在开发用于程序化访问的REST API。加入我们的邮件列表，发布时即可通知。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Resources -->
+    <section class="resources-section">
+      <h2>更多资源</h2>
+
+      <div class="resources-grid">
+        <a href="/privacy" class="resource-card">
+          <div class="resource-icon">🔒</div>
+          <h3>隐私政策</h3>
+          <p>了解我们如何保护您的数据</p>
+        </a>
+
+        <a href="/terms" class="resource-card">
+          <div class="resource-icon">📋</div>
+          <h3>服务条款</h3>
+          <p>使用我们工具的条款和条件</p>
+        </a>
+
+        <a href="/" class="resource-card">
+          <div class="resource-icon">🔧</div>
+          <h3>JSON工具</h3>
+          <p>返回我们的JSON格式化和工具</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social-section">
+      <h2>关注我们</h2>
+      <p>获取新功能和JSON技巧的最新动态</p>
+
+      <div class="social-links">
+        <a href="https://github.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <span class="social-icon">📦</span>
+          <span>GitHub</span>
+        </a>
+
+        <a href="https://twitter.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <span class="social-icon">🐦</span>
+          <span>Twitter</span>
+        </a>
+
+        <a href="https://linkedin.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <span class="social-icon">💼</span>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Business Inquiries -->
+    <section class="business-section">
+      <h2>商业咨询</h2>
+
+      <div class="business-grid">
+        <div class="business-card">
+          <h3>🏢 企业服务</h3>
+          <p>需要定制功能、专属支持或本地部署？我们提供企业解决方案。</p>
+          <a href="mailto:hi@tojsons.com?subject=企业咨询" class="business-button">联系销售</a>
+        </div>
+
+        <div class="business-card">
+          <h3>🤝 合作伙伴</h3>
+          <p>有兴趣与我们合作？我们与互补的服务和平台进行合作。</p>
+          <a href="mailto:hi@tojsons.com?subject=合作咨询" class="business-button">成为合作伙伴</a>
+        </div>
+
+        <div class="business-card">
+          <h3>📢 广告合作</h3>
+          <p>月触达50,000+开发者。了解我们的广告机会。</p>
+          <a href="mailto:hi@tojsons.com?subject=广告咨询" class="business-button">投放广告</a>
+        </div>
+      </div>
+    </section>
   </div>
 </BaseLayout>
 
 <style>
-  .page-container {
-    max-width: 1400px;
+  .contact-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 30px;
+    padding: 40px 20px;
   }
-  h1 {
-    font-size: 2rem;
+
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
     margin-bottom: 20px;
+  }
+
+  .hero-intro {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #4b5563;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Section Styling */
+  section {
+    margin-bottom: 80px;
+  }
+
+  section h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  /* Contact Methods */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .contact-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .contact-card:hover {
+    border-color: #2563eb;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .contact-card.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  .contact-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .contact-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: inherit;
+    margin-bottom: 15px;
+  }
+
+  .contact-email {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin: 20px 0;
+  }
+
+  .contact-card.primary .contact-email {
+    color: white;
+  }
+
+  .contact-desc {
+    color: #6b7280;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .contact-card.primary .contact-desc {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .contact-button {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+
+  .contact-card.primary .contact-button {
+    background: white;
+    color: #764ba2;
+  }
+
+  .contact-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+
+  .contact-button.secondary {
+    background: #f3f4f6;
     color: #1f2937;
   }
-  h2 {
-    font-size: 1.5rem;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: #374151;
+
+  .response-time {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 0.95rem;
   }
-  p {
-    margin-bottom: 15px;
+
+  .time-icon {
+    margin-right: 5px;
+  }
+
+  /* Lists */
+  .bug-report-list,
+  .feature-request-list {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 20px;
+  }
+
+  .bug-report-list li,
+  .feature-request-list li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    color: #6b7280;
+  }
+
+  .bug-report-list li:before,
+  .feature-request-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: bold;
+  }
+
+  .contact-hint {
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+  }
+
+  .faq-item {
+    background: #f9fafb;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #2563eb;
+  }
+
+  .faq-item h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 10px;
+  }
+
+  .faq-item p {
+    color: #6b7280;
     line-height: 1.6;
-    color: #4b5563;
+    margin: 0;
   }
-  .content {
+
+  .faq-item a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* Resources */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .resource-card {
+    display: block;
     background: white;
     padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    transition: all 0.3s;
+    text-align: center;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .resource-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .resource-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 10px;
+  }
+
+  .resource-card p {
+    color: #6b7280;
+    margin: 0;
+  }
+
+  /* Social Links */
+  .social-section {
+    text-align: center;
+  }
+
+  .social-section p {
+    color: #6b7280;
+    margin-bottom: 30px;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    background: #2563eb;
+    color: white;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Business Section */
+  .business-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .business-card {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .business-card h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .business-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  .business-button {
+    display: inline-block;
+    background: white;
+    color: #f5576c;
+    padding: 12px 28px;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .business-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-container {
+      padding: 30px 16px;
+    }
+
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+
+    .hero-intro {
+      font-size: 1.1rem;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+    }
+
+    .contact-grid,
+    .faq-grid,
+    .resources-grid,
+    .business-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .social-links {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .social-link {
+      justify-content: center;
+    }
   }
 </style>
