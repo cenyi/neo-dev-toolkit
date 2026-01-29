@@ -1,5 +1,5 @@
-# robots.txt for JSON Viewer Online
-# https://jsonviewer.online
+# robots.txt for JSON Tools
+# https://tojsons.com
 
 # Global rule for all crawlers
 User-agent: *
@@ -7,7 +7,7 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://jsonviewer.online/sitemap.xml
+Sitemap: https://tojsons.com/sitemap.xml
 
 # Major Search Engines
 User-agent: Googlebot
