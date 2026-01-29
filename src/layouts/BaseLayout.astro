@@ -85,6 +85,35 @@ const alternates = supportedLangs.map(lang => {
     <meta name="theme-color" content="#2563eb" />
     <meta name="msapplication-TileColor" content="#2563eb" />
 
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JSON Tools - tojsons.com",
+      "url": "https://tojsons.com",
+      "logo": "https://tojsons.com/logo.png",
+      "description": "Professional-grade JSON processing tools. Free online JSON formatter, validator, parser, and converter trusted by 50,000+ developers worldwide.",
+      "sameAs": [
+        "https://github.com",
+        "https://twitter.com",
+        "https://linkedin.com"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "hi@tojsons.com",
+        "url": "https://tojsons.com/contact",
+        "availableLanguage": ["English", "Chinese", "Japanese", "Korean", "Spanish", "Portuguese", "French", "German", "Russian", "Arabic"]
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "JSON Tools Team"
+      },
+      "foundingDate": "2024",
+      "areaServed": "Worldwide",
+      "knowsLanguage": ["en", "zh", "ja", "ko", "es", "pt", "fr", "de", "ru", "ar"]
+    })} />
+
     <!-- Monaco Editor CSS - 在 head 中提前加载，确保样式在编辑器初始化前生效 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
 
