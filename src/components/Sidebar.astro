@@ -199,7 +199,7 @@ const isActive = (path: string) => {
   .hamburger {
     width: 16px;
     height: 2px;
-    background: linear-gradient(90deg, #64748b 0%, #94a3b8 100%);
+    background: linear-gradient(90deg, #374151 0%, #6b7280 100%);
     margin: 2px 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 2px;
@@ -250,7 +250,7 @@ const isActive = (path: string) => {
     align-items: center;
     padding: 10px 12px 10px 15px;
     text-decoration: none;
-    color: #64748b;
+    color: #374151;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 0.8125rem;
     font-weight: 500;
@@ -280,22 +280,24 @@ const isActive = (path: string) => {
   }
 
   .nav-link:hover {
-    background: rgba(59, 130, 246, 0.06);
-    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.08);
+    color: #2563eb;
   }
 
   .nav-link:hover::before {
     height: 18px;
+    background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
   }
 
   .nav-link.active {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-    color: #3b82f6;
+    color: #2563eb;
     font-weight: 600;
   }
 
   .nav-link.active::before {
     height: 22px;
+    background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
   }
 
   .nav-link.active::after {
@@ -473,7 +475,7 @@ const isActive = (path: string) => {
     /* 移动端导航链接悬停效果 */
     .sidebar .nav-link:hover {
       background: #f3f4f6 !important;
-      color: #3b82f6 !important;
+      color: #2563eb !important;
     }
 
     /* 移动端导航图标 */
