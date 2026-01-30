@@ -67,3 +67,16 @@ temp/
 Thumbs.db
 .trae/
 .claude/
+
+
+# Test results
+tests/
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Screenshots
+screenshots/
+
+# Coverage
+coverage/
