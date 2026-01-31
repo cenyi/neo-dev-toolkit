@@ -59,18 +59,6 @@ const t = deTranslations;
     }
   })} />
 
-  <div class="json-formatter-container"
-       data-enter-extraction-fn={t.enterExtractionFn}
-       data-enter-data={t.enterData}
-       data-extraction-error={t.extractionError}
-       data-parsing-error={t.parsingError}
-       data-compress-success={t.compressSuccess}
-       data-escape-success={t.escapeSuccess}
-       data-xml-success={t.xmlSuccess}
-       data-ts-success={t.tsSuccess}
-       data-csv-success={t.csvSuccess}
-       data-excel-success={t.excelSuccess}>
-
     <div class="editor-workspace">
       <!-- 左侧输入区域 -->
       <div class="input-area">
@@ -462,18 +450,13 @@ const t = deTranslations;
     --diff-red-opacity: 239, 68, 68;
     --diff-green-opacity: 34, 197, 94;
     --diff-yellow-opacity: 234, 179, 8;
-  }
-
   .json-formatter-container {
     max-width: 1800px;
     margin: 0 auto;
     padding: 8px;
-    height: calc(100vh - var(--sidebar-height, 40px));
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-  }
-
   /* 主工作区 - 左右布局 */
   .editor-workspace {
     display: flex;
@@ -481,8 +464,6 @@ const t = deTranslations;
     flex: 1;
     min-height: 0;
     overflow: hidden;
-  }
-
   /* 左侧输入区域 */
   .input-area {
     flex: 1;
@@ -493,31 +474,22 @@ const t = deTranslations;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0 auto;
     max-width: 75%;
-  }
-
   /* 当输出区域展开时，调整布局 */
   .output-area.expanded {
     flex: 1;
-    width: 50%;
     opacity: 1;
     border-left: 1px solid #e5e7eb;
     padding-left: 0;
-  }
-
   /* 当输出区域展开时，输入区域也调整为50% */
   .editor-workspace:has(.output-area.expanded) .input-area {
     flex: 1;
     max-width: 50%;
     margin: 0;
-  }
-
   .input-section {
     flex: 1;
     display: flex;
     flex-direction: column;
     min-height: 0;
-  }
-
   .section-label {
     font-size: 0.875rem;
     font-weight: 600;
@@ -526,8 +498,6 @@ const t = deTranslations;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     flex-shrink: 0;
-  }
-
   /* H1标签样式重置，保持布局一致 */
   h1.section-label {
     margin: 0;
@@ -537,16 +507,12 @@ const t = deTranslations;
     color: #0f172a;
     flex-shrink: 0;
     display: block;
-  }
-
   h2.section-label {
     margin: 0;
     padding: 0;
     font-size: 0.875rem;
     font-weight: 600;
     margin-top: 10px;
-  }
-
   /* Section Header Row - 标题和提示在同一行 */
   .section-header-row {
     display: flex;
@@ -554,8 +520,6 @@ const t = deTranslations;
     gap: 12px;
     margin-bottom: 8px;
     flex-wrap: wrap;
-  }
-
   /* Editor Hint Inline - 内联提示 */
   .editor-hint-inline {
     display: inline-flex;
@@ -567,54 +531,36 @@ const t = deTranslations;
     padding: 4px 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
-  }
-
   .editor-hint-inline:hover {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(37, 99, 235, 0.12) 100%);
     border-color: rgba(59, 130, 246, 0.3);
     box-shadow: 0 1px 4px rgba(59, 130, 246, 0.1);
-  }
-
   .editor-hint-inline.hint-hidden {
     opacity: 0;
     transform: translateX(4px);
     pointer-events: none;
-  }
-
   .editor-hint-inline .hint-icon {
     font-size: 14px;
     flex-shrink: 0;
     animation: sparkle 2s ease-in-out infinite;
-  }
-
   @keyframes sparkle {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.15); }
-  }
-
   .editor-hint-inline .hint-text {
     font-size: 0.75rem;
     font-weight: 600;
     color: #3b82f6;
     white-space: nowrap;
-  }
-
   /* 移动端优化 */
   @media (max-width: 768px) {
     .section-header-row {
       flex-direction: column;
       align-items: flex-start;
       gap: 6px;
-    }
-
     .editor-hint-inline {
       padding: 3px 8px;
-    }
-
     .editor-hint-inline .hint-icon {
       font-size: 12px;
-    }
-
     .editor-hint-inline .hint-text {
       font-size: 0.7rem;
     }
@@ -627,29 +573,17 @@ const t = deTranslations;
       align-items: flex-start;
       gap: 8px;
       padding: 8px 10px;
-    }
-
     .hint-icon {
       font-size: 16px;
-    }
-
     .hint-title {
       font-size: 0.8rem;
-    }
-
     .hint-description {
       font-size: 0.7rem;
-    }
-
     .hint-features {
       gap: 4px;
-    }
-
     .hint-badge {
       font-size: 0.65rem;
       padding: 2px 6px;
-    }
-
     .hint-security {
       font-size: 0.65rem;
       padding: 3px 8px;
@@ -663,54 +597,36 @@ const t = deTranslations;
     margin-top: 0;
     margin-bottom: 6px;
     text-align: center;
-  }
-
   /* 比较模式下添加边框区分两个编辑器 */
   .editors-wrapper.compare-mode .input-section:first-child .input-editor-wrapper {
     border: 2px solid #3b82f6;
-  }
-
   .editors-wrapper.compare-mode .compare-editor .input-editor-wrapper {
     border: 2px solid #10b981;
-  }
-
   /* 比较模式样式 */
   .compare-editor {
     flex: 1;
     display: flex;
     flex-direction: column;
     min-height: 0;
-  }
-
   .compare-editor.hidden {
     display: none;
-  }
-
   /* 编辑器包装容器 */
   .editors-wrapper {
     display: flex;
     flex: 1;
     gap: 0;
     min-height: 0;
-  }
-
   /* 比较模式下的布局调整 */
   .editors-wrapper.compare-mode {
     gap: 10px;
-  }
-
   .editors-wrapper.compare-mode .input-section {
     flex: 1;
     min-height: 0;
     min-width: 0;
-  }
-
   .editors-wrapper.compare-mode .compare-editor {
     flex: 1;
     min-height: 0;
     min-width: 0;
-  }
-
   /* 移动端比较模式保持上下结构 */
   @media (max-width: 768px) {
     .editors-wrapper.compare-mode {
@@ -725,16 +641,12 @@ const t = deTranslations;
     font-size: 13px;
     line-height: 1.6;
     overflow: auto;
-  }
-
   .diff-added {
     background-color: #d4edda;
     color: #155724;
     padding: 4px 8px;
     margin: 2px 0;
     border-left: 3px solid #28a745;
-  }
-
   .diff-removed {
     background-color: #f8d7da;
     color: #721c24;
@@ -742,131 +654,92 @@ const t = deTranslations;
     margin: 2px 0;
     border-left: 3px solid #dc3545;
     text-decoration: line-through;
-  }
-
   .diff-changed {
     background-color: #fff3cd;
     color: #856404;
     padding: 4px 8px;
     margin: 2px 0;
     border-left: 3px solid #ffc107;
-  }
-
   .diff-unchanged {
     color: #6c757d;
     padding: 4px 8px;
     margin: 2px 0;
-  }
-
   /* Monaco Editor差异高亮装饰 - 增强视觉效果 */
   .monaco-editor .diff-removed {
     background-color: rgba(239, 68, 68, 0.25) !important;
     border-left: 4px solid #ef4444 !important;
     position: relative !important;
-  }
-
   .monaco-editor .diff-removed::before {
     content: '' !important;
     position: absolute !important;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%) !important;
     box-shadow: 0 0 8px rgba(239, 68, 68, 0.4) !important;
-  }
-
   .monaco-editor .diff-added {
     background-color: rgba(34, 197, 94, 0.25) !important;
     border-left: 4px solid #22c55e !important;
     position: relative !important;
-  }
-
   .monaco-editor .diff-added::before {
     content: '' !important;
     position: absolute !important;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%) !important;
     box-shadow: 0 0 8px rgba(34, 197, 94, 0.4) !important;
-  }
-
   .monaco-editor .diff-changed {
     background-color: rgba(234, 179, 8, 0.25) !important;
     border-left: 4px solid #eab308 !important;
     position: relative !important;
-  }
-
   .monaco-editor .diff-changed::before {
     content: '' !important;
     position: absolute !important;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #eab308 0%, #ca8a04 100%) !important;
     box-shadow: 0 0 8px rgba(234, 179, 8, 0.4) !important;
-  }
-
   /* 差异高亮装饰类 - 用于Monaco Editor的deltaDecorations */
   .diff-removed-decoration {
     background-color: rgba(239, 68, 68, 0.25) !important;
     border-left: 4px solid #ef4444 !important;
-  }
-
   .diff-added-decoration {
     background-color: rgba(34, 197, 94, 0.25) !important;
     border-left: 4px solid #22c55e !important;
-  }
-
   .diff-changed-decoration {
     background-color: rgba(234, 179, 8, 0.25) !important;
     border-left: 4px solid #eab308 !important;
-  }
-
   /* 增强差异高亮的可见性 */
   .monaco-editor .diff-removed-decoration,
   .monaco-editor .diff-added-decoration,
   .monaco-editor .diff-changed-decoration {
     position: relative !important;
     transition: all 0.2s ease !important;
-  }
-
   .monaco-editor .diff-removed-decoration:hover,
   .monaco-editor .diff-added-decoration:hover,
   .monaco-editor .diff-changed-decoration:hover {
     filter: brightness(0.9) !important;
-  }
-
   /* 移动端差异高亮增强 */
   @media (max-width: 768px) {
     .monaco-editor .diff-removed-decoration {
       background-color: rgba(var(--diff-red-opacity), 0.35) !important;
       border-left: 4px solid #ef4444 !important;
       border-right: 2px solid rgba(239, 68, 68, 0.3) !important;
-    }
-
     .monaco-editor .diff-added-decoration {
       background-color: rgba(var(--diff-green-opacity), 0.35) !important;
       border-left: 4px solid #22c55e !important;
       border-right: 2px solid rgba(34, 197, 94, 0.3) !important;
-    }
-
     .monaco-editor .diff-changed-decoration {
       background-color: rgba(var(--diff-yellow-opacity), 0.35) !important;
       border-left: 4px solid #eab308 !important;
       border-right: 2px solid rgba(234, 179, 8, 0.3) !important;
-    }
-
     /* 移动端差异高亮动画 */
     .monaco-editor .diff-removed-decoration,
     .monaco-editor .diff-added-decoration,
     .monaco-editor .diff-changed-decoration {
       animation: diffPulse 2s ease-in-out;
-    }
-
     @keyframes diffPulse {
       0%, 100% {
         opacity: 1;
@@ -875,8 +748,6 @@ const t = deTranslations;
         opacity: 0.7;
       }
     }
-  }
-
   .input-editor-wrapper {
     display: flex;
     border: 1px solid #e1e4e8;
@@ -885,16 +756,10 @@ const t = deTranslations;
     flex: 1;
     min-height: 0;
     position: relative;
-  }
-
   .monaco-editor-container {
     flex: 1;
-    width: 100%;
-    height: 100%;
     min-height: 400px;
     position: relative;
-  }
-
   /* 美化Monaco Editor折叠按钮 */
   .monaco-editor .codicon-add-selection,
   .monaco-editor .codicon-chevron-right,
@@ -902,19 +767,13 @@ const t = deTranslations;
   .monaco-editor .codicon-folding-expanded,
   .monaco-editor .codicon-folding-collapsed {
     content: '' !important;
-  }
-
   /* 自定义折叠按钮样式 */
   .monaco-editor .folding-icon {
-    width: 16px !important;
-    height: 16px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
-  }
-
   /* 展开状态的折叠按钮 */
   .monaco-editor .folding-icon.collapsed::after,
   .monaco-editor .codicon-folding-collapsed::after {
@@ -923,8 +782,6 @@ const t = deTranslations;
     color: #6b7280 !important;
     display: inline-block !important;
     margin-left: 1px !important;
-  }
-
   /* 折叠状态的折叠按钮 */
   .monaco-editor .folding-icon:not(.collapsed)::after,
   .monaco-editor .codicon-folding-expanded::after {
@@ -932,13 +789,9 @@ const t = deTranslations;
     font-size: 9px !important;
     color: #6b7280 !important;
     display: inline-block !important;
-  }
-
   /* 折叠按钮hover效果 */
   .monaco-editor .folding-icon:hover::after {
     color: #3b82f6 !important;
-  }
-
   /* JSON 校验错误提示 */
   .validation-error {
     padding: 12px 16px;
@@ -951,8 +804,6 @@ const t = deTranslations;
     border-left: 4px solid #ef4444;
     display: none;
     animation: slideDown 0.3s ease-out;
-  }
-
   .validation-error {
     padding: 12px 16px;
     background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
@@ -964,12 +815,8 @@ const t = deTranslations;
     border-left: 4px solid #ef4444;
     display: none;
     animation: slideDown 0.3s ease-out;
-  }
-
   .validation-error.show {
     display: block;
-  }
-
   @keyframes slideDown {
     from {
       opacity: 0;
@@ -987,21 +834,15 @@ const t = deTranslations;
     background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
     border-radius: 6px;
     border: 1px solid #e9ecef;
-  }
-
   .extraction-controls {
     display: flex;
     gap: 8px;
     align-items: center;
-  }
-
   .extraction-controls label {
     font-weight: 600;
     color: var(--text-color);
     white-space: nowrap;
     font-size: 0.85rem;
-  }
-
   .extraction-controls input {
     flex: 1;
     min-width: 200px;
@@ -1012,14 +853,10 @@ const t = deTranslations;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: all 0.2s;
-  }
-
   .extraction-controls input:focus {
     outline: none;
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  }
-
   .extraction-controls button {
     padding: 6px 14px;
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
@@ -1031,33 +868,21 @@ const t = deTranslations;
     font-weight: 500;
     white-space: nowrap;
     transition: all 0.2s;
-  }
-
   #apply-extract {
     font-size: 13px;
-  }
-
   .extraction-controls button:hover {
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     transform: translateY(-1px);
-  }
-
   #clear-extract-fn {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     font-size: 13px;
-  }
-
   #clear-extract-fn:hover {
     box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
-  }
-
 /* 按钮组 */
   .output-controls {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-  }
-
   .output-controls button {
     padding: 6px 10px;
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
@@ -1074,8 +899,6 @@ const t = deTranslations;
     -webkit-tap-highlight-color: transparent;
     flex: 0 0 auto;
     min-width: fit-content;
-  }
-
   .output-controls select {
     padding: 6px 10px;
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
@@ -1088,46 +911,30 @@ const t = deTranslations;
     transition: all 0.2s;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
-  }
-
   .output-controls select option {
     background: white;
     color: #1f2937;
     padding: 6px 10px;
-  }
-
   .output-controls select:hover {
     background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
-  }
-
   .output-controls button:hover {
     background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
     transform: translateY(-1px);
-  }
-
   /* 移动端按钮交互优化 */
   .output-controls button:active {
     transform: translateY(0) scale(0.98);
     transition: all 0.1s;
-  }
-
   .output-controls select:active {
     transform: translateY(0) scale(0.98);
     transition: all 0.1s;
-  }
-
   #clear-btn {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
-  }
-
   #clear-btn:hover {
     background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
     box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
-  }
-
   /* 按钮分隔符样式 */
   .button-separator {
     display: flex;
@@ -1137,8 +944,6 @@ const t = deTranslations;
     font-weight: bold;
     padding: 0 4px;
     user-select: none;
-  }
-
   @media (max-width: 768px) {
     .button-separator {
       display: none; /* 移动端隐藏分隔符 */
@@ -1147,7 +952,6 @@ const t = deTranslations;
 
   /* JSON表格样式 */
   .json-table {
-    width: 100%;
     border-collapse: collapse;
     margin: 10px 0;
     font-size: 14px;
@@ -1155,40 +959,25 @@ const t = deTranslations;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-
   .json-table thead {
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
-  }
-
   .json-table th {
     padding: 12px 16px;
     text-align: left;
     font-weight: 600;
     border-bottom: 2px solid #e5e7eb;
-  }
-
   .json-table td {
     padding: 10px 16px;
     border-bottom: 1px solid #f3f4f6;
-  }
-
   .json-table tbody tr:hover {
     background-color: #f9fafb;
-  }
-
   .json-table tbody tr:last-child td {
     border-bottom: none;
-  }
-
   .json-table .key-column {
     background-color: #f9fafb;
     font-weight: 600;
-    width: 30%;
     border-right: 1px solid #e5e7eb;
-  }
-
   .json-table .inline-code {
     background-color: #f3f4f6;
     padding: 2px 6px;
@@ -1201,38 +990,22 @@ const t = deTranslations;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
   .json-table .number {
     color: #ef4444;
     font-weight: 600;
-  }
-
   .json-table .boolean-true {
     color: #10b981;
     font-weight: 600;
-  }
-
   .json-table .boolean-false {
     color: #ef4444;
     font-weight: 600;
-  }
-
   .table-output {
-    width: 100%;
-    height: 100%;
     overflow: auto;
-  }
-
   /* 移动端特殊按钮样式 */
   #apply-extract {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  }
-
   #apply-extract:hover {
     background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  }
-
   /* 移动端按钮组布局优化 */
   @media (max-width: 768px) {
     .output-controls {
@@ -1240,8 +1013,6 @@ const t = deTranslations;
       grid-template-columns: repeat(2, 1fr);
       grid-auto-flow: dense;
       gap: 4px;
-    }
-
     .output-controls button,
     .output-controls select {
       min-height: 36px;
@@ -1250,8 +1021,6 @@ const t = deTranslations;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
     /* 最后三个按钮（清空、历史记录、字体大小选择）在移动端小屏幕情况下并排显示 */
     #clear-btn,
     #history-btn,
@@ -1259,7 +1028,6 @@ const t = deTranslations;
       grid-column: auto;
       grid-row: span 1;
       flex: 1;
-      width: auto;
       min-width: 0;
     }
   }
@@ -1267,31 +1035,21 @@ const t = deTranslations;
   /* 中文页面按钮布局优化 - 长文字需要更多空间 */
   [lang="zh-CN"] .output-controls {
     grid-template-columns: repeat(2, 1fr);
-  }
-
   [lang="zh-CN"] .output-controls button {
     font-size: 11px;
     padding: 6px 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
   [lang="zh-CN"] #history-btn {
     grid-column: span 1;
-  }
-
   @media (max-width: 480px) {
     .output-controls {
       gap: 3px;
-    }
-
     .output-controls button {
       min-height: 32px;
       font-size: 11px;
       padding: 4px 6px;
-    }
-
     .output-controls select {
       min-height: 32px;
       font-size: 11px;
@@ -1309,22 +1067,16 @@ const t = deTranslations;
 
   /* 右侧输出区域 */
   .output-area {
-    width: 0;
     opacity: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-left: 1px solid transparent;
-  }
-
   .output-area.expanded {
-    width: 50%;
     opacity: 1;
     border-left: 1px solid #e5e7eb;
     padding-left: 0;
-  }
-
   .output-header {
     display: flex;
     justify-content: space-between;
@@ -1334,45 +1086,33 @@ const t = deTranslations;
     border-radius: 6px 6px 0 0;
     border: 1px solid #e9ecef;
     border-bottom: none;
-  }
-
   .output-title {
     font-size: 0.85rem;
     font-weight: 600;
     color: #6b7280;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-  }
-
   .close-output-btn {
     background: none;
     border: none;
     font-size: 24px;
     color: #9ca3af;
     cursor: pointer;
-    width: 28px;
-    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
     transition: all 0.2s;
     line-height: 1;
-  }
-
   .close-output-btn:hover {
     background: rgba(239, 68, 68, 0.1);
     color: #dc2626;
-  }
-
   /* 输出内容区域，与输入框相同样式 */
   .output-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     min-height: 0;
-  }
-
   .output-editor-wrapper {
     display: flex;
     border: 1px solid #e1e4e8;
@@ -1380,8 +1120,6 @@ const t = deTranslations;
     overflow: hidden;
     flex: 1;
     background: linear-gradient(to bottom, #fafbfc 0%, #f5f6f8 100%);
-  }
-
   #output-json {
     flex: 1;
     padding: 12px;
@@ -1391,21 +1129,13 @@ const t = deTranslations;
     overflow: auto;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
     min-height: 0;
-  }
-
   /* JSON树形查看器样式 */
   .json-root {
     padding: 5px 0;
-  }
-
   .json-bracket {
     padding: 0 5px;
-  }
-
   .json-node {
     margin-left: 18px;
-  }
-
   .json-property {
     display: flex;
     align-items: center;
@@ -1413,16 +1143,10 @@ const t = deTranslations;
     padding: 2px 0;
     border-radius: 3px;
     transition: background 0.1s;
-  }
-
   .json-property:hover {
     background: rgba(59, 130, 246, 0.05);
-  }
-
   .json-toggle {
     display: inline-block;
-    width: 14px;
-    height: 14px;
     text-align: center;
     line-height: 12px;
     cursor: pointer;
@@ -1434,49 +1158,29 @@ const t = deTranslations;
     background: #fff;
     color: #6b7280;
     transition: all 0.15s;
-  }
-
   .json-toggle:hover {
     border-color: #3b82f6;
     color: #3b82f6;
-  }
-
   .json-key {
     color: #7c3aed;
     margin-right: 6px;
     font-weight: 500;
-  }
-
   .json-separator {
     margin-right: 6px;
     color: #94a3b8;
-  }
-
   .json-value-string {
     color: #059669;
-  }
-
   .json-value-number {
     color: #dc2626;
-  }
-
   .json-value-boolean {
     color: #2563eb;
-  }
-
   .json-value-null {
     color: #9ca3af;
-  }
-
   .json-value-object,
   .json-value-array {
     color: #1f2937;
-  }
-
   .collapsed > .json-node {
     display: none;
-  }
-
   /* Tutorial Section */
   .tutorial-section {
     max-width: 1800px;
@@ -1485,14 +1189,10 @@ const t = deTranslations;
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  }
-
   .tutorial-section .section-header,
   .faq-section .section-header {
     text-align: center;
     margin-bottom: 40px;
-  }
-
   .tutorial-section .section-header h2,
   .faq-section .section-header h2 {
     font-size: 2.5rem;
@@ -1503,22 +1203,16 @@ const t = deTranslations;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
   .tutorial-section .section-header p,
   .faq-section .section-header p {
     font-size: 1.1rem;
     color: #64748b;
-  }
-
   .tutorial-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 32px;
-  }
-
   .tutorial-step {
     display: flex;
     gap: 20px;
@@ -1529,18 +1223,12 @@ const t = deTranslations;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-left: 4px solid transparent;
-  }
-
   .tutorial-step:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     border-left-color: #3b82f6;
-  }
-
   .step-number {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     color: white;
@@ -1550,12 +1238,8 @@ const t = deTranslations;
     font-weight: 700;
     font-size: 1.125rem;
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  }
-
   .step-content {
     flex: 1;
-  }
-
   .step-content h3 {
     font-size: 1.25rem;
     font-weight: 700;
@@ -1564,42 +1248,30 @@ const t = deTranslations;
     display: flex;
     align-items: center;
     gap: 8px;
-  }
-
   .step-content p {
     color: #475569;
     line-height: 1.7;
     margin-bottom: 12px;
     font-size: 0.9375rem;
-  }
-
   .step-content p:last-child {
     margin-bottom: 0;
-  }
-
   .step-example {
     background: #1e293b;
     border-radius: 8px;
     padding: 16px;
     margin: 12px 0;
     overflow-x: auto;
-  }
-
   .step-example code {
     color: #e2e8f0;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 0.875rem;
     line-height: 1.6;
     white-space: pre;
-  }
-
   .example-desc {
     color: #64748b;
     font-size: 0.875rem;
     font-style: italic;
     margin-top: 8px;
-  }
-
   .tip {
     background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
     border-left: 4px solid #f59e0b;
@@ -1608,8 +1280,6 @@ const t = deTranslations;
     margin-top: 12px;
     font-size: 0.875rem;
     color: #92400e;
-  }
-
   .privacy-note {
     background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
     border-left: 4px solid #3b82f6;
@@ -1618,14 +1288,10 @@ const t = deTranslations;
     margin-top: 12px;
     font-size: 0.875rem;
     color: #1e40af;
-  }
-
   .action-list {
     list-style: none;
     padding: 0;
     margin: 12px 0 0 0;
-  }
-
   .action-list li {
     padding: 8px 0;
     padding-left: 24px;
@@ -1633,21 +1299,15 @@ const t = deTranslations;
     color: #475569;
     font-size: 0.9375rem;
     line-height: 1.6;
-  }
-
   .action-list li::before {
     content: '✓';
     position: absolute;
     left: 0;
     color: #3b82f6;
     font-weight: 700;
-  }
-
   .action-list li strong {
     color: #0f172a;
     font-weight: 600;
-  }
-
   /* Features Section - 创意渐变效果 */
   .features-section {
     max-width: 1800px;
@@ -1657,19 +1317,13 @@ const t = deTranslations;
     border-radius: 20px;
     position: relative;
     overflow: hidden;
-  }
-
   .features-section::before {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 200%;
-    height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: rotate 20s linear infinite;
-  }
-
   @keyframes rotate {
     from {
       transform: rotate(0deg);
@@ -1684,21 +1338,15 @@ const t = deTranslations;
     margin-bottom: 50px;
     position: relative;
     z-index: 1;
-  }
-
   .features-section .section-header h2 {
     font-size: 2.5rem;
     font-weight: 800;
     color: white;
     margin-bottom: 12px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-
   .features-section .section-header p {
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.9);
-  }
-
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1707,8 +1355,6 @@ const t = deTranslations;
     margin: 0 auto;
     position: relative;
     z-index: 1;
-  }
-
   .feature-item {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -1719,30 +1365,21 @@ const t = deTranslations;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  }
-
   .feature-item::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
     background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
   .feature-item:hover::before {
     transform: scaleX(1);
-  }
-
   .feature-item:hover {
     transform: translateY(-8px) rotateX(2deg);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  }
-
   .feature-number {
     font-size: 4rem;
     font-weight: 900;
@@ -1752,50 +1389,34 @@ const t = deTranslations;
     right: 10px;
     line-height: 1;
     transition: all 0.4s ease;
-  }
-
   .feature-item:hover .feature-number {
     color: rgba(102, 126, 234, 0.15);
     transform: scale(1.1);
-  }
-
   .feature-content {
     padding: 32px;
     position: relative;
     z-index: 1;
-  }
-
   .feature-icon {
     font-size: 3rem;
     margin-bottom: 20px;
     display: inline-block;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-  }
-
   .feature-item:hover .feature-icon {
     transform: scale(1.2) rotate(5deg);
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-  }
-
   .feature-content h3 {
     font-size: 1.35rem;
     font-weight: 700;
     color: #1e293b;
     margin-bottom: 12px;
     transition: color 0.3s ease;
-  }
-
   .feature-item:hover .feature-content h3 {
     color: #667eea;
-  }
-
   .feature-content p {
     color: #64748b;
     line-height: 1.7;
     font-size: 0.95rem;
-  }
-
   /* Supported Formats Section */
   .supported-formats-section {
     max-width: 1800px;
@@ -1804,13 +1425,9 @@ const t = deTranslations;
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  }
-
   .supported-formats-section .section-header {
     text-align: center;
     margin-bottom: 45px;
-  }
-
   .supported-formats-section .section-header h2 {
     font-size: 2.2rem;
     font-weight: 800;
@@ -1820,21 +1437,15 @@ const t = deTranslations;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
   .supported-formats-section .section-header p {
     font-size: 1.1rem;
     color: #64748b;
-  }
-
   .formats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
     max-width: 1200px;
     margin: 0 auto;
-  }
-
   .format-category {
     background: white;
     border-radius: 12px;
@@ -1842,14 +1453,10 @@ const t = deTranslations;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid #e0f2fe;
-  }
-
   .format-category:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
     border-color: #0ea5e9;
-  }
-
   .format-category h3 {
     font-size: 1.2rem;
     font-weight: 700;
@@ -1857,14 +1464,10 @@ const t = deTranslations;
     margin-bottom: 16px;
     padding-bottom: 12px;
     border-bottom: 2px solid #e0f2fe;
-  }
-
   .format-category ul {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-
   .format-category li {
     padding: 8px 0;
     padding-left: 24px;
@@ -1872,16 +1475,12 @@ const t = deTranslations;
     color: #475569;
     font-size: 0.9rem;
     line-height: 1.6;
-  }
-
   .format-category li::before {
     content: '✓';
     position: absolute;
     left: 0;
     color: #0ea5e9;
     font-weight: 700;
-  }
-
   .formats-note {
     max-width: 900px;
     margin: 35px auto 0;
@@ -1892,13 +1491,9 @@ const t = deTranslations;
     font-size: 0.95rem;
     color: #1e40af;
     line-height: 1.7;
-  }
-
   .formats-note strong {
     font-weight: 700;
     color: #1e3a8a;
-  }
-
   /* FAQ Section - 2列展开样式 */
   .faq-section {
     max-width: 1800px;
@@ -1907,16 +1502,12 @@ const t = deTranslations;
     background: transparent;
     border-radius: 0;
     border: none;
-  }
-
   .faq-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
     max-width: 1200px;
     margin: 0 auto;
-  }
-
   .faq-item {
     padding: 0;
     background: transparent;
@@ -1925,213 +1516,132 @@ const t = deTranslations;
     border-left: 3px solid #3b82f6;
     padding-left: 20px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
   .faq-item:hover {
     border-left-color: #2563eb;
     padding-left: 24px;
-  }
-
   .faq-item h3 {
     font-size: 1.15rem;
     font-weight: 700;
     color: #1e293b;
     margin-bottom: 12px;
-  }
-
   .faq-item p {
     color: #64748b;
     line-height: 1.7;
     font-size: 0.95rem;
-  }
-
 /* 响应式设计 */
   @media (max-width: 1200px) {
     .output-area.expanded {
-      width: 60%;
     }
   }
 
   @media (max-width: 768px) {
     .json-formatter-container {
       padding: 6px;
-      height: calc(100vh - var(--sidebar-height, 40px));
       flex-shrink: 0;
-    }
-
     .editor-workspace {
       flex-direction: column;
-    }
-
     .input-area {
       gap: 8px;
       min-height: 300px;
       max-width: 100%;
-    }
-
     .monaco-editor-container {
       min-height: 250px;
-    }
-
     /* 移动端比较模式优化 */
     .editors-wrapper.compare-mode {
       flex-direction: column;
       gap: 8px;
-    }
-
     .editors-wrapper.compare-mode .input-section {
       min-height: 200px;
-    }
-
     /* 移动端编辑器容器优化 */
     .input-editor-wrapper {
       min-height: 200px;
-    }
-
     .extraction-controls {
       flex-wrap: wrap;
       gap: 6px;
-    }
-
     .extraction-controls input {
       min-width: 100%;
       margin-bottom: 6px;
-    }
-
     .extraction-controls label {
-      width: 100%;
       margin-bottom: 4px;
-    }
-
     .json-input {
       min-height: 200px;
-    }
-
     .output-controls {
       gap: 4px;
       flex-wrap: wrap;
-    }
-
     .output-controls button {
       padding: 8px 12px;
       font-size: 12px;
       flex: 1;
       min-width: 70px;
-      height: 36px;
-    }
-
     .output-controls select {
       flex: 1;
       min-width: 90px;
-      height: 36px;
       padding: 8px 12px;
-    }
-
     .output-area.expanded {
-      width: 100%;
       border-left: none;
       padding-left: 0;
       margin-top: 12px;
-      height: 350px;
-    }
-
     /* 移动端Monaco Editor优化 */
     .monaco-editor-container {
       min-height: 200px;
-    }
-
     /* 移动端差异高亮优化 */
     .monaco-editor .diff-removed-decoration,
     .monaco-editor .diff-added-decoration,
     .monaco-editor .diff-changed-decoration {
       background-color: rgba(var(--diff-opacity), 0.3) !important;
       border-left-width: 3px !important;
-    }
-
     /* 移动端编辑器触摸优化 */
     .monaco-editor {
       touch-action: pan-y;
-    }
-
     .monaco-editor .margin {
       touch-action: none;
-    }
-
     /* 移动端提取区域优化 */
     .extraction-section {
       padding: 8px;
-    }
-
     .extraction-controls {
       gap: 8px;
-    }
-
     .extraction-controls input {
       padding: 8px 12px;
       font-size: 14px;
       min-height: 40px;
-    }
-
     .extraction-controls button {
       min-height: 40px;
       padding: 8px 16px;
       font-size: 14px;
-    }
-
     /* Tutorial section 移动端优化 */
     .tutorial-step {
       flex-direction: column;
       padding: 16px;
-    }
-
     .step-number {
       margin-bottom: 12px;
-    }
-
     .section-header {
       padding: 20px 12px;
-    }
-
     .section-header h2 {
       font-size: 1.5rem;
-    }
-
     /* Features 移动端优化 */
     .features-grid {
       grid-template-columns: 1fr;
       gap: 16px;
       padding: 0 12px;
-    }
-
     /* Supported Formats 移动端优化 */
     .formats-grid {
       grid-template-columns: 1fr;
       gap: 16px;
       padding: 0 12px;
-    }
-
     .format-category {
       padding: 18px;
-    }
-
     .formats-note {
       margin: 25px 12px 0;
       padding: 14px 18px;
       font-size: 0.9rem;
-    }
-
     /* FAQ 移动端优化 */
     .faq-grid {
       grid-template-columns: 1fr;
       gap: 24px;
       padding: 0 12px;
-    }
-
     .faq-item {
       border-left-width: 2px;
       padding-left: 16px;
-    }
-
     .faq-item:hover {
       padding-left: 18px;
     }
@@ -2140,52 +1650,30 @@ const t = deTranslations;
   @media (max-width: 480px) {
     .json-formatter-container {
       padding: 4px;
-    }
-
     .input-area {
       gap: 6px;
-    }
-
     .output-controls {
       gap: 3px;
-    }
-
     .output-controls button {
       flex: 1;
       min-width: 0;
       padding: 6px 8px;
       font-size: 11px;
-      height: 32px;
-    }
-
     .output-controls select {
-      height: 32px;
       padding: 6px 8px;
       font-size: 11px;
-    }
-
     .json-action-group {
       flex: 1;
-    }
-
     .json-input {
       min-height: 150px;
       font-size: 12px;
-    }
-
     .extraction-section {
       padding: 6px;
-    }
-
     .monaco-editor-container {
       min-height: 150px;
-    }
-
     /* 超小屏幕比较模式优化 */
     .editors-wrapper.compare-mode .input-section {
       min-height: 150px;
-    }
-
     .input-editor-wrapper {
       min-height: 150px;
     }
@@ -2194,23 +1682,13 @@ const t = deTranslations;
   /* 移动端横屏优化 */
   @media (max-width: 768px) and (orientation: landscape) {
     .json-formatter-container {
-      height: calc(100vh - 20px);
-    }
-
     .input-area {
       min-height: 200px;
-    }
-
     .monaco-editor-container {
       min-height: 180px;
-    }
-
     .editors-wrapper.compare-mode .input-section {
       min-height: 160px;
-    }
-
     .output-area.expanded {
-      height: 250px;
     }
   }
 </style>
@@ -2259,7 +1737,6 @@ const t = deTranslations;
     initializeMonacoEditor();
 
     initializeJsonFormatter();
-  });
 
   // 初始化 Monaco Editor
   function initializeMonacoEditor() {
@@ -2267,17 +1744,11 @@ const t = deTranslations;
     if (!container) {
       console.error('Monaco Editor container not found');
       return;
-    }
-
     // 等待页面完全渲染，包括 CSS 样式应用
     // 使用双重 requestAnimationFrame 确保浏览器完成布局计算
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         // 确保容器有正确的尺寸
-        console.log('Container dimensions:', {
-          width: container.offsetWidth,
-          height: container.offsetHeight
-        });
 
         // 如果容器尺寸还是异常，再延迟一点
         if (container.offsetWidth === 0 || container.offsetHeight === 0) {
@@ -2287,8 +1758,6 @@ const t = deTranslations;
         }
       });
     });
-  }
-
   // 创建 Monaco Editor
   function createEditor(container) {
     // 获取保存的字体大小
@@ -2326,11 +1795,8 @@ const t = deTranslations;
         vertical: 'visible',
         horizontal: 'visible'
       },
-      padding: { top: 12, bottom: 12 },
       readOnly: false
     });
-
-    console.log('Monaco Editor created successfully');
 
     // 创建输出编辑器
     const outputContainer = document.getElementById('output-monaco-container');
@@ -2352,19 +1818,9 @@ const t = deTranslations;
         foldingStrategy: 'indentation',
         foldingHighlight: true,
         showFoldingControls: 'always',
-        matchBrackets: 'always',
-        tabSize: 2,
-        renderLineHighlight: 'all',
-        scrollbar: {
           vertical: 'visible',
           horizontal: 'visible'
         },
-        padding: { top: 12, bottom: 12 },
-        readOnly: true  // 输出编辑器只读
-      });
-      console.log('Output Monaco Editor created successfully');
-    }
-
     // 创建比较编辑器
     const compareContainer = document.getElementById('monaco-compare-container');
     if (compareContainer) {
@@ -2396,17 +1852,13 @@ const t = deTranslations;
           vertical: 'visible',
           horizontal: 'visible'
         },
-        padding: { top: 12, bottom: 12 },
         readOnly: false
-      });
-      console.log('Compare Monaco Editor created successfully');
 
       // 监听比较编辑器内容变化，自动更新差异高亮
       compareEditor.onDidChangeModelContent(() => {
         if (isCompareMode) {
           highlightDifferences();
         }
-      });
     }
 
     // 调试：检查 DOM 结构
@@ -2414,12 +1866,10 @@ const t = deTranslations;
       const monacoContainer = container.querySelector('.monaco-editor');
       if (monacoContainer) {
         const margin = monacoContainer.querySelector('.margin');
-        console.log('Monaco DOM structure:', {
           container: container.offsetWidth,
           monacoEditor: monacoContainer.offsetWidth,
           margin: margin ? margin.offsetWidth : 'NOT FOUND',
           marginVisible: margin ? window.getComputedStyle(margin).display : 'N/A'
-        });
       }
     }, 200);
 
@@ -2427,7 +1877,6 @@ const t = deTranslations;
     setTimeout(() => {
       if (editor) {
         editor.layout();
-        console.log('Monaco Editor layout updated');
       }
     }, 100);
 
@@ -2439,8 +1888,6 @@ const t = deTranslations;
       // 如果在比较模式，更新差异高亮
       if (isCompareMode) {
         highlightDifferences();
-      }
-
       // 控制提示显示/隐藏
       const hint = document.getElementById('editor-hint');
       if (hint) {
@@ -2451,7 +1898,6 @@ const t = deTranslations;
           hint.classList.remove('hint-hidden');
         }
       }
-    });
 
     // 监听 JSON 错误标记变化
     monaco.editor.onDidChangeMarkers(() => {
@@ -2481,14 +1927,11 @@ const t = deTranslations;
         errorElement.textContent = errorMessage;
         errorElement.classList.add('show');
       }
-    });
   }
 
   // 获取编辑器中的文本
   function getEditorContent() {
     return editor ? editor.getValue() : '';
-  }
-
   // 设置编辑器中的文本
   function setEditorContent(content) {
     if (editor) {
@@ -2505,13 +1948,9 @@ const t = deTranslations;
     // 检测是否为URL参数
     if (trimmed.includes('?') || /^\w+=/.test(trimmed)) {
       return 'urlparams';
-    }
-
     // 检测是否为XML
     if (trimmed.startsWith('<?xml') || trimmed.startsWith('<!DOCTYPE') || /^<[\w-]+/.test(trimmed)) {
       return 'xml';
-    }
-
     // 检测是否为YAML
     if (/^[\w-]+:\s*\n/.test(trimmed) || /^[\w-]+:\s*\S+/.test(trimmed)) {
       // 简单的YAML特征：包含键值对，使用冒号分隔
@@ -2526,8 +1965,6 @@ const t = deTranslations;
 
     // 默认尝试JSON
     return 'json';
-  }
-
   // 解析URL参数为JSON对象
   function parseUrlParams(inputText) {
     const result = {};
@@ -2537,8 +1974,6 @@ const t = deTranslations;
     const questionMarkIndex = queryString.indexOf('?');
     if (questionMarkIndex !== -1) {
       queryString = queryString.substring(questionMarkIndex + 1);
-    }
-
     // 分割参数
     const pairs = queryString.split('&');
 
@@ -2555,8 +1990,6 @@ const t = deTranslations;
         value = decodeURIComponent(value.replace(/\+/g, ' '));
       } else {
         value = '';
-      }
-
       // 尝试将值转换为数字或布尔值
       if (value === 'true') {
         value = true;
@@ -2581,8 +2014,6 @@ const t = deTranslations;
     }
 
     return result;
-  }
-
   // 解析XML为JSON对象
   function parseXml(inputText) {
     const parser = new DOMParser();
@@ -2592,16 +2023,12 @@ const t = deTranslations;
     const parseError = xmlDoc.getElementsByTagName('parsererror');
     if (parseError.length > 0) {
       throw new Error('Invalid XML format');
-    }
-
     // 递归转换XML节点为JSON
     function xmlTojson(node) {
       // 文本节点
       if (node.nodeType === Node.TEXT_NODE) {
         const text = node.textContent.trim();
         return text;
-      }
-
       // 元素节点
       if (node.nodeType === Node.ELEMENT_NODE) {
         const obj = {};
@@ -2645,33 +2072,21 @@ const t = deTranslations;
               children[childName] = childValue;
             }
           }
-        }
-
         // 合并属性和子节点
         if (hasChildren) {
           Object.assign(obj, children);
-        }
-
         // 如果只有属性，返回对象
         // 如果属性为空且只有一个子节点，返回子节点
         if (Object.keys(obj).length === 0) {
           return null;
-        }
-
         return obj;
-      }
-
       return null;
-    }
-
     // 从根元素开始转换
     const rootElement = xmlDoc.documentElement;
     const result = {};
     result[rootElement.nodeName] = xmlTojson(rootElement);
 
     return result;
-  }
-
   // 解析YAML为JSON对象（简化版，支持常用YAML语法）
   function parseYaml(inputText) {
     const lines = inputText.split('\n');
@@ -2687,16 +2102,12 @@ const t = deTranslations;
       // 回退到正确的层级
       while (stack.length > 1 && stack[stack.length - 1].indent >= indent) {
         stack.pop();
-      }
-
       const current = stack[stack.length - 1].obj;
 
       // 移除注释
       const commentIndex = line.indexOf('#');
       if (commentIndex !== -1) {
         line = line.substring(0, commentIndex);
-      }
-
       // 解析键值对
       const colonIndex = line.indexOf(':');
       if (colonIndex === -1) continue;
@@ -2765,8 +2176,6 @@ const t = deTranslations;
       } else {
         // 普通字符串
         value = valueStr;
-      }
-
       // 处理数组项（以-开头）
       if (key.startsWith('-')) {
         const arrayKey = key.substring(1).trim();
@@ -2800,16 +2209,12 @@ const t = deTranslations;
     }
 
     return root;
-  }
-
   // 自动格式化函数
   function autoFormatJson() {
     const inputText = getEditorContent().trim();
 
     if (!inputText) {
       return;
-    }
-
     try {
       // 检测输入类型
       const inputType = detectInputType(inputText);
@@ -2832,8 +2237,6 @@ const t = deTranslations;
       } else {
         // 默认尝试JSON
         parsed = JSON.parse(inputText);
-      }
-
       // 格式化JSON
       const formatted = JSON.stringify(parsed, null, 2);
 
@@ -2852,8 +2255,6 @@ const t = deTranslations;
         }
         if (scrollTop !== null && editor) {
           editor.setScrollTop(scrollTop);
-        }
-
         // 如果转换成功，显示提示
         if (converted) {
           const typeNames = {
@@ -2882,17 +2283,11 @@ const t = deTranslations;
       this.data = data;
       this.render();
       this.bindEvents();
-    }
-
     render() {
       this.container.innerHTML = this.renderValue(this.data, '', true);
-    }
-
     renderValue(value, key = '', hasNext = true) {
       if (value === null) {
         return this.renderProperty(key, `<span class="json-value-null">null</span>`, hasNext);
-      }
-
       if (typeof value === 'object') {
         if (Array.isArray(value)) {
           return this.renderObjectOrArray(key, value, 'array', hasNext);
@@ -2903,19 +2298,11 @@ const t = deTranslations;
 
       if (typeof value === 'string') {
         return this.renderProperty(key, `<span class="json-value-string">"${this.escapeHtml(value)}"</span>`, hasNext);
-      }
-
       if (typeof value === 'number') {
         return this.renderProperty(key, `<span class="json-value-number">${value}</span>`, hasNext);
-      }
-
       if (typeof value === 'boolean') {
         return this.renderProperty(key, `<span class="json-value-boolean">${value}</span>`, hasNext);
-      }
-
       return this.renderProperty(key, value, hasNext);
-    }
-
     renderProperty(key, value, hasNext) {
       if (key === '') {
         if (typeof value === 'object') {
@@ -2926,8 +2313,6 @@ const t = deTranslations;
           }
         }
         return `<div class="json-root">${value}${hasNext ? ',' : ''}</div>`;
-      }
-
       return `
         <div class="json-property">
           <span class="json-toggle">▼</span>
@@ -2937,8 +2322,6 @@ const t = deTranslations;
           ${hasNext ? '<span>,</span>' : ''}
         </div>
       `;
-    }
-
     renderObjectOrArray(key, value, type, hasNext) {
       const length = Array.isArray(value) ? value.length : Object.keys(value).length;
       const displayName = type === 'array' ? `[${length}]` : `{${length}}`;
@@ -2952,8 +2335,6 @@ const t = deTranslations;
           <div class="json-node">${this.renderObjectContent(value)}</div>
         </div>
       `;
-    }
-
     renderObjectContent(obj) {
       if (Array.isArray(obj)) {
         return `
@@ -2985,15 +2366,12 @@ const t = deTranslations;
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
-    }
-
     bindEvents() {
       this.container.addEventListener('click', (e) => {
         const toggle = e.target.closest('.json-toggle');
         if (toggle) {
           this.toggleNode(toggle);
         }
-      });
     }
 
     toggleNode(toggle) {
@@ -3006,8 +2384,6 @@ const t = deTranslations;
         toggle.textContent = '▼';
       }
     }
-  }
-
   // 将 JsonViewer 暴露到全局
   window.JsonViewer = JsonViewer;
 
@@ -3017,14 +2393,10 @@ const t = deTranslations;
     const outputTitle = document.getElementById('output-title');
     outputArea.classList.add('expanded');
     outputTitle.textContent = title;
-  }
-
   // 关闭输出区域
   function closeOutput() {
     const outputArea = document.getElementById('output-area');
     outputArea.classList.remove('expanded');
-  }
-
   // 显示JSON结果
   function showJsonResult(data, title = '格式化结果') {
     if (outputEditor) {
@@ -3040,12 +2412,10 @@ const t = deTranslations;
     // 应用提取函数
     document.getElementById('apply-extract').addEventListener('click', () => {
       applyExtractFunction();
-    });
 
     // 清空提取函数输入框
     document.getElementById('clear-extract-fn').addEventListener('click', () => {
       document.getElementById('extract-fn').value = '';
-    });
 
     // 按钮事件绑定
     document.getElementById('clear-btn').addEventListener('click', clearInputs);
@@ -3086,9 +2456,6 @@ const t = deTranslations;
         outputEditor.updateOptions({ fontSize: fontSize });
       }
       localStorage.setItem('editorFontSize', fontSize);
-    });
-  }
-
   // 防抖函数
   function debounce(func, wait) {
     let timeout;
@@ -3100,16 +2467,12 @@ const t = deTranslations;
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
     };
-  }
-
   // 格式化输入函数已移除，使用自动格式化替代
 
   // 解析JSON
   function parseJson(str) {
     if (!str.trim()) return {};
     return JSON.parse(str);
-  }
-
   // 应用提取函数
   async function applyExtractFunction() {
     const extractFnStr = document.getElementById('extract-fn').value.trim();
@@ -3117,15 +2480,11 @@ const t = deTranslations;
     if (!extractFnStr) {
       showToast(translations.enterExtractionFn || 'Please enter an extraction function');
       return;
-    }
-
     try {
       const inputText = getEditorContent();
       if (!inputText.trim()) {
         showToast(translations.enterData || 'Please enter data to process');
         return;
-      }
-
       const parsedData = parseJson(inputText);
       const fn = new Function('obj', `return (${extractFnStr})(obj);`);
       const result = fn(parsedData);
@@ -3158,8 +2517,6 @@ const t = deTranslations;
     // 折叠输入编辑器
     if (editor) {
       editor.getAction('editor.foldAll').run();
-    }
-
     // 折叠输出编辑器
     if (outputEditor) {
       outputEditor.getAction('editor.foldAll').run();
@@ -3171,8 +2528,6 @@ const t = deTranslations;
     // 展开输入编辑器
     if (editor) {
       editor.getAction('editor.unfoldAll').run();
-    }
-
     // 展开输出编辑器
     if (outputEditor) {
       outputEditor.getAction('editor.unfoldAll').run();
@@ -3187,8 +2542,6 @@ const t = deTranslations;
     setEditorContent(value);
     // 触发自动格式化
     autoFormatJson();
-  }
-
   // 压缩并复制
   async function compressAndCopy() {
     try {
@@ -3279,12 +2632,8 @@ const t = deTranslations;
 
     if (obj === null || obj === undefined) {
       return 'null';
-    }
-
     if (typeof obj !== 'object') {
       return String(obj);
-    }
-
     if (Array.isArray(obj)) {
       if (obj.length === 0) return '[]';
       return obj.map(item => {
@@ -3294,8 +2643,6 @@ const t = deTranslations;
           return '- ' + jsonToYaml(item, 0);
         }
       }).join('\n' + spaces);
-    }
-
     // Object
     const entries = Object.entries(obj);
     if (entries.length === 0) return '{}';
@@ -3311,8 +2658,6 @@ const t = deTranslations;
         return `${key}: ${value}`;
       }
     }).join('\n' + spaces);
-  }
-
   // ========== 方案1: JSON to Table ==========
   async function jsonToTable() {
     try {
@@ -3352,24 +2697,17 @@ const t = deTranslations;
   function jsonToTableHtml(obj) {
     if (!obj || typeof obj !== 'object') {
       return '<p>Input is not a valid JSON object</p>';
-    }
-
     if (Array.isArray(obj)) {
       if (obj.length === 0) {
         return '<p>Empty array</p>';
-      }
-
       // 获取所有可能的键
       const allKeys = [...new Set(obj.flatMap(item => Object.keys(item || {})))];
 
       if (allKeys.length === 0) {
         return '<table class="json-table"><tbody><tr><td>Array with ' + obj.length + ' items (no properties)</td></tr></tbody></table>';
-      }
-
       let html = '<table class="json-table"><thead><tr>';
       allKeys.forEach(key => {
         html += `<th>${escapeHtml(key)}</th>`;
-      });
       html += '</tr></thead><tbody>';
 
       obj.forEach(item => {
@@ -3377,14 +2715,10 @@ const t = deTranslations;
         allKeys.forEach(key => {
           const value = item && item[key];
           html += `<td>${formatValueForTable(value)}</td>`;
-        });
         html += '</tr>';
-      });
 
       html += '</tbody></table>';
       return html;
-    }
-
     // 对象转为表格
     const entries = Object.entries(obj);
     let html = '<table class="json-table"><tbody>';
@@ -3393,11 +2727,8 @@ const t = deTranslations;
       html += `<td class="key-column"><strong>${escapeHtml(key)}</strong></td>`;
       html += `<td>${formatValueForTable(value)}</td>`;
       html += '</tr>';
-    });
     html += '</tbody></table>';
     return html;
-  }
-
   function formatValueForTable(value) {
     if (value === null || value === undefined) {
       return '<em>null</em>';
@@ -3412,14 +2743,10 @@ const t = deTranslations;
       return `<span class="number">${value}</span>`;
     }
     return escapeHtml(String(value));
-  }
-
   function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
-  }
-
   // ========== 方案1: JSON Schema ==========
   async function jsonToSchema() {
     try {
@@ -3441,20 +2768,12 @@ const t = deTranslations;
   function generateJsonSchema(obj, typeName = 'Object') {
     if (obj === null || obj === undefined) {
       return { type: 'null' };
-    }
-
     if (typeof obj === 'string') {
       return { type: 'string' };
-    }
-
     if (typeof obj === 'number') {
       return { type: 'number' };
-    }
-
     if (typeof obj === 'boolean') {
       return { type: 'boolean' };
-    }
-
     if (Array.isArray(obj)) {
       if (obj.length > 0) {
         return {
@@ -3466,8 +2785,6 @@ const t = deTranslations;
         type: 'array',
         items: {}
       };
-    }
-
     // Object
     const properties = {};
     const required = [];
@@ -3475,15 +2792,11 @@ const t = deTranslations;
     for (const [key, value] of Object.entries(obj)) {
       properties[key] = generateJsonSchema(value);
       required.push(key);
-    }
-
     return {
       type: 'object',
       properties,
       required
     };
-  }
-
   // ========== 方案2: JSON to HTML ==========
   async function jsonToHtmlAndCopy() {
     try {
@@ -3501,35 +2814,24 @@ const t = deTranslations;
 
     if (obj === null || obj === undefined) {
       return `${spaces}<span class="json-null">null</span>\n`;
-    }
-
     if (typeof obj !== 'object') {
       const formatted = typeof obj === 'string' ? `"${obj}"` : String(obj);
       return `${spaces}<span class="json-value">${escapeHtml(formatted)}</span>\n`;
-    }
-
     if (Array.isArray(obj)) {
       if (obj.length === 0) {
         return `${spaces}<span class="json-bracket">[]</span>\n`;
-      }
-
       let html = `${spaces}<span class="json-bracket">[</span>\n`;
       obj.forEach((item, index) => {
         html += jsonToHtml(item, indent + 1);
         if (index < obj.length - 1) {
           html = html.trimEnd() + ',\n';
         }
-      });
       html += `${spaces}<span class="json-bracket">]</span>\n`;
       return html;
-    }
-
     // Object
     const entries = Object.entries(obj);
     if (entries.length === 0) {
       return `${spaces}<span class="json-bracket">{}</span>\n`;
-    }
-
     let html = `${spaces}<div class="json-object">\n`;
     html += `${spaces}<span class="json-bracket">{</span>\n`;
     entries.forEach(([key, value], index) => {
@@ -3543,12 +2845,9 @@ const t = deTranslations;
         html += ',';
       }
       html += '\n';
-    });
     html += `${spaces}<span class="json-bracket">}</span>\n`;
     html += `${spaces}</div>\n`;
     return html;
-  }
-
   // ========== 方案2: JSON to PDF ==========
   async function jsonToPdf() {
     try {
@@ -3608,12 +2907,8 @@ const t = deTranslations;
         return `List<${itemClass}> ${camelCase(className)} = [${obj.map(() => `${itemClass}()`).join(', ')}];\n\n${jsonToDart(obj[0], itemClass)}`;
       }
       return `List<dynamic> ${camelCase(className)} = [];`;
-    }
-
     if (typeof obj !== 'object' || obj === null) {
       return `final ${camelCase(className)} = ${obj === null ? 'null' : JSON.stringify(obj)};`;
-    }
-
     let code = `class ${className} {\n`;
 
     // Fields
@@ -3621,8 +2916,6 @@ const t = deTranslations;
       const dartType = getDartType(value);
       const fieldName = camelCase(key);
       code += `  ${dartType} ${fieldName};\n`;
-    }
-
     code += '\n';
 
     // Constructor
@@ -3660,8 +2953,6 @@ const t = deTranslations;
     code += `}\n`;
 
     return code;
-  }
-
   function getDartType(value) {
     if (value === null) return 'dynamic';
     if (typeof value === 'string') return 'String';
@@ -3669,8 +2960,6 @@ const t = deTranslations;
     if (typeof value === 'boolean') return 'bool';
     if (Array.isArray(value)) return 'List<dynamic>';
     return 'Map<String, dynamic>';
-  }
-
   // ========== 方案3: JSON to C ==========
   async function jsonToCAndCopy() {
     try {
@@ -3686,21 +2975,15 @@ const t = deTranslations;
   function jsonToC(obj, structName = 'JsonObject') {
     if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
       return `// Cannot generate C struct for ${typeof obj}`;
-    }
-
     let code = `typedef struct {\n`;
 
     for (const [key, value] of Object.entries(obj)) {
       const cType = getCType(value);
       const fieldName = camelCase(key);
       code += `  ${cType} ${fieldName};\n`;
-    }
-
     code += `} ${structName};\n`;
 
     return code;
-  }
-
   function getCType(value) {
     if (value === null) return 'void*';
     if (typeof value === 'string') return 'char*';
@@ -3708,8 +2991,6 @@ const t = deTranslations;
     if (typeof value === 'boolean') return 'bool';
     if (Array.isArray(value)) return 'void**';
     return 'void*';
-  }
-
   // ========== 方案3: JSON to Go ==========
   async function jsonToGoAndCopy() {
     try {
@@ -3725,21 +3006,15 @@ const t = deTranslations;
   function jsonToGo(obj, structName = 'JsonObject') {
     if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
       return `// Cannot generate Go struct for ${typeof obj}`;
-    }
-
     let code = `type ${structName} struct {\n`;
 
     for (const [key, value] of Object.entries(obj)) {
       const goType = getGoType(value);
       const fieldName = pascalCase(key);
       code += `  ${fieldName} ${goType} \`json:"${key}"\`\n`;
-    }
-
     code += `}\n`;
 
     return code;
-  }
-
   function getGoType(value) {
     if (value === null) return 'interface{}';
     if (typeof value === 'string') return 'string';
@@ -3747,12 +3022,8 @@ const t = deTranslations;
     if (typeof value === 'boolean') return 'bool';
     if (Array.isArray(value)) return '[]interface{}';
     return 'map[string]interface{}';
-  }
-
   function pascalCase(str) {
     return str.replace(/(\w)(\w*)/g, (_, g1, g2) => g1.toUpperCase() + g2.toLowerCase()).replace(/[^a-zA-Z0-9]/g, '');
-  }
-
   // ========== 方案3: JSON to Rust ==========
   async function jsonToRustAndCopy() {
     try {
@@ -3768,8 +3039,6 @@ const t = deTranslations;
   function jsonToRust(obj, structName = 'JsonObject') {
     if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
       return `// Cannot generate Rust struct for ${typeof obj}`;
-    }
-
     let code = `#[derive(Serialize, Deserialize)]\n`;
     code += `struct ${structName} {\n`;
 
@@ -3778,13 +3047,9 @@ const t = deTranslations;
       const fieldName = snakeCase(key);
       code += `  #[serde(rename = "${key}")]\n`;
       code += `  ${fieldName}: ${rustType},\n`;
-    }
-
     code += `}\n`;
 
     return code;
-  }
-
   function getRustType(value) {
     if (value === null) return 'Option<Value>';
     if (typeof value === 'string') return 'String';
@@ -3792,12 +3057,8 @@ const t = deTranslations;
     if (typeof value === 'boolean') return 'bool';
     if (Array.isArray(value)) return 'Vec<Value>';
     return 'Value';
-  }
-
   function snakeCase(str) {
     return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`).replace(/^_/, '').replace(/[^a-zA-Z0-9]/g, '_');
-  }
-
   // ========== 方案3: JSON to Python ==========
   async function jsonToPythonAndCopy() {
     try {
@@ -3813,8 +3074,6 @@ const t = deTranslations;
   function jsonToPython(obj, className = 'JsonObject') {
     if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
       return `# Cannot generate Python class for ${typeof obj}`;
-    }
-
     let code = `from dataclasses import dataclass\nfrom typing import Optional, List, Any\n\n`;
     code += `@dataclass\nclass ${className}:\n`;
 
@@ -3822,11 +3081,7 @@ const t = deTranslations;
       const pythonType = getPythonType(value);
       const fieldName = snakeCase(key);
       code += `  ${fieldName}: ${pythonType}\n`;
-    }
-
     return code;
-  }
-
   function getPythonType(value) {
     if (value === null) return 'Optional[Any]';
     if (typeof value === 'string') return 'str';
@@ -3834,27 +3089,17 @@ const t = deTranslations;
     if (typeof value === 'boolean') return 'bool';
     if (Array.isArray(value)) return 'List[Any]';
     return 'dict';
-  }
-
   // 通用工具函数
   function camelCase(str) {
     return str.replace(/[-_\s]+(.)?/g, (_, c) => c ? c.toUpperCase() : '');
-  }
-
   // JSON转XML辅助函数
   function jsonToXml(obj, tagName) {
     if (obj === null || obj === undefined) {
       return `<${tagName}></${tagName}>`;
-    }
-
     if (typeof obj !== 'object') {
       return `<${tagName}>${obj}</${tagName}>`;
-    }
-
     if (Array.isArray(obj)) {
       return obj.map(item => jsonToXml(item, tagName)).join('');
-    }
-
     let xml = `<${tagName}>`;
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
@@ -3869,23 +3114,17 @@ const t = deTranslations;
     xml += `</${tagName}>`;
 
     return xml;
-  }
-
   // JSON转CSV辅助函数
   function jsonToCsv(obj) {
     // 处理空值
     if (obj === null || obj === undefined) {
       throw new Error('Input data cannot be empty');
-    }
-
     // 确保输入是数组，如果是单个对象则转换为数组
     const jsonArray = Array.isArray(obj) ? obj : [obj];
 
     // 如果数组为空，返回空字符串
     if (jsonArray.length === 0) {
       throw new Error('Input array cannot be empty');
-    }
-
     // 获取所有唯一的键作为CSV标题（使用Map保持插入顺序）
     const headersMap = new Map();
     let hasValidData = false;
@@ -3897,13 +3136,10 @@ const t = deTranslations;
           keys.forEach(key => headersMap.set(key, true));
         }
       }
-    });
 
     // 如果没有有效数据，抛出错误
     if (!hasValidData) {
       throw new Error('No valid data to convert');
-    }
-
     // 将Map的键转换为数组（保持顺序）
     const headerArray = Array.from(headersMap.keys());
 
@@ -3912,13 +3148,9 @@ const t = deTranslations;
       // 处理null和undefined
       if (value === null || value === undefined) {
         return '';
-      }
-
       // 处理对象和数组（转换为JSON字符串）
       if (typeof value === 'object') {
         value = JSON.stringify(value);
-      }
-
       // 转换为字符串
       let str = String(value);
 
@@ -3928,11 +3160,7 @@ const t = deTranslations;
       // 如果包含逗号、引号、换行符，用引号包裹
       if (str.includes(',') || str.includes('"') || str.includes('\n') || str.includes('\r')) {
         str = `"${str}"`;
-      }
-
       return str;
-    }
-
     // 生成CSV内容
     let csv = headerArray.join(',') + '\n';
 
@@ -3941,19 +3169,13 @@ const t = deTranslations;
       const row = headerArray.map(header => {
         const value = item[header];
         return valueToCsvString(value);
-      });
       csv += row.join(',') + '\n';
-    });
 
     return csv;
-  }
-
   // JSON转TypeScript接口辅助函数
   function jsonToTsInterface(obj, interfaceName) {
     if (typeof obj !== 'object' || obj === null) {
       return `// Cannot generate interface from non-object type`;
-    }
-
     // If it's an array, use the first element to generate the interface
     let targetObj = obj;
     if (Array.isArray(obj)) {
@@ -3997,8 +3219,6 @@ const t = deTranslations;
           ts += jsonToTsInterface(value, type);
         } else {
           type = getType(typeof value);
-        }
-
         ts += `  ${key}: ${type};\n`;
       }
     }
@@ -4008,11 +3228,7 @@ const t = deTranslations;
     // If original input was an array, generate array type export
     if (Array.isArray(obj)) {
       ts += `\nexport type ${interfaceName}Array = ${interfaceName}[];\n`;
-    }
-    
     return ts;
-  }
-
   // 获取类型字符串
   function getType(jsType) {
     switch(jsType) {
@@ -4041,7 +3257,6 @@ const t = deTranslations;
         id: Date.now(),
         data: data,
         timestamp: new Date().toISOString()
-      });
       
       // 限制历史记录数量
       const limitedHistory = filteredHistory.slice(0, MAX_HISTORY_ITEMS);
@@ -4078,8 +3293,6 @@ const t = deTranslations;
     if (history.length === 0) {
       showToast(translations.noHistory || 'No history records');
       return;
-    }
-    
     // 创建遮罩层
     const overlay = document.createElement('div');
     overlay.style.cssText = `
@@ -4104,7 +3317,6 @@ const t = deTranslations;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       z-index: 1000;
-      width: 90%;
       max-width: 1200px;
       max-height: 90%;
       overflow: hidden;
@@ -4140,8 +3352,6 @@ const t = deTranslations;
       cursor: pointer;
       color: #666;
       padding: 0;
-      width: 30px;
-      height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -4175,7 +3385,6 @@ const t = deTranslations;
     searchInput.type = 'text';
     searchInput.placeholder = '搜索历史记录...';
     searchInput.style.cssText = `
-      width: 100%;
       padding: 8px 12px;
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -4232,7 +3441,6 @@ const t = deTranslations;
     // 创建表格
     const table = document.createElement('table');
     table.style.cssText = `
-      width: 100%;
       border-collapse: collapse;
       font-size: 14px;
     `;
@@ -4258,10 +3466,8 @@ const t = deTranslations;
         text-align: left;
         border-bottom: 2px solid #ddd;
         font-weight: 600;
-        width: ${headerWidths[index]};
       `;
       headerRow.appendChild(th);
-    });
     
     thead.appendChild(headerRow);
     table.appendChild(thead);
@@ -4333,7 +3539,6 @@ const t = deTranslations;
           }).catch(err => {
             console.error('复制失败:', err);
             showToast('复制失败，请重试');
-          });
         };
         
         tr.appendChild(dataTd);
@@ -4376,7 +3581,6 @@ const t = deTranslations;
           }).catch(err => {
             console.error('复制失败:', err);
             showToast('复制失败，请重试');
-          });
         };
         
         actionTd.appendChild(copyBtn);
@@ -4429,9 +3633,6 @@ const t = deTranslations;
         };
         
         tbody.appendChild(tr);
-      });
-    }
-    
     // 初始加载所有记录
     addRecordsToTable(history);
     
@@ -4446,7 +3647,6 @@ const t = deTranslations;
         item.data.toLowerCase().includes(searchTerm)
       );
       addRecordsToTable(filteredHistory);
-    });
     
     // 点击遮罩层关闭弹窗
     overlay.onclick = () => {
@@ -4457,8 +3657,6 @@ const t = deTranslations;
     // 添加到页面
     document.body.appendChild(overlay);
     document.body.appendChild(historyContainer);
-  }
-
   // 切换比较模式
   function toggleCompareMode() {
     const compareSection = document.getElementById('compare-section');
@@ -4475,8 +3673,6 @@ const t = deTranslations;
       const firstLabel = firstSection.querySelector('.section-label');
       if (firstLabel) {
         firstLabel.textContent = translations.leftJson || 'Left JSON';
-      }
-
       // 立即更新差异高亮
       highlightDifferences();
     } else {
@@ -4489,8 +3685,6 @@ const t = deTranslations;
       const firstLabel = firstSection.querySelector('.section-label');
       if (firstLabel) {
         firstLabel.textContent = 'All-in-One JSON Viewer';
-      }
-
       // 清除高亮
       clearHighlightDecorations();
 
@@ -4506,8 +3700,6 @@ const t = deTranslations;
       if (compareEditor) compareEditor.layout();
       if (outputEditor) outputEditor.layout();
     }, 100);
-  }
-
 // 在两个编辑器中高亮显示差异
   function highlightDifferences() {
     if (!editor || !compareEditor) return;
@@ -4597,8 +3789,6 @@ const t = deTranslations;
         }
       }
       return { line: 1, startColumn: 1, endColumn: 1000 };
-    }
-
     function compare(val1, val2, currentPath, parentLine = 1) {
       const type1 = typeof val1;
       const type2 = typeof val2;
@@ -4618,10 +3808,7 @@ const t = deTranslations;
           startColumn: position.startColumn,
           endColumn: position.endColumn,
           isWholeLine: false
-        });
         return;
-      }
-
       // 如果是对象或数组，递归比较
       if (type1 === 'object' && val1 !== null && val2 !== null) {
         const keys1 = Object.keys(val1);
@@ -4643,7 +3830,6 @@ const t = deTranslations;
               startColumn: position.startColumn,
               endColumn: position.endColumn,
               isWholeLine: false
-            });
           } else if (!(key in val2)) {
             // 删除 - 在左侧文本中查找位置
             const position = findKeyInLines(key, leftLines);
@@ -4656,13 +3842,11 @@ const t = deTranslations;
               startColumn: position.startColumn,
               endColumn: position.endColumn,
               isWholeLine: false
-            });
           } else {
             // 递归比较
             const keyPosition = findKeyInLines(key, leftLines);
             compare(val1[key], val2[key], newPath, keyPosition.line);
           }
-        });
       } else if (val1 !== val2) {
         // 值不同
         const keyName = currentPath.split('.').pop();
@@ -4678,15 +3862,12 @@ const t = deTranslations;
           startColumn: position.startColumn,
           endColumn: position.endColumn,
           isWholeLine: false
-        });
       }
     }
 
     compare(leftJson, rightJson, '');
 
     return differences;
-  }
-
 // 保留原有的简单差异检测函数作为备用
   function findDifferences(obj1, obj2, path = '', depth = 0) {
     const differences = [];
@@ -4704,10 +3885,7 @@ const t = deTranslations;
           newValue: val2,
           message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`,
           line: currentLine
-        });
         return;
-      }
-
       // 如果是对象或数组，递归比较
       if (type1 === 'object' && val1 !== null && val2 !== null) {
         const keys1 = Object.keys(val1);
@@ -4726,7 +3904,6 @@ const t = deTranslations;
               value: val2[key],
               message: `${newPath}: + ${JSON.stringify(val2[key])}`,
               line: currentLine + lineOffset
-            });
           } else if (!(key in val2)) {
             // 删除
             differences.push({
@@ -4735,12 +3912,10 @@ const t = deTranslations;
               value: val1[key],
               message: `${newPath}: - ${JSON.stringify(val1[key])}`,
               line: currentLine + lineOffset
-            });
           } else {
             // 递归比较
             compare(val1[key], val2[key], newPath, currentLine + lineOffset);
           }
-        });
       } else if (val1 !== val2) {
         // 值不同
         differences.push({
@@ -4750,15 +3925,12 @@ const t = deTranslations;
           newValue: val2,
           message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`,
           line: currentLine
-        });
       }
     }
 
     compare(obj1, obj2, path);
 
     return differences;
-  }
-
   // 清除高亮装饰
   function clearHighlightDecorations() {
     if (editor && leftDecorations.length > 0) {
@@ -4777,8 +3949,6 @@ const t = deTranslations;
     let toast = document.getElementById('toast-message');
     if (toast) {
       toast.remove();
-    }
-    
     toast = document.createElement('div');
     toast.id = 'toast-message';
     toast.textContent = message;

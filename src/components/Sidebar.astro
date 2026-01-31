@@ -38,11 +38,11 @@ const isActive = (path: string) => {
         sidebar.classList.remove('collapsed');
       }
 
-      // 调试：输出sidebar状态到控制台
-      console.log('Sidebar initialized:', {
+      // 调试信息
+      console.log('Sidebar init:', {
         isCollapsed: isCollapsed,
         windowWidth: window.innerWidth,
-        localStorage: localStorage.getItem('sidebarCollapsed')
+        localStorage: localStorage.getItem("sidebarCollapsed")
       });
     })();
   </script>

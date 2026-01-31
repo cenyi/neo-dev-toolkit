@@ -59,18 +59,6 @@ const t = frTranslations;
     }
   })} />
 
-  <div class="json-formatter-container"
-       data-enter-extraction-fn={t.enterExtractionFn}
-       data-enter-data={t.enterData}
-       data-extraction-error={t.extractionError}
-       data-parsing-error={t.parsingError}
-       data-compress-success={t.compressSuccess}
-       data-escape-success={t.escapeSuccess}
-       data-xml-success={t.xmlSuccess}
-       data-ts-success={t.tsSuccess}
-       data-csv-success={t.csvSuccess}
-       data-excel-success={t.excelSuccess}>
-
     <div class="editor-workspace">
       <!-- 左侧输入区域 -->
       <div class="input-area">
@@ -121,6 +109,8 @@ const t = frTranslations;
           <button id="expand-all">{t.expandAll}</button>
           <button id="remove-comments">{t.removeComments}</button>
           <button id="compress-copy">{t.compressCopy}</button>
+    }
+    }
           <button id="escape-copy">{t.escapeCopy}</button>
 
           <span class="button-separator">|</span>
@@ -468,7 +458,6 @@ const t = frTranslations;
     max-width: 1800px;
     margin: 0 auto;
     padding: 8px;
-    height: calc(100vh - var(--sidebar-height, 40px));
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -498,7 +487,6 @@ const t = frTranslations;
   /* 当输出区域展开时，调整布局 */
   .output-area.expanded {
     flex: 1;
-    width: 50%;
     opacity: 1;
     border-left: 1px solid #e5e7eb;
     padding-left: 0;
@@ -771,7 +759,6 @@ const t = frTranslations;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%) !important;
     box-shadow: 0 0 8px rgba(239, 68, 68, 0.4) !important;
   }
@@ -788,7 +775,6 @@ const t = frTranslations;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%) !important;
     box-shadow: 0 0 8px rgba(34, 197, 94, 0.4) !important;
   }
@@ -805,7 +791,6 @@ const t = frTranslations;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #eab308 0%, #ca8a04 100%) !important;
     box-shadow: 0 0 8px rgba(234, 179, 8, 0.4) !important;
   }
@@ -889,8 +874,6 @@ const t = frTranslations;
 
   .monaco-editor-container {
     flex: 1;
-    width: 100%;
-    height: 100%;
     min-height: 400px;
     position: relative;
   }
@@ -906,8 +889,6 @@ const t = frTranslations;
 
   /* 自定义折叠按钮样式 */
   .monaco-editor .folding-icon {
-    width: 16px !important;
-    height: 16px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1147,7 +1128,6 @@ const t = frTranslations;
 
   /* JSON表格样式 */
   .json-table {
-    width: 100%;
     border-collapse: collapse;
     margin: 10px 0;
     font-size: 14px;
@@ -1185,7 +1165,6 @@ const t = frTranslations;
   .json-table .key-column {
     background-color: #f9fafb;
     font-weight: 600;
-    width: 30%;
     border-right: 1px solid #e5e7eb;
   }
 
@@ -1219,8 +1198,6 @@ const t = frTranslations;
   }
 
   .table-output {
-    width: 100%;
-    height: 100%;
     overflow: auto;
   }
 
@@ -1259,7 +1236,6 @@ const t = frTranslations;
       grid-column: auto;
       grid-row: span 1;
       flex: 1;
-      width: auto;
       min-width: 0;
     }
   }
@@ -1309,7 +1285,6 @@ const t = frTranslations;
 
   /* 右侧输出区域 */
   .output-area {
-    width: 0;
     opacity: 0;
     overflow: hidden;
     display: flex;
@@ -1319,7 +1294,6 @@ const t = frTranslations;
   }
 
   .output-area.expanded {
-    width: 50%;
     opacity: 1;
     border-left: 1px solid #e5e7eb;
     padding-left: 0;
@@ -1350,8 +1324,6 @@ const t = frTranslations;
     font-size: 24px;
     color: #9ca3af;
     cursor: pointer;
-    width: 28px;
-    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1421,8 +1393,6 @@ const t = frTranslations;
 
   .json-toggle {
     display: inline-block;
-    width: 14px;
-    height: 14px;
     text-align: center;
     line-height: 12px;
     cursor: pointer;
@@ -1539,8 +1509,6 @@ const t = frTranslations;
 
   .step-number {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     color: white;
@@ -1664,8 +1632,6 @@ const t = frTranslations;
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 200%;
-    height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: rotate 20s linear infinite;
   }
@@ -1727,7 +1693,6 @@ const t = frTranslations;
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
     background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
     transform: scaleX(0);
     transform-origin: left;
@@ -1948,14 +1913,12 @@ const t = frTranslations;
 /* 响应式设计 */
   @media (max-width: 1200px) {
     .output-area.expanded {
-      width: 60%;
     }
   }
 
   @media (max-width: 768px) {
     .json-formatter-container {
       padding: 6px;
-      height: calc(100vh - var(--sidebar-height, 40px));
       flex-shrink: 0;
     }
 
@@ -1999,7 +1962,6 @@ const t = frTranslations;
     }
 
     .extraction-controls label {
-      width: 100%;
       margin-bottom: 4px;
     }
 
@@ -2017,22 +1979,18 @@ const t = frTranslations;
       font-size: 12px;
       flex: 1;
       min-width: 70px;
-      height: 36px;
     }
 
     .output-controls select {
       flex: 1;
       min-width: 90px;
-      height: 36px;
       padding: 8px 12px;
     }
 
     .output-area.expanded {
-      width: 100%;
       border-left: none;
       padding-left: 0;
       margin-top: 12px;
-      height: 350px;
     }
 
     /* 移动端Monaco Editor优化 */
@@ -2155,11 +2113,9 @@ const t = frTranslations;
       min-width: 0;
       padding: 6px 8px;
       font-size: 11px;
-      height: 32px;
     }
 
     .output-controls select {
-      height: 32px;
       padding: 6px 8px;
       font-size: 11px;
     }
@@ -2194,7 +2150,6 @@ const t = frTranslations;
   /* 移动端横屏优化 */
   @media (max-width: 768px) and (orientation: landscape) {
     .json-formatter-container {
-      height: calc(100vh - 20px);
     }
 
     .input-area {
@@ -2210,7 +2165,6 @@ const t = frTranslations;
     }
 
     .output-area.expanded {
-      height: 250px;
     }
   }
 </style>
@@ -2259,7 +2213,6 @@ const t = frTranslations;
     initializeMonacoEditor();
 
     initializeJsonFormatter();
-  });
 
   // 初始化 Monaco Editor
   function initializeMonacoEditor() {
@@ -2274,10 +2227,6 @@ const t = frTranslations;
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         // 确保容器有正确的尺寸
-        console.log('Container dimensions:', {
-          width: container.offsetWidth,
-          height: container.offsetHeight
-        });
 
         // 如果容器尺寸还是异常，再延迟一点
         if (container.offsetWidth === 0 || container.offsetHeight === 0) {
@@ -2328,11 +2277,10 @@ const t = frTranslations;
       },
       padding: { top: 12, bottom: 12 },
       readOnly: false
-    });
 
-    console.log('Monaco Editor created successfully');
 
     // 创建输出编辑器
+    });
     const outputContainer = document.getElementById('output-monaco-container');
     if (outputContainer) {
       outputEditor = monaco.editor.create(outputContainer, {
@@ -2352,17 +2300,11 @@ const t = frTranslations;
         foldingStrategy: 'indentation',
         foldingHighlight: true,
         showFoldingControls: 'always',
-        matchBrackets: 'always',
-        tabSize: 2,
-        renderLineHighlight: 'all',
-        scrollbar: {
           vertical: 'visible',
           horizontal: 'visible'
         },
         padding: { top: 12, bottom: 12 },
         readOnly: true  // 输出编辑器只读
-      });
-      console.log('Output Monaco Editor created successfully');
     }
 
     // 创建比较编辑器
@@ -2398,15 +2340,12 @@ const t = frTranslations;
         },
         padding: { top: 12, bottom: 12 },
         readOnly: false
-      });
-      console.log('Compare Monaco Editor created successfully');
 
       // 监听比较编辑器内容变化，自动更新差异高亮
       compareEditor.onDidChangeModelContent(() => {
         if (isCompareMode) {
           highlightDifferences();
         }
-      });
     }
 
     // 调试：检查 DOM 结构
@@ -2414,12 +2353,10 @@ const t = frTranslations;
       const monacoContainer = container.querySelector('.monaco-editor');
       if (monacoContainer) {
         const margin = monacoContainer.querySelector('.margin');
-        console.log('Monaco DOM structure:', {
           container: container.offsetWidth,
           monacoEditor: monacoContainer.offsetWidth,
           margin: margin ? margin.offsetWidth : 'NOT FOUND',
           marginVisible: margin ? window.getComputedStyle(margin).display : 'N/A'
-        });
       }
     }, 200);
 
@@ -2427,7 +2364,6 @@ const t = frTranslations;
     setTimeout(() => {
       if (editor) {
         editor.layout();
-        console.log('Monaco Editor layout updated');
       }
     }, 100);
 
@@ -2451,7 +2387,6 @@ const t = frTranslations;
           hint.classList.remove('hint-hidden');
         }
       }
-    });
 
     // 监听 JSON 错误标记变化
     monaco.editor.onDidChangeMarkers(() => {
@@ -2481,7 +2416,6 @@ const t = frTranslations;
         errorElement.textContent = errorMessage;
         errorElement.classList.add('show');
       }
-    });
   }
 
   // 获取编辑器中的文本
@@ -2993,7 +2927,6 @@ const t = frTranslations;
         if (toggle) {
           this.toggleNode(toggle);
         }
-      });
     }
 
     toggleNode(toggle) {
@@ -3040,12 +2973,10 @@ const t = frTranslations;
     // 应用提取函数
     document.getElementById('apply-extract').addEventListener('click', () => {
       applyExtractFunction();
-    });
 
     // 清空提取函数输入框
     document.getElementById('clear-extract-fn').addEventListener('click', () => {
       document.getElementById('extract-fn').value = '';
-    });
 
     // 按钮事件绑定
     document.getElementById('clear-btn').addEventListener('click', clearInputs);
@@ -3086,7 +3017,6 @@ const t = frTranslations;
         outputEditor.updateOptions({ fontSize: fontSize });
       }
       localStorage.setItem('editorFontSize', fontSize);
-    });
   }
 
   // 防抖函数
@@ -3369,7 +3299,6 @@ const t = frTranslations;
       let html = '<table class="json-table"><thead><tr>';
       allKeys.forEach(key => {
         html += `<th>${escapeHtml(key)}</th>`;
-      });
       html += '</tr></thead><tbody>';
 
       obj.forEach(item => {
@@ -3377,9 +3306,7 @@ const t = frTranslations;
         allKeys.forEach(key => {
           const value = item && item[key];
           html += `<td>${formatValueForTable(value)}</td>`;
-        });
         html += '</tr>';
-      });
 
       html += '</tbody></table>';
       return html;
@@ -3393,7 +3320,6 @@ const t = frTranslations;
       html += `<td class="key-column"><strong>${escapeHtml(key)}</strong></td>`;
       html += `<td>${formatValueForTable(value)}</td>`;
       html += '</tr>';
-    });
     html += '</tbody></table>';
     return html;
   }
@@ -3519,7 +3445,6 @@ const t = frTranslations;
         if (index < obj.length - 1) {
           html = html.trimEnd() + ',\n';
         }
-      });
       html += `${spaces}<span class="json-bracket">]</span>\n`;
       return html;
     }
@@ -3543,7 +3468,6 @@ const t = frTranslations;
         html += ',';
       }
       html += '\n';
-    });
     html += `${spaces}<span class="json-bracket">}</span>\n`;
     html += `${spaces}</div>\n`;
     return html;
@@ -3897,7 +3821,6 @@ const t = frTranslations;
           keys.forEach(key => headersMap.set(key, true));
         }
       }
-    });
 
     // 如果没有有效数据，抛出错误
     if (!hasValidData) {
@@ -3941,9 +3864,7 @@ const t = frTranslations;
       const row = headerArray.map(header => {
         const value = item[header];
         return valueToCsvString(value);
-      });
       csv += row.join(',') + '\n';
-    });
 
     return csv;
   }
@@ -4041,7 +3962,6 @@ const t = frTranslations;
         id: Date.now(),
         data: data,
         timestamp: new Date().toISOString()
-      });
       
       // 限制历史记录数量
       const limitedHistory = filteredHistory.slice(0, MAX_HISTORY_ITEMS);
@@ -4104,7 +4024,6 @@ const t = frTranslations;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       z-index: 1000;
-      width: 90%;
       max-width: 1200px;
       max-height: 90%;
       overflow: hidden;
@@ -4140,8 +4059,6 @@ const t = frTranslations;
       cursor: pointer;
       color: #666;
       padding: 0;
-      width: 30px;
-      height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -4175,7 +4092,6 @@ const t = frTranslations;
     searchInput.type = 'text';
     searchInput.placeholder = '搜索历史记录...';
     searchInput.style.cssText = `
-      width: 100%;
       padding: 8px 12px;
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -4232,7 +4148,6 @@ const t = frTranslations;
     // 创建表格
     const table = document.createElement('table');
     table.style.cssText = `
-      width: 100%;
       border-collapse: collapse;
       font-size: 14px;
     `;
@@ -4258,10 +4173,8 @@ const t = frTranslations;
         text-align: left;
         border-bottom: 2px solid #ddd;
         font-weight: 600;
-        width: ${headerWidths[index]};
       `;
       headerRow.appendChild(th);
-    });
     
     thead.appendChild(headerRow);
     table.appendChild(thead);
@@ -4333,7 +4246,6 @@ const t = frTranslations;
           }).catch(err => {
             console.error('复制失败:', err);
             showToast('复制失败，请重试');
-          });
         };
         
         tr.appendChild(dataTd);
@@ -4376,7 +4288,6 @@ const t = frTranslations;
           }).catch(err => {
             console.error('复制失败:', err);
             showToast('复制失败，请重试');
-          });
         };
         
         actionTd.appendChild(copyBtn);
@@ -4429,7 +4340,6 @@ const t = frTranslations;
         };
         
         tbody.appendChild(tr);
-      });
     }
     
     // 初始加载所有记录
@@ -4446,7 +4356,6 @@ const t = frTranslations;
         item.data.toLowerCase().includes(searchTerm)
       );
       addRecordsToTable(filteredHistory);
-    });
     
     // 点击遮罩层关闭弹窗
     overlay.onclick = () => {
@@ -4618,7 +4527,6 @@ const t = frTranslations;
           startColumn: position.startColumn,
           endColumn: position.endColumn,
           isWholeLine: false
-        });
         return;
       }
 
@@ -4643,7 +4551,6 @@ const t = frTranslations;
               startColumn: position.startColumn,
               endColumn: position.endColumn,
               isWholeLine: false
-            });
           } else if (!(key in val2)) {
             // 删除 - 在左侧文本中查找位置
             const position = findKeyInLines(key, leftLines);
@@ -4656,13 +4563,11 @@ const t = frTranslations;
               startColumn: position.startColumn,
               endColumn: position.endColumn,
               isWholeLine: false
-            });
           } else {
             // 递归比较
             const keyPosition = findKeyInLines(key, leftLines);
             compare(val1[key], val2[key], newPath, keyPosition.line);
           }
-        });
       } else if (val1 !== val2) {
         // 值不同
         const keyName = currentPath.split('.').pop();
@@ -4678,7 +4583,6 @@ const t = frTranslations;
           startColumn: position.startColumn,
           endColumn: position.endColumn,
           isWholeLine: false
-        });
       }
     }
 
@@ -4704,7 +4608,6 @@ const t = frTranslations;
           newValue: val2,
           message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`,
           line: currentLine
-        });
         return;
       }
 
@@ -4726,7 +4629,6 @@ const t = frTranslations;
               value: val2[key],
               message: `${newPath}: + ${JSON.stringify(val2[key])}`,
               line: currentLine + lineOffset
-            });
           } else if (!(key in val2)) {
             // 删除
             differences.push({
@@ -4735,12 +4637,10 @@ const t = frTranslations;
               value: val1[key],
               message: `${newPath}: - ${JSON.stringify(val1[key])}`,
               line: currentLine + lineOffset
-            });
           } else {
             // 递归比较
             compare(val1[key], val2[key], newPath, currentLine + lineOffset);
           }
-        });
       } else if (val1 !== val2) {
         // 值不同
         differences.push({
@@ -4750,7 +4650,6 @@ const t = frTranslations;
           newValue: val2,
           message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`,
           line: currentLine
-        });
       }
     }
 

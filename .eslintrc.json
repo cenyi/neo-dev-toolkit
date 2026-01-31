@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "security"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "no-debugger": "error",
+    "no-alert": "warn",
+    "security/detect-object-injection": "warn",
+    "security/detect-possible-timing-attacks": "warn",
+    "prefer-const": "warn",
+    "no-var": "warn",
+    "prefer-arrow-callback": "warn",
+    "arrow-spacing": "warn",
+    "space-before-function-paren": ["warn", "always"],
+    "semi": ["warn", "always"],
+    "quotes": ["warn", "single"],
+    "indent": ["warn", 2, { "SwitchCase": 1 }]
+  }
+}

@@ -58,18 +58,6 @@ const t = enTranslations;
     }
   })} />
 
-  <div class="json-formatter-container"
-       data-enter-extraction-fn={t.enterExtractionFn}
-       data-enter-data={t.enterData}
-       data-extraction-error={t.extractionError}
-       data-parsing-error={t.parsingError}
-       data-compress-success={t.compressSuccess}
-       data-escape-success={t.escapeSuccess}
-       data-xml-success={t.xmlSuccess}
-       data-ts-success={t.tsSuccess}
-       data-csv-success={t.csvSuccess}
-       data-excel-success={t.excelSuccess}>
-
     <div class="editor-workspace">
       <!-- 左侧输入区域 -->
       <div class="input-area">
@@ -544,7 +532,6 @@ const t = enTranslations;
     max-width: 1800px;
     margin: 0 auto;
     padding: 8px;
-    height: calc(100vh - var(--sidebar-height, 40px));
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -574,7 +561,6 @@ const t = enTranslations;
   /* 当输出区域展开时，调整布局 */
   .output-area.expanded {
     flex: 1;
-    width: 50%;
     opacity: 1;
     border-left: 1px solid #e5e7eb;
     padding-left: 0;
@@ -847,7 +833,6 @@ const t = enTranslations;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%) !important;
     box-shadow: 0 0 8px rgba(239, 68, 68, 0.4) !important;
   }
@@ -864,7 +849,6 @@ const t = enTranslations;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%) !important;
     box-shadow: 0 0 8px rgba(34, 197, 94, 0.4) !important;
   }
@@ -881,7 +865,6 @@ const t = enTranslations;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    width: 3px !important;
     background: linear-gradient(180deg, #eab308 0%, #ca8a04 100%) !important;
     box-shadow: 0 0 8px rgba(234, 179, 8, 0.4) !important;
   }
@@ -965,8 +948,6 @@ const t = enTranslations;
 
   .monaco-editor-container {
     flex: 1;
-    width: 100%;
-    height: 100%;
     min-height: 400px;
     position: relative;
   }
@@ -982,8 +963,6 @@ const t = enTranslations;
 
   /* 自定义折叠按钮样式 */
   .monaco-editor .folding-icon {
-    width: 16px !important;
-    height: 16px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1223,7 +1202,6 @@ const t = enTranslations;
 
   /* JSON表格样式 */
   .json-table {
-    width: 100%;
     border-collapse: collapse;
     margin: 10px 0;
     font-size: 14px;
@@ -1261,7 +1239,6 @@ const t = enTranslations;
   .json-table .key-column {
     background-color: #f9fafb;
     font-weight: 600;
-    width: 30%;
     border-right: 1px solid #e5e7eb;
   }
 
@@ -1295,8 +1272,6 @@ const t = enTranslations;
   }
 
   .table-output {
-    width: 100%;
-    height: 100%;
     overflow: auto;
   }
 
@@ -1335,7 +1310,6 @@ const t = enTranslations;
       grid-column: auto;
       grid-row: span 1;
       flex: 1;
-      width: auto;
       min-width: 0;
     }
   }
@@ -1385,7 +1359,6 @@ const t = enTranslations;
 
   /* 右侧输出区域 */
   .output-area {
-    width: 0;
     opacity: 0;
     overflow: hidden;
     display: flex;
@@ -1395,7 +1368,6 @@ const t = enTranslations;
   }
 
   .output-area.expanded {
-    width: 50%;
     opacity: 1;
     border-left: 1px solid #e5e7eb;
     padding-left: 0;
@@ -1426,8 +1398,6 @@ const t = enTranslations;
     font-size: 24px;
     color: #9ca3af;
     cursor: pointer;
-    width: 28px;
-    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1497,8 +1467,6 @@ const t = enTranslations;
 
   .json-toggle {
     display: inline-block;
-    width: 14px;
-    height: 14px;
     text-align: center;
     line-height: 12px;
     cursor: pointer;
@@ -1615,8 +1583,6 @@ const t = enTranslations;
 
   .step-number {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     color: white;
@@ -1740,8 +1706,6 @@ const t = enTranslations;
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 200%;
-    height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: rotate 20s linear infinite;
   }
@@ -1803,7 +1767,6 @@ const t = enTranslations;
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
     background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
     transform: scaleX(0);
     transform-origin: left;
@@ -2024,14 +1987,12 @@ const t = enTranslations;
 /* 响应式设计 */
   @media (max-width: 1200px) {
     .output-area.expanded {
-      width: 60%;
     }
   }
 
   @media (max-width: 768px) {
     .json-formatter-container {
       padding: 6px;
-      height: calc(100vh - var(--sidebar-height, 40px));
       flex-shrink: 0;
     }
 
@@ -2075,7 +2036,6 @@ const t = enTranslations;
     }
 
     .extraction-controls label {
-      width: 100%;
       margin-bottom: 4px;
     }
 
@@ -2093,22 +2053,18 @@ const t = enTranslations;
       font-size: 12px;
       flex: 1;
       min-width: 70px;
-      height: 36px;
     }
 
     .output-controls select {
       flex: 1;
       min-width: 90px;
-      height: 36px;
       padding: 8px 12px;
     }
 
     .output-area.expanded {
-      width: 100%;
       border-left: none;
       padding-left: 0;
       margin-top: 12px;
-      height: 350px;
     }
 
     /* 移动端Monaco Editor优化 */
@@ -2231,11 +2187,9 @@ const t = enTranslations;
       min-width: 0;
       padding: 6px 8px;
       font-size: 11px;
-      height: 32px;
     }
 
     .output-controls select {
-      height: 32px;
       padding: 6px 8px;
       font-size: 11px;
     }
@@ -2270,11 +2224,6 @@ const t = enTranslations;
   /* 移动端横屏优化 */
   @media (max-width: 768px) and (orientation: landscape) {
     .json-formatter-container {
-      height: calc(100vh - 20px);
-    }
-
-    .input-area {
-      min-height: 200px;
     }
 
     .monaco-editor-container {
@@ -2283,10 +2232,11 @@ const t = enTranslations;
 
     .editors-wrapper.compare-mode .input-section {
       min-height: 160px;
-    }
+      }
+    });
+  }
 
     .output-area.expanded {
-      height: 250px;
     }
   }
 </style>
@@ -2350,18 +2300,11 @@ const t = enTranslations;
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         // 确保容器有正确的尺寸
-        console.log('Container dimensions:', {
-          width: container.offsetWidth,
-          height: container.offsetHeight
-        });
-
+        }
         // 如果容器尺寸还是异常，再延迟一点
-        if (container.offsetWidth === 0 || container.offsetHeight === 0) {
-          setTimeout(() => createEditor(container), 50);
-        } else {
           createEditor(container);
         }
-      });
+      }
     });
   }
 
@@ -2406,7 +2349,6 @@ const t = enTranslations;
       readOnly: false
     });
 
-    console.log('Monaco Editor created successfully');
 
     // 创建输出编辑器
     const outputContainer = document.getElementById('output-monaco-container');
@@ -2437,8 +2379,7 @@ const t = enTranslations;
         },
         padding: { top: 12, bottom: 12 },
         readOnly: true  // 输出编辑器只读
-      });
-      console.log('Output Monaco Editor created successfully');
+      }
     }
 
     // 创建比较编辑器
@@ -2474,15 +2415,14 @@ const t = enTranslations;
         },
         padding: { top: 12, bottom: 12 },
         readOnly: false
-      });
-      console.log('Compare Monaco Editor created successfully');
+      }
 
       // 监听比较编辑器内容变化，自动更新差异高亮
       compareEditor.onDidChangeModelContent(() => {
         if (isCompareMode) {
           highlightDifferences();
         }
-      });
+      }
     }
 
     // 调试：检查 DOM 结构
@@ -2490,12 +2430,10 @@ const t = enTranslations;
       const monacoContainer = container.querySelector('.monaco-editor');
       if (monacoContainer) {
         const margin = monacoContainer.querySelector('.margin');
-        console.log('Monaco DOM structure:', {
-          container: container.offsetWidth,
           monacoEditor: monacoContainer.offsetWidth,
           margin: margin ? margin.offsetWidth : 'NOT FOUND',
           marginVisible: margin ? window.getComputedStyle(margin).display : 'N/A'
-        });
+        }
       }
     }, 200);
 
@@ -2503,7 +2441,6 @@ const t = enTranslations;
     setTimeout(() => {
       if (editor) {
         editor.layout();
-        console.log('Monaco Editor layout updated');
       }
     }, 100);
 
@@ -3069,7 +3006,7 @@ const t = enTranslations;
         if (toggle) {
           this.toggleNode(toggle);
         }
-      });
+      }
     }
 
     toggleNode(toggle) {
@@ -3445,7 +3382,7 @@ const t = enTranslations;
       let html = '<table class="json-table"><thead><tr>';
       allKeys.forEach(key => {
         html += `<th>${escapeHtml(key)}</th>`;
-      });
+      }
       html += '</tr></thead><tbody>';
 
       obj.forEach(item => {
@@ -3453,9 +3390,9 @@ const t = enTranslations;
         allKeys.forEach(key => {
           const value = item && item[key];
           html += `<td>${formatValueForTable(value)}</td>`;
-        });
+        }
         html += '</tr>';
-      });
+      }
 
       html += '</tbody></table>';
       return html;
@@ -3595,7 +3532,7 @@ const t = enTranslations;
         if (index < obj.length - 1) {
           html = html.trimEnd() + ',\n';
         }
-      });
+      }
       html += `${spaces}<span class="json-bracket">]</span>\n`;
       return html;
     }
@@ -4017,7 +3954,7 @@ const t = enTranslations;
       const row = headerArray.map(header => {
         const value = item[header];
         return valueToCsvString(value);
-      });
+      }
       csv += row.join(',') + '\n';
     });
 
@@ -4117,7 +4054,7 @@ const t = enTranslations;
         id: Date.now(),
         data: data,
         timestamp: new Date().toISOString()
-      });
+      }
       
       // 限制历史记录数量
       const limitedHistory = filteredHistory.slice(0, MAX_HISTORY_ITEMS);
@@ -4180,7 +4117,6 @@ const t = enTranslations;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       z-index: 1000;
-      width: 90%;
       max-width: 1200px;
       max-height: 90%;
       overflow: hidden;
@@ -4216,8 +4152,6 @@ const t = enTranslations;
       cursor: pointer;
       color: #666;
       padding: 0;
-      width: 30px;
-      height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -4251,7 +4185,6 @@ const t = enTranslations;
     searchInput.type = 'text';
     searchInput.placeholder = '搜索历史记录...';
     searchInput.style.cssText = `
-      width: 100%;
       padding: 8px 12px;
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -4308,7 +4241,6 @@ const t = enTranslations;
     // 创建表格
     const table = document.createElement('table');
     table.style.cssText = `
-      width: 100%;
       border-collapse: collapse;
       font-size: 14px;
     `;
@@ -4334,7 +4266,6 @@ const t = enTranslations;
         text-align: left;
         border-bottom: 2px solid #ddd;
         font-weight: 600;
-        width: ${headerWidths[index]};
       `;
       headerRow.appendChild(th);
     });
@@ -4409,7 +4340,7 @@ const t = enTranslations;
           }).catch(err => {
             console.error('复制失败:', err);
             showToast('复制失败，请重试');
-          });
+          }
         };
         
         tr.appendChild(dataTd);
@@ -4452,7 +4383,7 @@ const t = enTranslations;
           }).catch(err => {
             console.error('复制失败:', err);
             showToast('复制失败，请重试');
-          });
+          }
         };
         
         actionTd.appendChild(copyBtn);
@@ -4505,7 +4436,7 @@ const t = enTranslations;
         };
         
         tbody.appendChild(tr);
-      });
+      }
     }
     
     // 初始加载所有记录
@@ -4694,7 +4625,7 @@ const t = enTranslations;
           startColumn: position.startColumn,
           endColumn: position.endColumn,
           isWholeLine: false
-        });
+        }
         return;
       }
 
@@ -4719,7 +4650,7 @@ const t = enTranslations;
               startColumn: position.startColumn,
               endColumn: position.endColumn,
               isWholeLine: false
-            });
+            }
           } else if (!(key in val2)) {
             // 删除 - 在左侧文本中查找位置
             const position = findKeyInLines(key, leftLines);
@@ -4732,13 +4663,13 @@ const t = enTranslations;
               startColumn: position.startColumn,
               endColumn: position.endColumn,
               isWholeLine: false
-            });
+            }
           } else {
             // 递归比较
             const keyPosition = findKeyInLines(key, leftLines);
             compare(val1[key], val2[key], newPath, keyPosition.line);
           }
-        });
+        }
       } else if (val1 !== val2) {
         // 值不同
         const keyName = currentPath.split('.').pop();
@@ -4754,7 +4685,7 @@ const t = enTranslations;
           startColumn: position.startColumn,
           endColumn: position.endColumn,
           isWholeLine: false
-        });
+        }
       }
     }
 
@@ -4780,7 +4711,7 @@ const t = enTranslations;
           newValue: val2,
           message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`,
           line: currentLine
-        });
+        }
         return;
       }
 
@@ -4802,7 +4733,7 @@ const t = enTranslations;
               value: val2[key],
               message: `${newPath}: + ${JSON.stringify(val2[key])}`,
               line: currentLine + lineOffset
-            });
+            }
           } else if (!(key in val2)) {
             // 删除
             differences.push({
@@ -4811,12 +4742,12 @@ const t = enTranslations;
               value: val1[key],
               message: `${newPath}: - ${JSON.stringify(val1[key])}`,
               line: currentLine + lineOffset
-            });
+            }
           } else {
             // 递归比较
             compare(val1[key], val2[key], newPath, currentLine + lineOffset);
           }
-        });
+        }
       } else if (val1 !== val2) {
         // 值不同
         differences.push({
@@ -4826,7 +4757,7 @@ const t = enTranslations;
           newValue: val2,
           message: `${currentPath}: ${JSON.stringify(val1)} → ${JSON.stringify(val2)}`,
           line: currentLine
-        });
+        }
       }
     }
 

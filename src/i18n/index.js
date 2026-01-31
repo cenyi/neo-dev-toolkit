@@ -28,7 +28,7 @@ const translations = {
 
 let currentLocale = config.defaultLocale;
 
-export function initI18n(locale) {
+export function initI18n (locale) {
   // 从多个来源检测语言
   const detectedLocale = locale ||
                        localStorage.getItem('preferredLocale') ||
@@ -47,7 +47,7 @@ export function initI18n(locale) {
   return currentLocale;
 }
 
-export function t(key, locale = currentLocale) {
+export function t (key, locale = currentLocale) {
   const keys = key.split('.');
   let value = translations[locale];
 
@@ -58,11 +58,11 @@ export function t(key, locale = currentLocale) {
   return value || key;
 }
 
-export function getLocale() {
+export function getLocale () {
   return currentLocale;
 }
 
-export function setLocale(locale) {
+export function setLocale (locale) {
   if (translations[locale]) {
     currentLocale = locale;
     localStorage.setItem('preferredLocale', locale);
@@ -77,23 +77,23 @@ export function setLocale(locale) {
   }
 }
 
-export function getBrowserLocale() {
+export function getBrowserLocale () {
   const browserLang = navigator.language.split('-')[0];
   return translations[browserLang] ? browserLang : null;
 }
 
-export function getAvailableLocales() {
+export function getAvailableLocales () {
   return config.locales.map(locale => ({
     code: locale,
     ...config.localeInfo[locale]
   }));
 }
 
-export function getLocaleInfo(locale) {
+export function getLocaleInfo (locale) {
   return config.localeInfo[locale];
 }
 
-export function isRTL(locale) {
+export function isRTL (locale) {
   return config.rtlLocales.includes(locale);
 }
 

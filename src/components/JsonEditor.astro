@@ -100,7 +100,7 @@ const { placeholder = "", value = "" } = Astro.props;
     textarea.addEventListener('keyup', updateLineNumbers);
     textarea.addEventListener('paste', () => {
       // 粘贴后稍等一下再更新行号，确保内容已更新
-      setTimeout(updateLineNumbers, 0);
+      requestAnimationFrame(updateLineNumbers);
     });
   });
 </script>
