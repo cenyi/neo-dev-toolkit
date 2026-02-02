@@ -90,10 +90,25 @@ const isActive = (path: string) => {
     <div class="nav-divider"></div>
 
     <ul class="nav-section">
-      <li><a href="#" class="nav-link" onclick="event.preventDefault(); switchLanguage();" title={t.navLanguage} data-tooltip={t.navLanguage}>
-        <span class="nav-icon">🌐</span>
-        <span class="nav-text">{t.navLanguage}</span>
-      </a></li>
+      <li class="language-dropdown">
+        <a href="#" class="nav-link" onclick="event.preventDefault(); toggleLanguageDropdown();" title={t.navLanguage} data-tooltip={t.navLanguage}>
+          <span class="nav-icon">🌐</span>
+          <span class="nav-text">{t.navLanguage}</span>
+          <span class="dropdown-arrow">▼</span>
+        </a>
+        <div class="language-menu" id="languageMenu">
+          <a href="/" class="language-option" data-lang="en">🇺🇸 English</a>
+          <a href="/zh" class="language-option" data-lang="zh">🇨🇳 简体中文</a>
+          <a href="/ar" class="language-option" data-lang="ar">🇸🇦 العربية</a>
+          <a href="/de" class="language-option" data-lang="de">🇩🇪 Deutsch</a>
+          <a href="/es" class="language-option" data-lang="es">🇪🇸 Español</a>
+          <a href="/fr" class="language-option" data-lang="fr">🇫🇷 Français</a>
+          <a href="/ja" class="language-option" data-lang="ja">🇯🇵 日本語</a>
+          <a href="/ko" class="language-option" data-lang="ko">🇰🇷 한국어</a>
+          <a href="/pt" class="language-option" data-lang="pt">🇧🇷 Português</a>
+          <a href="/ru" class="language-option" data-lang="ru">🇷🇺 Русский</a>
+        </div>
+      </li>
     </ul>
   </nav>
 </div>
@@ -360,6 +375,80 @@ const isActive = (path: string) => {
     transform: scale(1.05);
   }
 
+  /* 语言下拉菜单样式 */
+  .language-dropdown {
+    position: relative;
+  }
+
+  .dropdown-arrow {
+    margin-left: auto;
+    font-size: 0.625rem;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.5;
+  }
+
+  .language-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+
+  .sidebar.collapsed .dropdown-arrow {
+    display: none;
+  }
+
+  .language-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    min-width: 180px;
+    max-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  .language-dropdown.open .language-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .language-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #374151;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+  }
+
+  .language-option:hover {
+    background: rgba(59, 130, 246, 0.08);
+    color: #2563eb;
+    border-left-color: #3b82f6;
+  }
+
+  .language-option.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+    color: #2563eb;
+    font-weight: 600;
+    border-left-color: #2563eb;
+  }
+
+  /* 折叠状态下的语言菜单位置调整 */
+  .sidebar.collapsed .language-menu {
+    /* fixed定位不需要额外调整 */
+  }
+
   /* 确保桌面端折叠时导航链接内的所有元素都居中 */
   .sidebar.collapsed .nav-menu li {
     text-align: center;
@@ -616,36 +705,52 @@ const isActive = (path: string) => {
     }
   }
 
-  function switchLanguage() {
-    // 切换语言
-    const currentLang = window.appState.lang;
-    const newLang = currentLang === 'en' ? 'zh' : 'en';
-    window.appState.lang = newLang;
+  function toggleLanguageDropdown() {
+    const dropdown = document.querySelector('.language-dropdown');
+    const menu = document.getElementById('languageMenu');
+    const wasOpen = dropdown.classList.contains('open');
 
-    // 获取当前路径
-    const currentPath = window.location.pathname;
+    // 关闭所有其他下拉菜单
+    document.querySelectorAll('.language-dropdown').forEach(d => d.classList.remove('open'));
 
-    // 构建新路径
-    let newPath;
-    if (newLang === 'en') {
-      // 英文：移除 /zh 前缀
-      if (currentPath.startsWith('/zh')) {
-        newPath = currentPath.substring(3) || '/';
-      } else {
-        newPath = currentPath;
-      }
-    } else {
-      // 中文：添加 /zh 前缀
-      if (currentPath.startsWith('/zh')) {
-        newPath = currentPath;
-      } else {
-        newPath = '/zh' + (currentPath === '/' ? '' : currentPath);
-      }
+    // 切换当前下拉菜单
+    if (!wasOpen) {
+      dropdown.classList.add('open');
+
+      // 计算下拉菜单位置
+      const navLink = dropdown.querySelector('.nav-link');
+      const rect = navLink.getBoundingClientRect();
+
+      // 设置下拉菜单的位置
+      menu.style.left = (rect.right + 4) + 'px';
+      menu.style.top = rect.top + 'px';
     }
 
-    // 跳转到新路径
-    window.location.href = newPath;
+    // 阻止事件冒泡
+    event.stopPropagation();
   }
+
+  // 点击外部区域关闭下拉菜单
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.language-dropdown')) {
+      document.querySelectorAll('.language-dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+
+  // 标记当前语言选项为激活状态
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    const currentLang = currentPath.split('/')[1] || 'en';
+
+    document.querySelectorAll('.language-option').forEach(option => {
+      const optionLang = option.getAttribute('data-lang');
+      if (optionLang === currentLang) {
+        option.classList.add('active');
+      } else {
+        option.classList.remove('active');
+      }
+    });
+  });
 
   function showToolsComingSoon() {
     // 显示工具开发中提示
