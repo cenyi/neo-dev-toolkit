@@ -1,0 +1,70 @@
+---
+const { t = {} } = Astro.props;
+const currentPath = Astro.url.pathname;
+const currentPage = currentPath.split('/').pop() || 'Home';
+---
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="/" itemprop="item">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    {currentPage !== 'Home' && (
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name" aria-current="page">{currentPage}</span>
+        <meta itemprop="position" content="2" />
+      </li>
+    )}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb {
+    margin: 16px 0;
+    font-size: 0.875rem;
+  }
+
+  .breadcrumb ol {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb li {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    content: "›";
+    margin: 0 8px;
+    color: #64748b;
+  }
+
+  .breadcrumb a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .breadcrumb span[aria-current="page"] {
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .breadcrumb {
+      font-size: 0.8125rem;
+    }
+  }
+</style>

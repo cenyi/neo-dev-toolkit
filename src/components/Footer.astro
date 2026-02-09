@@ -48,13 +48,6 @@ for (const lang of supportedLangs) {
         <li><a href={langPrefix + '/terms'}>{t.navTerms || 'Terms of Service'}</a></li>
       </ul>
     </div>
-
-    <div class="footer-section">
-      <h4>{t.navSettings || 'Settings'}</h4>
-      <ul>
-        <li><a href="#" onclick="event.preventDefault(); switchLanguage();">{t.navLanguage || 'Language'}</a></li>
-      </ul>
-    </div>
   </div>
 
   <div class="footer-bottom">
@@ -74,7 +67,7 @@ for (const lang of supportedLangs) {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr repeat(4, 1fr);
+    grid-template-columns: 2fr repeat(3, 1fr);
     gap: 32px;
   }
 

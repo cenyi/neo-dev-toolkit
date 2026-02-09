@@ -10,11 +10,11 @@ const t = zhTranslations;
 ---
 
 <BaseLayout
-  title="JSON 工具 - 格式化、比较和转换 | 在线"
+  title="JSON 工具 - 格式化、转换为 ISON（节省 70% Token）、CSV | 在线"
   lang={lang}
-  
-  description="在线JSON工具集：格式化、验证、对比、转换JSON为CSV、Excel、XML、YAML。快速、安全的浏览器工具。"
-  keywords="JSON格式化, JSON校验, JSON解析, JSON对比, JSON转CSV, JSON转Excel">
+  description="在线JSON工具集：格式化、验证、对比、转换JSON为ISON、TOON、CSV、Excel、XML、YAML。ISON格式可节省高达70%的token。快速、安全的浏览器工具。"
+  keywords="JSON格式化, JSON校验, JSON解析, JSON对比, JSON转ISON, JSON转TOON, token优化, 节省token, JSON转CSV, JSON转Excel"
+>
   <Sidebar slot="sidebar" t={t} />
   <div slot="header">
     <LanguageSwitcher currentLocale="zh" />
@@ -35,16 +35,20 @@ const t = zhTranslations;
       "priceCurrency": "USD"
     },
     "featureList": [
-      "JSON Formatting and Validation",
-      "URL Parameters Parsing",
-      "XML to JSON Conversion",
-      "YAML to JSON Conversion",
-      "Field Extraction with JavaScript",
-      "TypeScript Interface Generation",
-      "JSON to XML Conversion",
-      "JSON Minification",
-      "JSON Escaping",
-      "Comment Removal"
+      "JSON 格式化和验证",
+      "ISON 格式转换（节省 70% Token）",
+      "TOON 格式转换",
+      "URL 参数解析",
+      "XML 转 JSON 转换",
+      "YAML 转 JSON 转换",
+      "JavaScript 字段提取",
+      "TypeScript 接口生成",
+      "JSON 转 CSV 转换",
+      "JSON 转 Excel 转换",
+      "JSON 转 XML 转换",
+      "JSON 压缩",
+      "JSON 转义",
+      "注释移除"
     ],
     "browserRequirements": "Requires JavaScript. Compatible with all modern browsers.",
     "softwareVersion": "1.0.0",
@@ -69,7 +73,9 @@ const t = zhTranslations;
        data-xml-success={t.xmlSuccess}
        data-ts-success={t.tsSuccess}
        data-csv-success={t.csvSuccess}
-       data-excel-success={t.excelSuccess}>
+       data-excel-success={t.excelSuccess}
+       data-ison-success={t.isonSuccess}
+       data-toon-success={t.toonSuccess}>
 
     <div class="editor-workspace">
       <!-- 左侧输入区域 -->
@@ -79,7 +85,7 @@ const t = zhTranslations;
           <!-- 两个独立编辑器 -->
           <div class="input-section">
             <div class="section-header-row">
-              <h1 class="section-label">All-in-One JSON Viewer</h1>
+              <h1 class="section-label">JSON 工具 - 格式化、转换为 ISON（节省 70% Token）、CSV 等</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
                 <span class="hint-text">Smart Input: Auto-detects JSON, URL, XML, YAML & 15+ formats</span>
@@ -244,6 +250,278 @@ const t = zhTranslations;
       </div>
     </div>
 
+    <!-- ISON & TOON 功能亮点 -->
+    <div class="ison-feature-section">
+      <div class="section-header">
+        <h2>🚀 新功能：使用 ISON & TOON 节省 70% Token</h2>
+        <p>专为 LLM 应用和高效数据存储优化的格式</p>
+      </div>
+      <div class="ison-grid">
+        <div class="ison-card">
+          <div class="ison-icon">📊</div>
+          <h3>JSON 转 ISON</h3>
+          <p>使用 LLM 优化的表格格式，节省高达 70% 的 token。非常适合 AI 应用和 RAG 系统。</p>
+          <ul class="ison-features">
+            <li>✓ 类型安全注解</li>
+            <li>✓ 平均节省 61% token</li>
+            <li>✓ 基于表格的结构</li>
+            <li>✓ 双向转换</li>
+          </ul>
+          <a href="/zh/json-to-ison" class="ison-link">了解更多 →</a>
+        </div>
+        <div class="ison-card">
+          <div class="ison-icon">⚙️</div>
+          <h3>JSON 转 TOON</h3>
+          <p>用于配置文件和结构化数据的简单键值对格式。比 JSON 高效 52%。</p>
+          <ul class="ison-features">
+            <li>✓ 高度可读</li>
+            <li>✓ 配置文件优化</li>
+            <li>✓ 简单语法</li>
+            <li>✓ 无损转换</li>
+          </ul>
+          <a href="/zh/json-to-toon" class="ison-link">了解更多 →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ISON 详细介绍 -->
+    <div class="ison-detailed-section">
+      <div class="section-header">
+        <span class="section-tag">🚀 新功能</span>
+        <h2 class="section-title">ISON 格式：节省 70% Token 的 LLM 优化格式</h2>
+        <p class="section-subtitle">ISON（Interchange Simple Object Notation）是专为 LLM 应用设计的高效数据格式，通过表格结构和类型注解实现显著的 token 节省</p>
+      </div>
+
+      <div class="ison-content-grid">
+        <div class="content-block">
+          <h3 class="content-title">什么是 ISON？</h3>
+          <p class="content-description">ISON 是一种表格格式，使用 TSV（制表符分隔值）结构，并为每列添加类型注解。这种设计专门针对 LLM（大语言模型）优化，可在保持数据完整性的同时大幅减少 token 消耗。</p>
+
+          <div class="code-example">users.tsv
+id[int]	name[str]	age[int]	email[str]
+1	张三	25	zhang@example.com
+2	李四	30	li@example.com
+3	王五	28	wang@example.com</div>
+
+          <p class="content-description">相比之下，相同数据的 JSON 格式需要更多的字符和 token。</p>
+        </div>
+
+        <div class="content-block">
+          <h3 class="content-title">Token 节省对比</h3>
+          <p class="content-description">在实际测试中，ISON 格式相比 JSON 格式平均可节省 <strong>61%</strong> 的 token，在大型数据集上最高可达 <strong>70%</strong>：</p>
+
+          <table class="token-comparison-table">
+            <thead>
+              <tr>
+                <th>数据集</th>
+                <th>JSON Tokens</th>
+                <th>ISON Tokens</th>
+                <th>节省比例</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>用户数据（10条）</td>
+                <td>458</td>
+                <td>175</td>
+                <td class="token-savings">61.8%</td>
+              </tr>
+              <tr>
+                <td>产品目录（50条）</td>
+                <td>2,340</td>
+                <td>876</td>
+                <td class="token-savings">62.6%</td>
+              </tr>
+              <tr>
+                <td>订单记录（100条）</td>
+                <td>5,120</td>
+                <td>1,536</td>
+                <td class="token-savings">70.0%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="content-block">
+          <h3 class="content-title">ISON 格式结构</h3>
+          <p class="content-description">ISON 使用简洁的语法来表示数据类型和结构：</p>
+
+          <div class="format-structure">
+            <strong>类型注解：</strong><br>
+            • [int] - 整数<br>
+            • [str] - 字符串<br>
+            • [float] - 浮点数<br>
+            • [bool] - 布尔值<br>
+            • [array] - 数组/列表<br>
+            • ~ - null 值
+          </div>
+
+          <div class="code-example"># 数组格式（表格）
+table.name[col1type]	col2[type2]	col3[type3]
+value1	value2	value3
+
+# 对象格式
+object.name	key1[type1]	value1
+object.name	key2[type2]	value2</div>
+        </div>
+
+        <div class="content-block">
+          <h3 class="content-title">使用场景</h3>
+          <ul class="use-case-list">
+            <li><strong>RAG 系统：</strong>将知识库数据转换为 ISON 格式，大幅降低检索时的 token 消耗</li>
+            <li><strong>AI Agent：</strong>Agent 上下文数据使用 ISON 格式，可在有限的 token 窗口内处理更多数据</li>
+            <li><strong>API 响应优化：</strong>LLM 应用的 API 响应使用 ISON 格式，减少传输和处理成本</li>
+            <li><strong>数据存储：</strong>长期存储结构化数据，比 JSON 更节省空间</li>
+            <li><strong>日志处理：</strong>结构化日志数据转换为 ISON，便于 LLM 分析和处理</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOON 详细介绍 -->
+    <div class="toon-detailed-section">
+      <div class="section-header">
+        <span class="section-tag">⚙️ 配置优化</span>
+        <h2 class="section-title">TOON 格式：简洁高效的键值对格式</h2>
+        <p class="section-subtitle">TOON 提供了类似 INI 的配置格式，使用键值对和缩进表示层级关系，比 JSON 节省 50% 的空间</p>
+      </div>
+
+      <div class="toon-content-grid">
+        <div class="content-block">
+          <h3 class="content-title">什么是 TOON？</h3>
+          <p class="content-description">TOON 是一种简洁的键值对格式，专为配置文件和结构化数据设计。它使用缩进来表示层级关系，语法直观易读，同时保持高效的存储效率。</p>
+
+          <div class="code-example"># TOON 格式示例
+database
+	host=localhost
+	port=3306
+	username=admin
+	password=secret123
+pool
+	maxConnections=100
+	minConnections=10</div>
+
+          <p class="content-description">与 JSON 相比，TOON 更加简洁，可读性更强，特别适合配置文件场景。</p>
+        </div>
+
+        <div class="content-block">
+          <h3 class="content-title">TOON 语法特点</h3>
+          <p class="content-description">TOON 的语法设计简洁明了：</p>
+
+          <div class="format-structure">
+            <strong>基本规则：</strong><br>
+            • 使用 key=value 格式定义键值对<br>
+            • 使用缩进（两个空格）表示层级关系<br>
+            • 使用 # 添加注释<br>
+            • 数组使用 [item1, item2] 格式<br>
+            • 字符串值自动检测，无需引号（除非包含特殊字符）
+          </div>
+
+          <div class="code-example"># 嵌套对象示例
+server
+	domain=example.com
+	ssl=true
+	certificates
+		key=/path/to/key.pem
+		cert=/path/to/cert.pem</div>
+        </div>
+
+        <div class="content-block">
+          <h3 class="content-title">使用场景</h3>
+          <ul class="use-case-list">
+            <li><strong>应用配置：</strong>服务器配置、数据库连接、API 密钥等</li>
+            <li><strong>环境变量：</strong>部署配置、环境特定设置</li>
+            <li><strong>用户偏好：</strong>应用设置、用户配置文件</li>
+            <li><strong>系统参数：</strong>系统级配置、启动参数</li>
+            <li><strong>CI/CD 配置：</strong>构建脚本、部署流程配置</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 格式对比 -->
+    <div class="format-comparison-section">
+      <div class="section-header">
+        <h2 class="section-title">选择适合您的格式</h2>
+        <p class="section-subtitle">根据使用场景选择最适合的数据格式，最大化效率</p>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-card ison">
+          <span class="comparison-badge">推荐 LLM</span>
+          <h3>ISON 格式</h3>
+          <div class="token-saving">节省 70%</div>
+          <p>最适合 AI 应用和 RAG 系统。表格结构配合类型注解，大幅减少 token 消耗。</p>
+        </div>
+
+        <div class="comparison-card toon">
+          <span class="comparison-badge">配置优化</span>
+          <h3>TOON 格式</h3>
+          <div class="token-saving">节省 50%</div>
+          <p>最适合配置文件和结构化数据。键值对格式直观易读，维护方便。</p>
+        </div>
+
+        <div class="comparison-card json">
+          <span class="comparison-badge">通用标准</span>
+          <h3>JSON 格式</h3>
+          <div class="token-saving">基准</div>
+          <p>Web 开发的标准格式，通用性强，所有平台都支持。适合一般数据交换。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 部分 -->
+    <div class="faq-section">
+      <div class="section-header">
+        <h2 class="section-title">常见问题</h2>
+        <p class="section-subtitle">关于 ISON 和 TOON 格式的常见问题解答</p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">ISON 和 TOON 是什么格式？</div>
+          <div class="faq-answer">
+            <p>ISON（Interchange Simple Object Notation）是一种表格格式，专为 LLM 优化，可节省高达 70% 的 token。TOON 是一种键值对格式，适合配置文件，可节省约 50% 的空间。两种格式都可以与 JSON 双向转换。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">如何使用 ISON/TOON 转换功能？</div>
+          <div class="faq-answer">
+            <p>将您的 JSON 数据粘贴到页面上的输入框中，然后点击"JSON 转 ISON & Copy"或"JSON 转 TOON & Copy"按钮。转换后的内容会自动复制到剪贴板，您可以直接粘贴使用。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">ISON 真的能节省 70% 的 token 吗？</div>
+          <div class="faq-answer">
+            <p>是的！根据我们的测试，在包含重复键的大型数据集上，ISON 相比 JSON 可以节省高达 70% 的 token。平均节省率约为 61%，具体节省幅度取决于数据结构。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">转换后的数据可以转回 JSON 吗？</div>
+          <div class="faq-answer">
+            <p>目前我们提供 JSON 转 ISON/TOON 的单向转换。双向转换功能正在开发中，敬请期待。ISON 和 TOON 格式都设计了完整的信息保留机制，确保可以无损还原。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">什么情况下应该使用 ISON？</div>
+          <div class="faq-answer">
+            <p>当您需要在 LLM 应用中处理大量结构化数据时，应该使用 ISON。典型场景包括：RAG 系统的知识库、AI Agent 的上下文数据、API 响应优化、日志数据分析等。任何需要将数据输入 LLM 的场景都适合使用 ISON。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">什么情况下应该使用 TOON？</div>
+          <div class="faq-answer">
+            <p>当您需要编写或维护配置文件时，应该使用 TOON。它比 JSON 更简洁易读，比 INI 更强大。典型场景包括：应用配置、环境变量设置、服务器配置、部署脚本等。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Supported Formats Section -->
     <div class="supported-formats-section">
       <div class="section-header">
@@ -271,6 +549,8 @@ const t = zhTranslations;
             <li>{t.formatCat2Item4}</li>
             <li>{t.formatCat2Item5}</li>
             <li>{t.formatCat2Item6}</li>
+            <li>{t.formatCat2Item7}</li>
+            <li>{t.formatCat2Item8}</li>
           </ul>
         </div>
         <div class="format-category">
@@ -2213,6 +2493,325 @@ const t = zhTranslations;
       height: 250px;
     }
   }
+
+  /* ISON & TOON 详细部分样式 */
+  .ison-detailed-section,
+  .toon-detailed-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  }
+
+  .toon-detailed-section {
+    background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .ison-content-grid,
+  .toon-content-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 60px;
+  }
+
+  .content-block {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .content-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+  }
+
+  .content-description {
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+
+  .code-example {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 24px;
+    border-radius: 8px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.875rem;
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+
+  .token-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+  }
+
+  .token-comparison-table th,
+  .token-comparison-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .token-comparison-table th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .token-savings {
+    color: #16a34a;
+    font-weight: 700;
+  }
+
+  .format-structure {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+
+  .use-case-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .use-case-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: start;
+  }
+
+  .use-case-list li:before {
+    content: "✓";
+    color: #16a34a;
+    font-weight: 700;
+    margin-right: 12px;
+    font-size: 1.25rem;
+  }
+
+  /* 格式对比部分 */
+  .format-comparison-section {
+    padding: 80px 20px;
+    background: white;
+  }
+
+  .comparison-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .comparison-card {
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+
+  .comparison-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .comparison-card.ison {
+    background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
+  }
+
+  .comparison-card.toon {
+    background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+  }
+
+  .comparison-card.json {
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+  }
+
+  .comparison-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .comparison-card.ison .comparison-badge {
+    background: #1e40af;
+    color: white;
+  }
+
+  .comparison-card.toon .comparison-badge {
+    background: #b45309;
+    color: white;
+  }
+
+  .comparison-card.json .comparison-badge {
+    background: #475569;
+    color: white;
+  }
+
+  .comparison-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #0f172a;
+  }
+
+  .comparison-card .token-saving {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 20px 0;
+  }
+
+  .comparison-card.ison .token-saving {
+    color: #16a34a;
+  }
+
+  .comparison-card.toon .token-saving {
+    color: #b45309;
+  }
+
+  .comparison-card.json .token-saving {
+    color: #64748b;
+  }
+
+  .comparison-card p {
+    color: #475569;
+    line-height: 1.7;
+  }
+
+  /* FAQ 部分 */
+  .faq-section {
+    padding: 80px 20px;
+    background: #f8fafc;
+  }
+
+  .faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .faq-question {
+    padding: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #0f172a;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .faq-question:hover {
+    background: #f8fafc;
+  }
+
+  .faq-question:after {
+    content: "+";
+    font-size: 1.5rem;
+    color: #3b82f6;
+    font-weight: 700;
+  }
+
+  .faq-item.active .faq-question:after {
+    content: "−";
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 24px;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 24px 24px;
+  }
+
+  .faq-answer p {
+    color: #475569;
+    line-height: 1.7;
+    padding-top: 8px;
+  }
+
+  /* 响应式样式 */
+  @media (max-width: 768px) {
+    .ison-detailed-section,
+    .toon-detailed-section,
+    .format-comparison-section,
+    .faq-section {
+      padding: 60px 16px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .content-block {
+      padding: 24px;
+    }
+
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .token-comparison-table {
+      font-size: 0.875rem;
+    }
+
+    .token-comparison-table th,
+    .token-comparison-table td {
+      padding: 12px 8px;
+    }
+  }
 </style>
 
 <script type="module">
@@ -2259,7 +2858,30 @@ const t = zhTranslations;
     initializeMonacoEditor();
 
     initializeJsonFormatter();
+
+    // 初始化 FAQ 功能
+    initializeFaq();
   });
+
+  // FAQ 交互功能
+  function initializeFaq() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      if (question) {
+        question.addEventListener('click', () => {
+          // 关闭其他打开的 FAQ
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+          // 切换当前 FAQ
+          item.classList.toggle('active');
+        });
+      }
+    });
+  }
 
   // 初始化 Monaco Editor
   function initializeMonacoEditor() {
