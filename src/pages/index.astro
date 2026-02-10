@@ -77,7 +77,7 @@ const t = enTranslations;
               <h1 class="section-label">JSON Tools - Format, Convert to ISON (Save 70% Tokens), CSV & More</h1>
               <div class="editor-hint-inline" id="editor-hint">
                 <span class="hint-icon">✨</span>
-                <span class="hint-text">Smart Input: Auto-detects JSON, URL, XML, YAML & 15+ formats</span>
+                <span class="hint-text">{t.smartInput}</span>
               </div>
             </div>
             <div class="input-editor-wrapper">
@@ -335,7 +335,7 @@ const t = enTranslations;
             <li>✓ Table-based structure</li>
             <li>✓ Bidirectional conversion</li>
           </ul>
-          <button onclick="document.getElementById('json-to-ison').scrollIntoView({behavior: 'smooth'})" class="ison-action-btn">Try Now</button>
+          <a href="#ison-details" class="ison-action-btn">Try Now</a>
         </div>
         <div class="ison-card">
           <div class="ison-icon">⚙️</div>
@@ -347,310 +347,7 @@ const t = enTranslations;
             <li>✓ Simple syntax</li>
             <li>✓ Lossless conversion</li>
           </ul>
-          <button onclick="document.getElementById('json-to-toon').scrollIntoView({behavior: 'smooth'})" class="ison-action-btn">Try Now</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ISON Detailed Section -->
-    <div class="ison-detailed-section" id="ison-details">
-      <div class="section-header">
-        <h2>🚀 What is ISON? Save Up to 70% Tokens for LLM Applications</h2>
-        <p>ISON (Interchange Simple Object Notation) is a revolutionary data format designed specifically for Large Language Models, eliminating redundant JSON syntax while maintaining data integrity.</p>
-      </div>
-
-      <div class="ison-content-grid">
-        <div class="ison-description">
-          <h3>Why ISON Matters</h3>
-          <ul>
-            <li>🎯 <strong>Token Efficiency:</strong> Save up to 70% tokens compared to JSON</li>
-            <li>⚡ <strong>Cost Reduction:</strong> Lower API costs for LLM applications</li>
-            <li>🔄 <strong>Lossless Conversion:</strong> Perfect bidirectional conversion with JSON</li>
-            <li>📊 <strong>TSV-Based:</strong> Built on familiar tab-separated values pattern</li>
-            <li>🤖 <strong>LLM-Friendly:</strong> Optimized for how LLMs process data</li>
-          </ul>
-
-          <h3>Token Comparison</h3>
-          <table class="token-comparison-table">
-            <thead>
-              <tr>
-                <th>Format</th>
-                <th>Tokens</th>
-                <th>Savings</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>JSON</strong></td>
-                <td>87 tokens</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td><strong>ISON</strong></td>
-                <td>34 tokens</td>
-                <td class="success">-61%</td>
-              </tr>
-              <tr>
-                <td><strong>TOON</strong></td>
-                <td>42 tokens</td>
-                <td class="success">-52%</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h3>ISON Format Structure</h3>
-          <p><strong>Table Format (for Arrays):</strong></p>
-          <pre class="code-block">table.users
-id:int name:string email active:bool
-1 Alice alice@example.com true
-2 Bob bob@example.com false</pre>
-
-          <p><strong>Object Format (for Single Objects):</strong></p>
-          <pre class="code-block">object.config
-name:string "My App"
-version:string "1.0.0"
-debug:bool true</pre>
-
-          <h3>Use Cases</h3>
-          <ul>
-            <li>🤖 <strong>AI/LLM Applications</strong> - RAG systems, AI agents, LLM prompts</li>
-            <li>📦 <strong>Large Dataset Processing</strong> - Reduce token consumption in AI workflows</li>
-            <li>💰 <strong>Cost Optimization</strong> - Save thousands in monthly API costs</li>
-            <li>🔍 <strong>Data Analysis</strong> - Table-like structure for data tasks</li>
-          </ul>
-        </div>
-
-        <div class="ison-example">
-          <h3>Conversion Example</h3>
-          <div class="example-comparison">
-            <div class="example-before">
-              <h4>JSON (87 tokens)</h4>
-              <pre class="code-block">{
-  "users": [
-    {"id": 1, "name": "Alice", "email": "alice@example.com", "active": true},
-    {"id": 2, "name": "Bob", "email": "bob@example.com", "active": false}
-  ]
-}</pre>
-            </div>
-            <div class="example-after">
-              <h4>ISON (34 tokens) - Save 61%</h4>
-              <pre class="code-block">table.users
-id:int name:string email active:bool
-1 Alice alice@example.com true
-2 Bob bob@example.com false</pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TOON Detailed Section -->
-    <div class="toon-detailed-section" id="toon-details">
-      <div class="section-header">
-        <h2>⚙️ What is TOON? Simple & Efficient Data Format</h2>
-        <p>TOON is a lightweight data format using key=value structure, eliminating JSON's verbose syntax while maintaining high readability. Perfect for configuration files and structured data.</p>
-      </div>
-
-      <div class="toon-content-grid">
-        <div class="toon-description">
-          <h3>Why Choose TOON?</h3>
-          <ul>
-            <li>📝 <strong>Readable:</strong> Simple, intuitive key=value syntax</li>
-            <li>💪 <strong>Efficient:</strong> Save 40-50% tokens compared to JSON</li>
-            <li>🎯 <strong>Focused:</strong> Designed for configuration and structured data</li>
-            <li>🔄 <strong>Lossless:</strong> Perfect bidirectional conversion with JSON</li>
-            <li>⚡ <strong>Fast:</strong> Quick parsing and generation</li>
-          </ul>
-
-          <h3>TOON Format Structure</h3>
-          <p><strong>Basic Key=Value Format:</strong></p>
-          <pre class="code-block">name="My Application"
-version="1.0.0"
-debug=true
-port=8080</pre>
-
-          <p><strong>Nested Objects (with indentation):</strong></p>
-          <pre class="code-block">database=
-host=localhost
-port=5432
-name=mydb</pre>
-
-          <p><strong>Arrays:</strong></p>
-          <pre class="code-block">allowedHosts=[localhost, example.com]
-features=[json, xml, yaml]</pre>
-
-          <h3>When to Use TOON?</h3>
-          <ul>
-            <li>⚙️ <strong>Configuration Files</strong> - App configs, environment settings, deployment configs</li>
-            <li>📋 <strong>Structured Data</strong> - Human-editable data files</li>
-            <li>🤖 <strong>LLM Prompts</strong> - Include structured data with fewer tokens</li>
-            <li>💾 <strong>Data Storage</strong> - Settings, preferences, structured content</li>
-          </ul>
-
-          <h3>Conversion Example</h3>
-          <div class="example-comparison">
-            <div class="example-before">
-              <h4>JSON (87 tokens)</h4>
-              <pre class="code-block">{
-  "application": {
-    "name": "My App",
-    "version": "1.0.0",
-    "debug": true
-  },
-  "server": {
-    "port": 8080,
-    "host": "localhost"
-  }
-}</pre>
-            </div>
-            <div class="example-after">
-              <h4>TOON (42 tokens) - Save 52%</h4>
-              <pre class="code-block">application=
-name="My App"
-version="1.0.0"
-debug=true
-
-server=
-port=8080
-host=localhost</pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Format Comparison Section -->
-    <div class="format-comparison-section">
-      <div class="section-header">
-        <h2>📊 ISON vs TOON vs JSON - Which One Should You Use?</h2>
-        <p>Choose the right format based on your specific use case</p>
-      </div>
-
-      <div class="comparison-grid">
-        <div class="comparison-card recommended">
-          <div class="comparison-header">
-            <h3>🥇 ISON</h3>
-            <span class="badge recommended-badge">Best for LLM</span>
-          </div>
-          <ul class="comparison-features">
-            <li class="pro">✅ Max token savings (up to 70%)</li>
-            <li class="pro">✅ Type-safe with annotations</li>
-            <li class="pro">✅ Table-based structure</li>
-            <li class="pro">✅ Perfect for arrays/tabular data</li>
-            <li class="con">❌ Learning curve for format</li>
-          </ul>
-          <div class="comparison-use-case">
-            <strong>Best for:</strong> LLM applications, RAG systems, AI agents, token optimization
-          </div>
-        </div>
-
-        <div class="comparison-card">
-          <div class="comparison-header">
-            <h3>⚙️ TOON</h3>
-            <span class="badge secondary-badge">Best for Config</span>
-          </div>
-          <ul class="comparison-features">
-            <li class="pro">✅ Very simple syntax</li>
-            <li class="pro">✅ Highly readable</li>
-            <li class="pro">✅ Great for configs</li>
-            <li class="pro">✅ Key=value format</li>
-            <li class="con">❌ No type annotations</li>
-          </ul>
-          <div class="comparison-use-case">
-            <strong>Best for:</strong> Configuration files, settings, structured data, hierarchical content
-          </div>
-        </div>
-
-        <div class="comparison-card">
-          <div class="comparison-header">
-            <h3>📄 JSON</h3>
-            <span class="badge default-badge">Most Compatible</span>
-          </div>
-          <ul class="comparison-features">
-            <li class="pro">✅ Industry standard</li>
-            <li class="pro">✅ Universal support</li>
-            <li class="pro">✅ Easy to understand</li>
-            <li class="con">❌ Verbose syntax</li>
-            <li class="con">❌ High token usage</li>
-          </ul>
-          <div class="comparison-use-case">
-            <strong>Best for:</strong> General use, maximum compatibility, web APIs, data interchange
-          </div>
-        </div>
-      </div>
-
-      <div class="quick-decision">
-        <h3>Quick Decision Guide</h3>
-        <div class="decision-tree">
-          <div class="decision-node">
-            <p><strong>Need maximum token savings for LLM?</strong></p>
-            <div class="decision-yes-no">
-              <button onclick="scrollToSection('ison-details')">Yes → Use ISON</button>
-              <button onclick="scrollToSection('toon-details')">No → Continue</button>
-            </div>
-          </div>
-          <div class="decision-node">
-            <p><strong>Working with configuration files?</strong></p>
-            <div class="decision-yes-no">
-              <button onclick="scrollToSection('toon-details')">Yes → Use TOON</button>
-              <button onclick="scrollToSection('tools-section')">No → Continue</button>
-            </div>
-          </div>
-          <div class="decision-result">
-            <p><strong>Need maximum compatibility?</strong></p>
-            <p>→ Use standard JSON</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FAQ Section -->
-    <div class="faq-section">
-      <div class="section-header">
-        <h2>❓ Frequently Asked Questions about ISON & TOON</h2>
-      </div>
-
-      <div class="faq-grid">
-        <div class="faq-item">
-          <details>
-            <summary>Is ISON compatible with all LLMs?</summary>
-            <p>Yes! ISON is based on TSV (Tab-Separated Values), which is well-represented in LLM training data. GPT-4, Claude, and other major models understand ISON format naturally.</p>
-          </details>
-        </div>
-
-        <div class="faq-item">
-          <details>
-            <summary>Can I convert ISON back to JSON?</summary>
-            <p>Absolutely! ISON supports lossless bidirectional conversion. You can convert JSON → ISON → JSON without any data loss using our tool.</p>
-          </details>
-        </div>
-
-        <div class="faq-item">
-          <details>
-            <summary>What's the difference between ISON and TOON?</summary>
-            <p>ISON uses a table-like structure with type annotations, ideal for tabular data and LLMs. TOON uses a key=value format, better suited for configuration files and hierarchical data. Both save significant tokens compared to JSON.</p>
-          </details>
-        </div>
-
-        <div class="faq-item">
-          <details>
-            <summary>How much can I really save on tokens?</summary>
-            <p>Based on benchmarks across 300 test cases, ISON saves an average of 72% tokens compared to JSON. Actual savings vary by data structure, but most users see 60-80% reduction.</p>
-          </details>
-        </div>
-
-        <div class="faq-item">
-          <details>
-            <summary>Is TOON suitable for large datasets?</summary>
-            <p>TOON works well for structured data and configurations. For very large tabular datasets, consider using ISON which is optimized for array-like data and saves even more tokens.</p>
-          </details>
-        </div>
-
-        <div class="faq-item">
-          <details>
-            <summary>Can I use these formats in production?</summary>
-            <p>Yes! Both ISON and TOON are perfect for production use. ISON for LLM applications and data pipelines, TOON for configuration management and structured data storage.</p>
-          </details>
+          <a href="#toon-details" class="ison-action-btn">Try Now</a>
         </div>
       </div>
     </div>
@@ -4328,6 +4025,9 @@ host=localhost</pre>
   // ========== 方案1: JSON to Table ==========
   async function jsonToTable() {
     try {
+      // 先重置界面到默认状态，清除其他功能的显示
+      resetViewToDefault();
+
       const parsedData = parseJson(getEditorContent());
       const tableHtml = jsonToTableHtml(parsedData);
 
@@ -4435,6 +4135,9 @@ host=localhost</pre>
   // ========== 方案1: JSON Schema ==========
   async function jsonToSchema() {
     try {
+      // 先重置界面到默认状态，清除其他功能的显示
+      resetViewToDefault();
+
       const parsedData = parseJson(getEditorContent());
       const schema = generateJsonSchema(parsedData, 'RootObject');
 
@@ -5471,8 +5174,68 @@ host=localhost</pre>
     document.body.appendChild(historyContainer);
   }
 
+  // 统一的界面重置函数 - 确保每次只显示一个功能
+  function resetViewToDefault() {
+    // 如果在比较模式，先退出
+    if (isCompareMode) {
+      const compareSection = document.getElementById('compare-section');
+      const editorsWrapper = document.getElementById('editors-wrapper');
+      const firstSection = document.querySelector('.input-section');
+
+      isCompareMode = false;
+      compareSection.classList.add('hidden');
+      editorsWrapper.classList.remove('compare-mode');
+
+      // 恢复编辑器标题
+      const firstLabel = firstSection.querySelector('.section-label');
+      if (firstLabel) {
+        firstLabel.textContent = translations.sectionLabel || 'JSON Tools - Format, Convert to ISON (Save 70% Tokens), CSV & More';
+      }
+
+      // 清除高亮
+      clearHighlightDecorations();
+
+      // 清空比较编辑器
+      if (compareEditor) {
+        compareEditor.setValue('');
+      }
+    }
+
+    // 清空所有可能的输出内容
+    const outputContent = document.getElementById('output-content');
+    if (outputContent) {
+      // 移除所有特殊输出（表格、HTML等）
+      const tableOutput = outputContent.querySelector('.table-output');
+      const htmlOutput = outputContent.querySelector('.html-output');
+      const schemaOutput = outputContent.querySelector('.schema-output');
+      const pdfOutput = contentDocument.querySelector('.pdf-output');
+
+      if (tableOutput) tableOutput.remove();
+      if (htmlOutput) htmlOutput.remove();
+      if (schemaOutput) schemaOutput.remove();
+      if (pdfOutput) pdfOutput.remove();
+
+      // 恢复编辑器显示
+      const editorContainer = outputContent.querySelector('.monaco-editor-container');
+      if (editorContainer) {
+        editorContainer.style.setProperty('display', 'block');
+      }
+    }
+
+    // 重置输出区域为折叠状态
+    const outputArea = document.getElementById('output-area');
+    if (outputArea && outputArea.classList.contains('expanded')) {
+      outputArea.classList.remove('expanded');
+    }
+  }
+
   // 切换比较模式
   function toggleCompareMode() {
+    // 如果进入比较模式，先重置界面到默认状态
+    if (!isCompareMode) {
+      resetViewToDefault();
+    }
+
     const compareSection = document.getElementById('compare-section');
     const editorsWrapper = document.getElementById('editors-wrapper');
     const firstSection = document.querySelector('.input-section');
