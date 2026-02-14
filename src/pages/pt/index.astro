@@ -184,8 +184,85 @@ const t = ptTranslations;
   </div>
 
   <!-- HowTo Tutorial Section -->
-    <div class="tutorial-section">
-    ... (hidden due to missing translation keys) ...
+  <div class="tutorial-section">
+    <div class="section-header">
+      <h2>{t.tutorialTitle}</h2>
+      <p>{t.tutorialSubtitle}</p>
+    </div>
+
+    <div class="tutorial-container">
+      <div class="tutorial-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep1Title}</h3>
+          <p>{t.tutorialStep1Desc}</p>
+          <div class="step-example">
+            <code set:text={t.tutorialStep1Example}></code>
+          </div>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep2Title}</h3>
+          <p>{t.tutorialStep2Desc}</p>
+          <div class="tip">
+            <strong>💡 {t.tutorialStep2Tip.split(':')[0]}:</strong> {t.tutorialStep2Tip.split(':')[1]}
+          </div>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep3Title}</h3>
+          <p set:text={t.tutorialStep3Desc}></p>
+          <div class="step-example">
+            <code set:text={t.tutorialStep3Example}></code>
+          </div>
+          <p class="example-desc" set:text={t.tutorialStep3ExampleDesc}></p>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep4Title}</h3>
+          <p>{t.tutorialStep4Desc}</p>
+          <div class="step-example">
+            <pre><code set:text={t.tutorialStep4Example}></code></pre>
+          </div>
+          <p class="example-desc" set:text={t.tutorialStep4ExampleDesc}></p>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep5Title}</h3>
+          <p>{t.tutorialStep5Desc}</p>
+          <ul class="action-list">
+            <li><strong>{t.tutorialStep5Action1.split(':')[0]}:</strong> {t.tutorialStep5Action1.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep5Action2.split(':')[0]}:</strong> {t.tutorialStep5Action2.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep5Action3.split(':')[0]}:</strong> {t.tutorialStep5Action3.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep5Action4.split(':')[0]}:</strong> {t.tutorialStep5Action4.split(':')[1]}</li>
+            <li><strong>{t.tutorialStep5Action5.split(':')[0]}:</strong> {t.tutorialStep5Action5.split(':')[1]}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tutorial-step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h3>{t.tutorialStep6Title}</h3>
+          <p>{t.tutorialStep6Desc}</p>
+          <div class="privacy-note">
+            <strong>🔒 {t.tutorialStep6Privacy.split(':')[0]}:</strong> {t.tutorialStep6Privacy.split(':')[1]}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Features Section -->
@@ -2194,6 +2271,145 @@ const t = ptTranslations;
   }
 
   /* 移动端横屏优化 */
+  /* ISON & TOON Feature Section (Global) */
+  .ison-feature-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #faf5ff 100%);
+    margin: 40px 0;
+    border-radius: 16px;
+  }
+
+  .ison-feature-section .section-header {
+    max-width: 920px;
+    margin: 0 auto 28px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(147, 197, 253, 0.45);
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(4px);
+  }
+
+  .ison-feature-section .section-header h2 {
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.25;
+    color: #0f172a;
+    margin: 0 0 8px;
+  }
+
+  .ison-feature-section .section-header p {
+    margin: 0;
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .ison-grid {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .ison-card {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+    border: 1px solid #e5e7eb;
+  }
+
+  .ison-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: #93c5fd;
+  }
+
+  .ison-icon {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .ison-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px 0;
+    color: #0f172a;
+  }
+
+  .ison-card p {
+    text-align: center;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .ison-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+  }
+
+  .ison-features li {
+    padding: 6px 0;
+    color: #475569;
+    font-size: 0.9375rem;
+  }
+
+  .ison-action-btn,
+  .ison-link {
+    display: block;
+    text-align: center;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .ison-action-btn:hover,
+  .ison-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+  }
+
+  @media (max-width: 768px) {
+    .ison-feature-section {
+      padding: 40px 16px;
+      margin: 24px 0;
+    }
+
+    .ison-feature-section .section-header {
+      padding: 14px 12px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+    }
+
+    .ison-feature-section .section-header h2 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .ison-feature-section .section-header p {
+      font-size: 0.9rem;
+    }
+
+    .ison-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .ison-card {
+      padding: 20px;
+    }
+  }
   @media (max-width: 768px) and (orientation: landscape) {
     .json-formatter-container {
       height: calc(100vh - 20px);
@@ -3073,6 +3289,7 @@ const t = ptTranslations;
     document.getElementById('json-compare').addEventListener('click', () => toggleCompareMode());
     document.getElementById('close-output').addEventListener('click', closeOutput);
     document.getElementById('history-btn').addEventListener('click', showHistory);
+    setupToolPriorityView();
 
     // 字体大小选择器
     const fontSizeSelect = document.getElementById('font-size-select');
@@ -3092,6 +3309,81 @@ const t = ptTranslations;
   }
 
   // 防抖函数
+  function setupToolPriorityView() {
+    const controls = document.querySelector('.output-controls');
+    if (!controls) return;
+
+    const advancedIds = new Set([
+      'escape-copy',
+      'json-to-xml',
+      'json-to-excel',
+      'json-to-html',
+      'json-to-pdf',
+      'json-to-ts',
+      'json-to-dart',
+      'json-to-c',
+      'json-to-go',
+      'json-to-rust',
+      'json-to-python',
+      'json-to-schema',
+      'json-to-table',
+      'history-btn',
+      'json-to-toon'
+    ]);
+
+    const advancedButtons = Array.from(controls.querySelectorAll('button')).filter((button) => advancedIds.has(button.id));
+    if (advancedButtons.length === 0) return;
+
+    const lang = (document.documentElement.lang || '').toLowerCase();
+    const labels = lang.startsWith('zh')
+      ? { more: '更多工具', less: '收起工具' }
+      : { more: 'More tools', less: 'Less tools' };
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.id = 'toggle-advanced-tools';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    controls.appendChild(toggleBtn);
+
+    const separators = Array.from(controls.querySelectorAll('.button-separator'));
+    const storageKey = 'showAdvancedTools';
+    let expanded = localStorage.getItem(storageKey) === 'true';
+
+    const isVisibleControl = (node) => {
+      if (!node || node.hidden) return false;
+      if (node.tagName === 'BUTTON' || node.tagName === 'SELECT') return true;
+      return false;
+    };
+
+    const updateSeparators = () => {
+      separators.forEach((separator) => {
+        let prev = separator.previousElementSibling;
+        while (prev && prev.classList && prev.classList.contains('button-separator')) prev = prev.previousElementSibling;
+
+        let next = separator.nextElementSibling;
+        while (next && next.classList && next.classList.contains('button-separator')) next = next.nextElementSibling;
+
+        separator.hidden = !(isVisibleControl(prev) && isVisibleControl(next));
+      });
+    };
+
+    const applyState = () => {
+      advancedButtons.forEach((button) => {
+        button.hidden = !expanded;
+      });
+      toggleBtn.textContent = expanded ? labels.less : labels.more;
+      toggleBtn.setAttribute('aria-expanded', String(expanded));
+      localStorage.setItem(storageKey, String(expanded));
+      updateSeparators();
+    };
+
+    toggleBtn.addEventListener('click', () => {
+      expanded = !expanded;
+      applyState();
+    });
+
+    applyState();
+  }
   function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -4830,3 +5122,4 @@ const t = ptTranslations;
     }, 3000);
   }
 </script>
+

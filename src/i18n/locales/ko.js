@@ -241,7 +241,7 @@ export default {
   "privacySection6Title": "6. Changes to This Privacy Policy",
   "privacySection6Desc": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.",
   "privacySection7Title": "7. Contact Us",
-  "privacySection7Desc": "If you have any questions about this Privacy Policy, please contact us at privacy@example.com.",
+  "privacySection7Desc": "If you have any questions about this Privacy Policy, please contact us at support@tojsons.com.",
   "termsSection1Title": "1. Introduction",
   "termsSection1Desc": "Welcome to our JSON Formatter & Parser website. These Terms of Service govern your use of our website.",
   "termsSection2Title": "2. Acceptance of Terms",
@@ -262,5 +262,6 @@ export default {
   "termsSection8Title": "8. Governing Law",
   "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
   "termsSection9Title": "9. Contact Us",
-  "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at terms@example.com.",
+  "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at support@tojsons.com.",
 };
+

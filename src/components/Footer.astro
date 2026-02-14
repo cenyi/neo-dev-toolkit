@@ -1,6 +1,7 @@
 ---
 const { t = {} } = Astro.props;
 const currentPath = Astro.url.pathname;
+const currentYear = new Date().getFullYear();
 
 // 支持的所有语言
 const supportedLangs = ['zh', 'ja', 'ko', 'es', 'pt', 'fr', 'de', 'ru', 'ar'];
@@ -51,7 +52,7 @@ for (const lang of supportedLangs) {
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2025 JSON Viewer. All rights reserved.</p>
+    <p>&copy; {currentYear} JSON Viewer. All rights reserved.</p>
   </div>
 </footer>
 

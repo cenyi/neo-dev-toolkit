@@ -5,21 +5,29 @@ const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLa
 const currentPath = Astro.url.pathname;
 
 // 判断当前是否是中文页面，决定链接前缀
-const isZhPage = currentPath.startsWith('/zh');
-const langPrefix = isZhPage ? '/zh' : '';
+const supportedLangs = ['zh', 'ar', 'de', 'es', 'fr', 'ja', 'ko', 'pt', 'ru'];
+const pathSegments = currentPath.split('/').filter(Boolean);
+const currentLangPrefix = supportedLangs.includes(pathSegments[0]) ? `/${pathSegments[0]}` : '';
 
 // 辅助函数：生成带语言前缀的路径
 const getPath = (path: string) => {
   if (path === '/') {
-    return langPrefix || '/';
+    return currentLangPrefix || '/';
   }
-  return `${langPrefix}${path}`;
+  return `${currentLangPrefix}${path}`;
 };
 
 // 辅助函数：判断当前路径是否匹配（考虑语言前缀）
 const isActive = (path: string) => {
   const expectedPath = getPath(path);
-  return currentPath === expectedPath || (path === '/' && (currentPath === '/' || currentPath === '/zh'));
+  const normalizePath = (value: string) => {
+    if (value.length > 1 && value.endsWith('/')) {
+      return value.slice(0, -1);
+    }
+    return value;
+  };
+
+  return normalizePath(currentPath) === normalizePath(expectedPath);
 };
 ---
 
@@ -793,3 +801,4 @@ const isActive = (path: string) => {
     }
   });
 </script>
+

@@ -197,7 +197,7 @@ export default {
   "featureSchemaItem3": "嵌套对象和数组支持",
   "featureSchemaItem4": "必填字段识别",
   "footerDescription": "强大的在线JSON格式化、验证和转换工具。支持JSON、URL参数、XML、YAML格式互转，100%浏览器本地运行，数据安全无忧。",
-  "faqTitle": "我的JSON数据安全且隐私吗？",
+  "faqTitle": "常见问题",
   "faq1Question": "我的JSON数据安全且隐私吗？",
   "faq1Answer": "是的！所有JSON处理都在您的浏览器本地进行。无JSON数据上传到服务器。100%安全的JSON工具。",
   "faq2Question": "支持哪些JSON格式转换？",
@@ -241,7 +241,7 @@ export default {
   "privacySection6Title": "6. 隐私政策的变更",
   "privacySection6Desc": "我们可能会不时更新我们的隐私政策。我们将通过在此页面上发布新的隐私政策来通知您任何更改。",
   "privacySection7Title": "7. 联系我们",
-  "privacySection7Desc": "如果您对本隐私政策有任何疑问，请通过 privacy@example.com 联系我们。",
+  "privacySection7Desc": "如果您对本隐私政策有任何疑问，请通过 support@tojsons.com 联系我们。",
   "termsSection1Title": "1. 简介",
   "termsSection1Desc": "欢迎使用我们的 JSON 格式化工具 & 解析器网站。这些服务条款管辖您对我们网站的使用。",
   "termsSection2Title": "2. 接受条款",
@@ -262,5 +262,6 @@ export default {
   "termsSection8Title": "8. 管辖法律",
   "termsSection8Desc": "这些服务条款应受我们网站运营所在司法管辖区法律的管辖并根据其解释，不考虑其法律冲突条款。",
   "termsSection9Title": "9. 联系我们",
-  "termsSection9Desc": "如果您对这些服务条款有任何疑问，请通过 terms@example.com 联系我们。",
+  "termsSection9Desc": "如果您对这些服务条款有任何疑问，请通过 support@tojsons.com 联系我们。",
 };
+
