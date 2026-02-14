@@ -659,30 +659,29 @@ server
           <h3>{t.faq6Question}</h3>
           <p>{t.faq6Answer}</p>
         </div>
-
         <div class="faq-item">
-          <h3>ISON 和 TOON 是什么格式？</h3>
-          <p>ISON（Interchange Simple Object Notation）是面向 LLM 优化的紧凑结构化格式，重点是减少 token 消耗；TOON 是更偏配置文件场景的 key=value 结构化格式。两者都能与 JSON 互相转换。</p>
+          <h3>{t.faq7Question}</h3>
+          <p>{t.faq7Answer}</p>
         </div>
         <div class="faq-item">
-          <h3>如何使用 ISON / TOON 转换功能？</h3>
-          <p>将 JSON 粘贴到输入区后，点击 “JSON to ISON” 或 “JSON to TOON” 按钮即可生成结果，并可一键复制到剪贴板。</p>
+          <h3>{t.faq8Question}</h3>
+          <p>{t.faq8Answer}</p>
         </div>
         <div class="faq-item">
-          <h3>ISON 真的能节省 70% 的 token 吗？</h3>
-          <p>在键名重复较多、结构较深的数据中，ISON 通常能显著降低 token。实际节省比例取决于数据结构，常见范围在 40%~70%。</p>
+          <h3>{t.faq9Question}</h3>
+          <p>{t.faq9Answer}</p>
         </div>
         <div class="faq-item">
-          <h3>转换后的数据可以再转回 JSON 吗？</h3>
-          <p>可以。该工具设计目标之一就是保持结构可逆，便于在压缩表示和标准 JSON 之间切换。</p>
+          <h3>{t.faq10Question}</h3>
+          <p>{t.faq10Answer}</p>
         </div>
         <div class="faq-item">
-          <h3>什么时候更适合使用 ISON？</h3>
-          <p>当你要把大量结构化数据喂给 LLM（如 RAG、Agent 上下文、日志分析）时，优先使用 ISON，能有效降低上下文开销。</p>
+          <h3>{t.faq11Question}</h3>
+          <p>{t.faq11Answer}</p>
         </div>
         <div class="faq-item">
-          <h3>什么时候更适合使用 TOON？</h3>
-          <p>当你更关注可读性和配置维护效率时（如应用配置、部署参数、环境变量管理），TOON 往往比 JSON 更直观。</p>
+          <h3>{t.faq12Question}</h3>
+          <p>{t.faq12Answer}</p>
         </div>
       </div>
     </div>
@@ -737,6 +736,54 @@ server
         "acceptedAnswer": {
           "@type": "Answer",
           "text": t.faq6Answer
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t.faq7Question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t.faq7Answer
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t.faq8Question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t.faq8Answer
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t.faq9Question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t.faq9Answer
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t.faq10Question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t.faq10Answer
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t.faq11Question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t.faq11Answer
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t.faq12Question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t.faq12Answer
         }
       }
     ]
