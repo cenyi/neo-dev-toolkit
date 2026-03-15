@@ -275,5 +275,12 @@ export default {
   "termsSection8Desc": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which our website is operated.",
   "termsSection9Title": "9. Contact Us",
   "termsSection9Desc": "If you have any questions about these Terms of Service, please contact us at support@tojsons.com.",
+  // Navigation
+  "navTools": "Tools",
+  "navFormatter": "JSON Formatter",
+  "navValidator": "JSON Validator",
+  "navMinifier": "JSON Minifier",
+  "navCompare": "JSON Compare",
+  "navConverter": "JSON Converter"
 };
 

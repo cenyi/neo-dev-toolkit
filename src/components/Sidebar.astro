@@ -1,5 +1,19 @@
 ---
-const { t = { navHome: "Home", navAbout: "About", navSettings: "Settings", navLanguage: "Language", navPrivacy: "Privacy Policy", navTerms: "Terms of Service", navContact: "Contact Us" } } = Astro.props;
+const { t = { 
+  navHome: "Home", 
+  navAbout: "About", 
+  navSettings: "Settings", 
+  navLanguage: "Language", 
+  navPrivacy: "Privacy Policy", 
+  navTerms: "Terms of Service", 
+  navContact: "Contact Us",
+  navTools: "Tools",
+  navFormatter: "JSON Formatter",
+  navValidator: "JSON Validator", 
+  navMinifier: "JSON Minifier",
+  navCompare: "JSON Compare",
+  navConverter: "JSON Converter"
+} } = Astro.props;
 
 // 获取当前页面路径
 const currentPath = Astro.url.pathname;
@@ -68,6 +82,38 @@ const isActive = (path: string) => {
         <span class="nav-icon">🏠</span>
         <span class="nav-text">{t.navHome}</span>
       </a></li>
+      
+      <!-- Tools dropdown -->
+      <li class="tools-dropdown">
+        <a href="#" class="nav-link" onclick="event.preventDefault(); toggleToolsDropdown();" title={t.navTools} data-tooltip={t.navTools}>
+          <span class="nav-icon">🛠️</span>
+          <span class="nav-text">{t.navTools}</span>
+          <span class="dropdown-arrow">▼</span>
+        </a>
+        <div class="tools-menu" id="toolsMenu">
+          <a href={getPath('/formatter')} class="tool-option">
+            <span class="tool-icon">✨</span>
+            <span class="tool-name">{t.navFormatter}</span>
+          </a>
+          <a href={getPath('/validator')} class="tool-option">
+            <span class="tool-icon">✅</span>
+            <span class="tool-name">{t.navValidator}</span>
+          </a>
+          <a href={getPath('/minify')} class="tool-option">
+            <span class="tool-icon">📦</span>
+            <span class="tool-name">{t.navMinifier}</span>
+          </a>
+          <a href={getPath('/compare')} class="tool-option">
+            <span class="tool-icon">🔄</span>
+            <span class="tool-name">{t.navCompare}</span>
+          </a>
+          <a href={getPath('/converter')} class="tool-option">
+            <span class="tool-icon">🔃</span>
+            <span class="tool-name">{t.navConverter}</span>
+          </a>
+        </div>
+      </li>
+      
       <li><a href={getPath('/about')} class="nav-link" title={t.navAbout} data-tooltip={t.navAbout}>
         <span class="nav-icon">ℹ️</span>
         <span class="nav-text">{t.navAbout}</span>
@@ -381,6 +427,74 @@ const isActive = (path: string) => {
 
   .sidebar.collapsed .nav-link:hover {
     transform: scale(1.05);
+  }
+
+  /* Tools dropdown */
+  .tools-dropdown {
+    position: relative;
+  }
+
+  .tools-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow: hidden;
+    left: 200px;
+    top: 0;
+    display: none;
+  }
+
+  .sidebar.collapsed .tools-menu {
+    left: 56px;
+  }
+
+  .tools-dropdown.open .tools-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    display: block;
+  }
+
+  .tool-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #374151;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 3px solid transparent;
+  }
+
+  .tool-option:hover {
+    background: rgba(59, 130, 246, 0.08);
+    color: #2563eb;
+    border-left-color: #3b82f6;
+  }
+
+  .tool-option.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+    color: #2563eb;
+    font-weight: 600;
+    border-left-color: #2563eb;
+  }
+
+  .tool-icon {
+    margin-right: 10px;
+    font-size: 1rem;
+  }
+
+  .tool-name {
+    white-space: nowrap;
   }
 
   /* 语言下拉菜单样式 */
@@ -713,6 +827,23 @@ const isActive = (path: string) => {
     }
   }
 
+  function toggleToolsDropdown() {
+    const dropdown = document.querySelector('.tools-dropdown');
+    const wasOpen = dropdown.classList.contains('open');
+
+    // 关闭语言下拉菜单
+    document.querySelectorAll('.language-dropdown').forEach(d => d.classList.remove('open'));
+
+    // 切换工具下拉菜单
+    if (!wasOpen) {
+      dropdown.classList.add('open');
+    } else {
+      dropdown.classList.remove('open');
+    }
+
+    event.stopPropagation();
+  }
+
   function toggleLanguageDropdown() {
     const dropdown = document.querySelector('.language-dropdown');
     const menu = document.getElementById('languageMenu');
@@ -740,6 +871,9 @@ const isActive = (path: string) => {
 
   // 点击外部区域关闭下拉菜单
   document.addEventListener('click', (e) => {
+    if (!e.target.closest('.tools-dropdown')) {
+      document.querySelectorAll('.tools-dropdown').forEach(d => d.classList.remove('open'));
+    }
     if (!e.target.closest('.language-dropdown')) {
       document.querySelectorAll('.language-dropdown').forEach(d => d.classList.remove('open'));
     }

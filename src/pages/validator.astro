@@ -1,0 +1,366 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import enTranslations from '../i18n/locales/en.js';
+
+const lang = 'en-US';
+const t = enTranslations;
+---
+
+<BaseLayout
+  title="JSON Validator Online - Validate JSON Syntax and Schema"
+  lang={lang}
+  description="Free online JSON validator. Validate JSON syntax, check for errors, and verify JSON Schema. Supports Draft 4, 6, 7 validation with detailed error messages."
+  keywords="JSON validator, JSON syntax validator, JSON schema validator, JSON lint, validate JSON, JSON error checker, JSON validation tool"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="en" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container">
+
+    <div class="editor-workspace">
+      <div class="input-area">
+        <div class="editors-wrapper">
+          <div class="input-section">
+            <div class="section-header-row">
+              <h1 class="section-label">JSON Validator - Validate JSON Syntax & Schema</h1>
+            </div>
+            <div class="input-editor-wrapper">
+              <div id="monaco-editor-container" class="monaco-editor-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="json-validation-error" class="validation-error"></div>
+
+        <div class="schema-section">
+          <div class="schema-header">
+            <label>🔍 JSON Schema (Optional)</label>
+            <button id="validate-schema-btn">Validate with Schema</button>
+          </div>
+          <textarea id="schema-input" class="schema-input" placeholder='{"type": "object", "properties": {"name": {"type": "string"}}}'></textarea>
+          <div id="schema-validation-result" class="schema-result hidden"></div>
+        </div>
+
+        <div class="output-controls">
+          <button id="format-btn">Format JSON</button>
+          <button id="compress-copy">{t.compressCopy}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+    let Ajv;
+    async function loadAjv() {
+      if (!Ajv) {
+        const ajvModule = await import('https://esm.sh/ajv@8.12.0');
+        Ajv = ajvModule.default;
+      }
+      return Ajv;
+    }
+
+    let editor = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeMonacoEditor();
+      setupEventListeners();
+    });
+
+    function initializeMonacoEditor() {
+      const container = document.getElementById('monaco-editor-container');
+      if (!container) return;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (container.offsetWidth === 0 || container.offsetHeight === 0) {
+            setTimeout(() => createEditor(container), 50);
+          } else {
+            createEditor(container);
+          }
+        });
+      });
+    }
+
+    function createEditor(container) {
+      const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+      editor = monaco.editor.create(container, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: parseInt(savedFontSize),
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        lineHeight: 21,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        lineNumbers: 'on',
+        folding: true,
+        formatOnPaste: true,
+        formatOnType: true,
+        tabSize: 2,
+        renderLineHighlight: 'all',
+        scrollbar: { vertical: 'visible', horizontal: 'visible' },
+        padding: { top: 12, bottom: 12 }
+      });
+
+      monaco.editor.onDidChangeMarkers(() => {
+        const errorElement = document.getElementById('json-validation-error');
+        if (!errorElement || !editor) return;
+
+        const model = editor.getModel();
+        if (!model) return;
+
+        const modelMarkers = model.getAllMarkers();
+        if (modelMarkers.length === 0) {
+          errorElement.className = 'validation-error valid';
+          errorElement.innerHTML = '✓ Valid JSON';
+        } else {
+          const firstError = modelMarkers[0];
+          errorElement.className = 'validation-error show';
+          errorElement.textContent = `Line ${firstError.startLineNumber}: ${firstError.message}`;
+        }
+      });
+    }
+
+    function setupEventListeners() {
+      document.getElementById('format-btn').addEventListener('click', () => {
+        if (!editor) return;
+        try {
+          const parsed = JSON.parse(editor.getValue());
+          editor.setValue(JSON.stringify(parsed, null, 2));
+          showToast('JSON formatted successfully!');
+        } catch (e) {
+          showToast('Invalid JSON: ' + e.message);
+        }
+      });
+
+      document.getElementById('compress-copy').addEventListener('click', async () => {
+        try {
+          const parsed = JSON.parse(editor.getValue());
+          await navigator.clipboard.writeText(JSON.stringify(parsed));
+          showToast('Compressed JSON copied!');
+        } catch (e) {
+          showToast('Error: ' + e.message);
+        }
+      });
+
+      document.getElementById('validate-schema-btn').addEventListener('click', async () => {
+        const resultElement = document.getElementById('schema-validation-result');
+        const schemaInput = document.getElementById('schema-input');
+        
+        if (!resultElement || !schemaInput || !editor) return;
+
+        const jsonContent = editor.getValue().trim();
+        const schemaContent = schemaInput.value.trim();
+
+        resultElement.classList.remove('show', 'valid', 'invalid', 'error');
+
+        if (!jsonContent || !schemaContent) {
+          resultElement.textContent = 'Please enter both JSON and Schema';
+          resultElement.classList.add('show', 'error');
+          return;
+        }
+
+        try {
+          const jsonData = JSON.parse(jsonContent);
+          const schema = JSON.parse(schemaContent);
+          const AjvClass = await loadAjv();
+          const ajv = new AjvClass({ allErrors: true });
+          const validate = ajv.compile(schema);
+          const valid = validate(jsonData);
+
+          if (valid) {
+            resultElement.textContent = '✓ JSON is valid against the schema!';
+            resultElement.classList.add('show', 'valid');
+          } else {
+            let errorMsg = '✗ Schema validation failed:\n';
+            validate.errors.forEach((err, i) => {
+              errorMsg += `${i+1}. ${err.instancePath || '/'}: ${err.message}\n`;
+            });
+            resultElement.textContent = errorMsg;
+            resultElement.classList.add('show', 'invalid');
+          }
+        } catch (error) {
+          resultElement.textContent = 'Error: ' + error.message;
+          resultElement.classList.add('show', 'error');
+        }
+      });
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = message;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+
+  <style>
+    .json-formatter-container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 8px;
+      height: calc(100vh - var(--sidebar-height, 40px));
+      display: flex;
+      flex-direction: column;
+    }
+
+    .editor-workspace {
+      display: flex;
+      gap: 0;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .input-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .input-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    h1.section-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .input-editor-wrapper {
+      display: flex;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+      overflow: hidden;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .monaco-editor-container {
+      flex: 1;
+      width: 100%;
+      min-height: 300px;
+    }
+
+    .validation-error {
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      margin-bottom: 10px;
+    }
+
+    .validation-error.show {
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+      border-left: 4px solid #ef4444;
+    }
+
+    .validation-error.valid {
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #166534;
+      border-left: 4px solid #22c55e;
+    }
+
+    .schema-section {
+      padding: 10px 12px;
+      background: #f0fdf4;
+      border-radius: 6px;
+      border: 1px solid #bbf7d0;
+    }
+
+    .schema-header {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .schema-header label {
+      font-weight: 600;
+      color: #166534;
+      flex: 1;
+    }
+
+    .schema-header button {
+      padding: 6px 14px;
+      background: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .schema-input {
+      width: 100%;
+      min-height: 60px;
+      padding: 8px;
+      border: 1px solid #86efac;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .schema-result {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+
+    .schema-result.valid { background: #dcfce7; color: #166534; }
+    .schema-result.invalid { background: #fee2e2; color: #991b1b; }
+    .schema-result.error { background: #fef3c7; color: #92400e; }
+    .schema-result.hidden { display: none; }
+
+    .output-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .output-controls button {
+      padding: 6px 12px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Validator Online",
+    "description": "Free online JSON validator with syntax and schema validation",
+    "url": "https://tojsons.com/validator"
+  }
+  </script>
+</BaseLayout>
