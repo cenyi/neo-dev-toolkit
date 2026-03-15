@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import ptTranslations from '../../i18n/locales/pt.js';
+
+const lang = 'pt-BR';
+const t = ptTranslations;
+---
+
+<BaseLayout title="Formatador JSON Online - Formatar e Embelezar JSON" lang={lang} description="Formatador JSON online gratuito. Formate, valide e embeleze JSON com syntax highlighting." keywords="Formatador JSON, JSON embelezador">
+  <div slot="header"><LanguageSwitcher currentLocale="pt" /></div>
+  <Sidebar slot="sidebar" t={t} />
+  <div class="json-formatter-container" data-enter-extraction-fn={t.enterExtractionFn} data-enter-data={t.enterData} data-extraction-error={t.extractionError} data-parsing-error={t.parsingError} data-compress-success={t.compressSuccess}>
+    <div class="editor-workspace">
+      <div class="input-area">
+        <div class="input-section">
+          <h1 class="section-label">JSON Formatter</h1>
+          <div class="input-editor-wrapper"><div id="monaco-editor-container" class="monaco-editor-container"></div></div>
+        </div>
+        <div id="json-validation-error" class="validation-error hidden"></div>
+        <div class="output-controls">
+          <button id="collapse-all">{t.collapseAll}</button>
+          <button id="expand-all">{t.expandAll}</button>
+          <button id="compress-copy">{t.compressCopy}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    window.MonacoEnvironment = { getWorkerUrl: function (workerId, label) { return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`; } };
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+    let editor = null;
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('monaco-editor-container');
+      if (!container) return;
+      requestAnimationFrame(() => { requestAnimationFrame(() => { if (container.offsetWidth === 0 || container.offsetHeight === 0) { setTimeout(() => createEditor(container), 50); } else { createEditor(container); } }); });
+    });
+    function createEditor(container) {
+      const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+      editor = monaco.editor.create(container, { value: '', language: 'json', theme: 'vs', automaticLayout: true, fontSize: parseInt(savedFontSize), minimap: { enabled: false }, lineNumbers: 'on', tabSize: 2, padding: { top: 12, bottom: 12 } });
+      editor.onDidChangeModelContent(() => { clearTimeout(window.autoFormatTimeout); window.autoFormatTimeout = setTimeout(autoFormatJson, 500); });
+      monaco.editor.onDidChangeMarkers(() => { const errorElement = document.getElementById('json-validation-error'); if (!errorElement) return; const model = editor.getModel(); if (!model) return; const modelMarkers = model.getAllMarkers(); if (modelMarkers.length === 0) { errorElement.classList.remove('show'); errorElement.textContent = ''; } else { const firstError = modelMarkers[0]; errorElement.textContent = `Line ${firstError.startLineNumber} error: ${firstError.message}`; errorElement.classList.add('show'); } });
+    }
+    function autoFormatJson() { const inputText = editor ? editor.getValue().trim() : ''; if (!inputText) return; try { const parsed = JSON.parse(inputText); const formatted = JSON.stringify(parsed, null, 2); if (formatted !== inputText && editor) editor.setValue(formatted); } catch (e) { console.debug('Parsing error:', e); } }
+    document.getElementById('compress-copy')?.addEventListener('click', async () => { try { const parsed = JSON.parse(editor.getValue()); await navigator.clipboard.writeText(JSON.stringify(parsed)); showToast('JSON copiado!'); } catch (e) { showToast('Erro: ' + e.message); } });
+    function showToast(message) { const existing = document.querySelector('.toast-message'); if (existing) existing.remove(); const toast = document.createElement('div'); toast.className = 'toast-message'; toast.textContent = message; toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999'; document.body.appendChild(toast); setTimeout(() => toast.remove(), 3000); }
+  </script>
+  <style>
+    .json-formatter-container { max-width: 1800px; margin: 0 auto; padding: 8px; height: calc(100vh - var(--sidebar-height, 40px)); display: flex; flex-direction: column; }
+    .editor-workspace { flex: 1; min-height: 0; }
+    .input-area { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .input-section { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+    h1.section-label { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .input-editor-wrapper { display: flex; border: 1px solid #e1e4e8; border-radius: 8px; overflow: hidden; flex: 1; min-height: 0; }
+    .monaco-editor-container { flex: 1; width: 100%; min-height: 300px; }
+    .validation-error { padding: 12px 16px; background: #fee2e2; border: 1px solid #fca5a5; border-radius: 6px; margin-bottom: 10px; color: #991b1b; border-left: 4px solid #ef4444; display: none; }
+    .validation-error.show { display: block; }
+    .output-controls { display: flex; gap: 6px; }
+    .output-controls button { padding: 6px 12px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+  </style>
+  <div class="content-section"><h2>Formatador JSON Online</h2><p>Formate e embeleze JSON instantaneamente.</p></div>
+</BaseLayout>

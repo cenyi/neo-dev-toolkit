@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import ruTranslations from '../../i18n/locales/ru.js';
+
+const lang = 'ru-RU';
+const t = ruTranslations;
+---
+
+<BaseLayout title="Конвертер JSON онлайн - CSV, XML, YAML, TypeScript" lang={lang} description="Бесплатный онлайн конвертер JSON" keywords="Конвертер JSON, JSON в CSV">
+  <div slot="header"><LanguageSwitcher currentLocale="ru" /></div>
+  <Sidebar slot="sidebar" t={t} />
+  <div class="converter-container">
+    <div class="converter-workspace">
+      <div class="input-panel"><div class="panel-header"><h2>Input</h2><select id="input-format"><option value="json">JSON</option></select></div><div class="editor-wrapper"><div id="input-editor" class="editor-container"></div></div></div>
+      <div class="output-panel"><div class="panel-header"><h2>Output</h2><select id="output-format"><option value="json">JSON</option><option value="csv">CSV</option><option value="xml">XML</option><option value="yaml">YAML</option></select></div><div class="editor-wrapper"><div id="output-editor" class="editor-container"></div></div><div class="output-actions"><button id="convert-btn">Конвертировать</button></div></div>
+    </div>
+  </div>
+  <script type="module">import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';let inputEditor=null,outputEditor=null;document.addEventListener('DOMContentLoaded',()=>{const ic=document.getElementById('input-editor'),oc=document.getElementById('output-editor');if(ic&&oc){inputEditor=monaco.editor.create(ic,{value:'{"name":"John","age":30}',language:'json',theme:'vs',automaticLayout:true,fontSize:13});outputEditor=monaco.editor.create(oc,{value:'',language:'json',theme:'vs',automaticLayout:true,fontSize:13,readOnly:true});}});document.getElementById('convert-btn')?.addEventListener('click',()=>{if(inputEditor&&outputEditor){try{outputEditor.setValue(JSON.stringify(JSON.parse(inputEditor.getValue()),null,2));}catch(e){alert(e.message);}}});</script>
+  <style>.converter-container{max-width:1800px;margin:0 auto;padding:8px;height:calc(100vh - var(--sidebar-height,40px))}.converter-workspace{display:flex;gap:10px;flex:1}.input-panel,.output-panel{flex:1;display:flex;flex-direction:column;gap:8px}.panel-header{display:flex;justify-content:space-between;padding:8px;background:#f8f9fa;border-radius:6px 6px 0 0}.panel-header h2{font-size:0.9rem;font-weight:600;margin:0}.editor-wrapper{flex:1;border:1px solid #e1e4e8;border-radius:0 0 8px 8px}.editor-container{width:100%;min-height:300px}.output-actions{display:flex;gap:8px}.output-actions button{padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:5px;cursor:pointer}</style>
+</BaseLayout>

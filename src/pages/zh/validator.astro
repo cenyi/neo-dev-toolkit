@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import zhTranslations from '../../i18n/locales/zh.js';
+
+const lang = 'zh-CN';
+const t = zhTranslations;
+---
+
+<BaseLayout
+  title="JSON校验工具 - 在线验证JSON语法和Schema"
+  lang={lang}
+  description="免费的在线JSON校验工具。支持JSON语法校验和JSON Schema验证，提供详细的错误报告。实时验证，即时反馈。"
+  keywords="JSON校验, JSON验证, JSON语法校验, JSON Schema验证, json validator"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="zh" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container">
+    <div class="editor-workspace">
+      <div class="input-area">
+        <div class="input-section">
+          <h1 class="section-label">JSON校验工具 - 验证JSON语法和Schema</h1>
+          <div class="input-editor-wrapper">
+            <div id="monaco-editor-container" class="monaco-editor-container"></div>
+          </div>
+        </div>
+
+        <div id="validation-error" class="validation-error"></div>
+
+        <div class="schema-section">
+          <div class="schema-header">
+            <label>JSON Schema（可选）</label>
+            <button id="validate-schema-btn">使用Schema校验</button>
+          </div>
+          <textarea id="schema-input" class="schema-input" placeholder='{"type": "object", "properties": {"name": {"type": "string"}}}'></textarea>
+          <div id="schema-validation-result" class="schema-result hidden"></div>
+        </div>
+
+        <div class="output-controls">
+          <button id="format-btn">格式化JSON</button>
+          <button id="compress-copy">压缩JSON</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2>JSON校验工具 - 验证JSON语法和Schema</h2>
+    <p>欢迎使用我们的JSON校验工具，这是开发者确保JSON数据符合语法标准并符合JSON Schema要求的必备工具。无论您是在验证API响应、配置文件还是数据导入，我们的免费在线JSON校验工具都能提供即时、准确的校验，并提供详细的错误报告。</p>
+
+    <p>JSON校验是任何开发工作流程中的关键步骤。无效的JSON可能导致应用程序崩溃、API失败和数据损坏。我们的校验工具帮助您在部署前发现这些问题，节省调试时间并防止生产事故。</p>
+
+    <h3>为什么使用JSON校验工具？</h3>
+    <ul>
+      <li><strong>即时语法校验：</strong>输入时即可查看校验结果</li>
+      <li><strong>JSON Schema支持：</strong>支持JSON Schema Draft 7校验</li>
+      <li><strong>详细错误信息：</strong>每个错误都有精确的行号和描述</li>
+      <li><strong>自动修复建议：</strong>清晰指导如何修复校验错误</li>
+      <li><strong>大文件支持：</strong>支持高达10MB的JSON文件</li>
+      <li><strong>100%隐私保护：</strong>数据不会发送到任何服务器</li>
+    </ul>
+
+    <h3>如何使用JSON校验</h3>
+    <ol>
+      <li><strong>粘贴JSON：</strong>将JSON数据复制到编辑器中</li>
+      <li><strong>查看结果：</strong>校验自动进行 - 有效显示绿色勾选，无效显示红色错误</li>
+      <li><strong>修复错误：</strong>点击错误信息查看准确位置和描述</li>
+      <li><strong>可选Schema校验：</strong>粘贴JSON Schema进行高级校验</li>
+    </ol>
+
+    <h3>JSON Schema校验</h3>
+    <p>对于高级校验需求，我们的工具支持JSON Schema校验。JSON Schema是一个强大的词汇表，允许您注释和校验JSON文档。这特别适用于：</p>
+    <ul>
+      <li>定义JSON数据的结构</li>
+      <li>指定必填字段及其数据类型</li>
+      <li>设置值约束（最小值、最大值、正则表达式）</li>
+      <li>校验嵌套对象和数组</li>
+      <li>创建可重用的schema定义</li>
+    </ul>
+
+    <h3>常见JSON校验错误</h3>
+    <p>了解常见JSON错误可帮助您快速修复：</p>
+    <ul>
+      <li><strong>意外标记：</strong>通常由缺少或多余的逗号、括号或引号引起</li>
+      <li><strong>无效字符串：</strong>未转义的特殊字符或缺少结束引号</li>
+      <li><strong>无效数字：</strong>格式错误的数字，如前导零或缺少数字</li>
+      <li><strong>重复键：</strong>某些JSON解析器拒绝对象中的重复键</li>
+      <li><strong>尾随逗号：</strong>数组或对象最后一个元素后面的逗号</li>
+    </ul>
+
+    <h3>相关工具</h3>
+    <ul>
+      <li><a href="/zh/formatter">JSON格式化工具</a> - 格式化和美化JSON</li>
+      <li><a href="/zh/minify">JSON压缩工具</a> - 压缩JSON减小文件大小</li>
+      <li><a href="/zh/compare">JSON对比工具</a> - 对比两个JSON文件</li>
+      <li><a href="/zh/converter">JSON转换工具</a> - 转换为CSV、XML、YAML等</li>
+    </ul>
+
+    <h3>SEO关键词</h3>
+    <p>JSON校验, JSON验证, JSON语法校验, JSON Schema验证, json lint, validate json, json错误检查, json校验工具, 在线json校验, json validator, json schema validation tool.</p>
+
+    <h3>立即开始</h3>
+    <p>立即使用我们的免费JSON校验工具。无论您需要基本语法检查还是高级JSON Schema校验，我们都能满足您。</p>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+    let Ajv;
+    async function loadAjv() {
+      if (!Ajv) {
+        const ajvModule = await import('https://esm.sh/ajv@8.12.0');
+        Ajv = ajvModule.default;
+      }
+      return Ajv;
+    }
+
+    let editor = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeMonacoEditor();
+      setupEventListeners();
+    });
+
+    function initializeMonacoEditor() {
+      const container = document.getElementById('monaco-editor-container');
+      if (!container) return;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (container.offsetWidth === 0 || container.offsetHeight === 0) {
+            setTimeout(() => createEditor(container), 50);
+          } else {
+            createEditor(container);
+          }
+        });
+      });
+    }
+
+    function createEditor(container) {
+      const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+      editor = monaco.editor.create(container, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: parseInt(savedFontSize),
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        minimap: { enabled: false },
+        lineNumbers: 'on',
+        formatOnPaste: true,
+        tabSize: 2,
+        padding: { top: 12, bottom: 12 }
+      });
+
+      monaco.editor.onDidChangeMarkers(() => {
+        const errorElement = document.getElementById('validation-error');
+        if (!errorElement || !editor) return;
+
+        const model = editor.getModel();
+        if (!model) return;
+
+        const modelMarkers = model.getAllMarkers();
+        if (modelMarkers.length === 0) {
+          errorElement.className = 'validation-error valid';
+          errorElement.innerHTML = '✓ 有效的JSON';
+        } else {
+          const firstError = modelMarkers[0];
+          errorElement.className = 'validation-error show';
+          errorElement.textContent = `第 ${firstError.startLineNumber} 行: ${firstError.message}`;
+        }
+      });
+    }
+
+    function setupEventListeners() {
+      document.getElementById('format-btn').addEventListener('click', () => {
+        if (!editor) return;
+        try {
+          const parsed = JSON.parse(editor.getValue());
+          editor.setValue(JSON.stringify(parsed, null, 2));
+          showToast('JSON格式化成功！');
+        } catch (e) {
+          showToast('无效JSON: ' + e.message);
+        }
+      });
+
+      document.getElementById('compress-copy').addEventListener('click', async () => {
+        try {
+          const parsed = JSON.parse(editor.getValue());
+          await navigator.clipboard.writeText(JSON.stringify(parsed));
+          showToast('压缩的JSON已复制！');
+        } catch (e) {
+          showToast('错误: ' + e.message);
+        }
+      });
+
+      document.getElementById('validate-schema-btn').addEventListener('click', async () => {
+        const resultElement = document.getElementById('schema-validation-result');
+        const schemaInput = document.getElementById('schema-input');
+        
+        if (!resultElement || !schemaInput || !editor) return;
+
+        const jsonContent = editor.getValue().trim();
+        const schemaContent = schemaInput.value.trim();
+
+        resultElement.classList.remove('show', 'valid', 'invalid', 'error');
+
+        if (!jsonContent || !schemaContent) {
+          resultElement.textContent = '请输入JSON和Schema';
+          resultElement.classList.add('show', 'error');
+          return;
+        }
+
+        try {
+          const jsonData = JSON.parse(jsonContent);
+          const schema = JSON.parse(schemaContent);
+          const AjvClass = await loadAjv();
+          const ajv = new AjvClass({ allErrors: true });
+          const validate = ajv.compile(schema);
+          const valid = validate(jsonData);
+
+          if (valid) {
+            resultElement.textContent = '✓ JSON符合Schema校验！';
+            resultElement.classList.add('show', 'valid');
+          } else {
+            let errorMsg = '✗ Schema校验失败:\n';
+            validate.errors.forEach((err, i) => {
+              errorMsg += `${i+1}. ${err.instancePath || '/'}: ${err.message}\n`;
+            });
+            resultElement.textContent = errorMsg;
+            resultElement.classList.add('show', 'invalid');
+          }
+        } catch (error) {
+          resultElement.textContent = '错误: ' + error.message;
+          resultElement.classList.add('show', 'error');
+        }
+      });
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = message;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+
+  <style>
+    .json-formatter-container { max-width: 1800px; margin: 0 auto; padding: 8px; height: calc(100vh - var(--sidebar-height, 40px)); display: flex; flex-direction: column; }
+    .editor-workspace { flex: 1; min-height: 0; display: flex; }
+    .input-area { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .input-section { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+    h1.section-label { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .input-editor-wrapper { display: flex; border: 1px solid #e1e4e8; border-radius: 8px; overflow: hidden; flex: 1; min-height: 0; }
+    .monaco-editor-container { flex: 1; width: 100%; min-height: 300px; }
+
+    .validation-error { padding: 12px 16px; border-radius: 6px; font-size: 0.875rem; margin-bottom: 10px; }
+    .validation-error.show { background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; }
+    .validation-error.valid { background: #dcfce7; border: 1px solid #86efac; color: #166534; }
+
+    .schema-section { padding: 10px 12px; background: #f0fdf4; border-radius: 6px; border: 1px solid #bbf7d0; }
+    .schema-header { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+    .schema-header label { font-weight: 600; color: #166534; flex: 1; }
+    .schema-header button { padding: 6px 14px; background: #22c55e; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .schema-input { width: 100%; min-height: 60px; padding: 8px; border: 1px solid #86efac; border-radius: 5px; font-family: monospace; font-size: 12px; }
+    .schema-result { margin-top: 8px; padding: 10px; border-radius: 5px; font-size: 13px; white-space: pre-wrap; }
+    .schema-result.valid { background: #dcfce7; color: #166534; }
+    .schema-result.invalid { background: #fee2e2; color: #991b1b; }
+    .schema-result.error { background: #fef3c7; color: #92400e; }
+    .schema-result.hidden { display: none; }
+
+    .output-controls { display: flex; gap: 6px; }
+    .output-controls button { padding: 6px 12px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 1.75rem; color: #0f172a; margin: 30px 0 15px; }
+    .content-section h3 { font-size: 1.25rem; color: #1f2937; margin: 25px 0 12px; }
+    .content-section p { color: #4b5563; line-height: 1.7; margin-bottom: 15px; }
+    .content-section ul, .content-section ol { color: #4b5563; line-height: 1.8; margin: 10px 0 15px 25px; }
+    .content-section li { margin-bottom: 6px; }
+    .content-section a { color: #2563eb; text-decoration: none; }
+  </style>
+</BaseLayout>

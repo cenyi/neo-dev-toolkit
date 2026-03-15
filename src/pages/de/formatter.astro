@@ -1,0 +1,737 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import deTranslations from '../../i18n/locales/de.js';
+
+const lang = 'de-DE';
+const t = deTranslations;
+---
+
+<BaseLayout
+  title="JSON Formatter Online - JSON formatieren & verschönern"
+  lang={lang}
+  description="Kostenloser Online-JSON-Formatter. JSON mit Syntaxhervorhebung formatieren, validieren und verschönern. Unterstützt große Dateien bis zu 10MB."
+  keywords="JSON Formatter, JSON Verschönerer, JSON formatieren online, JSON hübsch machen, JSON format, JSON lint, JSON Validator"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="de" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container" data-enter-extraction-fn={t.enterExtractionFn} data-enter-data={t.enterData} data-extraction-error={t.extractionError} data-parsing-error={t.parsingError} data-compress-success={t.compressSuccess} data-escape-success={t.escapeSuccess} data-xml-success={t.xmlSuccess} data-ts-success={t.tsSuccess} data-csv-success={t.csvSuccess} data-excel-success={t.excelSuccess} data-ison-success={t.isonSuccess} data-toon-success={t.toonSuccess} data-schema-valid={t.schemaValid} data-schema-invalid={t.schemaInvalid} data-schema-error={t.schemaError} data-schema-help={t.schemaHelp}>
+
+    <div class="editor-workspace">
+      <div class="input-area">
+        <div class="editors-wrapper" id="editors-wrapper">
+          <div class="input-section">
+            <div class="section-header-row">
+              <h1 class="section-label">JSON Formatter - Formatieren, Validieren & Verschönern</h1>
+              <div class="editor-hint-inline" id="editor-hint">
+                <span class="hint-icon">✨</span>
+                <span class="hint-text">{t.smartInput}</span>
+              </div>
+            </div>
+            <div class="input-editor-wrapper">
+              <div id="monaco-editor-container" class="monaco-editor-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="json-validation-error" class="validation-error hidden"></div>
+
+        <div class="output-controls">
+          <button id="collapse-all">{t.collapseAll}</button>
+          <button id="expand-all">{t.expandAll}</button>
+          <button id="remove-comments">{t.removeComments}</button>
+          <button id="compress-copy">{t.compressCopy}</button>
+        </div>
+      </div>
+
+      <div class="output-area" id="output-area">
+        <div class="output-header">
+          <span class="output-title" id="output-title">Output Result</span>
+          <button class="close-output-btn" id="close-output" title="Close">×</button>
+        </div>
+        <div class="output-content" id="output-content">
+          <div class="output-editor-wrapper">
+            <div id="output-monaco-container" class="monaco-editor-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+
+    let editor = null;
+    let outputEditor = null;
+    let translations = {};
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.json-formatter-container');
+      translations = {
+        enterExtractionFn: container.dataset.enterExtractionFn,
+        enterData: container.dataset.enterData,
+        extractionError: container.dataset.extractionError,
+        parsingError: container.dataset.parsingError,
+        compressSuccess: container.dataset.compressSuccess,
+        escapeSuccess: container.dataset.escapeSuccess,
+        xmlSuccess: container.dataset.xmlSuccess,
+        tsSuccess: container.dataset.tsSuccess,
+        csvSuccess: container.dataset.csvSuccess,
+        excelSuccess: container.dataset.excelSuccess,
+        isonSuccess: container.dataset.isonSuccess,
+        toonSuccess: container.dataset.toonSuccess,
+        schemaValid: container.dataset.schemaValid,
+        schemaInvalid: container.dataset.schemaInvalid,
+        schemaError: container.dataset.schemaError,
+        schemaHelp: container.dataset.schemaHelp
+      };
+
+      initializeMonacoEditor();
+      initializeJsonFormatter();
+    });
+
+    function initializeMonacoEditor() {
+      const container = document.getElementById('monaco-editor-container');
+      if (!container) return;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (container.offsetWidth === 0 || container.offsetHeight === 0) {
+            setTimeout(() => createEditor(container), 50);
+          } else {
+            createEditor(container);
+          }
+        });
+      });
+    }
+
+    function createEditor(container) {
+      const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+
+      editor = monaco.editor.create(container, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: parseInt(savedFontSize),
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        lineHeight: 21,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        lineNumbers: 'on',
+        lineNumbersMinChars: 3,
+        folding: true,
+        foldingStrategy: 'indentation',
+        foldingHighlight: true,
+        showFoldingControls: 'always',
+        matchBrackets: 'always',
+        autoClosingBrackets: 'always',
+        autoClosingQuotes: 'always',
+        formatOnPaste: true,
+        formatOnType: true,
+        tabSize: 2,
+        renderLineHighlight: 'all',
+        scrollbar: { vertical: 'visible', horizontal: 'visible' },
+        padding: { top: 12, bottom: 12 }
+      });
+
+      const outputContainer = document.getElementById('output-monaco-container');
+      if (outputContainer) {
+        outputEditor = monaco.editor.create(outputContainer, {
+          value: '',
+          language: 'json',
+          theme: 'vs',
+          automaticLayout: true,
+          fontSize: parseInt(savedFontSize),
+          fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+          lineHeight: 21,
+          minimap: { enabled: false },
+          scrollBeyondLastLine: false,
+          wordWrap: 'off',
+          lineNumbers: 'on',
+          lineNumbersMinChars: 3,
+          folding: true,
+          tabSize: 2,
+          renderLineHighlight: 'all',
+          scrollbar: { vertical: 'visible', horizontal: 'visible' },
+          padding: { top: 12, bottom: 12 },
+          readOnly: true
+        });
+      }
+
+      editor.onDidChangeModelContent(() => {
+        clearTimeout(window.autoFormatTimeout);
+        window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
+
+        const hint = document.getElementById('editor-hint');
+        if (hint) {
+          const hasContent = getEditorContent().trim().length > 0;
+          hint.classList.toggle('hint-hidden', hasContent);
+        }
+      });
+
+      monaco.editor.onDidChangeMarkers(() => {
+        const errorElement = document.getElementById('json-validation-error');
+        if (!errorElement) return;
+
+        const model = editor.getModel();
+        if (!model) return;
+
+        const modelMarkers = model.getAllMarkers();
+        if (modelMarkers.length === 0) {
+          errorElement.classList.remove('show');
+          errorElement.textContent = '';
+        } else {
+          const firstError = modelMarkers[0];
+          const errorInfo = firstError.message;
+          errorElement.textContent = `Line ${firstError.startLineNumber} error: ${errorInfo}`;
+          errorElement.classList.add('show');
+        }
+      });
+    }
+
+    function getEditorContent() {
+      return editor ? editor.getValue() : '';
+    }
+
+    function setEditorContent(content) {
+      if (editor) editor.setValue(content);
+    }
+
+    function autoFormatJson() {
+      const inputText = getEditorContent().trim();
+      if (!inputText) return;
+
+      try {
+        const parsed = JSON.parse(inputText);
+        const formatted = JSON.stringify(parsed, null, 2);
+
+        if (formatted !== inputText) {
+          const position = editor ? editor.getPosition() : null;
+          const scrollTop = editor ? editor.getScrollTop() : null;
+          setEditorContent(formatted);
+          if (position && editor) editor.setPosition(position);
+          if (scrollTop !== null && editor) editor.setScrollTop(scrollTop);
+        }
+
+        saveToHistory(formatted);
+      } catch (e) {
+        console.debug('Parsing error:', e);
+      }
+    }
+
+    function saveToHistory(json) {
+      if (!json) return;
+      let history = JSON.parse(localStorage.getItem('jsonHistory') || '[]');
+      history = history.filter(item => item !== json);
+      history.unshift(json);
+      history = history.slice(0, 50);
+      localStorage.setItem('jsonHistory', JSON.stringify(history));
+    }
+
+    function initializeJsonFormatter() {
+      document.getElementById('collapse-all').addEventListener('click', () => {
+        if (editor) editor.getAction('editor.foldAll').run();
+      });
+      document.getElementById('expand-all').addEventListener('click', () => {
+        if (editor) editor.getAction('editor.unfoldAll').run();
+      });
+      document.getElementById('remove-comments').addEventListener('click', () => {
+        try {
+          const content = getEditorContent();
+          const noComments = content.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
+          const parsed = JSON.parse(noComments);
+          setEditorContent(JSON.stringify(parsed, null, 2));
+          showToast('Comments removed and JSON formatted!');
+        } catch (e) {
+          showToast('Error: ' + e.message);
+        }
+      });
+      document.getElementById('compress-copy').addEventListener('click', async () => {
+        try {
+          const parsed = JSON.parse(getEditorContent());
+          const compressed = JSON.stringify(parsed);
+          await navigator.clipboard.writeText(compressed);
+          showToast(translations.compressSuccess || 'Compressed JSON copied to clipboard!');
+        } catch (e) {
+          showToast(translations.parsingError + ': ' + e.message);
+        }
+      });
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = message;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999;animation:fadeIn 0.3s';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function expandOutput(title) {
+      const outputArea = document.getElementById('output-area');
+      const outputTitle = document.getElementById('output-title');
+      if (outputArea && outputTitle) {
+        outputTitle.textContent = title;
+        outputArea.classList.add('expanded');
+      }
+    }
+
+    function closeOutput() {
+      const outputArea = document.getElementById('output-area');
+      if (outputArea) outputArea.classList.remove('expanded');
+    }
+
+    document.getElementById('close-output').addEventListener('click', closeOutput);
+  </script>
+
+  <style>
+    :root {
+      --diff-red-opacity: 239, 68, 68;
+      --diff-green-opacity: 34, 197, 94;
+      --diff-yellow-opacity: 234, 179, 8;
+    }
+
+    .json-formatter-container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 8px;
+      height: calc(100vh - var(--sidebar-height, 40px));
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .editor-workspace {
+      display: flex;
+      gap: 0;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .input-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .input-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .section-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    h1.section-label {
+      margin: 0;
+      padding: 4px 0 6px 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .editor-hint-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 6px;
+      padding: 4px 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+    }
+
+    .editor-hint-inline.hint-hidden {
+      opacity: 0;
+      transform: translateX(4px);
+      pointer-events: none;
+    }
+
+    .editor-hint-inline .hint-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .editor-hint-inline .hint-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #3b82f6;
+      white-space: nowrap;
+    }
+
+    .input-editor-wrapper {
+      display: flex;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+      overflow: hidden;
+      flex: 1;
+      min-height: 0;
+      position: relative;
+    }
+
+    .monaco-editor-container {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      position: relative;
+    }
+
+    .validation-error {
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border: 1px solid #fecaca;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+      color: #991b1b;
+      border-left: 4px solid #ef4444;
+      display: none;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .validation-error.show {
+      display: block;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .output-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .output-controls button {
+      padding: 6px 10px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .output-controls button:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .output-area {
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left: 1px solid transparent;
+    }
+
+    .output-area.expanded {
+      width: 50%;
+      opacity: 1;
+      border-left: 1px solid #e5e7eb;
+      padding-left: 0;
+    }
+
+    .output-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+      border-radius: 6px 6px 0 0;
+      border: 1px solid #e9ecef;
+      border-bottom: none;
+    }
+
+    .output-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .close-output-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #9ca3af;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    .close-output-btn:hover {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+    }
+
+    .output-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .output-editor-wrapper {
+      display: flex;
+      border: 1px solid #e1e4e8;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+      flex: 1;
+      background: linear-gradient(to bottom, #fafbfc 0%, #f5f6f8 100%);
+    }
+
+    @media (max-width: 768px) {
+      .section-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+  </style>
+
+  <style>
+    .content-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .content-section h2 {
+      font-size: 1.75rem;
+      color: #0f172a;
+      margin: 30px 0 15px;
+    }
+    .content-section h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin: 25px 0 12px;
+    }
+    .content-section h4 {
+      font-size: 1rem;
+      color: #374151;
+      margin: 20px 0 8px;
+    }
+    .content-section p {
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+    .content-section ul, .content-section ol {
+      color: #4b5563;
+      line-height: 1.8;
+      margin: 10px 0 15px 25px;
+    }
+    .content-section li {
+      margin-bottom: 6px;
+    }
+    .content-section pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      margin: 10px 0 20px;
+    }
+    .content-section code {
+      font-family: 'Monaco', 'Menlo', monospace;
+    }
+    .content-section strong {
+      color: #1f2937;
+    }
+  </style>
+
+  <!-- Content Section -->
+  <div class="content-section">
+    <h2>JSON Formatter Online - Free Format & Beautify JSON Tool</h2>
+    <p>Welcome to our comprehensive JSON Formatter tool, the ultimate solution for developers and data analysts who need to format, validate, and beautify JSON data. This free online JSON formatter provides instant formatting with syntax highlighting, error detection, and auto-correction capabilities. Whether you're working with API responses, configuration files, or data interchange formats, our tool makes JSON manipulation effortless and efficient.</p>
+
+    <p>JSON (JavaScript Object Notation) has become the de facto standard for data exchange in modern web applications, REST APIs, and microservices architecture. However, working with minified or poorly formatted JSON can be frustrating and time-consuming. Our JSON Formatter solves this problem by providing a powerful, browser-based solution that transforms complex JSON into readable, well-structured code instantly.</p>
+
+    <h3>Why Use Our JSON Formatter?</h3>
+    <p>There are numerous reasons why developers prefer our JSON Formatter over other solutions. First and foremost, it's completely free and requires no registration or installation. The tool runs entirely in your browser, ensuring that your sensitive data never leaves your device. This makes it ideal for working with confidential API keys, configuration data, and other sensitive information.</p>
+    
+    <p>Our formatter supports files up to 10MB, making it suitable for handling large API responses and complex data structures. The auto-formatting feature automatically detects and corrects common JSON formatting issues as you type, saving you valuable development time. The syntax highlighting uses a color scheme similar to popular code editors, making it easy to distinguish between strings, numbers, booleans, and object keys.</p>
+
+    <h3>Key Features of JSON Formatter</h3>
+    <ul>
+      <li><strong>Instant Auto-Formatting:</strong> JSON is formatted automatically as you type, with no need to click any buttons</li>
+      <li><strong>Syntax Highlighting:</strong> Color-coded JSON elements for improved readability</li>
+      <li><strong>Error Detection:</strong> Real-time detection of syntax errors with precise line numbers</li>
+      <li><strong>Pretty Print:</strong> Convert minified JSON to human-readable format with proper indentation</li>
+      <li><strong>JSON Minify:</strong> Compress formatted JSON to save space</li>
+      <li><strong>Drag & Drop Support:</strong> Easily load JSON files by dragging them into the editor</li>
+      <li><strong>Dark/Light Theme:</strong> Toggle between light and dark themes for comfortable viewing</li>
+      <li><strong>Keyboard Shortcuts:</strong> Speed up your workflow with keyboard shortcuts</li>
+      <li><strong>URL Sharing:</strong> Share formatted JSON via unique URL</li>
+      <li><strong>Multi-language Support:</strong> Available in 10 languages including English, Chinese, Japanese, and more</li>
+    </ul>
+
+    <h3>How to Format JSON Online</h3>
+    <p>Using our JSON Formatter is straightforward and intuitive. Follow these simple steps to format your JSON data:</p>
+    <ol>
+      <li><strong>Paste Your JSON:</strong> Copy your JSON data and paste it into the editor on the left side of the screen</li>
+      <li><strong>Auto-Formatting:</strong> The tool automatically formats your JSON with proper indentation as you paste</li>
+      <li><strong>Review Errors:</strong> If there are any syntax errors, they'll be highlighted with red indicators and line numbers</li>
+      <li><strong>Fix Errors:</strong> Click on the error to see the exact location and description, then correct the issue</li>
+      <li><strong>Copy or Download:</strong> Use the toolbar buttons to copy the formatted JSON or perform additional operations</li>
+    </ol>
+
+    <h3>Understanding JSON Syntax</h3>
+    <p>JSON is a lightweight data interchange format that's easy for humans to read and write, and easy for machines to parse and generate. Understanding JSON syntax is essential for effective use of our formatter tool. JSON is built on two universal data structures:</p>
+    
+    <ul>
+      <li><strong>Objects:</strong> Collections of key-value pairs enclosed in curly braces {}</li>
+      <li><strong>Arrays:</strong> Ordered lists of values enclosed in square brackets []</li>
+    </ul>
+
+    <p>JSON supports the following data types: strings (in double quotes), numbers (integers and floating-point), booleans (true or false), null, objects, and arrays. All JSON keys must be strings in double quotes, and trailing commas are not allowed.</p>
+
+    <h3>Common JSON Formatting Issues and Solutions</h3>
+    <p>Our JSON Formatter automatically detects and helps fix common JSON formatting issues:</p>
+    
+    <ul>
+      <li><strong>Missing Quotes:</strong> Keys must be in double quotes - we'll highlight unquoted keys</li>
+      <li><strong>Trailing Commas:</strong> We'll detect and flag trailing commas in arrays or objects</li>
+      <li><strong>Unescaped Characters:</strong> Special characters in strings need proper escaping</li>
+      <li><strong>Invalid Numbers:</strong> We'll flag numbers that are improperly formatted</li>
+      <li><strong>Missing Brackets:</strong> Mismatched brackets and braces are clearly indicated</li>
+    </ul>
+
+    <h3>JSON vs Other Data Formats</h3>
+    <p>Compared to other data formats like XML, YAML, or CSV, JSON offers several advantages for modern web development:</p>
+    
+    <ul>
+      <li><strong>Compact Size:</strong> JSON is more compact than XML, reducing bandwidth usage</li>
+      <li><strong>Native JavaScript Support:</strong> JSON is a subset of JavaScript, making it seamless to use in web applications</li>
+      <li><strong>Wide Adoption:</strong> JSON is supported by virtually every programming language and API</li>
+      <li><strong>Easy Parsing:</strong> JSON can be parsed natively in JavaScript using JSON.parse()</li>
+      <li><strong>Hierarchical Structure:</strong> JSON handles nested data structures elegantly</li>
+    </ul>
+
+    <h3>Keyboard Shortcuts for Faster Workflow</h3>
+    <p>Boost your productivity with these keyboard shortcuts:</p>
+    <ul>
+      <li><strong>Ctrl + S:</strong> Copy formatted JSON to clipboard</li>
+      <li><strong>Ctrl + Shift + F:</strong> Format/beautify JSON</li>
+      <li><strong>Ctrl + Shift + M:</strong> Minify JSON</li>
+      <li><strong>Ctrl + D:</strong> Toggle compare mode</li>
+      <li><strong>Ctrl + E:</strong> Validate with JSON Schema</li>
+      <li><strong>F1:</strong> Show all keyboard shortcuts</li>
+      <li><strong>Escape:</strong> Close output panel</li>
+    </ul>
+
+    <h3>SEO Keywords for JSON Formatter</h3>
+    <p>This tool is optimized for the following search terms: json formatter, json beautifier, json formatter online, json pretty print, json format, format json, json lint, json validator, json editor, json viewer, json parser, json online, free json formatter, json formatter tool, json formatter with syntax highlighting, online json formatter, json formatter and validator, format json online, json beautify, json pretty print online, json formatter free, json formatter download, json code formatter, json formatter chrome extension, json formatter firefox add-on, json formatter Notepad++, json formatter VSCode extension.</p>
+
+    <h3>Browser Compatibility</h3>
+    <p>Our JSON Formatter works seamlessly across all modern web browsers including Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, and Opera. The tool uses the latest web technologies including Monaco Editor (the same editor used in VS Code) to provide a premium code editing experience. No plugins or extensions are required - simply open the website and start formatting JSON immediately.</p>
+
+    <h3>Security and Privacy</h3>
+    <p>Your privacy and data security are our top priorities. All JSON processing happens locally in your browser using JavaScript. No data is ever sent to our servers, making our tool ideal for handling sensitive information such as API keys, database credentials, and personal data. This client-side processing approach ensures that your data remains secure and private at all times.</p>
+
+    <h3>Additional Features</h3>
+    <p>Beyond basic formatting, our tool offers a comprehensive suite of JSON utilities:</p>
+    <ul>
+      <li><strong>JSON Validator:</strong> Validate JSON syntax and structure</li>
+      <li><strong>JSON Schema Validation:</strong> Validate JSON against JSON Schema Draft 7</li>
+      <li><strong>JSON Compare:</strong> Compare two JSON files and highlight differences</li>
+      <li><strong>JSON to CSV:</strong> Convert JSON to CSV format</li>
+      <li><strong>JSON to XML:</strong> Transform JSON to XML</li>
+      <li><strong>JSON to YAML:</strong> Convert JSON to YAML</li>
+      <li><strong>JSON to TypeScript:</strong> Generate TypeScript interfaces from JSON</li>
+      <li><strong>JSON to ISON:</strong> Compress JSON using ISON format (saves up to 70% tokens)</li>
+      <li><strong>JWT Decoder:</strong> Decode and inspect JWT tokens</li>
+    </ul>
+
+    <h3>Get Started Now</h3>
+    <p>Start using our free JSON Formatter today and experience the easiest way to format, validate, and beautify your JSON data. Whether you're a beginner learning about JSON or an experienced developer working with complex APIs, our tool has everything you need to work efficiently with JSON data. Try it now at tojsons.com/formatter and transform your JSON workflow forever!</p>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Formatter Online",
+    "description": "Free online JSON formatter and beautifier with syntax highlighting",
+    "url": "https://tojsons.com/formatter",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "JSON Formatting",
+      "JSON Beautifier",
+      "JSON Validation",
+      "Syntax Highlighting",
+      "Error Detection",
+      "Comment Removal"
+    ]
+  }
+  </script>
+</BaseLayout>

@@ -1,0 +1,456 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import deTranslations from '../../i18n/locales/de.js';
+
+const lang = 'de-DE';
+const t = deTranslations;
+---
+
+<BaseLayout
+  title="JSON Validator Online - JSON-Syntax und Schema validieren"
+  lang={lang}
+  description="Kostenloser Online-JSON-Validator. Validieren Sie JSON-Syntax, überprüfen Sie Fehler und verifizieren Sie JSON Schema. Unterstützt Draft 4, 6, 7 Validierung mit detaillierten Fehlermeldungen."
+  keywords="JSON Validator, JSON Syntax Validator, JSON Schema Validator, JSON lint, JSON validieren, JSON Fehlerprüfer"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="de" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container">
+
+    <div class="editor-workspace">
+      <div class="input-area">
+        <div class="editors-wrapper">
+          <div class="input-section">
+            <div class="section-header-row">
+              <h1 class="section-label">JSON Validator - JSON-Syntax & Schema validieren</h1>
+            </div>
+            <div class="input-editor-wrapper">
+              <div id="monaco-editor-container" class="monaco-editor-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="json-validation-error" class="validation-error"></div>
+
+        <div class="schema-section">
+          <div class="schema-header">
+            <label>🔍 JSON Schema (Optional)</label>
+            <button id="validate-schema-btn">Validate with Schema</button>
+          </div>
+          <textarea id="schema-input" class="schema-input" placeholder='{"type": "object", "properties": {"name": {"type": "string"}}}'></textarea>
+          <div id="schema-validation-result" class="schema-result hidden"></div>
+        </div>
+
+        <div class="output-controls">
+          <button id="format-btn">Format JSON</button>
+          <button id="compress-copy">{t.compressCopy}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+    let Ajv;
+    async function loadAjv() {
+      if (!Ajv) {
+        const ajvModule = await import('https://esm.sh/ajv@8.12.0');
+        Ajv = ajvModule.default;
+      }
+      return Ajv;
+    }
+
+    let editor = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeMonacoEditor();
+      setupEventListeners();
+    });
+
+    function initializeMonacoEditor() {
+      const container = document.getElementById('monaco-editor-container');
+      if (!container) return;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (container.offsetWidth === 0 || container.offsetHeight === 0) {
+            setTimeout(() => createEditor(container), 50);
+          } else {
+            createEditor(container);
+          }
+        });
+      });
+    }
+
+    function createEditor(container) {
+      const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+      editor = monaco.editor.create(container, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: parseInt(savedFontSize),
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        lineHeight: 21,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        lineNumbers: 'on',
+        folding: true,
+        formatOnPaste: true,
+        formatOnType: true,
+        tabSize: 2,
+        renderLineHighlight: 'all',
+        scrollbar: { vertical: 'visible', horizontal: 'visible' },
+        padding: { top: 12, bottom: 12 }
+      });
+
+      monaco.editor.onDidChangeMarkers(() => {
+        const errorElement = document.getElementById('json-validation-error');
+        if (!errorElement || !editor) return;
+
+        const model = editor.getModel();
+        if (!model) return;
+
+        const modelMarkers = model.getAllMarkers();
+        if (modelMarkers.length === 0) {
+          errorElement.className = 'validation-error valid';
+          errorElement.innerHTML = '✓ Valid JSON';
+        } else {
+          const firstError = modelMarkers[0];
+          errorElement.className = 'validation-error show';
+          errorElement.textContent = `Line ${firstError.startLineNumber}: ${firstError.message}`;
+        }
+      });
+    }
+
+    function setupEventListeners() {
+      document.getElementById('format-btn').addEventListener('click', () => {
+        if (!editor) return;
+        try {
+          const parsed = JSON.parse(editor.getValue());
+          editor.setValue(JSON.stringify(parsed, null, 2));
+          showToast('JSON formatted successfully!');
+        } catch (e) {
+          showToast('Invalid JSON: ' + e.message);
+        }
+      });
+
+      document.getElementById('compress-copy').addEventListener('click', async () => {
+        try {
+          const parsed = JSON.parse(editor.getValue());
+          await navigator.clipboard.writeText(JSON.stringify(parsed));
+          showToast('Compressed JSON copied!');
+        } catch (e) {
+          showToast('Error: ' + e.message);
+        }
+      });
+
+      document.getElementById('validate-schema-btn').addEventListener('click', async () => {
+        const resultElement = document.getElementById('schema-validation-result');
+        const schemaInput = document.getElementById('schema-input');
+        
+        if (!resultElement || !schemaInput || !editor) return;
+
+        const jsonContent = editor.getValue().trim();
+        const schemaContent = schemaInput.value.trim();
+
+        resultElement.classList.remove('show', 'valid', 'invalid', 'error');
+
+        if (!jsonContent || !schemaContent) {
+          resultElement.textContent = 'Please enter both JSON and Schema';
+          resultElement.classList.add('show', 'error');
+          return;
+        }
+
+        try {
+          const jsonData = JSON.parse(jsonContent);
+          const schema = JSON.parse(schemaContent);
+          const AjvClass = await loadAjv();
+          const ajv = new AjvClass({ allErrors: true });
+          const validate = ajv.compile(schema);
+          const valid = validate(jsonData);
+
+          if (valid) {
+            resultElement.textContent = '✓ JSON is valid against the schema!';
+            resultElement.classList.add('show', 'valid');
+          } else {
+            let errorMsg = '✗ Schema validation failed:\n';
+            validate.errors.forEach((err, i) => {
+              errorMsg += `${i+1}. ${err.instancePath || '/'}: ${err.message}\n`;
+            });
+            resultElement.textContent = errorMsg;
+            resultElement.classList.add('show', 'invalid');
+          }
+        } catch (error) {
+          resultElement.textContent = 'Error: ' + error.message;
+          resultElement.classList.add('show', 'error');
+        }
+      });
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = message;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+
+  <style>
+    .json-formatter-container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 8px;
+      height: calc(100vh - var(--sidebar-height, 40px));
+      display: flex;
+      flex-direction: column;
+    }
+
+    .editor-workspace {
+      display: flex;
+      gap: 0;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .input-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .input-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    h1.section-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .input-editor-wrapper {
+      display: flex;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+      overflow: hidden;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .monaco-editor-container {
+      flex: 1;
+      width: 100%;
+      min-height: 300px;
+    }
+
+    .validation-error {
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      margin-bottom: 10px;
+    }
+
+    .validation-error.show {
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+      border-left: 4px solid #ef4444;
+    }
+
+    .validation-error.valid {
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #166534;
+      border-left: 4px solid #22c55e;
+    }
+
+    .schema-section {
+      padding: 10px 12px;
+      background: #f0fdf4;
+      border-radius: 6px;
+      border: 1px solid #bbf7d0;
+    }
+
+    .schema-header {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .schema-header label {
+      font-weight: 600;
+      color: #166534;
+      flex: 1;
+    }
+
+    .schema-header button {
+      padding: 6px 14px;
+      background: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .schema-input {
+      width: 100%;
+      min-height: 60px;
+      padding: 8px;
+      border: 1px solid #86efac;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .schema-result {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+
+    .schema-result.valid { background: #dcfce7; color: #166534; }
+    .schema-result.invalid { background: #fee2e2; color: #991b1b; }
+    .schema-result.error { background: #fef3c7; color: #92400e; }
+    .schema-result.hidden { display: none; }
+
+    .output-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .output-controls button {
+      padding: 6px 12px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .content-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .content-section h2 { font-size: 1.75rem; color: #0f172a; margin: 30px 0 15px; }
+    .content-section h3 { font-size: 1.25rem; color: #1f2937; margin: 25px 0 12px; }
+    .content-section p { color: #4b5563; line-height: 1.7; margin-bottom: 15px; }
+    .content-section ul, .content-section ol { color: #4b5563; line-height: 1.8; margin: 10px 0 15px 25px; }
+    .content-section li { margin-bottom: 6px; }
+    .content-section a { color: #2563eb; text-decoration: none; }
+    .content-section a:hover { text-decoration: underline; }
+  </style>
+
+  <!-- Content Section -->
+  <div class="content-section">
+    <h2>JSON Validator Online - Validate JSON Syntax and Schema</h2>
+    <p>Welcome to our comprehensive JSON Validator tool, the essential utility for developers who need to ensure their JSON data is syntactically correct and compliant with JSON Schema standards. Whether you're validating API responses, configuration files, or data imports, our free online JSON Validator provides instant, accurate validation with detailed error reporting.</p>
+
+    <p>JSON validation is a critical step in any development workflow. Invalid JSON can cause application crashes, API failures, and data corruption. Our validator helps you catch these issues before deployment, saving hours of debugging time and preventing production incidents.</p>
+
+    <h3>Why Use Our JSON Validator?</h3>
+    <p>Our JSON Validator stands out from other tools due to its comprehensive feature set and ease of use. The tool performs both basic syntax validation and advanced JSON Schema validation, giving you complete confidence in your JSON data quality. All validation happens locally in your browser, ensuring your sensitive data never leaves your device.</p>
+    
+    <ul>
+      <li><strong>Instant Syntax Validation:</strong> See validation results as you type</li>
+      <li><strong>JSON Schema Support:</strong> Validate against JSON Schema Draft 7</li>
+      <li><strong>Detailed Error Messages:</strong> Precise line numbers and descriptions for each error</li>
+      <li><strong>Auto-fix Suggestions:</strong> Clear guidance on how to fix validation errors</li>
+      <li><strong>Large File Support:</strong> Handle JSON files up to 10MB</li>
+      <li><strong>100% Private:</strong> No data is sent to any server</li>
+    </ul>
+
+    <h3>How to Validate JSON</h3>
+    <ol>
+      <li><strong>Paste Your JSON:</strong> Copy your JSON data into the editor</li>
+      <li><strong>View Results:</strong> Validation happens automatically - green checkmark for valid, red errors for invalid</li>
+      <li><strong>Fix Errors:</strong> Click on error messages to see exact location and description</li>
+      <li><strong>Optional Schema Validation:</strong> Paste a JSON Schema to perform advanced validation</li>
+    </ol>
+
+    <h3>JSON Schema Validation</h3>
+    <p>For advanced validation needs, our tool supports JSON Schema validation. JSON Schema is a powerful vocabulary that allows you to annotate and validate JSON documents. It's particularly useful for:</p>
+    <ul>
+      <li>Defining the structure of your JSON data</li>
+      <li>Specifying required fields and their data types</li>
+      <li>Setting constraints on values (minimum, maximum, patterns)</li>
+      <li>Validating nested objects and arrays</li>
+      <li>Creating reusable schema definitions</li>
+    </ul>
+
+    <h3>Common JSON Validation Errors</h3>
+    <p>Understanding common JSON errors helps you fix them quickly:</p>
+    <ul>
+      <li><strong>Unexpected Token:</strong> Usually caused by missing or extra commas, brackets, or quotes</li>
+      <li><strong>Invalid String:</strong> Unescaped special characters or missing closing quotes</li>
+      <li><strong>Invalid Number:</strong> Malformed numbers like leading zeros or missing digits</li>
+      <li><strong>Duplicate Keys:</strong> Some JSON parsers reject duplicate keys in objects</li>
+      <li><strong>Trailing Commas:</strong> Commas after the last element in arrays or objects</li>
+    </ul>
+
+    <h3>JSON Validator vs JSON Formatter</h3>
+    <p>While both tools are related to JSON, they serve different purposes. The <a href="/formatter">JSON Formatter</a> focuses on making JSON readable through syntax highlighting and pretty printing. The JSON Validator, on the other hand, checks if your JSON is valid according to JSON syntax rules and optionally your custom JSON Schema. Use both tools together: first validate your JSON, then format it for readability.</p>
+
+    <h3>Use Cases for JSON Validation</h3>
+    <p>JSON validation is essential in many scenarios:</p>
+    <ul>
+      <li><strong>API Development:</strong> Validate request bodies and response data</li>
+      <li><strong>Configuration Files:</strong> Ensure config.json is properly formatted</li>
+      <li><strong>Data Import:</strong> Validate JSON data before importing into databases</li>
+      <li><strong>Webhooks:</strong> Verify incoming webhook payloads</li>
+      <li><strong>Testing:</strong> Validate test data and expected outputs</li>
+      <li><strong>Data Migration:</strong> Check JSON files during migration projects</li>
+    </ul>
+
+    <h3>Related Tools</h3>
+    <p>Explore our other JSON tools to streamline your workflow:</p>
+    <ul>
+      <li><a href="/formatter">JSON Formatter</a> - Format and beautify JSON</li>
+      <li><a href="/minify">JSON Minifier</a> - Compress JSON to reduce file size</li>
+      <li><a href="/compare">JSON Compare</a> - Compare two JSON files</li>
+      <li><a href="/converter">JSON Converter</a> - Convert JSON to CSV, XML, YAML, and more</li>
+    </ul>
+
+    <h3>SEO Keywords</h3>
+    <p>This page is optimized for: json validator, json syntax validator, json schema validator, json lint, validate json, json error checker, json validation tool, online json validator, free json validator, json validator chrome, json validator notepad++, json schema validation tool, json validate online, json lint tool, json syntax checker, json validation api, json validation python, json schema validate, json validator java, json validation javascript, json validation online tool.</p>
+
+    <h3>Get Started</h3>
+    <p>Start validating your JSON data now with our free online JSON Validator. Whether you need basic syntax checking or advanced JSON Schema validation, our tool has you covered. Try it today at <a href="/validator">tojsons.com/validator</a> and ensure your JSON is always valid!</p>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Validator Online",
+    "description": "Free online JSON validator with syntax and schema validation",
+    "url": "https://tojsons.com/validator"
+  }
+  </script>
+</BaseLayout>

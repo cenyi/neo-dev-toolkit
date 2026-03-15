@@ -1,0 +1,611 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import jaTranslations from '../../i18n/locales/ja.js';
+
+const lang = 'ja-JP';
+const t = jaTranslations;
+---
+
+<BaseLayout
+  title="JSON フォーマッターオンライン - JSONの整形と美化石"
+  lang={lang}
+  description="無料のオンラインJSONフォーマッター。シンタックスハイライト付きでJSONを整形・検証・美化石。大容量ファイル10MBまでサポート。"
+  keywords="JSON フォーマッター, JSON 美化, JSON 整形, JSON フォーマット, JSON バリデーター"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="ja" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container" data-enter-extraction-fn={t.enterExtractionFn} data-enter-data={t.enterData} data-extraction-error={t.extractionError} data-parsing-error={t.parsingError} data-compress-success={t.compressSuccess} data-escape-success={t.escapeSuccess} data-xml-success={t.xmlSuccess} data-ts-success={t.tsSuccess} data-csv-success={t.csvSuccess} data-excel-success={t.excelSuccess} data-ison-success={t.isonSuccess} data-toon-success={t.toonSuccess} data-schema-valid={t.schemaValid} data-schema-invalid={t.schemaInvalid} data-schema-error={t.schemaError} data-schema-help={t.schemaHelp}>
+
+    <div class="editor-workspace">
+      <div class="input-area">
+        <div class="editors-wrapper" id="editors-wrapper">
+          <div class="input-section">
+            <div class="section-header-row">
+              <h1 class="section-label">JSON Formatter - 整形、検証、美化</h1>
+              <div class="editor-hint-inline" id="editor-hint">
+                <span class="hint-icon">✨</span>
+                <span class="hint-text">{t.smartInput}</span>
+              </div>
+            </div>
+            <div class="input-editor-wrapper">
+              <div id="monaco-editor-container" class="monaco-editor-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="json-validation-error" class="validation-error hidden"></div>
+
+        <div class="output-controls">
+          <button id="collapse-all">{t.collapseAll}</button>
+          <button id="expand-all">{t.expandAll}</button>
+          <button id="remove-comments">{t.removeComments}</button>
+          <button id="compress-copy">{t.compressCopy}</button>
+        </div>
+      </div>
+
+      <div class="output-area" id="output-area">
+        <div class="output-header">
+          <span class="output-title" id="output-title">Output Result</span>
+          <button class="close-output-btn" id="close-output" title="Close">×</button>
+        </div>
+        <div class="output-content" id="output-content">
+          <div class="output-editor-wrapper">
+            <div id="output-monaco-container" class="monaco-editor-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+
+    let editor = null;
+    let outputEditor = null;
+    let translations = {};
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.json-formatter-container');
+      translations = {
+        enterExtractionFn: container.dataset.enterExtractionFn,
+        enterData: container.dataset.enterData,
+        extractionError: container.dataset.extractionError,
+        parsingError: container.dataset.parsingError,
+        compressSuccess: container.dataset.compressSuccess,
+        escapeSuccess: container.dataset.escapeSuccess,
+        xmlSuccess: container.dataset.xmlSuccess,
+        tsSuccess: container.dataset.tsSuccess,
+        csvSuccess: container.dataset.csvSuccess,
+        excelSuccess: container.dataset.excelSuccess,
+        isonSuccess: container.dataset.isonSuccess,
+        toonSuccess: container.dataset.toonSuccess,
+        schemaValid: container.dataset.schemaValid,
+        schemaInvalid: container.dataset.schemaInvalid,
+        schemaError: container.dataset.schemaError,
+        schemaHelp: container.dataset.schemaHelp
+      };
+
+      initializeMonacoEditor();
+      initializeJsonFormatter();
+    });
+
+    function initializeMonacoEditor() {
+      const container = document.getElementById('monaco-editor-container');
+      if (!container) return;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (container.offsetWidth === 0 || container.offsetHeight === 0) {
+            setTimeout(() => createEditor(container), 50);
+          } else {
+            createEditor(container);
+          }
+        });
+      });
+    }
+
+    function createEditor(container) {
+      const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+
+      editor = monaco.editor.create(container, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: parseInt(savedFontSize),
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        lineHeight: 21,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        lineNumbers: 'on',
+        lineNumbersMinChars: 3,
+        folding: true,
+        foldingStrategy: 'indentation',
+        foldingHighlight: true,
+        showFoldingControls: 'always',
+        matchBrackets: 'always',
+        autoClosingBrackets: 'always',
+        autoClosingQuotes: 'always',
+        formatOnPaste: true,
+        formatOnType: true,
+        tabSize: 2,
+        renderLineHighlight: 'all',
+        scrollbar: { vertical: 'visible', horizontal: 'visible' },
+        padding: { top: 12, bottom: 12 }
+      });
+
+      const outputContainer = document.getElementById('output-monaco-container');
+      if (outputContainer) {
+        outputEditor = monaco.editor.create(outputContainer, {
+          value: '',
+          language: 'json',
+          theme: 'vs',
+          automaticLayout: true,
+          fontSize: parseInt(savedFontSize),
+          fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+          lineHeight: 21,
+          minimap: { enabled: false },
+          scrollBeyondLastLine: false,
+          wordWrap: 'off',
+          lineNumbers: 'on',
+          lineNumbersMinChars: 3,
+          folding: true,
+          tabSize: 2,
+          renderLineHighlight: 'all',
+          scrollbar: { vertical: 'visible', horizontal: 'visible' },
+          padding: { top: 12, bottom: 12 },
+          readOnly: true
+        });
+      }
+
+      editor.onDidChangeModelContent(() => {
+        clearTimeout(window.autoFormatTimeout);
+        window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
+
+        const hint = document.getElementById('editor-hint');
+        if (hint) {
+          const hasContent = getEditorContent().trim().length > 0;
+          hint.classList.toggle('hint-hidden', hasContent);
+        }
+      });
+
+      monaco.editor.onDidChangeMarkers(() => {
+        const errorElement = document.getElementById('json-validation-error');
+        if (!errorElement) return;
+
+        const model = editor.getModel();
+        if (!model) return;
+
+        const modelMarkers = model.getAllMarkers();
+        if (modelMarkers.length === 0) {
+          errorElement.classList.remove('show');
+          errorElement.textContent = '';
+        } else {
+          const firstError = modelMarkers[0];
+          const errorInfo = firstError.message;
+          errorElement.textContent = `Line ${firstError.startLineNumber} error: ${errorInfo}`;
+          errorElement.classList.add('show');
+        }
+      });
+    }
+
+    function getEditorContent() {
+      return editor ? editor.getValue() : '';
+    }
+
+    function setEditorContent(content) {
+      if (editor) editor.setValue(content);
+    }
+
+    function autoFormatJson() {
+      const inputText = getEditorContent().trim();
+      if (!inputText) return;
+
+      try {
+        const parsed = JSON.parse(inputText);
+        const formatted = JSON.stringify(parsed, null, 2);
+
+        if (formatted !== inputText) {
+          const position = editor ? editor.getPosition() : null;
+          const scrollTop = editor ? editor.getScrollTop() : null;
+          setEditorContent(formatted);
+          if (position && editor) editor.setPosition(position);
+          if (scrollTop !== null && editor) editor.setScrollTop(scrollTop);
+        }
+
+        saveToHistory(formatted);
+      } catch (e) {
+        console.debug('Parsing error:', e);
+      }
+    }
+
+    function saveToHistory(json) {
+      if (!json) return;
+      let history = JSON.parse(localStorage.getItem('jsonHistory') || '[]');
+      history = history.filter(item => item !== json);
+      history.unshift(json);
+      history = history.slice(0, 50);
+      localStorage.setItem('jsonHistory', JSON.stringify(history));
+    }
+
+    function initializeJsonFormatter() {
+      document.getElementById('collapse-all').addEventListener('click', () => {
+        if (editor) editor.getAction('editor.foldAll').run();
+      });
+      document.getElementById('expand-all').addEventListener('click', () => {
+        if (editor) editor.getAction('editor.unfoldAll').run();
+      });
+      document.getElementById('remove-comments').addEventListener('click', () => {
+        try {
+          const content = getEditorContent();
+          const noComments = content.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
+          const parsed = JSON.parse(noComments);
+          setEditorContent(JSON.stringify(parsed, null, 2));
+          showToast('Comments removed and JSON formatted!');
+        } catch (e) {
+          showToast('Error: ' + e.message);
+        }
+      });
+      document.getElementById('compress-copy').addEventListener('click', async () => {
+        try {
+          const parsed = JSON.parse(getEditorContent());
+          const compressed = JSON.stringify(parsed);
+          await navigator.clipboard.writeText(compressed);
+          showToast(translations.compressSuccess || 'Compressed JSON copied to clipboard!');
+        } catch (e) {
+          showToast(translations.parsingError + ': ' + e.message);
+        }
+      });
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = message;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999;animation:fadeIn 0.3s';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function expandOutput(title) {
+      const outputArea = document.getElementById('output-area');
+      const outputTitle = document.getElementById('output-title');
+      if (outputArea && outputTitle) {
+        outputTitle.textContent = title;
+        outputArea.classList.add('expanded');
+      }
+    }
+
+    function closeOutput() {
+      const outputArea = document.getElementById('output-area');
+      if (outputArea) outputArea.classList.remove('expanded');
+    }
+
+    document.getElementById('close-output').addEventListener('click', closeOutput);
+  </script>
+
+  <style>
+    :root {
+      --diff-red-opacity: 239, 68, 68;
+      --diff-green-opacity: 34, 197, 94;
+      --diff-yellow-opacity: 234, 179, 8;
+    }
+
+    .json-formatter-container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 8px;
+      height: calc(100vh - var(--sidebar-height, 40px));
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .editor-workspace {
+      display: flex;
+      gap: 0;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .input-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .input-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .section-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    h1.section-label {
+      margin: 0;
+      padding: 4px 0 6px 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .editor-hint-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 6px;
+      padding: 4px 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+    }
+
+    .editor-hint-inline.hint-hidden {
+      opacity: 0;
+      transform: translateX(4px);
+      pointer-events: none;
+    }
+
+    .editor-hint-inline .hint-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .editor-hint-inline .hint-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #3b82f6;
+      white-space: nowrap;
+    }
+
+    .input-editor-wrapper {
+      display: flex;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+      overflow: hidden;
+      flex: 1;
+      min-height: 0;
+      position: relative;
+    }
+
+    .monaco-editor-container {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      position: relative;
+    }
+
+    .validation-error {
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border: 1px solid #fecaca;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+      color: #991b1b;
+      border-left: 4px solid #ef4444;
+      display: none;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .validation-error.show {
+      display: block;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .output-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .output-controls button {
+      padding: 6px 10px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .output-controls button:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .output-area {
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left: 1px solid transparent;
+    }
+
+    .output-area.expanded {
+      width: 50%;
+      opacity: 1;
+      border-left: 1px solid #e5e7eb;
+      padding-left: 0;
+    }
+
+    .output-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+      border-radius: 6px 6px 0 0;
+      border: 1px solid #e9ecef;
+      border-bottom: none;
+    }
+
+    .output-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .close-output-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #9ca3af;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    .close-output-btn:hover {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+    }
+
+    .output-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .output-editor-wrapper {
+      display: flex;
+      border: 1px solid #e1e4e8;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+      flex: 1;
+      background: linear-gradient(to bottom, #fafbfc 0%, #f5f6f8 100%);
+    }
+
+    @media (max-width: 768px) {
+      .section-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+  </style>
+
+  <style>
+    .content-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .content-section h2 {
+      font-size: 1.75rem;
+      color: #0f172a;
+      margin: 30px 0 15px;
+    }
+    .content-section h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin: 25px 0 12px;
+    }
+    .content-section p {
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+    .content-section ul, .content-section ol {
+      color: #4b5563;
+      line-height: 1.8;
+      margin: 10px 0 15px 25px;
+    }
+    .content-section li {
+      margin-bottom: 6px;
+    }
+  </style>
+
+  <!-- Content Section -->
+  <div class="content-section">
+    <h2>JSON Formatter Online - Free Format & Beautify JSON Tool</h2>
+    <p>Welcome to our comprehensive JSON Formatter tool. This free online JSON formatter provides instant formatting with syntax highlighting, error detection, and auto-correction capabilities.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+      <li><strong>Instant Auto-Formatting:</strong> JSON is formatted automatically as you type</li>
+      <li><strong>Syntax Highlighting:</strong> Color-coded JSON elements</li>
+      <li><strong>Error Detection:</strong> Real-time syntax error detection</li>
+    </ul>
+
+    <h3>Get Started Now</h3>
+    <p>Start using our free JSON Formatter today!</p>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Formatter Online",
+    "description": "Free online JSON formatter and beautifier with syntax highlighting",
+    "url": "https://tojsons.com/formatter"
+  }
+  </script>
+</BaseLayout>

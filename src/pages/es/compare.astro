@@ -1,0 +1,260 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import esTranslations from '../../i18n/locales/es.js';
+
+const lang = 'es-ES';
+const t = esTranslations;
+---
+
+<BaseLayout
+  title="Comparador JSON en línea - Comparar y diferenciar dos archivos JSON"
+  lang={lang}
+  description="Herramienta gratuita de comparación JSON. Compare dos archivos JSON lado a lado, visualice diferencias con resaltado codificado por colores."
+  keywords="Comparar JSON, Diff JSON, Comparar JSON, Diferencia JSON, Herramienta comparación JSON"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="es" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container">
+
+    <div class="editor-workspace compare-mode">
+      <div class="input-area">
+        <div class="editors-wrapper compare-mode">
+          <div class="input-section">
+            <h2 class="section-label">Original JSON (Left)</h2>
+            <div class="input-editor-wrapper left-editor">
+              <div id="monaco-editor-container" class="monaco-editor-container"></div>
+            </div>
+          </div>
+          <div class="input-section">
+            <h2 class="section-label">Modified JSON (Right)</h2>
+            <div class="input-editor-wrapper right-editor">
+              <div id="monaco-compare-container" class="monaco-editor-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="diff-stats" id="diff-stats">
+          <span class="diff-added">Added: <span id="added-count">0</span></span>
+          <span class="diff-removed">Removed: <span id="removed-count">0</span></span>
+          <span class="diff-changed">Changed: <span id="changed-count">0</span></span>
+        </div>
+
+        <div class="output-controls">
+          <button id="compare-btn">Compare JSON</button>
+          <button id="swap-btn">Swap JSONs</button>
+          <button id="clear-btn">Clear All</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+
+    let leftEditor = null;
+    let rightEditor = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeEditors();
+      setupEventListeners();
+    });
+
+    function initializeEditors() {
+      const leftContainer = document.getElementById('monaco-editor-container');
+      const rightContainer = document.getElementById('monaco-compare-container');
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (leftContainer && leftContainer.offsetWidth > 0) {
+            createEditors(leftContainer, rightContainer);
+          } else {
+            setTimeout(() => createEditors(leftContainer, rightContainer), 50);
+          }
+        });
+      });
+    }
+
+    function createEditors(leftContainer, rightContainer) {
+      leftEditor = monaco.editor.create(leftContainer, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: 13,
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        minimap: { enabled: false },
+        lineNumbers: 'on',
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        tabSize: 2,
+        padding: { top: 12, bottom: 12 }
+      });
+
+      rightEditor = monaco.editor.create(rightContainer, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: 13,
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        minimap: { enabled: false },
+        lineNumbers: 'on',
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        tabSize: 2,
+        padding: { top: 12, bottom: 12 }
+      });
+
+      leftEditor.onDidChangeModelContent(() => performDiff());
+      rightEditor.onDidChangeModelContent(() => performDiff());
+    }
+
+    function performDiff() {
+      if (!leftEditor || !rightEditor) return;
+
+      try {
+        const leftJson = JSON.parse(leftEditor.getValue() || '{}');
+        const rightJson = JSON.parse(rightEditor.getValue() || '{}');
+
+        const diff = compareObjects(leftJson, rightJson, '');
+        
+        document.getElementById('added-count').textContent = diff.added;
+        document.getElementById('removed-count').textContent = diff.removed;
+        document.getElementById('changed-count').textContent = diff.changed;
+      } catch (e) {
+        console.debug('Diff error:', e);
+      }
+    }
+
+    function compareObjects(left, right, path) {
+      let added = 0, removed = 0, changed = 0;
+
+      const leftKeys = Object.keys(left);
+      const rightKeys = Object.keys(right);
+      const allKeys = new Set([...leftKeys, ...rightKeys]);
+
+      for (const key of allKeys) {
+        const currentPath = path ? `${path}.${key}` : key;
+        
+        if (!(key in left)) {
+          added++;
+        } else if (!(key in right)) {
+          removed++;
+        } else if (typeof left[key] === 'object' && typeof right[key] === 'object') {
+          const subDiff = compareObjects(left[key], right[key], currentPath);
+          added += subDiff.added;
+          removed += subDiff.removed;
+          changed += subDiff.changed;
+        } else if (left[key] !== right[key]) {
+          changed++;
+        }
+      }
+
+      return { added, removed, changed };
+    }
+
+    function setupEventListeners() {
+      document.getElementById('compare-btn').addEventListener('click', performDiff);
+      
+      document.getElementById('swap-btn').addEventListener('click', () => {
+        if (!leftEditor || !rightEditor) return;
+        const temp = leftEditor.getValue();
+        leftEditor.setValue(rightEditor.getValue());
+        rightEditor.setValue(temp);
+      });
+
+      document.getElementById('clear-btn').addEventListener('click', () => {
+        if (leftEditor) leftEditor.setValue('');
+        if (rightEditor) rightEditor.setValue('');
+        document.getElementById('added-count').textContent = '0';
+        document.getElementById('removed-count').textContent = '0';
+        document.getElementById('changed-count').textContent = '0';
+      });
+    }
+  </script>
+
+  <style>
+    .json-formatter-container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 8px;
+      height: calc(100vh - var(--sidebar-height, 40px));
+      display: flex;
+      flex-direction: column;
+    }
+
+    .editor-workspace { flex: 1; min-height: 0; display: flex; }
+    .input-area { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+
+    .editors-wrapper.compare-mode { display: flex; gap: 10px; flex: 1; }
+    .editors-wrapper.compare-mode .input-section { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+    .section-label { font-size: 0.875rem; font-weight: 600; color: #1f2937; margin-bottom: 6px; text-transform: uppercase; }
+
+    .input-editor-wrapper { display: flex; border: 1px solid #e1e4e8; border-radius: 8px; overflow: hidden; flex: 1; min-height: 0; }
+    .left-editor { border-color: #3b82f6; }
+    .right-editor { border-color: #10b981; }
+
+    .monaco-editor-container { flex: 1; width: 100%; min-height: 300px; }
+
+    .diff-stats { display: flex; gap: 16px; padding: 12px; background: #f8fafc; border-radius: 6px; }
+    .diff-stats span { font-weight: 600; font-size: 14px; }
+    .diff-added { color: #22c55e; }
+    .diff-removed { color: #ef4444; }
+    .diff-changed { color: #eab308; }
+
+    .output-controls { display: flex; gap: 6px; }
+    .output-controls button { padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .output-controls button:hover { background: #2563eb; }
+
+    .content-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .content-section h2 { font-size: 1.75rem; color: #0f172a; margin: 30px 0 15px; }
+    .content-section h3 { font-size: 1.25rem; color: #1f2937; margin: 25px 0 12px; }
+    .content-section p { color: #4b5563; line-height: 1.7; margin-bottom: 15px; }
+    .content-section ul, .content-section ol { color: #4b5563; line-height: 1.8; margin: 10px 0 15px 25px; }
+    .content-section li { margin-bottom: 6px; }
+    .content-section a { color: #2563eb; text-decoration: none; }
+    .content-section a:hover { text-decoration: underline; }
+  </style>
+
+  <!-- Content Section -->
+  <div class="content-section">
+    <h2>JSON Compare Online - Find Differences Between JSON Files</h2>
+    <p>Welcome to our powerful JSON Compare tool, the ultimate solution for developers who need to identify differences between two JSON documents.</p>
+
+    <h3>Why Use JSON Compare?</h3>
+    <ul>
+      <li><strong>Side-by-Side View:</strong> Compare two JSON documents simultaneously</li>
+      <li><strong>Color-Coded Differences:</strong> Green for added, red for removed, yellow for changed</li>
+      <li><strong>Deep Comparison:</strong> Compare nested objects and arrays recursively</li>
+    </ul>
+
+    <h3>Start Comparing</h3>
+    <p>Try our free JSON Compare tool now and discover differences in your JSON files instantly!</p>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Compare Online",
+    "description": "Free online JSON compare and diff tool",
+    "url": "https://tojsons.com/compare"
+  }
+  </script>
+</BaseLayout>

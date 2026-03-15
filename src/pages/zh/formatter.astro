@@ -1,0 +1,415 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import zhTranslations from '../../i18n/locales/zh.js';
+
+const lang = 'zh-CN';
+const t = zhTranslations;
+---
+
+<BaseLayout
+  title="JSON格式化工具 - 在线格式化美化JSON"
+  lang={lang}
+  description="免费的在线JSON格式化工具。格式化、美化JSON，支持语法高亮、错误检测、自动格式化。大文件支持高达10MB。"
+  keywords="JSON格式化, JSON美化, JSON格式化工具, JSON美化工具, JSON在线格式化, JSON代码格式化"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="zh" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container">
+
+    <div class="editor-workspace">
+      <div class="input-area">
+        <div class="editors-wrapper">
+          <div class="input-section">
+            <div class="section-header-row">
+              <h1 class="section-label">JSON格式化工具 - 格式化、校验、美化JSON</h1>
+            </div>
+            <div class="input-editor-wrapper" id="drop-zone">
+              <div id="monaco-editor-container" class="monaco-editor-container"></div>
+              <div class="drop-overlay" id="drop-overlay">
+                <div class="drop-message">
+                  <span class="drop-icon">📁</span>
+                  <span>{t.dragDropHint}</span>
+                </div>
+              </div>
+              <input type="file" id="file-input" accept=".json,.txt,.xml,.yaml,.yml,.csv" style="display: none;">
+            </div>
+          </div>
+        </div>
+
+        <div id="json-validation-error" class="validation-error hidden"></div>
+
+        <div class="output-controls">
+          <button id="collapse-all">{t.collapseAll}</button>
+          <button id="expand-all">{t.expandAll}</button>
+          <button id="remove-comments">{t.removeComments}</button>
+          <button id="compress-copy">{t.compressCopy}</button>
+        </div>
+      </div>
+
+      <div class="output-area" id="output-area">
+        <div class="output-header">
+          <span class="output-title" id="output-title">输出结果</span>
+          <button class="close-output-btn" id="close-output" title="关闭">×</button>
+        </div>
+        <div class="output-content" id="output-content">
+          <div class="output-editor-wrapper">
+            <div id="output-monaco-container" class="monaco-editor-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content-section">
+    <h2>JSON格式化工具 - 免费在线JSON格式化美化</h2>
+    <p>欢迎使用我们的JSON格式化工具，这是开发者必备的免费在线JSON处理工具。无论您需要格式化JSON、美化JSON、校验JSON还是压缩JSON，我们的工具都能满足您的需求。工具完全在浏览器中运行，确保您的数据安全。</p>
+
+    <p>JSON（JavaScript Object Notation）已成为现代Web应用程序、REST API和微服务架构中进行数据交换的事实标准。然而，处理压缩或格式不好的JSON可能令人沮丧和耗时。我们的JSON格式化工具通过提供强大的、基于浏览器的解决方案来缓解这个问题。</p>
+
+    <h3>为什么使用JSON格式化工具？</h3>
+    <ul>
+      <li><strong>完全免费：</strong>无需注册或下载，随时随地使用</li>
+      <li><strong>数据安全：</strong>所有处理在浏览器本地完成，数据不会发送到服务器</li>
+      <li><strong>大文件支持：</strong>支持高达10MB的JSON文件</li>
+      <li><strong>自动格式化：</strong>输入时自动检测并格式化JSON</li>
+      <li><strong>语法高亮：</strong>颜色编码的JSON元素，提高可读性</li>
+      <li><strong>错误检测：</strong>实时检测语法错误，并精确定位行号</li>
+      <li><strong>多语言支持：</strong>支持10种语言，包括中文、英文、日文等</li>
+    </ul>
+
+    <h3>主要功能</h3>
+    <ul>
+      <li><strong>即时自动格式化：</strong>输入时自动格式化，无需点击任何按钮</li>
+      <li><strong>语法高亮：</strong>颜色编码的JSON元素，便于阅读</li>
+      <li><strong>错误检测：</strong>实时检测语法错误，并显示精确的行号</li>
+      <li><strong>美化输出：</strong>将压缩的JSON转换为人类可读的格式</li>
+      <li><strong>JSON压缩：</strong>压缩格式化的JSON以节省空间</li>
+      <li><strong>拖放支持：</strong>通过拖放文件轻松加载JSON</li>
+      <li><strong>深色/浅色主题：</strong>切换深色和浅色主题，舒适查看</li>
+      <li><strong>键盘快捷键：</strong>使用键盘快捷键提高工作效率</li>
+      <li><strong>URL分享：</strong>通过唯一URL分享格式化的JSON</li>
+    </ul>
+
+    <h3>如何使用JSON格式化</h3>
+    <ol>
+      <li><strong>粘贴JSON：</strong>将JSON数据复制并粘贴到编辑器中</li>
+      <li><strong>自动格式化：</strong>工具会在您粘贴时自动格式化JSON</li>
+      <li><strong>查看错误：</strong>如果有语法错误，会用红色标记并显示行号</li>
+      <li><strong>修复错误：</strong>点击错误查看准确位置和描述，然后修正问题</li>
+      <li><strong>复制或下载：</strong>使用工具栏按钮复制格式化的JSON或执行其他操作</li>
+    </ol>
+
+    <h3>理解JSON语法</h3>
+    <p>JSON是一种轻量级的数据交换格式，易于人类阅读和编写，也易于机器解析和生成。JSON建立在两种通用数据结构之上：</p>
+    <ul>
+      <li><strong>对象：</strong>由花括号{}包围的键值对集合</li>
+      <li><strong>数组：</strong>由方括号[]包围的值的有序列表</li>
+    </ul>
+    <p>JSON支持以下数据类型：字符串（双引号）、数字（整数和浮点数）、布尔值（true或false）、null、对象和数组。所有JSON键必须是双引号字符串，不允许有尾随逗号。</p>
+
+    <h3>常见JSON格式问题及解决方案</h3>
+    <p>我们的JSON格式化工具自动检测并帮助修复常见的JSON格式问题：</p>
+    <ul>
+      <li><strong>缺少引号：</strong>键必须用双引号 - 我们会高亮未加引号的键</li>
+      <li><strong>尾随逗号：</strong>我们会检测并标记数组或对象中的尾随逗号</li>
+      <li><strong>未转义字符：</strong>字符串中的特殊字符需要正确转义</li>
+      <li><strong>无效数字：</strong>我们会标记格式不正确的数字</li>
+      <li><strong>缺少括号：</strong>不匹配的括号会清楚指示</li>
+    </ul>
+
+    <h3>相关工具</h3>
+    <ul>
+      <li><a href="/zh/validator">JSON校验工具</a> - 验证JSON语法和结构</li>
+      <li><a href="/zh/minify">JSON压缩工具</a> - 压缩JSON减小文件大小</li>
+      <li><a href="/zh/compare">JSON对比工具</a> - 对比两个JSON文件的差异</li>
+      <li><a href="/zh/converter">JSON转换工具</a> - 将JSON转换为CSV、XML、YAML等格式</li>
+    </ul>
+
+    <h3>SEO关键词</h3>
+    <p>JSON格式化, JSON美化, JSON格式化工具, JSON在线格式化, JSON代码格式化, JSON格式化网站, JSON beautifier, JSON formatter online, JSON pretty print, format json, json lint, json validator, json editor, json viewer, json parser, json在线, 免费JSON格式化工具.</p>
+
+    <h3>立即开始</h3>
+    <p>立即使用我们的免费JSON格式化工具，体验格式化、验证和美化JSON数据的最简单方法。无论您是学习JSON的初学者还是处理复杂API的资深开发者，我们的工具都能满足您的需求。</p>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+
+    let editor = null;
+    let outputEditor = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeMonacoEditor();
+      initializeJsonFormatter();
+      initializeDragAndDrop();
+    });
+
+    function initializeMonacoEditor() {
+      const container = document.getElementById('monaco-editor-container');
+      if (!container) return;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (container.offsetWidth === 0 || container.offsetHeight === 0) {
+            setTimeout(() => createEditor(container), 50);
+          } else {
+            createEditor(container);
+          }
+        });
+      });
+    }
+
+    function createEditor(container) {
+      const savedFontSize = localStorage.getItem('editorFontSize') || '13';
+
+      editor = monaco.editor.create(container, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: parseInt(savedFontSize),
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        lineHeight: 21,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        lineNumbers: 'on',
+        folding: true,
+        formatOnPaste: true,
+        formatOnType: true,
+        tabSize: 2,
+        padding: { top: 12, bottom: 12 }
+      });
+
+      const outputContainer = document.getElementById('output-monaco-container');
+      if (outputContainer) {
+        outputEditor = monaco.editor.create(outputContainer, {
+          value: '',
+          language: 'json',
+          theme: 'vs',
+          automaticLayout: true,
+          fontSize: parseInt(savedFontSize),
+          minimap: { enabled: false },
+          lineNumbers: 'on',
+          tabSize: 2,
+          padding: { top: 12, bottom: 12 },
+          readOnly: true
+        });
+      }
+
+      editor.onDidChangeModelContent(() => {
+        clearTimeout(window.autoFormatTimeout);
+        window.autoFormatTimeout = setTimeout(autoFormatJson, 500);
+      });
+    }
+
+    function getEditorContent() {
+      return editor ? editor.getValue() : '';
+    }
+
+    function setEditorContent(content) {
+      if (editor) editor.setValue(content);
+    }
+
+    function autoFormatJson() {
+      const inputText = getEditorContent().trim();
+      if (!inputText) return;
+
+      try {
+        const parsed = JSON.parse(inputText);
+        const formatted = JSON.stringify(parsed, null, 2);
+
+        if (formatted !== inputText) {
+          const position = editor ? editor.getPosition() : null;
+          const scrollTop = editor ? editor.getScrollTop() : null;
+          setEditorContent(formatted);
+          if (position && editor) editor.setPosition(position);
+          if (scrollTop !== null && editor) editor.setScrollTop(scrollTop);
+        }
+
+        saveToHistory(formatted);
+      } catch (e) {
+        console.debug('解析错误:', e);
+      }
+    }
+
+    function saveToHistory(json) {
+      if (!json) return;
+      let history = JSON.parse(localStorage.getItem('jsonHistory') || '[]');
+      history = history.filter(item => item !== json);
+      history.unshift(json);
+      history = history.slice(0, 50);
+      localStorage.setItem('jsonHistory', JSON.stringify(history));
+    }
+
+    function initializeJsonFormatter() {
+      document.getElementById('collapse-all').addEventListener('click', () => {
+        if (editor) editor.getAction('editor.foldAll').run();
+      });
+      document.getElementById('expand-all').addEventListener('click', () => {
+        if (editor) editor.getAction('editor.unfoldAll').run();
+      });
+      document.getElementById('remove-comments').addEventListener('click', () => {
+        try {
+          const content = getEditorContent();
+          const noComments = content.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
+          const parsed = JSON.parse(noComments);
+          setEditorContent(JSON.stringify(parsed, null, 2));
+          showToast('注释已移除，JSON已格式化！');
+        } catch (e) {
+          showToast('错误: ' + e.message);
+        }
+      });
+      document.getElementById('compress-copy').addEventListener('click', async () => {
+        try {
+          const parsed = JSON.parse(getEditorContent());
+          const compressed = JSON.stringify(parsed);
+          await navigator.clipboard.writeText(compressed);
+          showToast('压缩的JSON已复制到剪贴板！');
+        } catch (e) {
+          showToast('错误: ' + e.message);
+        }
+      });
+    }
+
+    function initializeDragAndDrop() {
+      const dropZone = document.getElementById('drop-zone');
+      const dropOverlay = document.getElementById('drop-overlay');
+      const fileInput = document.getElementById('file-input');
+      
+      if (!dropZone || !dropOverlay) return;
+
+      dropOverlay.addEventListener('click', () => fileInput.click());
+      
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleFile(file);
+        fileInput.value = '';
+      });
+
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      });
+
+      dropZone.addEventListener('dragenter', () => {
+        dropZone.classList.add('dragging');
+        dropOverlay.classList.add('active');
+      });
+
+      dropZone.addEventListener('dragover', () => {
+        dropZone.classList.add('dragging');
+        dropOverlay.classList.add('active');
+      });
+
+      dropZone.addEventListener('dragleave', (e) => {
+        if (!dropZone.contains(e.relatedTarget)) {
+          dropZone.classList.remove('dragging');
+          dropOverlay.classList.remove('active');
+        }
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        dropZone.classList.remove('dragging');
+        dropOverlay.classList.remove('active');
+        const files = e.dataTransfer.files;
+        if (files.length > 0) handleFile(files[0]);
+      });
+    }
+
+    function handleFile(file) {
+      const maxSize = 10 * 1024 * 1024;
+      if (file.size > maxSize) {
+        showToast('文件太大（最大10MB）');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (editor) editor.setValue(e.target.result);
+        showToast('已加载文件: ' + file.name);
+      };
+      reader.onerror = () => showToast('加载文件出错');
+      reader.readAsText(file);
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = message;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function expandOutput(title) {
+      const outputArea = document.getElementById('output-area');
+      const outputTitle = document.getElementById('output-title');
+      if (outputArea && outputTitle) {
+        outputTitle.textContent = title;
+        outputArea.classList.add('expanded');
+      }
+    }
+
+    document.getElementById('close-output').addEventListener('click', () => {
+      document.getElementById('output-area').classList.remove('expanded');
+    });
+  </script>
+
+  <style>
+    .json-formatter-container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 8px;
+      height: calc(100vh - var(--sidebar-height, 40px));
+      display: flex;
+      flex-direction: column;
+    }
+    .editor-workspace { display: flex; gap: 0; flex: 1; min-height: 0; overflow: hidden; }
+    .input-area { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+    .input-section { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+    .section-label { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .input-editor-wrapper { display: flex; border: 1px solid #e1e4e8; border-radius: 8px; overflow: hidden; flex: 1; min-height: 0; position: relative; }
+    .monaco-editor-container { flex: 1; width: 100%; min-height: 400px; }
+    .drop-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(59, 130, 246, 0.95); display: none; align-items: center; justify-content: center; z-index: 100; border-radius: 8px; }
+    .drop-overlay.active { display: flex; }
+    .drop-message { display: flex; flex-direction: column; align-items: center; gap: 12px; color: white; font-size: 16px; }
+    .drop-icon { font-size: 48px; }
+    #drop-zone.dragging { border-color: #3b82f6; border-style: dashed; }
+    .validation-error { padding: 12px 16px; background: #fee2e2; border: 1px solid #fca5a5; border-radius: 6px; margin-bottom: 10px; display: none; }
+    .validation-error.show { display: block; }
+    .output-controls { display: flex; gap: 6px; flex-wrap: wrap; }
+    .output-controls button { padding: 6px 12px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .output-controls button:hover { background: #2563eb; }
+    .output-area { width: 0; opacity: 0; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s; border-left: 1px solid transparent; }
+    .output-area.expanded { width: 50%; opacity: 1; border-left: 1px solid #e5e7eb; padding-left: 0; }
+    .output-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f8f9fa; border-radius: 6px 6px 0 0; border: 1px solid #e9ecef; }
+    .output-title { font-size: 0.85rem; font-weight: 600; color: #6b7280; }
+    .close-output-btn { background: none; border: none; font-size: 24px; color: #9ca3af; cursor: pointer; }
+    .output-editor-wrapper { display: flex; border: 1px solid #e1e4e8; border-radius: 0 0 8px 8px; overflow: hidden; flex: 1; background: #fafbfc; }
+
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 1.75rem; color: #0f172a; margin: 30px 0 15px; }
+    .content-section h3 { font-size: 1.25rem; color: #1f2937; margin: 25px 0 12px; }
+    .content-section p { color: #4b5563; line-height: 1.7; margin-bottom: 15px; }
+    .content-section ul, .content-section ol { color: #4b5563; line-height: 1.8; margin: 10px 0 15px 25px; }
+    .content-section li { margin-bottom: 6px; }
+    .content-section a { color: #2563eb; text-decoration: none; }
+    .content-section a:hover { text-decoration: underline; }
+  </style>
+</BaseLayout>

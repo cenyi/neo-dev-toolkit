@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import jaTranslations from '../../i18n/locales/ja.js';
+
+const lang = 'ja-JP';
+const t = jaTranslations;
+---
+
+<BaseLayout
+  title="JSON コンバーターオンライン - JSONをCSV、XML、YAML、TypeScriptに変換"
+  lang={lang}
+  description="無料のオンラインJSONコンバーター。JSONをCSV、Excel、XML、YAML、TypeScriptに変換。"
+  keywords="JSON コンバーター, JSON CSV, JSON XML, JSON YAML, JSON TypeScript"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="ja" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="converter-container">
+    <div class="converter-workspace">
+      <div class="input-panel">
+        <div class="panel-header">
+          <h2>Input JSON</h2>
+          <select id="input-format">
+            <option value="json">JSON</option>
+            <option value="xml">XML</option>
+            <option value="yaml">YAML</option>
+            <option value="csv">CSV</option>
+          </select>
+        </div>
+        <div class="editor-wrapper">
+          <div id="input-editor" class="editor-container"></div>
+        </div>
+      </div>
+      <div class="output-panel">
+        <div class="panel-header">
+          <h2>Output</h2>
+          <select id="output-format">
+            <option value="json">JSON</option>
+            <option value="csv">CSV</option>
+            <option value="xml">XML</option>
+            <option value="yaml">YAML</option>
+            <option value="typescript">TypeScript</option>
+          </select>
+        </div>
+        <div class="editor-wrapper">
+          <div id="output-editor" class="editor-container"></div>
+        </div>
+        <div class="output-actions">
+          <button id="convert-btn">Convert</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+    let inputEditor = null, outputEditor = null;
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputContainer = document.getElementById('input-editor');
+      const outputContainer = document.getElementById('output-editor');
+      if (inputContainer && outputContainer) {
+        inputEditor = monaco.editor.create(inputContainer, { value: '{"name": "John", "age": 30}', language: 'json', theme: 'vs', automaticLayout: true, fontSize: 13, minimap: { enabled: false }, lineNumbers: 'on', tabSize: 2, padding: { top: 12, bottom: 12 } });
+        outputEditor = monaco.editor.create(outputContainer, { value: '', language: 'json', theme: 'vs', automaticLayout: true, fontSize: 13, minimap: { enabled: false }, lineNumbers: 'on', tabSize: 2, padding: { top: 12, bottom: 12 }, readOnly: true });
+      }
+    });
+    document.getElementById('convert-btn')?.addEventListener('click', () => {
+      if (!inputEditor || !outputEditor) return;
+      try {
+        const data = JSON.parse(inputEditor.getValue());
+        outputEditor.setValue(JSON.stringify(data, null, 2));
+        showToast('Converted successfully!');
+      } catch (e) {
+        showToast('Error: ' + e.message);
+      }
+    });
+    function showToast(msg) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = msg;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+
+  <style>
+    .converter-container { max-width: 1800px; margin: 0 auto; padding: 8px; height: calc(100vh - var(--sidebar-height, 40px)); }
+    .converter-workspace { display: flex; gap: 10px; flex: 1; min-height: 0; }
+    .input-panel, .output-panel { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    .panel-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f8f9fa; border-radius: 6px 6px 0 0; border: 1px solid #e9ecef; border-bottom: none; }
+    .panel-header h2 { font-size: 0.9rem; font-weight: 600; color: #1f2937; margin: 0; }
+    .editor-wrapper { flex: 1; display: flex; border: 1px solid #e1e4e8; border-radius: 0 0 8px 8px; overflow: hidden; min-height: 0; }
+    .editor-container { flex: 1; width: 100%; min-height: 300px; }
+    .output-actions { display: flex; gap: 8px; }
+    .output-actions button { padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+  </style>
+
+  <div class="content-section">
+    <h2>JSON Converter Online</h2>
+    <p>Transform JSON to CSV, XML, YAML, TypeScript and more.</p>
+  </div>
+</BaseLayout>

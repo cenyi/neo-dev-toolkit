@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import koTranslations from '../../i18n/locales/ko.js';
+
+const lang = 'ko-KR';
+const t = koTranslations;
+---
+
+<BaseLayout title="JSON 비교 온라인" lang={lang} description="무료 JSON 비교 도구" keywords="JSON 비교, JSON diff">
+  <div slot="header"><LanguageSwitcher currentLocale="ko" /></div>
+  <Sidebar slot="sidebar" t={t} />
+  <div class="json-formatter-container">
+    <div class="editor-workspace compare-mode">
+      <div class="input-area">
+        <div class="editors-wrapper compare-mode">
+          <div class="input-section"><h2 class="section-label">Original JSON</h2><div class="input-editor-wrapper"><div id="monaco-editor-container" class="monaco-editor-container"></div></div></div>
+          <div class="input-section"><h2 class="section-label">Modified JSON</h2><div class="input-editor-wrapper"><div id="monaco-compare-container" class="monaco-editor-container"></div></div></div>
+        </div>
+        <div class="output-controls"><button id="compare-btn">Compare</button></div>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+    let leftEditor = null, rightEditor = null;
+    document.addEventListener('DOMContentLoaded', () => {
+      const c1 = document.getElementById('monaco-editor-container'), c2 = document.getElementById('monaco-compare-container');
+      if (c1 && c2) { leftEditor = monaco.editor.create(c1, {value:'',language:'json',theme:'vs',automaticLayout:true,fontSize:13}); rightEditor = monaco.editor.create(c2, {value:'',language:'json',theme:'vs',automaticLayout:true,fontSize:13}); }
+    });
+  </script>
+  <style>
+    .json-formatter-container { max-width:1800px; margin:0 auto; padding:8px; height:calc(100vh - var(--sidebar-height,40px)); display:flex; flex-direction:column; }
+    .editor-workspace { flex:1; min-height:0; display:flex; }
+    .editors-wrapper.compare-mode { display:flex; gap:10px; flex:1; }
+    .editors-wrapper.compare-mode .input-section { flex:1; min-height:0; display:flex; flex-direction:column; }
+    .section-label { font-size:0.875rem; font-weight:600; color:#1f2937; margin-bottom:6px; }
+    .input-editor-wrapper { display:flex; border:1px solid #e1e4e8; border-radius:8px; overflow:hidden; flex:1; }
+    .monaco-editor-container { flex:1; min-height:300px; }
+    .output-controls { display:flex; gap:6px; margin-top:10px; }
+    .output-controls button { padding:8px 16px; background:#3b82f6; color:white; border:none; border-radius:5px; cursor:pointer; }
+  </style>
+</BaseLayout>

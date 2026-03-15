@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import frTranslations from '../../i18n/locales/fr.js';
+
+const lang = 'fr-FR';
+const t = frTranslations;
+---
+
+<BaseLayout
+  title="Minifier JSON en ligne - Compresser et minifier JSON"
+  lang={lang}
+  description="Minifier JSON en ligne gratuit. Compressez JSON en supprimant les espaces blancs. Réduisez la taille JSON instantanément en un clic."
+  keywords="Minifier JSON, Compresser JSON, Minifier JSON, Optimiser JSON, Réduire la taille JSON"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="fr" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="json-formatter-container">
+
+    <div class="editor-workspace">
+      <div class="input-area">
+        <div class="input-section">
+          <h1 class="section-label">JSON Minifier - Compresser JSON</h1>
+          <div class="input-editor-wrapper">
+            <div id="monaco-editor-container" class="monaco-editor-container"></div>
+          </div>
+        </div>
+
+        <div id="validation-error" class="validation-error"></div>
+
+        <div class="output-controls">
+          <button id="minify-btn">Minify JSON</button>
+          <button id="format-btn">Format JSON</button>
+          <button id="copy-btn">Copy Result</button>
+        </div>
+
+        <div class="stats-section" id="stats-section">
+          <div class="stat-item">
+            <span class="stat-label">Original Size:</span>
+            <span class="stat-value" id="original-size">0 bytes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Minified Size:</span>
+            <span class="stat-value" id="minified-size">0 bytes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Savings:</span>
+            <span class="stat-value" id="savings">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+
+    let editor = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeMonacoEditor();
+      setupEventListeners();
+    });
+
+    function initializeMonacoEditor() {
+      const container = document.getElementById('monaco-editor-container');
+      if (!container) return;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (container.offsetWidth === 0 || container.offsetHeight === 0) {
+            setTimeout(() => createEditor(container), 50);
+          } else {
+            createEditor(container);
+          }
+        });
+      });
+    }
+
+    function createEditor(container) {
+      editor = monaco.editor.create(container, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: 13,
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+        minimap: { enabled: false },
+        lineNumbers: 'on',
+        scrollBeyondLastLine: false,
+        wordWrap: 'off',
+        tabSize: 2,
+        padding: { top: 12, bottom: 12 }
+      });
+
+      editor.onDidChangeModelContent(() => {
+        updateStats();
+        validateJson();
+      });
+    }
+
+    function updateStats() {
+      if (!editor) return;
+      const original = editor.getValue();
+      const originalSize = new Blob([original]).size;
+      
+      try {
+        const parsed = JSON.parse(original);
+        const minified = JSON.stringify(parsed);
+        const minifiedSize = new Blob([minified]).size;
+        const savings = originalSize > 0 ? ((originalSize - minifiedSize) / originalSize * 100).toFixed(1) : 0;
+
+        document.getElementById('original-size').textContent = formatBytes(originalSize);
+        document.getElementById('minified-size').textContent = formatBytes(minifiedSize);
+        document.getElementById('savings').textContent = savings + '%';
+      } catch (e) {
+        document.getElementById('original-size').textContent = formatBytes(originalSize);
+        document.getElementById('minified-size').textContent = '-';
+        document.getElementById('savings').textContent = '-';
+      }
+    }
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 bytes';
+      const k = 1024;
+      const sizes = ['bytes', 'KB', 'MB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function validateJson() {
+      const errorElement = document.getElementById('validation-error');
+      if (!editor || !errorElement) return;
+
+      try {
+        JSON.parse(editor.getValue());
+        errorElement.className = 'validation-error valid';
+        errorElement.textContent = '✓ Valid JSON';
+      } catch (e) {
+        errorElement.className = 'validation-error invalid';
+        errorElement.textContent = '✗ ' + e.message;
+      }
+    }
+
+    function setupEventListeners() {
+      document.getElementById('minify-btn').addEventListener('click', () => {
+        if (!editor) return;
+        try {
+          const parsed = JSON.parse(editor.getValue());
+          editor.setValue(JSON.stringify(parsed));
+          showToast('JSON minified!');
+        } catch (e) {
+          showToast('Invalid JSON: ' + e.message);
+        }
+      });
+
+      document.getElementById('format-btn').addEventListener('click', () => {
+        if (!editor) return;
+        try {
+          const parsed = JSON.parse(editor.getValue());
+          editor.setValue(JSON.stringify(parsed, null, 2));
+          showToast('JSON formatted!');
+        } catch (e) {
+          showToast('Invalid JSON: ' + e.message);
+        }
+      });
+
+      document.getElementById('copy-btn').addEventListener('click', async () => {
+        if (!editor) return;
+        try {
+          await navigator.clipboard.writeText(editor.getValue());
+          showToast('Copied to clipboard!');
+        } catch (e) {
+          showToast('Copy failed');
+        }
+      });
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = message;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+
+  <style>
+    .json-formatter-container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 8px;
+      height: calc(100vh - var(--sidebar-height, 40px));
+      display: flex;
+      flex-direction: column;
+    }
+
+    .editor-workspace { flex: 1; min-height: 0; }
+    .input-area { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .input-section { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+    h1.section-label { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .input-editor-wrapper { display: flex; border: 1px solid #e1e4e8; border-radius: 8px; overflow: hidden; flex: 1; min-height: 0; }
+    .monaco-editor-container { flex: 1; width: 100%; min-height: 300px; }
+
+    .validation-error { padding: 12px 16px; border-radius: 6px; font-size: 0.875rem; margin-bottom: 10px; }
+    .validation-error.valid { background: #dcfce7; border: 1px solid #86efac; color: #166534; }
+    .validation-error.invalid { background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; }
+
+    .output-controls { display: flex; gap: 6px; }
+    .output-controls button { padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .output-controls button:hover { background: #2563eb; }
+
+    .stats-section { display: flex; gap: 20px; padding: 12px; background: #f8fafc; border-radius: 6px; }
+    .stat-item { display: flex; gap: 8px; }
+    .stat-label { color: #64748b; }
+    .stat-value { font-weight: 600; color: #0f172a; }
+
+    .content-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .content-section h2 { font-size: 1.75rem; color: #0f172a; margin: 30px 0 15px; }
+    .content-section h3 { font-size: 1.25rem; color: #1f2937; margin: 25px 0 12px; }
+    .content-section p { color: #4b5563; line-height: 1.7; margin-bottom: 15px; }
+    .content-section ul, .content-section ol { color: #4b5563; line-height: 1.8; margin: 10px 0 15px 25px; }
+    .content-section li { margin-bottom: 6px; }
+    .content-section a { color: #2563eb; text-decoration: none; }
+    .content-section a:hover { text-decoration: underline; }
+  </style>
+
+  <!-- Content Section -->
+  <div class="content-section">
+    <h2>JSON Minifier Online - Compress JSON for Production Use</h2>
+    <p>Welcome to our powerful JSON Minifier tool, designed to help developers compress JSON data by removing unnecessary whitespace, newlines, and indentation. This optimization reduces file size significantly, making it perfect for production deployments, API responses, and data storage where bandwidth and storage efficiency matter.</p>
+
+    <p>Minified JSON is essential for optimizing web application performance. When you're serving JSON over a network, every byte counts. Our JSON Minifier removes all unnecessary characters while preserving the data structure, resulting in smaller payloads that load faster and use less bandwidth.</p>
+
+    <h3>Why Minify JSON?</h3>
+    <p>There are several compelling reasons to minify JSON in production environments:</p>
+    <ul>
+      <li><strong>Reduced Bandwidth:</strong> Smaller payloads mean faster data transfer</li>
+      <li><strong>Faster Loading:</strong> Less data to parse means quicker rendering</li>
+      <li><strong>Cost Savings:</strong> Lower bandwidth usage reduces infrastructure costs</li>
+      <li><strong>Improved Performance:</strong> Smaller responses improve overall application speed</li>
+      <li><strong>API Optimization:</strong> Many APIs return minified JSON by default</li>
+    </ul>
+
+    <h3>How Our JSON Minifier Works</h3>
+    <p>Our tool uses a simple yet powerful algorithm to compress JSON:</p>
+    <ol>
+      <li><strong>Paste Your JSON:</strong> Enter or paste formatted JSON in the editor</li>
+      <li><strong>View Statistics:</strong> See original size, minified size, and savings percentage</li>
+      <li><strong>Click Minify:</strong> The tool removes all unnecessary whitespace</li>
+      <li><strong>Copy Result:</strong> Copy the minified JSON to clipboard</li>
+    </ol>
+
+    <h3>Size Reduction Statistics</h3>
+    <p>The amount of space saved depends on your JSON structure. Here are typical examples:</p>
+    <ul>
+      <li><strong>Simple Objects:</strong> 20-30% reduction</li>
+      <li><strong>Nested Objects:</strong> 30-40% reduction</li>
+      <li><strong>Large Arrays:</strong> 40-50% reduction</li>
+      <li><strong>Deeply Nested Data:</strong> Up to 60% reduction</li>
+    </ul>
+    <p>The more whitespace and indentation in your formatted JSON, the greater the reduction will be.</p>
+
+    <h3>JSON Minifier vs JSON Formatter</h3>
+    <p>These two tools serve opposite purposes. The <a href="/formatter">JSON Formatter</a> adds indentation and line breaks to make JSON readable for humans. The JSON Minifier removes all formatting to make JSON compact for machines. Use our <a href="/validator">JSON Validator</a> to ensure your JSON is valid before minifying.</p>
+
+    <h3>Use Cases for JSON Minification</h3>
+    <ul>
+      <li><strong>Production APIs:</strong> Serve smaller responses to clients</li>
+      <li><strong>Database Storage:</strong> Reduce storage requirements</li>
+      <li><strong>Caching:</strong> Store more items in cache with smaller payloads</li>
+      <li><strong>Webhooks:</strong> Optimize outgoing webhook payloads</li>
+      <li><strong>Mobile Apps:</strong> Reduce data usage for mobile users</li>
+      <li><strong>Real-time Applications:</strong> Faster updates with smaller messages</li>
+    </ul>
+
+    <h3>Best Practices</h3>
+    <p>Follow these tips for optimal JSON minification:</p>
+    <ul>
+      <li>Always validate JSON before minifying</li>
+      <li>Keep a formatted copy for development</li>
+      <li>Use minified JSON only in production</li>
+      <li>Consider using <a href="/converter">JSON to ISON converter</a> for even more compression</li>
+    </ul>
+
+    <h3>Related Tools</h3>
+    <ul>
+      <li><a href="/formatter">JSON Formatter</a> - Format JSON for readability</li>
+      <li><a href="/validator">JSON Validator</a> - Validate JSON syntax</li>
+      <li><a href="/compare">JSON Compare</a> - Compare two JSON files</li>
+      <li><a href="/converter">JSON Converter</a> - Convert JSON to other formats</li>
+    </ul>
+
+    <h3>SEO Keywords</h3>
+    <p>json minifier, json compress, json minify, compress json, minify json, json optimization, reduce json size, json size reducer, online json minifier, free json minifier, json minify tool, json compressor, json compaction, json optimization tool, minify json online, json minification, reduce json file size, json file compressor, json data compression, json uglify.</p>
+
+    <h3>Start Minifying</h3>
+    <p>Try our free JSON Minifier now at <a href="/minify">tojsons.com/minify</a> and reduce your JSON file sizes instantly. Combined with our other JSON tools, you have everything you need to work efficiently with JSON data!</p>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Minifier Online",
+    "description": "Free online JSON minifier to compress JSON",
+    "url": "https://tojsons.com/minify"
+  }
+  </script>
+</BaseLayout>

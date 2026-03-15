@@ -1,0 +1,458 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import zhTranslations from '../../i18n/locales/zh.js';
+
+const lang = 'zh-CN';
+const t = zhTranslations;
+---
+
+<BaseLayout
+  title="JSON转换工具 - 在线转换JSON为CSV、XML、YAML、TypeScript"
+  lang={lang}
+  description="免费的在线JSON转换工具。在JSON、CSV、XML、YAML、TypeScript、Go、Rust、Python等格式之间互相转换。"
+  keywords="JSON转换, JSON to CSV, JSON to XML, JSON to YAML, json converter"
+>
+  <div slot="header">
+    <LanguageSwitcher currentLocale="zh" />
+  </div>
+  <Sidebar slot="sidebar" t={t} />
+
+  <div class="converter-container">
+    <div class="converter-workspace">
+      <div class="input-panel">
+        <div class="panel-header">
+          <h2>输入JSON</h2>
+          <div class="format-selector">
+            <label>输入格式:</label>
+            <select id="input-format">
+              <option value="json">JSON</option>
+              <option value="xml">XML</option>
+              <option value="yaml">YAML</option>
+              <option value="csv">CSV</option>
+            </select>
+          </div>
+        </div>
+        <div class="editor-wrapper">
+          <div id="input-editor" class="editor-container"></div>
+        </div>
+      </div>
+
+      <div class="output-panel">
+        <div class="panel-header">
+          <h2>输出</h2>
+          <div class="format-selector">
+            <label>输出格式:</label>
+            <select id="output-format">
+              <option value="json">JSON</option>
+              <option value="csv">CSV</option>
+              <option value="xml">XML</option>
+              <option value="yaml">YAML</option>
+              <option value="typescript">TypeScript</option>
+              <option value="go">Go</option>
+              <option value="rust">Rust</option>
+              <option value="python">Python</option>
+            </select>
+          </div>
+        </div>
+        <div class="editor-wrapper">
+          <div id="output-editor" class="editor-container"></div>
+        </div>
+        <div class="output-actions">
+          <button id="convert-btn">转换</button>
+          <button id="copy-btn">复制结果</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2>JSON转换工具 - 转换JSON为任意格式</h2>
+    <p>欢迎使用我们全面的JSON转换工具，这是将JSON转换为各种数据格式的一站式解决方案。无论您需要将JSON转换为CSV用于Excel、XML用于遗留系统、YAML用于配置文件，还是生成TypeScript接口以确保类型安全，我们的工具都能无缝处理。</p>
+
+    <p>数据格式转换是软件开发中的常见挑战。不同的系统和编程语言需要不同的数据格式。我们的JSON转换工具弥合了这些差距，让您可以即时在格式之间转换数据，无需编写任何代码。</p>
+
+    <h3>支持的转换</h3>
+    <p>我们的JSON转换工具支持广泛的输入和输出格式：</p>
+    <ul>
+      <li><strong>JSON转CSV：</strong>将JSON数组转换为逗号分隔值</li>
+      <li><strong>JSON转XML：</strong>将JSON转换为标准XML格式</li>
+      <li><strong>JSON转YAML：</strong>创建人类可读的YAML配置</li>
+      <li><strong>JSON转TypeScript：</strong>自动生成TypeScript接口</li>
+      <li><strong>JSON转Go：</strong>创建带JSON标签的Go结构体定义</li>
+      <li><strong>JSON转Rust：</strong>生成带Serde注解的Rust结构体</li>
+      <li><strong>JSON转Python：</strong>创建Python数据类</li>
+      <li><strong>CSV转JSON：</strong>将CSV数据转换为JSON</li>
+      <li><strong>XML转JSON：</strong>将XML文档转换为JSON</li>
+      <li><strong>YAML转JSON：</strong>将YAML转换为JSON</li>
+    </ul>
+
+    <h3>如何使用JSON转换工具</h3>
+    <ol>
+      <li><strong>选择输入格式：</strong>选择源数据的格式（JSON、XML、YAML或CSV）</li>
+      <li><strong>粘贴输入数据：</strong>在左侧编辑器中输入数据</li>
+      <li><strong>选择输出格式：</strong>选择所需的输出格式</li>
+      <li><strong>点击转换：</strong>工具即时转换您的数据</li>
+      <li><strong>复制结果：</strong>将转换后的输出复制到剪贴板</li>
+    </ol>
+
+    <h3>JSON转TypeScript</h3>
+    <p>我们最受欢迎的功能之一是JSON转TypeScript转换。这会根据您的JSON数据自动生成TypeScript接口，在TypeScript项目中提供类型安全。</p>
+
+    <h3>JSON转CSV</h3>
+    <p>将JSON转换为CSV在需要使用电子表格应用程序或将数据导入数据库时非常重要。我们的转换器处理平面JSON数组和嵌套结构，适当的展平为CSV格式。</p>
+
+    <h3>JSON转YAML</h3>
+    <p>由于其可读性，YAML广泛用于配置文件。我们的转换器生成干净的、适当缩进的YAML，易于维护。这对于Docker、Kubernetes和CI/CD配置特别有用。</p>
+
+    <h3>使用场景</h3>
+    <ul>
+      <li><strong>API集成：</strong>将API响应转换为不同格式</li>
+      <li><strong>数据库导入：</strong>准备用于数据库导入的JSON数据</li>
+      <li><strong>配置：</strong>以各种格式生成配置文件</li>
+      <li><strong>代码生成：</strong>为编程语言创建类型定义</li>
+      <li><strong>数据迁移：</strong>在不同的系统之间转换数据</li>
+      <li><strong>遗留系统集成：</strong>将JSON转换为用于旧系统的XML</li>
+    </ul>
+
+    <h3>ISON格式 - 节省70%令牌</h3>
+    <p>想要更大的压缩？尝试我们的JSON转ISON转换器。ISON（Interchange Simple Object Notation）是一种为LLM优化的紧凑格式，可以减少高达70%的令牌使用，非常适合AI和机器学习应用。</p>
+
+    <h3>相关工具</h3>
+    <ul>
+      <li><a href="/zh/formatter">JSON格式化工具</a> - 格式化JSON提高可读性</li>
+      <li><a href="/zh/validator">JSON校验工具</a> - 转换前验证JSON</li>
+      <li><a href="/zh/minify">JSON压缩工具</a> - 压缩JSON输出</li>
+      <li><a href="/zh/compare">JSON对比工具</a> - 对比转换结果</li>
+    </ul>
+
+    <h3>SEO关键词</h3>
+    <p>JSON转换, JSON转CSV, JSON转XML, JSON转YAML, JSON转TypeScript, 转换JSON, JSON转换工具, 在线JSON转换.</p>
+
+    <h3>开始转换</h3>
+    <p>立即尝试我们的免费JSON转换工具，访问 tojsons.com/converter，即时在格式之间转换您的数据！</p>
+  </div>
+
+  <script type="module">
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/workers/${label === 'json' ? 'json.worker' : 'editor.worker'}.js`;
+      }
+    };
+
+    import * as monaco from 'https://esm.sh/monaco-editor@0.45.0';
+
+    let inputEditor = null;
+    let outputEditor = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeEditors();
+      setupEventListeners();
+    });
+
+    function initializeEditors() {
+      const inputContainer = document.getElementById('input-editor');
+      const outputContainer = document.getElementById('output-editor');
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (inputContainer && inputContainer.offsetWidth > 0) {
+            createEditors(inputContainer, outputContainer);
+          } else {
+            setTimeout(() => createEditors(inputContainer, outputContainer), 50);
+          }
+        });
+      });
+    }
+
+    function createEditors(inputContainer, outputContainer) {
+      inputEditor = monaco.editor.create(inputContainer, {
+        value: '{"name": "John", "age": 30}',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: 13,
+        minimap: { enabled: false },
+        lineNumbers: 'on',
+        tabSize: 2,
+        padding: { top: 12, bottom: 12 }
+      });
+
+      outputEditor = monaco.editor.create(outputContainer, {
+        value: '',
+        language: 'json',
+        theme: 'vs',
+        automaticLayout: true,
+        fontSize: 13,
+        minimap: { enabled: false },
+        lineNumbers: 'on',
+        tabSize: 2,
+        padding: { top: 12, bottom: 12 },
+        readOnly: true
+      });
+    }
+
+    function convert() {
+      if (!inputEditor || !outputEditor) return;
+
+      const inputFormat = document.getElementById('input-format').value;
+      const outputFormat = document.getElementById('output-format').value;
+      const input = inputEditor.getValue();
+
+      try {
+        let data;
+        
+        if (inputFormat === 'json') {
+          data = JSON.parse(input);
+        } else if (inputFormat === 'xml') {
+          data = parseXmlToJson(input);
+        } else if (inputFormat === 'yaml') {
+          data = parseYaml(input);
+        } else if (inputFormat === 'csv') {
+          data = parseCsv(input);
+        }
+
+        let output;
+        if (outputFormat === 'json') {
+          output = JSON.stringify(data, null, 2);
+        } else if (outputFormat === 'csv') {
+          output = jsonToCsv(data);
+        } else if (outputFormat === 'xml') {
+          output = jsonToXml(data);
+        } else if (outputFormat === 'yaml') {
+          output = jsonToYaml(data);
+        } else if (outputFormat === 'typescript') {
+          output = jsonToTypeScript(data);
+        } else if (outputFormat === 'go') {
+          output = jsonToGo(data);
+        } else if (outputFormat === 'rust') {
+          output = jsonToRust(data);
+        } else if (outputFormat === 'python') {
+          output = jsonToPython(data);
+        }
+
+        outputEditor.setValue(output);
+        outputEditor.setLanguage(outputFormat === 'typescript' ? 'typescript' : outputFormat);
+        showToast('转换成功！');
+      } catch (e) {
+        showToast('错误: ' + e.message);
+      }
+    }
+
+    function parseXmlToJson(xml) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xml, 'text/xml');
+      const convert = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) return node.textContent.trim();
+        if (node.nodeType !== Node.ELEMENT_NODE) return null;
+        const obj = {};
+        if (node.attributes) {
+          for (let i = 0; i < node.attributes.length; i++) {
+            obj['@' + node.attributes[i].name] = node.attributes[i].value;
+          }
+        }
+        for (let i = 0; i < node.childNodes.length; i++) {
+          const child = node.childNodes[i];
+          const result = convert(child);
+          if (result) {
+            if (child.nodeType === Node.TEXT_NODE) {
+              obj['#text'] = result;
+            } else {
+              obj[child.nodeName] = result;
+            }
+          }
+        }
+        return obj;
+      };
+      return convert(doc.documentElement);
+    }
+
+    function parseYaml(yaml) {
+      const lines = yaml.split('\n');
+      const result = {};
+      lines.forEach(line => {
+        const match = line.match(/^(\s*)([^:]+):\s*(.*)$/);
+        if (match) {
+          const [, indent, key, value] = match;
+          result[key.trim()] = value.trim();
+        }
+      });
+      return result;
+    }
+
+    function parseCsv(csv) {
+      const lines = csv.trim().split('\n');
+      const headers = lines[0].split(',').map(h => h.trim());
+      const data = lines.slice(1).map(line => {
+        const values = line.split(',');
+        const obj = {};
+        headers.forEach((h, i) => {
+          obj[h] = values[i]?.trim();
+        });
+        return obj;
+      });
+      return data;
+    }
+
+    function jsonToCsv(data) {
+      if (!Array.isArray(data)) data = [data];
+      const headers = Object.keys(data[0] || {});
+      const rows = [headers.join(',')];
+      data.forEach(item => {
+        rows.push(headers.map(h => item[h]).join(','));
+      });
+      return rows.join('\n');
+    }
+
+    function jsonToXml(data, root = 'root') {
+      const convert = (obj, tag) => {
+        if (typeof obj !== 'object' || obj === null) {
+          return `<${tag}>${obj}</${tag}>`;
+        }
+        let xml = `<${tag}>`;
+        for (const [key, value] of Object.entries(obj)) {
+          xml += convert(value, key);
+        }
+        xml += `</${tag}>`;
+        return xml;
+      };
+      return `<?xml version="1.0" encoding="UTF-8"?>\n${convert(data, root)}`;
+    }
+
+    function jsonToYaml(data, indent = 0) {
+      const spaces = '  '.repeat(indent);
+      if (typeof data !== 'object' || data === null) {
+        return `${spaces}${data}`;
+      }
+      if (Array.isArray(data)) {
+        return data.map(item => `${spaces}- ${jsonToYaml(item, indent + 1)}`).join('\n');
+      }
+      return Object.entries(data).map(([key, value]) => {
+        if (typeof value === 'object' && value !== null) {
+          return `${spaces}${key}:\n${jsonToYaml(value, indent + 1)}`;
+        }
+        return `${spaces}${key}: ${value}`;
+      }).join('\n');
+    }
+
+    function jsonToTypeScript(data, name = 'Root') {
+      const convert = (obj, typeName) => {
+        if (obj === null) return 'any';
+        if (typeof obj === 'string') return 'string';
+        if (typeof obj === 'number') return 'number';
+        if (typeof obj === 'boolean') return 'boolean';
+        if (Array.isArray(obj)) {
+          if (obj.length === 0) return 'any[]';
+          return `${convert(obj[0], typeName + 'Item')}[]`;
+        }
+        const props = Object.entries(obj).map(([key, value]) => {
+          return `  ${key}: ${convert(value, typeName + key.charAt(0).toUpperCase() + key.slice(1))};`;
+        });
+        return `interface ${typeName} {\n${props.join('\n')}\n}`;
+      };
+      return convert(data, name);
+    }
+
+    function jsonToGo(data, name = 'Root') {
+      const convert = (obj, typeName) => {
+        if (obj === null) return 'interface{}';
+        if (typeof obj === 'string') return 'string';
+        if (typeof obj === 'number') return Number.isInteger(obj) ? 'int' : 'float64';
+        if (typeof obj === 'boolean') return 'bool';
+        if (Array.isArray(obj)) return '[]interface{}';
+        let code = `type ${typeName} struct {\n`;
+        for (const [key, value] of Object.entries(obj)) {
+          const fieldName = key.charAt(0).toUpperCase() + key.slice(1);
+          code += `  ${fieldName} ${convert(value, typeName + fieldName)} \`json:"${key}"\`\n`;
+        }
+        return code + '}';
+      };
+      return convert(data, name);
+    }
+
+    function jsonToRust(data, name = 'Root') {
+      const convert = (obj, typeName) => {
+        if (obj === null) return 'serde_json::Value';
+        if (typeof obj === 'string') return 'String';
+        if (typeof obj === 'number') return 'f64';
+        if (typeof obj === 'boolean') return 'bool';
+        if (Array.isArray(obj)) return 'Vec<Value>';
+        let code = `#[derive(Serialize, Deserialize)]\nstruct ${typeName} {\n`;
+        for (const [key, value] of Object.entries(obj)) {
+          code += `  ${key}: ${convert(value, typeName + key.charAt(0).toUpperCase() + key.slice(1))},\n`;
+        }
+        return code + '}';
+      };
+      return convert(data, name);
+    }
+
+    function jsonToPython(data, name = 'Root') {
+      const convert = (obj, typeName) => {
+        if (obj === null) return 'Any';
+        if (typeof obj === 'string') return 'str';
+        if (typeof obj === 'number') return 'float';
+        if (typeof obj === 'boolean') return 'bool';
+        if (Array.isArray(obj)) return 'List[Any]';
+        let code = `from dataclasses import dataclass\nfrom typing import Optional, List, Any\n\n`;
+        const props = Object.entries(obj).map(([key, value]) => {
+          const pyType = convert(value, typeName + key.charAt(0).toUpperCase() + key.slice(1));
+          return `    ${key}: ${pyType}`;
+        });
+        return code + `@dataclass\nclass ${typeName}:\n${props.join('\n')}`;
+      };
+      return convert(data, name);
+    }
+
+    function setupEventListeners() {
+      document.getElementById('convert-btn').addEventListener('click', convert);
+      document.getElementById('copy-btn').addEventListener('click', async () => {
+        if (!outputEditor) return;
+        await navigator.clipboard.writeText(outputEditor.getValue());
+        showToast('已复制！');
+      });
+    }
+
+    function showToast(msg) {
+      const existing = document.querySelector('.toast-message');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = msg;
+      toast.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#22c55e;color:white;padding:12px 20px;border-radius:6px;z-index:9999';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+
+  <style>
+    .converter-container { max-width: 1800px; margin: 0 auto; padding: 8px; height: calc(100vh - var(--sidebar-height, 40px)); }
+    .converter-workspace { display: flex; gap: 10px; flex: 1; min-height: 0; }
+    .input-panel, .output-panel { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    
+    .panel-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f8f9fa; border-radius: 6px 6px 0 0; border: 1px solid #e9ecef; border-bottom: none; }
+    .panel-header h2 { font-size: 0.9rem; font-weight: 600; color: #1f2937; margin: 0; }
+    .format-selector { display: flex; gap: 8px; align-items: center; }
+    .format-selector label { font-size: 0.8rem; color: #64748b; }
+    .format-selector select { padding: 4px 8px; border: 1px solid #e5e7eb; border-radius: 4px; font-size: 12px; }
+    
+    .editor-wrapper { flex: 1; display: flex; border: 1px solid #e1e4e8; border-radius: 0 0 8px 8px; overflow: hidden; min-height: 0; }
+    .editor-container { flex: 1; width: 100%; min-height: 300px; }
+    
+    .output-actions { display: flex; gap: 8px; }
+    .output-actions button { padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .output-actions button:hover { background: #2563eb; }
+
+    @media (max-width: 768px) {
+      .converter-workspace { flex-direction: column; }
+    }
+
+    .content-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .content-section h2 { font-size: 1.75rem; color: #0f172a; margin: 30px 0 15px; }
+    .content-section h3 { font-size: 1.25rem; color: #1f2937; margin: 25px 0 12px; }
+    .content-section p { color: #4b5563; line-height: 1.7; margin-bottom: 15px; }
+    .content-section ul, .content-section ol { color: #4b5563; line-height: 1.8; margin: 10px 0 15px 25px; }
+    .content-section li { margin-bottom: 6px; }
+    .content-section a { color: #2563eb; text-decoration: none; }
+  </style>
+</BaseLayout>
